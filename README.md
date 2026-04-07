@@ -29,18 +29,24 @@ architecture — swap out the JSON files to create your own world.
 ## Quick Start
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Thunderpatty/realms-engine.git
 cd realms-engine
 chmod +x setup.sh
 ./setup.sh
 ```
 
 The setup script will:
-1. Check prerequisites
-2. Create the database and user
-3. Generate your `.env` configuration
-4. Install dependencies
-5. Verify the database connection
+1. Install Node.js 20 and PostgreSQL if missing (Ubuntu/Debian)
+2. Prompt for database credentials (or use `--defaults` for unattended install)
+3. Create the database and user
+4. Generate your `.env` configuration
+5. Install dependencies
+6. Verify the database connection
+
+For fully unattended install (uses all defaults):
+```bash
+./setup.sh --defaults
+```
 
 Then start the server:
 ```bash
@@ -67,7 +73,7 @@ and art with your own.
 ## Project Structure
 
 ```
-├── setup.sh              # Installer script
+├── setup.sh              # One-step installer (deps + DB + config)
 ├── .env.example          # Configuration template
 ├── server.js             # Express server, auth, sessions
 ├── fantasy-rpg.js        # Game engine core
