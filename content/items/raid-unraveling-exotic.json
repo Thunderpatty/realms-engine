@@ -1,0 +1,107 @@
+{
+  "reality-breaker": {
+    "slug": "reality-breaker",
+    "name": "Reality Breaker",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "exotic",
+    "classReq": "warrior",
+    "stats": {
+      "str": 34,
+      "con": 18,
+      "dex": 8
+    },
+    "description": "Forged from the Void Sovereign's shattered prison. Each swing cracks reality. The ultimate warrior's weapon \u2014 a blade that can cut through anything, including the concept of 'unbreakable'.",
+    "passive": {
+      "lifestealPct": 14,
+      "bonusDmgPct": 12,
+      "onHitEffect": "void"
+    },
+    "cost": 0,
+    "sell": 500
+  },
+  "codex-of-unmaking": {
+    "slug": "codex-of-unmaking",
+    "name": "Codex of Unmaking",
+    "type": "trinket",
+    "slot": "trinket",
+    "rarity": "exotic",
+    "classReq": "mage",
+    "stats": {
+      "int": 36,
+      "wis": 16,
+      "con": 6
+    },
+    "description": "The Void Sovereign's own spellbook \u2014 or what passes for one. Every page contains a spell that shouldn't exist. Reading it grants power that rewrites the rules of magic.",
+    "passive": {
+      "mpRegenPct": 20,
+      "bonusMagicDmg": 22,
+      "spellCritBonus": 12
+    },
+    "cost": 0,
+    "sell": 500
+  },
+  "entropy-shroud": {
+    "slug": "entropy-shroud",
+    "name": "Entropy Shroud",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "exotic",
+    "classReq": "rogue",
+    "stats": {
+      "dex": 32,
+      "con": 14,
+      "wis": 8
+    },
+    "description": "A cloak woven from pure entropy. The wearer exists at the edge of reality \u2014 present but not quite real. Attacks pass through. Blades miss. You are the ghost between worlds.",
+    "passive": {
+      "dodgeBonus": 16,
+      "critBonus": 14,
+      "damageReduction": 6
+    },
+    "cost": 0,
+    "sell": 500
+  },
+  "binding-light-aegis": {
+    "slug": "binding-light-aegis",
+    "name": "Binding Light Aegis",
+    "type": "shield",
+    "slot": "shield",
+    "rarity": "exotic",
+    "classReq": "cleric",
+    "stats": {
+      "wis": 32,
+      "con": 18,
+      "int": 8
+    },
+    "description": "A shield forged from the bindings that held the Void Sovereign. It radiates the pure, defiant light of reality refusing to end. The ultimate defensive artifact.",
+    "passive": {
+      "healBonus": 22,
+      "damageReduction": 14,
+      "hpRegenPct": 14
+    },
+    "cost": 0,
+    "sell": 500
+  },
+  "void-sovereign-fang": {
+    "slug": "void-sovereign-fang",
+    "name": "Void Sovereign's Fang",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "exotic",
+    "classReq": "ranger",
+    "stats": {
+      "dex": 30,
+      "wis": 18,
+      "con": 8
+    },
+    "description": "A bow carved from the Void Sovereign's tooth \u2014 a weapon made from the most dangerous entity in existence. Arrows fired from it carry the weight of oblivion.",
+    "passive": {
+      "critBonus": 16,
+      "bonusDmgPct": 14,
+      "onHitEffect": "void"
+    },
+    "cost": 0,
+    "sell": 500
+  }
+}

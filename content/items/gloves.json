@@ -1,0 +1,441 @@
+{
+  "iron-vice-gauntlets": {
+    "name": "Iron Vice Gauntlets",
+    "type": "gloves",
+    "rarity": "rare",
+    "stats": {
+      "str": 4,
+      "con": 1
+    },
+    "cost": 202,
+    "sell": 50,
+    "description": "Heavy gauntlets that turn every grip into a crushing vice against blade and bone."
+  },
+  "runehand-gloves": {
+    "name": "Runehand Gloves",
+    "type": "gloves",
+    "rarity": "rare",
+    "stats": {
+      "int": 5,
+      "wis": 1
+    },
+    "cost": 203,
+    "sell": 50,
+    "description": "Silk gloves inscribed with power-amplifying sigils that sharpen every spell cast."
+  },
+  "knifework-wraps": {
+    "name": "Knifework Wraps",
+    "type": "gloves",
+    "rarity": "rare",
+    "stats": {
+      "dex": 4
+    },
+    "cost": 202,
+    "sell": 50,
+    "description": "Tight wraps that balance the fingers over blade edges and let daggers fly fast and true."
+  },
+  "consecrated-grips": {
+    "name": "Consecrated Grips",
+    "type": "gloves",
+    "rarity": "rare",
+    "stats": {
+      "wis": 4,
+      "con": 1
+    },
+    "cost": 202,
+    "sell": 50,
+    "description": "Gloves blessed on a cathedral high altar; steady for mace strokes and healing rites alike."
+  },
+  "bowmaster-grips": {
+    "name": "Bowmaster Grips",
+    "type": "gloves",
+    "rarity": "rare",
+    "stats": {
+      "dex": 4,
+      "wis": 1
+    },
+    "cost": 202,
+    "sell": 50,
+    "description": "Waxed leather grips optimized for rapid-fire draw; the bowstring never bites the skin."
+  },
+  "crushers-of-doom": {
+    "name": "Crushers of Doom",
+    "type": "gloves",
+    "rarity": "epic",
+    "stats": {
+      "str": 6,
+      "con": 1
+    },
+    "cost": 503,
+    "sell": 125,
+    "passive": {
+      "lifestealPct": 6,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 28
+      }
+    },
+    "description": "Gauntlets that make every blow a lethal mauling. Blood coats the iron knuckles constantly."
+  },
+  "arcanist-foci-gloves": {
+    "name": "Arcanist Foci Gloves",
+    "type": "gloves",
+    "rarity": "epic",
+    "stats": {
+      "int": 6,
+      "wis": 2
+    },
+    "cost": 504,
+    "sell": 126,
+    "passive": {
+      "manaRegen": 2,
+      "onHitStatus": {
+        "slug": "weaken",
+        "turns": 2,
+        "chance": 22
+      }
+    },
+    "description": "Gloves that channel raw magic through crystal fingertip foci with surgical precision."
+  },
+  "nightfall-wraps": {
+    "name": "Nightfall Wraps",
+    "type": "gloves",
+    "rarity": "epic",
+    "stats": {
+      "dex": 7
+    },
+    "cost": 503,
+    "sell": 125,
+    "passive": {
+      "lifestealPct": 8,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 24
+      }
+    },
+    "description": "Dark wraps that drink enemy blood to power the next strike. They never stay clean."
+  },
+  "saintly-grasp": {
+    "name": "Saintly Grasp",
+    "type": "gloves",
+    "rarity": "epic",
+    "stats": {
+      "wis": 5,
+      "con": 2
+    },
+    "cost": 503,
+    "sell": 125,
+    "passive": {
+      "hpRegen": 2,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 20
+      }
+    },
+    "description": "Holy hands that bind wounds and shackle foes alike; touched by the grace of two saints."
+  },
+  "predator-grips": {
+    "name": "Predator Grips",
+    "type": "gloves",
+    "rarity": "epic",
+    "stats": {
+      "dex": 6,
+      "wis": 2
+    },
+    "cost": 504,
+    "sell": 126,
+    "passive": {
+      "manaRegen": 1,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 28
+      }
+    },
+    "description": "Grips soaked in marsh extract that track and slow prey through scent and instinct alone."
+  },
+  "titan-gauntlets": {
+    "name": "Titan Gauntlets",
+    "type": "gloves",
+    "rarity": "legendary",
+    "stats": {
+      "str": 9,
+      "con": 2
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "lifestealPct": 10,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 32
+      }
+    },
+    "description": "Gauntlets forged for a titan. The earth itself buckles beneath each crushing strike."
+  },
+  "void-hands": {
+    "name": "Void Hands",
+    "type": "gloves",
+    "rarity": "legendary",
+    "stats": {
+      "int": 8,
+      "wis": 4
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "manaRegen": 3,
+      "onHitStatus": {
+        "slug": "burn",
+        "turns": 2,
+        "chance": 22
+      }
+    },
+    "description": "Hands shaped from void matter that incinerate whatever they touch with cold black flame."
+  },
+  "shadowstrike-wraps": {
+    "name": "Shadowstrike Wraps",
+    "type": "gloves",
+    "rarity": "legendary",
+    "stats": {
+      "dex": 10
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "lifestealPct": 12,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 32
+      }
+    },
+    "description": "Wraps made from shadow silk; each strike is an execution, each scratch a slow death."
+  },
+  "hallowed-hands": {
+    "name": "Hallowed Hands",
+    "type": "gloves",
+    "rarity": "legendary",
+    "stats": {
+      "wis": 5,
+      "con": 5
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "hpRegen": 3,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 22
+      }
+    },
+    "description": "Gloves blessed by three saints in sequence; healing and righteous smiting in equal measure."
+  },
+  "galeforce-grips": {
+    "name": "Galeforce Grips",
+    "type": "gloves",
+    "rarity": "legendary",
+    "stats": {
+      "dex": 8,
+      "wis": 3
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "manaRegen": 2,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 35
+      }
+    },
+    "description": "Grips that channel wind itself, making every arrow fly with the force of a full storm."
+  },
+  "molten-core-gauntlets": {
+    "name": "Molten Core Gauntlets",
+    "type": "gloves",
+    "rarity": "mythic",
+    "cost": 0,
+    "sell": 501,
+    "stats": {
+      "str": 8,
+      "con": 5
+    },
+    "description": "Gauntlets forged around a living ember. The heat never fades and neither does the grip.",
+    "passive": {
+      "onHitStatus": {
+        "slug": "burn",
+        "chance": 15,
+        "turns": 2
+      }
+    },
+    "durability": 250
+  },
+  "leather-gloves": {
+    "type": "gloves",
+    "rarity": "common",
+    "name": "Leather Gloves",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "dex": 1,
+      "con": 1
+    },
+    "description": "Basic work gloves. Keep the blisters at bay."
+  },
+  "wool-mittens": {
+    "type": "gloves",
+    "rarity": "common",
+    "name": "Wool Mittens",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "wis": 1,
+      "con": 1
+    },
+    "description": "Warm mittens knit by temple acolytes. Surprisingly comforting."
+  },
+  "iron-knuckles": {
+    "type": "gloves",
+    "rarity": "common",
+    "name": "Iron Knuckles",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "str": 2
+    },
+    "description": "Crude but effective. Good for punching and blocking."
+  },
+  "linen-wraps": {
+    "type": "gloves",
+    "rarity": "common",
+    "name": "Linen Wraps",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "int": 1,
+      "dex": 1
+    },
+    "description": "Thin wraps that keep fingers nimble for spellcasting."
+  },
+  "hide-bracers": {
+    "type": "gloves",
+    "rarity": "common",
+    "name": "Hide Bracers",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "dex": 2
+    },
+    "description": "Simple hide bracers worn by hunters and woodsmen."
+  },
+  "gauntlets-of-grip": {
+    "type": "gloves",
+    "rarity": "uncommon",
+    "name": "Gauntlets of Grip",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "str": 4,
+      "con": 1
+    },
+    "description": "Steel gauntlets with etched grip-lines. What you grab stays grabbed."
+  },
+  "spellweave-gloves": {
+    "type": "gloves",
+    "rarity": "uncommon",
+    "name": "Spellweave Gloves",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "int": 4,
+      "wis": 1
+    },
+    "description": "Silk gloves threaded with mana-conductive fibers."
+  },
+  "cutpurse-mitts": {
+    "type": "gloves",
+    "rarity": "uncommon",
+    "name": "Cutpurse Mitts",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "dex": 5
+    },
+    "description": "Soft leather mitts with padded fingertips. Silence guaranteed."
+  },
+  "prayer-wraps": {
+    "type": "gloves",
+    "rarity": "uncommon",
+    "name": "Prayer Wraps",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "wis": 3,
+      "con": 2
+    },
+    "description": "Linen wraps anointed with sacred oils. They smell of frankincense."
+  },
+  "bowstring-gloves": {
+    "type": "gloves",
+    "rarity": "uncommon",
+    "name": "Bowstring Gloves",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "dex": 3,
+      "wis": 2
+    },
+    "description": "Reinforced fingertips for rapid nocking and clean releases."
+  },
+  "frostweave-grips": {
+    "slug": "frostweave-grips",
+    "name": "Frostweave Grips",
+    "type": "gloves",
+    "slot": "gloves",
+    "rarity": "rare",
+    "description": "Gloves woven with frost crystal threads. Never lose grip, never feel cold.",
+    "stats": {
+      "dex": 4,
+      "str": 3,
+      "con": 1
+    },
+    "cost": 350,
+    "sell": 88
+  },
+  "forgemaster-grips": {
+    "slug": "forgemaster-grips",
+    "name": "Forgemaster Grips",
+    "type": "gloves",
+    "slot": "gloves",
+    "rarity": "rare",
+    "stats": {
+      "str": 5,
+      "dex": 4,
+      "con": 2
+    },
+    "description": "Heat-proof gloves used by Emberveil smiths. Grip anything.",
+    "cost": 640,
+    "sell": 160
+  },
+  "reality-grips": {
+    "slug": "reality-grips",
+    "name": "Reality Grips",
+    "type": "gloves",
+    "slot": "gloves",
+    "rarity": "epic",
+    "stats": {
+      "str": 6,
+      "dex": 5,
+      "con": 3
+    },
+    "description": "Gloves that anchor the wearer to reality. Grip anything, even void energy.",
+    "cost": 1050,
+    "sell": 262
+  }
+}

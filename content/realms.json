@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "ashlands",
+    "name": "The Ashlands",
+    "order": 1,
+    "levelRange": [1, 10],
+    "icon": "🏔",
+    "description": "A realm of crumbling keeps, whispering forests, and dragon-haunted peaks. The land where every adventurer begins.",
+    "hub": "thornwall",
+    "raidTown": "sunspire",
+    "portalQuestLevel": null,
+    "portalFromRealm": null,
+    "portalFromLocation": null,
+    "portalToLocation": "thornwall"
+  },
+  {
+    "slug": "frostreach",
+    "name": "The Frostreach",
+    "order": 2,
+    "levelRange": [10, 20],
+    "icon": "❄",
+    "description": "A frozen expanse beyond the northern peaks. Ancient frost giants, ice-bound ruins, and a cold that thinks.",
+    "hub": "frosthollow",
+    "raidTown": "frosthollow",
+    "portalQuestLevel": 10,
+    "portalFromRealm": "ashlands",
+    "portalFromLocation": "sunspire",
+    "portalToLocation": "frosthollow"
+  },
+  {
+    "slug": "emberveil",
+    "name": "The Emberveil",
+    "order": 3,
+    "levelRange": [20, 35],
+    "icon": "🌋",
+    "description": "A shattered volcanic archipelago where the earth bleeds fire. Demon cults, elemental lords, and cities built on cooled lava flows.",
+    "hub": "cinderport",
+    "raidTown": "cinderport",
+    "portalQuestLevel": 20,
+    "portalFromRealm": "frostreach",
+    "portalFromLocation": "frosthollow",
+    "portalToLocation": "cinderport"
+  },
+  {
+    "slug": "voidspire",
+    "name": "The Voidspire",
+    "order": 4,
+    "levelRange": [35, 50],
+    "icon": "🌀",
+    "description": "The edge of reality. Floating islands above an endless abyss, where the rules of the world grow thin and ancient horrors stir in the spaces between.",
+    "hub": "nexus-bastion",
+    "raidTown": "nexus-bastion",
+    "portalQuestLevel": 35,
+    "portalFromRealm": "emberveil",
+    "portalFromLocation": "cinderport",
+    "portalToLocation": "nexus-bastion"
+  }
+]

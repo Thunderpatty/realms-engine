@@ -1,0 +1,624 @@
+{
+  "rusty-sword": {
+    "cost": 21,
+    "name": "Rusty Sword",
+    "sell": 5,
+    "type": "weapon",
+    "stats": {
+      "str": 2
+    },
+    "rarity": "common",
+    "description": "Barely holds an edge."
+  },
+  "apprentice-wand": {
+    "cost": 21,
+    "name": "Apprentice Wand",
+    "sell": 5,
+    "type": "weapon",
+    "stats": {
+      "int": 3
+    },
+    "rarity": "common",
+    "description": "A smooth yew wand etched with beginner runes."
+  },
+  "iron-sword": {
+    "cost": 22,
+    "name": "Iron Sword",
+    "sell": 5,
+    "type": "weapon",
+    "stats": {
+      "str": 5
+    },
+    "rarity": "common",
+    "description": "Reliable and sharp."
+  },
+  "runed-oak-staff": {
+    "cost": 24,
+    "name": "Runed Oak Staff",
+    "sell": 6,
+    "type": "weapon",
+    "stats": {
+      "int": 7,
+      "wis": 1
+    },
+    "rarity": "common",
+    "description": "A travel staff carved with patient woodland sigils."
+  },
+  "steel-dagger": {
+    "cost": 68,
+    "name": "Steel Dagger",
+    "sell": 16,
+    "type": "weapon",
+    "stats": {
+      "dex": 7
+    },
+    "rarity": "uncommon",
+    "description": "Quick and deadly."
+  },
+  "ember-wand": {
+    "cost": 69,
+    "name": "Ember Wand",
+    "sell": 17,
+    "type": "weapon",
+    "stats": {
+      "int": 9
+    },
+    "rarity": "uncommon",
+    "description": "Its tip glows with a coal-red spark that never dies."
+  },
+  "war-axe": {
+    "cost": 69,
+    "name": "War Axe",
+    "sell": 17,
+    "type": "weapon",
+    "stats": {
+      "str": 9
+    },
+    "rarity": "uncommon",
+    "description": "Cleaves through armor."
+  },
+  "battlemage-rod": {
+    "cost": 71,
+    "name": "Battlemage Rod",
+    "sell": 17,
+    "type": "weapon",
+    "stats": {
+      "int": 11,
+      "wis": 1
+    },
+    "rarity": "uncommon",
+    "description": "A heavy focus built for spellcasters who stand their ground."
+  },
+  "enchanted-blade": {
+    "cost": 206,
+    "name": "Enchanted Blade",
+    "sell": 51,
+    "type": "weapon",
+    "stats": {
+      "int": 13
+    },
+    "rarity": "rare",
+    "description": "Hums with arcane energy."
+  },
+  "starfire-staff": {
+    "cost": 208,
+    "name": "Starfire Staff",
+    "sell": 52,
+    "type": "weapon",
+    "stats": {
+      "int": 15,
+      "wis": 2
+    },
+    "rarity": "rare",
+    "description": "A polished ash staff crowned with a shard of fallen star."
+  },
+  "witch-staff": {
+    "cost": 509,
+    "name": "Staff of the Fen Witch",
+    "sell": 127,
+    "type": "weapon",
+    "stats": {
+      "int": 15,
+      "wis": 3
+    },
+    "rarity": "epic",
+    "description": "Twisted wood pulsing with dark power.",
+    "passive": {
+      "manaRegen": 1,
+      "onHitStatus": {
+        "slug": "weaken",
+        "chance": 30,
+        "turns": 2
+      }
+    }
+  },
+  "ashwood-bow": {
+    "cost": 21,
+    "name": "Ashwood Bow",
+    "sell": 5,
+    "type": "weapon",
+    "stats": {
+      "dex": 3
+    },
+    "rarity": "common",
+    "description": "A light hunting bow cut from frontier ashwood."
+  },
+  "yew-longbow": {
+    "cost": 69,
+    "name": "Yew Longbow",
+    "sell": 17,
+    "type": "weapon",
+    "stats": {
+      "dex": 8
+    },
+    "rarity": "uncommon",
+    "description": "A strong longbow that rewards patience, breath, and distance."
+  },
+  "moonshot-bow": {
+    "cost": 207,
+    "name": "Moonshot Bow",
+    "sell": 51,
+    "type": "weapon",
+    "stats": {
+      "dex": 14,
+      "wis": 1
+    },
+    "rarity": "rare",
+    "description": "A pale bowstring sings softly whenever moonlight touches its limbs."
+  },
+  "militia-blade": {
+    "cost": 22,
+    "name": "Militia Blade",
+    "sell": 5,
+    "type": "weapon",
+    "stats": {
+      "str": 4
+    },
+    "rarity": "common",
+    "description": "A serviceable sword carried by village levies and stubborn survivors."
+  },
+  "knight-bastard-sword": {
+    "cost": 206,
+    "name": "Knight Bastard Sword",
+    "sell": 51,
+    "type": "weapon",
+    "stats": {
+      "str": 12
+    },
+    "rarity": "rare",
+    "description": "A two-handed noble blade equally suited to duels and battlefield chaos."
+  },
+  "colossus-greatblade": {
+    "cost": 509,
+    "name": "Colossus Greatblade",
+    "sell": 127,
+    "type": "weapon",
+    "stats": {
+      "str": 18
+    },
+    "rarity": "epic",
+    "description": "A massive blade forged to break monsters rather than men.",
+    "passive": {
+      "lifestealPct": 6,
+      "onHitStatus": {
+        "slug": "bleed",
+        "chance": 28,
+        "turns": 2
+      }
+    }
+  },
+  "thief-stiletto": {
+    "cost": 22,
+    "name": "Thief Stiletto",
+    "sell": 5,
+    "type": "weapon",
+    "stats": {
+      "dex": 4
+    },
+    "rarity": "common",
+    "description": "A narrow dagger made for ribs, locks, and sudden exits."
+  },
+  "shadow-daggers": {
+    "cost": 69,
+    "name": "Shadow Daggers",
+    "sell": 17,
+    "type": "weapon",
+    "stats": {
+      "dex": 8
+    },
+    "rarity": "uncommon",
+    "description": "Matched blades meant to flash once and be remembered too late."
+  },
+  "whisperknife": {
+    "cost": 206,
+    "name": "Whisperknife",
+    "sell": 51,
+    "type": "weapon",
+    "stats": {
+      "dex": 13
+    },
+    "rarity": "rare",
+    "description": "A near-weightless blade that parts cloth and flesh with equal ease."
+  },
+  "pilgrim-mace": {
+    "cost": 22,
+    "name": "Pilgrim Mace",
+    "sell": 5,
+    "type": "weapon",
+    "stats": {
+      "wis": 4
+    },
+    "rarity": "common",
+    "description": "A humble iron mace blessed for the road and whatever walks it after dark."
+  },
+  "sanctified-mace": {
+    "cost": 69,
+    "name": "Sanctified Mace",
+    "sell": 17,
+    "type": "weapon",
+    "stats": {
+      "wis": 8
+    },
+    "rarity": "uncommon",
+    "description": "A silvered mace that rings like a bell when it strikes undead bone."
+  },
+  "dawnbringer-crozier": {
+    "cost": 207,
+    "name": "Dawnbringer Crozier",
+    "sell": 51,
+    "type": "weapon",
+    "stats": {
+      "wis": 14
+    },
+    "rarity": "rare",
+    "description": "A radiant staff-mace whose golden head burns brightest before sunrise."
+  },
+  "example-moon-blade": {
+    "name": "Example Moon Blade",
+    "type": "weapon",
+    "rarity": "rare",
+    "stats": {
+      "dex": 12
+    },
+    "cost": 206,
+    "sell": 51,
+    "description": "Example content item for API-driven expansion."
+  },
+  "warchiefs-cleaver": {
+    "name": "Warchief's Cleaver",
+    "type": "weapon",
+    "rarity": "mythic",
+    "cost": 0,
+    "sell": 502,
+    "stats": {
+      "str": 14,
+      "con": 3
+    },
+    "description": "A brutal cleaver wrenched from the grip of a goblin warlord. The blade still hums with bloodlust.",
+    "durability": 250
+  },
+  "ignavoths-fang": {
+    "name": "Ignavoth's Fang",
+    "type": "weapon",
+    "rarity": "mythic",
+    "cost": 0,
+    "sell": 502,
+    "stats": {
+      "str": 16,
+      "con": 4,
+      "dex": 3
+    },
+    "description": "A tooth the size of a greatsword, torn from the maw of the ancient dragon Ignavoth. Radiates primal fury.",
+    "passive": {
+      "lifestealPct": 5,
+      "onHitStatus": {
+        "slug": "burn",
+        "chance": 20,
+        "turns": 2
+      }
+    },
+    "durability": 250
+  },
+  "worldsplitter": {
+    "type": "weapon",
+    "rarity": "legendary",
+    "name": "Worldsplitter",
+    "cost": 0,
+    "sell": 303,
+    "stats": {
+      "str": 20,
+      "con": 4
+    },
+    "description": "A greatsword so heavy it cracks the earth with each swing."
+  },
+  "staff-of-eternity": {
+    "type": "weapon",
+    "rarity": "legendary",
+    "name": "Staff of Eternity",
+    "cost": 0,
+    "sell": 303,
+    "stats": {
+      "int": 18,
+      "wis": 6
+    },
+    "description": "An ancient staff that bends time around its wielder."
+  },
+  "eclipse-daggers": {
+    "type": "weapon",
+    "rarity": "legendary",
+    "name": "Eclipse Daggers",
+    "cost": 0,
+    "sell": 302,
+    "stats": {
+      "dex": 17,
+      "cha": 4
+    },
+    "description": "Twin daggers that cut through shadow and flesh equally."
+  },
+  "godtouched-crozier": {
+    "type": "weapon",
+    "rarity": "legendary",
+    "name": "Godtouched Crozier",
+    "cost": 0,
+    "sell": 303,
+    "stats": {
+      "wis": 18,
+      "con": 4,
+      "int": 2
+    },
+    "description": "A crozier blessed by a dying god. It hums with fading divinity."
+  },
+  "stormbow": {
+    "type": "weapon",
+    "rarity": "legendary",
+    "name": "Stormbow",
+    "cost": 0,
+    "sell": 302,
+    "stats": {
+      "dex": 15,
+      "wis": 6,
+      "con": 2
+    },
+    "description": "A longbow strung with lightning. Arrows arrive before the sound."
+  },
+  "frostforged-blade": {
+    "slug": "frostforged-blade",
+    "name": "Frostforged Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "rare",
+    "description": "A sword tempered in permafrost. The edge never dulls.",
+    "stats": {
+      "str": 14,
+      "con": 2
+    },
+    "cost": 450,
+    "sell": 112
+  },
+  "glacial-staff": {
+    "slug": "glacial-staff",
+    "name": "Glacial Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "rare",
+    "description": "A staff carved from ancient ice. Frost clings to its surface.",
+    "stats": {
+      "int": 15,
+      "wis": 3
+    },
+    "cost": 480,
+    "sell": 120
+  },
+  "icicle-stiletto": {
+    "slug": "icicle-stiletto",
+    "name": "Icicle Stiletto",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "rare",
+    "description": "A dagger of crystallized cold. Shatters expectations, not blades.",
+    "stats": {
+      "dex": 14,
+      "con": 1
+    },
+    "cost": 440,
+    "sell": 110
+  },
+  "frostpriests-censer": {
+    "slug": "frostpriests-censer",
+    "name": "Frostpriest's Censer",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "rare",
+    "description": "A holy implement of the frost priests. Radiates cold faith.",
+    "stats": {
+      "wis": 14,
+      "int": 2
+    },
+    "cost": 460,
+    "sell": 115
+  },
+  "blizzard-bow": {
+    "slug": "blizzard-bow",
+    "name": "Blizzard Bow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "rare",
+    "description": "A bow strung with frozen sinew. Arrows fly true even in storms.",
+    "stats": {
+      "dex": 13,
+      "wis": 3
+    },
+    "cost": 470,
+    "sell": 118
+  },
+  "aldrics-frostbrand": {
+    "slug": "aldrics-frostbrand",
+    "name": "Aldric's Frostbrand",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "epic",
+    "description": "Forged from the Frost King's own crown. Radiates ancient cold.",
+    "stats": {
+      "str": 17,
+      "con": 4,
+      "wis": 1
+    },
+    "cost": 0,
+    "sell": 1
+  },
+  "obsidian-cleaver": {
+    "slug": "obsidian-cleaver",
+    "name": "Obsidian Cleaver",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "rare",
+    "stats": {
+      "str": 18,
+      "con": 3
+    },
+    "description": "A massive blade of volcanic glass. Brutally sharp.",
+    "cost": 800,
+    "sell": 200
+  },
+  "infernal-staff": {
+    "slug": "infernal-staff",
+    "name": "Infernal Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "rare",
+    "stats": {
+      "int": 19,
+      "wis": 4
+    },
+    "description": "A staff wreathed in perpetual hellfire.",
+    "cost": 850,
+    "sell": 212
+  },
+  "ember-daggers": {
+    "slug": "ember-daggers",
+    "name": "Ember Daggers",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "rare",
+    "stats": {
+      "dex": 18,
+      "con": 2
+    },
+    "description": "Twin daggers that glow red-hot. They never cool.",
+    "cost": 790,
+    "sell": 197
+  },
+  "ashpriest-mace": {
+    "slug": "ashpriest-mace",
+    "name": "Ashpriest Mace",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "rare",
+    "stats": {
+      "wis": 18,
+      "int": 3
+    },
+    "description": "A holy weapon forged in the caldera. Burns demons on contact.",
+    "cost": 820,
+    "sell": 205
+  },
+  "caldera-longbow": {
+    "slug": "caldera-longbow",
+    "name": "Caldera Longbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "rare",
+    "stats": {
+      "dex": 17,
+      "wis": 4
+    },
+    "description": "A bow of basalt-hardened wood. Arrows ignite in flight.",
+    "cost": 830,
+    "sell": 207
+  },
+  "ignavus-flamebrand": {
+    "slug": "ignavus-flamebrand",
+    "name": "Ignavus's Flamebrand",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "epic",
+    "stats": {
+      "str": 22,
+      "con": 5,
+      "wis": 2
+    },
+    "description": "Forged from a shard of the Undying Flame itself.",
+    "cost": 0,
+    "sell": 350
+  },
+  "void-edge": {
+    "slug": "void-edge",
+    "name": "Void Edge",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "epic",
+    "stats": {
+      "str": 24,
+      "con": 4
+    },
+    "description": "A blade forged from crystallized void. It cuts through reality.",
+    "cost": 1400,
+    "sell": 350
+  },
+  "entropy-staff": {
+    "slug": "entropy-staff",
+    "name": "Entropy Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "epic",
+    "stats": {
+      "int": 25,
+      "wis": 5
+    },
+    "description": "A staff of decayed timelines. Its magic accelerates entropy.",
+    "cost": 1450,
+    "sell": 362
+  },
+  "thought-blade": {
+    "slug": "thought-blade",
+    "name": "Thought Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "epic",
+    "stats": {
+      "dex": 24,
+      "con": 3
+    },
+    "description": "A dagger forged from crystallized thought. It cuts what you think of.",
+    "cost": 1380,
+    "sell": 345
+  },
+  "reality-mace": {
+    "slug": "reality-mace",
+    "name": "Reality Mace",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "epic",
+    "stats": {
+      "wis": 24,
+      "int": 4
+    },
+    "description": "A mace that enforces reality. Excellent against void creatures.",
+    "cost": 1420,
+    "sell": 355
+  },
+  "abyss-bow": {
+    "slug": "abyss-bow",
+    "name": "Abyss Bow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "epic",
+    "stats": {
+      "dex": 22,
+      "wis": 6
+    },
+    "description": "A bow strung with void-thread. Arrows disappear mid-flight and reappear inside the target.",
+    "cost": 1440,
+    "sell": 360
+  }
+}

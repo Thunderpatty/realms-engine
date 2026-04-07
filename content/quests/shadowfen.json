@@ -1,0 +1,1153 @@
+[
+  {
+    "slug": "fen-lights",
+    "title": "Lanterns in the Mist",
+    "location": "shadowfen",
+    "minLevel": 5,
+    "description": "The will-o'-wisps that once guided ferrymen now lure them into the deep water instead.",
+    "stages": [
+      {
+        "text": "An old ferryman stares into the marsh with the expression of a man who has lost something he trusted. 'They were once lanterns on safe water. Every ferryman on this route knew to follow them.' He points at the mist. 'Now they lead boats off the bank and into the deep. Three skiffs gone in a month. One ferryman didn't come back.' Something changed the lights.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Ask the ferryman when the behaviour first changed",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study the lights' movement pattern from the bank",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Follow the lights carefully from a safe distance",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask what happened to the ferryman who didn't return",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The will-o'-wisps lead you from hummock to hummock through paths that are technically passable but are clearly designed to disorient. Bones lie beneath the reeds \u2014 old ones and new ones \u2014 and the lights pulse in a pattern that mimics the old safety signals but in a sequence no ferryman would recognise.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Decode the false signal sequence to understand the manipulation",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Step carefully and test each hummock before committing weight",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Follow the bones to find where the lights have led before",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Call out to the lights to see if they respond to voice",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "A marsh ghoul erupts from the mud, drawn by the lights and the smell of the living. It has been following the wisps and feeding on whatever they bring in \u2014 a symbiotic relationship that neither party chose but both have benefited from. It attacks without ceremony.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the marsh ghoul",
+            "combat": "marsh-ghoul"
+          },
+          {
+            "next": 3,
+            "label": "Use the wisps' own light to blind the ghoul",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Drive the ghoul back into the deep water",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Draw the ghoul away from the solid ground before engaging",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The lights gather around a sunken skiff at the deepest navigable point. You realise the dead ferrymen were never properly recovered \u2014 the wisps have been anchored here by the grief of drowning deaths that were never acknowledged. The lights are not malicious, but they are trapped in a memory of loss that makes them dangerous.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the will-o'-wisp to break the anchor",
+            "combat": "will-o-wisp"
+          },
+          {
+            "next": 4,
+            "label": "Recover the drowned remains from the skiff",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Speak the ferrymen's names into the water",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Use a proper ferryman's lantern signal to redirect the wisps",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "Once the dead are honoured, the lights settle into still lantern-flame and drift to the bank's edge \u2014 the original guiding positions, the ones the ferrymen knew. The marsh route is safe again, and the lights burn steady and true.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Return to the ferryman and tell him what you found",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Retrieve the hydra scale from the sunken skiff's cargo",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Mark the corrected light positions for the ferrying guild",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The lights settle into their proper positions, steady and faithful again. The hydra scale was in the sunken cargo, carried by the last ferryman who knew the original route \u2014 left where it fell, waiting.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 190,
+      "gold": 95,
+      "item": "hydra-scale"
+    }
+  },
+  {
+    "slug": "fen-witch",
+    "title": "The Fen Witch",
+    "location": "shadowfen",
+    "minLevel": 6,
+    "description": "Undead sightings grow worse by the day. The source is the crooked tower at the marsh's heart.",
+    "stages": [
+      {
+        "text": "Undead sightings grow worse by the day, and the marsh stinks of death in a way that moves against the wind. A crooked tower rises from the fen's centre \u2014 lights in its upper windows at hours when no fire should be burning. A retired warden says plainly: 'Whatever is in that tower is what's sending them. The tower has to fall.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Research the tower's history and its occupant",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Scout the tower's approaches from the treeline",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the warden what she knows about the witch inside",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Move toward the tower before the light changes",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The tower's entrance is guarded. Animated suits of armor stand at the door \u2014 two visible, likely more inside. A window on the second level is dark and unlatched, an oversight or a test. The front door is heavy iron, sealed with a mechanism that requires a key or considerable persuasion.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Fight through the armor at the front entrance",
+            "combat": "animated-armor"
+          },
+          {
+            "next": 2,
+            "label": "Find a window to climb on the tower's blind side",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Study the armor's patrol pattern for a window",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Force the iron door directly",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "Inside, dark familiars hiss and swoop between the shelves of a library that smells of old magic and bad intentions. The stairs spiral upward, and something moves on every landing. The familiars are small but quick and they will alert the witch if they can.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the dark familiars",
+            "combat": "dark-familiar"
+          },
+          {
+            "next": 3,
+            "label": "Move through the library without disturbing the familiars",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Find the familiar's anchor object and break it",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Ascend quickly before they can cohere into a real threat",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "You pull yourself through into a library of forbidden texts on the third level. The witch is above \u2014 you can hear her moving, and the tower itself seems to respond to her mood, creaking and settling in ways that have nothing to do with wind. The access to the roof level is a trapdoor above the final stair.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Climb through the trapdoor immediately",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Read the texts near the trapdoor for tactical information",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Listen through the trapdoor to assess the witch's position",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Open the trapdoor fast enough that she cannot prepare",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The Fen Witch awaits on the roof with lightning crackling between her fingers and an expression of mild professional interest. 'You made it further than the last three,' she says, which is not quite a compliment. She attacks without further preamble.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Fight the Fen Witch",
+            "combat": "witch-of-fen"
+          },
+          {
+            "next": 5,
+            "label": "Use the roof structure to limit her range of movement",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 5,
+            "label": "Close the gap before she can build a full casting",
+            "check": {
+              "stat": "dex",
+              "dc": 15
+            }
+          },
+          {
+            "next": 5,
+            "label": "Match her confidence with equal certainty",
+            "check": {
+              "stat": "str",
+              "dc": 15
+            }
+          }
+        ]
+      },
+      {
+        "text": "The witch crumbles to ash. Her tower groans and begins to sink. You escape with her staff, which is still crackling with something it hasn't finished saying, and the undead in the marsh stop walking within the hour.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 264,
+      "gold": 126,
+      "item": "witch-staff"
+    }
+  },
+  {
+    "slug": "bogside-mass",
+    "title": "Bogside Mass",
+    "location": "shadowfen",
+    "minLevel": 5,
+    "description": "A drowned chapel bell tolls beneath the swamp each dawn, and the dead answer in procession.",
+    "stages": [
+      {
+        "text": "At first light, shapes move in the mist toward a sunken chapel door just below the waterline \u2014 not random, not erratic, but in procession, each one in the same gap between the next. A ferryman on the far bank has been watching this happen every morning for two weeks and has stopped sleeping in his boat. 'It's not wrong,' he says. 'That's what's wrong. It's too right.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Wade out to examine the chapel structure",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Read the procession pattern from the bank",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the ferryman what he hears before he sees them",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study the ground around the chapel door for the entry path",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The chapel is genuinely drowned \u2014 not half-submerged but fully under, accessible only through a flooded entrance that requires you to go through rather than around. The procession figures are bog zombies, still in the remnants of their burial clothes, still following a route they remember from when the chapel stood above water.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Enter the chapel through the flooded entrance",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Find an upper access point that is not submerged",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Study the procession route to understand the route inside",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Watch for what happens when the procession reaches the door",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "A bog zombie lurches from the reeds at the chapel's side \u2014 not part of the procession but something that has been stationed here, drawn by the repeated gathering and now territorial about its proximity to it. It clutches a corroded hymn board to its chest with both hands and does not put it down.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the bog zombie",
+            "combat": "bog-zombie"
+          },
+          {
+            "next": 3,
+            "label": "Speak the hymn from the corroded board",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Pull the hymn board from its grip while it is distracted",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Brace against it and force it back into the reeds",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "Inside the chapel, the bell mechanism is still intact below the water \u2014 mounted on a stone frame, still swinging with each tide movement. The procession circles the altar in the exact pattern of a regular mass. To end this you need to either stop the bell or complete the rite it has been starting every morning for years.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Reach the bell mechanism and physically stop the swing",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Complete the mass sequence the procession is following",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Find and remove the object anchoring the procession to the chapel",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Sever the bell rope without disturbing the procession",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The bell falls silent. The procession stops mid-step and dissolves into the water without urgency, each figure simply ceasing to be present. The chapel is quiet for the first time in years, and the ferryman on the far bank stands up very straight and removes his hat.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Search the now-still chapel for what the procession sought",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Return to the ferryman and tell him what happened",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Seal the chapel entrance so the cycle cannot restart",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The bell falls silent. In the chapel wreckage you recover a dark token once worn by assassins working the marsh roads \u2014 left there long ago, apparently, and the chapel kept tolling until someone came to take it.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 118,
+      "gold": 68,
+      "item": "raven-mark"
+    }
+  },
+  {
+    "slug": "herons-warning",
+    "title": "The Heron's Warning",
+    "location": "shadowfen",
+    "minLevel": 6,
+    "description": "White herons keep abandoning the same watch post before nightfall as if fleeing something unseen.",
+    "stages": [
+      {
+        "text": "The watch post leans over black water and nobody has climbed it in a week. The herons that used it as a roost have been abandoning it each afternoon at the same time \u2014 a behavior that the marsh scouts have learned to take seriously. 'When the herons leave,' says the lead scout, 'something that frightens herons is coming. And herons are not small birds.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Climb the watch post to observe what the herons see",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study the post structure for signs of what has been disturbing it",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Wait at the water's edge for the pattern to repeat",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the scouts when the abandonments started and what changed",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The watch post's platform shows marks of something very large gripping its lower supports from below \u2014 not climbing, but testing the structure's weight tolerance from the water. Whatever it is comes from the water side and reaches up. The scouting maps stored in the post's waterproof case are still there, which means the disturbance isn't about the post itself.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Recover the scouting maps before the case is compromised",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Study the grip marks for species and size",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Watch the water below the post for movement",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Set up a counterweight watch trigger on the lower supports",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "A marsh ghoul crawls up the ladder from below \u2014 not the original attacker but something drawn by the same disturbance in the deeper water that has been driving everything else to the surface. It has a scouting map from a previous expedition wedged in its belt, which means it has been down there longer than this started.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the marsh ghoul",
+            "combat": "marsh-ghoul"
+          },
+          {
+            "next": 3,
+            "label": "Kick it back into the water before it clears the railing",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Leap to the roof and rain down from above",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Retrieve the old map while it is still climbing",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The ghoul is dealt with, but from the top of the watch post you can see what has been disturbing the water \u2014 something large is circling the post from below, visible only as displacement and shadow. It has been circling longer than the ghouls have been rising. This is the cause, not the effect.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Study the displacement pattern to identify what is below",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Throw something heavy to draw it to the surface",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Hold still until it surfaces to investigate the post directly",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Use the watch post's signal torch to force it into visibility",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The creature surfaces briefly \u2014 a creature that shouldn't be in this part of the fen but has been driven here by something further in the marsh. It is not the problem; it is evidence of the problem. The maps recovered from the ghoul show where it came from, which is information worth considerably more than anyone expected.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Deliver the recovered maps to the scout post immediately",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Read the old maps for where this creature originated",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 5,
+            "label": "Return to the scouts with a full account",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The maps are recovered and the surviving scouts gift you a weathered warden's cloak \u2014 the one their last warden was wearing when she went into the fen and came back with just the cloak and nothing to say about it.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 134,
+      "gold": 76,
+      "item": "warden-cloak"
+    }
+  },
+  {
+    "slug": "the-sunken-liturgy",
+    "title": "The Sunken Liturgy",
+    "location": "shadowfen",
+    "minLevel": 6,
+    "description": "A ferryman heard chanting under the water and refuses to row near the old causeway anymore.",
+    "stages": [
+      {
+        "text": "At the causeway, each stone bears a drowned handprint and one unfinished prayer \u2014 the same words repeated stone after stone, always stopping at the same syllable, as though something interrupted the speaker at the same point every time. The ferryman will not approach within fifty yards. 'The water answers it,' he says. 'Every morning, something in the water sings back.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Read the prayers on the causeway stones for the repeated text",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Listen beneath the water at the causeway edge",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Map the handprint distribution for a pattern",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the ferryman what the answering sound resembles",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The prayer is a baptismal rite \u2014 the same one, repeated by dozens of people over what must have been years, all stopping at the moment of completion. The handprints are placement marks, not decoration. Someone was conducting mass baptisms on this causeway and something prevented every single one from finishing.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Research the causeway's history to understand the interruption",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Study what is in the water where the rite would have completed",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Walk the causeway length without reading the stones",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Speak the rite's completion aloud to see what responds",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "A will-o'-wisp gathers into the shape of a drowned priest in the causeway mist \u2014 not aggressive but present, cycling through the interrupted moment of the rite on a loop. It has been here for years, repeating the same prayer, waiting for something to answer it properly. The water below moves in response to its cycle.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the will-o'-wisp to break the cycle",
+            "combat": "will-o-wisp"
+          },
+          {
+            "next": 3,
+            "label": "Complete the prayer correctly on the final stone",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Provide the missing response the rite needs to complete",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Speak the priest's name to acknowledge and release it",
+            "check": {
+              "stat": "cha",
+              "dc": 15
+            }
+          }
+        ]
+      },
+      {
+        "text": "The cycle breaks. The will-o'-wisp's form stabilises, holds for one breath, and then disperses into ordinary mist. The water below the causeway goes still \u2014 genuinely still, not the surface-tension stillness of deep movement, but settled.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Read the water for what was keeping it disturbed",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Speak a final sealing prayer over the stones",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Check beneath the causeway stones for anything left behind",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Return to the ferryman with the news",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The water is still. Left in a hollow stone near the final mark is a lacquered kit hidden there long ago by someone who came to retrieve something from the causeway and apparently found more than they expected. They left in a hurry and never came back.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Retrieve the kit from the hollow stone",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Ensure the causeway is marked as navigable again",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Report to the ferryman that the causeway is safe",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The water stills. Left in a hollow stone is a lacquered killer's kit hidden there long ago \u2014 sealed, dry, complete, and apparently waiting for whoever finished what the causeway couldn't.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 132,
+      "gold": 74,
+      "item": "assassin-kit"
+    }
+  },
+  {
+    "slug": "scales-in-the-mud",
+    "title": "Scales in the Mud",
+    "location": "shadowfen",
+    "minLevel": 6,
+    "description": "Something enormous is shedding scales along the hunter paths and snapping boats in half at dusk.",
+    "stages": [
+      {
+        "text": "Broken reedboats line the bank in a way that looks less like accident and more like verdict. Deep parallel grooves in the mud end at the water line with nothing on the other side, and the hunters who reported this have not gone back since. 'The grooves go deep,' says the marsh warden. 'Whatever made them wasn't moving fast. It was deliberate.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study the groove depth and spacing for creature type",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Follow the bank looking for shed scales or other signs",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the hunters to describe what they heard before they saw",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Wade the shallows to find where the creature rests",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The scales are real \u2014 palm-sized, iridescent in the bad light, and scattered along a quarter-mile of bank in a pattern that describes something very large moving through the shallows repeatedly. The creature has a regular route and has been using it for weeks. This is territory, not accident.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Map the scale distribution to identify the territory boundaries",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Find the creature's resting point within its territory",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Set up at the narrowest part of its route",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Check whether the creature has a den on the firmer ground",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "You find a clutch of eggs in the reed bed \u2014 which changes the nature of the situation entirely. The creature is not being territorial arbitrarily; it is protecting a nest, and the hunters' paths run directly through its patrol zone. The swamp hydra surfaces forty yards away and orients toward you.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Hold your position and let it assess you are not a threat",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Back away from the eggs immediately and signal non-aggression",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Study the hydra's approach to gauge its intent",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Stand your ground to establish yourself as a boundary",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The swamp hydra rises in a storm of water and rot, smashing reeds with each thrashing head. It has decided the boundary conversation is over and is now expressing the position of a very large territorial animal with offspring. The hunters cannot use this route while it is active.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the swamp hydra",
+            "combat": "swamp-hydra"
+          },
+          {
+            "next": 4,
+            "label": "Lure it onto firmer ground where it is less effective",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Destroy the nest to force a territorial retreat",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 4,
+            "label": "Use the reed bed to obscure yourself and evade until it settles",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "When the marsh calms, the hunters emerge from the bank where they've been watching. They debate what to do about the nest for approximately thirty seconds before the marsh warden says to leave it alone and find another route, which is the correct answer. They gift you the trophies recovered from the conflict.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Accept the trophies the hunters offer for the risk",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Help the hunters map an alternate route around the territory",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 5,
+            "label": "Advise the warden on how to manage the territory boundary",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "When the marsh calms, hunters craft a remarkable stormfeather quiver from recovered trophies and gift it to you \u2014 the kind of thing that takes a full day to make and requires materials you wouldn't want to collect yourself.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 142,
+      "gold": 82,
+      "item": "stormfeather-quiver"
+    }
+  }
+]

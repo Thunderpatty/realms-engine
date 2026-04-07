@@ -1,0 +1,135 @@
+{
+  "goblin-warlord": [
+    {
+      "recipeSlug": "craft-warlord-crest-blade",
+      "chance": 12,
+      "scrollItem": "recipe-scroll-warlord-crest-blade"
+    }
+  ],
+  "crypt-warden": [
+    {
+      "recipeSlug": "craft-saintguard-bulwark",
+      "chance": 12,
+      "scrollItem": "recipe-scroll-saintguard-bulwark"
+    }
+  ],
+  "witch-of-fen": [
+    {
+      "recipeSlug": "craft-fenweave-raiment",
+      "chance": 12,
+      "scrollItem": "recipe-scroll-fenweave-raiment"
+    }
+  ],
+  "ignavoth": [
+    {
+      "recipeSlug": "craft-dragon-heart",
+      "chance": 10,
+      "scrollItem": "recipe-scroll-dragon-heart"
+    }
+  ],
+  "tomb-guardian": [
+    {
+      "recipeSlug": "craft-frostguard-aegis",
+      "chance": 12,
+      "scrollItem": "recipe-scroll-frostguard-aegis"
+    }
+  ],
+  "spire-warden": [
+    {
+      "recipeSlug": "craft-frozen-crown",
+      "chance": 12,
+      "scrollItem": "recipe-scroll-frozen-crown"
+    }
+  ],
+  "crystal-queen": [
+    {
+      "recipeSlug": "craft-drakebone-plate",
+      "chance": 12,
+      "scrollItem": "recipe-scroll-drakebone-plate"
+    }
+  ],
+  "wind-tyrant": [
+    {
+      "recipeSlug": "craft-blizzard-treads",
+      "chance": 12,
+      "scrollItem": "recipe-scroll-blizzard-treads"
+    }
+  ],
+  "frost-king-aldric": [
+    {
+      "recipeSlug": "craft-aldrics-frostbrand",
+      "chance": 10,
+      "scrollItem": "recipe-scroll-aldrics-frostbrand"
+    }
+  ],
+  "magma-lord-pyraxis": [
+    {
+      "recipeSlug": "craft-caldera-plate",
+      "chance": 10,
+      "scrollItem": "recipe-scroll-caldera-plate"
+    }
+  ],
+  "high-priest-ignarius": [
+    {
+      "recipeSlug": "craft-caldera-plate",
+      "chance": 10,
+      "scrollItem": "recipe-scroll-caldera-plate"
+    }
+  ],
+  "demonlord-varkath": [
+    {
+      "recipeSlug": "craft-caldera-plate",
+      "chance": 12,
+      "scrollItem": "recipe-scroll-caldera-plate"
+    }
+  ],
+  "the-sulfur-queen": [
+    {
+      "recipeSlug": "craft-caldera-plate",
+      "chance": 12,
+      "scrollItem": "recipe-scroll-caldera-plate"
+    }
+  ],
+  "ignavus-the-undying-flame": [
+    {
+      "recipeSlug": "craft-ignavus-flamebrand",
+      "chance": 10,
+      "scrollItem": "recipe-scroll-ignavus-flamebrand"
+    }
+  ],
+  "the-echo-king": [
+    {
+      "recipeSlug": "craft-sovereign-plate",
+      "chance": 8,
+      "scrollItem": "recipe-scroll-sovereign-plate"
+    }
+  ],
+  "the-fracture-warden": [
+    {
+      "recipeSlug": "craft-sovereign-plate",
+      "chance": 10,
+      "scrollItem": "recipe-scroll-sovereign-plate"
+    }
+  ],
+  "the-warden-of-minds": [
+    {
+      "recipeSlug": "craft-sovereign-plate",
+      "chance": 10,
+      "scrollItem": "recipe-scroll-sovereign-plate"
+    }
+  ],
+  "abyssal-sovereign": [
+    {
+      "recipeSlug": "craft-sovereign-plate",
+      "chance": 12,
+      "scrollItem": "recipe-scroll-sovereign-plate"
+    }
+  ],
+  "the-void-sovereign": [
+    {
+      "recipeSlug": "craft-sovereign-plate",
+      "chance": 12,
+      "scrollItem": "recipe-scroll-sovereign-plate"
+    }
+  ]
+}

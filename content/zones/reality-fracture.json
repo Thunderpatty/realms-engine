@@ -1,0 +1,574 @@
+{
+  "location": {
+    "slug": "reality-fracture",
+    "name": "Reality Fracture",
+    "type": "dungeon",
+    "realm": "voidspire",
+    "description": "A crack in the fabric of existence itself. Inside, the laws of physics are suggestions. Gravity shifts, fire freezes, and the boundary between life and death is blurred.",
+    "connections": [
+      "shattered-expanse"
+    ],
+    "mapX": 40,
+    "mapY": 20
+  },
+  "locationThreat": 41,
+  "dungeonConfig": {
+    "boss": "the-fracture-warden",
+    "name": "Reality Fracture",
+    "minRooms": 5,
+    "maxRooms": 7,
+    "mechanic": {
+      "slug": "unstable-reality",
+      "name": "Unstable Reality",
+      "description": "Reality warps around you. Random stat reduced by 2 per room.",
+      "effect": {}
+    }
+  },
+  "enemies": [
+    {
+      "slug": "fracture-spawn",
+      "name": "Fracture Spawn",
+      "hp": 2213,
+      "attack": 83,
+      "defense": 52,
+      "xp": 3420,
+      "gold": 1330,
+      "level": 38,
+      "abilities": [
+        "fire-breath",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A creature born from the fracture itself \u2014 half-formed, constantly shifting, composed of fragments of different realities stitched together."
+    },
+    {
+      "slug": "dimensional-ripper",
+      "name": "Dimensional Ripper",
+      "hp": 2289,
+      "attack": 99,
+      "defense": 47,
+      "xp": 3048,
+      "gold": 1446,
+      "level": 39,
+      "abilities": [
+        "rending-claws",
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "A predator that moves between dimensions, appearing from impossible angles. Its claws cut through reality itself."
+    },
+    {
+      "slug": "void-colossus",
+      "name": "Void Colossus",
+      "hp": 2266,
+      "attack": 102,
+      "defense": 52,
+      "xp": 3626,
+      "gold": 1404,
+      "level": 40,
+      "abilities": [
+        "stunning-slam",
+        "harden",
+        "war-cry"
+      ],
+      "drops": [],
+      "description": "A titan of compressed void energy, fifty feet tall. It moves slowly but each step reshapes the terrain. Its fists fall like extinction events."
+    },
+    {
+      "slug": "the-fracture-warden",
+      "name": "The Fracture Warden",
+      "hp": 3843,
+      "attack": 133,
+      "defense": 62,
+      "xp": 12037,
+      "gold": 4639,
+      "level": 43,
+      "boss": true,
+      "abilities": [
+        "fire-breath",
+        "stunning-slam",
+        "dark-curse",
+        "regen-aura",
+        "harden",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "The entity responsible for maintaining the fracture \u2014 or perhaps created by it. It exists as a tear in reality shaped like a humanoid, with eyes made of collapsed stars and a voice that rewrites what it describes."
+    }
+  ],
+  "events": [
+    {
+      "slug": "reality-fracture-evt-1",
+      "name": "Reality Tear",
+      "icon": "\ud83c\udf00",
+      "type": "phenomenon",
+      "rarity": "common",
+      "text": "A tear in reality bleeds energy in the reality fracture. Dangerous but potentially useful.",
+      "choices": [
+        {
+          "label": "Investigate (INT DC 26)",
+          "check": {
+            "stat": "int",
+            "dc": 26
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "reality-fragment",
+                  "qty": 2
+                }
+              ],
+              "xp": 50
+            }
+          },
+          "failure": {
+            "text": "The reality fracture punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 38
+            }
+          }
+        },
+        {
+          "label": "Take action (STR DC 25)",
+          "check": {
+            "stat": "str",
+            "dc": 25
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 80,
+              "items": [
+                {
+                  "slug": "reality-fragment",
+                  "qty": 1
+                }
+              ],
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 33
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The reality fracture is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "reality-fracture-evt-2",
+      "name": "Ancient Cache",
+      "icon": "\ud83d\udce6",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "A supply cache from a previous expedition, half-swallowed by the reality fracture.",
+      "choices": [
+        {
+          "label": "Investigate (WIS DC 26)",
+          "check": {
+            "stat": "wis",
+            "dc": 26
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "reality-fragment",
+                  "qty": 2
+                }
+              ],
+              "xp": 53
+            }
+          },
+          "failure": {
+            "text": "The reality fracture punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 40
+            }
+          }
+        },
+        {
+          "label": "Take action (DEX DC 25)",
+          "check": {
+            "stat": "dex",
+            "dc": 25
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 95,
+              "items": [
+                {
+                  "slug": "reality-fragment",
+                  "qty": 1
+                }
+              ],
+              "xp": 47
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 35
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The reality fracture is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "reality-fracture-evt-3",
+      "name": "Void Surge",
+      "icon": "\u26a1",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "A surge of void energy ripples through the reality fracture, warping everything it touches.",
+      "choices": [
+        {
+          "label": "Investigate (DEX DC 27)",
+          "check": {
+            "stat": "dex",
+            "dc": 27
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "reality-fragment",
+                  "qty": 2
+                }
+              ],
+              "xp": 56
+            }
+          },
+          "failure": {
+            "text": "The reality fracture punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 42
+            }
+          }
+        },
+        {
+          "label": "Take action (CON DC 26)",
+          "check": {
+            "stat": "con",
+            "dc": 26
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 110,
+              "items": [
+                {
+                  "slug": "reality-fragment",
+                  "qty": 1
+                }
+              ],
+              "xp": 49
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 37
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The reality fracture is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "reality-fracture-evt-4",
+      "name": "Spectral Guide",
+      "icon": "\ud83d\udc7b",
+      "type": "npc",
+      "rarity": "uncommon",
+      "text": "A spectral figure beckons from the reality fracture. It may be a guide \u2014 or a trap.",
+      "choices": [
+        {
+          "label": "Investigate (STR DC 27)",
+          "check": {
+            "stat": "str",
+            "dc": 27
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "reality-fragment",
+                  "qty": 2
+                }
+              ],
+              "xp": 59
+            }
+          },
+          "failure": {
+            "text": "The reality fracture punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 44
+            }
+          }
+        },
+        {
+          "label": "Take action (INT DC 26)",
+          "check": {
+            "stat": "int",
+            "dc": 26
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 125,
+              "items": [
+                {
+                  "slug": "reality-fragment",
+                  "qty": 1
+                }
+              ],
+              "xp": 51
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 39
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The reality fracture is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "reality-fracture-evt-5",
+      "name": "Crystallized Memory",
+      "icon": "\ud83d\udc8e",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A crystal containing someone's memories sits in the reality fracture. Touching it might reveal secrets.",
+      "choices": [
+        {
+          "label": "Investigate (CON DC 28)",
+          "check": {
+            "stat": "con",
+            "dc": 28
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 62
+            }
+          },
+          "failure": {
+            "text": "The reality fracture punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 46
+            }
+          }
+        },
+        {
+          "label": "Take action (WIS DC 27)",
+          "check": {
+            "stat": "wis",
+            "dc": 27
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 140,
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 53
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 41
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The reality fracture is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "reality-fracture-evt-6",
+      "name": "The Threshold",
+      "icon": "\ud83d\udeaa",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "A doorway to somewhere else shimmers in the reality fracture. What lies beyond is anyone's guess.",
+      "choices": [
+        {
+          "label": "Investigate (INT DC 28)",
+          "check": {
+            "stat": "int",
+            "dc": 28
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 65
+            }
+          },
+          "failure": {
+            "text": "The reality fracture punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 48
+            }
+          }
+        },
+        {
+          "label": "Take action (STR DC 27)",
+          "check": {
+            "stat": "str",
+            "dc": 27
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 155,
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 55
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 43
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The reality fracture is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "reality-fracture-group-1",
+      "name": "Dimensional Ripper Guard Detail",
+      "composition": [
+        {
+          "enemySlug": "dimensional-ripper",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "reality-fracture-group-2",
+      "name": "Void Colossus & Fracture Spawn",
+      "composition": [
+        {
+          "enemySlug": "void-colossus",
+          "count": 1
+        },
+        {
+          "enemySlug": "fracture-spawn",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

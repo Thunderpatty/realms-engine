@@ -1,0 +1,314 @@
+{
+  "dragon-soul-orb": {
+    "cost": 0,
+    "name": "Dragon Soul Orb",
+    "sell": 302,
+    "type": "trinket",
+    "stats": {
+      "int": 9,
+      "wis": 5,
+      "con": 2
+    },
+    "rarity": "legendary",
+    "description": "A crystal sphere humming with the memories of draconic flame.",
+    "passive": {
+      "manaRegen": 3,
+      "onHitStatus": {
+        "slug": "burn",
+        "chance": 20,
+        "turns": 2
+      }
+    }
+  },
+  "shadow-gem": {
+    "cost": 202,
+    "name": "Shadow Gem",
+    "sell": 50,
+    "type": "trinket",
+    "stats": {
+      "dex": 2,
+      "int": 3
+    },
+    "rarity": "rare",
+    "description": "Swirls with inner darkness."
+  },
+  "hunter-charm": {
+    "cost": 21,
+    "name": "Hunter's Charm",
+    "sell": 5,
+    "type": "trinket",
+    "stats": {
+      "dex": 1,
+      "wis": 1
+    },
+    "rarity": "common",
+    "description": "A carved tooth charm worn by scouts who trust their instincts."
+  },
+  "falcon-talon-charm": {
+    "cost": 66,
+    "name": "Falcon Talon Charm",
+    "sell": 16,
+    "type": "trinket",
+    "stats": {
+      "dex": 2,
+      "wis": 1
+    },
+    "rarity": "uncommon",
+    "description": "A silver-wrapped talon said to sharpen a ranger's eye at dawn."
+  },
+  "war-banner-charm": {
+    "cost": 202,
+    "name": "War Banner Charm",
+    "sell": 50,
+    "type": "trinket",
+    "stats": {
+      "cha": 1,
+      "con": 1,
+      "str": 2
+    },
+    "rarity": "rare",
+    "description": "A braided cord cut from an old battle standard. It stirs courage in the blood."
+  },
+  "lucky-bone": {
+    "cost": 21,
+    "name": "Lucky Bone",
+    "sell": 5,
+    "type": "trinket",
+    "stats": {
+      "cha": 1,
+      "dex": 1
+    },
+    "rarity": "common",
+    "description": "A tiny carved charm every cutpurse swears kept them alive one more night."
+  },
+  "sun-charm": {
+    "cost": 21,
+    "name": "Sun Charm",
+    "sell": 5,
+    "type": "trinket",
+    "stats": {
+      "con": 1,
+      "wis": 1
+    },
+    "rarity": "common",
+    "description": "A brass sunburst worn close to the heart during long vigils."
+  },
+  "prayer-beads": {
+    "cost": 66,
+    "name": "Prayer Beads",
+    "sell": 16,
+    "type": "trinket",
+    "stats": {
+      "cha": 1,
+      "wis": 2
+    },
+    "rarity": "uncommon",
+    "description": "Each bead marks a vow, a loss, or a miracle survived."
+  },
+  "shadow-cord": {
+    "name": "Shadow Cord",
+    "type": "trinket",
+    "rarity": "uncommon",
+    "stats": {
+      "dex": 2
+    },
+    "cost": 66,
+    "sell": 16,
+    "description": "A knotted cord worn against skin that dampens footfall and quickens movement."
+  },
+  "iron-tooth": {
+    "type": "trinket",
+    "rarity": "common",
+    "name": "Iron Tooth",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "str": 2
+    },
+    "description": "A molar replaced with iron. Warriors wear them as trophies."
+  },
+  "focus-shard": {
+    "type": "trinket",
+    "rarity": "common",
+    "name": "Focus Shard",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "int": 2
+    },
+    "description": "A sliver of crystal that steadies the mind when gripped."
+  },
+  "battle-scar-token": {
+    "type": "trinket",
+    "rarity": "uncommon",
+    "name": "Battle Scar Token",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "str": 3,
+      "con": 1
+    },
+    "description": "A coin-sized brand mark worn proudly by veterans."
+  },
+  "enchanted-compass": {
+    "type": "trinket",
+    "rarity": "uncommon",
+    "name": "Enchanted Compass",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "dex": 2,
+      "wis": 2
+    },
+    "description": "Always points toward danger—or away from it, depending on the holder."
+  },
+  "runic-dice": {
+    "type": "trinket",
+    "rarity": "rare",
+    "name": "Runic Dice",
+    "cost": 203,
+    "sell": 50,
+    "stats": {
+      "cha": 4,
+      "dex": 2
+    },
+    "description": "Loaded with fate magic. Every roll feels deliberate."
+  },
+  "blessed-relic": {
+    "type": "trinket",
+    "rarity": "rare",
+    "name": "Blessed Relic",
+    "cost": 203,
+    "sell": 50,
+    "stats": {
+      "wis": 4,
+      "con": 2
+    },
+    "description": "A fingerbone of a minor saint, wrapped in gold thread."
+  },
+  "survival-kit": {
+    "type": "trinket",
+    "rarity": "rare",
+    "name": "Survival Kit",
+    "cost": 203,
+    "sell": 50,
+    "stats": {
+      "dex": 3,
+      "wis": 2,
+      "con": 1
+    },
+    "description": "A compact pouch of herbs, wire, and flint. Never leave camp without it."
+  },
+  "warlord-tooth": {
+    "type": "trinket",
+    "rarity": "epic",
+    "name": "Warlord's Tooth",
+    "cost": 504,
+    "sell": 126,
+    "stats": {
+      "str": 6,
+      "con": 2,
+      "cha": 1
+    },
+    "description": "Ripped from a beast-king. Radiates primal dominance."
+  },
+  "void-marble": {
+    "type": "trinket",
+    "rarity": "epic",
+    "name": "Void Marble",
+    "cost": 504,
+    "sell": 126,
+    "stats": {
+      "int": 6,
+      "wis": 3
+    },
+    "description": "A marble-sized hole in reality. Stare too long and it stares back."
+  },
+  "gambler-coin": {
+    "type": "trinket",
+    "rarity": "epic",
+    "name": "Gambler's Coin",
+    "cost": 504,
+    "sell": 126,
+    "stats": {
+      "dex": 5,
+      "cha": 4
+    },
+    "description": "Heads you win. Tails they lose. It has never landed on its edge."
+  },
+  "sacred-bone": {
+    "type": "trinket",
+    "rarity": "epic",
+    "name": "Sacred Bone",
+    "cost": 504,
+    "sell": 126,
+    "stats": {
+      "wis": 6,
+      "con": 3
+    },
+    "description": "A rib from a temple guardian who died protecting the innocent."
+  },
+  "windcatcher-charm": {
+    "type": "trinket",
+    "rarity": "epic",
+    "name": "Windcatcher Charm",
+    "cost": 504,
+    "sell": 126,
+    "stats": {
+      "dex": 5,
+      "wis": 3,
+      "con": 1
+    },
+    "description": "A feathered charm that catches favorable winds and ill omens alike."
+  },
+  "blood-idol": {
+    "type": "trinket",
+    "rarity": "legendary",
+    "name": "Blood Idol",
+    "cost": 0,
+    "sell": 301,
+    "stats": {
+      "str": 9,
+      "con": 5
+    },
+    "description": "A figurine carved from solidified blood. It pulses with warmth."
+  },
+  "fate-die": {
+    "type": "trinket",
+    "rarity": "legendary",
+    "name": "Fate Die",
+    "cost": 0,
+    "sell": 301,
+    "stats": {
+      "dex": 9,
+      "cha": 5
+    },
+    "description": "A six-sided die where every face shows the same number: yours."
+  },
+  "miracle-splinter": {
+    "type": "trinket",
+    "rarity": "legendary",
+    "name": "Miracle Splinter",
+    "cost": 0,
+    "sell": 301,
+    "stats": {
+      "wis": 8,
+      "con": 5,
+      "cha": 2
+    },
+    "description": "A splinter from the True Cross. Wounds close in its presence."
+  },
+  "stormcaller-feather": {
+    "type": "trinket",
+    "rarity": "legendary",
+    "name": "Stormcaller Feather",
+    "cost": 0,
+    "sell": 301,
+    "stats": {
+      "dex": 7,
+      "wis": 5,
+      "con": 3
+    },
+    "description": "A thunderbird feather that crackles with static between your fingers."
+  }
+}

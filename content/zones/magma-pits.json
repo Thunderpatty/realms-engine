@@ -1,0 +1,566 @@
+{
+  "location": {
+    "slug": "magma-pits",
+    "name": "Magma Pits",
+    "type": "dungeon",
+    "realm": "emberveil",
+    "description": "A network of lava tubes and magma chambers beneath the Scorched Flats. The heat is unbearable and the tunnels glow red. Something ancient lurks at the lowest level.",
+    "connections": [
+      "scorched-flats"
+    ],
+    "mapX": 10,
+    "mapY": 20
+  },
+  "locationThreat": 23,
+  "dungeonConfig": {
+    "boss": "magma-lord-pyraxis",
+    "name": "Magma Pits",
+    "minRooms": 4,
+    "maxRooms": 6,
+    "mechanic": {
+      "slug": "volcanic-heat",
+      "name": "Volcanic Heat",
+      "description": "The ambient heat saps your strength. Take 3% max HP damage per room and all healing reduced by 15%.",
+      "effect": {
+        "roomDamagePct": 3
+      }
+    }
+  },
+  "enemies": [
+    {
+      "slug": "magma-serpent",
+      "name": "Magma Serpent",
+      "hp": 1438,
+      "attack": 54,
+      "defense": 31,
+      "xp": 1683,
+      "gold": 751,
+      "level": 22,
+      "abilities": [
+        "fire-breath",
+        "poison-bite"
+      ],
+      "drops": [],
+      "description": "A snake of living magma that swims through lava pools and strikes from below."
+    },
+    {
+      "slug": "slag-beetle",
+      "name": "Slag Beetle",
+      "hp": 1320,
+      "attack": 50,
+      "defense": 30,
+      "xp": 1755,
+      "gold": 814,
+      "level": 23,
+      "abilities": [
+        "harden",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A beetle the size of a wagon, its carapace forged from cooled slag. Nearly impervious to physical damage."
+    },
+    {
+      "slug": "flame-wraith",
+      "name": "Flame Wraith",
+      "hp": 1507,
+      "attack": 55,
+      "defense": 32,
+      "xp": 1686,
+      "gold": 769,
+      "level": 23,
+      "abilities": [
+        "fire-breath",
+        "dark-curse"
+      ],
+      "drops": [],
+      "description": "The burning ghost of a miner who died in the pits. Its screams echo through the tunnels."
+    },
+    {
+      "slug": "magma-lord-pyraxis",
+      "name": "Magma Lord Pyraxis",
+      "hp": 2477,
+      "attack": 74,
+      "defense": 39,
+      "xp": 5097,
+      "gold": 2027,
+      "level": 25,
+      "boss": true,
+      "abilities": [
+        "fire-breath",
+        "stunning-slam",
+        "regen-aura",
+        "war-cry"
+      ],
+      "drops": [],
+      "description": "An elemental lord of fire, imprisoned in the deepest pit. Its body is a mountain of molten rock, and its rage has been building for centuries."
+    }
+  ],
+  "events": [
+    {
+      "slug": "pits-lava-bridge",
+      "name": "Lava Bridge",
+      "icon": "\ud83c\udf09",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "A narrow bridge of cooled lava spans a river of molten rock. It's cracking.",
+      "choices": [
+        {
+          "label": "Sprint across (DEX DC 22)",
+          "check": {
+            "stat": "dex",
+            "dc": 22
+          },
+          "success": {
+            "text": "You make it. Barely. Magma splashes where you stood.",
+            "rewards": {
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "The bridge breaks. You fall and scramble out, burned.",
+            "rewards": {
+              "xp": 12,
+              "damage": 32
+            }
+          }
+        },
+        {
+          "label": "Test and find the strongest path (INT DC 21)",
+          "check": {
+            "stat": "int",
+            "dc": 21
+          },
+          "success": {
+            "text": "You identify the load-bearing sections and cross safely.",
+            "rewards": {
+              "xp": 35,
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 1
+                }
+              ]
+            }
+          },
+          "failure": {
+            "text": "Your analysis is wrong. Crack. Splash. Pain.",
+            "rewards": {
+              "xp": 12,
+              "damage": 28
+            }
+          }
+        },
+        {
+          "label": "Find another way",
+          "auto": true,
+          "success": {
+            "text": "There must be a detour. There is. It's longer.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pits-magma-vein",
+      "name": "Magma Ore Vein",
+      "icon": "\u26cf",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A rich vein of magma-infused ore glows in the tunnel wall.",
+      "choices": [
+        {
+          "label": "Mine it (STR DC 21)",
+          "check": {
+            "stat": "str",
+            "dc": 21
+          },
+          "success": {
+            "text": "You extract high-quality magma ore.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 2
+                },
+                {
+                  "slug": "basalt-plate",
+                  "qty": 2
+                }
+              ],
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The vein collapses. Debris and heat.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Extract the purest samples (DEX DC 22)",
+          "check": {
+            "stat": "dex",
+            "dc": 22
+          },
+          "success": {
+            "text": "Precision yields the best specimens.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 2
+                },
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 1
+                }
+              ],
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "You crack the best sample. Still get some lesser pieces.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 1
+                }
+              ],
+              "xp": 12
+            }
+          }
+        },
+        {
+          "label": "Leave it",
+          "auto": true,
+          "success": {
+            "text": "Mining in a dungeon seems risky.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pits-trapped-hall",
+      "name": "Flame Trap Hall",
+      "icon": "\u26a0",
+      "type": "hazard",
+      "rarity": "uncommon",
+      "text": "Jets of flame erupt from the walls in a pattern. Something valuable glints on the far side.",
+      "choices": [
+        {
+          "label": "Time the flames and dash (DEX DC 23)",
+          "check": {
+            "stat": "dex",
+            "dc": 23
+          },
+          "success": {
+            "text": "You dodge every jet perfectly. On the far side: treasure.",
+            "rewards": {
+              "gold": 80,
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 1
+                }
+              ],
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "Mistimed. A jet catches you full in the chest.",
+            "rewards": {
+              "xp": 12,
+              "damage": 35
+            }
+          }
+        },
+        {
+          "label": "Disable the mechanism (INT DC 22)",
+          "check": {
+            "stat": "int",
+            "dc": 22
+          },
+          "success": {
+            "text": "You find the pressure plates and disable them.",
+            "rewards": {
+              "xp": 42,
+              "gold": 60
+            }
+          },
+          "failure": {
+            "text": "The mechanism is more complex than you thought. It activates.",
+            "rewards": {
+              "xp": 12,
+              "damage": 28
+            }
+          }
+        },
+        {
+          "label": "Go around",
+          "auto": true,
+          "success": {
+            "text": "Not everything is worth getting burned for.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pits-serpent-skin",
+      "name": "Shed Serpent Skin",
+      "icon": "\ud83d\udc0d",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A massive magma serpent shed its skin here. The scales are still hot and valuable.",
+      "choices": [
+        {
+          "label": "Harvest the scales (DEX DC 20)",
+          "check": {
+            "stat": "dex",
+            "dc": 20
+          },
+          "success": {
+            "text": "You peel off usable sections of the heat-resistant skin.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 2
+                },
+                {
+                  "slug": "ember-dust",
+                  "qty": 2
+                }
+              ],
+              "xp": 32
+            }
+          },
+          "failure": {
+            "text": "The scales are sharper than they look. Cuts everywhere.",
+            "rewards": {
+              "xp": 10,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Search for what the serpent was guarding (WIS DC 21)",
+          "check": {
+            "stat": "wis",
+            "dc": 21
+          },
+          "success": {
+            "text": "Behind the shed skin: a nest with crystallized heat.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 2
+                }
+              ],
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "The serpent hasn't gone far. You retreat quickly.",
+            "rewards": {
+              "xp": 12
+            }
+          }
+        },
+        {
+          "label": "Don't touch",
+          "auto": true,
+          "success": {
+            "text": "Anything a magma serpent leaves behind is too hot.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pits-hot-spring",
+      "name": "Underground Hot Spring",
+      "icon": "\u2668",
+      "type": "shrine",
+      "rarity": "uncommon",
+      "text": "A pool of heated mineral water bubbles in a chamber. It looks almost... inviting?",
+      "choices": [
+        {
+          "label": "Bathe in the spring (CON DC 21)",
+          "check": {
+            "stat": "con",
+            "dc": 21
+          },
+          "success": {
+            "text": "The minerals heal your wounds and restore your energy.",
+            "rewards": {
+              "heal": 50,
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "The water is far hotter than expected. Scalding.",
+            "rewards": {
+              "xp": 12,
+              "damage": 30
+            }
+          }
+        },
+        {
+          "label": "Collect the mineral deposits (INT DC 20)",
+          "check": {
+            "stat": "int",
+            "dc": 20
+          },
+          "success": {
+            "text": "You scrape valuable mineral crystals from the edges.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "sulfur-crystal",
+                  "qty": 3
+                }
+              ],
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The steam blinds you temporarily. You knock something over.",
+            "rewards": {
+              "xp": 10,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Keep moving",
+          "auto": true,
+          "success": {
+            "text": "This is a dungeon, not a spa.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pits-ancient-forge",
+      "name": "Ancient Forge",
+      "icon": "\ud83d\udd28",
+      "type": "discovery",
+      "rarity": "rare",
+      "text": "An ancient forge still burns with elemental fire. Tools of incredible quality line the walls.",
+      "choices": [
+        {
+          "label": "Use the forge to temper your gear (INT DC 23)",
+          "check": {
+            "stat": "int",
+            "dc": 23
+          },
+          "success": {
+            "text": "The elemental fire improves your equipment. You feel stronger.",
+            "rewards": {
+              "xp": 55,
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 1
+                },
+                {
+                  "slug": "basalt-plate",
+                  "qty": 2
+                }
+              ]
+            }
+          },
+          "failure": {
+            "text": "The forge rejects your work. Sparks burn you.",
+            "rewards": {
+              "xp": 15,
+              "damage": 30
+            }
+          }
+        },
+        {
+          "label": "Salvage the ancient tools (DEX DC 21)",
+          "check": {
+            "stat": "dex",
+            "dc": 21
+          },
+          "success": {
+            "text": "You pocket several tools of incredible craftsmanship.",
+            "rewards": {
+              "gold": 100,
+              "xp": 42
+            }
+          },
+          "failure": {
+            "text": "The tools are booby-trapped. Of course they are.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Admire and leave",
+          "auto": true,
+          "success": {
+            "text": "This forge belongs to another age.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "magma-pits-group-1",
+      "name": "Flame Wraith Guard Detail",
+      "composition": [
+        {
+          "enemySlug": "flame-wraith",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "magma-pits-group-2",
+      "name": "Slag Beetle & Magma Serpent",
+      "composition": [
+        {
+          "enemySlug": "slag-beetle",
+          "count": 1
+        },
+        {
+          "enemySlug": "magma-serpent",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

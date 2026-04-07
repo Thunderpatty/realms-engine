@@ -1,0 +1,232 @@
+[
+  {
+    "slug": "cold-welcome",
+    "title": "A Cold Welcome",
+    "location": "frosthollow",
+    "minLevel": 10,
+    "description": "The captain of the Frosthollow guard needs help investigating disappearances along the northern trade route.",
+    "stages": [
+      {
+        "text": "Captain Voss meets you at the gate, breath fogging in the bitter air. 'You're from the south? Good \u2014 we need outside eyes. Three supply caravans have vanished on the Frozen Wastes route in the past two weeks. No bodies, no wreckage, no tracks. The cold swallows them whole.' She hands you a map marked with the last known positions. 'Find out what's taking them. Report back alive.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study the map for patterns in the disappearances",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask local hunters about unusual activity",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Demand hazard pay before heading out",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "You follow the trade route into the Frozen Wastes. At the third disappearance site, you find what the guards missed \u2014 subtle drag marks beneath fresh snow, leading toward a crevasse. The marks are too wide for wolves and too deliberate for avalanche. Something large and intelligent is ambushing the caravans from below the ice.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Descend into the crevasse to investigate",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Set bait and wait for the predator",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Collapse the crevasse entrance to trap it",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "You discover an ice wraith nest beneath the trade route \u2014 a colony of spectral predators that have learned to hunt from below. The stolen supplies are scattered across a frozen underground lake. The lead wraith, larger and more solid than the others, guards the hoard with cold intelligence.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the lead wraith",
+            "combat": "ice-wraith"
+          },
+          {
+            "next": 3,
+            "label": "Banish the wraiths with a purification ritual",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Lure the wraiths away with spectral bait",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The wraith colony is scattered. You recover what supplies you can \u2014 including gold from the caravans and rare frost crystals the wraiths had collected. Captain Voss meets you at the gate. 'Three caravans worth of goods recovered? The merchants will want to thank you personally. And I'll make sure the route is guarded from now on.'",
+        "complete": true,
+        "rewards": {
+          "gold": 120,
+          "xp": 180,
+          "items": [
+            {
+              "slug": "spectral-ice",
+              "qty": 3
+            },
+            {
+              "slug": "frost-crystal",
+              "qty": 4
+            }
+          ]
+        }
+      }
+    ],
+    "rewards": {
+      "xp": 180,
+      "gold": 120
+    }
+  },
+  {
+    "slug": "frosthollow-defense",
+    "title": "The Frozen Siege",
+    "location": "frosthollow",
+    "minLevel": 12,
+    "description": "Frost giants have been spotted moving south. Frosthollow needs to prepare its defenses.",
+    "stages": [
+      {
+        "text": "The alarm bells ring at dawn. Scout Hilde bursts through the gate, frost-burned and bleeding. 'Giants \u2014 a warband \u2014 moving south through the Howling Pass. Twenty at least, with ice drakes. They'll reach Frosthollow in three days.' The town council convenes immediately. Captain Voss turns to you. 'We can't evacuate. The portal south is too small for the whole town. We fight or we die.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Help fortify the walls with ice barriers",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Plan the defense strategy with Voss",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Rally the townspeople's morale",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "Preparations are underway, but you need resources. The town smith begs for permafrost ore to forge weapons. The healer needs frostbloom petals for wound salves. And someone needs to scout the giants' exact approach route before they arrive.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Scout the giants' approach through the pass",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Lead a mining expedition for ore",
+            "check": {
+              "stat": "con",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Organize the civilian militia",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The vanguard arrives \u2014 a frost giant scout, larger than any you've seen, wielding a tree trunk like a club. It crashes against the outer wall, testing the defenses. The main force will follow if this scout reports back. You have to stop it here.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Face the giant head-on",
+            "combat": "frost-giant-scout"
+          },
+          {
+            "next": 3,
+            "label": "Lure it into a prepared trap",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Rally defenders for a coordinated strike",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The scout falls. Without a report, the giant warband shifts course, seeking easier targets to the east. Frosthollow is saved \u2014 for now. Captain Voss clasps your arm. 'You've earned your place here, southerner. Frosthollow remembers its friends.' The townspeople cheer, and the smith presents you with a reward forged from the last of the permafrost ore.",
+        "complete": true,
+        "rewards": {
+          "gold": 160,
+          "xp": 250,
+          "items": [
+            {
+              "slug": "permafrost-ore",
+              "qty": 5
+            },
+            {
+              "slug": "giant-bone",
+              "qty": 2
+            }
+          ]
+        }
+      }
+    ],
+    "rewards": {
+      "xp": 250,
+      "gold": 160
+    }
+  }
+]

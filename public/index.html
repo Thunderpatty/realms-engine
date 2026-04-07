@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realms of Ash &amp; Iron — Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600;700&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <style>
+      body {
+        background:
+          radial-gradient(circle at 18% 20%, rgba(167, 123, 255, 0.16), transparent 26%),
+          radial-gradient(circle at 80% 10%, rgba(214, 176, 95, 0.14), transparent 20%),
+          linear-gradient(160deg, #09070f 0%, #140d1f 42%, #08060d 100%);
+      }
+      .auth-shell::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(circle at center, rgba(255,255,255,.02), transparent 60%);
+      }
+      .hero-panel {
+        background: linear-gradient(180deg, rgba(34, 20, 49, 0.84), rgba(13, 9, 20, 0.8));
+        border-color: rgba(214, 176, 95, 0.18);
+      }
+      .auth-panel {
+        background: linear-gradient(180deg, rgba(28, 20, 43, 0.88), rgba(12, 8, 18, 0.84));
+        border-color: rgba(214, 176, 95, 0.18);
+      }
+      .hero-panel h1,
+      .auth-panel h2 {
+        font-family: 'Cinzel', serif;
+      }
+      .fantasy-callout {
+        margin-top: 18px;
+        padding: 16px 18px;
+        border-radius: 18px;
+        border: 1px solid rgba(214, 176, 95, 0.2);
+        background: rgba(214, 176, 95, 0.08);
+        color: var(--text);
+      }
+      .fantasy-callout strong {
+        color: #f3d998;
+      }
+      .auth-divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 20px 0;
+        color: var(--muted);
+        font-size: 0.82rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .auth-divider::before,
+      .auth-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: rgba(214, 176, 95, 0.18);
+      }
+      .manual-note {
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+      .manual-note strong {
+        color: #f3d998;
+      }
+    </style>
+  </head>
+  <body class="auth-shell">
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-a"></div>
+    <div class="bg-orb bg-orb-b"></div>
+    <div class="scanlines"></div>
+
+    <main class="auth-layout fade-up">
+      <section class="hero-panel glass-panel">
+        <div class="eyebrow">TEXT FANTASY / PERSISTENT CHARACTER / SHARED REALM</div>
+        <h1>Enter the Realms of Ash &amp; Iron.</h1>
+        <p class="hero-copy">
+          Build a hero, travel across villages and cursed roads, hunt monsters, clear dungeons, earn rare loot, and survive a fantasy world with persistent character state.
+        </p>
+
+        <div class="hero-stats">
+          <article>
+            <span class="hero-stat-label">Loop</span>
+            <strong>Travel → Quest → Fight → Loot → Level</strong>
+          </article>
+          <article>
+            <span class="hero-stat-label">Persistence</span>
+            <strong>Session-backed progression and stored inventory</strong>
+          </article>
+          <article>
+            <span class="hero-stat-label">Style</span>
+            <strong>Text-forward fantasy adventure with a rich UI</strong>
+          </article>
+        </div>
+
+        <div class="fantasy-callout">
+          <strong>Current realm features:</strong> race/class character creation, quest chains, world travel, shops, inns, combat abilities, bosses, and expanding monster ecology.
+        </div>
+      </section>
+
+      <section class="auth-panel glass-panel">
+        <div class="auth-header">
+          <div>
+            <div class="eyebrow">REALM ACCESS</div>
+            <h2>Log in or forge a new adventurer.</h2>
+          </div>
+        </div>
+
+        <div id="authMessage" class="message hidden"></div>
+
+        <form id="loginForm" class="auth-form" autocomplete="on">
+          <label>
+            <span>Handle</span>
+            <input type="text" name="handle" placeholder="wanderer" required />
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" name="password" placeholder="••••••••" required />
+          </label>
+          <button type="submit" class="action-btn primary large">Enter the Realm</button>
+        </form>
+
+        <div class="auth-divider">or</div>
+
+        <form id="registerForm" class="auth-form" autocomplete="on">
+          <label>
+            <span>New Handle</span>
+            <input type="text" name="handle" placeholder="new-hero" minlength="3" maxlength="24" pattern="[A-Za-z0-9_-]+" required />
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" name="password" placeholder="at least 8 characters" minlength="8" required />
+          </label>
+          <label>
+            <span>Confirm Password</span>
+            <input type="password" name="confirmPassword" placeholder="repeat password" minlength="8" required />
+          </label>
+          <button type="submit" class="action-btn large">Create Adventurer</button>
+        </form>
+
+        <div class="auth-divider">or</div>
+
+        <form id="resetPasswordForm" class="auth-form" autocomplete="on">
+          <label>
+            <span>Existing Handle</span>
+            <input type="text" name="handle" placeholder="forgotten-hero" minlength="3" maxlength="24" pattern="[A-Za-z0-9_-]+" required />
+          </label>
+          <label>
+            <span>New Password</span>
+            <input type="password" name="password" placeholder="at least 8 characters" minlength="8" required />
+          </label>
+          <label>
+            <span>Confirm New Password</span>
+            <input type="password" name="confirmPassword" placeholder="repeat password" minlength="8" required />
+          </label>
+          <button type="submit" class="action-btn large">Reset Password</button>
+        </form>
+
+        <div class="manual-note">
+          Handles are stored lowercase. After registering or resetting a password, you'll be signed in immediately and can begin your journey.
+        </div>
+      </section>
+    </main>
+
+    <script src="/assets/auth.js" defer></script>
+  </body>
+</html>

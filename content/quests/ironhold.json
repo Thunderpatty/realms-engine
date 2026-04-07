@@ -1,0 +1,1151 @@
+[
+  {
+    "slug": "mine-infestation",
+    "title": "Fire Below",
+    "location": "ironhold",
+    "minLevel": 5,
+    "description": "Fire elementals have risen in Ironhold's deep shafts and the miners cannot work.",
+    "stages": [
+      {
+        "text": "Foreman Thordak tugs his braided beard and does not look at all like someone who has slept recently. 'The deep shafts are overrun. Fire elementals \u2014 not just heat and light but things with intent, breaking support timbers, blocking the ore face.' He slaps a map of the lower levels down. 'I need them gone. I need the deep shafts workable by the end of the week or we miss our contract and I miss my livelihood.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study the map for the elemental concentration points",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask Thordak what triggered the infestation",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Volunteer to go down and assess in person",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask what equipment the miners used when they retreated",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "Heat hits you like a physical wall when you descend past the second junction. The tunnel glows orange-red from somewhere below, and you can see why the miners stopped here \u2014 the air shimmers, the timber props are scorched, and something moves in the heat haze that is not a trick of the light.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Press deeper through the heat along the main shaft",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Take the cooler side passage to approach the elementals from below",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move carefully and read the heat distribution",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Check for the source of the ignition before engaging",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "A magma elemental rises from the molten rock pooled at the tunnel junction \u2014 not large, but hot enough to crack stone with its passage. It has not noticed you yet but is oriented toward the timber supports at the ore face. If it reaches those, the shaft collapses.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the magma elemental",
+            "combat": "magma-elemental"
+          },
+          {
+            "next": 3,
+            "label": "Draw it away from the timber supports with movement",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Douse its heat source at the tunnel junction",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Strike it from behind before it reaches the timbers",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The side passage leads behind the elemental nest. You find the source: a cracked containment rune carved into the deepest ore face, the seal broken by someone who either didn't know what it was or didn't care. The rune is still partially active \u2014 fixing it or destroying it will end the infestation, but it requires precision.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Destroy the rune completely with brute force",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Repair the containment seal from memory and guesswork",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Dispel the rune using its own resonance pattern",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Carefully chip away the active sections without triggering a collapse",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The rune goes cold. The heat in the tunnels drops almost immediately \u2014 not all the way, not yet, but the shimmering stops and the elementals lose coherence. Thordak is at the third junction when you come up, which means he followed you down partway and won't admit it.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Show Thordak the broken rune and explain what happened",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Help Thordak clear the cooled debris for the miners",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Advise Thordak on preventing re-activation",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The fires die down. The mines cool. Thordak presses a war axe into your hands \u2014 from the mine armoury, he says, kept for situations exactly like this one, which it was not, but you're not going to argue.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 194,
+      "gold": 106,
+      "item": "war-axe"
+    }
+  },
+  {
+    "slug": "ember-saboteur",
+    "title": "Sabotage in the Deep",
+    "location": "ironhold",
+    "minLevel": 5,
+    "description": "Someone is cracking support beams in Ironhold's lower mines, and the foreman thinks it's deliberate.",
+    "stages": [
+      {
+        "text": "A stern quartermaster lowers his voice to the register of someone who has been wrong before and does not want to be wrong again. 'This isn't bad luck. Someone is cracking beams in the lower shafts \u2014 three in a week, always near the ore caches, always at shift change when the count is off.' He slides a map across the table. 'I need to know who and why before anyone else gets buried.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the damaged support beams for tool marks",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Question the miners who were on shift during each incident",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Review the ore count discrepancies for a pattern",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Go down into the lower shafts to see the damage in person",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The tool marks on the damaged beams are deliberate \u2014 not the work of someone in a hurry but of someone who knew exactly where to strike to weaken the structure without triggering an immediate collapse. Professional sabotage, not vandalism. And the ore count shortfalls correspond to the same shifts every time.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Trace the ore shortfalls to a specific shift crew",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Identify which shafts are being avoided by experienced miners",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Follow the least-used tunnel route to find where things converge",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Set a watch on the compromised beams overnight",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "A slag hound prowls the tunnels near the sabotaged section \u2014 not wild but placed, chained just long enough to guard the approach to wherever the stolen ore is being staged. It starts barking the moment it scents you, which is not a good omen for your cover.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the slag hound",
+            "combat": "slag-hound"
+          },
+          {
+            "next": 3,
+            "label": "Silence the hound before it finishes the alert",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Find another route around the hound's chain radius",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Wait for the barking to be dismissed as normal",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "Past the hound, you find the staging area: a collapsed gallery being used as a storage cache, three weeks of stolen ore in sacks, and a deserter lancer arriving with a wagon to make the first real collection. He is not surprised to see someone here. He was told it was possible.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the deserter lancer",
+            "combat": "deserter-lancer"
+          },
+          {
+            "next": 4,
+            "label": "Collapse the tunnel entrance before he can load and go",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Disarm and subdue him before he can use the wagon as cover",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Negotiate his informants in exchange for not reporting him",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The saboteur is in custody. The quartermaster arrives down the shaft within twenty minutes, which suggests he was waiting close by. He goes through the recovered ore with the professional calm of someone who was right all along and takes no satisfaction from it at all.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Give the full account of what you found and how",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Help secure the cache for recovery",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Provide the quartermaster with the full evidence chain",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The sabotage ring is broken. Ironhold's foremen drag the stolen ore back to the surface with a grim efficiency that suggests this is not the first time the mines have been robbed and won't be the last. The quartermaster gives you an iron shield from the armoury \u2014 solid, plain, and exactly what it claims to be.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 185,
+      "gold": 100,
+      "item": "iron-shield"
+    }
+  },
+  {
+    "slug": "forgewardens-request",
+    "title": "The Forgewarning",
+    "location": "ironhold",
+    "minLevel": 5,
+    "description": "A shrine in Ironhold's outer forge keeps ringing though no hammer touches it.",
+    "stages": [
+      {
+        "text": "A forgewarden listens to the bell with the expression of someone who has been sleeping badly for a week and would like the situation resolved before another one begins. 'Each ring means something crawled out of the lower tunnels \u2014 at least that's what the old hands say. Three rings yesterday. Five this morning. Something is coming up.' The shrine bell hangs in the smelting antechamber, connected to nothing visible.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the bell mechanism for a physical trigger",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the old hands what the bell has predicted before",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Inspect the lower tunnel access points near the shrine",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Stand watch at the shrine until something rings it",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The bell rings again while you're watching \u2014 not from any mechanism but from the air itself, a sympathetic resonance triggered by movement in the tunnels below. You can feel the vibration through the soles of your boots, rhythmic and ascending. Whatever is coming up is close.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Identify which tunnel the vibration is rising from",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Calculate the rate of ascent from the bell frequency",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Get below the bell line before it arrives at this level",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Alert the forge crew and clear the antechamber",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "In the upper access tunnel, you find scorched prayer plates half-molten and shattered where something moved through them. Fire beetles have been feeding on the heat residue and are now clustered at the shrine antechamber entrance, drawn by the warmth of the active forge. There are more than you can count at a glance.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Drive the beetle cluster away from the entrance",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Seal the entrance they're using before more arrive",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Use the forge heat to redirect them back downward",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Move the powder casks clear before engaging",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "Below the forge, one fire beetle much larger than the others skitters over the half-molten prayer plates and orients toward the powder casks at the tunnel junction. It has been feeding here long enough to grow and is now large enough to be genuinely dangerous.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the fire beetle",
+            "combat": "fire-beetle"
+          },
+          {
+            "next": 4,
+            "label": "Kick the powder casks clear before it reaches them",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Douse the heat trail it's following with water",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Use the forge flue to exhaust the heat it needs",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The beetle is dealt with and the bell stops. The forgewardens seal the lower access behind you with iron plates while you stand catching your breath in the smelting antechamber. The shrine bell hangs still and silent, which everyone agrees is the correct state for it.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Help seal and reinforce the lower access tunnels",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Advise the forgewardens on early warning signs to watch for",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Accept the forgewardens' thanks and debrief",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The forgewardens praise your speed and gift you a sanctified mace kept for tunnel ward duty \u2014 a tool of the forge, they say, for someone who treated the job like one.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 112,
+      "gold": 64,
+      "item": "sanctified-mace"
+    }
+  },
+  {
+    "slug": "tunnels-of-slag",
+    "title": "Tunnels of Slag",
+    "location": "ironhold",
+    "minLevel": 5,
+    "description": "Miners report hearing arrows rattling somewhere deep below where no archers should be.",
+    "stages": [
+      {
+        "text": "A soot-faced miner whispers like someone who suspects the walls can hear. 'Something is stealing our fletching and leaving tracks in the slag. Not human tracks. Something bigger, heavier, with knees that don't bend the way they should.' He marks three galleries on the map. 'Started a week ago. Now it's every shift.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the tracks in the slag for species and size",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Follow the pattern of missing fletching between galleries",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Go down to the affected galleries directly",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask which miners have seen the most and interview them",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The tracks are hobgoblin \u2014 heavy, deliberate, with the spacing of something that knows where it is going and doesn't bother hiding. The fletching theft pattern shows a clear progression: whoever this is started at the furthest gallery and has been working systematically inward. They're building something.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Predict where they're assembling the stolen materials",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Follow the track line toward the deepest gallery",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Identify what they're building from the theft pattern",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move through the collapsed section to get ahead of them",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "In a collapsed gallery you find the stash: scavenged bows, mine rope, ore sacks, and a crude fortification of timber props arranged into something that looks like a defensive position. This wasn't random opportunism \u2014 someone planned to hold this section. And the planning is not quite finished.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Dismantle the fortification before the occupant returns",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Study the fortification's intended function",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Wait at the fortification's blind side for the hobgoblin",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Work out what it would take to hold this gallery yourself",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The hobgoblin bruiser returns and does not seem surprised by your presence \u2014 it had a secondary entry, apparently, and has been aware of you since the second gallery. It drops two ore sacks and picks up a weapon with the settled expression of someone who was going to have to do this eventually.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the hobgoblin bruiser",
+            "combat": "hobgoblin-bruiser"
+          },
+          {
+            "next": 4,
+            "label": "Drop the loose beam above it before it can engage",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Use the fortification's own layout against it",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Overwhelm it with direct force before it can set",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The hobgoblin is down. The miners reclaim their tools and the stolen materials with a speed that suggests they've been waiting nearby, which they have. The foreman offers the gallery back to regular use and a promise to properly seal the external access the hobgoblin was using.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Help dismantle the crude fortification for salvage",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Map the external access route so it can be sealed",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Advise the foreman on watch procedures going forward",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The miners reclaim their tools and repay you with a yew longbow from the fortress stores \u2014 well-kept, powerful, recovered from a previous security incident and never claimed by anyone with a better right to it.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 116,
+      "gold": 68,
+      "item": "yew-longbow"
+    }
+  },
+  {
+    "slug": "ledger-of-ash",
+    "title": "Ledger of Ash",
+    "location": "ironhold",
+    "minLevel": 5,
+    "description": "A bookkeeper's records keep vanishing whenever ore goes missing from the lower docks.",
+    "stages": [
+      {
+        "text": "The quartermaster taps a burnt ledger on the table between you. 'Someone wants these numbers forgotten. Three months of ore weight records, gone. I know the tonnage that left this dock and I know the tonnage that arrived at the smelter, and the difference has a name I cannot prove.' He slides you a pass for the lower docks. 'Find the hand behind it.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the burnt ledger for recoverable data",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study the dock access logs for unauthorized entries",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Stake out the dock during the night shift",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the dock workers what they've noticed changing",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The access log shows one person's credentials being used at off-hours three weeks running \u2014 the same shift, the same tunnel, the same fifteen-minute window. Someone is careful but not quite careful enough. The credentials belong to a clerk who, according to everyone you ask, has been spending significantly above her station.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Identify where the off-hours access leads in the tunnels",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Follow the access pattern to find the handoff point",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Get into position at the handoff tunnel before the next window",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Confront the clerk directly to read her reaction",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "You reach the handoff point \u2014 a side gallery off the lower dock, dark and rarely used. A rogue mercenary is already there waiting, and he has the current version of the ledger under his arm. He's early. You're earlier.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Cut him off before he can secure the ledger",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Confront him with the quartermaster's authority",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Block both exits before engaging",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Rush him before he can assess the situation",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "A rogue mercenary slips from the shadow of a storage crane with a satchel full of receipts and stolen seals. He moves like someone who was expecting a different kind of welcome and is now performing a fast recalculation.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the rogue mercenary",
+            "combat": "mercenary"
+          },
+          {
+            "next": 4,
+            "label": "Switch the satchel before he notices the approach",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Trap him between the crane and the gallery wall",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Break his nerve with immediate aggressive action",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The records are recovered, the mercenary is in custody, and the clerk's name is in the receipts in the satchel. The quartermaster receives everything with the particular silence of someone who was right about the amount and wrong about the person.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Deliver the full evidence chain to the quartermaster",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Help organise the recovered records for the inquiry",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Accept the quartermaster's formal thanks",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The records are saved. The quartermaster awards you a signet once used by a famous smuggler-turned-scout \u2014 recovered years ago from a different operation and kept for someone who understood how the game worked.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 114,
+      "gold": 66,
+      "item": "cutpurse-signet"
+    }
+  },
+  {
+    "slug": "the-stone-psalm",
+    "title": "The Stone Psalm",
+    "location": "ironhold",
+    "minLevel": 6,
+    "description": "Old dwarven prayers echo from a blocked shaft where the dead were never properly sealed.",
+    "stages": [
+      {
+        "text": "A greybeard priest lays his hand on the mine wall with the careful posture of someone listening through stone. 'Hear that? The stone remembers a funeral left unfinished \u2014 a whole crew sealed in when the shaft collapsed, still with their tools, still mid-prayer.' He removes his hand. 'It's been a hundred years. The stone is getting louder.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Listen to the wall yourself and try to understand the sound",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the priest what the prayers are saying",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Examine the blocked shaft entrance for safe access",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask which miners have heard it and when it started getting louder",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The shaft is accessible through a secondary tunnel that collapsed partially rather than fully. The stone around the entrance shows hairline cracks where something on the other side has been pressing outward \u2014 not forcefully, but persistently, for a very long time.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Clear the secondary tunnel entrance carefully",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Read the crack patterns for structural safety",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Slip through the gap that already exists",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Listen at the cracks before committing to entry",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "Within the sealed shaft, the air is perfectly still and smells of old stone and something that hasn't been air for a hundred years. The mining crew's equipment is exactly where they left it. The prayer marks are carved into every surface. And at the far end of the shaft, a shadow wraith circles a reliquary lantern, feeding on the unfinished grief trapped in this chamber.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Approach the wraith to assess whether it is aware of you",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Read the prayer marks to understand what the crew was saying",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Study the reliquary lantern for its significance",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Announce yourself clearly so the wraith knows your intent",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The shadow wraith turns its full attention to you \u2014 it has been here a hundred years waiting for someone to either finish the prayer or take the lantern, and it is no longer patient enough to wait for the distinction.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the shadow wraith",
+            "combat": "shadow-wraith"
+          },
+          {
+            "next": 4,
+            "label": "Finish the funeral rite from the carved marks",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Take the reliquary lantern and carry it out into the light",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Speak the names carved into the tools and equipment",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The stone falls quiet. The wraith dissolves and the prayer marks stop resonating. The priest is at the shaft entrance when you emerge, looking at the stone wall with the expression of someone listening to a silence they have waited years to hear.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Give the priest the full account of what you found inside",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Help seal the shaft entrance properly now that it can rest",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Present the reliquary to the priest for formal keeping",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The stone falls quiet. The priest places the recovered reliquary in your keeping for brave service \u2014 a century-old lantern, still lit, still warm, as though it never stopped waiting for someone to carry it.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 128,
+      "gold": 74,
+      "item": "reliquary-amulet"
+    }
+  }
+]

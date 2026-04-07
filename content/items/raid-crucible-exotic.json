@@ -1,0 +1,52 @@
+{
+  "starfall-warhammer": {
+    "name": "Starfall Warhammer",
+    "type": "weapon",
+    "rarity": "exotic",
+    "classReq": "warrior",
+    "stats": { "str": 24, "con": 14, "dex": 6 },
+    "description": "Forged from the Unborn's crystallized heart. Each strike resonates with the frequency of a dying star. The hammer doesn't just break things — it unmakes them at a structural level.",
+    "passive": { "lifestealPct": 14, "critBonus": 8, "onHitStatus": { "slug": "stun", "chance": 10, "turns": 1 } },
+    "cost": 0, "sell": 1500
+  },
+  "crucible-focus": {
+    "name": "Crucible Arcane Focus",
+    "type": "trinket",
+    "rarity": "exotic",
+    "classReq": "mage",
+    "stats": { "int": 26, "wis": 12, "cha": 6 },
+    "description": "A sphere of living starfall crystal that hovers beside its owner, amplifying every spell with alien resonance. It whispers formulas in a language that predates the world.",
+    "passive": { "mpRegenPct": 16, "critBonus": 10 },
+    "cost": 0, "sell": 1500
+  },
+  "starfall-stilettos": {
+    "name": "Starfall Stilettos",
+    "type": "boots",
+    "rarity": "exotic",
+    "classReq": "rogue",
+    "stats": { "dex": 24, "cha": 12, "str": 8 },
+    "description": "Boots of liquid starfall metal that reshape with every step. They make no sound, leave no trace, and allow the wearer to move through space in ways that shouldn't be physically possible.",
+    "passive": { "dodgeBonus": 10, "critBonus": 8 },
+    "cost": 0, "sell": 1500
+  },
+  "mantle-of-the-forge-mother": {
+    "name": "Mantle of the Forge Mother",
+    "type": "body",
+    "rarity": "exotic",
+    "classReq": "cleric",
+    "stats": { "wis": 24, "con": 14, "int": 6 },
+    "description": "The Forge Mother's last creation — armor she made not to wage war, but to heal. Woven from starfall threads that carry restorative energy to every wound. She made it for herself, hoping to undo what she had become. It didn't work for her. Maybe it will work for you.",
+    "passive": { "hpRegenPct": 12, "mpRegenPct": 10 },
+    "cost": 0, "sell": 1500
+  },
+  "the-unborns-fang": {
+    "name": "The Unborn's Fang",
+    "type": "weapon",
+    "rarity": "exotic",
+    "classReq": "ranger",
+    "stats": { "dex": 24, "wis": 12, "str": 8 },
+    "description": "A longbow carved from the Unborn's crystallized spine. Its string is a thread of pure starfall energy. Arrows fired from it don't fly — they teleport, arriving at the target before the sound of the bowstring.",
+    "passive": { "critBonus": 12, "lifestealPct": 6, "onHitStatus": { "slug": "burn", "chance": 18, "turns": 3 } },
+    "cost": 0, "sell": 1500
+  }
+}

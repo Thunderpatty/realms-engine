@@ -1,0 +1,248 @@
+{
+  "seal-fragment-ring": {
+    "slug": "seal-fragment-ring",
+    "name": "Seal Fragment Ring",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "legendary",
+    "stats": {
+      "int": 10,
+      "wis": 8,
+      "con": 5
+    },
+    "description": "A ring containing a fragment of the Sovereign's prison. It anchors reality.",
+    "cost": 0,
+    "sell": 150
+  },
+  "unraveling-gauntlets": {
+    "slug": "unraveling-gauntlets",
+    "name": "Unraveling Gauntlets",
+    "type": "gloves",
+    "slot": "gloves",
+    "rarity": "legendary",
+    "stats": {
+      "str": 12,
+      "con": 7,
+      "dex": 4
+    },
+    "description": "Gauntlets from the first seal. They grip reality itself.",
+    "cost": 0,
+    "sell": 145
+  },
+  "dreamwarden-vestments": {
+    "slug": "dreamwarden-vestments",
+    "name": "Dreamwarden Vestments",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "legendary",
+    "stats": {
+      "wis": 12,
+      "int": 8,
+      "con": 5
+    },
+    "description": "Robes woven from frozen time. They exist in every moment.",
+    "cost": 0,
+    "sell": 155
+  },
+  "frozen-moment-amulet": {
+    "slug": "frozen-moment-amulet",
+    "name": "Frozen Moment Amulet",
+    "type": "amulet",
+    "slot": "amulet",
+    "rarity": "legendary",
+    "stats": {
+      "wis": 10,
+      "con": 7,
+      "int": 5
+    },
+    "description": "An amulet containing a frozen moment in time. Wearing it slows perception.",
+    "cost": 0,
+    "sell": 148
+  },
+  "dream-treads": {
+    "slug": "dream-treads",
+    "name": "Dream Treads",
+    "type": "boots",
+    "slot": "boots",
+    "rarity": "legendary",
+    "stats": {
+      "dex": 10,
+      "con": 6,
+      "wis": 4
+    },
+    "description": "Boots that walk through dreams. They leave no footprints in reality.",
+    "cost": 0,
+    "sell": 140
+  },
+  "void-anchor-plate": {
+    "slug": "void-anchor-plate",
+    "name": "Void Anchor Plate",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "mythic",
+    "stats": {
+      "con": 22,
+      "str": 10,
+      "wis": 6
+    },
+    "description": "Armor forged from the third binding. It anchors the wearer to reality absolutely.",
+    "passive": {
+      "damageReduction": 12,
+      "hpRegenPct": 8
+    },
+    "cost": 0,
+    "sell": 280
+  },
+  "entropy-crown": {
+    "slug": "entropy-crown",
+    "name": "Entropy Crown",
+    "type": "helmet",
+    "slot": "helmet",
+    "rarity": "mythic",
+    "stats": {
+      "int": 18,
+      "wis": 14,
+      "con": 8
+    },
+    "description": "A crown of crystallized entropy. It accelerates everything \u2014 including the wearer's magic.",
+    "passive": {
+      "mpRegenPct": 15,
+      "bonusMagicDmg": 14
+    },
+    "cost": 0,
+    "sell": 270
+  },
+  "sovereign-grasp-gloves": {
+    "slug": "sovereign-grasp-gloves",
+    "name": "Sovereign's Grasp",
+    "type": "gloves",
+    "slot": "gloves",
+    "rarity": "legendary",
+    "stats": {
+      "str": 10,
+      "dex": 8,
+      "con": 5
+    },
+    "description": "Gauntlets shaped from the Sovereign's own hand. They grip with cosmic force.",
+    "cost": 0,
+    "sell": 155
+  },
+  "hand-of-endings-blade": {
+    "slug": "hand-of-endings-blade",
+    "name": "Hand of Endings",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "stats": {
+      "str": 28,
+      "dex": 8,
+      "con": 6
+    },
+    "description": "A blade carved from the Sovereign's severed finger. It cuts through anything \u2014 matter, magic, hope.",
+    "passive": {
+      "lifestealPct": 10,
+      "onHitEffect": "void"
+    },
+    "cost": 0,
+    "sell": 300
+  },
+  "abyssal-ward-shield": {
+    "slug": "abyssal-ward-shield",
+    "name": "Abyssal Ward Shield",
+    "type": "shield",
+    "slot": "shield",
+    "rarity": "legendary",
+    "stats": {
+      "con": 14,
+      "wis": 8,
+      "str": 4
+    },
+    "description": "A shield of pure anti-void. The Abyss bounces off it.",
+    "cost": 0,
+    "sell": 160
+  },
+  "sovereign-crown": {
+    "slug": "sovereign-crown",
+    "name": "Sovereign's Crown",
+    "type": "helmet",
+    "slot": "helmet",
+    "rarity": "mythic",
+    "stats": {
+      "str": 14,
+      "con": 16,
+      "wis": 10
+    },
+    "description": "A crown forged from the Void Sovereign's shattered consciousness. Wearing it is like carrying the weight of a dying universe.",
+    "passive": {
+      "damageReduction": 10,
+      "hpRegenPct": 10,
+      "bonusDmgPct": 5
+    },
+    "cost": 0,
+    "sell": 350
+  },
+  "reality-render-blade": {
+    "slug": "reality-render-blade",
+    "name": "Reality Render",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "stats": {
+      "dex": 24,
+      "wis": 10,
+      "con": 6
+    },
+    "description": "A weapon that cuts through the fabric of reality. Each swing opens micro-tears in space.",
+    "passive": {
+      "critBonus": 15,
+      "bonusDmgPct": 8
+    },
+    "cost": 0,
+    "sell": 320
+  },
+  "void-heart-codex": {
+    "slug": "void-heart-codex",
+    "name": "Void Heart Codex",
+    "type": "trinket",
+    "slot": "trinket",
+    "rarity": "legendary",
+    "stats": {
+      "int": 14,
+      "wis": 10,
+      "con": 4
+    },
+    "description": "A codex written in void-speech. Reading it grants understanding of reality's deepest mechanics.",
+    "cost": 0,
+    "sell": 165
+  },
+  "binding-ward-ring": {
+    "slug": "binding-ward-ring",
+    "name": "Binding Ward Ring",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "legendary",
+    "stats": {
+      "con": 10,
+      "wis": 8,
+      "str": 5
+    },
+    "description": "A ring from the Sovereign's prison. It wards against void corruption.",
+    "cost": 0,
+    "sell": 155
+  },
+  "unraveling-treads": {
+    "slug": "unraveling-treads",
+    "name": "Unraveling Treads",
+    "type": "boots",
+    "slot": "boots",
+    "rarity": "legendary",
+    "stats": {
+      "dex": 12,
+      "con": 7,
+      "wis": 4
+    },
+    "description": "Boots that walk the edge between existence and oblivion.",
+    "cost": 0,
+    "sell": 152
+  }
+}

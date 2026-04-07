@@ -1,0 +1,68 @@
+{
+  "achievements": [
+    { "slug": "first-blood", "name": "First Blood", "description": "Defeat your first enemy.", "category": "combat", "icon": "⚔", "trigger": "enemies-killed", "threshold": 1, "reward": { "gold": 25 } },
+    { "slug": "warrior-10", "name": "Seasoned Fighter", "description": "Defeat 10 enemies.", "category": "combat", "icon": "⚔", "trigger": "enemies-killed", "threshold": 10, "reward": { "gold": 50 } },
+    { "slug": "warrior-50", "name": "Battle Hardened", "description": "Defeat 50 enemies.", "category": "combat", "icon": "⚔", "trigger": "enemies-killed", "threshold": 50, "reward": { "gold": 100, "title": "Battle Hardened" } },
+    { "slug": "warrior-200", "name": "Slayer", "description": "Defeat 200 enemies.", "category": "combat", "icon": "💀", "trigger": "enemies-killed", "threshold": 200, "reward": { "gold": 250, "title": "Slayer" } },
+    { "slug": "warrior-500", "name": "Legend of War", "description": "Defeat 500 enemies.", "category": "combat", "icon": "🏆", "trigger": "enemies-killed", "threshold": 500, "reward": { "gold": 500, "title": "Legend of War" } },
+    { "slug": "boss-slayer-1", "name": "Boss Slayer", "description": "Defeat your first dungeon boss.", "category": "combat", "icon": "🔥", "trigger": "bosses-killed", "threshold": 1, "reward": { "gold": 50, "tokens": 2 } },
+    { "slug": "boss-slayer-5", "name": "Boss Hunter", "description": "Defeat 5 dungeon bosses.", "category": "combat", "icon": "🔥", "trigger": "bosses-killed", "threshold": 5, "reward": { "gold": 150, "title": "Boss Hunter" } },
+    { "slug": "boss-slayer-20", "name": "Dragonslayer", "description": "Defeat 20 dungeon bosses.", "category": "combat", "icon": "🐉", "trigger": "bosses-killed", "threshold": 20, "reward": { "gold": 500, "title": "Dragonslayer" } },
+    { "slug": "elite-hunter-1", "name": "Elite Encounter", "description": "Defeat an elite enemy.", "category": "combat", "icon": "⭐", "trigger": "elites-killed", "threshold": 1, "reward": { "gold": 30 } },
+    { "slug": "elite-hunter-10", "name": "Elite Hunter", "description": "Defeat 10 elite enemies.", "category": "combat", "icon": "⭐", "trigger": "elites-killed", "threshold": 10, "reward": { "gold": 100, "title": "Elite Hunter" } },
+    { "slug": "group-fighter", "name": "Outnumbered", "description": "Win a fight against 3+ enemies.", "category": "combat", "icon": "👥", "trigger": "group-victory", "threshold": 3, "reward": { "gold": 75 } },
+
+    { "slug": "level-5", "name": "Adventurer", "description": "Reach level 5.", "category": "progression", "icon": "⬆", "trigger": "level", "threshold": 5, "reward": { "gold": 100, "tokens": 3 } },
+    { "slug": "level-10", "name": "Veteran", "description": "Reach level 10.", "category": "progression", "icon": "⬆", "trigger": "level", "threshold": 10, "reward": { "gold": 250, "tokens": 5, "title": "Veteran" } },
+    { "slug": "level-15", "name": "Champion", "description": "Reach level 15.", "category": "progression", "icon": "⬆", "trigger": "level", "threshold": 15, "reward": { "gold": 500, "tokens": 8, "title": "Champion" } },
+    { "slug": "level-20", "name": "Legend", "description": "Reach level 20.", "category": "progression", "icon": "👑", "trigger": "level", "threshold": 20, "reward": { "gold": 1000, "tokens": 15, "title": "Legend" } },
+    { "slug": "gold-1000", "name": "Wealthy", "description": "Accumulate 1,000 gold.", "category": "progression", "icon": "💰", "trigger": "gold-total", "threshold": 1000, "reward": { "title": "Wealthy" } },
+    { "slug": "gold-10000", "name": "Tycoon", "description": "Accumulate 10,000 gold.", "category": "progression", "icon": "💰", "trigger": "gold-total", "threshold": 10000, "reward": { "title": "Tycoon" } },
+
+    { "slug": "quest-1", "name": "Questbearer", "description": "Complete your first quest.", "category": "quests", "icon": "📜", "trigger": "quests-completed", "threshold": 1, "reward": { "gold": 25 } },
+    { "slug": "quest-10", "name": "Problem Solver", "description": "Complete 10 quests.", "category": "quests", "icon": "📜", "trigger": "quests-completed", "threshold": 10, "reward": { "gold": 100, "title": "Problem Solver" } },
+    { "slug": "quest-all", "name": "Loremaster", "description": "Complete all available quests.", "category": "quests", "icon": "📚", "trigger": "quests-completed", "threshold": 50, "reward": { "gold": 500, "tokens": 10, "title": "Loremaster" } },
+    { "slug": "class-quest", "name": "Specialized", "description": "Complete your class quest.", "category": "quests", "icon": "⚔", "trigger": "class-quest-completed", "threshold": 1, "reward": { "gold": 50 } },
+
+    { "slug": "craft-1", "name": "Apprentice Crafter", "description": "Craft your first item.", "category": "crafting", "icon": "🔨", "trigger": "items-crafted", "threshold": 1, "reward": { "gold": 25 } },
+    { "slug": "craft-25", "name": "Journeyman Crafter", "description": "Craft 25 items.", "category": "crafting", "icon": "🔨", "trigger": "items-crafted", "threshold": 25, "reward": { "gold": 100, "title": "Journeyman Crafter" } },
+    { "slug": "craft-100", "name": "Master Craftsman", "description": "Craft 100 items.", "category": "crafting", "icon": "🔨", "trigger": "items-crafted", "threshold": 100, "reward": { "gold": 300, "title": "Master Craftsman" } },
+    { "slug": "recipe-10", "name": "Recipe Collector", "description": "Learn 10 recipes.", "category": "crafting", "icon": "📖", "trigger": "recipes-learned", "threshold": 10, "reward": { "gold": 50 } },
+    { "slug": "recipe-50", "name": "Grand Recipist", "description": "Learn 50 recipes.", "category": "crafting", "icon": "📖", "trigger": "recipes-learned", "threshold": 50, "reward": { "gold": 200, "title": "Grand Recipist" } },
+
+    { "slug": "arena-10", "name": "Arena Initiate", "description": "Reach wave 10 in the arena.", "category": "arena", "icon": "🏟", "trigger": "arena-best-wave", "threshold": 10, "reward": { "gold": 50 } },
+    { "slug": "arena-25", "name": "Arena Warrior", "description": "Reach wave 25 in the arena.", "category": "arena", "icon": "🏟", "trigger": "arena-best-wave", "threshold": 25, "reward": { "gold": 150, "title": "Arena Warrior" } },
+    { "slug": "arena-50", "name": "Arena Champion", "description": "Reach wave 50 in the arena.", "category": "arena", "icon": "🏟", "trigger": "arena-best-wave", "threshold": 50, "reward": { "gold": 500, "title": "Arena Champion" } },
+    { "slug": "arena-100", "name": "Arena Legend", "description": "Reach wave 100 in the arena.", "category": "arena", "icon": "🏟", "trigger": "arena-best-wave", "threshold": 100, "reward": { "gold": 1000, "tokens": 20, "title": "Arena Legend" } },
+
+    { "slug": "dungeon-clear-1", "name": "Dungeon Delver", "description": "Clear your first dungeon.", "category": "exploration", "icon": "🏰", "trigger": "dungeons-cleared", "threshold": 1, "reward": { "gold": 50 } },
+    { "slug": "dungeon-clear-10", "name": "Dungeon Master", "description": "Clear 10 dungeons.", "category": "exploration", "icon": "🏰", "trigger": "dungeons-cleared", "threshold": 10, "reward": { "gold": 200, "title": "Dungeon Master" } },
+    { "slug": "explorer-5", "name": "Wanderer", "description": "Visit 5 different locations.", "category": "exploration", "icon": "🗺", "trigger": "locations-visited", "threshold": 5, "reward": { "gold": 50 } },
+    { "slug": "explorer-12", "name": "World Traveler", "description": "Visit all 12 locations.", "category": "exploration", "icon": "🗺", "trigger": "locations-visited", "threshold": 12, "reward": { "gold": 200, "title": "World Traveler" } },
+    { "slug": "event-5", "name": "Curious", "description": "Encounter 5 exploration events.", "category": "exploration", "icon": "✦", "trigger": "events-encountered", "threshold": 5, "reward": { "gold": 30 } },
+    { "slug": "event-25", "name": "Fortune Seeker", "description": "Encounter 25 exploration events.", "category": "exploration", "icon": "✦", "trigger": "events-encountered", "threshold": 25, "reward": { "gold": 100, "title": "Fortune Seeker" } },
+
+    { "slug": "mythic-drop", "name": "Touched by Fate", "description": "Find a mythic item.", "category": "loot", "icon": "🔴", "trigger": "mythics-found", "threshold": 1, "reward": { "title": "Touched by Fate" } },
+    { "slug": "mythic-3", "name": "Mythic Collector", "description": "Find 3 mythic items.", "category": "loot", "icon": "🔴", "trigger": "mythics-found", "threshold": 3, "reward": { "gold": 500, "title": "Mythic Collector" } },
+    { "slug": "guild-champion", "name": "Guild Champion", "description": "Reach Guild Rank: Champion.", "category": "guild", "icon": "⚔", "trigger": "guild-rank", "threshold": 5, "reward": { "gold": 300, "title": "Guild Champion" } },
+    { "slug": "bounty-10", "name": "Bounty Hunter", "description": "Complete 10 bounties.", "category": "guild", "icon": "🎯", "trigger": "bounties-completed", "threshold": 10, "reward": { "gold": 100, "title": "Bounty Hunter" } },
+
+    { "slug": "survivor", "name": "Survivor", "description": "Win a fight with less than 10% HP.", "category": "combat", "icon": "💪", "trigger": "low-hp-victory", "threshold": 1, "reward": { "gold": 50, "title": "Survivor" } },
+    { "slug": "first-death", "name": "Humbled", "description": "Die for the first time.", "category": "combat", "icon": "💀", "trigger": "deaths", "threshold": 1, "reward": { "title": "Humbled" } },
+    { "slug": "deaths-10", "name": "Persistent", "description": "Die 10 times. You never give up.", "category": "combat", "icon": "💀", "trigger": "deaths", "threshold": 10, "reward": { "gold": 50, "title": "Persistent" } },
+    { "slug": "daily-30", "name": "Dedicated", "description": "Log in for 30 days.", "category": "progression", "icon": "📅", "trigger": "login-streak", "threshold": 30, "reward": { "gold": 500, "tokens": 10, "title": "Dedicated" } },
+    { "slug": "daily-90", "name": "Loyalist", "description": "Log in for 90 days.", "category": "progression", "icon": "👑", "trigger": "login-streak", "threshold": 90, "reward": { "gold": 1500, "tokens": 25, "title": "Loyalist" } },
+    { "slug": "forge-socket", "name": "Gemcrafter", "description": "Socket a gem into equipment.", "category": "crafting", "icon": "💎", "trigger": "gems-socketed", "threshold": 1, "reward": { "gold": 25 } },
+    { "slug": "forge-enchant", "name": "Enchanter", "description": "Enchant a piece of equipment.", "category": "crafting", "icon": "✨", "trigger": "items-enchanted", "threshold": 1, "reward": { "gold": 25 } },
+    { "slug": "companion-max", "name": "Best Friends", "description": "Raise your companion to level 5.", "category": "progression", "icon": "🐾", "trigger": "companion-level", "threshold": 5, "reward": { "gold": 200, "title": "Best Friends" } }
+  ],
+  "titles": [
+    "Battle Hardened", "Slayer", "Legend of War", "Boss Hunter", "Dragonslayer",
+    "Elite Hunter", "Veteran", "Champion", "Legend", "Wealthy", "Tycoon",
+    "Problem Solver", "Loremaster", "Journeyman Crafter", "Master Craftsman",
+    "Grand Recipist", "Arena Warrior", "Arena Champion", "Arena Legend",
+    "Dungeon Master", "World Traveler", "Fortune Seeker",
+    "Touched by Fate", "Mythic Collector", "Guild Champion", "Bounty Hunter",
+    "Survivor", "Humbled", "Persistent", "Dedicated", "Loyalist", "Best Friends"
+  ]
+}

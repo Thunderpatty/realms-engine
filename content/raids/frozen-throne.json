@@ -1,0 +1,427 @@
+{
+  "slug": "frozen-throne",
+  "name": "The Frozen Throne",
+  "difficulty": "medium",
+  "floorCount": 4,
+  "levelReq": 14,
+  "icon": "❄",
+  "description": "Deep beneath the Frostreach, an ancient frost giant king sealed himself in eternal ice. His throne room has become a prison of cold and rage. The seal is failing. Something must be done before he wakes.",
+  "loreIntro": "The dwarven records call it 'Aldric's Folly' — the frost giant king who sought to conquer death itself by freezing his body at the moment of triumph. His throne room lies beneath a glacier, sealed by runes that have held for a thousand years. But the runes are cracking. Ice quakes shake Frosthollow. And the dead, frozen in the tunnels below, have begun to move. The Frosthollow Council has opened the ancient passages and is calling for the bravest to descend — four floors of frozen horror leading to the throne itself. Whatever waits below, it must not be allowed to wake fully.",
+  "rewards": {
+    "goldBase": 100,
+    "goldPerFloor": 45,
+    "xpBase": 200,
+    "xpPerFloor": 80,
+    "arcaneTokens": 6,
+    "completionBonus": {
+      "gold": 400,
+      "xp": 500
+    }
+  },
+  "enemies": [
+    {
+      "slug": "frozen-sentinel",
+      "name": "Frozen Sentinel",
+      "hp": 320,
+      "attack": 28,
+      "defense": 16,
+      "xp": 55,
+      "gold": 30,
+      "level": 14,
+      "abilities": ["stunning-slam", "harden"],
+      "drops": [],
+      "description": "A frost giant warrior frozen in guard position for centuries. The ice has fused with its armor. When the seal weakens, it moves — slowly, relentlessly, with the weight of a glacier behind every swing."
+    },
+    {
+      "slug": "ice-wraith-elder",
+      "name": "Ice Wraith Elder",
+      "hp": 240,
+      "attack": 32,
+      "defense": 10,
+      "xp": 50,
+      "gold": 28,
+      "level": 14,
+      "abilities": ["dark-curse", "weakening-hex"],
+      "drops": [],
+      "description": "The spectral remnant of a frost priest who died maintaining the seal. Its prayers have turned to screams, and its cold burns worse than any flame."
+    },
+    {
+      "slug": "glacial-construct",
+      "name": "Glacial Construct",
+      "hp": 400,
+      "attack": 25,
+      "defense": 20,
+      "xp": 60,
+      "gold": 32,
+      "level": 15,
+      "abilities": ["harden", "war-cry"],
+      "drops": [],
+      "description": "A golem of living ice, built to guard the lower passages. Its body reforms from ambient cold. Destroying it is temporary — unless you can reach its core."
+    },
+    {
+      "slug": "throne-shade",
+      "name": "Throne Shade",
+      "hp": 280,
+      "attack": 30,
+      "defense": 12,
+      "xp": 55,
+      "gold": 28,
+      "level": 15,
+      "abilities": ["poison-bite", "rending-claws"],
+      "drops": [],
+      "description": "A shadow that peels itself from the frozen walls. It wears the face of whoever is closest — a psychological weapon as much as a physical one."
+    },
+    {
+      "slug": "frost-drake-guardian",
+      "name": "Frost Drake Guardian",
+      "hp": 500,
+      "attack": 34,
+      "defense": 18,
+      "xp": 75,
+      "gold": 40,
+      "level": 16,
+      "abilities": ["fire-breath", "rending-claws", "war-cry"],
+      "drops": [],
+      "description": "An ice drake bound to the throne's defense by ancient pact. Its breath doesn't burn — it freezes flesh solid in an instant. Its scales are living permafrost."
+    },
+    {
+      "slug": "runebound-giant",
+      "name": "Runebound Giant",
+      "hp": 600,
+      "attack": 32,
+      "defense": 22,
+      "xp": 80,
+      "gold": 45,
+      "level": 17,
+      "abilities": ["stunning-slam", "war-cry", "harden"],
+      "drops": [],
+      "description": "A frost giant still partially encased in seal-runes. The magic that should hold it still instead powers its movements. Each rune that breaks makes it stronger."
+    },
+    {
+      "slug": "the-frost-speaker",
+      "name": "The Frost Speaker",
+      "hp": 350,
+      "attack": 36,
+      "defense": 14,
+      "xp": 70,
+      "gold": 38,
+      "level": 16,
+      "abilities": ["dark-curse", "weakening-hex", "regen-aura"],
+      "drops": [],
+      "description": "The high priest of Aldric's court, preserved in ice and rage. It chants in the old tongue, and the cold itself obeys. Its frost magic can heal its allies and curse its enemies."
+    }
+  ],
+  "floors": [
+    {
+      "lore": "The ancient passage opens into a gallery of ice — a corridor of frozen giants, standing in eternal vigil. Their weapons are raised, their expressions locked in grim determination. As you pass between them, you hear cracking. The seal is failing. Some of the giants are beginning to move.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["frozen-sentinel", "frozen-sentinel"]
+        },
+        {
+          "type": "choice",
+          "title": "The Cracking Seal-Stone",
+          "text": "A massive rune-carved stone blocks the passage ahead. It's part of the original seal — cracks spider-web across its surface, leaking cold mist. You could try to reinforce it, exploit the cracks, or simply break through.",
+          "choices": [
+            {
+              "label": "Reinforce the runes with your own energy",
+              "check": { "stat": "int", "dc": 14 },
+              "success": {
+                "text": "You channel energy into the crumbling runes. They flare blue-white, and for a moment the seal holds firm. The ambient cold lessens and you feel fortified by the ancient ward magic flowing through you.",
+                "effect": { "buffStat": "defense", "buffAmount": 5, "buffTurns": 99, "manaPct": 20 }
+              },
+              "failure": {
+                "text": "The runes reject your energy. Frost backlash surges through your hands, burning them numb. The seal cracks further, and the cold intensifies.",
+                "effect": { "damagePct": 12, "debuff": { "slug": "weaken", "turns": 4, "name": "Frostburned Hands" } }
+              }
+            },
+            {
+              "label": "Exploit the cracks to weaken the enemies beyond",
+              "check": { "stat": "wis", "dc": 13 },
+              "success": {
+                "text": "You redirect the seal's leaking energy outward, creating a pulse of binding cold that sweeps down the corridor. The frozen guardians ahead stagger and slow.",
+                "effect": { "buffStat": "attack", "buffAmount": 4, "buffTurns": 99, "healPct": 15 }
+              },
+              "failure": {
+                "text": "The redirected energy scatters wildly. Some of it hits you, and some wakes more guardians. You hear heavy footsteps converging from multiple directions.",
+                "effect": { "damagePct": 10 }
+              }
+            },
+            {
+              "label": "Smash through with brute force",
+              "check": { "stat": "str", "dc": 12 },
+              "success": {
+                "text": "The seal-stone shatters. Released ward energy flows into your muscles, empowering you for the battles ahead. The destruction is satisfying, even if the scholars would weep.",
+                "effect": { "buffStat": "attack", "buffAmount": 5, "buffTurns": 99, "healPct": 10 }
+              },
+              "failure": {
+                "text": "The stone is harder than it looks. The impact jars you badly, and a shard of rune-ice embeds in your arm.",
+                "effect": { "damagePct": 15, "debuff": { "slug": "curse", "turns": 3, "name": "Rune Shard" } }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["ice-wraith-elder", "frozen-sentinel"]
+        }
+      ],
+      "boss": {
+        "slug": "the-gate-warden",
+        "name": "The Gate Warden",
+        "hp": 1400,
+        "attack": 34,
+        "defense": 20,
+        "xp": 180,
+        "gold": 90,
+        "level": 15,
+        "boss": true,
+        "abilities": ["stunning-slam", "war-cry", "harden", "rending-claws"],
+        "drops": ["frostbound-gauntlets", "shattered-seal-ring"],
+        "dropChance": 22,
+        "description": "The largest frozen sentinel — the one chosen to guard the gate a thousand years ago. It still remembers its duty, and fulfills it with implacable, glacier-slow fury. Each swing of its frost-axe sends shockwaves through the ice.",
+        "telegraphs": ["crushing-blow", "stunning-slam"],
+        "enrageThreshold": 0.25,
+        "enrageTelegraphs": ["death-strike"],
+        "intro": "❄ RAID BOSS — The Gate Warden's ice cracks and falls away. It rises to its full height — fifteen feet of frozen rage and ancient duty. The frost-axe in its hands glows with seal-rune energy."
+      }
+    },
+    {
+      "lore": "Below the gallery, the architecture changes. This was the living quarters of Aldric's court — now frozen mid-moment. Banquet tables set with ice-locked food. Chairs pushed back as if the occupants just stood up. And among the frozen tableaux, things that were never alive crawl through the shadows.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["throne-shade", "throne-shade"]
+        },
+        {
+          "type": "choice",
+          "title": "The Frozen Banquet",
+          "text": "The great hall stretches before you — a feast frozen in time. At the head of the table, a goblet still filled with wine sits untouched. The liquid inside shimmers with an unnatural blue glow. On the wall behind the table, a massive tapestry depicts Aldric's coronation — and hidden behind it, you can see the outline of a secret passage.",
+          "choices": [
+            {
+              "label": "Drink from the king's goblet",
+              "check": { "stat": "con", "dc": 14 },
+              "success": {
+                "text": "The wine is a thousand years old and ice-cold, but it burns with power. Aldric's personal vintage, enchanted to strengthen his warriors. Your body surges with frost-giant vitality.",
+                "effect": { "healPct": 30, "buffStat": "attack", "buffAmount": 4, "buffTurns": 99 }
+              },
+              "failure": {
+                "text": "The wine is poison to warm-blooded creatures. Ice crystallizes in your throat and stomach. You choke and gasp, barely keeping it together.",
+                "effect": { "damagePct": 20, "debuff": { "slug": "poison", "turns": 4, "name": "Giant's Wine" } }
+              }
+            },
+            {
+              "label": "Take the secret passage behind the tapestry",
+              "check": { "stat": "dex", "dc": 13 },
+              "success": {
+                "text": "The passage leads through a narrow ice tunnel directly to a supply cache — frost-giant healing salves and ward crystals. You take what you can carry.",
+                "effect": { "healPct": 25, "manaPct": 25 }
+              },
+              "failure": {
+                "text": "The passage is booby-trapped. A blade of ice swings from the ceiling, and the tunnel collapses behind you. You barely escape.",
+                "effect": { "damagePct": 15 }
+              }
+            },
+            {
+              "label": "Search the frozen courtiers for valuables",
+              "check": { "stat": "dex", "dc": 12 },
+              "success": {
+                "text": "You find enchanted jewelry on the frozen nobles — frost-wards that still carry protective magic. You pocket them and feel warmer already.",
+                "effect": { "buffStat": "defense", "buffAmount": 4, "buffTurns": 99, "healPct": 10 }
+              },
+              "failure": {
+                "text": "One of the 'frozen' courtiers grabs your wrist. Its eyes open — dead and hateful. You wrench free but the cold from its grip seeps into your bones.",
+                "effect": { "damagePct": 12, "debuff": { "slug": "weaken", "turns": 3, "name": "Deathgrip Cold" } }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["glacial-construct", "throne-shade"]
+        },
+        {
+          "type": "combat",
+          "enemies": ["ice-wraith-elder", "ice-wraith-elder"]
+        }
+      ],
+      "boss": {
+        "slug": "the-frost-speaker",
+        "name": "The Frost Speaker",
+        "hp": 1800,
+        "attack": 38,
+        "defense": 18,
+        "xp": 220,
+        "gold": 110,
+        "level": 16,
+        "boss": true,
+        "abilities": ["dark-curse", "weakening-hex", "regen-aura", "stunning-slam"],
+        "drops": ["frost-speaker-vestments", "frozen-prayer-amulet", "permafrost-treads"],
+        "dropChance": 22,
+        "description": "The high priest of the frozen court emerges from a wall of ice, still chanting prayers that haven't been heard in a millennium. Its voice resonates with the cold itself — every syllable drops the temperature and strengthens the ice around it.",
+        "telegraphs": ["poison-cloud", "healing-ritual"],
+        "enrageThreshold": 0.3,
+        "enrageTelegraphs": ["death-strike", "crushing-blow"],
+        "intro": "❄ RAID BOSS — The ice wall shatters and the Frost Speaker steps through, arms raised, frost-fire wreathing its ancient hands. Its chant fills the chamber with supernatural cold. The dead begin to stir."
+      }
+    },
+    {
+      "lore": "The stairway spirals down through solid glacier. The walls glow blue-white with trapped energy. You can feel the seal pressing against you — a weight of ancient magic that wants to push you back, to keep you from reaching what lies below. Frost drakes nest in the wider chambers here, and the constructs are larger, more aggressive, powered by the seal's failing energy.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["frost-drake-guardian", "glacial-construct"]
+        },
+        {
+          "type": "choice",
+          "title": "The Seal Core",
+          "text": "You find the central mechanism of the seal — a massive crystal suspended in a cage of rune-iron, pulsing with failing blue light. If you could repair it, it might weaken the enemies ahead. But the seal is also what's keeping the lower floors frozen and navigable. Tampering could collapse the tunnels — or strengthen them.",
+          "choices": [
+            {
+              "label": "Channel energy into the seal to stabilize it",
+              "check": { "stat": "int", "dc": 15 },
+              "success": {
+                "text": "The seal flares brilliant blue. For a moment, all the ice in the chamber sings. The reinforced seal weakens the enemies below — the frost drakes screech and the constructs slow. You feel the seal's gratitude as ancient power floods through you.",
+                "effect": { "buffStat": "attack", "buffAmount": 5, "buffTurns": 99, "buffStat2": "defense", "buffAmount2": 3, "manaPct": 30 }
+              },
+              "failure": {
+                "text": "The seal rejects your interference. Energy backlashes through the crystal, shattering part of the cage. The resulting surge hits you like a wall. Useful information, if painful.",
+                "effect": { "damagePct": 18, "mpDrain": 20 }
+              }
+            },
+            {
+              "label": "Drain the seal's remaining power for yourself",
+              "check": { "stat": "con", "dc": 14 },
+              "success": {
+                "text": "You drink deep of the ancient magic. It burns like liquid ice through your veins — painful but empowering. The seal dims but you glow with stolen frost-giant ward magic.",
+                "effect": { "healPct": 25, "buffStat": "attack", "buffAmount": 6, "buffTurns": 99 }
+              },
+              "failure": {
+                "text": "The seal fights back, resisting the drain. The magical backlash freezes part of your armor to your skin. Excruciating.",
+                "effect": { "damagePct": 20, "debuff": { "slug": "curse", "turns": 5, "name": "Seal Burn" } }
+              }
+            },
+            {
+              "label": "Leave the seal alone and press forward",
+              "check": { "stat": "wis", "dc": 11 },
+              "success": {
+                "text": "You recognize that the seal is beyond repair or exploitation. Wisdom here is knowing when not to act. You press on with clear minds and steady nerves.",
+                "effect": { "healPct": 15, "manaPct": 15 }
+              },
+              "failure": {
+                "text": "As you pass, the seal pulses erratically. A wave of cold catches you off-guard.",
+                "effect": { "damagePct": 8 }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["runebound-giant", "ice-wraith-elder"]
+        },
+        {
+          "type": "combat",
+          "enemies": ["frost-drake-guardian", "throne-shade", "frozen-sentinel"]
+        }
+      ],
+      "boss": {
+        "slug": "valdris-the-unbroken",
+        "name": "Valdris the Unbroken",
+        "hp": 2200,
+        "attack": 42,
+        "defense": 22,
+        "xp": 280,
+        "gold": 140,
+        "level": 17,
+        "boss": true,
+        "abilities": ["stunning-slam", "war-cry", "rending-claws", "harden"],
+        "drops": ["valdris-frostplate", "glacial-crown"],
+        "dropChance": 25,
+        "description": "Aldric's champion — the greatest warrior of the frost giant court, preserved in perfect ice for a thousand years. The seal's failure has not woken him gently. He rises in a rage that has had a millennium to ferment, and his frozen greatsword cracks the floor with every swing.",
+        "telegraphs": ["crushing-blow", "stunning-slam", "fire-breath"],
+        "enrageThreshold": 0.25,
+        "enrageTelegraphs": ["death-strike", "crushing-blow"],
+        "intro": "❄ RAID BOSS — The ice coffin explodes outward. Valdris the Unbroken rises, twenty feet of rage and frozen steel. His greatsword alone is longer than you are tall. The chamber shakes with every step he takes toward you."
+      }
+    },
+    {
+      "lore": "The throne room. A cathedral of ice, vaulted ceiling lost in blue-white mist, pillars carved from single glaciers. At the far end, on a throne of frozen bone and rune-iron, sits Aldric — the Frost King himself. His eyes are closed. The seal's runes crawl across his body like luminous chains. They are breaking, one by one, and with each one that snaps, the temperature drops further. He is waking. You have minutes.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["runebound-giant", "frost-drake-guardian", "glacial-construct"]
+        },
+        {
+          "type": "choice",
+          "title": "The Final Seal",
+          "text": "Before the throne, the last seal-rune burns — a single point of brilliant blue in the frozen darkness. If it breaks, Aldric wakes fully. You could try to reinforce it, giving you more time to prepare, or you could break it yourself and face the king on your own terms while he's still disoriented.",
+          "choices": [
+            {
+              "label": "Reinforce the final seal for preparation time",
+              "check": { "stat": "wis", "dc": 15 },
+              "success": {
+                "text": "You pour everything into the seal. It holds — buying you precious minutes. You use the time to rest, prepare, and study the throne room's defenses. When the seal finally breaks, you're ready.",
+                "effect": { "healPct": 30, "manaPct": 30, "buffStat": "defense", "buffAmount": 4, "buffTurns": 99 }
+              },
+              "failure": {
+                "text": "The seal shatters the moment you touch it. Aldric's eyes snap open — and he's not disoriented at all. He's furious.",
+                "effect": { "damagePct": 15, "debuff": { "slug": "weaken", "turns": 4, "name": "Seal Backlash" } }
+              }
+            },
+            {
+              "label": "Shatter the seal and attack while he's waking",
+              "check": { "stat": "str", "dc": 14 },
+              "success": {
+                "text": "You destroy the seal and charge. Aldric is still disoriented from the sudden awakening — his movements are sluggish, his defenses down. You strike first and strike hard.",
+                "effect": { "buffStat": "attack", "buffAmount": 6, "buffTurns": 99, "healPct": 15 }
+              },
+              "failure": {
+                "text": "You shatter the seal but Aldric was already awake — waiting. His first attack catches you mid-charge. The cold is indescribable.",
+                "effect": { "damagePct": 20, "debuff": { "slug": "curse", "turns": 4, "name": "Frost King's Welcome" } }
+              }
+            },
+            {
+              "label": "Use the seal's energy to empower your weapons",
+              "check": { "stat": "int", "dc": 14 },
+              "success": {
+                "text": "You siphon the seal's last energy into your weapons and armor. They glow with anti-frost enchantment — the very power designed to contain a frost giant king, now turned to your purpose.",
+                "effect": { "buffStat": "attack", "buffAmount": 5, "buffTurns": 99, "buffStat2": "defense", "buffAmount2": 3, "healPct": 10 }
+              },
+              "failure": {
+                "text": "The energy is too much. Your weapon cracks and the overflow burns your hands. Aldric laughs — a sound like glaciers splitting.",
+                "effect": { "damagePct": 18, "mpDrain": 25 }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["the-frost-speaker", "runebound-giant"]
+        }
+      ],
+      "boss": {
+        "slug": "frost-king-aldric-awakened",
+        "name": "Frost King Aldric, Awakened",
+        "hp": 3500,
+        "attack": 48,
+        "defense": 26,
+        "xp": 400,
+        "gold": 200,
+        "level": 20,
+        "boss": true,
+        "abilities": ["stunning-slam", "war-cry", "rending-claws", "dark-curse", "regen-aura", "harden"],
+        "drops": ["aldrics-frozen-crown", "throne-of-frost-blade", "frostking-signet", "eternal-ice-codex"],
+        "dropChance": 28,
+        "mythicDrop": true,
+        "mythicDropChance": 100,
+        "description": "The Frost King rises from his throne — fully awakened, fully enraged, his body wreathed in a blizzard that fills the entire chamber. He is everything the legends warned of: twenty-five feet of living winter, crowned in rune-ice, wielding a sword forged from a frozen lightning bolt. A thousand years of imprisonment have only made him angrier.",
+        "telegraphs": ["crushing-blow", "poison-cloud", "fire-breath", "healing-ritual", "summon-minions"],
+        "enrageThreshold": 0.2,
+        "enrageTelegraphs": ["death-strike", "fire-breath", "crushing-blow"],
+        "intro": "❄ RAID BOSS — THE FROST KING AWAKENS. The entire glacier shudders. Aldric rises from the Frozen Throne, ice and bone and rage made manifest. His voice fills the chamber like an avalanche: 'A THOUSAND YEARS I SLEPT. AND THIS IS WHAT WAKES ME? INSECTS. WARM-BLOODED INSECTS.' The blizzard begins."
+      }
+    }
+  ],
+  "completionLore": "The Frost King falls. His crown shatters. The blizzard dies. For a long moment, the throne room is perfectly silent — the first silence this place has known in a millennium.\n\nThen the ice begins to melt. Not all of it — just the unnatural cold, the frost-giant magic that preserved this place. Water runs down the walls. The frozen courtiers finally rest. The seal-runes fade to nothing, their purpose fulfilled at last — not by containing the king, but by the warriors who finished what the seal could only delay.\n\nYou climb back through the melting passages, past the gallery of now-still giants, past the empty banquet hall, past the shattered gate. Outside, the sky over Frosthollow seems brighter. The eternal twilight has lifted, just slightly. The Frost Speaker's chanting has stopped.\n\nCaptain Voss meets you at the tunnel entrance. She says nothing. She doesn't need to. She just nods — the nod of someone who has seen the impossible happen and has the wisdom not to question it."
+}

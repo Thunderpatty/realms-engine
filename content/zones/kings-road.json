@@ -1,0 +1,513 @@
+{
+  "location": {
+    "slug": "kings-road",
+    "name": "King's Road",
+    "type": "wild",
+    "description": "The crumbling highway that once connected great cities. Now bandits and beasts prowl its overgrown stones.",
+    "connections": [
+      "thornwall",
+      "ironhold",
+      "crossroads"
+    ],
+    "mapX": 38,
+    "mapY": 55,
+    "realm": "ashlands"
+  },
+  "enemies": [
+    {
+      "slug": "road-serpent",
+      "hp": 216,
+      "xp": 34,
+      "gold": 14,
+      "name": "Road Serpent",
+      "drops": [
+        "serpent-fang",
+        "wooden-shield",
+        "scout-bandana",
+        "feather-cord"
+      ],
+      "level": 2,
+      "attack": 9,
+      "defense": 3
+    },
+    {
+      "slug": "deserter-lancer",
+      "hp": 268,
+      "xp": 65,
+      "gold": 31,
+      "name": "Deserter Lancer",
+      "drops": [
+        "leather-scraps",
+        "willow-ring",
+        "hide-bracers",
+        "spellweave-gloves",
+        "windtracker-cap"
+      ],
+      "level": 3,
+      "attack": 11,
+      "defense": 5,
+      "abilities": [
+        "rending-claws",
+        "war-cry"
+      ],
+      "telegraphs": [
+        "wild-charge"
+      ]
+    },
+    {
+      "slug": "highway-bandit",
+      "name": "Highway Bandit",
+      "hp": 248,
+      "attack": 10,
+      "defense": 4,
+      "xp": 34,
+      "gold": 15,
+      "level": 2,
+      "drops": [
+        "bandit-cloak",
+        "dusk-leathers",
+        "iron-gorget",
+        "enchanted-compass"
+      ]
+    },
+    {
+      "slug": "bandit-captain",
+      "name": "Bandit Captain",
+      "hp": 461,
+      "attack": 15,
+      "defense": 6,
+      "xp": 211,
+      "gold": 72,
+      "level": 3,
+      "boss": true,
+      "abilities": [
+        "war-cry"
+      ],
+      "drops": [
+        "steel-dagger",
+        "ember-wand",
+        "shadow-daggers",
+        "yew-longbow",
+        "shadowstep-boots",
+        "knifework-wraps",
+        "blade-locket"
+      ],
+      "telegraphs": [
+        "crushing-blow",
+        "rallying-howl"
+      ]
+    },
+    {
+      "slug": "grave-robber",
+      "hp": 329,
+      "xp": 62,
+      "gold": 27,
+      "name": "Grave Robber",
+      "drops": [
+        "bone-dust",
+        "lucky-bone",
+        "sun-charm",
+        "cutpurse-mitts",
+        "warhammer-seal"
+      ],
+      "level": 3,
+      "attack": 12,
+      "defense": 4,
+      "abilities": [
+        "poison-bite"
+      ]
+    },
+    {
+      "slug": "wild-dog-pack",
+      "name": "Wild Dog Pack",
+      "level": 2,
+      "hp": 246,
+      "attack": 10,
+      "defense": 4,
+      "xp": 32,
+      "gold": 13,
+      "abilities": [
+        "rending-claws"
+      ],
+      "drops": [
+        "leather-cap",
+        "leather-boots",
+        "bone-pendant"
+      ]
+    },
+    {
+      "slug": "toll-collector",
+      "name": "Corrupt Toll Collector",
+      "level": 3,
+      "hp": 270,
+      "attack": 11,
+      "defense": 4,
+      "xp": 63,
+      "gold": 29,
+      "abilities": [
+        "war-cry"
+      ],
+      "drops": [
+        "iron-skullcap",
+        "marching-boots",
+        "tin-locket"
+      ]
+    },
+    {
+      "slug": "fugitive-mage",
+      "name": "Fugitive Mage",
+      "level": 3,
+      "hp": 274,
+      "attack": 11,
+      "defense": 5,
+      "xp": 68,
+      "gold": 25,
+      "abilities": [
+        "fire-breath",
+        "weakening-hex"
+      ],
+      "drops": [
+        "cloth-circlet",
+        "linen-wraps",
+        "glass-bead-necklace"
+      ],
+      "telegraphs": [
+        "fire-breath"
+      ]
+    },
+    {
+      "slug": "caravan-guard",
+      "name": "Rogue Caravan Guard",
+      "level": 3,
+      "hp": 294,
+      "attack": 12,
+      "defense": 4,
+      "xp": 62,
+      "gold": 28,
+      "abilities": [
+        "harden"
+      ],
+      "drops": [
+        "iron-knuckles",
+        "marching-boots",
+        "copper-band"
+      ]
+    }
+  ],
+  "locationThreat": 3,
+  "events": [
+    {
+      "slug": "merchant-caravan",
+      "name": "Merchant Caravan",
+      "type": "merchant",
+      "rarity": "common",
+      "icon": "\ud83d\udc34",
+      "text": "A merchant caravan has stopped to repair a broken wheel. The lead merchant eyes you with interest \u2014 perhaps you can be of assistance.",
+      "choices": [
+        {
+          "label": "Help repair the wheel",
+          "check": {
+            "stat": "str",
+            "dc": 10
+          },
+          "success": {
+            "text": "With your help the wheel is fixed in no time. The grateful merchant offers you supplies and coin.",
+            "rewards": {
+              "gold": 30,
+              "items": [
+                {
+                  "slug": "health-potion",
+                  "qty": 1
+                }
+              ],
+              "xp": 15
+            }
+          },
+          "failure": {
+            "text": "The wheel snaps further. The merchant sighs but tosses you a coin for trying.",
+            "rewards": {
+              "gold": 5,
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Offer to guard them for a fee",
+          "check": {
+            "stat": "cha",
+            "dc": 11
+          },
+          "success": {
+            "text": "The merchant agrees. You escort them down the road and collect your payment.",
+            "rewards": {
+              "gold": 40,
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "\"We have our own guards, thanks.\" The merchant waves you off.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Continue on your way",
+          "auto": true,
+          "success": {
+            "text": "You nod politely and continue down the dusty road.",
+            "rewards": {
+              "xp": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "roadside-shrine",
+      "name": "Wayside Shrine",
+      "type": "shrine",
+      "rarity": "uncommon",
+      "icon": "\ud83d\udd6f",
+      "text": "A small roadside shrine dedicated to travelers stands at a crossroads marker. Fresh flowers suggest someone tends it regularly.",
+      "choices": [
+        {
+          "label": "Leave an offering and pray",
+          "check": {
+            "stat": "wis",
+            "dc": 9
+          },
+          "success": {
+            "text": "A sense of peace washes over you. Your fatigue melts away.",
+            "rewards": {
+              "healPct": 30,
+              "manaPct": 30,
+              "xp": 15
+            }
+          },
+          "failure": {
+            "text": "You pray but feel nothing special. Perhaps next time.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Search behind the shrine",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "text": "Hidden behind a loose stone you find a small cache of coins left by travelers past.",
+            "rewards": {
+              "gold": 25,
+              "xp": 12
+            }
+          },
+          "failure": {
+            "text": "Nothing but spiders. You recoil and move on.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "wounded-soldier",
+      "name": "Wounded Soldier",
+      "type": "npc",
+      "rarity": "common",
+      "icon": "\u2694",
+      "text": "A soldier slumped against a milestone clutches a bloodied side. \"Bandits... ambushed our patrol,\" he gasps.",
+      "choices": [
+        {
+          "label": "Tend to his wounds",
+          "check": {
+            "stat": "wis",
+            "dc": 10
+          },
+          "success": {
+            "text": "You bandage his wounds and help him drink water. He presses a military signet into your hand.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "iron-ore",
+                  "qty": 2
+                }
+              ],
+              "gold": 15,
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "Your bandaging is clumsy but he survives. He nods his thanks weakly.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        },
+        {
+          "label": "Search the area for the bandits' trail",
+          "check": {
+            "stat": "dex",
+            "dc": 13
+          },
+          "success": {
+            "text": "You follow the bandits' tracks to a small cache of stolen goods.",
+            "rewards": {
+              "gold": 35,
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The trail goes cold. You return to find the soldier has crawled away.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "kr-broken-cart",
+      "rarity": "common",
+      "name": "Broken Cart",
+      "icon": "\ud83d\uded2",
+      "description": "An overturned merchant cart blocks part of the road. Goods are scattered.",
+      "choices": [
+        {
+          "text": "Search the wreckage (DEX DC 10)",
+          "check": {
+            "stat": "dex",
+            "dc": 10
+          },
+          "success": {
+            "gold": 25,
+            "text": "You find a hidden strongbox among the debris!"
+          },
+          "failure": {
+            "damage": 5,
+            "text": "A loose board snaps and hits you."
+          }
+        },
+        {
+          "text": "Look for survivors (WIS DC 11)",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "xp": 20,
+            "text": "You find tracks leading to safety \u2014 the merchant escaped. Your tracking improves."
+          },
+          "failure": {
+            "text": "No sign of anyone. The road is silent."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "kr-old-veteran",
+      "rarity": "uncommon",
+      "name": "The Old Veteran",
+      "icon": "\ud83d\udc74",
+      "description": "A scarred old soldier sits by a campfire, sharpening a blade.",
+      "choices": [
+        {
+          "text": "Ask for training tips (STR DC 11)",
+          "check": {
+            "stat": "str",
+            "dc": 11
+          },
+          "success": {
+            "xp": 25,
+            "text": "\"Keep your guard up and strike true.\" His advice clicks \u2014 you feel sharper."
+          },
+          "failure": {
+            "text": "\"Come back when you're stronger, kid.\" He waves you away."
+          }
+        },
+        {
+          "text": "Share a meal",
+          "success": {
+            "heal": 15,
+            "mana": 10,
+            "text": "Over stew, he tells war stories. You feel refreshed."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "kr-toll-bridge",
+      "rarity": "common",
+      "name": "Toll Bridge",
+      "icon": "\ud83c\udf09",
+      "description": "A rickety bridge spans a ravine. A sign reads: \"Toll: 10 gold or prove your worth.\"",
+      "choices": [
+        {
+          "text": "Pay the toll (10 gold)",
+          "success": {
+            "gold": -10,
+            "xp": 5,
+            "text": "You cross safely. Sometimes the simplest path is best."
+          }
+        },
+        {
+          "text": "Jump the ravine (DEX DC 13)",
+          "check": {
+            "stat": "dex",
+            "dc": 13
+          },
+          "success": {
+            "xp": 20,
+            "text": "You leap across with grace! Impressive."
+          },
+          "failure": {
+            "damage": 15,
+            "text": "You almost make it \u2014 but slip and tumble, scrambling up bruised."
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "bandit-gang",
+      "name": "Bandit Gang",
+      "composition": [
+        {
+          "enemySlug": "highway-bandit",
+          "count": 2
+        },
+        {
+          "enemySlug": "grave-robber",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 15
+    },
+    {
+      "slug": "deserter-squad",
+      "name": "Deserter Squad",
+      "composition": [
+        {
+          "enemySlug": "deserter-lancer",
+          "count": 1
+        },
+        {
+          "enemySlug": "highway-bandit",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

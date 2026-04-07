@@ -1,0 +1,574 @@
+{
+  "location": {
+    "slug": "ruined-shrine",
+    "name": "Ruined Shrine",
+    "type": "dungeon",
+    "description": "Cracked marble columns draped in moss. Something unholy stirs in the crypt below.",
+    "connections": [
+      "whispering-woods"
+    ],
+    "mapX": 42,
+    "mapY": 15,
+    "realm": "ashlands"
+  },
+  "enemies": [
+    {
+      "slug": "shadow-wraith",
+      "name": "Shadow Wraith",
+      "hp": 308,
+      "attack": 11,
+      "defense": 5,
+      "xp": 69,
+      "gold": 27,
+      "level": 3,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "drops": [
+        "wraith-essence",
+        "silver-focus-ring",
+        "focus-pendant",
+        "prayer-wraps",
+        "leystone-band"
+      ]
+    },
+    {
+      "slug": "skeleton",
+      "name": "Restless Skeleton",
+      "hp": 234,
+      "attack": 9,
+      "defense": 4,
+      "xp": 30,
+      "gold": 15,
+      "level": 2,
+      "drops": [
+        "bone-dust",
+        "pilgrim-mace",
+        "pilgrim-medallion",
+        "steel-helm"
+      ]
+    },
+    {
+      "slug": "cursed-priest",
+      "hp": 388,
+      "xp": 110,
+      "gold": 51,
+      "name": "Cursed Priest",
+      "drops": [
+        "holy-shard",
+        "novice-robes",
+        "scripture",
+        "acolyte-vestments"
+      ],
+      "level": 4,
+      "attack": 12,
+      "defense": 7,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ]
+    },
+    {
+      "slug": "bone-archer",
+      "hp": 315,
+      "xp": 72,
+      "gold": 27,
+      "name": "Bone Archer",
+      "drops": [
+        "bone-dust",
+        "fletcher-quiver",
+        "leather-boots",
+        "bowstring-gloves",
+        "pathfinder-ring"
+      ],
+      "level": 3,
+      "attack": 11,
+      "defense": 5,
+      "abilities": [
+        "poison-bite"
+      ]
+    },
+    {
+      "slug": "grave-acolyte",
+      "name": "Grave Acolyte",
+      "hp": 387,
+      "attack": 14,
+      "defense": 6,
+      "xp": 106,
+      "gold": 50,
+      "level": 4,
+      "abilities": [
+        "dark-curse"
+      ],
+      "drops": [
+        "wraith-essence",
+        "cantrip-tome",
+        "prayer-beads",
+        "pilgrim-greaves"
+      ]
+    },
+    {
+      "slug": "crypt-warden",
+      "name": "Crypt Warden",
+      "hp": 998,
+      "attack": 23,
+      "defense": 9,
+      "xp": 432,
+      "gold": 191,
+      "level": 5,
+      "boss": true,
+      "abilities": [
+        "war-cry",
+        "stunning-slam"
+      ],
+      "drops": [
+        "holy-shard",
+        "enchanted-blade",
+        "starfire-staff",
+        "archmage-raiment",
+        "dawnbringer-crozier",
+        "gospel-codex",
+        "templar-crest-helm",
+        "consecrated-grips",
+        "pilgrim-greaves",
+        "holy-pendant",
+        "radiant-reliquary"
+      ],
+      "mythicDrop": "soulbound-vestments",
+      "mythicDropChance": 3,
+      "telegraphs": [
+        "death-strike",
+        "healing-ritual",
+        "poison-cloud"
+      ],
+      "enrageTelegraphs": [
+        "summon-minions"
+      ],
+      "enrageThreshold": 0.3
+    },
+    {
+      "slug": "restless-spirit",
+      "name": "Restless Spirit",
+      "level": 3,
+      "hp": 282,
+      "attack": 11,
+      "defense": 5,
+      "xp": 64,
+      "gold": 25,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "drops": [
+        "arcanist-circlet",
+        "spellthread-band",
+        "focus-pendant"
+      ]
+    },
+    {
+      "slug": "bone-golem",
+      "name": "Bone Golem",
+      "level": 4,
+      "hp": 391,
+      "attack": 13,
+      "defense": 6,
+      "xp": 114,
+      "gold": 46,
+      "abilities": [
+        "harden",
+        "stunning-slam"
+      ],
+      "drops": [
+        "steel-helm",
+        "gauntlets-of-grip",
+        "ironshod-boots"
+      ]
+    },
+    {
+      "slug": "tomb-scarab",
+      "name": "Tomb Scarab Swarm",
+      "level": 3,
+      "hp": 328,
+      "attack": 12,
+      "defense": 4,
+      "xp": 59,
+      "gold": 32,
+      "abilities": [
+        "poison-bite"
+      ],
+      "drops": [
+        "shadow-cowl",
+        "cutpurse-mitts",
+        "softpad-boots"
+      ]
+    },
+    {
+      "slug": "death-knight",
+      "name": "Death Knight",
+      "level": 5,
+      "hp": 377,
+      "attack": 17,
+      "defense": 7,
+      "xp": 165,
+      "gold": 73,
+      "abilities": [
+        "dark-curse",
+        "war-cry",
+        "rending-claws"
+      ],
+      "drops": [
+        "signet-of-valor",
+        "iron-gorget",
+        "pilgrim-hood"
+      ]
+    },
+    {
+      "slug": "corpse-moth",
+      "name": "Corpse Moth",
+      "level": 3,
+      "hp": 311,
+      "attack": 11,
+      "defense": 5,
+      "xp": 60,
+      "gold": 27,
+      "abilities": [
+        "weakening-hex",
+        "poison-bite"
+      ],
+      "drops": [
+        "prayer-wraps",
+        "devotion-ring",
+        "enchanted-compass"
+      ]
+    }
+  ],
+  "dungeonConfig": {
+    "boss": "crypt-warden",
+    "name": "Ruined Shrine Depths",
+    "maxRooms": 5,
+    "minRooms": 3,
+    "mechanic": {
+      "slug": "cursed-ground",
+      "name": "Cursed Ground",
+      "description": "Dark energy seeps from the stones. You take 2% max HP damage each room.",
+      "effect": {
+        "roomDamagePct": 2
+      }
+    }
+  },
+  "locationThreat": 4,
+  "events": [
+    {
+      "slug": "ghostly-vision",
+      "name": "Spectral Echo",
+      "type": "shrine",
+      "rarity": "uncommon",
+      "icon": "\ud83d\udc7b",
+      "text": "A translucent figure materializes before you \u2014 the ghost of a priest who once tended this shrine. \"Seeker... will you hear my final prayer?\"",
+      "choices": [
+        {
+          "label": "Listen to the ghost's prayer",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "text": "The ghost recounts a blessing. As the words echo, you feel divine energy restore you.",
+            "rewards": {
+              "healPct": 50,
+              "manaPct": 30,
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The ghost's words fade to whispers you cannot understand. It dissolves with a sigh.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        },
+        {
+          "label": "Ask the ghost about hidden treasures",
+          "check": {
+            "stat": "cha",
+            "dc": 13
+          },
+          "success": {
+            "text": "\"Behind the altar... the third stone...\" The ghost fades. You find a hidden compartment with holy shards.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "holy-shard",
+                  "qty": 2
+                }
+              ],
+              "gold": 25,
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The ghost scowls. \"Greed defiles this place.\" It vanishes in a cold wind.",
+            "rewards": {
+              "xp": 5,
+              "damage": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "crumbling-floor",
+      "name": "Crumbling Floor",
+      "type": "environmental",
+      "rarity": "common",
+      "icon": "\u26a0",
+      "text": "The floor ahead is fractured with deep cracks. Something glints in the gap below, but one wrong step could send you tumbling.",
+      "choices": [
+        {
+          "label": "Carefully edge along the wall",
+          "check": {
+            "stat": "dex",
+            "dc": 10
+          },
+          "success": {
+            "text": "You traverse the gap safely and scoop up the wraith essence that had pooled below.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "wraith-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "A section gives way and you drop several feet before catching yourself. Bruised but alive.",
+            "rewards": {
+              "xp": 8,
+              "damage": 14
+            }
+          }
+        },
+        {
+          "label": "Jump across the widest gap",
+          "check": {
+            "stat": "str",
+            "dc": 11
+          },
+          "success": {
+            "text": "You clear the gap with room to spare and land near a stash of bone dust.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "bone-dust",
+                  "qty": 2
+                }
+              ],
+              "xp": 15
+            }
+          },
+          "failure": {
+            "text": "You barely make it, slamming into the far edge. Your ribs ache.",
+            "rewards": {
+              "xp": 8,
+              "damage": 12
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "hidden-chamber",
+      "name": "Hidden Chamber",
+      "type": "discovery",
+      "rarity": "rare",
+      "icon": "\ud83d\udeaa",
+      "text": "A concealed door behind a fallen statue reveals a chamber untouched for centuries. Dust motes dance in the stale air.",
+      "choices": [
+        {
+          "label": "Search the chamber thoroughly",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "text": "Ancient texts and preserved holy relics fill the shelves. You take what you can carry.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "holy-shard",
+                  "qty": 2
+                }
+              ],
+              "gold": 30,
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "You trigger a ward that seals the door behind you momentarily. Panic sets in before it reopens.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        },
+        {
+          "label": "Check for traps before entering",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "You disarm a tripwire and safely loot the chamber. Gold and wraith essence reward your caution.",
+            "rewards": {
+              "gold": 35,
+              "items": [
+                {
+                  "slug": "wraith-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "You miss a pressure plate and a dart nicks your arm. At least the chamber is now safe to explore... mostly.",
+            "rewards": {
+              "gold": 15,
+              "xp": 12,
+              "damage": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "rs-broken-altar",
+      "rarity": "common",
+      "name": "Broken Altar",
+      "icon": "\u26ea",
+      "description": "A shattered altar emanates faint divine energy. Offerings could restore it briefly.",
+      "choices": [
+        {
+          "text": "Pray at the altar (WIS DC 11)",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "heal": 20,
+            "mana": 15,
+            "text": "Divine warmth washes over you. The gods remember this place."
+          },
+          "failure": {
+            "text": "The altar remains cold and silent."
+          }
+        },
+        {
+          "text": "Take the altar gems",
+          "success": {
+            "gold": 15,
+            "text": "You pry loose a few semi-precious stones. The altar crumbles further."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "rs-whispering-walls",
+      "rarity": "uncommon",
+      "name": "Whispering Walls",
+      "icon": "\ud83d\udc41",
+      "description": "The walls are covered in shifting runes that whisper in a forgotten language.",
+      "choices": [
+        {
+          "text": "Decipher the runes (INT DC 13)",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "xp": 30,
+            "text": "The runes speak of the shrine's fall. Ancient knowledge floods your mind."
+          },
+          "failure": {
+            "damage": 10,
+            "text": "The whispers grow to a scream \u2014 psychic energy batters you!"
+          }
+        },
+        {
+          "text": "Cover your ears and move on",
+          "success": {
+            "text": "You hurry past. Some things are better left unheard."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "rs-undead-pilgrim",
+      "rarity": "uncommon",
+      "name": "Undead Pilgrim",
+      "icon": "\ud83d\udc80",
+      "description": "A skeletal figure in tattered robes kneels before a crumbling statue, still praying after centuries.",
+      "choices": [
+        {
+          "text": "Grant it peace (WIS DC 12)",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "xp": 25,
+            "heal": 10,
+            "text": "Your blessing releases the spirit. It smiles before fading, leaving behind a blessing of its own."
+          },
+          "failure": {
+            "damage": 8,
+            "text": "The undead lashes out in confusion before slumping back to prayer."
+          }
+        },
+        {
+          "text": "Search its remains",
+          "success": {
+            "gold": 12,
+            "text": "A few coins and a tarnished holy symbol. It won't miss them."
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "ruined-shrine-group-1",
+      "name": "Corpse Moth Guard Detail",
+      "composition": [
+        {
+          "enemySlug": "corpse-moth",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "ruined-shrine-group-2",
+      "name": "Death Knight & Bone Archer",
+      "composition": [
+        {
+          "enemySlug": "death-knight",
+          "count": 1
+        },
+        {
+          "enemySlug": "bone-archer",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

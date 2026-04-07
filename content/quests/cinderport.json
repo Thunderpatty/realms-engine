@@ -1,0 +1,232 @@
+[
+  {
+    "slug": "fire-and-ash",
+    "title": "Fire and Ash",
+    "location": "cinderport",
+    "minLevel": 20,
+    "rewards": {
+      "xp": 400,
+      "gold": 250
+    },
+    "description": "The Cinderport militia needs help dealing with demon cultists raiding the trade routes.",
+    "stages": [
+      {
+        "text": "Commander Vesra slams a fist on the table. 'Three caravans burned this week. The cult grows bolder \u2014 they're no longer hiding in the vale, they're attacking on the main roads. I need someone who can track them to their base and make them stop. Permanently.' She pushes a scorched map across the table. 'Last attack was on the Scorched Flats route. Start there.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study the attack patterns on the map",
+            "check": {
+              "stat": "int",
+              "dc": 20
+            }
+          },
+          {
+            "next": 1,
+            "label": "Talk to the surviving merchants",
+            "check": {
+              "stat": "wis",
+              "dc": 19
+            }
+          },
+          {
+            "next": 1,
+            "label": "Negotiate a bonus for hazard pay",
+            "check": {
+              "stat": "cha",
+              "dc": 21
+            }
+          }
+        ]
+      },
+      {
+        "text": "You track the cultists to a cave system in the Scorched Flats. Inside: ritual markings, stockpiled weapons, and evidence they're planning something much larger than caravan raids. A prisoner in a cage tells you they're gathering materials for a summoning \u2014 something big, from the deeper hells.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Infiltrate deeper to find the ritual site",
+            "check": {
+              "stat": "dex",
+              "dc": 21
+            }
+          },
+          {
+            "next": 2,
+            "label": "Destroy their supplies",
+            "check": {
+              "stat": "str",
+              "dc": 20
+            }
+          },
+          {
+            "next": 2,
+            "label": "Free the prisoner for intelligence",
+            "check": {
+              "stat": "wis",
+              "dc": 21
+            }
+          }
+        ]
+      },
+      {
+        "text": "At the heart of the cave, a cult pyromancer leads a dozen acolytes in a summoning chant. A rift of hellfire is already forming. If they complete the ritual, a greater demon will step through. You have to stop it now.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Disrupt the ritual by force",
+            "combat": "ember-cultist"
+          },
+          {
+            "next": 3,
+            "label": "Counter-chant to close the rift",
+            "check": {
+              "stat": "int",
+              "dc": 22
+            }
+          },
+          {
+            "next": 3,
+            "label": "Kill the lead pyromancer to break the circle",
+            "check": {
+              "stat": "dex",
+              "dc": 22
+            }
+          }
+        ]
+      },
+      {
+        "text": "The rift collapses. The remaining cultists flee. Commander Vesra meets you at the cave entrance with a squad of soldiers. 'You stopped a summoning? By the flame, we owe you more than coin.' She hands you a heavy pouch of gold and a commendation. 'Cinderport remembers its heroes.'",
+        "complete": true,
+        "rewards": {
+          "gold": 250,
+          "xp": 400,
+          "items": [
+            {
+              "slug": "demon-shard",
+              "qty": 4
+            },
+            {
+              "slug": "magma-core",
+              "qty": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "cinderport-defense",
+    "title": "The Burning Siege",
+    "location": "cinderport",
+    "minLevel": 24,
+    "rewards": {
+      "xp": 500,
+      "gold": 300
+    },
+    "description": "A demon army marches on Cinderport. The city must be defended.",
+    "stages": [
+      {
+        "text": "Alarm horns blare through Cinderport. Scout Pyrra crashes through the gates, armor melted and skin blistered. 'Army \u2014 from the Hold \u2014 pit fiends, infernal guards, hundreds \u2014 they'll be here by nightfall.' The city erupts into controlled chaos. Commander Vesra turns to you. 'We can't evacuate. We fight. I need you on the front line.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Help fortify the obsidian walls",
+            "check": {
+              "stat": "str",
+              "dc": 22
+            }
+          },
+          {
+            "next": 1,
+            "label": "Plan defensive positions",
+            "check": {
+              "stat": "int",
+              "dc": 21
+            }
+          },
+          {
+            "next": 1,
+            "label": "Rally the civilian militia",
+            "check": {
+              "stat": "cha",
+              "dc": 22
+            }
+          }
+        ]
+      },
+      {
+        "text": "The vanguard arrives \u2014 a pit fiend leading a column of infernal guards. They test the walls with fire and force. The outer gate holds, but barely. Vesra needs someone to lead a sortie to destroy their siege weapons before the main army arrives.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Lead the sortie",
+            "check": {
+              "stat": "con",
+              "dc": 22
+            }
+          },
+          {
+            "next": 2,
+            "label": "Sneak out and sabotage from behind",
+            "check": {
+              "stat": "dex",
+              "dc": 23
+            }
+          },
+          {
+            "next": 2,
+            "label": "Use the walls' defenses to destroy them from range",
+            "check": {
+              "stat": "int",
+              "dc": 22
+            }
+          }
+        ]
+      },
+      {
+        "text": "The siege weapons burn. But the demon army's champion steps forward \u2014 an infernal guard captain, wreathed in hellfire, demanding single combat. 'Send your strongest. One fight. Winner takes all.' The army pauses. Cinderport holds its breath.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Accept the challenge",
+            "combat": "infernal-guard"
+          },
+          {
+            "next": 3,
+            "label": "Refuse and order a full charge",
+            "check": {
+              "stat": "str",
+              "dc": 23
+            }
+          },
+          {
+            "next": 3,
+            "label": "Use the moment to set a trap",
+            "check": {
+              "stat": "int",
+              "dc": 23
+            }
+          }
+        ]
+      },
+      {
+        "text": "The demon army breaks. Without their champion and siege weapons, the lesser demons lose heart and scatter into the wastes. Cinderport stands. The cheering can be heard from the docks to the caldera rim. Vesra grips your arm. 'You saved every soul in this city. Whatever you need from Cinderport \u2014 it's yours.'",
+        "complete": true,
+        "rewards": {
+          "gold": 300,
+          "xp": 500,
+          "items": [
+            {
+              "slug": "infernal-essence",
+              "qty": 3
+            },
+            {
+              "slug": "demon-shard",
+              "qty": 5
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

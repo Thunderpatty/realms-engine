@@ -1,0 +1,91 @@
+[
+  {
+    "slug": "elemental-uprising",
+    "title": "The Elemental Uprising",
+    "location": "scorched-flats",
+    "minLevel": 21,
+    "rewards": {
+      "xp": 420,
+      "gold": 260
+    },
+    "description": "Fire elementals are becoming increasingly aggressive. Something is driving them mad.",
+    "stages": [
+      {
+        "text": "Geologist Marda meets you on the flats, her instruments smoking. 'The elementals have always been territorial, but this is different. They're organized. Attacking in waves. Something is coordinating them \u2014 something underground.' She shows you readings of a massive energy signature beneath the Scorched Flats. 'I need someone to investigate. The Magma Pits entrance is the only way down.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study the energy readings for a pattern",
+            "check": {
+              "stat": "int",
+              "dc": 21
+            }
+          },
+          {
+            "next": 1,
+            "label": "Track the elemental movements",
+            "check": {
+              "stat": "wis",
+              "dc": 20
+            }
+          },
+          {
+            "next": 1,
+            "label": "Head straight for the energy source",
+            "check": {
+              "stat": "con",
+              "dc": 20
+            }
+          }
+        ]
+      },
+      {
+        "text": "Beneath the flats, you find the source \u2014 a massive crystal of pure elemental fire, cracked and leaking energy. The crack is artificial \u2014 someone deliberately damaged it. Cultist tools lie nearby. The crystal is driving the elementals into a frenzy as it bleeds out.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Repair the crystal",
+            "check": {
+              "stat": "int",
+              "dc": 22
+            }
+          },
+          {
+            "next": 2,
+            "label": "Destroy it to stop the emanations",
+            "check": {
+              "stat": "str",
+              "dc": 22
+            }
+          },
+          {
+            "next": 2,
+            "label": "Siphon the energy safely",
+            "check": {
+              "stat": "wis",
+              "dc": 22
+            }
+          }
+        ]
+      },
+      {
+        "text": "The crystal stabilizes. The elemental frenzy subsides. Marda's instruments go quiet for the first time in weeks. 'You did it. The flats are safe again \u2014 well, as safe as a volcanic wasteland ever is.' She hands you materials recovered from the crystal chamber.",
+        "complete": true,
+        "rewards": {
+          "gold": 260,
+          "xp": 420,
+          "items": [
+            {
+              "slug": "magma-core",
+              "qty": 3
+            },
+            {
+              "slug": "volcanic-glass",
+              "qty": 4
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

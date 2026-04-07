@@ -1,0 +1,83 @@
+{
+  "crucible-gauntlets": {
+    "name": "Gauntlets of the Forge Warden",
+    "type": "gloves",
+    "rarity": "legendary",
+    "stats": { "str": 12, "con": 8, "dex": 5 },
+    "description": "Ripped from a Forge Warden's arms. They still glow faintly with furnace heat and tighten their grip automatically in combat.",
+    "passive": { "critBonus": 5 },
+    "cost": 0, "sell": 550
+  },
+  "ironbound-ring": {
+    "name": "Ironbound Ring",
+    "type": "ring",
+    "rarity": "legendary",
+    "stats": { "con": 10, "str": 8, "wis": 4 },
+    "description": "A band of starfall-infused iron that contracts slightly in danger, flooding the wearer with dwarven resilience.",
+    "passive": { "hpRegenPct": 4, "dodgeBonus": 3 },
+    "cost": 0, "sell": 550
+  },
+  "crucible-vestments": {
+    "name": "Forgemaster's Vestments",
+    "type": "body",
+    "rarity": "legendary",
+    "stats": { "con": 12, "int": 8, "wis": 6 },
+    "description": "Robes woven with threads of cooled starfall ore. They absorb heat and redirect it as protective energy.",
+    "passive": { "hpRegenPct": 5 },
+    "cost": 0, "sell": 550
+  },
+  "starfall-amulet": {
+    "name": "Amulet of the Starfall",
+    "type": "amulet",
+    "rarity": "legendary",
+    "stats": { "int": 12, "wis": 8, "cha": 5 },
+    "description": "A crystal of pure starfall ore set in dwarven mithril. It hums with alien intelligence and amplifies magical resonance.",
+    "passive": { "mpRegenPct": 6, "critBonus": 3 },
+    "cost": 0, "sell": 550
+  },
+  "slagstep-boots": {
+    "name": "Slagstep Boots",
+    "type": "boots",
+    "rarity": "legendary",
+    "stats": { "dex": 11, "con": 6, "str": 5 },
+    "description": "Boots forged from cooling slag. They leave faintly glowing footprints and grant impossible surefootedness on any surface.",
+    "passive": { "dodgeBonus": 4 },
+    "cost": 0, "sell": 550
+  },
+  "sentinel-shield": {
+    "name": "Sentinel's Starfall Shield",
+    "type": "shield",
+    "rarity": "mythic",
+    "stats": { "con": 16, "str": 10, "wis": 6 },
+    "description": "The shield of the Starfall Sentinel. It thinks. It reacts. It moves to block attacks before the wielder even sees them coming.",
+    "passive": { "hpRegenPct": 7, "dodgeBonus": 5 },
+    "cost": 0, "sell": 900
+  },
+  "crucible-helm": {
+    "name": "Helm of the Living Forge",
+    "type": "helmet",
+    "rarity": "mythic",
+    "stats": { "con": 14, "int": 10, "wis": 8 },
+    "description": "A crown of cooled starfall ore that whispers tactical information directly into the wearer's mind. Disturbing but effective.",
+    "passive": { "mpRegenPct": 8, "critBonus": 5 },
+    "cost": 0, "sell": 900
+  },
+  "heartforge-blade": {
+    "name": "Heartforge Blade",
+    "type": "weapon",
+    "rarity": "mythic",
+    "stats": { "str": 16, "dex": 8, "con": 8 },
+    "description": "A sword forged by the Crucible Heart itself — the only weapon it ever made intentionally. It burns with inner fire and grows sharper with each strike.",
+    "passive": { "lifestealPct": 8, "critBonus": 6, "onHitStatus": { "slug": "burn", "chance": 20, "turns": 3 } },
+    "cost": 0, "sell": 900
+  },
+  "starcrown-helm": {
+    "name": "Crown of the Unborn",
+    "type": "helmet",
+    "rarity": "mythic",
+    "stats": { "int": 16, "wis": 12, "cha": 6 },
+    "description": "A circlet of crystallized starfall energy torn from The Unborn's brow. It grants alien clarity — the ability to see the structure of everything, down to the molecular level.",
+    "passive": { "mpRegenPct": 10, "critBonus": 7 },
+    "cost": 0, "sell": 900
+  }
+}

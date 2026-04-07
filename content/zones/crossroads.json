@@ -1,0 +1,482 @@
+{
+  "location": {
+    "slug": "crossroads",
+    "name": "The Crossroads",
+    "type": "wild",
+    "description": "Where four paths meet under a hanging tree. Merchants, mercenaries, and monsters all pass through.",
+    "connections": [
+      "kings-road",
+      "shadowfen",
+      "sunspire"
+    ],
+    "mapX": 58,
+    "mapY": 45,
+    "realm": "ashlands"
+  },
+  "enemies": [
+    {
+      "slug": "dire-rat-swarm",
+      "hp": 254,
+      "xp": 30,
+      "gold": 13,
+      "name": "Dire Rat Swarm",
+      "drops": [
+        "rat-tail",
+        "leather-vest",
+        "iron-skullcap",
+        "glass-bead-necklace"
+      ],
+      "level": 2,
+      "attack": 9,
+      "defense": 3,
+      "abilities": [
+        "poison-bite"
+      ]
+    },
+    {
+      "slug": "mercenary",
+      "hp": 280,
+      "xp": 63,
+      "gold": 30,
+      "name": "Rogue Mercenary",
+      "drops": [
+        "iron-ring",
+        "silver-focus-ring",
+        "yew-longbow",
+        "pilgrim-hood",
+        "whisperknife"
+      ],
+      "level": 3,
+      "attack": 13,
+      "defense": 5,
+      "abilities": [
+        "rending-claws"
+      ]
+    },
+    {
+      "slug": "masked-cutpurse",
+      "name": "Masked Cutpurse",
+      "hp": 293,
+      "attack": 12,
+      "defense": 4,
+      "xp": 62,
+      "gold": 27,
+      "level": 3,
+      "abilities": [
+        "poison-bite"
+      ],
+      "drops": [
+        "bandit-cloak",
+        "cutpurse-signet",
+        "thief-stiletto",
+        "shadow-cord",
+        "gloomweave"
+      ]
+    },
+    {
+      "slug": "pilgrim-revenant",
+      "name": "Pilgrim Revenant",
+      "hp": 366,
+      "attack": 13,
+      "defense": 7,
+      "xp": 116,
+      "gold": 46,
+      "level": 4,
+      "abilities": [
+        "dark-curse"
+      ],
+      "drops": [
+        "wisp-lantern",
+        "mystic-robe",
+        "prayer-beads",
+        "pilgrim-medallion",
+        "survival-kit"
+      ]
+    },
+    {
+      "slug": "feral-hound",
+      "name": "Feral Hound",
+      "level": 2,
+      "hp": 222,
+      "attack": 10,
+      "defense": 4,
+      "xp": 29,
+      "gold": 12,
+      "abilities": [
+        "rending-claws"
+      ],
+      "drops": [
+        "leather-boots",
+        "hide-bracers"
+      ]
+    },
+    {
+      "slug": "vagrant-wizard",
+      "name": "Vagrant Wizard",
+      "level": 3,
+      "hp": 272,
+      "attack": 12,
+      "defense": 5,
+      "xp": 64,
+      "gold": 25,
+      "abilities": [
+        "fire-breath",
+        "dark-curse"
+      ],
+      "drops": [
+        "cloth-circlet",
+        "focus-shard",
+        "glass-bead-necklace"
+      ],
+      "telegraphs": [
+        "fire-breath"
+      ]
+    },
+    {
+      "slug": "drifter-thug",
+      "name": "Drifter Thug",
+      "level": 3,
+      "hp": 292,
+      "attack": 13,
+      "defense": 5,
+      "xp": 72,
+      "gold": 31,
+      "abilities": [
+        "stunning-slam"
+      ],
+      "drops": [
+        "iron-knuckles",
+        "scout-bandana",
+        "tin-locket"
+      ]
+    },
+    {
+      "slug": "plague-crow",
+      "name": "Plague Crow",
+      "level": 2,
+      "hp": 210,
+      "attack": 10,
+      "defense": 4,
+      "xp": 32,
+      "gold": 13,
+      "abilities": [
+        "poison-bite",
+        "dark-curse"
+      ],
+      "drops": [
+        "feather-cord",
+        "wool-hood"
+      ]
+    }
+  ],
+  "locationThreat": 5,
+  "events": [
+    {
+      "slug": "fortune-teller",
+      "name": "Wandering Seer",
+      "type": "npc",
+      "rarity": "uncommon",
+      "icon": "\ud83d\udd2e",
+      "text": "A hooded figure sits at the crossroads, cards spread on a tattered cloth. \"Your fate hangs in the balance, traveler. Shall I read it?\"",
+      "choices": [
+        {
+          "label": "Accept the reading",
+          "check": {
+            "stat": "cha",
+            "dc": 10
+          },
+          "success": {
+            "text": "The cards glow faintly. \"Fortune smiles on you today.\" You feel a surge of vitality.",
+            "rewards": {
+              "healPct": 25,
+              "manaPct": 50,
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The seer frowns. \"Dark clouds gather...\" A chill runs through you but nothing happens.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        },
+        {
+          "label": "Challenge the seer's magic with your intellect",
+          "check": {
+            "stat": "int",
+            "dc": 14
+          },
+          "success": {
+            "text": "You identify the arcane symbols on the cards. Impressed, the seer shares a secret technique.",
+            "rewards": {
+              "xp": 40
+            }
+          },
+          "failure": {
+            "text": "The symbols defy your analysis. \"Not everything is understood through study, child.\"",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        },
+        {
+          "label": "Walk away",
+          "auto": true,
+          "success": {
+            "text": "\"We all meet our fate eventually,\" the seer calls after you.",
+            "rewards": {
+              "xp": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "broken-wagon",
+      "name": "Abandoned Wagon",
+      "type": "discovery",
+      "rarity": "common",
+      "icon": "\ud83d\uded2",
+      "text": "An overturned wagon lies in a ditch, its contents scattered. Claw marks score the wood \u2014 something attacked the driver.",
+      "choices": [
+        {
+          "label": "Salvage what you can from the wreckage",
+          "check": {
+            "stat": "str",
+            "dc": 9
+          },
+          "success": {
+            "text": "You right some crates and find intact supplies among the debris.",
+            "rewards": {
+              "gold": 20,
+              "items": [
+                {
+                  "slug": "linen-cloth",
+                  "qty": 2
+                }
+              ],
+              "xp": 15
+            }
+          },
+          "failure": {
+            "text": "The wreckage shifts and pins your hand briefly. You pull free with just a bruise.",
+            "rewards": {
+              "xp": 5,
+              "damage": 8
+            }
+          }
+        },
+        {
+          "label": "Track what attacked the wagon",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "text": "The tracks lead to a creature's stash \u2014 gold and materials piled in a hollow tree.",
+            "rewards": {
+              "gold": 30,
+              "items": [
+                {
+                  "slug": "boar-tusk",
+                  "qty": 2
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The tracks circle back confusingly. Whatever did this is long gone.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "traveling-monk",
+      "name": "Pilgrim Monk",
+      "type": "npc",
+      "rarity": "common",
+      "icon": "\ud83d\ude4f",
+      "text": "A barefoot monk walks the crossroads, chanting softly. He pauses and bows. \"May I share a blessing, friend?\"",
+      "choices": [
+        {
+          "label": "Accept his blessing",
+          "check": {
+            "stat": "wis",
+            "dc": 8
+          },
+          "success": {
+            "text": "Warmth flows through you as the monk traces a symbol in the air. Your wounds ease.",
+            "rewards": {
+              "healPct": 35,
+              "xp": 15
+            }
+          },
+          "failure": {
+            "text": "The monk blesses you, but you feel nothing different. \"Faith takes time,\" he says gently.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Ask him about the roads ahead",
+          "check": {
+            "stat": "cha",
+            "dc": 10
+          },
+          "success": {
+            "text": "He describes hidden paths and dangers. The knowledge will serve you well.",
+            "rewards": {
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "\"I am but a simple pilgrim. The roads reveal themselves to those who walk them.\"",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cr-fortune-teller",
+      "rarity": "uncommon",
+      "name": "Fortune Teller",
+      "icon": "\ud83d\udd2e",
+      "description": "A hooded figure sits at a small table with a crystal ball, beckoning travelers.",
+      "choices": [
+        {
+          "text": "Have your fortune read (INT DC 12)",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "xp": 25,
+            "mana": 10,
+            "text": "The visions are real \u2014 you glimpse fragments of arcane knowledge."
+          },
+          "failure": {
+            "text": "The crystal clouds over. \"Your future is... unclear.\" Helpful."
+          }
+        },
+        {
+          "text": "Tip them 5 gold",
+          "success": {
+            "gold": -5,
+            "xp": 10,
+            "text": "\"Generous soul. Fortune smiles on the kind.\" You feel lucky."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cr-abandoned-campfire",
+      "rarity": "common",
+      "name": "Abandoned Campfire",
+      "icon": "\ud83d\udd25",
+      "description": "A still-warm campfire with scattered belongings. Someone left in a hurry.",
+      "choices": [
+        {
+          "text": "Search the camp (WIS DC 10)",
+          "check": {
+            "stat": "wis",
+            "dc": 10
+          },
+          "success": {
+            "gold": 18,
+            "text": "You find a coin purse under a bedroll!"
+          },
+          "failure": {
+            "text": "Nothing of value. Just cold rations."
+          }
+        },
+        {
+          "text": "Rest by the fire",
+          "success": {
+            "heal": 20,
+            "text": "The warmth is welcome. You rest briefly and recover."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cr-dueling-ghosts",
+      "rarity": "rare",
+      "name": "Dueling Ghosts",
+      "icon": "\ud83d\udc7b",
+      "description": "Two spectral warriors clash endlessly at the crossroads, replaying an ancient battle.",
+      "choices": [
+        {
+          "text": "Study their techniques (INT DC 13)",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "xp": 35,
+            "text": "Their forms reveal masterful combat techniques. You commit them to memory."
+          },
+          "failure": {
+            "damage": 10,
+            "text": "You stare too long \u2014 spectral energy lashes at you!"
+          }
+        },
+        {
+          "text": "Offer a prayer for the dead (WIS DC 11)",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "xp": 20,
+            "heal": 10,
+            "text": "The ghosts pause, acknowledge you, and fade. Peace fills the air."
+          },
+          "failure": {
+            "text": "They continue fighting, oblivious to your words."
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "rat-swarm",
+      "name": "Rat Infestation",
+      "composition": [
+        {
+          "enemySlug": "dire-rat-swarm",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 15
+    },
+    {
+      "slug": "thug-band",
+      "name": "Thug Band",
+      "composition": [
+        {
+          "enemySlug": "drifter-thug",
+          "count": 2
+        },
+        {
+          "enemySlug": "masked-cutpurse",
+          "count": [
+            0,
+            1
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

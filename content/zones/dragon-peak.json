@@ -1,0 +1,572 @@
+{
+  "location": {
+    "slug": "dragon-peak",
+    "name": "Dragon Peak",
+    "type": "dungeon",
+    "description": "The volcanic summit where the ancient wyrm Ignavoth makes its lair. Only the bravest dare climb.",
+    "connections": [
+      "sunspire"
+    ],
+    "mapX": 90,
+    "mapY": 68,
+    "realm": "ashlands"
+  },
+  "enemies": [
+    {
+      "slug": "drake-whelp",
+      "name": "Drake Whelp",
+      "hp": 517,
+      "attack": 19,
+      "defense": 8,
+      "xp": 234,
+      "gold": 102,
+      "level": 6,
+      "abilities": [
+        "fire-breath"
+      ],
+      "drops": [
+        "drake-scale",
+        "drakescript-codex",
+        "hawksight-talisman",
+        "swifttrack-boots",
+        "bowmaster-grips",
+        "gambler-coin",
+        "eagle-helm",
+        "saints-circle",
+        "miracle-splinter",
+        "godtouched-crozier",
+        "shroud-of-knives",
+        "miracle-vestments"
+      ]
+    },
+    {
+      "slug": "flame-knight",
+      "name": "Flame Knight",
+      "hp": 591,
+      "attack": 22,
+      "defense": 11,
+      "xp": 255,
+      "gold": 122,
+      "level": 7,
+      "abilities": [
+        "fire-breath"
+      ],
+      "drops": [
+        "holy-shard",
+        "cinder-circlet",
+        "lioncrest-plate",
+        "windstrider-boots",
+        "saintly-grasp",
+        "storm-torc",
+        "voidloop",
+        "blood-idol",
+        "staff-of-eternity",
+        "grimoire-of-stars",
+        "leyweave-vestments"
+      ]
+    },
+    {
+      "slug": "ignavoth",
+      "name": "Ignavoth the Ancient",
+      "hp": 1441,
+      "attack": 35,
+      "defense": 16,
+      "xp": 1419,
+      "gold": 608,
+      "level": 10,
+      "boss": true,
+      "abilities": [
+        "fire-breath",
+        "war-cry",
+        "stunning-slam",
+        "dark-curse"
+      ],
+      "drops": [
+        "dragon-heart",
+        "dragon-soul-orb",
+        "colossus-greatblade",
+        "halo-seal",
+        "warlord-warhelm",
+        "seraph-halo",
+        "hurricane-hood",
+        "titan-gauntlets",
+        "hallowed-hands",
+        "galeforce-grips",
+        "godstomper-boots",
+        "heavenstrider-greaves",
+        "stormstrider-boots",
+        "dragonbone-gorget",
+        "divine-crown-pendant",
+        "tempest-amulet"
+      ],
+      "mythicDrop": "ignavoths-fang",
+      "mythicDropChance": 1,
+      "telegraphs": [
+        "fire-breath",
+        "death-strike",
+        "rallying-howl"
+      ],
+      "enrageTelegraphs": [
+        "death-strike",
+        "fire-breath",
+        "crushing-blow"
+      ],
+      "enrageThreshold": 0.3
+    },
+    {
+      "slug": "ash-drake",
+      "name": "Ash Drake",
+      "hp": 502,
+      "attack": 22,
+      "defense": 10,
+      "xp": 269,
+      "gold": 136,
+      "level": 7,
+      "abilities": [
+        "fire-breath",
+        "rending-claws"
+      ],
+      "drops": [
+        "drake-scale",
+        "drakescript-codex",
+        "moonshot-bow",
+        "arcanist-foci-gloves",
+        "predator-grips",
+        "void-pendant",
+        "shadow-sovereign",
+        "fate-die",
+        "eclipse-daggers",
+        "quiver-of-whispers",
+        "abyssal-leathers"
+      ]
+    },
+    {
+      "slug": "cinder-cultist",
+      "name": "Cinder Cultist",
+      "hp": 532,
+      "attack": 19,
+      "defense": 9,
+      "xp": 198,
+      "gold": 90,
+      "level": 6,
+      "abilities": [
+        "fire-breath",
+        "weakening-hex"
+      ],
+      "drops": [
+        "flame-visor",
+        "cinder-circlet",
+        "starfire-staff",
+        "gospel-codex",
+        "halo-seal",
+        "runic-cowl",
+        "eagle-torc",
+        "sacred-treads",
+        "stormcaller-feather",
+        "stormbow",
+        "sacred-codex",
+        "horizon-cloak"
+      ]
+    },
+    {
+      "slug": "fire-giant",
+      "name": "Fire Giant",
+      "level": 7,
+      "hp": 591,
+      "attack": 21,
+      "defense": 11,
+      "xp": 287,
+      "gold": 109,
+      "abilities": [
+        "fire-breath",
+        "stunning-slam",
+        "war-cry"
+      ],
+      "drops": [
+        "doomhelm",
+        "crushers-of-doom",
+        "warbreaker-stompers"
+      ]
+    },
+    {
+      "slug": "wyrm-cultist",
+      "name": "Wyrm Cultist",
+      "level": 6,
+      "hp": 485,
+      "attack": 19,
+      "defense": 9,
+      "xp": 198,
+      "gold": 105,
+      "abilities": [
+        "fire-breath",
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "drops": [
+        "mindfire-crown",
+        "arcanist-foci-gloves",
+        "spellthread-sandals"
+      ]
+    },
+    {
+      "slug": "magma-serpent",
+      "name": "Magma Serpent",
+      "level": 7,
+      "hp": 478,
+      "attack": 19,
+      "defense": 11,
+      "xp": 283,
+      "gold": 115,
+      "abilities": [
+        "fire-breath",
+        "poison-bite",
+        "rending-claws"
+      ],
+      "drops": [
+        "nightwalker-mask",
+        "nightfall-wraps",
+        "wraithstep-boots"
+      ]
+    },
+    {
+      "slug": "obsidian-knight",
+      "name": "Obsidian Knight",
+      "level": 8,
+      "hp": 533,
+      "attack": 24,
+      "defense": 11,
+      "xp": 346,
+      "gold": 157,
+      "abilities": [
+        "harden",
+        "war-cry",
+        "rending-claws",
+        "stunning-slam"
+      ],
+      "drops": [
+        "divine-mitre",
+        "saintly-grasp",
+        "sacred-treads"
+      ]
+    },
+    {
+      "slug": "ember-phoenix",
+      "name": "Ember Phoenix",
+      "level": 7,
+      "hp": 521,
+      "attack": 21,
+      "defense": 11,
+      "xp": 297,
+      "gold": 114,
+      "abilities": [
+        "fire-breath",
+        "regen-aura"
+      ],
+      "drops": [
+        "eagle-helm",
+        "predator-grips",
+        "windstrider-boots"
+      ]
+    }
+  ],
+  "dungeonConfig": {
+    "boss": "ignavoth",
+    "name": "Dragon's Lair",
+    "maxRooms": 7,
+    "minRooms": 5,
+    "mechanic": {
+      "slug": "scorching-heat",
+      "name": "Scorching Heat",
+      "description": "Volcanic heat saps your strength. You take 1% max HP per combat turn.",
+      "effect": {
+        "combatDotPct": 1
+      }
+    }
+  },
+  "locationThreat": 10,
+  "events": [
+    {
+      "slug": "volcanic-vent",
+      "name": "Volcanic Vent",
+      "type": "environmental",
+      "rarity": "common",
+      "icon": "\ud83c\udf0b",
+      "text": "Steam and sulfurous gas hiss from a crack in the mountainside. The heat is intense, but you notice something glinting in the vent.",
+      "choices": [
+        {
+          "label": "Reach into the vent carefully",
+          "check": {
+            "stat": "dex",
+            "dc": 14
+          },
+          "success": {
+            "text": "You snatch a chunk of crystallized fire mineral from the vent before the heat becomes unbearable.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "iron-ore",
+                  "qty": 3
+                }
+              ],
+              "gold": 30,
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "The vent erupts as you reach in! Burns sear your arm.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Study the vent from a safe distance",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "text": "You identify the mineral deposits and note their position. The geological knowledge is valuable.",
+            "rewards": {
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "A sudden gust of superheated air singes your eyebrows. Nature is not to be trifled with.",
+            "rewards": {
+              "xp": 12
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "dragon-scale-find",
+      "name": "Shed Dragon Scale",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "icon": "\ud83d\udc09",
+      "text": "A massive scale, shed from a dragon, lies wedged between rocks. It shimmers with residual draconic energy.",
+      "choices": [
+        {
+          "label": "Pry the scale free",
+          "check": {
+            "stat": "str",
+            "dc": 13
+          },
+          "success": {
+            "text": "With tremendous effort you wrench the scale loose. It's heavier than expected but incredibly valuable.",
+            "rewards": {
+              "gold": 50,
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "The scale won't budge. You strain until your muscles burn, then give up.",
+            "rewards": {
+              "xp": 12
+            }
+          }
+        },
+        {
+          "label": "Examine the scale for arcane properties",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "text": "The scale pulses with residual fire magic. Studying it teaches you about draconic enchantments.",
+            "rewards": {
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "The magic is too alien for you to decipher. Beautiful but incomprehensible.",
+            "rewards": {
+              "xp": 12
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "ancient-dragon-lore",
+      "name": "Dragon Lore Tablet",
+      "type": "discovery",
+      "rarity": "rare",
+      "icon": "\ud83d\udcd6",
+      "text": "A stone tablet carved in draconic script stands at the mountain's highest reachable point. The wind howls around it, carrying whispers of power.",
+      "choices": [
+        {
+          "label": "Decipher the draconic script",
+          "check": {
+            "stat": "int",
+            "dc": 15
+          },
+          "success": {
+            "text": "The tablet reveals secrets of dragon magic. Ancient power surges through your veins as understanding dawns.",
+            "rewards": {
+              "xp": 60,
+              "manaPct": 100
+            }
+          },
+          "failure": {
+            "text": "The script is beyond your current knowledge. Perhaps with more experience...",
+            "rewards": {
+              "xp": 15
+            }
+          }
+        },
+        {
+          "label": "Meditate before the tablet",
+          "check": {
+            "stat": "wis",
+            "dc": 14
+          },
+          "success": {
+            "text": "In deep meditation, the tablet's meaning washes over you. Full restoration and clarity of purpose.",
+            "rewards": {
+              "healPct": 100,
+              "manaPct": 100,
+              "xp": 50
+            }
+          },
+          "failure": {
+            "text": "The wind disrupts your focus. You gather yourself and move on, humbled.",
+            "rewards": {
+              "xp": 15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "dp-volcanic-hot-spring",
+      "rarity": "common",
+      "name": "Volcanic Hot Spring",
+      "icon": "\u2668",
+      "description": "A steaming pool of mineral water sits in a sheltered alcove.",
+      "choices": [
+        {
+          "text": "Bathe in the spring",
+          "success": {
+            "heal": 25,
+            "text": "The volcanic minerals soothe your wounds. You feel rejuvenated."
+          }
+        },
+        {
+          "text": "Search the mineral deposits (INT DC 12)",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "gold": 20,
+            "xp": 10,
+            "text": "You find rare mineral samples valuable to alchemists."
+          },
+          "failure": {
+            "text": "Just sulfur and steam. Your eyes water."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "dp-dragon-egg",
+      "rarity": "rare",
+      "name": "Dragon Egg?",
+      "icon": "\ud83e\udd5a",
+      "description": "A large, warm egg sits in a nest of volcanic rock. Is it... alive?",
+      "choices": [
+        {
+          "text": "Touch the egg carefully (WIS DC 14)",
+          "check": {
+            "stat": "wis",
+            "dc": 14
+          },
+          "success": {
+            "xp": 40,
+            "text": "The egg pulses warmly. A mental image: gratitude. Ancient dragon magic flows through you briefly."
+          },
+          "failure": {
+            "damage": 20,
+            "text": "The egg flares with protective magic \u2014 searing heat blasts you!"
+          }
+        },
+        {
+          "text": "Leave it alone",
+          "success": {
+            "text": "Some things are better left undisturbed. Especially when they might have a mother."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "dp-ancient-hoard",
+      "rarity": "rare",
+      "name": "Ancient Hoard",
+      "icon": "\ud83d\udcb0",
+      "description": "A small side cave glitters with scattered coins and jewels \u2014 remnants of a dragon's hoard.",
+      "choices": [
+        {
+          "text": "Grab what you can (DEX DC 13)",
+          "check": {
+            "stat": "dex",
+            "dc": 13
+          },
+          "success": {
+            "gold": 45,
+            "text": "You fill your pockets with ancient gold before the cave rumbles."
+          },
+          "failure": {
+            "damage": 15,
+            "text": "The cave rumbles \u2014 rocks fall as you flee with only a few coins. (-5 gold)"
+          }
+        },
+        {
+          "text": "Take only a single coin (respect)",
+          "success": {
+            "gold": 5,
+            "xp": 20,
+            "text": "A single coin. But you sense... approval. The mountain seems friendlier."
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "dragon-peak-group-1",
+      "name": "Obsidian Knight Cell Block",
+      "composition": [
+        {
+          "enemySlug": "obsidian-knight",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "dragon-peak-group-2",
+      "name": "Fire Giant & Drake Whelp",
+      "composition": [
+        {
+          "enemySlug": "fire-giant",
+          "count": 1
+        },
+        {
+          "enemySlug": "drake-whelp",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

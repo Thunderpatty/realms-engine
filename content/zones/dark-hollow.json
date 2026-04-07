@@ -1,0 +1,546 @@
+{
+  "location": {
+    "slug": "dark-hollow",
+    "name": "Dark Hollow",
+    "type": "dungeon",
+    "description": "A cave system carved by ancient rivers. Goblins have fortified the entrance with crude palisades.",
+    "connections": [
+      "whispering-woods"
+    ],
+    "mapX": 28,
+    "mapY": 10,
+    "realm": "ashlands"
+  },
+  "enemies": [
+    {
+      "slug": "cave-troll",
+      "hp": 345,
+      "xp": 116,
+      "gold": 51,
+      "name": "Cave Troll",
+      "drops": [
+        "troll-hide",
+        "chainmail",
+        "signet-of-valor",
+        "softpad-boots"
+      ],
+      "level": 4,
+      "attack": 12,
+      "defense": 7,
+      "abilities": [
+        "rending-claws",
+        "stunning-slam"
+      ]
+    },
+    {
+      "slug": "goblin-grunt",
+      "hp": 166,
+      "xp": 16,
+      "gold": 5,
+      "name": "Goblin Grunt",
+      "drops": [
+        "goblin-ear",
+        "ashwood-bow",
+        "focus-shard",
+        "marching-boots"
+      ],
+      "level": 1,
+      "attack": 7,
+      "defense": 3,
+      "abilities": [
+        "poison-bite"
+      ]
+    },
+    {
+      "slug": "goblin-shaman",
+      "hp": 238,
+      "xp": 33,
+      "gold": 12,
+      "name": "Goblin Shaman",
+      "drops": [
+        "shaman-staff-shard",
+        "runed-oak-staff",
+        "scripture",
+        "bone-pendant"
+      ],
+      "level": 2,
+      "attack": 9,
+      "defense": 4,
+      "abilities": [
+        "weakening-hex"
+      ]
+    },
+    {
+      "slug": "goblin-skirmisher",
+      "hp": 237,
+      "xp": 34,
+      "gold": 13,
+      "name": "Goblin Skirmisher",
+      "drops": [
+        "goblin-ear",
+        "trail-leathers",
+        "cloth-circlet",
+        "wooden-holy-symbol"
+      ],
+      "level": 2,
+      "attack": 10,
+      "defense": 3,
+      "abilities": [
+        "rending-claws"
+      ]
+    },
+    {
+      "slug": "hobgoblin-bruiser",
+      "hp": 280,
+      "xp": 62,
+      "gold": 27,
+      "name": "Hobgoblin Bruiser",
+      "drops": [
+        "leather-scraps",
+        "militia-blade",
+        "iron-knuckles",
+        "tracker-hat",
+        "assassin-kit"
+      ],
+      "level": 3,
+      "attack": 12,
+      "defense": 5,
+      "abilities": [
+        "stunning-slam",
+        "war-cry"
+      ]
+    },
+    {
+      "slug": "goblin-warlord",
+      "name": "Goblin Warlord",
+      "hp": 991,
+      "attack": 18,
+      "defense": 7,
+      "xp": 325,
+      "gold": 109,
+      "level": 4,
+      "boss": true,
+      "abilities": [
+        "war-cry",
+        "stunning-slam"
+      ],
+      "drops": [
+        "war-axe",
+        "iron-shield",
+        "battlemage-rod",
+        "rune-grimoire",
+        "vanguard-mail",
+        "scout-mantle",
+        "ironmarch-boots",
+        "iron-vice-gauntlets",
+        "warlord-pendant"
+      ],
+      "mythicDrop": "warchiefs-cleaver",
+      "mythicDropChance": 3,
+      "telegraphs": [
+        "crushing-blow",
+        "rallying-howl",
+        "summon-minions"
+      ],
+      "enrageTelegraphs": [
+        "death-strike"
+      ],
+      "enrageThreshold": 0.3
+    },
+    {
+      "slug": "fungal-creeper",
+      "name": "Fungal Creeper",
+      "level": 2,
+      "hp": 223,
+      "attack": 9,
+      "defense": 4,
+      "xp": 30,
+      "gold": 13,
+      "abilities": [
+        "poison-bite",
+        "weakening-hex"
+      ],
+      "drops": [
+        "wool-mittens",
+        "cloth-sandals"
+      ]
+    },
+    {
+      "slug": "cave-bat-swarm",
+      "name": "Cave Bat Swarm",
+      "level": 1,
+      "hp": 156,
+      "attack": 8,
+      "defense": 2,
+      "xp": 16,
+      "gold": 6,
+      "abilities": [],
+      "drops": [
+        "leather-gloves",
+        "leather-boots"
+      ]
+    },
+    {
+      "slug": "goblin-alchemist",
+      "name": "Goblin Alchemist",
+      "level": 3,
+      "hp": 269,
+      "attack": 11,
+      "defense": 5,
+      "xp": 62,
+      "gold": 26,
+      "abilities": [
+        "fire-breath",
+        "poison-bite"
+      ],
+      "drops": [
+        "focus-shard",
+        "linen-wraps",
+        "glass-bead-necklace"
+      ]
+    },
+    {
+      "slug": "rock-lurker",
+      "name": "Rock Lurker",
+      "level": 3,
+      "hp": 332,
+      "attack": 12,
+      "defense": 4,
+      "xp": 69,
+      "gold": 31,
+      "abilities": [
+        "harden",
+        "stunning-slam"
+      ],
+      "drops": [
+        "iron-skullcap",
+        "iron-tooth",
+        "tin-locket"
+      ]
+    }
+  ],
+  "dungeonConfig": {
+    "boss": "goblin-warlord",
+    "name": "Dark Hollow Caverns",
+    "maxRooms": 4,
+    "minRooms": 3,
+    "mechanic": {
+      "slug": "darkness",
+      "name": "Darkness",
+      "description": "The caverns are pitch black. Your accuracy is reduced by 15%.",
+      "effect": {
+        "playerAccuracyPenalty": 15
+      }
+    }
+  },
+  "locationThreat": 3,
+  "events": [
+    {
+      "slug": "goblin-trader",
+      "name": "Goblin Merchant",
+      "type": "merchant",
+      "rarity": "uncommon",
+      "icon": "\ud83d\udc7a",
+      "text": "A goblin sits behind a makeshift stall of bones and rope, wares spread on a filthy blanket. \"Trade? Trade! Good stuff, shiny stuff!\" it chatters.",
+      "choices": [
+        {
+          "label": "Barter with the goblin",
+          "check": {
+            "stat": "cha",
+            "dc": 11
+          },
+          "success": {
+            "text": "After animated haggling, you trade stories for supplies. The goblin seems delighted.",
+            "rewards": {
+              "gold": 20,
+              "items": [
+                {
+                  "slug": "goblin-ear",
+                  "qty": 2
+                },
+                {
+                  "slug": "health-potion",
+                  "qty": 1
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The goblin decides you're boring and packs up in a huff. \"No deal! Bad trader!\"",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Intimidate it into giving you its wares",
+          "check": {
+            "stat": "str",
+            "dc": 12
+          },
+          "success": {
+            "text": "The goblin squeaks in terror and shoves a pouch of gold at you before fleeing.",
+            "rewards": {
+              "gold": 35,
+              "xp": 15
+            }
+          },
+          "failure": {
+            "text": "The goblin whistles sharply and you hear rumbling deeper in the cave. Time to leave.",
+            "rewards": {
+              "xp": 5,
+              "damage": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cave-inscription",
+      "name": "Ancient Inscription",
+      "type": "discovery",
+      "rarity": "common",
+      "icon": "\ud83d\udcdc",
+      "text": "Strange runes are carved deep into the cave wall, glowing faintly with residual magic. They seem to be instructions or warnings.",
+      "choices": [
+        {
+          "label": "Decipher the runes",
+          "check": {
+            "stat": "int",
+            "dc": 11
+          },
+          "success": {
+            "text": "The runes describe an ancient ward. Understanding them fills your mind with arcane insight.",
+            "rewards": {
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "The symbols blur together. You copy a few for later study, but learn nothing now.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        },
+        {
+          "label": "Touch the glowing runes",
+          "check": {
+            "stat": "con",
+            "dc": 10
+          },
+          "success": {
+            "text": "Energy crackles through you \u2014 painful but invigorating. You feel tougher.",
+            "rewards": {
+              "healPct": 20,
+              "xp": 15
+            }
+          },
+          "failure": {
+            "text": "A jolt of energy throws you backward. Your hand tingles painfully.",
+            "rewards": {
+              "xp": 5,
+              "damage": 12
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cave-in",
+      "name": "Unstable Passage",
+      "type": "environmental",
+      "rarity": "common",
+      "icon": "\ud83e\udea8",
+      "text": "The tunnel narrows ahead and small rocks trickle from the ceiling. It could collapse at any moment, but there may be something beyond.",
+      "choices": [
+        {
+          "label": "Sprint through before it collapses",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "You dash through as rocks crash behind you! Beyond, you find a small cache of ore.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "iron-ore",
+                  "qty": 3
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "Rocks clip your shoulder as you barely make it through. Painful, but you survived.",
+            "rewards": {
+              "xp": 10,
+              "damage": 15
+            }
+          }
+        },
+        {
+          "label": "Shore up the ceiling carefully",
+          "check": {
+            "stat": "str",
+            "dc": 12
+          },
+          "success": {
+            "text": "Using loose timbers, you brace the passage and explore safely. Bone dust lines the far chamber.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "bone-dust",
+                  "qty": 2
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The timber snaps and debris rains down. You retreat just in time.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "dh-glowing-fungi",
+      "rarity": "common",
+      "name": "Luminous Fungi",
+      "icon": "\ud83c\udf44",
+      "description": "Clusters of bioluminescent mushrooms light a side passage.",
+      "choices": [
+        {
+          "text": "Harvest them (INT DC 10)",
+          "check": {
+            "stat": "int",
+            "dc": 10
+          },
+          "success": {
+            "gold": 12,
+            "xp": 10,
+            "text": "The fungi have alchemical value. You carefully collect samples."
+          },
+          "failure": {
+            "damage": 5,
+            "text": "Spores burst in your face! You cough violently."
+          }
+        },
+        {
+          "text": "Follow the lit passage",
+          "success": {
+            "xp": 15,
+            "text": "It leads to ancient goblin carvings. You decipher fragments of their history."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "dh-underground-stream",
+      "rarity": "common",
+      "name": "Underground Stream",
+      "icon": "\ud83d\udca7",
+      "description": "A crystal-clear stream flows through the cavern. The water looks pure.",
+      "choices": [
+        {
+          "text": "Drink deeply",
+          "success": {
+            "heal": 15,
+            "mana": 10,
+            "text": "The water is refreshing and cold. You feel restored."
+          }
+        },
+        {
+          "text": "Search the streambed (WIS DC 11)",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "gold": 18,
+            "text": "Smooth coins glitter among the pebbles. Ancient offerings."
+          },
+          "failure": {
+            "text": "Just rocks and mud."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "dh-trapped-chest",
+      "rarity": "uncommon",
+      "name": "Trapped Chest",
+      "icon": "\ud83e\udea4",
+      "description": "A wooden chest sits suspiciously in the open, surrounded by scratches on the floor.",
+      "choices": [
+        {
+          "text": "Disarm the trap (DEX DC 13)",
+          "check": {
+            "stat": "dex",
+            "dc": 13
+          },
+          "success": {
+            "gold": 30,
+            "text": "Click! The needle trap retracts. Inside: gold and a gemstone."
+          },
+          "failure": {
+            "damage": 15,
+            "text": "A poison needle stabs your finger! The chest was a decoy."
+          }
+        },
+        {
+          "text": "Trigger it from a distance (INT DC 11)",
+          "check": {
+            "stat": "int",
+            "dc": 11
+          },
+          "success": {
+            "gold": 25,
+            "text": "You toss a rock. The trap fires harmlessly. The loot is yours."
+          },
+          "failure": {
+            "text": "Your rock misses. The trap remains armed and you leave it."
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "dark-hollow-group-1",
+      "name": "Goblin Skirmisher Cell Block",
+      "composition": [
+        {
+          "enemySlug": "goblin-skirmisher",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "dark-hollow-group-2",
+      "name": "Cave Troll & Hobgoblin Bruiser",
+      "composition": [
+        {
+          "enemySlug": "cave-troll",
+          "count": 1
+        },
+        {
+          "enemySlug": "hobgoblin-bruiser",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

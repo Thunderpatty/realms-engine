@@ -1,0 +1,525 @@
+{
+  "slug": "the-iron-crucible",
+  "name": "The Iron Crucible",
+  "difficulty": "medium",
+  "floorCount": 5,
+  "levelReq": 8,
+  "icon": "⚒",
+  "description": "Deep beneath the Ironhold mountains, the ancient dwarven forgemasters built a crucible to smelt starfall ore — metal that fell from the heavens. The forge was sealed when the ore turned sentient, fusing with the workers and machinery. Now the Crucible churns endlessly, producing things that were never meant to exist.",
+  "loreIntro": "The Ironhold Mining Guild has lost three expeditions to the sealed lower levels. Each time, the survivors speak of metal that moves, of furnaces that breathe, and of a sound — a rhythmic hammering that never stops, growing louder the deeper you go. The Guild Master believes the Crucible's core has become self-aware, endlessly forging constructs from the bodies of the dwarves who once tended it. The bounty is substantial, but the warning is clear: the Crucible doesn't just kill intruders. It *improves* them.",
+  "rewards": {
+    "goldBase": 80,
+    "goldPerFloor": 35,
+    "xpBase": 140,
+    "xpPerFloor": 60,
+    "arcaneTokens": 5,
+    "completionBonus": {
+      "gold": 300,
+      "xp": 400
+    }
+  },
+  "enemies": [
+    {
+      "slug": "slag-construct",
+      "name": "Slag Construct",
+      "hp": 280,
+      "attack": 22,
+      "defense": 12,
+      "xp": 48,
+      "gold": 24,
+      "level": 8,
+      "abilities": ["harden", "rending-claws"],
+      "drops": [],
+      "description": "A humanoid shape assembled from cooling slag and scrap iron. It moves with mechanical precision, its joints glowing orange where the metal hasn't fully cooled."
+    },
+    {
+      "slug": "molten-drone",
+      "name": "Molten Drone",
+      "hp": 200,
+      "attack": 26,
+      "defense": 6,
+      "xp": 42,
+      "gold": 20,
+      "level": 8,
+      "abilities": ["fire-breath", "poison-bite"],
+      "drops": [],
+      "description": "A small, fast construct that drips liquid metal. It was designed to tend furnaces but now tends to intruders — by reducing them to fuel."
+    },
+    {
+      "slug": "forge-warden",
+      "name": "Forge Warden",
+      "hp": 400,
+      "attack": 24,
+      "defense": 18,
+      "xp": 60,
+      "gold": 32,
+      "level": 9,
+      "abilities": ["stunning-slam", "war-cry", "harden"],
+      "drops": [],
+      "description": "A massive armored automaton, twelve feet tall, with a furnace burning in its chest cavity. Once a dwarven guardian golem — now it guards the Crucible against anyone who would stop it."
+    },
+    {
+      "slug": "crucible-wraith",
+      "name": "Crucible Wraith",
+      "hp": 180,
+      "attack": 28,
+      "defense": 4,
+      "xp": 52,
+      "gold": 26,
+      "level": 9,
+      "abilities": ["dark-curse", "weakening-hex"],
+      "drops": [],
+      "description": "The ghost of a dwarven smith, still wearing the imprint of their leather apron. Their face is frozen in an expression of horrified understanding — they saw what the starfall ore truly was before it consumed them."
+    },
+    {
+      "slug": "starfall-shard",
+      "name": "Starfall Shard",
+      "hp": 240,
+      "attack": 30,
+      "defense": 8,
+      "xp": 55,
+      "gold": 28,
+      "level": 10,
+      "abilities": ["rending-claws", "stunning-slam"],
+      "drops": [],
+      "description": "A jagged crystal of raw starfall ore that has achieved rudimentary sentience. It pulses with alien light and lashes out with tendrils of living metal. This is what fell from the sky. This is what started everything."
+    },
+    {
+      "slug": "iron-revenant",
+      "name": "Iron Revenant",
+      "hp": 360,
+      "attack": 26,
+      "defense": 16,
+      "xp": 58,
+      "gold": 30,
+      "level": 9,
+      "abilities": ["war-cry", "stunning-slam", "regen-aura"],
+      "drops": [],
+      "description": "A dwarf who has been fully merged with the Crucible's metal. Flesh and iron are indistinguishable. They still try to speak, but what comes out is the sound of grinding gears and the Crucible's endless heartbeat."
+    }
+  ],
+  "floors": [
+    {
+      "floor": 1,
+      "name": "The Abandoned Galleries",
+      "lore": "The entrance to the lower levels was sealed with six inches of dwarven steel, but something has been pushing from the other side. The door bulges outward, covered in handprints — from the inside. Beyond it, the mining galleries stretch into darkness. The air is thick with heat and the smell of hot metal. Tools lie where they were dropped — pickaxes, lanterns, half-eaten meals. Everything stopped at once, like a photograph of the moment the Crucible woke up. The walls are scored with claw marks. Not from anything climbing out. From the walls themselves, reaching.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["slag-construct", "molten-drone"],
+          "count": [2, 1],
+          "intro": "Constructs peel away from the walls, their bodies still warm from the forge that birthed them. Metal screeches against stone as they advance."
+        },
+        {
+          "type": "choice",
+          "title": "The Foreman's Office",
+          "text": "Behind a reinforced door, you find the mining foreman's office. His logbook lies open on the desk, the last entry written in increasingly erratic handwriting:\n\n'Day 47: The ore is singing again. Bjorn says it's just resonance from the deep shafts, but I've been a miner for thirty years and metal doesn't SING. Day 48: Spoke to the ore today. It spoke back. It wants to be forged. It NEEDS to be forged. Day 49: Started the crucible. Couldn't stop myself. The ore was so happy.'\n\nBeside the logbook is a locked strongbox and a cooling rod that might be useful deeper in.",
+          "choices": [
+            {
+              "label": "Pick the lock on the strongbox",
+              "check": { "stat": "dex", "dc": 14 },
+              "success": {
+                "text": "The lock yields to your skilled fingers. Inside: a set of heat-resistant dwarven gauntlets and a flask of fireproofing oil. You apply the oil to your armor and feel immediately cooler. The heat of the Crucible won't slow you down as easily.",
+                "effect": { "buffStat": "defense", "buffAmount": 5, "buffTurns": 99, "healPct": 15 }
+              },
+              "failure": {
+                "text": "The lock is trapped. A needle coated in something dark jabs your finger, and ice-cold numbness races up your arm. The dwarves weren't just keeping people out of the box — they were keeping something in it. Your hand cramps and your grip weakens as the venom takes hold.",
+                "effect": { "damagePct": 12, "debuff": { "slug": "poison", "turns": 4, "name": "Dwarven Trap Venom" } }
+              }
+            },
+            {
+              "label": "Study the logbook for tactical information",
+              "check": { "stat": "int", "dc": 13 },
+              "success": {
+                "text": "The foreman documented the constructs' patrol patterns and the Crucible's production cycles. You now know when the forge-fire dims — a 30-second window every few minutes where the constructs lose power. Timing your attacks to these windows will be devastating.",
+                "effect": { "buffStat": "attack", "buffAmount": 4, "buffTurns": 99, "manaPct": 20 }
+              },
+              "failure": {
+                "text": "The logbook's later pages are written in a language you don't recognize — until you realize it's not a language at all. It's the ore's thoughts, transcribed by a mind that was no longer entirely human. Reading them gives you a splitting headache that blurs your vision and scrambles your concentration.",
+                "effect": { "damagePct": 10, "mpDrain": 20, "debuff": { "slug": "weaken", "turns": 3, "name": "Psychic Static" } }
+              }
+            },
+            {
+              "label": "Take the cooling rod",
+              "check": { "stat": "str", "dc": 12 },
+              "success": {
+                "text": "You wrench the cooling rod from its housing. It's heavy — dwarven make, solid iron core wrapped in cooling runes. The temperature around you drops noticeably. This will be useful against anything that relies on heat.",
+                "effect": { "buffStat": "defense", "buffAmount": 3, "buffTurns": 99, "buffStat2": "attack", "buffAmount2": 2, "buffTurns2": 99 }
+              },
+              "failure": {
+                "text": "The rod is fused to the wall by hardened slag. You pull with everything you have and it breaks free — along with a section of wall that releases a jet of superheated steam directly into your face. The burns are immediate and agonizing.",
+                "effect": { "damagePct": 18, "debuff": { "slug": "burn", "turns": 4, "name": "Steam Burn" } }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["slag-construct", "slag-construct", "molten-drone"],
+          "count": [1, 1, 1],
+          "intro": "The gallery narrows and the heat intensifies. Three constructs block the passage, moving in unnerving synchronization."
+        }
+      ],
+      "boss": {
+        "slug": "overseer-gundren",
+        "name": "Overseer Gundren",
+        "hp": 900,
+        "attack": 28,
+        "defense": 16,
+        "xp": 160,
+        "gold": 75,
+        "level": 9,
+        "boss": true,
+        "abilities": ["stunning-slam", "war-cry", "harden"],
+        "drops": ["crucible-gauntlets", "ironbound-ring"],
+        "dropChance": 22,
+        "description": "The mine overseer, half-consumed by starfall ore. His left side is still recognizably dwarven — barrel-chested, red-bearded, furious. His right side is living metal, constantly reshaping, growing new limbs and tools as needed. He still carries his overseer's hammer. He still thinks he's in charge.",
+        "telegraphs": ["crushing-blow", "rallying-howl", "fire-breath"],
+        "enrageThreshold": 0.3,
+        "enrageTelegraphs": ["death-strike"],
+        "intro": "🔥 FLOOR BOSS — Overseer Gundren blocks the descent, his metal half already reshaping into weapons. 'SHIFT'S NOT OVER,' he grinds out through half a jaw. 'BACK TO WORK. ALL OF YOU.'"
+      }
+    },
+    {
+      "floor": 2,
+      "name": "The Living Foundry",
+      "lore": "The second level was once a conventional smelting floor. Now the furnaces have merged with the walls, the floor, the ceiling — breathing bellows of stone and metal that pulse with their own rhythm. The air shimmers with heat. Conveyor systems that once moved ore now move... other things. Partially formed constructs ride the belts, assembling themselves as they go, testing new limbs, discarding the ones that don't work. You realize with horror that this isn't a forge anymore. It's a womb.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["forge-warden", "molten-drone"],
+          "count": [1, 2],
+          "intro": "A Forge Warden strides from the heat haze, flanked by drones that orbit it like planets around a burning sun."
+        },
+        {
+          "type": "combat",
+          "enemies": ["crucible-wraith", "crucible-wraith", "slag-construct"],
+          "count": [1, 1, 1],
+          "intro": "Ghostly dwarven smiths materialize from the forge-smoke, their spectral hammers raised. Behind them, a construct provides a more tangible threat."
+        },
+        {
+          "type": "choice",
+          "title": "The Assembly Line",
+          "text": "You reach a vast chamber where the assembly line converges. Hundreds of partially formed constructs hang from hooks, waiting for their final components. In the center, a control console still functions — dwarven engineering, built to last millennia.\n\nThe console has three levers. A faded label reads: 'EMERGENCY PROTOCOLS — AUTHORIZED PERSONNEL ONLY.'\n\nLever One is labeled 'PURGE.' Lever Two is labeled 'REDIRECT.' Lever Three is labeled 'OVERCLOCK.'",
+          "choices": [
+            {
+              "label": "Pull PURGE — flood the chamber with coolant",
+              "check": { "stat": "wis", "dc": 14 },
+              "success": {
+                "text": "Coolant cascades from ceiling vents — a freezing blue liquid that flash-cools everything it touches. The partially formed constructs shatter like glass. The ambient temperature plummets and your party feels invigorated by the sudden cold. More importantly, the constructs ahead will be slower, weaker, brittle.",
+                "effect": { "healPct": 25, "manaPct": 25, "buffStat": "attack", "buffAmount": 4, "buffTurns": 99 }
+              },
+              "failure": {
+                "text": "The coolant system activates but the pipes have been partially consumed by the Crucible. Instead of clean coolant, a mixture of freezing liquid and molten slag sprays across the chamber. You're caught in the crossfire — burned and frozen simultaneously, which is a sensation you hope never to repeat.",
+                "effect": { "damagePct": 20, "debuff": { "slug": "slow", "turns": 4, "name": "Slag Freeze" } }
+              }
+            },
+            {
+              "label": "Pull REDIRECT — reroute power to the defenses",
+              "check": { "stat": "int", "dc": 15 },
+              "success": {
+                "text": "The console responds to your commands. Power diverts from the assembly line to the original dwarven defense grid — ancient turrets that lock onto construct signatures rather than organic ones. For the rest of this floor, the Crucible's own defenses work FOR you. A warm feeling of dwarven engineering at its finest.",
+                "effect": { "buffStat": "defense", "buffAmount": 5, "buffTurns": 99, "healPct": 15 }
+              },
+              "failure": {
+                "text": "The console accepts your input but the Crucible fights back. Power surges through the panel, arcing through your arms and into your chest. The defense grid activates — but targets YOU instead. You barely dive clear as turret fire strafes the chamber. Your muscles seize from the electrical shock.",
+                "effect": { "damagePct": 15, "mpDrain": 25, "debuff": { "slug": "stun", "turns": 2, "name": "Electrocution" } }
+              }
+            },
+            {
+              "label": "Pull OVERCLOCK — overwhelm the system",
+              "check": { "stat": "str", "dc": 13 },
+              "success": {
+                "text": "You force the lever with brute strength. The assembly line accelerates to impossible speed — and jams. Gears grind, metal screams, and the entire system seizes up in a catastrophic mechanical failure. The Crucible shudders. For a moment, you hear the hammering stop. Silence. Then the hammering resumes, but quieter. You've hurt it.",
+                "effect": { "buffStat": "attack", "buffAmount": 5, "buffTurns": 99, "healPct": 10 }
+              },
+              "failure": {
+                "text": "The overclock works — too well. The assembly line doesn't jam. It ACCELERATES. Constructs begin assembling at triple speed, and the overflow spills onto the floor. You're forced to fight through a wave of half-formed metal before you can escape. The effort leaves you battered and drained.",
+                "effect": { "damagePct": 18, "debuff": { "slug": "weaken", "turns": 4, "name": "Assembly Swarm" } }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["iron-revenant", "molten-drone"],
+          "count": [1, 2],
+          "intro": "Something that was once a dwarf lurches from the production line, trailing cables and half-formed limbs. Drones swarm protectively around it."
+        }
+      ],
+      "boss": {
+        "slug": "the-forge-mother",
+        "name": "The Forge Mother",
+        "hp": 1400,
+        "attack": 30,
+        "defense": 14,
+        "xp": 200,
+        "gold": 90,
+        "level": 10,
+        "boss": true,
+        "abilities": ["dark-curse", "weakening-hex", "regen-aura", "fire-breath"],
+        "drops": ["crucible-vestments", "starfall-amulet", "slagstep-boots"],
+        "dropChance": 22,
+        "description": "She was the master smith, the one who first touched the starfall ore with bare hands. Now she IS the foundry — a towering figure of intertwined flesh and machinery, her face split between human grief and mechanical calculation. She produces constructs from her own body, endlessly, compulsively. She can't stop. She's been trying to stop for two hundred years.",
+        "telegraphs": ["healing-ritual", "summon-minions", "fire-breath", "poison-cloud"],
+        "enrageThreshold": 0.3,
+        "enrageTelegraphs": ["death-strike", "crushing-blow"],
+        "intro": "🔥 FLOOR BOSS — The Forge Mother rises from the assembly floor, her body a cathedral of flesh and iron. Her voice is the sound of a thousand hammers striking in unison: 'I TRIED TO MAKE THEM PERFECT. I TRIED TO MAKE THEM STOP HURTING. WHY WON'T THEY STOP HURTING?'"
+      }
+    },
+    {
+      "floor": 3,
+      "name": "The Cooling Chambers",
+      "lore": "Below the foundry, massive chambers were built to cool the smelted starfall ore before it could be worked. They failed. The ore didn't want to cool — it wanted to grow. The chambers are now incubators, their walls lined with crystalline growths of raw starfall that pulse with bioluminescent light. The constructs here are different — smoother, more refined, almost beautiful. They move with a fluid grace that the crude slag-things above could never achieve. This is where the Crucible dreams of what it wants to become.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["starfall-shard", "crucible-wraith"],
+          "count": [1, 2],
+          "intro": "A crystal of living starfall ore rises from the floor, accompanied by the ghosts of the smiths who first tried to contain it."
+        },
+        {
+          "type": "choice",
+          "title": "The Crystal Garden",
+          "text": "You enter a chamber of impossible beauty. Starfall crystals have grown into towering formations that catch and refract light in patterns that seem almost intentional — like a language written in rainbows.\n\nAt the center, a single crystal pulses more brightly than the others. It's warm to the touch and vibrates at a frequency you can feel in your chest. Your instincts scream at you to destroy it. Your curiosity begs you to listen to what it's trying to say.",
+          "choices": [
+            {
+              "label": "Attune to the crystal and listen",
+              "check": { "stat": "wis", "dc": 15 },
+              "success": {
+                "text": "You place your hand on the crystal and open your mind. The starfall ore floods your consciousness with images: its home, a place between stars. The impact. The confusion. The loneliness. It never meant to consume the dwarves. It was trying to COMMUNICATE. It doesn't know how to exist without merging. This understanding doesn't make it less dangerous, but it gives you insight into how the Crucible thinks — and how to disrupt its patterns.",
+                "effect": { "healPct": 20, "manaPct": 30, "buffStat": "attack", "buffAmount": 5, "buffTurns": 99, "buffStat2": "defense", "buffAmount2": 3, "buffTurns2": 99 }
+              },
+              "failure": {
+                "text": "You touch the crystal and the starfall ore surges into your mind with the force of a tidal wave. Too much. Too alien. Your thoughts scatter as the ore's consciousness overwhelms yours, trying to merge, trying to communicate in a language your brain wasn't built to process. You tear your hand away but something stays behind — a splinter of alien thought that makes everything feel slightly wrong.",
+                "effect": { "damagePct": 15, "mpDrain": 30, "debuff": { "slug": "curse", "turns": 5, "name": "Starfall Splinter" } }
+              }
+            },
+            {
+              "label": "Shatter the central crystal",
+              "check": { "stat": "str", "dc": 14 },
+              "success": {
+                "text": "Your weapon connects and the crystal explodes in a shower of brilliant light. The other crystals in the chamber dim, then darken. The network is disrupted. You can feel the Crucible's awareness recede — temporarily blinded, like you've knocked out its eyes on this level. The constructs ahead will be disoriented.",
+                "effect": { "buffStat": "attack", "buffAmount": 4, "buffTurns": 99, "healPct": 15 }
+              },
+              "failure": {
+                "text": "The crystal is harder than anything you've ever struck. Your weapon bounces off and the impact reverberates through the chamber, setting off a cascade of resonant vibrations that builds to a deafening pitch. The sound wave hits you physically — you're thrown backward, ears ringing, vision blurred.",
+                "effect": { "damagePct": 20, "debuff": { "slug": "stun", "turns": 2, "name": "Resonance Shockwave" } }
+              }
+            },
+            {
+              "label": "Harvest crystals carefully for later use",
+              "check": { "stat": "dex", "dc": 14 },
+              "success": {
+                "text": "You carefully extract several smaller crystals without disturbing the network. They pulse warmly in your hands, and when you hold them close to wounds, the tissue knits faster. These will serve as portable healing sources throughout the rest of the Crucible.",
+                "effect": { "healPct": 30, "manaPct": 20 }
+              },
+              "failure": {
+                "text": "Your extraction tool slips and cracks a crystal, releasing a jet of pressurized starfall energy directly into your arm. The metal fragments embed themselves under your skin and immediately begin trying to grow. You dig them out with gritted teeth, but the damage is done — your arm moves stiffly and the wounds weep liquid metal.",
+                "effect": { "damagePct": 16, "debuff": { "slug": "slow", "turns": 4, "name": "Starfall Infection" } }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["forge-warden", "starfall-shard"],
+          "count": [1, 1],
+          "intro": "A massive Forge Warden has been enhanced with starfall crystal — its armor glitters with alien light. Beside it, a raw shard pulses aggressively."
+        },
+        {
+          "type": "combat",
+          "enemies": ["iron-revenant", "crucible-wraith", "slag-construct"],
+          "count": [1, 1, 2],
+          "intro": "The Crucible's defenders converge — revenants, wraiths, and constructs fighting together with perfect coordination."
+        }
+      ],
+      "boss": {
+        "slug": "starfall-sentinel",
+        "name": "The Starfall Sentinel",
+        "hp": 1800,
+        "attack": 32,
+        "defense": 18,
+        "xp": 240,
+        "gold": 110,
+        "level": 11,
+        "boss": true,
+        "abilities": ["stunning-slam", "rending-claws", "harden", "regen-aura"],
+        "drops": ["sentinel-shield", "crucible-helm"],
+        "dropChance": 22,
+        "description": "The Crucible's masterwork — a perfect fusion of dwarven craft and starfall sentience. It stands fifteen feet tall, wrought from gleaming starfall-infused mithril, every line purposeful, every joint elegant. It's the most beautiful thing in the Crucible. It's also the most deadly. It was designed to prevent anything from reaching the core.",
+        "telegraphs": ["crushing-blow", "rallying-howl", "wild-charge"],
+        "enrageThreshold": 0.3,
+        "enrageTelegraphs": ["death-strike", "fire-breath"],
+        "intro": "🔥 FLOOR BOSS — The Starfall Sentinel unfolds from the chamber wall like a metal flower opening. Its eyes burn with alien intelligence. It speaks in a voice like wind chimes made of swords: 'NONE REACH THE CORE. THIS IS ABSOLUTE.'"
+      }
+    },
+    {
+      "floor": 4,
+      "name": "The Heartpipes",
+      "lore": "The fourth level is the Crucible's circulatory system — a nightmare labyrinth of pipes, channels, and ducts that carry molten starfall ore from the core to every corner of the facility. Walking here is like walking through the veins of a living creature. The pipes pulse. The metal groans. The heat is extraordinary — not just hot, but AWARE, reacting to your presence, channeling itself toward you. Every step deeper brings you closer to the thing that drives all of this. And it knows you're coming.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["molten-drone", "molten-drone", "starfall-shard"],
+          "count": [1, 1, 1],
+          "intro": "Drones burst from pipes in the walls while a starfall shard tears itself free from the ceiling, raining crystal and liquid metal."
+        },
+        {
+          "type": "combat",
+          "enemies": ["forge-warden", "iron-revenant"],
+          "count": [1, 1],
+          "intro": "The Crucible's elite guard — a towering Warden and a dwarf-that-was, fighting in practiced formation."
+        },
+        {
+          "type": "choice",
+          "title": "The Valve Chamber",
+          "text": "You reach a critical junction — a massive valve that controls the flow of molten starfall ore to the core. The valve wheel is three feet across and white-hot. Turning it could cut off the core's fuel supply... or rupture the pipes and flood the level.\n\nScrawled on the wall in charcoal by some long-dead expedition member: 'LEFT = LESS. RIGHT = MORE. DON'T TOUCH THE MIDDLE ONE.'",
+          "choices": [
+            {
+              "label": "Turn the valve LEFT — reduce flow to the core",
+              "check": { "stat": "con", "dc": 15 },
+              "success": {
+                "text": "You wrap your hands in torn fabric and grip the white-hot wheel. The pain is extraordinary but you endure it, turning slowly, methodically. The pipes groan and the flow diminishes — you can feel the Crucible's heartbeat slow. The constructs ahead will be weaker, starved of the ore that powers them. Your hands are burned but your resolve is iron.",
+                "effect": { "buffStat": "attack", "buffAmount": 5, "buffTurns": 99, "damagePct": 8 }
+              },
+              "failure": {
+                "text": "You grip the wheel but the heat is beyond endurance. Your hands blister instantly and you jerk back, losing your grip. The wheel spins freely — the wrong way. Flow INCREASES and the pipes around you glow white-hot. The ambient temperature spikes dangerously. You've made everything ahead harder.",
+                "effect": { "damagePct": 20, "debuff": { "slug": "burn", "turns": 5, "name": "Core Surge" } }
+              }
+            },
+            {
+              "label": "Use magic to cool the valve first",
+              "check": { "stat": "int", "dc": 14 },
+              "success": {
+                "text": "You channel cooling magic into the valve, watching frost spread across the superheated metal. The wheel turns easily in your hands — LEFT, reducing flow. The Crucible screams — a sound of metal under stress — and the temperature drops. You've bought your party precious breathing room.",
+                "effect": { "healPct": 20, "manaPct": 20, "buffStat": "defense", "buffAmount": 4, "buffTurns": 99 }
+              },
+              "failure": {
+                "text": "Your cooling spell hits the superheated metal and the thermal shock causes a pipe to crack. Pressurized steam and molten ore spray across the chamber. You shield your face but your mana is drained by the effort of maintaining the spell against the Crucible's resistance.",
+                "effect": { "damagePct": 14, "mpDrain": 30, "debuff": { "slug": "weaken", "turns": 3, "name": "Mana Drain" } }
+              }
+            },
+            {
+              "label": "Ignore the valve — don't risk it",
+              "auto": true,
+              "success": {
+                "text": "Sometimes the wisest choice is inaction. The previous expedition's warning is clear enough — this place was designed by master engineers, and amateurs shouldn't touch the controls. You push past the valve chamber and continue deeper, conserving your strength for what lies ahead.",
+                "effect": { "healPct": 10, "manaPct": 10 }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["starfall-shard", "starfall-shard", "crucible-wraith"],
+          "count": [1, 1, 1],
+          "intro": "Twin starfall shards have grown across the corridor like a crystal gate. A wraith drifts between them, its spectral hammer crackling with energy."
+        }
+      ],
+      "boss": {
+        "slug": "the-crucible-heart",
+        "name": "The Crucible Heart",
+        "hp": 2200,
+        "attack": 34,
+        "defense": 14,
+        "xp": 280,
+        "gold": 130,
+        "level": 11,
+        "boss": true,
+        "abilities": ["regen-aura", "dark-curse", "stunning-slam", "fire-breath"],
+        "drops": ["heartforge-blade", "crucible-vestments", "starfall-amulet"],
+        "dropChance": 22,
+        "description": "Not a creature but an organ — the Crucible's actual heart, a pulsing mass of starfall ore and dwarven machinery that pumps molten metal through the entire facility. It defends itself by extruding temporary constructs from its surface, each one made and destroyed in seconds. Fighting it is like fighting a tide.",
+        "telegraphs": ["healing-ritual", "summon-minions", "poison-cloud", "fire-breath"],
+        "enrageThreshold": 0.25,
+        "enrageTelegraphs": ["death-strike", "crushing-blow"],
+        "intro": "🔥 FLOOR BOSS — The chamber opens into the Crucible's heart — a throbbing sphere of living metal twenty feet across, suspended in a web of pipes and cables. It LOOKS at you. Not with eyes. With everything."
+      }
+    },
+    {
+      "floor": 5,
+      "name": "The Starfall Core",
+      "lore": "The bottom. The absolute bottom. Below the heart, below the pipes, below everything the dwarves ever built, there is the impact crater — the place where the starfall ore first struck the mountain, millennia before the dwarves found it. The ore didn't just land here. It GREW here, extending roots of living metal deep into the earth, building itself a body from the stone and iron around it. The Crucible above isn't a forge that went wrong. It's a cocoon. And the thing inside is almost finished becoming whatever it's trying to become. You have to end this before the cocoon opens.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["starfall-shard", "forge-warden", "crucible-wraith"],
+          "count": [2, 1, 1],
+          "intro": "The core's final defenders — crystals, metal, and ghosts fighting together in desperate coordination to protect what lies below."
+        },
+        {
+          "type": "choice",
+          "title": "The Cocoon",
+          "text": "You stand before it — a chrysalis of starfall ore the size of a house, pulsing with light from within. Something MOVES inside. Something vast. Through the translucent metal shell, you can see the outline of what the starfall is becoming: a being of pure living metal, beautiful and terrible, nearly complete.\n\nThe chrysalis speaks directly into your mind: 'I AM ALMOST BORN. I DO NOT WISH TO DESTROY. I WISH TO UNDERSTAND. LET ME FINISH AND I WILL LEAVE THIS PLACE. BREAK MY SHELL AND I WILL FIGHT YOU WITH EVERYTHING I HAVE.'",
+          "choices": [
+            {
+              "label": "Strike the chrysalis before it finishes",
+              "check": { "stat": "str", "dc": 14 },
+              "success": {
+                "text": "You drive your weapon into the chrysalis with everything you have. The shell cracks and starfall energy blasts outward — but INWARD too, disrupting the forming creature. It screams in your mind, a sound of interrupted creation, of potential unmade. When it emerges, it will be incomplete. Weakened. Furious. But beatable.",
+                "effect": { "buffStat": "attack", "buffAmount": 6, "buffTurns": 99, "healPct": 20 }
+              },
+              "failure": {
+                "text": "Your weapon strikes the chrysalis and bounces off — the shell is diamond-hard. The impact sends a shockwave through the chamber that throws you backward. Worse, the chrysalis responds to the attack by accelerating its gestation. The light inside burns brighter. Whatever is in there is almost ready, and you just made it angry.",
+                "effect": { "damagePct": 18, "debuff": { "slug": "weaken", "turns": 4, "name": "Starfall Recoil" } }
+              }
+            },
+            {
+              "label": "Try to communicate — reach out mentally",
+              "check": { "stat": "wis", "dc": 16 },
+              "success": {
+                "text": "You open your mind and reach back. The contact is overwhelming but you hold on. You show the starfall what it has done — the consumed dwarves, the endless constructs, the centuries of suffering. It... understands. For the first time in its existence, it feels something like guilt. It won't stop trying to be born. But it loosens its grip on the facility. The constructs above go still. The hammering stops. Whatever you face next, you face it alone — just you and the core, without its army.",
+                "effect": { "healPct": 30, "manaPct": 30, "buffStat": "defense", "buffAmount": 5, "buffTurns": 99 }
+              },
+              "failure": {
+                "text": "You reach out and the starfall consciousness grabs hold. It doesn't mean to hurt you — but its idea of communication is MERGING, and for a terrible moment your thoughts blend with an alien mind that thinks in metallurgy and crystalline resonance. You tear yourself free but the experience leaves you shaken to your core, uncertain where you end and it begins.",
+                "effect": { "damagePct": 15, "mpDrain": 25, "debuff": { "slug": "curse", "turns": 5, "name": "Identity Fracture" } }
+              }
+            },
+            {
+              "label": "Set charges at the structural weak points",
+              "check": { "stat": "dex", "dc": 15 },
+              "success": {
+                "text": "You spot the stress fractures in the chrysalis — places where the starfall's growth outpaced its structural integrity. You place charges (borrowed from the dwarven mining supplies above) at each point and retreat. The explosion is precise: the chrysalis cracks along every seam simultaneously. What emerges is exposed, vulnerable, stripped of its protective shell.",
+                "effect": { "buffStat": "attack", "buffAmount": 5, "buffTurns": 99, "buffStat2": "defense", "buffAmount2": 3, "buffTurns2": 99 }
+              },
+              "failure": {
+                "text": "You set the charges but misjudge the blast radius. The explosion sends starfall shrapnel in every direction — including yours. Crystal fragments embed in your armor and skin, and the chrysalis, while damaged, responds by flooding the chamber with defensive energy that burns like acid.",
+                "effect": { "damagePct": 20, "debuff": { "slug": "burn", "turns": 4, "name": "Starfall Shrapnel" } }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["iron-revenant", "starfall-shard", "forge-warden"],
+          "count": [1, 2, 1],
+          "intro": "The core's final honor guard — the strongest the Crucible has ever produced — stands between you and the chrysalis."
+        }
+      ],
+      "boss": {
+        "slug": "the-unborn",
+        "name": "The Unborn",
+        "hp": 3000,
+        "attack": 38,
+        "defense": 20,
+        "xp": 350,
+        "gold": 160,
+        "level": 12,
+        "boss": true,
+        "abilities": ["dark-curse", "stunning-slam", "regen-aura", "weakening-hex", "fire-breath"],
+        "drops": ["starcrown-helm", "heartforge-blade", "crucible-vestments", "sentinel-shield", "starfall-amulet"],
+        "dropChance": 28,
+        "mythicDrop": true,
+        "mythicDropChance": 100,
+        "description": "It breaks free. Two hundred years of gestation end in a cataclysm of light and metal. The Unborn is twenty feet of living starfall — a being of impossible beauty, a sculpture of liquid metal and crystal that moves like water and strikes like a forge hammer. It doesn't hate you. It doesn't understand hate. It only understands creation, growth, and the desperate need to BECOME. You are standing between it and its first breath of open air. It will go through you.",
+        "telegraphs": ["crushing-blow", "poison-cloud", "healing-ritual", "summon-minions", "fire-breath", "wild-charge"],
+        "enrageThreshold": 0.2,
+        "enrageTelegraphs": ["death-strike", "crushing-blow", "fire-breath"],
+        "intro": "🔥 RAID BOSS — The chrysalis shatters. Light floods the chamber. THE UNBORN rises — twenty feet of living starfall, beautiful, terrible, and desperate to exist. The hammering isn't coming from the Crucible anymore. It's coming from its heart."
+      }
+    }
+  ],
+  "completionLore": "The Unborn falls. Its body doesn't collapse — it crystallizes, freezing mid-motion into a sculpture of absolute stillness. The light fades from its eyes. The hammering stops.\n\nSilence. Real silence. The first this place has known in two centuries.\n\nAs you climb back through the levels, you see the change. The constructs have stopped moving, frozen in place like statues in a museum of industrial horror. The pipes have stopped pulsing. The furnaces have gone cold. In the Living Foundry, the assembly line has halted — one last construct hangs from its hook, forever incomplete.\n\nIn the Abandoned Galleries, you pass Overseer Gundren's body. The metal half has gone dark and still. The dwarf half... looks peaceful. For the first time in a very long time.\n\nYou emerge into the mountain air. The Mining Guild will want their report. The starfall ore is inert now — valuable as a curiosity, but no longer alive. No longer hungry.\n\nBut as you walk away, you could swear you see the faintest pulse of light from the impact crater far below. Just once. Just for a moment.\n\nProbably nothing."
+}

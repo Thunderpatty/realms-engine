@@ -1,0 +1,3216 @@
+{
+  "timber-wolf": [
+    {
+      "itemSlug": "healing-herb",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "wolf-pelt",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "forest-spider": [
+    {
+      "itemSlug": "spider-silk",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "healing-herb",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "linen-cloth",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "wild-boar": [
+    {
+      "itemSlug": "boar-tusk",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "leather-scraps",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "healing-herb",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "moss-stag": [
+    {
+      "itemSlug": "healing-herb",
+      "chance": 70,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "wolf-pelt",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "thorn-owlbear": [
+    {
+      "itemSlug": "healing-herb",
+      "chance": 75,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "leather-scraps",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "boar-tusk",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "bandit-scout": [
+    {
+      "itemSlug": "linen-cloth",
+      "chance": 70,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "leather-scraps",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "road-serpent": [
+    {
+      "itemSlug": "serpent-fang",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "healing-herb",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "deserter-lancer": [
+    {
+      "itemSlug": "iron-ore",
+      "chance": 65,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "leather-scraps",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "linen-cloth",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "highway-bandit": [
+    {
+      "itemSlug": "bandit-cloak",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "leather-scraps",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "linen-cloth",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "bandit-captain": [
+    {
+      "itemSlug": "bandit-cloak",
+      "chance": 100,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 100,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "linen-cloth",
+      "chance": 100,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "leather-scraps",
+      "chance": 80,
+      "minQty": 1,
+      "maxQty": 3
+    }
+  ],
+  "grave-robber": [
+    {
+      "itemSlug": "linen-cloth",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "bone-dust",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "dire-rat-swarm": [
+    {
+      "itemSlug": "rat-tail",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "healing-herb",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "mercenary": [
+    {
+      "itemSlug": "iron-ore",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "leather-scraps",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "linen-cloth",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "masked-cutpurse": [
+    {
+      "itemSlug": "bandit-cloak",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "linen-cloth",
+      "chance": 70,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "pilgrim-revenant": [
+    {
+      "itemSlug": "moonpetal",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "holy-shard",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "skeleton": [
+    {
+      "itemSlug": "bone-dust",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "bone-archer": [
+    {
+      "itemSlug": "bone-dust",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "linen-cloth",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "shadow-wraith": [
+    {
+      "itemSlug": "wraith-essence",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "bone-dust",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "cursed-priest": [
+    {
+      "itemSlug": "holy-shard",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "wraith-essence",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "bone-dust",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "grave-acolyte": [
+    {
+      "itemSlug": "holy-shard",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "bone-dust",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "crypt-warden": [
+    {
+      "itemSlug": "holy-shard",
+      "chance": 100,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "wraith-essence",
+      "chance": 80,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "bone-dust",
+      "chance": 100,
+      "minQty": 2,
+      "maxQty": 4
+    }
+  ],
+  "goblin-grunt": [
+    {
+      "itemSlug": "goblin-ear",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "leather-scraps",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "goblin-shaman": [
+    {
+      "itemSlug": "goblin-ear",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "shaman-staff-shard",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "goblin-skirmisher": [
+    {
+      "itemSlug": "goblin-ear",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "leather-scraps",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "hobgoblin-bruiser": [
+    {
+      "itemSlug": "goblin-ear",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "troll-hide",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "cave-troll": [
+    {
+      "itemSlug": "troll-hide",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "goblin-warlord": [
+    {
+      "itemSlug": "goblin-ear",
+      "chance": 100,
+      "minQty": 3,
+      "maxQty": 5
+    },
+    {
+      "itemSlug": "troll-hide",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "shaman-staff-shard",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 100,
+      "minQty": 2,
+      "maxQty": 4
+    }
+  ],
+  "fen-leech": [
+    {
+      "itemSlug": "moonpetal",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "rotting-flesh",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "bog-zombie": [
+    {
+      "itemSlug": "rotting-flesh",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "shadow-ichor",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "will-o-wisp": [
+    {
+      "itemSlug": "wisp-lantern",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "moonpetal",
+      "chance": 70,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "shadow-ichor",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "marsh-ghoul": [
+    {
+      "itemSlug": "rotting-flesh",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "shadow-ichor",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "swamp-hydra": [
+    {
+      "itemSlug": "moonpetal",
+      "chance": 100,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "shadow-ichor",
+      "chance": 75,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "rotting-flesh",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "wisp-lantern",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "fire-beetle": [
+    {
+      "itemSlug": "fire-chitin",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "slag-hound": [
+    {
+      "itemSlug": "fire-chitin",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "ash-bat-swarm": [
+    {
+      "itemSlug": "fire-chitin",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "magma-elemental": [
+    {
+      "itemSlug": "molten-core",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "fire-chitin",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "mine-golem": [
+    {
+      "itemSlug": "golem-heart",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 65,
+      "minQty": 2,
+      "maxQty": 3
+    }
+  ],
+  "inferno-golem": [
+    {
+      "itemSlug": "molten-core",
+      "chance": 80,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "golem-heart",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "fire-chitin",
+      "chance": 100,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 100,
+      "minQty": 3,
+      "maxQty": 5
+    }
+  ],
+  "hexbound-raven": [
+    {
+      "itemSlug": "wisp-lantern",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "spider-silk",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "candle-homunculus": [
+    {
+      "itemSlug": "wisp-lantern",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "moonpetal",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "animated-armor": [
+    {
+      "itemSlug": "iron-ore",
+      "chance": 55,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "wraith-essence",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "dark-familiar": [
+    {
+      "itemSlug": "shadow-ichor",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "spider-silk",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "wraith-essence",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "witch-of-fen": [
+    {
+      "itemSlug": "wisp-lantern",
+      "chance": 100,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "shadow-ichor",
+      "chance": 80,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "spider-silk",
+      "chance": 75,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "moonpetal",
+      "chance": 100,
+      "minQty": 3,
+      "maxQty": 5
+    }
+  ],
+  "drake-whelp": [
+    {
+      "itemSlug": "fire-chitin",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "molten-core",
+      "chance": 15,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "cinder-cultist": [
+    {
+      "itemSlug": "fire-chitin",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "moonpetal",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "shadow-ichor",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "ash-drake": [
+    {
+      "itemSlug": "fire-chitin",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "molten-core",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "flame-knight": [
+    {
+      "itemSlug": "iron-ore",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "fire-chitin",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "molten-core",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "ignavoth": [
+    {
+      "itemSlug": "molten-core",
+      "chance": 100,
+      "minQty": 3,
+      "maxQty": 5
+    },
+    {
+      "itemSlug": "fire-chitin",
+      "chance": 100,
+      "minQty": 3,
+      "maxQty": 5
+    },
+    {
+      "itemSlug": "wisp-lantern",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "iron-ore",
+      "chance": 100,
+      "minQty": 4,
+      "maxQty": 6
+    }
+  ],
+  "rabid-fox": [
+    {
+      "chance": 40,
+      "itemSlug": "wolf-pelt"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "leather-scraps"
+    }
+  ],
+  "bramble-sprite": [
+    {
+      "chance": 35,
+      "itemSlug": "spider-silk"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "wisp-lantern"
+    }
+  ],
+  "feral-bear": [
+    {
+      "chance": 45,
+      "itemSlug": "wolf-pelt"
+    },
+    {
+      "chance": 40,
+      "itemSlug": "leather-scraps"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "boar-tusk"
+    }
+  ],
+  "poacher": [
+    {
+      "chance": 35,
+      "itemSlug": "bandit-cloak"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "leather-scraps"
+    }
+  ],
+  "fungal-creeper": [
+    {
+      "chance": 40,
+      "itemSlug": "rotting-flesh"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "spider-silk"
+    }
+  ],
+  "cave-bat-swarm": [
+    {
+      "chance": 35,
+      "itemSlug": "leather-scraps"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "rat-tail"
+    }
+  ],
+  "goblin-alchemist": [
+    {
+      "chance": 40,
+      "itemSlug": "goblin-ear"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "shaman-staff-shard"
+    },
+    {
+      "chance": 15,
+      "itemSlug": "fire-chitin"
+    }
+  ],
+  "rock-lurker": [
+    {
+      "chance": 20,
+      "itemSlug": "golem-heart"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "troll-hide"
+    }
+  ],
+  "wild-dog-pack": [
+    {
+      "chance": 40,
+      "itemSlug": "wolf-pelt"
+    },
+    {
+      "chance": 35,
+      "itemSlug": "leather-scraps"
+    }
+  ],
+  "toll-collector": [
+    {
+      "chance": 40,
+      "itemSlug": "bandit-cloak"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "leather-scraps"
+    }
+  ],
+  "fugitive-mage": [
+    {
+      "chance": 25,
+      "itemSlug": "wraith-essence"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "shaman-staff-shard"
+    }
+  ],
+  "caravan-guard": [
+    {
+      "chance": 35,
+      "itemSlug": "bandit-cloak"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "leather-scraps"
+    }
+  ],
+  "feral-hound": [
+    {
+      "chance": 40,
+      "itemSlug": "wolf-pelt"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "leather-scraps"
+    }
+  ],
+  "vagrant-wizard": [
+    {
+      "chance": 25,
+      "itemSlug": "wraith-essence"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "shaman-staff-shard"
+    }
+  ],
+  "drifter-thug": [
+    {
+      "chance": 35,
+      "itemSlug": "bandit-cloak"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "leather-scraps"
+    }
+  ],
+  "plague-crow": [
+    {
+      "chance": 35,
+      "itemSlug": "rotting-flesh"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "rat-tail"
+    }
+  ],
+  "restless-spirit": [
+    {
+      "chance": 40,
+      "itemSlug": "wraith-essence"
+    },
+    {
+      "chance": 35,
+      "itemSlug": "bone-dust"
+    }
+  ],
+  "bone-golem": [
+    {
+      "chance": 45,
+      "itemSlug": "bone-dust"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "golem-heart"
+    },
+    {
+      "chance": 15,
+      "itemSlug": "holy-shard"
+    }
+  ],
+  "tomb-scarab": [
+    {
+      "chance": 35,
+      "itemSlug": "bone-dust"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "spider-silk"
+    }
+  ],
+  "death-knight": [
+    {
+      "chance": 40,
+      "itemSlug": "bone-dust"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "wraith-essence"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "holy-shard"
+    }
+  ],
+  "corpse-moth": [
+    {
+      "chance": 35,
+      "itemSlug": "spider-silk"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "rotting-flesh"
+    }
+  ],
+  "mire-crawler": [
+    {
+      "chance": 40,
+      "itemSlug": "rotting-flesh"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "serpent-fang"
+    }
+  ],
+  "drowned-soldier": [
+    {
+      "chance": 35,
+      "itemSlug": "rotting-flesh"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "bandit-cloak"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "bone-dust"
+    }
+  ],
+  "swamp-witch": [
+    {
+      "chance": 35,
+      "itemSlug": "wisp-lantern"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "wraith-essence"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "shaman-staff-shard"
+    }
+  ],
+  "rot-toad": [
+    {
+      "chance": 45,
+      "itemSlug": "rotting-flesh"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "serpent-fang"
+    }
+  ],
+  "bog-wisp": [
+    {
+      "chance": 45,
+      "itemSlug": "wisp-lantern"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "wraith-essence"
+    }
+  ],
+  "lava-spider": [
+    {
+      "chance": 40,
+      "itemSlug": "fire-chitin"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "spider-silk"
+    }
+  ],
+  "ember-wraith": [
+    {
+      "chance": 35,
+      "itemSlug": "wraith-essence"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "fire-chitin"
+    },
+    {
+      "chance": 15,
+      "itemSlug": "molten-core"
+    }
+  ],
+  "forge-golem": [
+    {
+      "chance": 35,
+      "itemSlug": "golem-heart"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "molten-core"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "fire-chitin"
+    }
+  ],
+  "tunnel-drake": [
+    {
+      "chance": 40,
+      "itemSlug": "fire-chitin"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "troll-hide"
+    }
+  ],
+  "crazed-miner": [
+    {
+      "chance": 20,
+      "itemSlug": "molten-core"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "leather-scraps"
+    }
+  ],
+  "spell-stitched": [
+    {
+      "chance": 35,
+      "itemSlug": "wraith-essence"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "bone-dust"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "shaman-staff-shard"
+    }
+  ],
+  "cursed-gargoyle": [
+    {
+      "chance": 30,
+      "itemSlug": "golem-heart"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "bone-dust"
+    }
+  ],
+  "blood-mage": [
+    {
+      "chance": 40,
+      "itemSlug": "wraith-essence"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "holy-shard"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "shaman-staff-shard"
+    }
+  ],
+  "living-tome": [
+    {
+      "chance": 35,
+      "itemSlug": "wraith-essence"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "shaman-staff-shard"
+    }
+  ],
+  "tower-sentinel": [
+    {
+      "chance": 30,
+      "itemSlug": "golem-heart"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "fire-chitin"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "troll-hide"
+    }
+  ],
+  "fire-giant": [
+    {
+      "chance": 35,
+      "itemSlug": "molten-core"
+    },
+    {
+      "chance": 30,
+      "itemSlug": "fire-chitin"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "troll-hide"
+    }
+  ],
+  "wyrm-cultist": [
+    {
+      "chance": 35,
+      "itemSlug": "fire-chitin"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "wraith-essence"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "shaman-staff-shard"
+    }
+  ],
+  "magma-serpent": [
+    {
+      "itemSlug": "magma-core",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "obsidian-knight": [
+    {
+      "chance": 30,
+      "itemSlug": "golem-heart"
+    },
+    {
+      "chance": 25,
+      "itemSlug": "molten-core"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "fire-chitin"
+    }
+  ],
+  "ember-phoenix": [
+    {
+      "chance": 45,
+      "itemSlug": "fire-chitin"
+    },
+    {
+      "chance": 35,
+      "itemSlug": "molten-core"
+    },
+    {
+      "chance": 20,
+      "itemSlug": "wisp-lantern"
+    }
+  ],
+  "frost-wolf": [
+    {
+      "itemSlug": "frozen-hide",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frostbloom-petal",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "ice-wraith": [
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "frostbloom-petal",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "glacial-elemental": [
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "crystal-spider": [
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frostbloom-petal",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "frozen-treant": [
+    {
+      "itemSlug": "frostbloom-petal",
+      "chance": 65,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "vale-phantom": [
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frostbloom-petal",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "frozen-revenant": [
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "crypt-ice": [
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "death-rattle": [
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "tomb-guardian": [
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "giant-bone",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "drake-scale-shard",
+      "chance": 12,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "frost-golem": [
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "wind-wraith": [
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frostbloom-petal",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "ice-knight": [
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frozen-hide",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "giant-bone",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "spire-warden": [
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "drake-scale-shard",
+      "chance": 12,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "crystal-crawler": [
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 65,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "resonance-shade": [
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "crystal-construct": [
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "crystal-queen": [
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 70,
+      "minQty": 3,
+      "maxQty": 5
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "drake-scale-shard",
+      "chance": 15,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "wind-ripper": [
+    {
+      "itemSlug": "frozen-hide",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "frost-giant-scout": [
+    {
+      "itemSlug": "giant-bone",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "frozen-hide",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "howling-phantom": [
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frostbloom-petal",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "wind-tyrant": [
+    {
+      "itemSlug": "giant-bone",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "drake-scale-shard",
+      "chance": 15,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "frost-giant-warrior": [
+    {
+      "itemSlug": "giant-bone",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "frozen-hide",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "ice-drake": [
+    {
+      "itemSlug": "drake-scale-shard",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "throne-guardian": [
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 55,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "giant-bone",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "drake-scale-shard",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "frost-king-aldric": [
+    {
+      "itemSlug": "drake-scale-shard",
+      "chance": 65,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "giant-bone",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "glacial-essence",
+      "chance": 55,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 50,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 45,
+      "minQty": 2,
+      "maxQty": 4
+    }
+  ],
+  "frost-stalker": [
+    {
+      "itemSlug": "frozen-hide",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "snow-bandit": [
+    {
+      "itemSlug": "frozen-hide",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frostbloom-petal",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "permafrost-ore",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "frost-bear": [
+    {
+      "itemSlug": "frozen-hide",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "frostbloom-petal",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "giant-bone",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "ice-harpy": [
+    {
+      "itemSlug": "spectral-ice",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frost-crystal",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "frostbloom-petal",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "lava-worm": [
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "fire-elemental": [
+    {
+      "itemSlug": "magma-core",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "basalt-golem": [
+    {
+      "itemSlug": "basalt-plate",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "ash-crawler": [
+    {
+      "itemSlug": "ember-dust",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "sulfur-crystal",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "sulfur-wraith": [
+    {
+      "itemSlug": "sulfur-crystal",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "demon-shard",
+      "chance": 15,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "ember-cultist": [
+    {
+      "itemSlug": "demon-shard",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "sulfur-crystal",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "ash-hound": [
+    {
+      "itemSlug": "ember-dust",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "basalt-plate",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "obsidian-spider": [
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "sulfur-crystal",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "lava-imp": [
+    {
+      "itemSlug": "demon-shard",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "petrified-treant": [
+    {
+      "itemSlug": "basalt-plate",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "slag-beetle": [
+    {
+      "itemSlug": "basalt-plate",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "flame-wraith": [
+    {
+      "itemSlug": "ember-dust",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "demon-shard",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "magma-lord-pyraxis": [
+    {
+      "itemSlug": "magma-core",
+      "chance": 65,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 50,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "drake-fire-gland",
+      "chance": 15,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "spire-sentinel": [
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "basalt-plate",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "demon-shard",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "cult-pyromancer": [
+    {
+      "itemSlug": "demon-shard",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 12,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "demon-spawn": [
+    {
+      "itemSlug": "demon-shard",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 15,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "high-priest-ignarius": [
+    {
+      "itemSlug": "demon-shard",
+      "chance": 65,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 50,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "drake-fire-gland",
+      "chance": 18,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "infernal-guard": [
+    {
+      "itemSlug": "basalt-plate",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "demon-shard",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "pit-fiend": [
+    {
+      "itemSlug": "demon-shard",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "hellfire-mage": [
+    {
+      "itemSlug": "demon-shard",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "demonlord-varkath": [
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "demon-shard",
+      "chance": 65,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "drake-fire-gland",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 45,
+      "minQty": 2,
+      "maxQty": 3
+    }
+  ],
+  "acid-slime": [
+    {
+      "itemSlug": "sulfur-crystal",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "ember-dust",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "mine-lurker": [
+    {
+      "itemSlug": "sulfur-crystal",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "basalt-plate",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "sulfur-elemental": [
+    {
+      "itemSlug": "sulfur-crystal",
+      "chance": 65,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 15,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "the-sulfur-queen": [
+    {
+      "itemSlug": "sulfur-crystal",
+      "chance": 70,
+      "minQty": 3,
+      "maxQty": 5
+    },
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 50,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "drake-fire-gland",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "caldera-guardian": [
+    {
+      "itemSlug": "basalt-plate",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "inferno-drake": [
+    {
+      "itemSlug": "drake-fire-gland",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "arch-demon": [
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "demon-shard",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "drake-fire-gland",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "ignavus-the-undying-flame": [
+    {
+      "itemSlug": "infernal-essence",
+      "chance": 70,
+      "minQty": 3,
+      "maxQty": 5
+    },
+    {
+      "itemSlug": "drake-fire-gland",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "magma-core",
+      "chance": 55,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "demon-shard",
+      "chance": 50,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "volcanic-glass",
+      "chance": 45,
+      "minQty": 2,
+      "maxQty": 4
+    }
+  ],
+  "void-stalker": [
+    {
+      "itemSlug": "void-shard",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 15,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "reality-shard": [
+    {
+      "itemSlug": "reality-fragment",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "thought-crystal",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "thought-eater": [
+    {
+      "itemSlug": "thought-crystal",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "gravity-aberration": [
+    {
+      "itemSlug": "reality-fragment",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "echo-phantom": [
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "thought-crystal",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "paradox-essence",
+      "chance": 12,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "mire-horror": [
+    {
+      "itemSlug": "void-shard",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "null-wisp": [
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "paradox-essence",
+      "chance": 15,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "void-leech": [
+    {
+      "itemSlug": "void-shard",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "entropy-golem": [
+    {
+      "itemSlug": "omega-plate",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "reality-fragment",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "aberrant-watcher": [
+    {
+      "itemSlug": "thought-crystal",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "sovereign-ichor",
+      "chance": 8,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "time-wraith": [
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "paradox-essence",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "thought-crystal",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "paradox-construct": [
+    {
+      "itemSlug": "paradox-essence",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "reality-fragment",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "omega-plate",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "echo-hunter": [
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "thought-crystal",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "the-echo-king": [
+    {
+      "itemSlug": "paradox-essence",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "thought-crystal",
+      "chance": 55,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "sovereign-ichor",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 50,
+      "minQty": 2,
+      "maxQty": 3
+    }
+  ],
+  "fracture-spawn": [
+    {
+      "itemSlug": "reality-fragment",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "paradox-essence",
+      "chance": 18,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "dimensional-ripper": [
+    {
+      "itemSlug": "void-shard",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "reality-fragment",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "sovereign-ichor",
+      "chance": 10,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "void-colossus": [
+    {
+      "itemSlug": "omega-plate",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "the-fracture-warden": [
+    {
+      "itemSlug": "sovereign-ichor",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "paradox-essence",
+      "chance": 55,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "reality-fragment",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "omega-plate",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "fear-shade": [
+    {
+      "itemSlug": "thought-crystal",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "memory-devourer": [
+    {
+      "itemSlug": "thought-crystal",
+      "chance": 60,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "paradox-essence",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "nightmare-knight": [
+    {
+      "itemSlug": "omega-plate",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "the-warden-of-minds": [
+    {
+      "itemSlug": "sovereign-ichor",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "thought-crystal",
+      "chance": 65,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "paradox-essence",
+      "chance": 50,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "abyssal-tendril": [
+    {
+      "itemSlug": "void-shard",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 40,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 35,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "void-born": [
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "sovereign-ichor",
+      "chance": 12,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "entropy-lord": [
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "omega-plate",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "sovereign-ichor",
+      "chance": 15,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "abyssal-sovereign": [
+    {
+      "itemSlug": "sovereign-ichor",
+      "chance": 50,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "omega-plate",
+      "chance": 55,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 50,
+      "minQty": 3,
+      "maxQty": 5
+    }
+  ],
+  "void-sentinel": [
+    {
+      "itemSlug": "omega-plate",
+      "chance": 55,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 50,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 30,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "annihilation-wraith": [
+    {
+      "itemSlug": "entropy-dust",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "sovereign-ichor",
+      "chance": 20,
+      "minQty": 1,
+      "maxQty": 1
+    },
+    {
+      "itemSlug": "void-shard",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    }
+  ],
+  "omega-construct": [
+    {
+      "itemSlug": "omega-plate",
+      "chance": 65,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 45,
+      "minQty": 1,
+      "maxQty": 2
+    },
+    {
+      "itemSlug": "paradox-essence",
+      "chance": 25,
+      "minQty": 1,
+      "maxQty": 1
+    }
+  ],
+  "the-void-sovereign": [
+    {
+      "itemSlug": "sovereign-ichor",
+      "chance": 70,
+      "minQty": 3,
+      "maxQty": 5
+    },
+    {
+      "itemSlug": "omega-plate",
+      "chance": 60,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "abyssal-core",
+      "chance": 55,
+      "minQty": 2,
+      "maxQty": 4
+    },
+    {
+      "itemSlug": "paradox-essence",
+      "chance": 50,
+      "minQty": 2,
+      "maxQty": 3
+    },
+    {
+      "itemSlug": "thought-crystal",
+      "chance": 45,
+      "minQty": 2,
+      "maxQty": 4
+    }
+  ]
+}

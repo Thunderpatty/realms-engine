@@ -1,0 +1,573 @@
+{
+  "location": {
+    "slug": "demon-hold",
+    "name": "Demon Hold",
+    "type": "dungeon",
+    "realm": "emberveil",
+    "description": "A fortress of basalt and bone, built into the side of an active volcano. This is where the cult keeps its prisoners and conducts its darkest rituals. The walls pulse with infernal energy.",
+    "connections": [
+      "ashen-vale"
+    ],
+    "mapX": 60,
+    "mapY": 20
+  },
+  "locationThreat": 26,
+  "dungeonConfig": {
+    "boss": "demonlord-varkath",
+    "name": "Demon Hold",
+    "minRooms": 5,
+    "maxRooms": 7,
+    "mechanic": {
+      "slug": "infernal-binding",
+      "name": "Infernal Binding",
+      "description": "Demonic wards drain your mana. Lose 2% max MP per room.",
+      "effect": {}
+    }
+  },
+  "enemies": [
+    {
+      "slug": "infernal-guard",
+      "name": "Infernal Guard",
+      "hp": 1304,
+      "attack": 53,
+      "defense": 32,
+      "xp": 1745,
+      "gold": 790,
+      "level": 24,
+      "abilities": [
+        "stunning-slam",
+        "war-cry"
+      ],
+      "drops": [],
+      "description": "A demon-bound soldier, human body augmented with infernal muscle and bone armor. Their eyes glow red."
+    },
+    {
+      "slug": "pit-fiend",
+      "name": "Pit Fiend",
+      "hp": 1538,
+      "attack": 63,
+      "defense": 37,
+      "xp": 1725,
+      "gold": 824,
+      "level": 25,
+      "abilities": [
+        "fire-breath",
+        "rending-claws",
+        "dark-curse"
+      ],
+      "drops": [],
+      "description": "A true demon from the deeper hells, summoned and barely controlled. It fights with cunning malice."
+    },
+    {
+      "slug": "hellfire-mage",
+      "name": "Hellfire Mage",
+      "hp": 1401,
+      "attack": 65,
+      "defense": 32,
+      "xp": 1759,
+      "gold": 833,
+      "level": 25,
+      "abilities": [
+        "fire-breath",
+        "weakening-hex",
+        "dark-curse"
+      ],
+      "drops": [],
+      "description": "A human mage who has fully embraced demonology. Their spells burn with hellfire \u2014 hotter than any natural flame."
+    },
+    {
+      "slug": "demonlord-varkath",
+      "name": "Demonlord Varkath",
+      "hp": 2841,
+      "attack": 83,
+      "defense": 42,
+      "xp": 7119,
+      "gold": 2426,
+      "level": 28,
+      "boss": true,
+      "abilities": [
+        "fire-breath",
+        "dark-curse",
+        "stunning-slam",
+        "regen-aura",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "The demon lord who rules this outpost of hell. Varkath stands twelve feet tall, wreathed in shadow and flame. His voice alone can shatter stone."
+    }
+  ],
+  "events": [
+    {
+      "slug": "demon-hold-event-1",
+      "name": "Prison Cells",
+      "icon": "\ud83d\udd12",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "You encounter prison cells in the demon hold. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (INT DC 21)",
+          "check": {
+            "stat": "int",
+            "dc": 21
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the prison cells.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 2
+                }
+              ],
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The prison cells proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Take direct action (STR DC 20)",
+          "check": {
+            "stat": "str",
+            "dc": 20
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 50,
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 1
+                }
+              ],
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "demon-hold-event-2",
+      "name": "Torture Chamber",
+      "icon": "\u26d3",
+      "type": "hazard",
+      "rarity": "uncommon",
+      "text": "You encounter torture chamber in the demon hold. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (WIS DC 21)",
+          "check": {
+            "stat": "wis",
+            "dc": 21
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the torture chamber.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "basalt-plate",
+                  "qty": 2
+                }
+              ],
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "The torture chamber proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 27
+            }
+          }
+        },
+        {
+          "label": "Take direct action (DEX DC 20)",
+          "check": {
+            "stat": "dex",
+            "dc": 20
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 60,
+              "items": [
+                {
+                  "slug": "basalt-plate",
+                  "qty": 1
+                }
+              ],
+              "xp": 33
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "demon-hold-event-3",
+      "name": "War Room",
+      "icon": "\ud83d\uddfa",
+      "type": "phenomenon",
+      "rarity": "common",
+      "text": "You encounter war room in the demon hold. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (DEX DC 22)",
+          "check": {
+            "stat": "dex",
+            "dc": 22
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the war room.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 2
+                }
+              ],
+              "xp": 41
+            }
+          },
+          "failure": {
+            "text": "The war room proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 29
+            }
+          }
+        },
+        {
+          "label": "Take direct action (CON DC 21)",
+          "check": {
+            "stat": "con",
+            "dc": 21
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 70,
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 1
+                }
+              ],
+              "xp": 36
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 24
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "demon-hold-event-4",
+      "name": "Demonic Forge",
+      "icon": "\ud83d\udd25",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "You encounter demonic forge in the demon hold. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (STR DC 22)",
+          "check": {
+            "stat": "str",
+            "dc": 22
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the demonic forge.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 44
+            }
+          },
+          "failure": {
+            "text": "The demonic forge proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 31
+            }
+          }
+        },
+        {
+          "label": "Take direct action (INT DC 21)",
+          "check": {
+            "stat": "int",
+            "dc": 21
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 80,
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 39
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 26
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "demon-hold-event-5",
+      "name": "Blood Fountain",
+      "icon": "\ud83e\ude78",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "You encounter blood fountain in the demon hold. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (CON DC 23)",
+          "check": {
+            "stat": "con",
+            "dc": 23
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the blood fountain.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 2
+                }
+              ],
+              "xp": 47
+            }
+          },
+          "failure": {
+            "text": "The blood fountain proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 33
+            }
+          }
+        },
+        {
+          "label": "Take direct action (WIS DC 22)",
+          "check": {
+            "stat": "wis",
+            "dc": 22
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 90,
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 1
+                }
+              ],
+              "xp": 42
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 28
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "demon-hold-event-6",
+      "name": "Throne Of Ashes",
+      "icon": "\ud83d\udc51",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "You encounter throne of ashes in the demon hold. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (INT DC 23)",
+          "check": {
+            "stat": "int",
+            "dc": 23
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the throne of ashes.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 50
+            }
+          },
+          "failure": {
+            "text": "The throne of ashes proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 35
+            }
+          }
+        },
+        {
+          "label": "Take direct action (STR DC 22)",
+          "check": {
+            "stat": "str",
+            "dc": 22
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 100,
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 30
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "demon-hold-group-1",
+      "name": "Hellfire Mage Cell Block",
+      "composition": [
+        {
+          "enemySlug": "hellfire-mage",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "demon-hold-group-2",
+      "name": "Pit Fiend & Infernal Guard",
+      "composition": [
+        {
+          "enemySlug": "pit-fiend",
+          "count": 1
+        },
+        {
+          "enemySlug": "infernal-guard",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

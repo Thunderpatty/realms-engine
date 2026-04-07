@@ -1,0 +1,67 @@
+{
+  "aldrics-frostbite": {
+    "slug": "aldrics-frostbite",
+    "name": "Aldric's Frostbite",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "exotic",
+    "classReq": "warrior",
+    "stats": { "str": 26, "con": 14, "dex": 6 },
+    "description": "The Frost King's personal weapon, reforged from the shattered throne. Every swing carries the weight of a glacier and the fury of a king who refused to die. The blade is so cold it burns, and the wounds it inflicts never fully warm.",
+    "passive": { "lifestealPct": 10, "onHitEffect": "slow", "bonusDmgPct": 8 },
+    "cost": 0,
+    "sell": 300
+  },
+  "frostweave-grimoire": {
+    "slug": "frostweave-grimoire",
+    "name": "Frostweave Grimoire",
+    "type": "trinket",
+    "slot": "trinket",
+    "rarity": "exotic",
+    "classReq": "mage",
+    "stats": { "int": 28, "wis": 12, "con": 4 },
+    "description": "The Frost Speaker's ultimate work — a grimoire woven from spectral ice and giant bone. Every spell cast through it arrives with the force of an avalanche. The pages turn themselves when you're not looking.",
+    "passive": { "mpRegenPct": 15, "bonusMagicDmg": 15, "spellCritBonus": 8 },
+    "cost": 0,
+    "sell": 300
+  },
+  "shadow-of-the-throne": {
+    "slug": "shadow-of-the-throne",
+    "name": "Shadow of the Throne",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "exotic",
+    "classReq": "rogue",
+    "stats": { "dex": 24, "con": 10, "wis": 6 },
+    "description": "Armor crafted from the living shadows that haunted the throne room. It shifts and flows like darkness itself, making the wearer nearly invisible. The cold radiating from it numbs anyone who gets too close.",
+    "passive": { "dodgeBonus": 12, "critBonus": 10, "damageReduction": 4 },
+    "cost": 0,
+    "sell": 300
+  },
+  "seal-of-binding-light": {
+    "slug": "seal-of-binding-light",
+    "name": "Seal of Binding Light",
+    "type": "shield",
+    "slot": "shield",
+    "rarity": "exotic",
+    "classReq": "cleric",
+    "stats": { "wis": 24, "con": 14, "int": 6 },
+    "description": "Forged from the last fragment of the ancient seal and blessed with every prayer ever spoken within the frozen throne. It radiates warmth in a realm of eternal cold — a defiant light against the darkness.",
+    "passive": { "healBonus": 15, "damageReduction": 8, "hpRegenPct": 10 },
+    "cost": 0,
+    "sell": 300
+  },
+  "bow-of-the-frozen-hunt": {
+    "slug": "bow-of-the-frozen-hunt",
+    "name": "Bow of the Frozen Hunt",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "exotic",
+    "classReq": "ranger",
+    "stats": { "dex": 22, "wis": 14, "con": 6 },
+    "description": "A bow strung with drake sinew and carved from glacier-heart wood. Arrows fired from it fly with supernatural accuracy and trail ice crystals. The frost drakes consider it sacred — which is why they tried so hard to stop you from taking it.",
+    "passive": { "critBonus": 12, "bonusDmgPct": 8, "onHitEffect": "slow" },
+    "cost": 0,
+    "sell": 300
+  }
+}

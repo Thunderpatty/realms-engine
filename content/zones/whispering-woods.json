@@ -1,0 +1,604 @@
+{
+  "location": {
+    "slug": "whispering-woods",
+    "name": "Whispering Woods",
+    "type": "wild",
+    "description": "Ancient trees creak with forgotten voices. Strange lights drift between the trunks. Wolves and worse lurk in the undergrowth.",
+    "connections": [
+      "thornwall",
+      "ruined-shrine",
+      "dark-hollow"
+    ],
+    "mapX": 28,
+    "mapY": 30,
+    "realm": "ashlands"
+  },
+  "enemies": [
+    {
+      "slug": "timber-wolf",
+      "hp": 187,
+      "xp": 15,
+      "gold": 6,
+      "name": "Timber Wolf",
+      "drops": [
+        "wolf-pelt",
+        "rusty-sword",
+        "leather-cap",
+        "pilgrim-sandals"
+      ],
+      "level": 1,
+      "attack": 7,
+      "defense": 3
+    },
+    {
+      "slug": "forest-spider",
+      "hp": 165,
+      "xp": 16,
+      "gold": 5,
+      "name": "Forest Spider",
+      "drops": [
+        "spider-silk",
+        "iron-sword",
+        "wool-hood",
+        "tin-locket"
+      ],
+      "level": 1,
+      "attack": 7,
+      "defense": 3,
+      "abilities": [
+        "poison-bite"
+      ]
+    },
+    {
+      "slug": "wild-boar",
+      "hp": 218,
+      "xp": 32,
+      "gold": 14,
+      "name": "Wild Boar",
+      "drops": [
+        "boar-tusk",
+        "smoke-pouch",
+        "leather-gloves",
+        "arcanist-circlet"
+      ],
+      "level": 2,
+      "attack": 10,
+      "defense": 3,
+      "abilities": [
+        "stunning-slam"
+      ]
+    },
+    {
+      "slug": "moss-stag",
+      "hp": 236,
+      "xp": 33,
+      "gold": 14,
+      "name": "Moss Stag",
+      "drops": [
+        "boar-tusk",
+        "copper-band",
+        "wool-mittens",
+        "shadow-cowl"
+      ],
+      "level": 2,
+      "attack": 9,
+      "defense": 3
+    },
+    {
+      "slug": "thorn-owlbear",
+      "hp": 337,
+      "xp": 113,
+      "gold": 50,
+      "name": "Thorn Owlbear",
+      "drops": [
+        "troll-hide",
+        "barbed-quiver",
+        "devotion-ring",
+        "warden-cloak"
+      ],
+      "level": 4,
+      "attack": 14,
+      "defense": 6,
+      "abilities": [
+        "rending-claws",
+        "stunning-slam"
+      ],
+      "telegraphs": [
+        "crushing-blow"
+      ]
+    },
+    {
+      "slug": "bandit-scout",
+      "hp": 256,
+      "xp": 34,
+      "gold": 15,
+      "name": "Bandit Scout",
+      "drops": [
+        "leather-scraps",
+        "apprentice-wand",
+        "thief-stiletto",
+        "ashwood-bow"
+      ],
+      "level": 2,
+      "attack": 9,
+      "defense": 4
+    },
+    {
+      "slug": "rabid-fox",
+      "name": "Rabid Fox",
+      "level": 1,
+      "hp": 174,
+      "attack": 7,
+      "defense": 3,
+      "xp": 15,
+      "gold": 6,
+      "abilities": [
+        "poison-bite"
+      ],
+      "drops": [
+        "leather-cap",
+        "hide-treads"
+      ]
+    },
+    {
+      "slug": "bramble-sprite",
+      "name": "Bramble Sprite",
+      "level": 2,
+      "hp": 260,
+      "attack": 9,
+      "defense": 4,
+      "xp": 31,
+      "gold": 14,
+      "abilities": [
+        "weakening-hex"
+      ],
+      "drops": [
+        "cloth-circlet",
+        "willow-ring",
+        "feather-cord"
+      ]
+    },
+    {
+      "slug": "feral-bear",
+      "name": "Feral Bear",
+      "level": 3,
+      "hp": 294,
+      "attack": 12,
+      "defense": 4,
+      "xp": 65,
+      "gold": 32,
+      "abilities": [
+        "rending-claws",
+        "stunning-slam"
+      ],
+      "drops": [
+        "iron-knuckles",
+        "marching-boots",
+        "copper-band"
+      ],
+      "telegraphs": [
+        "wild-charge"
+      ]
+    },
+    {
+      "slug": "poacher",
+      "name": "Poacher",
+      "level": 2,
+      "hp": 229,
+      "attack": 10,
+      "defense": 4,
+      "xp": 34,
+      "gold": 15,
+      "abilities": [],
+      "drops": [
+        "hide-bracers",
+        "scout-bandana",
+        "bone-pendant"
+      ],
+      "telegraphs": [
+        "poison-cloud"
+      ]
+    }
+  ],
+  "locationThreat": 2,
+  "events": [
+    {
+      "slug": "lost-herbalist",
+      "name": "Lost Herbalist",
+      "type": "npc",
+      "rarity": "common",
+      "icon": "\ud83e\uddd9",
+      "text": "A frail herbalist clutches a torn map, clearly lost among the ancient trees. She offers to share her knowledge if you can guide her back to the path.",
+      "choices": [
+        {
+          "label": "Guide her using your knowledge of the woods",
+          "check": {
+            "stat": "wis",
+            "dc": 10
+          },
+          "success": {
+            "text": "Your keen sense of direction leads her safely to the road. Grateful, she hands you a bundle of healing herbs.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "healing-herb",
+                  "qty": 3
+                }
+              ],
+              "xp": 15
+            }
+          },
+          "failure": {
+            "text": "You wander in circles before she finds her own way. She leaves with a pitying smile.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Demand payment for your help",
+          "check": {
+            "stat": "cha",
+            "dc": 12
+          },
+          "success": {
+            "text": "She reluctantly parts with some coins and a rare moonpetal she was gathering.",
+            "rewards": {
+              "gold": 25,
+              "items": [
+                {
+                  "slug": "moonpetal",
+                  "qty": 1
+                }
+              ],
+              "xp": 10
+            }
+          },
+          "failure": {
+            "text": "She scoffs and hobbles off on her own. You feel a twinge of regret.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Ignore her and continue exploring",
+          "auto": true,
+          "success": {
+            "text": "You push on. The woods swallow her cries behind you.",
+            "rewards": {
+              "xp": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "trapped-chest-woods",
+      "name": "Overgrown Chest",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "icon": "\ud83d\udce6",
+      "text": "Beneath a tangle of roots, you spot a weathered chest. Faint scratches on the lock suggest a trap mechanism.",
+      "choices": [
+        {
+          "label": "Disarm the trap carefully",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "Click! The trap disengages. Inside: a small pouch of gold and a wolf pelt.",
+            "rewards": {
+              "gold": 20,
+              "items": [
+                {
+                  "slug": "wolf-pelt",
+                  "qty": 2
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "SNAP! A dart catches your arm. You wrench the chest open but find little inside.",
+            "rewards": {
+              "xp": 8,
+              "damage": 12
+            }
+          }
+        },
+        {
+          "label": "Smash it open with brute force",
+          "check": {
+            "stat": "str",
+            "dc": 10
+          },
+          "success": {
+            "text": "The chest splinters open. Some gold spills out among the splinters.",
+            "rewards": {
+              "gold": 15,
+              "xp": 12
+            }
+          },
+          "failure": {
+            "text": "The chest holds firm and the trap catches you square in the chest.",
+            "rewards": {
+              "xp": 5,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "Wisdom sometimes means knowing when to walk away.",
+            "rewards": {
+              "xp": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "wolf-den",
+      "name": "Wolf Den",
+      "type": "discovery",
+      "rarity": "common",
+      "icon": "\ud83d\udc3a",
+      "text": "You stumble upon an abandoned wolf den. Bones and scraps litter the entrance, but the wolves seem to be out hunting.",
+      "choices": [
+        {
+          "label": "Search the den for useful materials",
+          "check": {
+            "stat": "dex",
+            "dc": 9
+          },
+          "success": {
+            "text": "You find several intact pelts and some leather scraps the wolves dragged in.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "wolf-pelt",
+                  "qty": 2
+                },
+                {
+                  "slug": "leather-scraps",
+                  "qty": 1
+                }
+              ],
+              "xp": 12
+            }
+          },
+          "failure": {
+            "text": "You disturb a sleeping cub whose howl echoes through the woods. Better leave quickly.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Track where the wolves went",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "text": "The tracks lead to a hidden glade with moonpetals growing wild. You gather what you can.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "moonpetal",
+                  "qty": 2
+                }
+              ],
+              "xp": 15
+            }
+          },
+          "failure": {
+            "text": "The tracks vanish on rocky ground. You return empty-handed.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "ancient-shrine-woods",
+      "name": "Mossy Shrine",
+      "type": "shrine",
+      "rarity": "rare",
+      "icon": "\u26e9",
+      "text": "A crumbling shrine pulses with faint arcane energy beneath a canopy of ancient oaks. An inscription reads: \"Offer your devotion.\"",
+      "choices": [
+        {
+          "label": "Pray at the shrine",
+          "check": {
+            "stat": "wis",
+            "dc": 8
+          },
+          "success": {
+            "text": "Warm light washes over you. Your wounds close and your mind sharpens.",
+            "rewards": {
+              "healPct": 40,
+              "manaPct": 40,
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The shrine flickers and goes dark. Nothing happens.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Study the runes for arcane knowledge",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "text": "The symbols resolve into fragments of forgotten magic. Knowledge surges through you.",
+            "rewards": {
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The runes swim before your eyes. A headache is your only reward.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "ww-hollow-tree",
+      "rarity": "common",
+      "name": "The Hollow Tree",
+      "icon": "\ud83c\udf33",
+      "description": "A massive oak with a dark hollow beckons. Something glints inside.",
+      "choices": [
+        {
+          "text": "Reach inside (DEX DC 11)",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "gold": 15,
+            "text": "You pull out a small pouch of coins!"
+          },
+          "failure": {
+            "damage": 8,
+            "text": "A spider bites your hand! You snatch back in pain."
+          }
+        },
+        {
+          "text": "Peek inside with a torch",
+          "success": {
+            "xp": 10,
+            "text": "You see old carvings inside \u2014 ancient woodsman marks. You learn from them."
+          }
+        },
+        {
+          "text": "Walk away",
+          "success": {
+            "text": "You leave the tree undisturbed."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "ww-wounded-deer",
+      "rarity": "common",
+      "name": "Wounded Deer",
+      "icon": "\ud83e\udd8c",
+      "description": "A young deer limps through the underbrush, a thorn embedded in its leg.",
+      "choices": [
+        {
+          "text": "Help the deer (WIS DC 10)",
+          "check": {
+            "stat": "wis",
+            "dc": 10
+          },
+          "success": {
+            "xp": 20,
+            "heal": 10,
+            "text": "The deer nuzzles your hand gratefully. A warm feeling spreads through you."
+          },
+          "failure": {
+            "text": "The deer panics and bolts. You tried."
+          }
+        },
+        {
+          "text": "Follow it quietly (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "gold": 20,
+            "text": "It leads you to a hidden cache of supplies left by a hunter."
+          },
+          "failure": {
+            "text": "You lose sight of it in the brush."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "ww-fairy-ring",
+      "rarity": "rare",
+      "name": "Fairy Ring",
+      "icon": "\ud83c\udf44",
+      "description": "A perfect circle of mushrooms glows faintly in a moonlit clearing.",
+      "choices": [
+        {
+          "text": "Step inside the ring (CHA DC 13)",
+          "check": {
+            "stat": "cha",
+            "dc": 13
+          },
+          "success": {
+            "xp": 30,
+            "mana": 15,
+            "text": "Ethereal voices whisper ancient secrets. Your mind expands."
+          },
+          "failure": {
+            "damage": 12,
+            "text": "The ring rejects you \u2014 fey magic stings your flesh!"
+          }
+        },
+        {
+          "text": "Harvest the mushrooms",
+          "success": {
+            "gold": 10,
+            "text": "You carefully gather the glowing fungi. An alchemist might pay for these."
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "wolf-pack",
+      "name": "Wolf Pack",
+      "composition": [
+        {
+          "enemySlug": "timber-wolf",
+          "count": 1
+        },
+        {
+          "enemySlug": "rabid-fox",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 15
+    },
+    {
+      "slug": "bandit-ambush",
+      "name": "Bandit Ambush",
+      "composition": [
+        {
+          "enemySlug": "bandit-scout",
+          "count": 2
+        },
+        {
+          "enemySlug": "forest-spider",
+          "count": [
+            0,
+            1
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

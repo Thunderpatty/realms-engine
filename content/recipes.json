@@ -1,0 +1,2622 @@
+[
+  {
+    "slug": "craft-health-potion",
+    "name": "Health Potion",
+    "outputItem": "health-potion",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "category": "consumable",
+    "description": "Brew a simple restorative from field herbs and scavenged reagents.",
+    "ingredients": [
+      {
+        "item": "healing-herb",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-leather-vest",
+    "name": "Leather Vest",
+    "outputItem": "leather-vest",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Patch together an adventurer's first dependable layer of protection.",
+    "ingredients": [
+      {
+        "item": "wolf-pelt",
+        "qty": 2
+      },
+      {
+        "item": "leather-scraps",
+        "qty": 2
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-novice-robes",
+    "name": "Novice Robes",
+    "outputItem": "novice-robes",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Simple robes lined for comfort and minor ritual use.",
+    "ingredients": [
+      {
+        "item": "linen-cloth",
+        "qty": 3
+      },
+      {
+        "item": "spider-silk",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-wooden-shield",
+    "name": "Wooden Shield",
+    "outputItem": "wooden-shield",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "shield",
+    "description": "A rugged shield reinforced with hide and crude fittings.",
+    "ingredients": [
+      {
+        "item": "iron-ore",
+        "qty": 2
+      },
+      {
+        "item": "wolf-pelt",
+        "qty": 1
+      },
+      {
+        "item": "boar-tusk",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-iron-sword",
+    "name": "Iron Sword",
+    "outputItem": "iron-sword",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "weapon",
+    "description": "Forge a reliable frontier blade from ore and scrap wrappings.",
+    "ingredients": [
+      {
+        "item": "iron-ore",
+        "qty": 4
+      },
+      {
+        "item": "leather-scraps",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-mana-potion",
+    "name": "Mana Potion",
+    "outputItem": "mana-potion",
+    "outputQty": 1,
+    "unlockLevel": 3,
+    "requiresDiscovery": false,
+    "category": "consumable",
+    "description": "Steep moonpetals into a focus-restoring draught.",
+    "ingredients": [
+      {
+        "item": "moonpetal",
+        "qty": 2
+      },
+      {
+        "item": "spider-silk",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-antidote",
+    "name": "Antidote",
+    "outputItem": "antidote",
+    "outputQty": 1,
+    "unlockLevel": 3,
+    "requiresDiscovery": false,
+    "category": "consumable",
+    "description": "A practical anti-venom for road and marsh creatures.",
+    "ingredients": [
+      {
+        "item": "moonpetal",
+        "qty": 1
+      },
+      {
+        "item": "serpent-fang",
+        "qty": 1
+      },
+      {
+        "item": "healing-herb",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-runed-oak-staff",
+    "name": "Runed Oak Staff",
+    "outputItem": "runed-oak-staff",
+    "outputQty": 1,
+    "unlockLevel": 4,
+    "requiresDiscovery": false,
+    "category": "weapon",
+    "description": "Bind shamanic fragments and focused plant matter into a proper caster's staff.",
+    "ingredients": [
+      {
+        "item": "shaman-staff-shard",
+        "qty": 2
+      },
+      {
+        "item": "moonpetal",
+        "qty": 2
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-greater-health-potion",
+    "name": "Greater Health Potion",
+    "outputItem": "greater-health-potion",
+    "outputQty": 1,
+    "unlockLevel": 4,
+    "requiresDiscovery": false,
+    "category": "consumable",
+    "description": "A stronger recovery brew for harder battles.",
+    "ingredients": [
+      {
+        "item": "health-potion",
+        "qty": 2
+      },
+      {
+        "item": "healing-herb",
+        "qty": 3
+      },
+      {
+        "item": "moonpetal",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-chainmail",
+    "name": "Chainmail",
+    "outputItem": "chainmail",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Interlocked rings and rugged underlayers for melee fighters.",
+    "ingredients": [
+      {
+        "item": "iron-ore",
+        "qty": 8
+      },
+      {
+        "item": "leather-scraps",
+        "qty": 4
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-greater-mana-potion",
+    "name": "Greater Mana Potion",
+    "outputItem": "greater-mana-potion",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "consumable",
+    "description": "A dense draught fit for sustained spellcasting.",
+    "ingredients": [
+      {
+        "item": "mana-potion",
+        "qty": 2
+      },
+      {
+        "item": "moonpetal",
+        "qty": 3
+      },
+      {
+        "item": "shadow-ichor",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-yew-longbow",
+    "name": "Yew Longbow",
+    "outputItem": "yew-longbow",
+    "outputQty": 1,
+    "unlockLevel": 6,
+    "requiresDiscovery": false,
+    "category": "weapon",
+    "description": "A hunter's war-bow braced with cloth wrappings and cured hide.",
+    "ingredients": [
+      {
+        "item": "iron-ore",
+        "qty": 4
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 3
+      },
+      {
+        "item": "wolf-pelt",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-elixir",
+    "name": "Elixir of Vitality",
+    "outputItem": "elixir",
+    "outputQty": 1,
+    "unlockLevel": 7,
+    "requiresDiscovery": false,
+    "category": "consumable",
+    "description": "Blend major restorative compounds into a powerful all-purpose elixir.",
+    "ingredients": [
+      {
+        "item": "greater-health-potion",
+        "qty": 1
+      },
+      {
+        "item": "greater-mana-potion",
+        "qty": 1
+      },
+      {
+        "item": "shadow-ichor",
+        "qty": 2
+      },
+      {
+        "item": "moonpetal",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-warlord-crest-blade",
+    "name": "Warlord Crestblade",
+    "outputItem": "warlord-crest-blade",
+    "outputQty": 1,
+    "unlockLevel": 8,
+    "requiresDiscovery": true,
+    "category": "legendary",
+    "description": "A lost war-smithing pattern said to turn scavenged battlefield iron into a hero's weapon.",
+    "ingredients": [
+      {
+        "item": "iron-ore",
+        "qty": 14
+      },
+      {
+        "item": "leather-scraps",
+        "qty": 8
+      },
+      {
+        "item": "goblin-ear",
+        "qty": 6
+      },
+      {
+        "item": "boar-tusk",
+        "qty": 4
+      }
+    ]
+  },
+  {
+    "slug": "craft-saintguard-bulwark",
+    "name": "Saintguard Bulwark",
+    "outputItem": "saintguard-bulwark",
+    "outputQty": 1,
+    "unlockLevel": 9,
+    "requiresDiscovery": true,
+    "category": "legendary",
+    "description": "An old defensive pattern preserved in scraps of frontier folklore and chapel walls.",
+    "ingredients": [
+      {
+        "item": "iron-ore",
+        "qty": 12
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 10
+      },
+      {
+        "item": "wolf-pelt",
+        "qty": 8
+      },
+      {
+        "item": "moonpetal",
+        "qty": 8
+      }
+    ]
+  },
+  {
+    "slug": "craft-fenweave-raiment",
+    "name": "Fenweave Raiment",
+    "outputItem": "fenweave-raiment",
+    "outputQty": 1,
+    "unlockLevel": 9,
+    "requiresDiscovery": true,
+    "category": "legendary",
+    "description": "A witch's weaving art requiring moon-soaked cloth, marsh silk, and condensed darkness.",
+    "ingredients": [
+      {
+        "item": "moonpetal",
+        "qty": 12
+      },
+      {
+        "item": "shadow-ichor",
+        "qty": 8
+      },
+      {
+        "item": "spider-silk",
+        "qty": 10
+      },
+      {
+        "item": "wisp-lantern",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-dragon-heart",
+    "name": "Dragon's Heart",
+    "outputItem": "dragon-heart",
+    "outputQty": 1,
+    "unlockLevel": 10,
+    "requiresDiscovery": true,
+    "category": "legendary",
+    "description": "A masterwork synthesis that channels an ancient wyrm's fury into wearable form.",
+    "ingredients": [
+      {
+        "item": "shadow-ichor",
+        "qty": 10
+      },
+      {
+        "item": "moonpetal",
+        "qty": 12
+      },
+      {
+        "item": "iron-ore",
+        "qty": 16
+      },
+      {
+        "item": "wisp-lantern",
+        "qty": 5
+      }
+    ]
+  },
+  {
+    "slug": "craft-rusty-sword",
+    "name": "Rusty Sword",
+    "outputItem": "rusty-sword",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "category": "weapon",
+    "description": "Hammer scavenged road iron and a looted cloak clasp into a rough starter blade.",
+    "ingredients": [
+      {
+        "item": "iron-ore",
+        "qty": 1
+      },
+      {
+        "item": "bandit-cloak",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-acolyte-vestments",
+    "name": "Acolyte Vestments",
+    "outputItem": "acolyte-vestments",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Bind bone ash into prayer-marked cloth for simple shrine vestments.",
+    "ingredients": [
+      {
+        "item": "bone-dust",
+        "qty": 2
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-poison-kit-satchel",
+    "name": "Poison Kit Satchel",
+    "outputItem": "poison-kit-satchel",
+    "outputQty": 1,
+    "unlockLevel": 4,
+    "requiresDiscovery": false,
+    "category": "shield",
+    "description": "Pack venom glands and foul reagents into a dangerous alchemical satchel.",
+    "ingredients": [
+      {
+        "item": "rotting-flesh",
+        "qty": 2
+      },
+      {
+        "item": "serpent-fang",
+        "qty": 2
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-sanctified-mace",
+    "name": "Sanctified Mace",
+    "outputItem": "sanctified-mace",
+    "outputQty": 1,
+    "unlockLevel": 4,
+    "requiresDiscovery": false,
+    "category": "weapon",
+    "description": "Reforge consecrated fragments into a blunt weapon fit for undead hunts.",
+    "ingredients": [
+      {
+        "item": "holy-shard",
+        "qty": 2
+      },
+      {
+        "item": "bone-dust",
+        "qty": 1
+      },
+      {
+        "item": "iron-ore",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-nightcloak",
+    "name": "Nightcloak",
+    "outputItem": "nightcloak",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Weave grave-cold essence through silk to make a stealthy dark mantle.",
+    "ingredients": [
+      {
+        "item": "wraith-essence",
+        "qty": 2
+      },
+      {
+        "item": "spider-silk",
+        "qty": 2
+      },
+      {
+        "item": "shadow-ichor",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-vanguard-mail",
+    "name": "Vanguard Mail",
+    "outputItem": "vanguard-mail",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Layer troll hide beneath iron links for a stubborn front-line harness.",
+    "ingredients": [
+      {
+        "item": "troll-hide",
+        "qty": 2
+      },
+      {
+        "item": "iron-ore",
+        "qty": 6
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-ember-wand",
+    "name": "Ember Wand",
+    "outputItem": "ember-wand",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "weapon",
+    "description": "Set beetle chitin around a rune core to preserve a living ember at the tip.",
+    "ingredients": [
+      {
+        "item": "fire-chitin",
+        "qty": 3
+      },
+      {
+        "item": "shaman-staff-shard",
+        "qty": 1
+      },
+      {
+        "item": "moonpetal",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-cinder-circlet",
+    "name": "Cinder Circlet",
+    "outputItem": "cinder-circlet",
+    "outputQty": 1,
+    "unlockLevel": 6,
+    "requiresDiscovery": false,
+    "category": "accessory",
+    "description": "Fuse furnace-hot remains into a circlet that sharpens heat and will.",
+    "ingredients": [
+      {
+        "item": "molten-core",
+        "qty": 2
+      },
+      {
+        "item": "fire-chitin",
+        "qty": 2
+      },
+      {
+        "item": "moonpetal",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-tower-heater",
+    "name": "Tower Heater",
+    "outputItem": "tower-heater",
+    "outputQty": 1,
+    "unlockLevel": 6,
+    "requiresDiscovery": false,
+    "category": "shield",
+    "description": "Anchor a golem heart into forged plating for a heavy defensive wall.",
+    "ingredients": [
+      {
+        "item": "golem-heart",
+        "qty": 1
+      },
+      {
+        "item": "iron-ore",
+        "qty": 6
+      },
+      {
+        "item": "holy-shard",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-example-moon-blade",
+    "name": "Example Moon Blade",
+    "outputItem": "example-moon-blade",
+    "outputQty": 1,
+    "unlockLevel": 4,
+    "requiresDiscovery": false,
+    "category": "weapon",
+    "description": "Forge an example blade from common crafting materials.",
+    "ingredients": [
+      {
+        "item": "iron-ore",
+        "qty": 4
+      },
+      {
+        "item": "moonpetal",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-stoneheart-tonic",
+    "name": "Stoneheart Tonic",
+    "outputItem": "stoneheart-tonic",
+    "outputQty": 1,
+    "unlockLevel": 4,
+    "requiresDiscovery": false,
+    "category": "consumable",
+    "description": "Render a golem core into a battle tonic that fortifies the body for a few turns.",
+    "ingredients": [
+      {
+        "item": "golem-heart",
+        "qty": 1
+      },
+      {
+        "item": "iron-ore",
+        "qty": 2
+      },
+      {
+        "item": "healing-herb",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-bloodthirst-philter",
+    "name": "Bloodthirst Philter",
+    "outputItem": "bloodthirst-philter",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "consumable",
+    "description": "Distill fang venom and blood-rich reagents into a lifesteal draught for desperate melee fighters.",
+    "ingredients": [
+      {
+        "item": "serpent-fang",
+        "qty": 2
+      },
+      {
+        "item": "shadow-ichor",
+        "qty": 1
+      },
+      {
+        "item": "healing-herb",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-verdant-vial",
+    "name": "Verdant Vial",
+    "outputItem": "verdant-vial",
+    "outputQty": 1,
+    "unlockLevel": 4,
+    "requiresDiscovery": false,
+    "category": "consumable",
+    "description": "Brew a regenerative vial for battles where recovery matters more than burst healing.",
+    "ingredients": [
+      {
+        "item": "healing-herb",
+        "qty": 3
+      },
+      {
+        "item": "moonpetal",
+        "qty": 1
+      },
+      {
+        "item": "spider-silk",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-focus-incense",
+    "name": "Focus Incense",
+    "outputItem": "focus-incense",
+    "outputQty": 1,
+    "unlockLevel": 4,
+    "requiresDiscovery": false,
+    "category": "consumable",
+    "description": "Bind moonpetal pollen and linen into an incense that restores mana over several turns.",
+    "ingredients": [
+      {
+        "item": "moonpetal",
+        "qty": 2
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 2
+      },
+      {
+        "item": "wisp-lantern",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-ember-oil",
+    "name": "Ember Oil",
+    "outputItem": "ember-oil",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "consumable",
+    "description": "Refine molten residue into a weapon oil that can set enemies ablaze on hit.",
+    "ingredients": [
+      {
+        "item": "molten-core",
+        "qty": 1
+      },
+      {
+        "item": "fire-chitin",
+        "qty": 2
+      },
+      {
+        "item": "shadow-ichor",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-ironbark-helm",
+    "name": "Ironbark Helm",
+    "outputItem": "ironbark-helm",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "A starter helm for warriors and bruisers.",
+    "ingredients": [
+      {
+        "item": "iron-ore",
+        "qty": 3
+      },
+      {
+        "item": "wolf-pelt",
+        "qty": 1
+      },
+      {
+        "item": "boar-tusk",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-vanguard-gauntlets",
+    "name": "Vanguard Gauntlets",
+    "outputItem": "vanguard-gauntlets",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Plated gauntlets that reward aggressive timing.",
+    "ingredients": [
+      {
+        "item": "iron-ore",
+        "qty": 2
+      },
+      {
+        "item": "leather-scraps",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-trailbreaker-boots",
+    "name": "Trailbreaker Boots",
+    "outputItem": "trailbreaker-boots",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Sturdy boots for tankier adventurers.",
+    "ingredients": [
+      {
+        "item": "wolf-pelt",
+        "qty": 2
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-lionheart-amulet",
+    "name": "Lionheart Amulet",
+    "outputItem": "lionheart-amulet",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "accessory",
+    "description": "An amulet that gives non-healers a little staying power each turn.",
+    "ingredients": [
+      {
+        "item": "holy-shard",
+        "qty": 1
+      },
+      {
+        "item": "boar-tusk",
+        "qty": 2
+      },
+      {
+        "item": "iron-ore",
+        "qty": 4
+      }
+    ]
+  },
+  {
+    "slug": "craft-colossus-warhelm",
+    "name": "Colossus Warhelm",
+    "outputItem": "colossus-warhelm",
+    "outputQty": 1,
+    "unlockLevel": 8,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "A brutal epic helm for warriors who want durability and pressure.",
+    "ingredients": [
+      {
+        "item": "troll-hide",
+        "qty": 2
+      },
+      {
+        "item": "goblin-ear",
+        "qty": 4
+      },
+      {
+        "item": "iron-ore",
+        "qty": 8
+      },
+      {
+        "item": "holy-shard",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-spellweave-hood",
+    "name": "Spellweave Hood",
+    "outputItem": "spellweave-hood",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "A simple arcane hood for apprentices and scholars.",
+    "ingredients": [
+      {
+        "item": "linen-cloth",
+        "qty": 2
+      },
+      {
+        "item": "moonpetal",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-glyphbound-gloves",
+    "name": "Glyphbound Gloves",
+    "outputItem": "glyphbound-gloves",
+    "outputQty": 1,
+    "unlockLevel": 3,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Gloves etched to improve spell release.",
+    "ingredients": [
+      {
+        "item": "linen-cloth",
+        "qty": 2
+      },
+      {
+        "item": "shaman-staff-shard",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-miststep-sandals",
+    "name": "Miststep Sandals",
+    "outputItem": "miststep-sandals",
+    "outputQty": 1,
+    "unlockLevel": 3,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Light footwear for mobile casters.",
+    "ingredients": [
+      {
+        "item": "linen-cloth",
+        "qty": 2
+      },
+      {
+        "item": "spider-silk",
+        "qty": 1
+      },
+      {
+        "item": "moonpetal",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-astral-pendant",
+    "name": "Astral Pendant",
+    "outputItem": "astral-pendant",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "accessory",
+    "description": "An amulet that rewards sustained casting.",
+    "ingredients": [
+      {
+        "item": "wisp-lantern",
+        "qty": 1
+      },
+      {
+        "item": "moonpetal",
+        "qty": 4
+      },
+      {
+        "item": "shadow-ichor",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-eclipse-cowl",
+    "name": "Eclipse Cowl",
+    "outputItem": "eclipse-cowl",
+    "outputQty": 1,
+    "unlockLevel": 8,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "An epic cowl for mages who want control and mana longevity.",
+    "ingredients": [
+      {
+        "item": "wisp-lantern",
+        "qty": 2
+      },
+      {
+        "item": "shadow-ichor",
+        "qty": 4
+      },
+      {
+        "item": "spider-silk",
+        "qty": 4
+      },
+      {
+        "item": "moonpetal",
+        "qty": 6
+      }
+    ]
+  },
+  {
+    "slug": "craft-shadowhood",
+    "name": "Shadowhood",
+    "outputItem": "shadowhood",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "A low-profile hood for scouts and skirmishers.",
+    "ingredients": [
+      {
+        "item": "bandit-cloak",
+        "qty": 1
+      },
+      {
+        "item": "spider-silk",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-gripwrap-gloves",
+    "name": "Gripwrap Gloves",
+    "outputItem": "gripwrap-gloves",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Quick-draw gloves for rogues.",
+    "ingredients": [
+      {
+        "item": "leather-scraps",
+        "qty": 2
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-softstep-boots",
+    "name": "Softstep Boots",
+    "outputItem": "softstep-boots",
+    "outputQty": 1,
+    "unlockLevel": 3,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Footwear made for silent approach and quick retreat.",
+    "ingredients": [
+      {
+        "item": "bandit-cloak",
+        "qty": 1
+      },
+      {
+        "item": "wolf-pelt",
+        "qty": 1
+      },
+      {
+        "item": "spider-silk",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-venom-locket",
+    "name": "Venom Locket",
+    "outputItem": "venom-locket",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "accessory",
+    "description": "A poison-focused amulet for rogues and dex builds.",
+    "ingredients": [
+      {
+        "item": "serpent-fang",
+        "qty": 2
+      },
+      {
+        "item": "shadow-ichor",
+        "qty": 1
+      },
+      {
+        "item": "moonpetal",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-duskveil-mask",
+    "name": "Duskveil Mask",
+    "outputItem": "duskveil-mask",
+    "outputQty": 1,
+    "unlockLevel": 8,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "An epic rogue mask that turns pressure into sustain.",
+    "ingredients": [
+      {
+        "item": "wraith-essence",
+        "qty": 2
+      },
+      {
+        "item": "shadow-ichor",
+        "qty": 3
+      },
+      {
+        "item": "bandit-cloak",
+        "qty": 2
+      },
+      {
+        "item": "spider-silk",
+        "qty": 4
+      }
+    ]
+  },
+  {
+    "slug": "craft-hawkfeather-cap",
+    "name": "Hawkfeather Cap",
+    "outputItem": "hawkfeather-cap",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "A practical field cap for early hunters.",
+    "ingredients": [
+      {
+        "item": "wolf-pelt",
+        "qty": 1
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-fletcher-grips",
+    "name": "Fletcher Grips",
+    "outputItem": "fletcher-grips",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Gloves meant for bowstrings and trapwork.",
+    "ingredients": [
+      {
+        "item": "wolf-pelt",
+        "qty": 1
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 1
+      },
+      {
+        "item": "boar-tusk",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-briarstride-boots",
+    "name": "Briarstride Boots",
+    "outputItem": "briarstride-boots",
+    "outputQty": 1,
+    "unlockLevel": 3,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Boots built for rangers who live in rough ground.",
+    "ingredients": [
+      {
+        "item": "wolf-pelt",
+        "qty": 2
+      },
+      {
+        "item": "moonpetal",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-moonleaf-amulet",
+    "name": "Moonleaf Amulet",
+    "outputItem": "moonleaf-amulet",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "accessory",
+    "description": "An amulet that helps hunters snare prey with slowing strikes.",
+    "ingredients": [
+      {
+        "item": "moonpetal",
+        "qty": 3
+      },
+      {
+        "item": "wisp-lantern",
+        "qty": 1
+      },
+      {
+        "item": "wolf-pelt",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-stormtracker-hood",
+    "name": "Stormtracker Hood",
+    "outputItem": "stormtracker-hood",
+    "outputQty": 1,
+    "unlockLevel": 8,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "An epic ranger hood for kiting, pressure, and long fights.",
+    "ingredients": [
+      {
+        "item": "troll-hide",
+        "qty": 1
+      },
+      {
+        "item": "moonpetal",
+        "qty": 4
+      },
+      {
+        "item": "wisp-lantern",
+        "qty": 2
+      },
+      {
+        "item": "wolf-pelt",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-pilgrim-circlet",
+    "name": "Pilgrim Circlet",
+    "outputItem": "pilgrim-circlet",
+    "outputQty": 1,
+    "unlockLevel": 2,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "A humble circlet for clerics and protective supports.",
+    "ingredients": [
+      {
+        "item": "holy-shard",
+        "qty": 1
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-sanctified-handwraps",
+    "name": "Sanctified Handwraps",
+    "outputItem": "sanctified-handwraps",
+    "outputQty": 1,
+    "unlockLevel": 3,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Blessed wraps for healers who also wade into danger.",
+    "ingredients": [
+      {
+        "item": "holy-shard",
+        "qty": 1
+      },
+      {
+        "item": "bone-dust",
+        "qty": 1
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-dawnwalker-sandals",
+    "name": "Dawnwalker Sandals",
+    "outputItem": "dawnwalker-sandals",
+    "outputQty": 1,
+    "unlockLevel": 3,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "Quiet holy sandals for grave-roads and ruined sanctums.",
+    "ingredients": [
+      {
+        "item": "holy-shard",
+        "qty": 1
+      },
+      {
+        "item": "linen-cloth",
+        "qty": 2
+      },
+      {
+        "item": "moonpetal",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-reliquary-amulet",
+    "name": "Reliquary Amulet",
+    "outputItem": "reliquary-amulet",
+    "outputQty": 1,
+    "unlockLevel": 5,
+    "requiresDiscovery": false,
+    "category": "accessory",
+    "description": "A support amulet that steadily restores body and spirit.",
+    "ingredients": [
+      {
+        "item": "holy-shard",
+        "qty": 2
+      },
+      {
+        "item": "wisp-lantern",
+        "qty": 1
+      },
+      {
+        "item": "moonpetal",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-halo-of-embers",
+    "name": "Halo of Embers",
+    "outputItem": "halo-of-embers",
+    "outputQty": 1,
+    "unlockLevel": 8,
+    "requiresDiscovery": false,
+    "category": "armor",
+    "description": "An epic halo for clerics who want sustain and attrition power.",
+    "ingredients": [
+      {
+        "item": "holy-shard",
+        "qty": 3
+      },
+      {
+        "item": "fire-chitin",
+        "qty": 3
+      },
+      {
+        "item": "moonpetal",
+        "qty": 4
+      },
+      {
+        "item": "bone-dust",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-frostforged-blade",
+    "name": "Frostforged Blade",
+    "category": "weapon",
+    "ingredients": [
+      {
+        "item": "permafrost-ore",
+        "qty": 5
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 3
+      },
+      {
+        "item": "frozen-hide",
+        "qty": 2
+      }
+    ],
+    "outputItem": "frostforged-blade",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Frostforged Blade from Frostreach materials."
+  },
+  {
+    "slug": "craft-glacial-staff",
+    "name": "Glacial Staff",
+    "category": "weapon",
+    "ingredients": [
+      {
+        "item": "frost-crystal",
+        "qty": 5
+      },
+      {
+        "item": "spectral-ice",
+        "qty": 3
+      },
+      {
+        "item": "frostbloom-petal",
+        "qty": 2
+      }
+    ],
+    "outputItem": "glacial-staff",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Glacial Staff from Frostreach materials."
+  },
+  {
+    "slug": "craft-icicle-stiletto",
+    "name": "Icicle Stiletto",
+    "category": "weapon",
+    "ingredients": [
+      {
+        "item": "frost-crystal",
+        "qty": 4
+      },
+      {
+        "item": "permafrost-ore",
+        "qty": 3
+      },
+      {
+        "item": "spectral-ice",
+        "qty": 2
+      }
+    ],
+    "outputItem": "icicle-stiletto",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Icicle Stiletto from Frostreach materials."
+  },
+  {
+    "slug": "craft-frostpriests-censer",
+    "name": "Frostpriest's Censer",
+    "category": "weapon",
+    "ingredients": [
+      {
+        "item": "glacial-essence",
+        "qty": 3
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 3
+      },
+      {
+        "item": "frostbloom-petal",
+        "qty": 3
+      }
+    ],
+    "outputItem": "frostpriests-censer",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Frostpriest's Censer from Frostreach materials."
+  },
+  {
+    "slug": "craft-blizzard-bow",
+    "name": "Blizzard Bow",
+    "category": "weapon",
+    "ingredients": [
+      {
+        "item": "frozen-hide",
+        "qty": 4
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 3
+      },
+      {
+        "item": "glacial-essence",
+        "qty": 2
+      }
+    ],
+    "outputItem": "blizzard-bow",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Blizzard Bow from Frostreach materials."
+  },
+  {
+    "slug": "craft-permafrost-mail",
+    "name": "Permafrost Mail",
+    "category": "armor",
+    "ingredients": [
+      {
+        "item": "permafrost-ore",
+        "qty": 6
+      },
+      {
+        "item": "frozen-hide",
+        "qty": 3
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 2
+      }
+    ],
+    "outputItem": "permafrost-mail",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Permafrost Mail from Frostreach materials."
+  },
+  {
+    "slug": "craft-frozen-weave-robes",
+    "name": "Frozen Weave Robes",
+    "category": "armor",
+    "ingredients": [
+      {
+        "item": "spectral-ice",
+        "qty": 4
+      },
+      {
+        "item": "frostbloom-petal",
+        "qty": 4
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 3
+      }
+    ],
+    "outputItem": "frozen-weave-robes",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Frozen Weave Robes from Frostreach materials."
+  },
+  {
+    "slug": "craft-frostreach-leathers",
+    "name": "Frostreach Leathers",
+    "category": "armor",
+    "ingredients": [
+      {
+        "item": "frozen-hide",
+        "qty": 5
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 3
+      },
+      {
+        "item": "frostbloom-petal",
+        "qty": 2
+      }
+    ],
+    "outputItem": "frostreach-leathers",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Frostreach Leathers from Frostreach materials."
+  },
+  {
+    "slug": "craft-frostguard-helm",
+    "name": "Frostguard Helm",
+    "category": "helmet",
+    "ingredients": [
+      {
+        "item": "permafrost-ore",
+        "qty": 4
+      },
+      {
+        "item": "frozen-hide",
+        "qty": 2
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 2
+      }
+    ],
+    "outputItem": "frostguard-helm",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Frostguard Helm from Frostreach materials."
+  },
+  {
+    "slug": "craft-iceweave-hood",
+    "name": "Iceweave Hood",
+    "category": "helmet",
+    "ingredients": [
+      {
+        "item": "spectral-ice",
+        "qty": 3
+      },
+      {
+        "item": "frostbloom-petal",
+        "qty": 3
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 2
+      }
+    ],
+    "outputItem": "iceweave-hood",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Iceweave Hood from Frostreach materials."
+  },
+  {
+    "slug": "craft-snowstrider-boots",
+    "name": "Snowstrider Boots",
+    "category": "boots",
+    "ingredients": [
+      {
+        "item": "frozen-hide",
+        "qty": 4
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 2
+      },
+      {
+        "item": "frostbloom-petal",
+        "qty": 2
+      }
+    ],
+    "outputItem": "snowstrider-boots",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Snowstrider Boots from Frostreach materials."
+  },
+  {
+    "slug": "craft-frostweave-grips",
+    "name": "Frostweave Grips",
+    "category": "gloves",
+    "ingredients": [
+      {
+        "item": "frozen-hide",
+        "qty": 3
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 2
+      },
+      {
+        "item": "spectral-ice",
+        "qty": 1
+      }
+    ],
+    "outputItem": "frostweave-grips",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Frostweave Grips from Frostreach materials."
+  },
+  {
+    "slug": "craft-glacial-bulwark",
+    "name": "Glacial Bulwark",
+    "category": "shield",
+    "ingredients": [
+      {
+        "item": "permafrost-ore",
+        "qty": 5
+      },
+      {
+        "item": "glacial-essence",
+        "qty": 2
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 2
+      }
+    ],
+    "outputItem": "glacial-bulwark",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Glacial Bulwark from Frostreach materials."
+  },
+  {
+    "slug": "craft-frostbloom-pendant",
+    "name": "Frostbloom Pendant",
+    "category": "amulet",
+    "ingredients": [
+      {
+        "item": "frostbloom-petal",
+        "qty": 4
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 2
+      },
+      {
+        "item": "spectral-ice",
+        "qty": 1
+      }
+    ],
+    "outputItem": "frostbloom-pendant",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Frostbloom Pendant from Frostreach materials."
+  },
+  {
+    "slug": "craft-permafrost-band",
+    "name": "Permafrost Band",
+    "category": "ring",
+    "ingredients": [
+      {
+        "item": "permafrost-ore",
+        "qty": 3
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 2
+      },
+      {
+        "item": "glacial-essence",
+        "qty": 1
+      }
+    ],
+    "outputItem": "permafrost-band",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft Permafrost Band from Frostreach materials."
+  },
+  {
+    "slug": "craft-frostguard-aegis",
+    "name": "Frostguard Aegis",
+    "category": "shield",
+    "ingredients": [
+      {
+        "item": "permafrost-ore",
+        "qty": 8
+      },
+      {
+        "item": "drake-scale-shard",
+        "qty": 3
+      },
+      {
+        "item": "glacial-essence",
+        "qty": 3
+      }
+    ],
+    "outputItem": "frostguard-aegis",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": true,
+    "description": "Craft Frostguard Aegis from Frostreach materials."
+  },
+  {
+    "slug": "craft-frozen-crown",
+    "name": "Frozen Crown",
+    "category": "helmet",
+    "ingredients": [
+      {
+        "item": "spectral-ice",
+        "qty": 5
+      },
+      {
+        "item": "frost-crystal",
+        "qty": 6
+      },
+      {
+        "item": "glacial-essence",
+        "qty": 3
+      }
+    ],
+    "outputItem": "frozen-crown",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": true,
+    "description": "Craft Frozen Crown from Frostreach materials."
+  },
+  {
+    "slug": "craft-drakebone-plate",
+    "name": "Drakebone Plate",
+    "category": "armor",
+    "ingredients": [
+      {
+        "item": "drake-scale-shard",
+        "qty": 5
+      },
+      {
+        "item": "permafrost-ore",
+        "qty": 6
+      },
+      {
+        "item": "giant-bone",
+        "qty": 4
+      }
+    ],
+    "outputItem": "drakebone-plate",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": true,
+    "description": "Craft Drakebone Plate from Frostreach materials."
+  },
+  {
+    "slug": "craft-aldrics-frostbrand",
+    "name": "Aldric's Frostbrand",
+    "category": "weapon",
+    "ingredients": [
+      {
+        "item": "drake-scale-shard",
+        "qty": 6
+      },
+      {
+        "item": "permafrost-ore",
+        "qty": 8
+      },
+      {
+        "item": "glacial-essence",
+        "qty": 4
+      },
+      {
+        "item": "giant-bone",
+        "qty": 3
+      }
+    ],
+    "outputItem": "aldrics-frostbrand",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": true,
+    "description": "Craft Aldric's Frostbrand from Frostreach materials."
+  },
+  {
+    "slug": "craft-blizzard-treads",
+    "name": "Blizzard Treads",
+    "category": "boots",
+    "ingredients": [
+      {
+        "item": "frozen-hide",
+        "qty": 6
+      },
+      {
+        "item": "glacial-essence",
+        "qty": 3
+      },
+      {
+        "item": "spectral-ice",
+        "qty": 3
+      }
+    ],
+    "outputItem": "blizzard-treads",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": true,
+    "description": "Craft Blizzard Treads from Frostreach materials."
+  },
+  {
+    "slug": "craft-obsidian-cleaver",
+    "name": "Obsidian Cleaver",
+    "category": "weapon",
+    "outputItem": "obsidian-cleaver",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge a blade from volcanic glass.",
+    "ingredients": [
+      {
+        "item": "volcanic-glass",
+        "qty": 6
+      },
+      {
+        "item": "basalt-plate",
+        "qty": 4
+      },
+      {
+        "item": "magma-core",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-infernal-staff",
+    "name": "Infernal Staff",
+    "category": "weapon",
+    "outputItem": "infernal-staff",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge a staff of hellfire.",
+    "ingredients": [
+      {
+        "item": "demon-shard",
+        "qty": 5
+      },
+      {
+        "item": "ember-dust",
+        "qty": 5
+      },
+      {
+        "item": "magma-core",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-ember-daggers",
+    "name": "Ember Daggers",
+    "category": "weapon",
+    "outputItem": "ember-daggers",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge twin daggers of living ember.",
+    "ingredients": [
+      {
+        "item": "volcanic-glass",
+        "qty": 5
+      },
+      {
+        "item": "ember-dust",
+        "qty": 4
+      },
+      {
+        "item": "sulfur-crystal",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-ashpriest-mace",
+    "name": "Ashpriest Mace",
+    "category": "weapon",
+    "outputItem": "ashpriest-mace",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge a holy mace of caldera stone.",
+    "ingredients": [
+      {
+        "item": "basalt-plate",
+        "qty": 4
+      },
+      {
+        "item": "magma-core",
+        "qty": 3
+      },
+      {
+        "item": "ember-dust",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-caldera-longbow",
+    "name": "Caldera Longbow",
+    "category": "weapon",
+    "outputItem": "caldera-longbow",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft a bow from heat-hardened wood.",
+    "ingredients": [
+      {
+        "item": "basalt-plate",
+        "qty": 3
+      },
+      {
+        "item": "volcanic-glass",
+        "qty": 4
+      },
+      {
+        "item": "drake-fire-gland",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-volcanic-mail",
+    "name": "Volcanic Mail",
+    "category": "armor",
+    "outputItem": "volcanic-mail",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge chainmail in volcanic heat.",
+    "ingredients": [
+      {
+        "item": "basalt-plate",
+        "qty": 6
+      },
+      {
+        "item": "volcanic-glass",
+        "qty": 4
+      },
+      {
+        "item": "magma-core",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-demonhide-robes",
+    "name": "Demonhide Robes",
+    "category": "armor",
+    "outputItem": "demonhide-robes",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Stitch robes from demon leather.",
+    "ingredients": [
+      {
+        "item": "demon-shard",
+        "qty": 5
+      },
+      {
+        "item": "ember-dust",
+        "qty": 5
+      },
+      {
+        "item": "sulfur-crystal",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-ashveil-leathers",
+    "name": "Ashveil Leathers",
+    "category": "armor",
+    "outputItem": "ashveil-leathers",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Cure leather in sulfur and ash.",
+    "ingredients": [
+      {
+        "item": "ember-dust",
+        "qty": 5
+      },
+      {
+        "item": "sulfur-crystal",
+        "qty": 4
+      },
+      {
+        "item": "volcanic-glass",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-basalt-warhelm",
+    "name": "Basalt Warhelm",
+    "category": "helmet",
+    "outputItem": "basalt-warhelm",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Carve a helm from solid basalt.",
+    "ingredients": [
+      {
+        "item": "basalt-plate",
+        "qty": 5
+      },
+      {
+        "item": "volcanic-glass",
+        "qty": 2
+      },
+      {
+        "item": "magma-core",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-emberweave-cowl",
+    "name": "Emberweave Cowl",
+    "category": "helmet",
+    "outputItem": "emberweave-cowl",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Weave a fireproof hood.",
+    "ingredients": [
+      {
+        "item": "ember-dust",
+        "qty": 5
+      },
+      {
+        "item": "sulfur-crystal",
+        "qty": 3
+      },
+      {
+        "item": "demon-shard",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-lavawalker-boots",
+    "name": "Lavawalker Boots",
+    "category": "boots",
+    "outputItem": "lavawalker-boots",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Enchant boots to walk on lava.",
+    "ingredients": [
+      {
+        "item": "basalt-plate",
+        "qty": 4
+      },
+      {
+        "item": "ember-dust",
+        "qty": 3
+      },
+      {
+        "item": "magma-core",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-forgemaster-grips",
+    "name": "Forgemaster Grips",
+    "category": "gloves",
+    "outputItem": "forgemaster-grips",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Craft heatproof gloves.",
+    "ingredients": [
+      {
+        "item": "basalt-plate",
+        "qty": 3
+      },
+      {
+        "item": "volcanic-glass",
+        "qty": 3
+      },
+      {
+        "item": "ember-dust",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-obsidian-aegis",
+    "name": "Obsidian Aegis",
+    "category": "shield",
+    "outputItem": "obsidian-aegis",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge a shield of volcanic glass.",
+    "ingredients": [
+      {
+        "item": "volcanic-glass",
+        "qty": 6
+      },
+      {
+        "item": "basalt-plate",
+        "qty": 3
+      },
+      {
+        "item": "magma-core",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-cinderport-charm",
+    "name": "Cinderport Charm",
+    "category": "amulet",
+    "outputItem": "cinderport-charm",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Bless a charm in caldera fire.",
+    "ingredients": [
+      {
+        "item": "ember-dust",
+        "qty": 4
+      },
+      {
+        "item": "sulfur-crystal",
+        "qty": 3
+      },
+      {
+        "item": "demon-shard",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "slug": "craft-volcanic-signet",
+    "name": "Volcanic Signet",
+    "category": "ring",
+    "outputItem": "volcanic-signet",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge a ring in caldera heat.",
+    "ingredients": [
+      {
+        "item": "volcanic-glass",
+        "qty": 3
+      },
+      {
+        "item": "magma-core",
+        "qty": 2
+      },
+      {
+        "item": "basalt-plate",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-caldera-plate",
+    "name": "Caldera Plate",
+    "category": "armor",
+    "outputItem": "caldera-plate",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": true,
+    "description": "Forge plate armor in the caldera's heart.",
+    "ingredients": [
+      {
+        "item": "basalt-plate",
+        "qty": 8
+      },
+      {
+        "item": "infernal-essence",
+        "qty": 4
+      },
+      {
+        "item": "drake-fire-gland",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-ignavus-flamebrand",
+    "name": "Ignavus's Flamebrand",
+    "category": "weapon",
+    "outputItem": "ignavus-flamebrand",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": true,
+    "description": "Forge a weapon from the Undying Flame.",
+    "ingredients": [
+      {
+        "item": "infernal-essence",
+        "qty": 6
+      },
+      {
+        "item": "drake-fire-gland",
+        "qty": 5
+      },
+      {
+        "item": "magma-core",
+        "qty": 6
+      },
+      {
+        "item": "demon-shard",
+        "qty": 4
+      }
+    ]
+  },
+  {
+    "slug": "craft-void-edge",
+    "name": "Void Edge",
+    "category": "weapon",
+    "outputItem": "void-edge",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Void Edge from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "void-shard",
+        "qty": 8
+      },
+      {
+        "item": "omega-plate",
+        "qty": 4
+      },
+      {
+        "item": "abyssal-core",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-entropy-staff",
+    "name": "Entropy Staff",
+    "category": "weapon",
+    "outputItem": "entropy-staff",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Entropy Staff from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "entropy-dust",
+        "qty": 8
+      },
+      {
+        "item": "paradox-essence",
+        "qty": 4
+      },
+      {
+        "item": "thought-crystal",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-thought-blade",
+    "name": "Thought Blade",
+    "category": "weapon",
+    "outputItem": "thought-blade",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Thought Blade from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "thought-crystal",
+        "qty": 6
+      },
+      {
+        "item": "void-shard",
+        "qty": 5
+      },
+      {
+        "item": "entropy-dust",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-reality-mace",
+    "name": "Reality Mace",
+    "category": "weapon",
+    "outputItem": "reality-mace",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Reality Mace from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "reality-fragment",
+        "qty": 7
+      },
+      {
+        "item": "abyssal-core",
+        "qty": 3
+      },
+      {
+        "item": "omega-plate",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-abyss-bow",
+    "name": "Abyss Bow",
+    "category": "weapon",
+    "outputItem": "abyss-bow",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Abyss Bow from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "void-shard",
+        "qty": 6
+      },
+      {
+        "item": "reality-fragment",
+        "qty": 5
+      },
+      {
+        "item": "paradox-essence",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-voidplate-armor",
+    "name": "Voidplate Armor",
+    "category": "armor",
+    "outputItem": "voidplate-armor",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Voidplate Armor from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "omega-plate",
+        "qty": 8
+      },
+      {
+        "item": "void-shard",
+        "qty": 5
+      },
+      {
+        "item": "abyssal-core",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-reality-weave-robes",
+    "name": "Reality Weave Robes",
+    "category": "armor",
+    "outputItem": "reality-weave-robes",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Reality Weave Robes from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "reality-fragment",
+        "qty": 7
+      },
+      {
+        "item": "thought-crystal",
+        "qty": 4
+      },
+      {
+        "item": "entropy-dust",
+        "qty": 4
+      }
+    ]
+  },
+  {
+    "slug": "craft-shadow-veil-leathers",
+    "name": "Shadow Veil Leathers",
+    "category": "armor",
+    "outputItem": "shadow-veil-leathers",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Shadow Veil Leathers from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "void-shard",
+        "qty": 6
+      },
+      {
+        "item": "entropy-dust",
+        "qty": 5
+      },
+      {
+        "item": "thought-crystal",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-void-crown",
+    "name": "Void Crown",
+    "category": "helmet",
+    "outputItem": "void-crown",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Void Crown from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "omega-plate",
+        "qty": 5
+      },
+      {
+        "item": "void-shard",
+        "qty": 4
+      },
+      {
+        "item": "abyssal-core",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-paradox-hood",
+    "name": "Paradox Hood",
+    "category": "helmet",
+    "outputItem": "paradox-hood",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Paradox Hood from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "paradox-essence",
+        "qty": 4
+      },
+      {
+        "item": "thought-crystal",
+        "qty": 4
+      },
+      {
+        "item": "entropy-dust",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-dimension-striders",
+    "name": "Dimension Striders",
+    "category": "boots",
+    "outputItem": "dimension-striders",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Dimension Striders from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "void-shard",
+        "qty": 5
+      },
+      {
+        "item": "reality-fragment",
+        "qty": 4
+      },
+      {
+        "item": "paradox-essence",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-reality-grips",
+    "name": "Reality Grips",
+    "category": "gloves",
+    "outputItem": "reality-grips",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Reality Grips from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "reality-fragment",
+        "qty": 5
+      },
+      {
+        "item": "omega-plate",
+        "qty": 3
+      },
+      {
+        "item": "void-shard",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-omega-bulwark",
+    "name": "Omega Bulwark",
+    "category": "shield",
+    "outputItem": "omega-bulwark",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Omega Bulwark from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "omega-plate",
+        "qty": 7
+      },
+      {
+        "item": "abyssal-core",
+        "qty": 3
+      },
+      {
+        "item": "void-shard",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-nexus-charm",
+    "name": "Nexus Charm",
+    "category": "amulet",
+    "outputItem": "nexus-charm",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Nexus Charm from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "thought-crystal",
+        "qty": 4
+      },
+      {
+        "item": "reality-fragment",
+        "qty": 3
+      },
+      {
+        "item": "paradox-essence",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "slug": "craft-void-signet",
+    "name": "Void Signet",
+    "category": "ring",
+    "outputItem": "void-signet",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": false,
+    "description": "Forge Void Signet from Voidspire materials.",
+    "ingredients": [
+      {
+        "item": "void-shard",
+        "qty": 4
+      },
+      {
+        "item": "abyssal-core",
+        "qty": 2
+      },
+      {
+        "item": "entropy-dust",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "slug": "craft-sovereign-plate",
+    "name": "Sovereign Plate",
+    "category": "armor",
+    "outputItem": "sovereign-plate",
+    "outputQty": 1,
+    "unlockLevel": 1,
+    "requiresDiscovery": true,
+    "description": "Forge the ultimate armor.",
+    "ingredients": [
+      {
+        "item": "sovereign-ichor",
+        "qty": 6
+      },
+      {
+        "item": "omega-plate",
+        "qty": 8
+      },
+      {
+        "item": "abyssal-core",
+        "qty": 5
+      }
+    ]
+  }
+]

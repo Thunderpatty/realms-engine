@@ -1,0 +1,52 @@
+{
+  "oathbreakers-greatsword": {
+    "name": "Oathbreaker's Greatsword",
+    "type": "weapon",
+    "rarity": "exotic",
+    "classReq": "warrior",
+    "stats": { "str": 20, "con": 12, "dex": 6 },
+    "description": "Castellus's blade, reforged in the Wellspring's black iron. It remembers every oath its wielder ever broke — and channels that guilt into devastating force. The edge never dulls. The weight never lessens. The whispers never stop.",
+    "passive": { "lifestealPct": 12, "critBonus": 6, "onHitStatus": { "slug": "bleed", "chance": 20, "turns": 3 } },
+    "cost": 0, "sell": 1200
+  },
+  "thessalys-true-grimoire": {
+    "name": "Thessaly's True Grimoire",
+    "type": "trinket",
+    "rarity": "exotic",
+    "classReq": "mage",
+    "stats": { "int": 22, "wis": 10, "cha": 6 },
+    "description": "The complete, uncorrupted version of Thessaly's research. Every page pulses with controlled corruption — formulas that turn despair into raw arcane power. Reading it feels like drowning and flying simultaneously.",
+    "passive": { "mpRegenPct": 14, "critBonus": 8 },
+    "cost": 0, "sell": 1200
+  },
+  "cloak-of-the-drowned": {
+    "name": "Cloak of the Drowned",
+    "type": "body",
+    "rarity": "exotic",
+    "classReq": "rogue",
+    "stats": { "dex": 20, "cha": 10, "str": 8 },
+    "description": "Woven from the shadows of those who drowned in the Wellspring. It moves like water and smoke, bending light around its wearer. Those who wear it can step between moments — but sometimes the drowned reach through the fabric.",
+    "passive": { "dodgeBonus": 8, "critBonus": 6, "onHitStatus": { "slug": "poison", "chance": 15, "turns": 3 } },
+    "cost": 0, "sell": 1200
+  },
+  "crown-of-silenced-prayers": {
+    "name": "Crown of Silenced Prayers",
+    "type": "helmet",
+    "rarity": "exotic",
+    "classReq": "cleric",
+    "stats": { "wis": 22, "con": 10, "int": 6 },
+    "description": "The golden ward-threads from Ashenmaw's walls, purified and rewoven into a circlet. Every prayer that was silenced by the corruption now echoes through this crown, granting its wearer divine clarity beyond mortal limits.",
+    "passive": { "hpRegenPct": 10, "mpRegenPct": 8 },
+    "cost": 0, "sell": 1200
+  },
+  "bow-of-the-bone-chorus": {
+    "name": "Bow of the Bone Chorus",
+    "type": "weapon",
+    "rarity": "exotic",
+    "classReq": "ranger",
+    "stats": { "dex": 20, "wis": 10, "str": 8 },
+    "description": "Carved from the Bone Amalgam's central spine and strung with golden ward-thread. Each arrow fired hums with the frequency of the Ossuary's chorus — a sound that disrupts corruption and strengthens the natural order.",
+    "passive": { "critBonus": 8, "lifestealPct": 6, "onHitStatus": { "slug": "slow", "chance": 20, "turns": 2 } },
+    "cost": 0, "sell": 1200
+  }
+}

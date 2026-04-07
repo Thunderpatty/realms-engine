@@ -1,0 +1,1202 @@
+[
+  {
+    "slug": "the-lost-woodcutter",
+    "title": "The Lost Woodcutter",
+    "location": "whispering-woods",
+    "minLevel": 1,
+    "description": "A woodcutter went into the forest three days ago and hasn't returned. His daughter begs you to find him.",
+    "stages": [
+      {
+        "text": "Lina clutches your sleeve at the tree line, eyes red from crying. 'Papa always cuts wood near the old stump clearing — half a mile in, follow the axe marks on the birch trees. He knows these woods better than anyone, but three days...' She presses a scrap of cloth into your hand. 'His scarf. So you know his smell if the dogs won't track.'",
+        "choices": [
+          { "next": 1, "label": "Follow the axe marks on the birch trees", "check": { "stat": "wis", "dc": 7 } },
+          { "next": 1, "label": "Ask Lina what dangers lurk in this part of the woods", "check": { "stat": "cha", "dc": 7 } },
+          { "next": 1, "label": "Look for broken branches or footprints on the path", "check": { "stat": "int", "dc": 8 } }
+        ]
+      },
+      {
+        "text": "The clearing is easy to find — a ring of stumps and fresh wood chips. But the woodcutter's cart is overturned, his axe stuck in a log mid-swing. Drag marks lead deeper into the undergrowth, and there's blood on the cart handle. Not much, but enough.",
+        "choices": [
+          { "next": 2, "label": "Follow the drag marks carefully", "check": { "stat": "dex", "dc": 7 } },
+          { "next": 2, "label": "Call out for the woodcutter", "check": { "stat": "cha", "dc": 8 } },
+          { "next": 2, "label": "Check the blood — is it human or animal?", "check": { "stat": "wis", "dc": 7 } }
+        ]
+      },
+      {
+        "text": "You find him wedged in a ravine, leg twisted under a fallen branch. He's conscious but weak — been drinking from a trickle of stream water and eating bark. 'Wolves,' he croaks. 'Chased me off the path. Fell here in the dark.' The branch pinning him is heavy but not impossible.",
+        "choices": [
+          { "next": 3, "label": "Lever the branch off with a sturdy stick", "check": { "stat": "str", "dc": 7 } },
+          { "next": 3, "label": "Carefully dig the earth away from his leg", "check": { "stat": "dex", "dc": 8 } },
+          { "next": 3, "label": "Calm him down and guide him to help himself", "check": { "stat": "wis", "dc": 7 } }
+        ]
+      },
+      {
+        "text": "You haul the woodcutter free and start the long walk back. He's leaning hard on your shoulder when a low growl stops you both. A timber wolf blocks the path ahead — the same one that chased him into the ravine. It isn't leaving without a meal.",
+        "choices": [
+          { "next": 4, "label": "Draw your weapon and face the wolf", "combat": "timber-wolf" },
+          { "next": 4, "label": "Stand your ground and fight", "combat": "timber-wolf" },
+          { "next": 4, "label": "Protect the woodcutter — engage the wolf", "combat": "timber-wolf" }
+        ]
+      },
+      {
+        "text": "The path is clear. The woodcutter leans on your shoulder as you limp back toward the tree line. Lina spots you from a hundred yards and runs. The reunion is wordless — just held breath and held hands. The woodcutter presses a pouch of coins into your palm. 'All I have. You earned more.'",
+        "complete": true
+      }
+    ],
+    "rewards": { "xp": 40, "gold": 25 }
+  },
+  {
+    "slug": "shrine-evil",
+    "title": "Evil in the Shrine",
+    "location": "whispering-woods",
+    "minLevel": 3,
+    "description": "A wandering monk barely escaped a forest shrine. The dead are walking inside and something worse is below.",
+    "stages": [
+      {
+        "text": "A traveling monk clutches a broken holy symbol with both hands and refuses to sit down. 'I barely escaped. The dead walk in daylight inside those walls and there is a light in the lower chamber that should not be there.' The shrine is three miles into the Whispering Woods, and the monk says the door is still open behind him.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Ask the monk to describe the lower chamber",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask what drove the dead to rise here",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Persuade the monk to draw you a rough map",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Head for the shrine before dark",
+            "check": {
+              "stat": "str",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "The shrine reeks of decay, and the floor of the entrance hall is strewn with scattered bones and toppled votives. A staircase at the far end descends into a green-tinged light. In the upper chamber, two alcoves have been broken open, and the dust on the floor shows recent movement.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Search the upper shrine for clues before descending",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Listen at the staircase for sounds from below",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move quickly through the upper chamber to the stairs",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Secure the upper chamber before going deeper",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "Skeletons lurch from the alcoves \u2014 two of them, armed with whatever was buried with them, slow but relentless. Behind them a third rises from the floor itself, pieces assembling from the scattered bones on the tiles.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the skeletons",
+            "combat": "skeleton"
+          },
+          {
+            "next": 3,
+            "label": "Smash the still-assembling skeleton before it rises",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Weave between them to reach the staircase",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Find the binding point and break it to drop all three",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "A dusty journal on the upper shelf names the relic in the lower chamber: a cursed phylactery that was sealed here centuries ago and must not be disturbed. Someone has already disturbed it. The green light from below pulses brighter as you read.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Descend the stairs ready for a fight",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Read further to understand what you're about to face",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Go carefully, one step at a time",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Prepare a holy ward before descending",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "In the lower chamber, a cursed priest floats above an altar surrounded by the broken seal of the phylactery, its arms spread wide, its voice a continuous low note that vibrates in your chest. The phylactery sits at the altar's centre \u2014 intact, malevolent, and waiting.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Fight the cursed priest",
+            "combat": "cursed-priest"
+          },
+          {
+            "next": 5,
+            "label": "Destroy the relic on the altar to cut its power",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 5,
+            "label": "Shatter the altar itself to break the binding",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 5,
+            "label": "Re-seal the phylactery using the journal's method",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The dark energy dissipates. The shrine falls silent for the first time in decades, the green light winks out, and the phylactery crumbles to cold ash. You find a plain iron ring in the debris \u2014 old enough to have been here from the beginning.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 130,
+      "gold": 64,
+      "item": "iron-ring"
+    }
+  },
+  {
+    "slug": "white-stag-of-whispers",
+    "title": "The White Stag of Whispers",
+    "location": "whispering-woods",
+    "minLevel": 4,
+    "description": "A silver-white stag has been leading hunters into the deep forest and none of them have come back the same.",
+    "stages": [
+      {
+        "text": "A trapper points deeper into the trees with a finger that shakes just slightly. 'I saw it between the fog and moonlight \u2014 white as new linen, antlers like bare winter branches. Three hunters followed it last season. Two came back without their gear and with nothing to say about it. The third didn't come back.' He pauses. 'I need to know what's in there.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Ask the trapper for everything the two hunters said",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask what direction the stag usually appears from",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask what the trapper himself wants from this",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Follow the stag's last known trail immediately",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "Silver hoofprints weave through brambles into a grove where the air is unnaturally still and the trees have grown in tight concentric rings rather than the natural scatter of the rest of the forest. The stag's trail is visible but never quite where you are looking directly.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Read the grove's signs and tree rings for history",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Follow the trail exactly as it runs",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Sense the grove's intent before moving deeper",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Press straight through to the centre of the rings",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "You realize the stag is bait \u2014 the trail has been looping you inward, and from above you can now see the grove is a trap. A thorn owlbear circles the outer ring, driving prey inward, waiting for the moment something is sufficiently lost. It has spotted you.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Ready yourself and fight the owlbear",
+            "combat": "thorn-owlbear"
+          },
+          {
+            "next": 3,
+            "label": "Back out using the grove's own ring structure",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Sprint for the outer ring before it can close",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Climb the densest thorn cluster where it can't follow",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The owlbear is down. In the silence that follows, the white stag appears at the grove's edge \u2014 present, very real, and watching you with amber eyes that contain a question that has nothing to do with hunting. It moves toward a half-buried stone near the centre of the inner ring and stops.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Approach the stag slowly and carefully",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Read the inscription on the buried stone",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Stay still and let the stag approach on its own terms",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Speak to the stag as if it understands you",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The stag lowers its head toward the buried stone, then lifts it and holds your gaze for a moment before stepping backward into the trees without sound. The stone conceals a sealed alcove, and inside is a carefully wrapped supply of greater healing. Whatever the grove is, it was not empty before this hunt.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Recover the supplies and mark the grove's location",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Leave the grove quickly before anything else appears",
+            "check": {
+              "stat": "dex",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Take a moment to understand what just happened",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The stag is gone. The grove is quiet. You carry something out of there that isn't just the potion \u2014 a sense that the forest has its own logic, and that occasionally it decides to help.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 160,
+      "gold": 78,
+      "item": "greater-health-potion"
+    }
+  },
+  {
+    "slug": "roots-of-the-old-oak",
+    "title": "Roots of the Old Oak",
+    "location": "whispering-woods",
+    "minLevel": 3,
+    "description": "A trapper claims something beneath an ancient oak is poisoning the game trails.",
+    "stages": [
+      {
+        "text": "The trapper hasn't slept in three days and smells like he's been sitting in the same spot for most of them. He spreads a creased map across his knee and traces a shaking finger to a dark smear near the forest's heart. 'Nothing comes back from that oak,' he says. 'Not the rabbits, not the hounds, not even the quiet.' The bark of every tree within a quarter mile has turned the colour of dried blood.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the trapper's poison-blackened snares",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Read the forest's mood before moving in",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Plot the fastest route on the trapper's map",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Head for the oak while there is still light",
+            "check": {
+              "stat": "str",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "The forest darkens as you move deeper, the canopy knitting shut overhead until the sky disappears. The ancient oak rises alone in a clearing stripped of grass, its roots writhing slowly beneath the topsoil like fingers finding purchase. Black sap weeps from every crack in its bark, threading into the soil in lines that kill whatever they touch.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Force through the wall of thorns at the clearing edge",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Study the root patterns for a safe approach",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move along the clearing's edge without disturbing it",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Sense which direction the corruption is weakest",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "A forest spider drops from the canopy the moment you reach the root line \u2014 enormous, its abdomen slick with the same black sap as the tree. It has nested among the corrupted roots, feeding on whatever the rot draws upward. Between you and the heart of the corruption, it spreads all eight legs wide and waits.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the spider",
+            "combat": "forest-spider"
+          },
+          {
+            "next": 3,
+            "label": "Drive it off using fire from a torch",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Slip past it before it can close the gap",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Mimic a larger predator to unsettle it",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The source of the rot is a swollen knot at the oak's base, the size of a millstone, weeping black pulp and pulsing with something like a slow, deliberate heartbeat. This is not disease \u2014 it is intent, ancient and patient, capable of ruining an entire valley one root at a time. It will keep spreading unless you end it here.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Hack into the knot with your weapon",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Find and sever the main feeding root",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Cut away the outer rot layer by careful layer",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Speak a warding against earthbound corruption",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The knot collapses inward, the pulsing stops, and the black sap runs dry all at once. Around you the roots settle into normal soil and the birds return \u2014 distant at first, then closer. The trapper is waiting at the clearing's edge when you emerge, and the relief on his face says everything that needs saying.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Help drag the dead root mass off the trail",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Mark the area safe on the trapper's map",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Walk back to camp with the trapper",
+            "check": {
+              "stat": "cha",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "Fresh air fills the grove for the first time in weeks. The trapper rewards you with trail leathers sewn for rough country \u2014 stitched, he says, for a debt he is very glad to finally pay.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 80,
+      "gold": 42,
+      "item": "trail-leathers"
+    }
+  },
+  {
+    "slug": "silk-and-moonlight",
+    "title": "Silk and Moonlight",
+    "location": "whispering-woods",
+    "minLevel": 3,
+    "description": "A fletcher needs rare silk from the forest spiders to finish an order of master arrows.",
+    "stages": [
+      {
+        "text": "The fletcher turns a snapped bowstring over in her fingers with the focused disappointment of someone who expected better from the universe. 'Moonlit web silk,' she says without looking up, 'is the only thing strong enough for what I'm making. The spiders only spin it where the canopy lets the moon through. Go at dusk. Never at night.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Ask about the spiders' territory and behaviour",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study the broken bowstring under the light",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the fletcher how to harvest the silk cleanly",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Head for the web grove before the light changes",
+            "check": {
+              "stat": "str",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "You find the web grove just as the light is changing \u2014 silver threads strung between the pines like a second canopy, each strand glowing faintly where the last sun catches it. The silk is extraordinary: strong, warm, completely without knots. But the spiders are still here, and they notice you the moment you step inside the grove's edge.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Move slowly to avoid vibrating the threads",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Identify which strands are load-bearing before touching any",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Wait motionless until the spiders lose interest",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Walk boldly to claim what you came for",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "A forest spider drops from the highest thread and lands squarely in your path, eight eyes catching the fading silver light. It is the grove's guardian \u2014 large, deliberate, and absolutely unwilling to allow this kind of intrusion without a demonstration of seriousness.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the spider",
+            "combat": "forest-spider"
+          },
+          {
+            "next": 3,
+            "label": "Distract it with movement on the far side of the grove",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Calm it with slow, deliberate movement",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Find the gap in its web and slip through",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "You are in the heart of the grove, the silk within reach. Harvesting it cleanly matters \u2014 crude cutting will leave the threads tangled and useless, and the fletcher will know. The spiders remain at the grove's edge. You have one careful opportunity.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Use your blade to cut and gather quickly",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Unwind the threads methodically from their anchor points",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Harvest exactly what is needed, nothing more",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Work out the anchor structure before touching a thread",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "You have the silk \u2014 coiled, unbroken, warm in your palm even in the evening chill. The spiders withdraw as you back out of the grove slowly. The walk back to the fletcher feels lighter than the walk in, and you arrive just as the first proper dark settles over the trees.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Present the silk to the fletcher directly",
+            "check": {
+              "stat": "cha",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Inspect the silk under firelight before handing it over",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Carry it back without disturbing it",
+            "check": {
+              "stat": "dex",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "The fletcher runs the silk through her fingers once and pronounces it perfect without looking up. She works through the night and by morning the quiver is done \u2014 balanced, tight, better than anything in her shop.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 74,
+      "gold": 38,
+      "item": "fletcher-quiver"
+    }
+  },
+  {
+    "slug": "hermits-last-prayer",
+    "title": "The Hermit's Last Prayer",
+    "location": "whispering-woods",
+    "minLevel": 3,
+    "description": "A dead hermit's shrine in the woods is drawing scavengers and restless spirits alike.",
+    "stages": [
+      {
+        "text": "A cairn of pale stones marks the hermit's resting place, ringed by fresh claw marks and scattered offerings that someone \u2014 or something \u2014 has rifled through. A pilgrim's staff leans against the largest stone, still bound with prayer strips that haven't faded. The woodcutters who reported the disturbance refuse to come within earshot after dark.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the claw marks on the cairn stones",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Read the prayer strips on the staff carefully",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Search the surrounding area for tracks",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Set a camp nearby to watch through the day",
+            "check": {
+              "stat": "str",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "Just before dusk, a grave robber arrives and begins prying the cairn stones apart with a rusted bar, cursing quietly about the weight of the middle ones. She has knocked the prayer strips to the ground and is hunting for something she clearly believes is buried underneath. Her greed is making a cold blue light flicker inside the cairn with something that resembles fury.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Confront her and demand she stop immediately",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Fight the grave robber",
+            "combat": "grave-robber"
+          },
+          {
+            "next": 2,
+            "label": "Stomp on the prayer strips to protect them",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Call out the hermit's name to interrupt her",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The grave robber is dealt with, but the cold light inside the cairn intensifies with moonrise. The temperature falls not gradually but all at once, the night sounds stop, and the blue glow resolves into something with presence and intent.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Stand your ground and face what comes",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Recite a prayer to prepare for the encounter",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Study the light's pattern before it fully manifests",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Back away and find cover to observe from",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "A shadow wraith rises from the cairn's heart \u2014 tall and still, holding what appears to be a sealed letter pressed against its chest. It does not attack immediately. It watches you with hollow eyes, as though uncertain whether you are here to finally carry this burden or simply add to its weight.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the shadow wraith",
+            "combat": "shadow-wraith"
+          },
+          {
+            "next": 4,
+            "label": "Recite the prayer strips aloud from memory",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Speak the hermit's name and state your purpose",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Read the sealed letter the wraith is holding",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The letter crumbles to ash, the wraith bows once, and the cold light goes out. You are left alone with the cairn in the sudden quiet of the forest night. The hermit's staff is still where you found it, and when you lift it a small mace falls from the grip wrapping \u2014 long hidden, still balanced for a hand that no longer needs it.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Rebuild the cairn stones properly before you go",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Speak a final blessing over the grave",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Take the mace and leave without ceremony",
+            "check": {
+              "stat": "dex",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "The cairn grows still. The hermit's mace rests in your hand, sanctified by the rite you completed alone in the dark, with no one watching and no one to ask.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 80,
+      "gold": 42,
+      "item": "pilgrim-mace"
+    }
+  },
+  {
+    "slug": "briarfoot-bandits",
+    "title": "Briarfoot Bandits",
+    "location": "whispering-woods",
+    "minLevel": 4,
+    "description": "Bandits have started laying snares in the brush to catch hunters and game alike.",
+    "stages": [
+      {
+        "text": "A snapped snare bites into a hunter's ankle and he is sitting on a log with a white face and a very specific look of someone who has had enough. 'They're not after coin anymore \u2014 they're taking whatever walks, man or beast.' He spreads the snare on the ground. It isn't crudely made. Someone who knows trapping put it here on purpose.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the snare's construction for identifying marks",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Follow the snare line to find more of them",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the hunter where he found the others",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Estimate from the snare how many bandits are operating",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The snare line leads deeper into the briarwood, each trap more carefully placed than the last. Someone has been walking these paths for weeks. At the third snare you find a half-eaten ration and a boot print that is too large for a goblin and too careless for a professional scout.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Read the ration type and pack origin",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Track the boot prints to their origin",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Wait at the snare line to catch the next patrol",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Mark each snare location to map the territory",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "You spot the lookout perched in the gnarled oak above the main snare cluster \u2014 a bandit scout watching the approaches with a blade across his knees, eating something dried and completely bored. He hasn't spotted you yet.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Silence the lookout quietly",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Startle him into revealing himself",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Find a better angle of approach before he turns",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Circle wide and approach from the blind side",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "Hidden amid the brambles, a bandit scout rises with a knife in hand and a whistle at his lips. He looks like someone who has done this many times and finds the whole thing very routine.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Strike first before he can whistle",
+            "combat": "bandit-scout"
+          },
+          {
+            "next": 4,
+            "label": "Knock the whistle away before engaging",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Use the trigger mechanism of his own snare against him",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Bluff that you have the camp surrounded",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The snares are cut and the scout is dealt with. You spend the better part of an hour pulling traps out of the ground and burning them in a pile, which feels deeply satisfying. The hunters will be able to walk these paths again.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Cut and destroy every remaining snare you found",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Mark the cleared area so hunters know it is safe",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Report back with proof of what you found",
+            "check": {
+              "stat": "cha",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "The hunters' leader rewards you with a set of dark leathers left by one of the bandits \u2014 well made, she admits, for people who turned out not to deserve them.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 88,
+      "gold": 48,
+      "item": "dusk-leathers"
+    }
+  }
+]

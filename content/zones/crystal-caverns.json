@@ -1,0 +1,583 @@
+{
+  "location": {
+    "slug": "crystal-caverns",
+    "name": "Crystal Caverns",
+    "type": "dungeon",
+    "realm": "frostreach",
+    "description": "A network of caves where the walls are made of living crystal that grows, shifts, and occasionally screams. The deeper you go, the more the crystals seem to respond to your thoughts.",
+    "connections": [
+      "glacial-vale"
+    ],
+    "mapX": 60,
+    "mapY": 20
+  },
+  "enemies": [
+    {
+      "slug": "crystal-crawler",
+      "name": "Crystal Crawler",
+      "hp": 882,
+      "attack": 31,
+      "defense": 17,
+      "xp": 720,
+      "gold": 362,
+      "level": 13,
+      "abilities": [
+        "poison-bite",
+        "rending-claws"
+      ],
+      "description": "An insectoid creature with a carapace of interlocking crystals. It scuttles across walls and ceilings with disturbing speed."
+    },
+    {
+      "slug": "resonance-shade",
+      "name": "Resonance Shade",
+      "hp": 987,
+      "attack": 34,
+      "defense": 20,
+      "xp": 761,
+      "gold": 402,
+      "level": 14,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex",
+        "stunning-slam"
+      ],
+      "description": "A being of pure sound given form by the crystals. It exists as a shimmer in the air until it strikes."
+    },
+    {
+      "slug": "crystal-construct",
+      "name": "Crystal Construct",
+      "hp": 986,
+      "attack": 34,
+      "defense": 20,
+      "xp": 831,
+      "gold": 335,
+      "level": 14,
+      "abilities": [
+        "harden",
+        "regen-aura"
+      ],
+      "description": "The caverns themselves, shaped into a guardian. It regenerates by absorbing nearby crystal growth."
+    },
+    {
+      "slug": "crystal-queen",
+      "name": "The Crystal Queen",
+      "hp": 2016,
+      "attack": 50,
+      "defense": 26,
+      "xp": 2722,
+      "gold": 890,
+      "level": 15,
+      "boss": true,
+      "abilities": [
+        "stunning-slam",
+        "war-cry",
+        "harden"
+      ],
+      "drops": [],
+      "description": "[Boss of Crystal Caverns]",
+      "telegraphs": [
+        "crushing-blow",
+        "rallying-howl"
+      ],
+      "enrageThreshold": 0.3,
+      "enrageTelegraphs": [
+        "death-strike"
+      ]
+    }
+  ],
+  "locationThreat": 13,
+  "dungeonConfig": {
+    "boss": "crystal-queen",
+    "name": "Crystal Caverns",
+    "minRooms": 3,
+    "maxRooms": 5,
+    "mechanic": {
+      "slug": "crystal-resonance",
+      "name": "Crystal Resonance",
+      "description": "The crystals amplify magic. Abilities cost 20% more MP.",
+      "effect": {
+        "playerAccuracyPenalty": 0
+      }
+    }
+  },
+  "events": [
+    {
+      "slug": "cavern-singing-crystals",
+      "name": "Singing Crystals",
+      "icon": "\ud83c\udfb5",
+      "type": "phenomenon",
+      "rarity": "uncommon",
+      "text": "The crystals here vibrate with a haunting melody. The resonance seems to affect everything nearby.",
+      "choices": [
+        {
+          "label": "Harmonize with the resonance (WIS DC 13)",
+          "check": {
+            "stat": "wis",
+            "dc": 13
+          },
+          "success": {
+            "text": "You match the frequency. The crystals gift you shards of pure resonance.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 3
+                },
+                {
+                  "slug": "glacial-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "Dissonance. The crystals shriek and you cover your ears in agony.",
+            "rewards": {
+              "xp": 8,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Shatter a crystal for materials (STR DC 11)",
+          "check": {
+            "stat": "str",
+            "dc": 11
+          },
+          "success": {
+            "text": "The crystal breaks into usable shards.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 4
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The resonance fights back. Painful vibrations shake your bones.",
+            "rewards": {
+              "xp": 5,
+              "damage": 12
+            }
+          }
+        },
+        {
+          "label": "Listen and move on",
+          "auto": true,
+          "success": {
+            "text": "The song follows you out. Haunting but harmless.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cavern-spider-nest",
+      "name": "Crystal Spider Nest",
+      "icon": "\ud83d\udd78",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "Webs of crystallized ice span the ceiling. Egg sacs pulse with cold light. The spiders are nearby.",
+      "choices": [
+        {
+          "label": "Harvest the silk carefully (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "text": "You extract strands of crystal silk \u2014 incredibly strong and cold.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                },
+                {
+                  "slug": "spectral-ice",
+                  "qty": 1
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "The vibrations alert the spiders. They descend on you.",
+            "rewards": {
+              "xp": 8,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Burn the nest (INT DC 11)",
+          "check": {
+            "stat": "int",
+            "dc": 11
+          },
+          "success": {
+            "text": "The magical fire melts the web and the spiders flee. Safe passage.",
+            "rewards": {
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "The fire barely affects the crystal webbing. The spiders are angry.",
+            "rewards": {
+              "xp": 8,
+              "damage": 14
+            }
+          }
+        },
+        {
+          "label": "Go around",
+          "auto": true,
+          "success": {
+            "text": "You find a way around the nest.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cavern-underground-lake",
+      "name": "Subterranean Lake",
+      "icon": "\ud83c\udfca",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A perfectly still underground lake. The water is crystal clear and you can see something glinting on the bottom.",
+      "choices": [
+        {
+          "label": "Dive for it (CON DC 12)",
+          "check": {
+            "stat": "con",
+            "dc": 12
+          },
+          "success": {
+            "text": "The water is shockingly cold but you grab the treasure: ore and crystals.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 2
+                },
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The cold paralyzes you. You barely make it back to shore.",
+            "rewards": {
+              "xp": 8,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Use a long pole to retrieve it (DEX DC 11)",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "You hook the item and drag it to shore. A pouch of gold and crystals.",
+            "rewards": {
+              "gold": 35,
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The item slips off and sinks to unreachable depths.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Admire the view and leave",
+          "auto": true,
+          "success": {
+            "text": "Beautiful, in a cold and unforgiving way.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cavern-resonance-chamber",
+      "name": "Resonance Chamber",
+      "icon": "\ud83d\udd14",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "The cavern opens into a vast chamber where crystals of every size ring like bells. The resonance is overwhelming.",
+      "choices": [
+        {
+          "label": "Channel the resonance (INT DC 14)",
+          "check": {
+            "stat": "int",
+            "dc": 14
+          },
+          "success": {
+            "text": "You direct the energy into yourself. Incredible power flows through you.",
+            "rewards": {
+              "xp": 45,
+              "items": [
+                {
+                  "slug": "glacial-essence",
+                  "qty": 2
+                }
+              ]
+            }
+          },
+          "failure": {
+            "text": "The resonance overwhelms you. You black out briefly, ears bleeding.",
+            "rewards": {
+              "xp": 10,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Collect the most resonant crystals (WIS DC 12)",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "text": "You identify and collect the most powerful crystals.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 4
+                },
+                {
+                  "slug": "spectral-ice",
+                  "qty": 2
+                }
+              ],
+              "xp": 28
+            }
+          },
+          "failure": {
+            "text": "The crystals you chose are duds. Ordinary ice.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Pass through quickly",
+          "auto": true,
+          "success": {
+            "text": "You hurry through before the sound drives you mad.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cavern-crystal-formation",
+      "name": "Ancient Crystal Vein",
+      "icon": "\ud83d\udc8e",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A thick vein of crystal runs along the cavern wall, glowing with inner light.",
+      "choices": [
+        {
+          "label": "Mine the vein (STR DC 11)",
+          "check": {
+            "stat": "str",
+            "dc": 11
+          },
+          "success": {
+            "text": "You extract several valuable crystal chunks.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 3
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The vein cracks and collapses. Debris catches your arm.",
+            "rewards": {
+              "xp": 8,
+              "damage": 12
+            }
+          }
+        },
+        {
+          "label": "Extract the rarest section (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "text": "You isolate a section of unusually pure crystal.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                },
+                {
+                  "slug": "glacial-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "The delicate crystal shatters. Back to the rough stuff.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Leave it",
+          "auto": true,
+          "success": {
+            "text": "Plenty more where that came from.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cavern-crawler-ambush",
+      "name": "Crawler Ambush Point",
+      "icon": "\u26a0",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "Scratch marks on the ceiling. Shed carapace on the floor. This is a crystal crawler ambush point.",
+      "choices": [
+        {
+          "label": "Set your own ambush (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "text": "You turn the tables, catching a crawler off-guard and harvesting its remains.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "You're not as sneaky as you thought. Pincers find your leg.",
+            "rewards": {
+              "xp": 8,
+              "damage": 16
+            }
+          }
+        },
+        {
+          "label": "Move through cautiously (WIS DC 11)",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "text": "You pass through without incident, reading the signs perfectly.",
+            "rewards": {
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "A crawler drops from above. You fight it off but take a hit.",
+            "rewards": {
+              "xp": 8,
+              "damage": 14
+            }
+          }
+        },
+        {
+          "label": "Make noise to scare them off",
+          "auto": true,
+          "success": {
+            "text": "Your shouting echoes through the caves. The crawlers scatter \u2014 for now.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "crystal-caverns-group-1",
+      "name": "Crystal Crawler Patrol",
+      "composition": [
+        {
+          "enemySlug": "crystal-crawler",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "crystal-caverns-group-2",
+      "name": "Resonance Shade & Crystal Crawler",
+      "composition": [
+        {
+          "enemySlug": "resonance-shade",
+          "count": 1
+        },
+        {
+          "enemySlug": "crystal-crawler",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

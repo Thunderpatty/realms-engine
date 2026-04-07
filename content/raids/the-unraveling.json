@@ -1,0 +1,158 @@
+{
+  "slug": "the-unraveling",
+  "name": "The Unraveling",
+  "difficulty": "hard",
+  "floorCount": 5,
+  "levelReq": 40,
+  "icon": "🌀",
+  "description": "The Void Sovereign's prison is weakening. A strike team must descend through five layers of collapsing reality to reinforce the bindings — or destroy the Sovereign before it fully awakens.",
+  "loreIntro": "Scholar Vera's data was clear: the Void Sovereign is not merely waking — it's unraveling the fabric of the Voidspire itself, using the released energy to fuel its emergence. Five binding points anchor it in slumber. Five layers of increasingly unstable reality, each deeper into the Abyss than the last. The bindings must be reinforced, or the Sovereign must be destroyed in its weakened state before it fully manifests. There will be no second chance. If the strike team fails, the Voidspire — and eventually all reality — will unravel.",
+  "rewards": {
+    "goldBase": 200,
+    "goldPerFloor": 100,
+    "xpBase": 500,
+    "xpPerFloor": 200,
+    "arcaneTokens": 12,
+    "completionBonus": { "gold": 1000, "xp": 1500 }
+  },
+  "enemies": [
+    { "slug": "unraveling-shade", "name": "Unraveling Shade", "hp": 2200, "attack": 108, "defense": 50, "xp": 400, "gold": 200, "level": 40, "abilities": ["dark-curse", "weakening-hex"], "drops": [], "description": "A tear in reality that has gained predatory instinct. It moves like a living wound in space, and its touch unravels matter into component atoms." },
+    { "slug": "paradox-knight", "name": "Paradox Knight", "hp": 2600, "attack": 104, "defense": 58, "xp": 420, "gold": 210, "level": 41, "abilities": ["stunning-slam", "war-cry", "harden"], "drops": [], "description": "A warrior from a destroyed timeline, preserved by paradox. It fights with weapons that exist in multiple states simultaneously — blocking one attack means being hit by another." },
+    { "slug": "void-weaver", "name": "Void Weaver", "hp": 1800, "attack": 114, "defense": 42, "xp": 410, "gold": 205, "level": 42, "abilities": ["dark-curse", "weakening-hex", "regen-aura"], "drops": [], "description": "An entity that spins reality into void and void into reality. Its magic rewrites the rules of engagement mid-combat." },
+    { "slug": "abyssal-titan", "name": "Abyssal Titan", "hp": 3000, "attack": 106, "defense": 62, "xp": 450, "gold": 225, "level": 43, "abilities": ["stunning-slam", "war-cry", "harden", "rending-claws"], "drops": [], "description": "A colossus of compressed void, towering and implacable. It moves with the inevitability of entropy itself." },
+    { "slug": "reality-eater", "name": "Reality Eater", "hp": 2400, "attack": 112, "defense": 48, "xp": 440, "gold": 220, "level": 44, "abilities": ["fire-breath", "dark-curse", "rending-claws"], "drops": [], "description": "A creature that devours reality itself, growing stronger with every bite. The space around it warps and fades." },
+    { "slug": "sovereign-herald", "name": "Sovereign Herald", "hp": 2800, "attack": 116, "defense": 54, "xp": 460, "gold": 230, "level": 45, "abilities": ["fire-breath", "dark-curse", "weakening-hex", "regen-aura", "stunning-slam"], "drops": [], "description": "An avatar of the Void Sovereign's will — a fragment of the entity's consciousness given form. It speaks with the Sovereign's voice and fights with the Sovereign's power." }
+  ],
+  "floors": [
+    {
+      "lore": "The first binding point is at the edge of the Abyss — where solid reality meets the void. The ground here is translucent, and you can see the infinite darkness below. The binding is a crystal of pure reality, cracked and leaking light. Creatures born from the leak circle it, feeding on the escaping energy.",
+      "encounters": [
+        { "type": "combat", "enemies": ["unraveling-shade", "unraveling-shade"] },
+        { "type": "choice", "title": "The First Binding", "text": "The reality crystal pulses weakly. You can reinforce it with your own life force, try to repair it with magic, or siphon its remaining power to strengthen yourself for what lies ahead.",
+          "choices": [
+            { "label": "Reinforce with life force", "check": { "stat": "con", "dc": 28 }, "success": { "text": "Your vitality flows into the crystal. It blazes bright, the binding holds. You feel weakened but the path ahead is safer.", "effect": { "buffStat": "defense", "buffAmount": 6, "buffTurns": 99, "manaPct": 25 } }, "failure": { "text": "The crystal takes too much. You stagger, drained.", "effect": { "damagePct": 18, "debuff": { "slug": "weaken", "turns": 4, "name": "Life Drain" } } } },
+            { "label": "Repair with magic", "check": { "stat": "int", "dc": 29 }, "success": { "text": "Your magic knits the cracks. The binding sings with restored power. The knowledge of its construction fills your mind.", "effect": { "buffStat": "attack", "buffAmount": 6, "buffTurns": 99, "healPct": 20 } }, "failure": { "text": "The magic rebounds. The crystal shatters further and releases a pulse of void energy.", "effect": { "damagePct": 20, "mpDrain": 20 } } },
+            { "label": "Siphon and move on", "check": { "stat": "wis", "dc": 27 }, "success": { "text": "You carefully extract useful energy. The binding weakens further, but you're stronger.", "effect": { "buffStat": "attack", "buffAmount": 5, "buffTurns": 99, "healPct": 15, "manaPct": 15 } }, "failure": { "text": "The siphon destabilizes. Raw void energy floods you.", "effect": { "damagePct": 15 } } }
+          ]
+        },
+        { "type": "combat", "enemies": ["paradox-knight", "unraveling-shade"] }
+      ],
+      "boss": {
+        "slug": "the-first-seal",
+        "name": "The First Seal",
+        "hp": 8000, "attack": 110, "defense": 54, "xp": 800, "gold": 400, "level": 42, "boss": true,
+        "abilities": ["stunning-slam", "dark-curse", "harden", "war-cry"],
+        "drops": ["seal-fragment-ring", "unraveling-gauntlets"],
+        "dropChance": 22,
+        "description": "The binding itself has become an entity — the seal's failing magic has coalesced into a guardian that attacks everything, including those trying to repair it. A defense mechanism gone wrong.",
+        "telegraphs": ["crushing-blow", "stunning-slam"], "enrageThreshold": 0.25, "enrageTelegraphs": ["death-strike"],
+        "intro": "🌀 RAID BOSS — The binding crystal shatters and reforms into a humanoid shape — a guardian of pure reality energy, crackling with power. It cannot distinguish friend from foe. It only knows: PROTECT THE SEAL."
+      }
+    },
+    {
+      "lore": "Deeper. The second binding is in a pocket of frozen time — a moment stretched to infinity. Here, you can see the Sovereign's dreams: visions of worlds consumed, realities devoured, an endless hunger that has been feeding since before time began. The binding holds the Sovereign in this moment of sleep. If it breaks, the dream becomes reality.",
+      "encounters": [
+        { "type": "combat", "enemies": ["void-weaver", "paradox-knight"] },
+        { "type": "choice", "title": "The Sovereign's Dream", "text": "You walk through the Sovereign's dream — a vision of a consumed universe. Stars wink out. Worlds crumble. The void swallows everything. In the dream, you see the Sovereign's true form: something vast and terrible beyond comprehension. But also — its weakness. A flaw in its nature that the original builders exploited.",
+          "choices": [
+            { "label": "Study the weakness (risk psychic damage)", "check": { "stat": "int", "dc": 30 }, "success": { "text": "You understand. The Sovereign cannot exist in a reality that believes in itself. Faith, will, defiance — these are anathema to it. This knowledge is power.", "effect": { "buffStat": "attack", "buffAmount": 7, "buffTurns": 99, "buffStat2": "defense", "buffAmount2": 4, "manaPct": 30 } }, "failure": { "text": "The knowledge burns. Your mind recoils from the Sovereign's true nature. Some things were not meant to be understood.", "effect": { "damagePct": 22, "debuff": { "slug": "curse", "turns": 5, "name": "Mind Burn" } } } },
+            { "label": "Reject the dream entirely", "check": { "stat": "wis", "dc": 28 }, "success": { "text": "You deny the vision. 'This is not real.' The dream shatters around you, and you emerge strengthened by your defiance.", "effect": { "healPct": 25, "manaPct": 25 } }, "failure": { "text": "The dream doesn't care about your denial. It pulls you deeper before releasing you, shaken.", "effect": { "damagePct": 15 } } },
+            { "label": "Walk through quickly", "check": { "stat": "con", "dc": 27 }, "success": { "text": "You endure the dream without engaging. Sometimes survival is victory enough.", "effect": { "healPct": 15, "manaPct": 15 } }, "failure": { "text": "The dream lingers. You carry fragments of consumed worlds in your mind now.", "effect": { "damagePct": 12, "debuff": { "slug": "weaken", "turns": 3, "name": "Dream Echo" } } } }
+          ]
+        },
+        { "type": "combat", "enemies": ["reality-eater", "void-weaver"] },
+        { "type": "combat", "enemies": ["paradox-knight", "paradox-knight"] }
+      ],
+      "boss": {
+        "slug": "the-dream-warden",
+        "name": "The Dream Warden",
+        "hp": 9000, "attack": 114, "defense": 56, "xp": 900, "gold": 450, "level": 43, "boss": true,
+        "abilities": ["dark-curse", "weakening-hex", "regen-aura", "stunning-slam", "fire-breath"],
+        "drops": ["dreamwarden-vestments", "frozen-moment-amulet", "dream-treads"],
+        "dropChance": 22,
+        "description": "The guardian of the second binding — a being made of frozen time. It exists in every moment simultaneously, attacking from past, present, and future at once.",
+        "telegraphs": ["crushing-blow", "healing-ritual", "poison-cloud"], "enrageThreshold": 0.3, "enrageTelegraphs": ["death-strike", "crushing-blow"],
+        "intro": "🌀 RAID BOSS — Time cracks. The Dream Warden steps through — or rather, a thousand versions of it step through simultaneously, collapsing into one. 'You walk through dreams. Now dream of your end.'"
+      }
+    },
+    {
+      "lore": "The third binding sits in a space between spaces — a void within the void. Here, direction has no meaning. Up is down, forward is backward, and the only constant is the binding crystal, glowing faintly in the impossible dark. The Sovereign's influence is stronger here; you can feel it pressing against your thoughts.",
+      "encounters": [
+        { "type": "combat", "enemies": ["abyssal-titan", "void-weaver"] },
+        { "type": "choice", "title": "The Space Between", "text": "Gravity fails. You float in the void between bindings, surrounded by fragments of destroyed realities. Some fragments contain useful artifacts — weapons, armor, potions from worlds that no longer exist.",
+          "choices": [
+            { "label": "Navigate the fragments for artifacts", "check": { "stat": "dex", "dc": 29 }, "success": { "text": "You find equipment from a warrior civilization that fought the Sovereign millennia ago. Their weapons were designed specifically for this fight.", "effect": { "buffStat": "attack", "buffAmount": 6, "buffTurns": 99, "healPct": 20 } }, "failure": { "text": "A fragment collapses as you reach for it. Debris from a dead universe crashes into you.", "effect": { "damagePct": 20 } } },
+            { "label": "Anchor yourself and meditate", "check": { "stat": "wis", "dc": 28 }, "success": { "text": "In the silence between worlds, you find perfect clarity. Your mind sharpens to a razor edge.", "effect": { "manaPct": 30, "buffStat": "defense", "buffAmount": 5, "buffTurns": 99 } }, "failure": { "text": "The void presses in during meditation. Thoughts that aren't yours intrude.", "effect": { "damagePct": 12, "mpDrain": 15 } } },
+            { "label": "Push through quickly", "check": { "stat": "str", "dc": 27 }, "success": { "text": "Raw determination carries you through. Sometimes brute force works even against the void.", "effect": { "healPct": 15, "manaPct": 15 } }, "failure": { "text": "The void resists. Progress is agonizing.", "effect": { "damagePct": 15 } } }
+          ]
+        },
+        { "type": "combat", "enemies": ["reality-eater", "unraveling-shade", "paradox-knight"] },
+        { "type": "combat", "enemies": ["sovereign-herald", "void-weaver"] }
+      ],
+      "boss": {
+        "slug": "the-void-anchor",
+        "name": "The Void Anchor",
+        "hp": 10000, "attack": 118, "defense": 60, "xp": 1000, "gold": 500, "level": 45, "boss": true,
+        "abilities": ["stunning-slam", "dark-curse", "harden", "war-cry", "regen-aura", "weakening-hex"],
+        "drops": ["void-anchor-plate", "entropy-crown"],
+        "dropChance": 25,
+        "description": "The third binding has become self-aware — a living anchor point that maintains reality through sheer force of will. Unfortunately, it considers everything a threat to its purpose, including you.",
+        "telegraphs": ["crushing-blow", "fire-breath", "healing-ritual"], "enrageThreshold": 0.25, "enrageTelegraphs": ["death-strike", "fire-breath"],
+        "intro": "🌀 RAID BOSS — The third crystal explodes outward, reforming into something massive — an anchor of pure will, determined to hold reality together by force. 'I AM THE BINDING. I WILL NOT BREAK.'"
+      }
+    },
+    {
+      "lore": "The fourth level. The Sovereign's prison. You can see it now — a shape in the darkness, vast and terrible. The binding here is the strongest, but also the most strained. Cracks of light run across the prison's surface like veins. The Sovereign's eye — impossibly large, impossibly aware — focuses on you. It knows you're here.",
+      "encounters": [
+        { "type": "combat", "enemies": ["sovereign-herald", "abyssal-titan"] },
+        { "type": "choice", "title": "The Sovereign's Gaze", "text": "The Void Sovereign's eye fixes on you. Its attention is a physical force — crushing, probing, analyzing. It speaks directly into your mind: 'You carry light into the dark. How quaint. How brave. How pointless.'",
+          "choices": [
+            { "label": "Resist its psychic assault with pure will", "check": { "stat": "wis", "dc": 30 }, "success": { "text": "'Interesting,' the Sovereign whispers. 'You have... conviction.' Its gaze withdraws slightly. The pressure eases. Your defiance becomes armor.", "effect": { "buffStat": "defense", "buffAmount": 7, "buffTurns": 99, "healPct": 20, "manaPct": 20 } }, "failure": { "text": "The gaze crushes. Your mind buckles under the weight of an entity that has consumed worlds.", "effect": { "damagePct": 25, "debuff": { "slug": "curse", "turns": 5, "name": "Sovereign's Gaze" } } } },
+            { "label": "Use its attention as a weapon — reflect its power", "check": { "stat": "int", "dc": 31 }, "success": { "text": "You turn the Sovereign's own energy against it, channeling its gaze-force into your weapons. For a moment, you wield the power of an elder void entity.", "effect": { "buffStat": "attack", "buffAmount": 8, "buffTurns": 99, "healPct": 15 } }, "failure": { "text": "You cannot redirect a god's attention. The overflow burns through your magical channels.", "effect": { "damagePct": 22, "mpDrain": 30 } } },
+            { "label": "Ignore it. Focus on the binding.", "check": { "stat": "con", "dc": 28 }, "success": { "text": "You refuse to engage. The Sovereign's gaze slides off your determination. 'Perhaps you are not as pointless as the others.'", "effect": { "healPct": 20, "manaPct": 20 } }, "failure": { "text": "Ignoring a cosmic entity is harder than it sounds. Its displeasure manifests as pain.", "effect": { "damagePct": 18 } } }
+          ]
+        },
+        { "type": "combat", "enemies": ["sovereign-herald", "reality-eater", "void-weaver"] }
+      ],
+      "boss": {
+        "slug": "the-sovereigns-hand",
+        "name": "The Sovereign's Hand",
+        "hp": 11500, "attack": 122, "defense": 62, "xp": 1200, "gold": 600, "level": 47, "boss": true,
+        "abilities": ["fire-breath", "stunning-slam", "dark-curse", "regen-aura", "harden", "weakening-hex", "war-cry"],
+        "drops": ["sovereign-grasp-gloves", "hand-of-endings-blade", "abyssal-ward-shield"],
+        "dropChance": 25,
+        "description": "The Sovereign extends a hand through the weakening prison — a limb of pure void that dwarfs mountains. Its fingers are dimensions. Its palm is an abyss. And it is reaching for you.",
+        "telegraphs": ["crushing-blow", "poison-cloud", "fire-breath", "healing-ritual"], "enrageThreshold": 0.2, "enrageTelegraphs": ["death-strike", "fire-breath", "crushing-blow"],
+        "intro": "🌀 RAID BOSS — The prison cracks. Through the breach, a hand emerges — vast, dark, impossible. The Sovereign's Hand. Five fingers, each larger than a ship, each containing the destructive power of a dying star. It reaches. For you."
+      }
+    },
+    {
+      "lore": "The final binding. The heart of the prison. The Sovereign's eye fills the sky above — or below, or wherever 'above' means in a place where direction has lost all meaning. The binding crystal is the size of a mountain, and it's shattering. You have moments. This is the end of the line — reinforce the binding forever, or face the Sovereign in its weakened state and destroy what should never have been allowed to exist.",
+      "encounters": [
+        { "type": "combat", "enemies": ["abyssal-titan", "sovereign-herald", "reality-eater"] },
+        { "type": "choice", "title": "The Final Choice", "text": "The binding crystal screams. The Sovereign pushes against it with the weight of oblivion. You have one chance. Reinforce the binding and seal the Sovereign away forever — or shatter the binding yourself and face the Sovereign while it's still partially contained.",
+          "choices": [
+            { "label": "Reinforce the binding — seal it forever", "check": { "stat": "wis", "dc": 32 }, "success": { "text": "You pour everything — strength, magic, life force, will — into the binding. It blazes like a newborn star. The Sovereign screams. But the binding won't hold forever without a guardian. You'll have to become the final seal. Or... destroy the Sovereign while it's weakened.", "effect": { "buffStat": "defense", "buffAmount": 8, "buffTurns": 99, "healPct": 30, "manaPct": 30 } }, "failure": { "text": "Not enough. The binding takes what you offer and demands more. It drains you deeply.", "effect": { "damagePct": 25, "debuff": { "slug": "weaken", "turns": 5, "name": "Binding Drain" } } } },
+            { "label": "Shatter the binding and face the Sovereign", "check": { "stat": "str", "dc": 30 }, "success": { "text": "The binding explodes. The Sovereign is exposed — but still partially contained, still weakened by millennia of imprisonment. This is the moment. This is the only chance.", "effect": { "buffStat": "attack", "buffAmount": 9, "buffTurns": 99, "healPct": 20 } }, "failure": { "text": "The binding shatters, but the released energy hammers you. The Sovereign stirs, more awake than you'd like.", "effect": { "damagePct": 20, "debuff": { "slug": "curse", "turns": 4, "name": "Reality Shatter" } } } },
+            { "label": "Channel the binding's power into a weapon", "check": { "stat": "int", "dc": 31 }, "success": { "text": "You forge the binding's energy into a lance of pure reality — the one thing the Sovereign cannot withstand. It blazes in your hands like concentrated existence.", "effect": { "buffStat": "attack", "buffAmount": 10, "buffTurns": 99, "healPct": 15, "manaPct": 15 } }, "failure": { "text": "The energy is too much for any weapon to contain. It detonates.", "effect": { "damagePct": 25, "mpDrain": 25 } } }
+          ]
+        },
+        { "type": "combat", "enemies": ["sovereign-herald", "sovereign-herald", "abyssal-titan"] }
+      ],
+      "boss": {
+        "slug": "the-void-sovereign-awakened",
+        "name": "The Void Sovereign, Awakened",
+        "hp": 16000, "attack": 140, "defense": 68, "xp": 2500, "gold": 1250, "level": 50, "boss": true,
+        "abilities": ["fire-breath", "stunning-slam", "dark-curse", "regen-aura", "harden", "weakening-hex", "war-cry", "rending-claws"],
+        "drops": ["sovereign-crown", "reality-render-blade", "void-heart-codex", "binding-ward-ring", "unraveling-treads"],
+        "dropChance": 30,
+        "mythicDrop": true, "mythicDropChance": 100,
+        "description": "The Void Sovereign, partially freed. Not at full power — but full power would consume galaxies. Even weakened, it is the most dangerous entity in existence. A consciousness older than time, vaster than space, and hungry beyond comprehension. This is the fight that decides whether reality continues to exist.",
+        "telegraphs": ["crushing-blow", "poison-cloud", "fire-breath", "healing-ritual", "summon-minions"],
+        "enrageThreshold": 0.15, "enrageTelegraphs": ["death-strike", "fire-breath", "crushing-blow", "summon-minions"],
+        "intro": "🌀 FINAL RAID BOSS — THE VOID SOVEREIGN AWAKENS. Reality screams. The sky tears open. An eye the size of a world opens above you, and a voice that is the absence of all sound speaks: 'I HAVE DREAMED OF ENDINGS FOR A BILLION YEARS. NOW... I AM THE ENDING.' The final battle for existence begins."
+      }
+    }
+  ],
+  "completionLore": "The Void Sovereign falls. Not dies — entities like this don't die. But it breaks. Shatters. Its consciousness fragments into a trillion pieces, scattering across the void between realities. The prison reforms around the fragments, sealing them away in a binding stronger than the original — forged by your sacrifice, your will, your refusal to let reality end.\n\nThe Voidspire stabilizes. The floating islands stop drifting. The tears in reality begin to heal. In Nexus Bastion, the shields blaze bright for the first time in years.\n\nWarden Kyros finds you at the edge of the Bastion, staring into the Abyss. It's quieter now. The hungry darkness feels... empty. Defeated.\n\n'You did something that shouldn't have been possible,' Kyros says. 'Every scholar, every void-walker, every entity we consulted said the Sovereign couldn't be beaten. That the best we could hope for was to delay it.' He pauses. 'They were wrong. You proved them wrong.'\n\nHe hands you something — a shard of the Sovereign's consciousness, sealed in a crystal of pure reality. It pulses faintly.\n\n'Keep it,' he says. 'A reminder. Of what you faced. Of what you beat. And of what's at stake if anything like it ever stirs again.'\n\nThe Abyss is quiet. Reality holds. And you — you are the reason why."
+}

@@ -1,0 +1,1198 @@
+[
+  {
+    "slug": "sunspire-cinders",
+    "title": "Ashes Over Sunspire",
+    "location": "sunspire",
+    "minLevel": 7,
+    "description": "Cinder cultists are operating a fire beacon on the lower peaks to guide a drake attack.",
+    "stages": [
+      {
+        "text": "A sun-priest shields a brazier from drifting ash with her body. 'These embers are no omen \u2014 they're not from Sunspire's fires and they're not from the peaks. They taste of something deliberately burnt.' She holds a handful to the light. 'Someone is burning signal materials up there. Specific ratios. This is a beacon compound.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Identify the beacon compound composition",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study the ash drift direction to locate the source",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Scout the lower peak approaches for the beacon position",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Alert the city garrison before moving on the cultists",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "Burnt prayer flags and scorched footprints lead to a ruined watchpost overlooking the eastern approach \u2014 a position with clear line of sight to both the city and the drake flight paths. A ritual circle of ash has been maintained here for at least three days, and it is currently active.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Scout the watchpost from below before committing to approach",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Read the ritual circle's composition and purpose",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 2,
+            "label": "Charge the ritual circle before the beacon is completed",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Observe the number of cultists before engaging",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "You see cultists feeding flame to a beacon while an ash drake circles overhead in a holding pattern \u2014 it's waiting for a signal that the beacon will give. The cult leader stands at the circle's centre with a sealed flask of beacon compound. The drake will commit its attack run when the flask is opened.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Destroy the beacon before the flask is opened",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Shoot down the drake before it can receive the signal",
+            "check": {
+              "stat": "dex",
+              "dc": 15
+            }
+          },
+          {
+            "next": 3,
+            "label": "Fight the cinder cultists at the circle",
+            "combat": "cinder-cultist"
+          },
+          {
+            "next": 3,
+            "label": "Take the cult leader out before the flask is opened",
+            "check": {
+              "stat": "wis",
+              "dc": 15
+            }
+          }
+        ]
+      },
+      {
+        "text": "The cult leader falls but the beacon fires are still lit, and the ash drake breaks its holding pattern and begins its attack run without waiting for the flask signal \u2014 it's been circling long enough to become impatient. The beacon needs to be extinguished before the drake commits fully.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the ash drake",
+            "combat": "ash-drake"
+          },
+          {
+            "next": 4,
+            "label": "Smother the beacon fires before the drake locks in",
+            "check": {
+              "stat": "str",
+              "dc": 15
+            }
+          },
+          {
+            "next": 4,
+            "label": "Drive the drake off with a concentrated distraction",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 4,
+            "label": "Use the watchpost structure to break the drake's dive angle",
+            "check": {
+              "stat": "dex",
+              "dc": 15
+            }
+          }
+        ]
+      },
+      {
+        "text": "The beacon collapses in sparks. Sunspire's defenders cheer from the walls below. The cult leader's sealed flask contains the beacon's activation key and complete instructions \u2014 including the location of the drake nesting site they've been working with, which the garrison is very interested in.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Deliver the flask and documents to the garrison command",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 5,
+            "label": "Dismantle the ritual circle permanently",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 5,
+            "label": "Scout the drake nesting site location while you have it",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The beacon collapses in sparks. Sunspire's defenders cheer from the walls and the garrison commander gives you a flame visor from the vanguard stores \u2014 the kind worn by people who walk into fires they started themselves and walk back out again.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 256,
+      "gold": 136,
+      "item": "flame-visor"
+    }
+  },
+  {
+    "slug": "dragon-slayer",
+    "title": "Ignavoth Must Fall",
+    "location": "sunspire",
+    "minLevel": 8,
+    "description": "Ignavoth the Ancient has awakened. If the wyrm destroys Sunspire, the entire region falls.",
+    "stages": [
+      {
+        "text": "Archmage Liora stands before the council with the stillness of someone delivering news they've been carrying for days. 'Ignavoth has awakened. The tremors in Dragon Peak are not geological \u2014 they are the movement of something very old deciding it is time to act.' She sets a sealed expedition order on the table. 'Someone has to go up there. The question is whether you understand what that means.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Ask the Archmage everything known about Ignavoth",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study the Dragon Peak approach routes for weaknesses",
+            "check": {
+              "stat": "wis",
+              "dc": 15
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask what happened to the last expedition that attempted this",
+            "check": {
+              "stat": "cha",
+              "dc": 15
+            }
+          },
+          {
+            "next": 1,
+            "label": "Accept immediately and request the best available equipment",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The climb up Dragon Peak is brutal in ways the maps did not convey. Drakes circle overhead in a defensive pattern, the air smells of sulphur and hot stone, and the path narrows at three points where a moment's inattention has a very long consequence. Something has been maintaining this approach as a killing ground for a very long time.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Navigate the narrowing path sections with complete focus",
+            "check": {
+              "stat": "dex",
+              "dc": 15
+            }
+          },
+          {
+            "next": 2,
+            "label": "Study the drake patrol pattern to move through its gaps",
+            "check": {
+              "stat": "wis",
+              "dc": 15
+            }
+          },
+          {
+            "next": 2,
+            "label": "Identify which parts of the path were deliberately prepared",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move steadily and accept that speed is the only cover available",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "Near the summit, a flame knight bars the path \u2014 a human enslaved by the dragon's will, his eyes reflecting heat-light from the peak above. He attacks with the mechanical precision of something that has been given one instruction and has spent weeks perfecting the execution of it.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the flame knight",
+            "combat": "flame-knight"
+          },
+          {
+            "next": 3,
+            "label": "Try to break the dragon's enchantment with a counter-working",
+            "check": {
+              "stat": "wis",
+              "dc": 16
+            }
+          },
+          {
+            "next": 3,
+            "label": "Find the enchantment's anchor point and sever it",
+            "check": {
+              "stat": "int",
+              "dc": 16
+            }
+          },
+          {
+            "next": 3,
+            "label": "Use the knight's rigidity against him in the exchange",
+            "check": {
+              "stat": "dex",
+              "dc": 15
+            }
+          }
+        ]
+      },
+      {
+        "text": "The knight falls. Freed from the dragon's control, he blinks with the expression of someone waking from a very long sleep. 'Thank you,' he says. 'The dragon controls everything up here. You'll feel it before you see it \u2014 a weight, like being watched by something very old that has always gotten what it wanted.' He gestures upward. 'Go now, while it hasn't recalibrated for you.'",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Ask the freed knight everything he observed while controlled",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 4,
+            "label": "Read the peak approaches for the lair entrance position",
+            "check": {
+              "stat": "wis",
+              "dc": 15
+            }
+          },
+          {
+            "next": 4,
+            "label": "Enter the lair before the dragon knows you cleared its guardian",
+            "check": {
+              "stat": "dex",
+              "dc": 15
+            }
+          },
+          {
+            "next": 4,
+            "label": "Prepare at the lair entrance before entering",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "Ignavoth is colossal. Gold and bones carpet the cavern in equal measure, and the ancient wyrm opens one eye \u2014 the size of a cartwheel, older than Sunspire, more patient than anything you have faced \u2014 and the weight of its attention is a physical pressure. 'You are very small,' it says, in a voice like mountains disagreeing, 'to have come so far alone.'",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Answer it without showing fear",
+            "check": {
+              "stat": "cha",
+              "dc": 16
+            }
+          },
+          {
+            "next": 5,
+            "label": "Assess the lair for tactical position while it speaks",
+            "check": {
+              "stat": "int",
+              "dc": 16
+            }
+          },
+          {
+            "next": 5,
+            "label": "Read the dragon's posture for when it will stop talking",
+            "check": {
+              "stat": "wis",
+              "dc": 16
+            }
+          },
+          {
+            "next": 5,
+            "label": "Hold your ground under the full weight of its attention",
+            "check": {
+              "stat": "str",
+              "dc": 15
+            }
+          }
+        ]
+      },
+      {
+        "text": "IGNAVOTH THE ANCIENT rises to full height. The cavern fills with heat and the sound of something ancient drawing breath. Whatever you said or did in those last moments before the fight begins, the accounting starts now.",
+        "choices": [
+          {
+            "next": 6,
+            "label": "FIGHT IGNAVOTH",
+            "combat": "ignavoth"
+          },
+          {
+            "next": 6,
+            "label": "Find the killing angle before it completes its first strike",
+            "check": {
+              "stat": "wis",
+              "dc": 17
+            }
+          },
+          {
+            "next": 6,
+            "label": "Use the cavern's columns for cover and close the distance",
+            "check": {
+              "stat": "dex",
+              "dc": 16
+            }
+          },
+          {
+            "next": 6,
+            "label": "Meet the ancient's first strike and survive it",
+            "check": {
+              "stat": "str",
+              "dc": 16
+            }
+          }
+        ]
+      },
+      {
+        "text": "The dragon crashes to the cavern floor. The mountain trembles. You stand victorious \u2014 Dragon's Heart still warm in your hand, the ancient wyrm still, the cavern silent except for settling stone. Sunspire stands. Whatever comes next, it will not come from the sky in fire.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 525,
+      "gold": 310,
+      "item": "dragon-heart"
+    }
+  },
+  {
+    "slug": "academy-errand",
+    "title": "An Academy Errand",
+    "location": "sunspire",
+    "minLevel": 7,
+    "description": "A missing apprentice took dangerous star charts beyond the city walls and never came back.",
+    "stages": [
+      {
+        "text": "A dean of the academy sighs with the specific exhaustion of someone who has done this before. 'The fool wanted a clearer sky for her calculations. She took the restricted star charts \u2014 the ones we do not lend out \u2014 and went beyond the walls two nights ago without telling anyone.' She pushes an access pass across the desk. 'Bring her back. Or at least the charts.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Ask the dean what the restricted charts contain",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask what the apprentice's area of study was",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the other apprentices what they know",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Follow the mountain path the apprentice would have taken",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The mountain path leads toward a shattered observatory on the peak's shoulder \u2014 a research station abandoned after a drake attack three years ago. The apprentice's most recent notes suggest she planned to use the remaining dome to track a specific astronomical event. The notes end before she reached the dome.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Read the notes carefully for the last recorded position",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Track the apprentice's trail from where the notes stop",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Assess the dome's structural safety from a distance",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move toward the dome quickly before the weather changes",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "Near the shattered observatory, an ash drake circles over the abandoned charts that are spread across the broken dome roof. The apprentice is not here \u2014 her pack is, open and partially scattered, suggesting she ran. The drake is between you and the charts and is currently descending.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the ash drake",
+            "combat": "ash-drake"
+          },
+          {
+            "next": 3,
+            "label": "Snatch the charts between the drake's passes",
+            "check": {
+              "stat": "dex",
+              "dc": 15
+            }
+          },
+          {
+            "next": 3,
+            "label": "Find the apprentice first \u2014 she is alive and nearby",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Drive the drake off the dome with fire",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The charts are recovered but the apprentice is still missing. Her trail leads into the observatory's lower structure, which is less collapsed than the dome and apparently more interesting to hide in. Something has been following her tracks besides you \u2014 smaller than a drake, more deliberate.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Follow her trail into the lower structure immediately",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Identify what else has been following her",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Call out for her to locate her by voice",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Clear the lower structure before searching for her",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The apprentice is in the lower structure, alive and unharmed but completely unwilling to leave before she has finished her observation. She is also standing in the middle of three drake whelps who have nested there and are beginning to find her presence less amusing.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Fight the drake whelps",
+            "combat": "drake-whelp"
+          },
+          {
+            "next": 5,
+            "label": "Get the apprentice moving while the whelps are distracted",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 5,
+            "label": "Make enough noise to drive the whelps toward the exit",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          },
+          {
+            "next": 5,
+            "label": "Convince the apprentice that her data can wait",
+            "check": {
+              "stat": "cha",
+              "dc": 15
+            }
+          }
+        ]
+      },
+      {
+        "text": "The charts are saved. The academy rewards you with a talisman crafted for impossible long shots \u2014 the dean says it was the apprentice's graduation gift, which she forfeited by leaving without permission, and which you've clearly earned more honestly.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 156,
+      "gold": 92,
+      "item": "hawksight-talisman"
+    }
+  },
+  {
+    "slug": "shrine-of-motes",
+    "title": "The Shrine of Motes",
+    "location": "sunspire",
+    "minLevel": 7,
+    "description": "Ash has begun falling inside a sealed shrine where no fire should burn.",
+    "stages": [
+      {
+        "text": "The shrine keepers open the bronze doors only a finger's width. Warm ash spills through the crack \u2014 not the ash of incense or candle but of something larger, and it's been accumulating for days. 'We sealed it three nights ago,' says the senior keeper, 'and the ash keeps coming.' She pauses. 'There is also a sound. Low. Like chanting.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the ash for composition and temperature",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Listen at the doors for the chanting pattern",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the keepers what the shrine normally contains",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Open the doors further to assess the interior",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "Inside, the shrine is thick with drifting ash despite the sealed doors \u2014 which means the ash is being produced inside, not carried from outside. The shrine's central altar brazier is active and should not be. The keeper records show the last official lighting was six weeks ago. Someone has been here without authorization.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Search for signs of unauthorised entry past the seal",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Examine the brazier's fuel and fire type",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move through the ash without disturbing it",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Locate where the chanting originates within the shrine",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "A cinder cultist is in the shrine's inner sanctum, chanting over a guttering altar while ash swirls like snow around him. He has been here for days, feeding the shrine's fire with something that is not proper fuel, and the ritual he is performing has been building toward something that the ash is a symptom of.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Interrupt the cultist physically",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Study the ritual for what it is building toward",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 3,
+            "label": "Smother the brazier before the cultist can complete the rite",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Read the cultist's chant and counter it",
+            "check": {
+              "stat": "wis",
+              "dc": 15
+            }
+          }
+        ]
+      },
+      {
+        "text": "The cinder cultist has completed enough of the ritual that breaking it now requires dealing with him directly. He turns when he hears you \u2014 unsurprised, as though he expected this \u2014 and raises his staff with the calm of someone who has been interrupted before and knows it costs the interrupter more than it costs him.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the cinder cultist",
+            "combat": "cinder-cultist"
+          },
+          {
+            "next": 4,
+            "label": "Smother the brazier to cut his power before engaging",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Drive him away from the altar to break his concentration",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Throw ash in his eyes and strike while he's disoriented",
+            "check": {
+              "stat": "dex",
+              "dc": 15
+            }
+          }
+        ]
+      },
+      {
+        "text": "The shrine clears. The ash settles. The keepers enter cautiously and find the altar intact, the brazier cold, and the cultist's materials scattered across the sanctum floor in a way that tells a clear enough story for the city guard. They stand in the clear air for a long moment before anyone says anything.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Help the keepers document what the cultist was attempting",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 5,
+            "label": "Secure the cultist's materials for the city guard",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 5,
+            "label": "Accept the keepers' formal thanks",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The shrine clears. In gratitude, the keepers robe you in cathedral vestments stitched against cinder and flame \u2014 made, the senior keeper says, for someone who would stand in fire to preserve what fire should not touch.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 160,
+      "gold": 94,
+      "item": "cathedral-robes"
+    }
+  },
+  {
+    "slug": "ballista-on-the-ridge",
+    "title": "Ballista on the Ridge",
+    "location": "sunspire",
+    "minLevel": 7,
+    "description": "A ridge ballista meant to defend Sunspire has gone silent after repeated drake attacks.",
+    "stages": [
+      {
+        "text": "From the city wall you can see the ballista jutting from the ridge like a broken tooth \u2014 still standing, technically, but clearly non-functional and uncrew since the last drake attack. The ridge garrison's sergeant is blunt: 'If another drake formation comes in from the eastern approach and that ballista isn't working, we lose the outer market in the first pass.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study the ballista from the wall for visible damage",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the sergeant what happened during the last attack",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Assess the route to the ridge for current hazards",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Volunteer for the ridge immediately",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The route to the ridge is clear at the base but the exposed sections are very much not \u2014 drakes circle in pairs at the height the path crests, and the only way to reach the ballista position without being spotted is to move during the patrol gap, which is thirty seconds wide and requires covering sixty feet of exposed ground.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Time the patrol gap and sprint the exposed section",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Calculate the exact gap duration from the patrol arc",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Find an alternate approach below the patrol altitude",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move during a weather obscuration",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The ballista is intact but the winch cable has been severed and the targeting arm is bent at a twenty-degree angle from impact. Repairing it is possible with the tools in the maintenance kit \u2014 which is still bolted to the frame \u2014 but it requires concentration, and a drake whelp has nested in the firing frame and considers your presence a direct challenge.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the drake whelp",
+            "combat": "drake-whelp"
+          },
+          {
+            "next": 3,
+            "label": "Repair the winch while the whelp is distracted by movement below",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Drive the whelp from the frame before the adults notice",
+            "check": {
+              "stat": "dex",
+              "dc": 15
+            }
+          },
+          {
+            "next": 3,
+            "label": "Brace the targeting arm by hand to test range",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The whelp is clear but an adult ash drake has noticed the disturbance and is banking toward the ridge. The ballista is functional enough to use if the winch can be secured and the targeting arm can be manually held in position, but you have perhaps ninety seconds before the drake completes its approach.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Get the ballista operational before the drake arrives",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 4,
+            "label": "Brace the arm and hold it manually while it fires",
+            "check": {
+              "stat": "str",
+              "dc": 15
+            }
+          },
+          {
+            "next": 4,
+            "label": "Secure the winch cable in time to use the ballista",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Read the drake's approach angle to maximize the firing window",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The ridge is secured. The garrison sends a crew up within the hour and the ballista is properly repaired by dusk. The sergeant watches the eastern approach with visible relief and presents you with the tool kit's resident moonshot bow \u2014 kept there as a secondary weapon, he says, and now officially surplus to requirements.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Accept the bow and the garrison's respect",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          },
+          {
+            "next": 5,
+            "label": "Help brief the new ballista crew on what you found",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 5,
+            "label": "Scout the eastern approach before returning to the city",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The ridge is secured and the gunners present you with a moonshot bow in solemn thanks \u2014 designed for the ballista crew's secondary arms, built to reach ranges that most bows consider theoretical.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 164,
+      "gold": 96,
+      "item": "moonshot-bow"
+    }
+  },
+  {
+    "slug": "bastion-of-embers",
+    "title": "Bastion of Embers",
+    "location": "sunspire",
+    "minLevel": 8,
+    "description": "An old flameguard bastion below the citadel has reignited its ward braziers and locked itself shut.",
+    "stages": [
+      {
+        "text": "The bastion glows from within as if preparing for a siege that ended centuries ago. The current garrison won't go near it. 'Three of my people tried,' says the garrison master. 'They came back shaken and one of them still won't say what she saw.' The doors are sealed \u2014 not locked, but sealed with the old thermal mechanism, the kind that only opens when the inside temperature drops or the right person opens it.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Research the flameguard's original sealing mechanism",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 1,
+            "label": "Assess the exterior for alternative entry points",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the garrison what their people saw inside",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          },
+          {
+            "next": 1,
+            "label": "Force the thermal seal mechanism open from outside",
+            "check": {
+              "stat": "str",
+              "dc": 15
+            }
+          }
+        ]
+      },
+      {
+        "text": "You get inside through a ventilation shaft the original builders didn't consider a security concern. The bastion is intact and active \u2014 the ward braziers burn in their original positions, the patrol routes are marked in scorched stone, and everything is exactly as it was when the order sealed it. Including the person who sealed it.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Read the patrol routes to find the bastion's pattern",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move through the bastion without triggering its responses",
+            "check": {
+              "stat": "dex",
+              "dc": 15
+            }
+          },
+          {
+            "next": 2,
+            "label": "Sense the nature of what is keeping this place active",
+            "check": {
+              "stat": "wis",
+              "dc": 15
+            }
+          },
+          {
+            "next": 2,
+            "label": "Call out to whatever is maintaining the bastion",
+            "check": {
+              "stat": "cha",
+              "dc": 15
+            }
+          }
+        ]
+      },
+      {
+        "text": "The ember halls are wrong in a specific way \u2014 the heat is too even, the braziers too regular, and the patrol sounds too consistent. This is not a haunting. Something deliberate and functional is maintaining this place, and it is about to reach you on its patrol route.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Hold your ground and assess what is coming",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Find cover and study its patrol before engaging",
+            "check": {
+              "stat": "wis",
+              "dc": 15
+            }
+          },
+          {
+            "next": 3,
+            "label": "Position yourself to control the engagement ground",
+            "check": {
+              "stat": "int",
+              "dc": 15
+            }
+          },
+          {
+            "next": 3,
+            "label": "Move toward it on your terms rather than waiting",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "A flame knight marches the ember halls alone \u2014 the last officer of the original garrison, still executing the orders given when the bastion was sealed. It tests every intruder as though the city still depends on the outcome. It does not hate. It simply has a job and does it.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the flame knight",
+            "combat": "flame-knight"
+          },
+          {
+            "next": 4,
+            "label": "Speak the guard oath and challenge its purpose formally",
+            "check": {
+              "stat": "cha",
+              "dc": 15
+            }
+          },
+          {
+            "next": 4,
+            "label": "Prove yourself by enduring the first exchange without retreating",
+            "check": {
+              "stat": "str",
+              "dc": 15
+            }
+          },
+          {
+            "next": 4,
+            "label": "Find the officer's standing orders and complete them",
+            "check": {
+              "stat": "wis",
+              "dc": 16
+            }
+          }
+        ]
+      },
+      {
+        "text": "The flame knight kneels. The bastion's braziers dim by half, as though the tension that maintained them has been resolved. The knight offers something from its pauldron \u2014 a seal from the original order, authorising access to the armoury behind the main hall.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Accept the seal and access the armoury",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 5,
+            "label": "Read the original orders that sealed this place",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 5,
+            "label": "Report back to the garrison master with the full situation",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The knight kneels and surrenders the bastion's greatest shield: the Bulwark Aegis \u2014 carried into this place by the last garrison commander and kept here since, for whoever proved worthy of the trial.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 178,
+      "gold": 106,
+      "item": "bulwark-aegis"
+    }
+  }
+]

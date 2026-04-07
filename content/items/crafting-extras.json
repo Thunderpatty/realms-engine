@@ -1,0 +1,718 @@
+{
+  "healing-herb": {
+    "cost": 8,
+    "name": "Healing Herb",
+    "sell": 2,
+    "type": "material",
+    "rarity": "common",
+    "description": "A bitter green herb prized by hedge healers and alchemists."
+  },
+  "iron-ore": {
+    "cost": 12,
+    "name": "Iron Ore",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Rough iron-rich stone ready for smelting and shaping."
+  },
+  "linen-cloth": {
+    "cost": 10,
+    "name": "Linen Cloth",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Clean woven cloth used for wraps, robes, and bindings."
+  },
+  "moonpetal": {
+    "cost": 22,
+    "name": "Moonpetal",
+    "sell": 6,
+    "type": "material",
+    "rarity": "uncommon",
+    "description": "A pale marsh flower that stores cool magical essence."
+  },
+  "shadow-ichor": {
+    "cost": 45,
+    "name": "Shadow Ichor",
+    "sell": 10,
+    "type": "material",
+    "rarity": "rare",
+    "description": "Dense dark fluid gathered from cursed things that haunt the fens."
+  },
+  "warlord-crest-blade": {
+    "cost": 0,
+    "name": "Warlord Crestblade",
+    "sell": 420,
+    "type": "weapon",
+    "stats": {
+      "str": 14,
+      "dex": 1
+    },
+    "rarity": "legendary",
+    "description": "A brutal legendary blade patterned after the banners and victories of forgotten warlords.",
+    "passive": {
+      "lifestealPct": 10,
+      "onHitStatus": {
+        "slug": "bleed",
+        "chance": 30,
+        "turns": 2
+      }
+    }
+  },
+  "fenweave-raiment": {
+    "cost": 0,
+    "name": "Fenweave Raiment",
+    "sell": 420,
+    "type": "armor",
+    "stats": {
+      "int": 9,
+      "wis": 7,
+      "con": 2
+    },
+    "rarity": "legendary",
+    "description": "Ancient robes woven from moonpetals, marsh silk, and condensed swamp sorcery.",
+    "passive": {
+      "manaRegen": 2,
+      "onHitStatus": {
+        "slug": "weaken",
+        "chance": 20,
+        "turns": 2
+      }
+    }
+  },
+  "saintguard-bulwark": {
+    "cost": 0,
+    "name": "Saintguard Bulwark",
+    "sell": 410,
+    "type": "shield",
+    "stats": {
+      "con": 9,
+      "wis": 2
+    },
+    "rarity": "legendary",
+    "description": "A sanctified bulwark meant to turn aside curses, arrows, and monsters alike.",
+    "passive": {
+      "hpRegen": 2,
+      "onHitStatus": {
+        "slug": "slow",
+        "chance": 20,
+        "turns": 2
+      }
+    }
+  },
+  "recipe-scroll-warlord-crest-blade": {
+    "cost": 0,
+    "name": "Recipe Scroll: Warlord Crestblade",
+    "sell": 40,
+    "type": "recipe",
+    "rarity": "legendary",
+    "recipeSlug": "craft-warlord-crest-blade",
+    "description": "A blood-stained forging scroll detailing the Warlord Crestblade."
+  },
+  "recipe-scroll-saintguard-bulwark": {
+    "cost": 0,
+    "name": "Recipe Scroll: Saintguard Bulwark",
+    "sell": 40,
+    "type": "recipe",
+    "rarity": "legendary",
+    "recipeSlug": "craft-saintguard-bulwark",
+    "description": "A sanctified design scroll for the Saintguard Bulwark."
+  },
+  "recipe-scroll-fenweave-raiment": {
+    "cost": 0,
+    "name": "Recipe Scroll: Fenweave Raiment",
+    "sell": 40,
+    "type": "recipe",
+    "rarity": "legendary",
+    "recipeSlug": "craft-fenweave-raiment",
+    "description": "A damp arcane pattern scroll describing the Fenweave Raiment."
+  },
+  "recipe-scroll-dragon-heart": {
+    "cost": 0,
+    "name": "Recipe Scroll: Dragon's Heart",
+    "sell": 60,
+    "type": "recipe",
+    "rarity": "legendary",
+    "recipeSlug": "craft-dragon-heart",
+    "description": "An ancient masterwork scroll describing how to forge the Dragon's Heart."
+  },
+  "stoneheart-tonic": {
+    "cost": 0,
+    "name": "Stoneheart Tonic",
+    "sell": 22,
+    "type": "consumable",
+    "rarity": "uncommon",
+    "description": "A granite-thick draught that hardens your body for the next exchange.",
+    "use": {
+      "combatOnly": true,
+      "effects": [
+        {
+          "slug": "fortify",
+          "turns": 3
+        }
+      ]
+    }
+  },
+  "bloodthirst-philter": {
+    "cost": 0,
+    "name": "Bloodthirst Philter",
+    "sell": 28,
+    "type": "consumable",
+    "rarity": "rare",
+    "description": "A vicious crimson brew that turns aggression into stolen vitality.",
+    "use": {
+      "combatOnly": true,
+      "tempPassives": [
+        {
+          "turns": 3,
+          "lifestealPct": 18
+        }
+      ]
+    }
+  },
+  "verdant-vial": {
+    "cost": 0,
+    "name": "Verdant Vial",
+    "sell": 24,
+    "type": "consumable",
+    "rarity": "uncommon",
+    "description": "Cool green liquid that causes flesh and resolve to knit back together.",
+    "use": {
+      "combatOnly": true,
+      "effects": [
+        {
+          "slug": "regen",
+          "turns": 4
+        }
+      ]
+    }
+  },
+  "focus-incense": {
+    "cost": 0,
+    "name": "Focus Incense",
+    "sell": 26,
+    "type": "consumable",
+    "rarity": "uncommon",
+    "description": "A sachet burned in battle to steady the mind and restore magical rhythm.",
+    "use": {
+      "combatOnly": true,
+      "tempPassives": [
+        {
+          "turns": 4,
+          "manaRegen": 3
+        }
+      ]
+    }
+  },
+  "ember-oil": {
+    "cost": 0,
+    "name": "Ember Oil",
+    "sell": 30,
+    "type": "consumable",
+    "rarity": "rare",
+    "description": "A volatile weapon oil that makes each strike spit sparks and cinders.",
+    "use": {
+      "combatOnly": true,
+      "tempPassives": [
+        {
+          "turns": 3,
+          "onHitStatus": {
+            "slug": "burn",
+            "chance": 35,
+            "turns": 2
+          }
+        }
+      ]
+    }
+  },
+  "ironbark-helm": {
+    "cost": 0,
+    "name": "Ironbark Helm",
+    "sell": 34,
+    "type": "armor",
+    "slot": "helmet",
+    "rarity": "uncommon",
+    "stats": {
+      "str": 3,
+      "con": 2
+    },
+    "description": "Layered bark, hide, and iron studs made for a front-liner."
+  },
+  "vanguard-gauntlets": {
+    "cost": 0,
+    "name": "Vanguard Gauntlets",
+    "sell": 36,
+    "type": "armor",
+    "slot": "gloves",
+    "rarity": "uncommon",
+    "stats": {
+      "str": 3,
+      "con": 1
+    },
+    "description": "Plated gloves that turn guarded hands into crushing blows."
+  },
+  "trailbreaker-boots": {
+    "cost": 0,
+    "name": "Trailbreaker Boots",
+    "sell": 34,
+    "type": "armor",
+    "slot": "boots",
+    "rarity": "uncommon",
+    "stats": {
+      "con": 2,
+      "dex": 2
+    },
+    "description": "Heavy-soled boots for relentless marches and shield-wall advances."
+  },
+  "lionheart-amulet": {
+    "cost": 0,
+    "name": "Lionheart Amulet",
+    "sell": 70,
+    "type": "accessory",
+    "slot": "amulet",
+    "rarity": "rare",
+    "stats": {
+      "str": 3,
+      "con": 3
+    },
+    "description": "A battlefield charm that steadies the pulse under pressure.",
+    "passive": {
+      "hpRegen": 1
+    }
+  },
+  "colossus-warhelm": {
+    "cost": 0,
+    "name": "Colossus Warhelm",
+    "sell": 165,
+    "type": "armor",
+    "slot": "helmet",
+    "rarity": "epic",
+    "stats": {
+      "str": 6,
+      "con": 5
+    },
+    "description": "An enormous warhelm forged for champions who break lines head-on.",
+    "passive": {
+      "hpRegen": 1,
+      "onHitStatus": {
+        "slug": "bleed",
+        "chance": 22,
+        "turns": 2
+      }
+    }
+  },
+  "spellweave-hood": {
+    "cost": 0,
+    "name": "Spellweave Hood",
+    "sell": 34,
+    "type": "armor",
+    "slot": "helmet",
+    "rarity": "uncommon",
+    "stats": {
+      "int": 2,
+      "wis": 2,
+      "con": 1
+    },
+    "description": "A runic hood lined to contain loose sparks of magic."
+  },
+  "glyphbound-gloves": {
+    "cost": 0,
+    "name": "Glyphbound Gloves",
+    "sell": 36,
+    "type": "armor",
+    "slot": "gloves",
+    "rarity": "uncommon",
+    "stats": {
+      "int": 3
+    },
+    "description": "Arcane sigils stitched into the fingers sharpen spell release."
+  },
+  "miststep-sandals": {
+    "cost": 0,
+    "name": "Miststep Sandals",
+    "sell": 34,
+    "type": "armor",
+    "slot": "boots",
+    "rarity": "uncommon",
+    "stats": {
+      "dex": 2,
+      "int": 1,
+      "con": 1
+    },
+    "description": "Soft sandals that quiet footfalls in libraries and graveyards alike."
+  },
+  "astral-pendant": {
+    "cost": 0,
+    "name": "Astral Pendant",
+    "sell": 70,
+    "type": "accessory",
+    "slot": "amulet",
+    "rarity": "rare",
+    "stats": {
+      "int": 2,
+      "wis": 2
+    },
+    "description": "A silver-star pendant that hums when spells are near completion.",
+    "passive": {
+      "manaRegen": 1
+    }
+  },
+  "eclipse-cowl": {
+    "cost": 0,
+    "name": "Eclipse Cowl",
+    "sell": 168,
+    "type": "armor",
+    "slot": "helmet",
+    "rarity": "epic",
+    "stats": {
+      "int": 5,
+      "wis": 3,
+      "con": 2
+    },
+    "description": "A moon-dark hood that swallows hostile intent into static whispers.",
+    "passive": {
+      "manaRegen": 2,
+      "onHitStatus": {
+        "slug": "weaken",
+        "chance": 22,
+        "turns": 2
+      }
+    }
+  },
+  "shadowhood": {
+    "cost": 0,
+    "name": "Shadowhood",
+    "sell": 34,
+    "type": "armor",
+    "slot": "helmet",
+    "rarity": "uncommon",
+    "stats": {
+      "dex": 3,
+      "con": 1
+    },
+    "description": "A close-cut hood made to blur your profile in torchlight."
+  },
+  "gripwrap-gloves": {
+    "cost": 0,
+    "name": "Gripwrap Gloves",
+    "sell": 36,
+    "type": "armor",
+    "slot": "gloves",
+    "rarity": "uncommon",
+    "stats": {
+      "dex": 3
+    },
+    "description": "Tight wraps that steady knives, bows, and lockpicks."
+  },
+  "softstep-boots": {
+    "cost": 0,
+    "name": "Softstep Boots",
+    "sell": 34,
+    "type": "armor",
+    "slot": "boots",
+    "rarity": "uncommon",
+    "stats": {
+      "dex": 3,
+      "cha": 1
+    },
+    "description": "Whisper-soft boots prized by scouts and cutpurses."
+  },
+  "venom-locket": {
+    "cost": 0,
+    "name": "Venom Locket",
+    "sell": 72,
+    "type": "accessory",
+    "slot": "amulet",
+    "rarity": "rare",
+    "stats": {
+      "dex": 4
+    },
+    "description": "A hidden vial locket that keeps toxins close at hand.",
+    "passive": {
+      "onHitStatus": {
+        "slug": "poison",
+        "chance": 25,
+        "turns": 3
+      }
+    }
+  },
+  "duskveil-mask": {
+    "cost": 0,
+    "name": "Duskveil Mask",
+    "sell": 170,
+    "type": "armor",
+    "slot": "helmet",
+    "rarity": "epic",
+    "stats": {
+      "dex": 6,
+      "con": 2
+    },
+    "description": "An elegant killing mask worn by assassins who never leave witnesses.",
+    "passive": {
+      "lifestealPct": 8,
+      "onHitStatus": {
+        "slug": "bleed",
+        "chance": 24,
+        "turns": 2
+      }
+    }
+  },
+  "hawkfeather-cap": {
+    "cost": 0,
+    "name": "Hawkfeather Cap",
+    "sell": 34,
+    "type": "armor",
+    "slot": "helmet",
+    "rarity": "uncommon",
+    "stats": {
+      "dex": 2,
+      "wis": 1,
+      "con": 1
+    },
+    "description": "A weathered cap trimmed with feathers from sharp-eyed hunters."
+  },
+  "fletcher-grips": {
+    "cost": 0,
+    "name": "Fletcher Grips",
+    "sell": 36,
+    "type": "armor",
+    "slot": "gloves",
+    "rarity": "uncommon",
+    "stats": {
+      "dex": 3
+    },
+    "description": "Fingered gloves built to loose arrows without biting the skin."
+  },
+  "briarstride-boots": {
+    "cost": 0,
+    "name": "Briarstride Boots",
+    "sell": 34,
+    "type": "armor",
+    "slot": "boots",
+    "rarity": "uncommon",
+    "stats": {
+      "dex": 2,
+      "wis": 1,
+      "con": 1
+    },
+    "description": "Mud-tested boots for pathfinders who live off the green trail."
+  },
+  "moonleaf-amulet": {
+    "cost": 0,
+    "name": "Moonleaf Amulet",
+    "sell": 72,
+    "type": "accessory",
+    "slot": "amulet",
+    "rarity": "rare",
+    "stats": {
+      "dex": 2,
+      "wis": 2
+    },
+    "description": "A leaf-shaped charm that helps a hunter read the wind and timing.",
+    "passive": {
+      "onHitStatus": {
+        "slug": "slow",
+        "chance": 25,
+        "turns": 2
+      }
+    }
+  },
+  "stormtracker-hood": {
+    "cost": 0,
+    "name": "Stormtracker Hood",
+    "sell": 168,
+    "type": "armor",
+    "slot": "helmet",
+    "rarity": "epic",
+    "stats": {
+      "dex": 5,
+      "wis": 3,
+      "con": 2
+    },
+    "description": "A hood woven for marksmen who stalk thunder and moving prey.",
+    "passive": {
+      "onHitStatus": {
+        "slug": "slow",
+        "chance": 30,
+        "turns": 2
+      },
+      "manaRegen": 1
+    }
+  },
+  "pilgrim-circlet": {
+    "cost": 0,
+    "name": "Pilgrim Circlet",
+    "sell": 34,
+    "type": "armor",
+    "slot": "helmet",
+    "rarity": "uncommon",
+    "stats": {
+      "wis": 3,
+      "con": 2
+    },
+    "description": "A simple sanctified circlet for those who walk holy roads."
+  },
+  "sanctified-handwraps": {
+    "cost": 0,
+    "name": "Sanctified Handwraps",
+    "sell": 36,
+    "type": "armor",
+    "slot": "gloves",
+    "rarity": "uncommon",
+    "stats": {
+      "wis": 3,
+      "con": 1
+    },
+    "description": "Blessed wrappings that steady mace strokes and healing rites."
+  },
+  "dawnwalker-sandals": {
+    "cost": 0,
+    "name": "Dawnwalker Sandals",
+    "sell": 34,
+    "type": "armor",
+    "slot": "boots",
+    "rarity": "uncommon",
+    "stats": {
+      "wis": 2,
+      "con": 2
+    },
+    "description": "Holy road-sandals that remain warm even in crypt chill."
+  },
+  "reliquary-amulet": {
+    "cost": 0,
+    "name": "Reliquary Amulet",
+    "sell": 72,
+    "type": "accessory",
+    "slot": "amulet",
+    "rarity": "rare",
+    "stats": {
+      "wis": 3,
+      "con": 2
+    },
+    "description": "A tiny shrine worn at the throat to keep faith close.",
+    "passive": {
+      "hpRegen": 1,
+      "manaRegen": 1
+    }
+  },
+  "halo-of-embers": {
+    "cost": 0,
+    "name": "Halo of Embers",
+    "sell": 168,
+    "type": "armor",
+    "slot": "helmet",
+    "rarity": "epic",
+    "stats": {
+      "wis": 5,
+      "int": 3,
+      "con": 2
+    },
+    "description": "An ember-lit halo that answers devotion with stubborn survival.",
+    "passive": {
+      "hpRegen": 2,
+      "onHitStatus": {
+        "slug": "weaken",
+        "chance": 18,
+        "turns": 2
+      }
+    }
+  },
+  "perk-crystal": {
+    "name": "Perk Crystal",
+    "type": "crystal",
+    "rarity": "epic",
+    "description": "A crystallized set of equipment perks. Can be applied to rare+ gear at the Forge.",
+    "sell": 50
+  },
+  "recipe-scroll-frostguard-aegis": {
+    "slug": "recipe-scroll-frostguard-aegis",
+    "name": "Recipe: Frostguard Aegis",
+    "type": "recipe-scroll",
+    "slot": "material",
+    "rarity": "rare",
+    "description": "A frost-encrusted scroll containing the forging technique for a legendary shield.",
+    "stackable": false,
+    "recipe": "craft-frostguard-aegis",
+    "sell": 1
+  },
+  "recipe-scroll-frozen-crown": {
+    "slug": "recipe-scroll-frozen-crown",
+    "name": "Recipe: Frozen Crown",
+    "type": "recipe-scroll",
+    "slot": "material",
+    "rarity": "rare",
+    "description": "A scroll detailing the creation of a helm of ancient frost.",
+    "stackable": false,
+    "recipe": "craft-frozen-crown",
+    "sell": 1
+  },
+  "recipe-scroll-drakebone-plate": {
+    "slug": "recipe-scroll-drakebone-plate",
+    "name": "Recipe: Drakebone Plate",
+    "type": "recipe-scroll",
+    "slot": "material",
+    "rarity": "rare",
+    "description": "Instructions for crafting armor from ice drake remains.",
+    "stackable": false,
+    "recipe": "craft-drakebone-plate",
+    "sell": 1
+  },
+  "recipe-scroll-aldrics-frostbrand": {
+    "slug": "recipe-scroll-aldrics-frostbrand",
+    "name": "Recipe: Aldric's Frostbrand",
+    "type": "recipe-scroll",
+    "slot": "material",
+    "rarity": "epic",
+    "description": "The Frost King's own forging secrets, etched in runes of ice.",
+    "stackable": false,
+    "recipe": "craft-aldrics-frostbrand",
+    "sell": 1
+  },
+  "recipe-scroll-blizzard-treads": {
+    "slug": "recipe-scroll-blizzard-treads",
+    "name": "Recipe: Blizzard Treads",
+    "type": "recipe-scroll",
+    "slot": "material",
+    "rarity": "rare",
+    "description": "A scroll describing boots that walk on wind and ice.",
+    "stackable": false,
+    "recipe": "craft-blizzard-treads",
+    "sell": 1
+  },
+  "recipe-scroll-caldera-plate": {
+    "slug": "recipe-scroll-caldera-plate",
+    "name": "Recipe: Caldera Plate",
+    "type": "recipe-scroll",
+    "slot": "material",
+    "rarity": "rare",
+    "description": "Forging secrets from the caldera depths.",
+    "stackable": false,
+    "recipe": "craft-caldera-plate",
+    "cost": 0,
+    "sell": 50
+  },
+  "recipe-scroll-ignavus-flamebrand": {
+    "slug": "recipe-scroll-ignavus-flamebrand",
+    "name": "Recipe: Ignavus's Flamebrand",
+    "type": "recipe-scroll",
+    "slot": "material",
+    "rarity": "epic",
+    "description": "The fire lord's own forging technique.",
+    "stackable": false,
+    "recipe": "craft-ignavus-flamebrand",
+    "cost": 0,
+    "sell": 80
+  },
+  "recipe-scroll-sovereign-plate": {
+    "slug": "recipe-scroll-sovereign-plate",
+    "name": "Recipe: Sovereign Plate",
+    "type": "recipe-scroll",
+    "slot": "material",
+    "rarity": "epic",
+    "description": "Forging secrets from the edge of reality.",
+    "stackable": false,
+    "recipe": "craft-sovereign-plate",
+    "cost": 0,
+    "sell": 100
+  }
+}

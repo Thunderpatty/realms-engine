@@ -1,0 +1,1145 @@
+[
+  {
+    "slug": "bandit-king",
+    "title": "The Bandit King's Toll",
+    "location": "kings-road",
+    "minLevel": 3,
+    "description": "A self-styled Bandit King has set up a toll at a road junction and is extorting every merchant who passes.",
+    "stages": [
+      {
+        "text": "A merchant at the crossroads junction is furious and frightened in equal measure. 'That villain took half my goods and had the nerve to call it a toll \u2014 said the road belongs to him now, from the third milestone to the burned inn.' He unfolds a map and stabs a finger at a camp symbol. 'There are a dozen of them and he has a proper sword.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study the map to plan an approach",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask other merchants what they've seen at the camp",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Estimate the camp's defensive layout from the map",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Head for the camp before more tolls are collected",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "You find the camp: a dozen tents, a cookfire, guards on rotation. The captain sits at the fire eating a merchant's confiscated meal with the relaxed posture of someone who has never been seriously challenged. The guards rotate lazily but regularly, and there is a pattern to it.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Challenge the captain publicly and loudly",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Study the rotation to find the gap in coverage",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Poison the communal cookpot with a sleep draft",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Sneak to the captain's tent while the fire distracts the guards",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "Three bandits block your path before you reach the captain \u2014 they've noticed you're not paying the toll. They look bored and very willing to make an example of someone.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight through the bandits",
+            "combat": "highway-bandit"
+          },
+          {
+            "next": 3,
+            "label": "Scatter them with aggression before they can coordinate",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Use the camp layout to split them apart",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Bluff that you have authority from the crown",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The captain rises when he hears the commotion, drawing a proper sword from a proper scabbard. He moves well and has clearly done this before. 'I like to keep things impersonal,' he says, 'but here we are.'",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the bandit captain",
+            "combat": "bandit-captain"
+          },
+          {
+            "next": 4,
+            "label": "Draw him away from his remaining men",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Find his defensive weakness in the first exchange",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Break his nerve with a precise first strike",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The captain falls and the camp scatters. You collect the confiscated goods and the captain's own coin purse, then spend a productive hour dismantling his toll post and burning the camp's supply of rope. The road sign goes back up pointing the right direction.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Recover the merchants' confiscated goods",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Dismantle the toll infrastructure permanently",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Leave a visible warning for any remaining bandits",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "The road is free again. The first merchant through offers you half his remaining coin and a fine steel dagger he'd hidden in his boot. You take the dagger. The road belongs to travelers again.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 108,
+      "gold": 84,
+      "item": "steel-dagger"
+    }
+  },
+  {
+    "slug": "buried-bells",
+    "title": "The Buried Bells",
+    "location": "kings-road",
+    "minLevel": 4,
+    "description": "Travelers hear church bells beneath the broken road at night. Graves from a lost chapel are opening.",
+    "stages": [
+      {
+        "text": "An old drover won't touch his mule and hasn't since Tuesday. 'You hear them too, don't you? Bells from under the dirt. Something is digging upward.' He marks an X on his knee with a thumb. 'Half-collapsed headstones around a sunken crypt, three miles past the second ford. The bells start after midnight.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Ask the drover about the crypt's history",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask who else has heard the bells",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study the route to approach safely",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Head for the crypt before dark to see it in daylight",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "Half-collapsed headstones surround a sunken chapel crypt that has settled two feet into the road over the decades. Fresh footprints and claw marks crisscross the mud \u2014 both human-sized and something that drags rather than walks. The crypt door is ajar.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Follow the human footprints",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Examine the claw drag marks for origin",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Listen at the crypt door for sounds inside",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Open the crypt door quietly",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "A grave robber crouches inside the entry chamber with a lantern and a bag already half-full of chapel relics. He gasps when he sees you and immediately starts explaining that he was just looking. Behind him, the inner door moves \u2014 and no one is on the other side pushing it.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Grab the grave robber before he can flee with the relics",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Fight the grave robber",
+            "combat": "grave-robber"
+          },
+          {
+            "next": 3,
+            "label": "Let him go and focus on what is behind the inner door",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Use the robber as a distraction to get through the inner door",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "You slip inside and find bells hanging over a chamber of broken coffins. A pilgrim revenant rises from the furthest one with soil still falling from its burial robes, moving toward the bell rope with the single-minded intent of something that has a job to do and means to do it.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the revenant",
+            "combat": "pilgrim-revenant"
+          },
+          {
+            "next": 4,
+            "label": "Cut the bell rope before it reaches it",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Recite the chapel's dedication to interrupt the rite",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Collapse the bell mechanism from above",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The bells fall silent and the revenant disperses. The crypt is quiet except for the sound of settling stone. Among the broken coffins and recovered relics is a set of chainmail that clearly belonged to someone who was buried in it and is no longer in a position to need it.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Recover the chainmail and search for anything else salvageable",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Seal the inner door so nothing else can ring those bells",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Offer a blessing over the broken coffins before leaving",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "The bells finally fall silent. Dawn breaks over the road and the oppressive chill lifts from the graves. The chainmail is yours \u2014 and the road is a little safer than it was before breakfast.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 145,
+      "gold": 74,
+      "item": "chainmail"
+    }
+  },
+  {
+    "slug": "tollhouse-embers",
+    "title": "Tollhouse Embers",
+    "location": "kings-road",
+    "minLevel": 3,
+    "description": "A ruined tollhouse glows with banked coals each night though no keeper remains there.",
+    "stages": [
+      {
+        "text": "A merchant shivers despite the warm evening. 'No one sleeps near that tollhouse. The fire wakes after dark and so do the dead.' He points at a ruined stone building twenty yards off the road, cold in the afternoon light but already drawing sideways glances from every traveler. The keeper died three seasons ago, the post officially vacant.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the tollhouse in daylight for evidence",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask travellers what they've witnessed at night",
+            "check": {
+              "stat": "cha",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Scout the building from outside before entering",
+            "check": {
+              "stat": "dex",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Wait and watch the tollhouse at dusk",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "Inside the ruined tollhouse, the hearth holds a persistent warm glow that shouldn't be possible with no new fuel in months. The floor beneath the hearthstone has been disturbed recently \u2014 the mortar cracked not by age but by something working upward from below.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Study the hearthstone and its cracked mortar",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Lift the hearthstone by force",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Listen at the cracks in the floor",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move quietly so whatever is below doesn't hear you",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "Below the hearthstone is a shallow coin-cache, half-emptied by recent hands. A grave robber is crouched under the floor with a candle and a satchel, picking through old keeper's wages with the methodical efficiency of a professional. She freezes when she hears you.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Confront her before she can flee with the coins",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Fight the grave robber",
+            "combat": "grave-robber"
+          },
+          {
+            "next": 3,
+            "label": "Block her only exit quietly while she's distracted",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Convince her that leaving the cache intact is in her interest",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The grave robber dealt with, the coals go cold as if the disruption was what fed them. But down in the cache you find something else \u2014 a small collection of personal effects belonging to the dead keeper, including a luck charm he apparently carried every day of his tenure and never got to pass on.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Retrieve the charm carefully from the cache",
+            "check": {
+              "stat": "dex",
+              "dc": 10
+            }
+          },
+          {
+            "next": 4,
+            "label": "Examine all the keeper's effects to understand him",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 4,
+            "label": "Speak a brief acknowledgement over the spot",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 4,
+            "label": "Reset the hearthstone and seal the cache",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "The coals are cold and the tollhouse is quiet. The merchant who wouldn't sleep near the place is waiting outside with obvious questions, and you have satisfying answers for most of them.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Explain what happened and what you found",
+            "check": {
+              "stat": "cha",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Seal the tollhouse door before reporting back",
+            "check": {
+              "stat": "str",
+              "dc": 9
+            }
+          },
+          {
+            "next": 5,
+            "label": "Make sure the cache is truly secured",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "The coals go cold and stay cold. Among the stolen trinkets you claim the keeper's charm \u2014 a small carved bone carried for luck on bad roads, still warm from thirty years of a good man's pockets.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 72,
+      "gold": 40,
+      "item": "lucky-bone"
+    }
+  },
+  {
+    "slug": "broken-standard",
+    "title": "The Broken Standard",
+    "location": "kings-road",
+    "minLevel": 4,
+    "description": "An old battlefield banner keeps drawing revenants to a roadside shrine.",
+    "stages": [
+      {
+        "text": "Half-buried spearheads ring the shrine in a pattern too deliberate for chance. A torn battle-banner still flaps from the post though the wind is dead calm, and the merchants who use this road have learned to take the long way around after dark. 'It's the banner,' says the road-warden flatly. 'Everything comes back to the banner.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the burial spears for identifying marks",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Read the banner's heraldry to identify the unit",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the road-warden what she has witnessed here",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Walk the shrine perimeter to understand its layout",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The shrine marks a field grave where an entire unit was buried together, their banner planted over them by whoever survived long enough to do it. The banner itself is bound with a soldier's oath-knot \u2014 a military tradition that ties the unit's spirit to the standard until someone releases it properly.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Study the oath-knot binding to understand how to undo it",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Try to pull the banner down by force",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Look for any living soldiers who might remember the ritual",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Walk the banner's edges to map the binding reach",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "A pilgrim revenant rises from the earth beneath the banner at dusk \u2014 armored in the dried mud of a battlefield, carrying a broken spear, and moving with the purposeful clarity of something that knows exactly what it is waiting for. It looks at the banner before it looks at you.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the revenant",
+            "combat": "pilgrim-revenant"
+          },
+          {
+            "next": 3,
+            "label": "Cut the banner down first to disorient it",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Name the unit's banner and speak its number",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Stand between the revenant and the banner",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "Two more revenants rise from adjacent burial mounds \u2014 this shrine holds more than one soldier, and the banner has been calling all of them. The oath-knot is still tied and the standard is still standing.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight both revenants",
+            "combat": "pilgrim-revenant"
+          },
+          {
+            "next": 4,
+            "label": "Cut the oath-knot while they are distracted",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Recite the military oath of release",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Break the banner staff to release the binding",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "With the banner released or the revenants dispersed, the shrine grows quiet in a way that feels earned rather than empty. The road-warden walks up behind you and nods once. Among the relics near the base of the post is a tower heater shield, still sound, carried here by one of the buried and never claimed.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Take the shield with the road-warden's blessing",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Mark the shrine properly for travelers to avoid",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Seal the burial mounds to prevent further risings",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "The shrine is quiet. A weathered tower heater shield leans against the post, still sturdy after everything \u2014 claimed now by the person who finished what a battlefield left unfinished.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 90,
+      "gold": 50,
+      "item": "tower-heater"
+    }
+  },
+  {
+    "slug": "caravan-of-knives",
+    "title": "Caravan of Knives",
+    "location": "kings-road",
+    "minLevel": 4,
+    "description": "A caravan master believes his own guards are selling travelers to roadside killers.",
+    "stages": [
+      {
+        "text": "The caravan master speaks low, with the flat affect of someone who has been betrayed before and is trying very hard not to show how much it costs him. 'Someone tips the bandits off before we make camp. The attacks are too precise \u2014 someone knows our route, our schedule, our cargo.' He looks at the guards around the fire. 'Tonight I want the truth.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Ask the master which guards he suspects most",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study each guard's behaviour during camp setup",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Offer to watch from inside the cargo instead",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Volunteer to run your own patrol route",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "From your position among the cargo you can see the whole camp clearly. The guards do their rounds in pairs until around midnight, when one of them develops a reason to walk the far end of the wagon line alone, moving with the careful casualness of someone doing something they've rehearsed.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Follow the guard from a safe distance",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Read the guard's route for the handoff location",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Alert the master quietly before moving",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move to cut off the handoff point before he reaches it",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "Near midnight, a highway bandit approaches the wagon from the treeline to collect payment from inside the camp \u2014 a small bag, maps, and what appears to be a schedule for the next three stops. The transaction is nearly complete.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Ambush the bandit contact",
+            "combat": "highway-bandit"
+          },
+          {
+            "next": 3,
+            "label": "Intercept the payment bag before it changes hands",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Record what you see and present it to the master first",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Confront both traitor and bandit simultaneously",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The contact is dealt with but the traitor guard has bolted. He has a head start and a horse and clearly had an escape planned. The master is awake now and watching everything with the expression of a man who hoped he was wrong.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Chase the traitor down on foot",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Predict where he'll go and cut him off",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Use the recovered maps to identify his bolt-hole",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Rally the other guards to give chase",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The traitor is brought back. The master listens to everything without expression, then dismisses the guard and presses the caravan's most expensive cargo against your hands \u2014 a set of shadow-forged daggers he was transporting for a buyer who, he says, can wait.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Accept the daggers and the master's thanks",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Help the master secure the rest of the route",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Make sure the remaining guards are trustworthy",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The traitors are exposed. The grateful master rewards you with a pair of balanced shadow-forged daggers, and offers the kind of careful handshake that means he expects to ask for your help again someday.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 94,
+      "gold": 52,
+      "item": "shadow-daggers"
+    }
+  },
+  {
+    "slug": "chapel-road-escort",
+    "title": "Escort to the Chapel Road",
+    "location": "kings-road",
+    "minLevel": 4,
+    "description": "A novice priest needs safe passage to a ruined roadside chapel where survivors have gathered.",
+    "stages": [
+      {
+        "text": "The novice clutches a lantern and a prayer in either hand and looks like someone who has walked a long way on not enough sleep. 'If I do not reach them by dawn they will lose hope before healing.' The chapel is four miles down a road with three bad stretches and no company until morning. He looks at you with the quiet directness of someone who is not actually asking you to choose.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Ask the novice what dangers he has heard of on the road",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study the road ahead for the worst stretch",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Agree to escort and start walking",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Convince the novice to rest first and leave at first light",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "Two miles in, the road narrows at a broken ford where the stone has heaved up and the water runs black at night. The novice says this is where the last escort turned back. The lantern catches a pair of eyes in the grass on the bank that is not a reflection.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Step forward and draw the attention away from the novice",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Cross quickly and quietly before it reacts",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Identify what is watching from its movement pattern",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Take the high bank and force it back into the water",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "A road serpent strikes from the broken milestone at the ford's edge, drawn by the lantern's warmth and the smell of a frightened young man who clearly has never been this far from a city after dark.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the road serpent",
+            "combat": "road-serpent"
+          },
+          {
+            "next": 3,
+            "label": "Drive it off with the lantern flame",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Pull the novice aside and let the serpent over-extend",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Smash the milestone it shelters beneath",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The serpent is past but the novice is shaking and the lantern is flickering after the struggle. There are still two miles to go and one bad stretch remaining \u2014 a collapsed section of road where the ground drops away on the left and the tree line comes in close on the right.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Walk the collapsed edge carefully",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Scout ahead before letting the novice follow",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Carry the lantern and take point",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Keep the novice talking to maintain his courage",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The chapel appears at the end of a straight stretch of road just as the first grey light appears behind the eastern hills. Survivors are visible at the windows. The novice breaks into a run the moment he sees the torchlight inside, and the chapel door opens before he reaches it.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Follow the novice in and ensure the survivors are safe",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Stand watch outside while the novice does his work",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Help settle the survivors when you enter",
+            "check": {
+              "stat": "cha",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "The chapel survivors are saved. The priest thanks you with a sun charm blessed against fear and fatigue \u2014 the kind of thing you carry not because you believe in it, he says, but because sometimes you do.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 92,
+      "gold": 52,
+      "item": "sun-charm"
+    }
+  }
+]

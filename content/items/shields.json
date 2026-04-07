@@ -1,0 +1,345 @@
+{
+  "wooden-shield": {
+    "cost": 21,
+    "name": "Wooden Shield",
+    "sell": 5,
+    "type": "shield",
+    "stats": {
+      "con": 2
+    },
+    "rarity": "common",
+    "description": "Splinters easily."
+  },
+  "cantrip-tome": {
+    "cost": 20,
+    "name": "Cantrip Tome",
+    "sell": 5,
+    "type": "shield",
+    "stats": {
+      "int": 1
+    },
+    "rarity": "common",
+    "description": "A slim spellbook carried in the off-hand by hedge mages."
+  },
+  "iron-shield": {
+    "cost": 67,
+    "name": "Iron Shield",
+    "sell": 16,
+    "type": "shield",
+    "stats": {
+      "con": 5
+    },
+    "rarity": "uncommon",
+    "description": "Solid and dependable."
+  },
+  "rune-grimoire": {
+    "cost": 67,
+    "name": "Rune Grimoire",
+    "sell": 16,
+    "type": "shield",
+    "stats": {
+      "int": 3,
+      "con": 1,
+      "wis": 1
+    },
+    "rarity": "uncommon",
+    "description": "A chained grimoire whose iron clasps hum with warding power."
+  },
+  "drake-scale": {
+    "cost": 204,
+    "name": "Drake Scale Shield",
+    "sell": 51,
+    "type": "shield",
+    "stats": {
+      "con": 9
+    },
+    "rarity": "rare",
+    "description": "Scale of a young drake, fashioned into a shield."
+  },
+  "drakescript-codex": {
+    "cost": 204,
+    "name": "Drakescript Codex",
+    "sell": 51,
+    "type": "shield",
+    "stats": {
+      "int": 6,
+      "con": 2,
+      "wis": 1
+    },
+    "rarity": "rare",
+    "description": "A lacquered codex inked with fireproof draconic formulas."
+  },
+  "fletcher-quiver": {
+    "cost": 20,
+    "name": "Fletcher Quiver",
+    "sell": 5,
+    "type": "shield",
+    "stats": {
+      "dex": 1
+    },
+    "rarity": "common",
+    "description": "An offhand quiver balanced for quick draws and steady footing."
+  },
+  "barbed-quiver": {
+    "cost": 67,
+    "name": "Barbed Quiver",
+    "sell": 16,
+    "type": "shield",
+    "stats": {
+      "dex": 3,
+      "con": 1
+    },
+    "rarity": "uncommon",
+    "description": "An offhand arrow-rig packed with hooked shafts for brutal volleys."
+  },
+  "stormfeather-quiver": {
+    "cost": 204,
+    "name": "Stormfeather Quiver",
+    "sell": 51,
+    "type": "shield",
+    "stats": {
+      "dex": 6,
+      "con": 2
+    },
+    "rarity": "rare",
+    "description": "A griffon-feather quiver that turns motion into relentless pressure."
+  },
+  "tower-heater": {
+    "cost": 67,
+    "name": "Tower Heater",
+    "sell": 16,
+    "type": "shield",
+    "stats": {
+      "con": 5
+    },
+    "rarity": "uncommon",
+    "description": "A broad iron-rimmed shield built to hold a line under arrow fire."
+  },
+  "bulwark-aegis": {
+    "cost": 505,
+    "name": "Bulwark Aegis",
+    "sell": 126,
+    "type": "shield",
+    "stats": {
+      "con": 10,
+      "str": 1
+    },
+    "rarity": "epic",
+    "description": "A fortress of a shield whose weight feels lighter in a hero's grasp.",
+    "passive": {
+      "hpRegen": 1,
+      "onHitStatus": {
+        "slug": "slow",
+        "chance": 18,
+        "turns": 2
+      }
+    }
+  },
+  "smoke-pouch": {
+    "cost": 21,
+    "name": "Smoke Pouch",
+    "sell": 5,
+    "type": "shield",
+    "stats": {
+      "cha": 1,
+      "dex": 1
+    },
+    "rarity": "common",
+    "description": "An offhand satchel of soot bombs and sleight-of-hand tricks."
+  },
+  "poison-kit-satchel": {
+    "cost": 67,
+    "name": "Poison Kit Satchel",
+    "sell": 16,
+    "type": "shield",
+    "stats": {
+      "dex": 4,
+      "con": 1
+    },
+    "rarity": "uncommon",
+    "description": "An offhand satchel of venoms, wire, and razor tools."
+  },
+  "assassin-kit": {
+    "cost": 202,
+    "name": "Assassin Kit",
+    "sell": 50,
+    "type": "shield",
+    "stats": {
+      "dex": 4,
+      "con": 1
+    },
+    "rarity": "rare",
+    "description": "A lacquered wrist-rig of vials, picks, and throwing needles."
+  },
+  "scripture": {
+    "cost": 21,
+    "name": "Pocket Scripture",
+    "sell": 5,
+    "type": "shield",
+    "stats": {
+      "int": 1,
+      "wis": 1
+    },
+    "rarity": "common",
+    "description": "An offhand prayerbook carried by ministers, healers, and exorcists."
+  },
+  "reliquary": {
+    "cost": 67,
+    "name": "Reliquary",
+    "sell": 16,
+    "type": "shield",
+    "stats": {
+      "wis": 3,
+      "con": 1
+    },
+    "rarity": "uncommon",
+    "description": "A bronze reliquary box carried offhand, warm with old blessings."
+  },
+  "gospel-codex": {
+    "cost": 204,
+    "name": "Gospel Codex",
+    "sell": 51,
+    "type": "shield",
+    "stats": {
+      "wis": 5,
+      "con": 2,
+      "int": 1
+    },
+    "rarity": "rare",
+    "description": "A weighty offhand tome whose illuminated pages flare against corruption."
+  },
+  "aegis-of-the-fallen": {
+    "type": "shield",
+    "rarity": "legendary",
+    "name": "Aegis of the Fallen",
+    "cost": 0,
+    "sell": 302,
+    "stats": {
+      "con": 12,
+      "str": 4
+    },
+    "description": "A shield bearing the names of every soldier who died holding the line."
+  },
+  "grimoire-of-stars": {
+    "type": "shield",
+    "rarity": "legendary",
+    "name": "Grimoire of Stars",
+    "cost": 0,
+    "sell": 302,
+    "stats": {
+      "int": 8,
+      "wis": 5,
+      "con": 3
+    },
+    "description": "A tome of celestial spells that shields the mind from harm."
+  },
+  "quiver-of-whispers": {
+    "type": "shield",
+    "rarity": "legendary",
+    "name": "Quiver of Whispers",
+    "cost": 0,
+    "sell": 301,
+    "stats": {
+      "dex": 8,
+      "wis": 4,
+      "con": 3
+    },
+    "description": "Each arrow drawn from this quiver carries a murmured hex."
+  },
+  "shroud-of-knives": {
+    "type": "shield",
+    "rarity": "legendary",
+    "name": "Shroud of Knives",
+    "cost": 0,
+    "sell": 302,
+    "stats": {
+      "dex": 10,
+      "con": 4,
+      "cha": 2
+    },
+    "description": "A bandolier of concealed blades that parries as well as any shield."
+  },
+  "sacred-codex": {
+    "type": "shield",
+    "rarity": "legendary",
+    "name": "Sacred Codex",
+    "cost": 0,
+    "sell": 302,
+    "stats": {
+      "wis": 9,
+      "con": 5,
+      "int": 2
+    },
+    "description": "A holy codex that projects divine barriers when opened."
+  },
+  "living-bulwark": {
+    "type": "shield",
+    "rarity": "mythic",
+    "name": "Living Bulwark",
+    "cost": 0,
+    "sell": 502,
+    "stats": {
+      "con": 14,
+      "str": 6,
+      "wis": 2
+    },
+    "description": "A shield of living wood that grows thorns and heals its own cracks.",
+    "durability": 250
+  },
+  "glacial-bulwark": {
+    "slug": "glacial-bulwark",
+    "name": "Glacial Bulwark",
+    "type": "shield",
+    "slot": "shield",
+    "rarity": "rare",
+    "description": "A shield of solid glacial ice reinforced with permafrost ore.",
+    "stats": {
+      "con": 8,
+      "str": 2
+    },
+    "cost": 400,
+    "sell": 100
+  },
+  "frostguard-aegis": {
+    "slug": "frostguard-aegis",
+    "name": "Frostguard Aegis",
+    "type": "shield",
+    "slot": "shield",
+    "rarity": "epic",
+    "description": "A massive shield of permafrost and drake bone. The cold itself defends you.",
+    "stats": {
+      "con": 10,
+      "str": 2
+    },
+    "cost": 0,
+    "sell": 1
+  },
+  "obsidian-aegis": {
+    "slug": "obsidian-aegis",
+    "name": "Obsidian Aegis",
+    "type": "shield",
+    "slot": "shield",
+    "rarity": "rare",
+    "stats": {
+      "con": 10,
+      "str": 3
+    },
+    "description": "A shield of volcanic glass. Shatters blades on impact.",
+    "cost": 720,
+    "sell": 180
+  },
+  "omega-bulwark": {
+    "slug": "omega-bulwark",
+    "name": "Omega Bulwark",
+    "type": "shield",
+    "slot": "shield",
+    "rarity": "epic",
+    "stats": {
+      "con": 13,
+      "str": 4
+    },
+    "description": "A shield made from omega construct plating. The last defense.",
+    "cost": 1250,
+    "sell": 312
+  }
+}

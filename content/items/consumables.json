@@ -1,0 +1,113 @@
+{
+  "health-potion": {
+    "use": {
+      "heal": 25
+    },
+    "cost": 15,
+    "name": "Health Potion",
+    "sell": 7,
+    "type": "consumable",
+    "rarity": "common",
+    "description": "Restores 25 HP."
+  },
+  "greater-health-potion": {
+    "use": {
+      "heal": 60
+    },
+    "cost": 40,
+    "name": "Greater Health Potion",
+    "sell": 20,
+    "type": "consumable",
+    "rarity": "uncommon",
+    "description": "Restores 60 HP."
+  },
+  "mana-potion": {
+    "use": {
+      "mana": 15
+    },
+    "cost": 15,
+    "name": "Mana Potion",
+    "sell": 7,
+    "type": "consumable",
+    "rarity": "common",
+    "description": "Restores 15 MP."
+  },
+  "greater-mana-potion": {
+    "use": {
+      "mana": 40
+    },
+    "cost": 40,
+    "name": "Greater Mana Potion",
+    "sell": 20,
+    "type": "consumable",
+    "rarity": "uncommon",
+    "description": "Restores 40 MP."
+  },
+  "antidote": {
+    "use": {
+      "cure": "poison"
+    },
+    "cost": 10,
+    "name": "Antidote",
+    "sell": 5,
+    "type": "consumable",
+    "rarity": "common",
+    "description": "Cures poison."
+  },
+  "elixir": {
+    "use": {
+      "heal": 999,
+      "mana": 999
+    },
+    "cost": 120,
+    "name": "Elixir of Vitality",
+    "sell": 60,
+    "type": "consumable",
+    "rarity": "rare",
+    "description": "Fully restores HP and MP."
+  },
+  "guild-health-kit": {
+    "type": "consumable",
+    "rarity": "uncommon",
+    "name": "Guild Health Kit",
+    "cost": 0,
+    "sell": 0,
+    "description": "Restores 60% HP. Guild-issue supplies.",
+    "use": {
+      "heal": 0.6
+    }
+  },
+  "guild-mana-draught": {
+    "type": "consumable",
+    "rarity": "uncommon",
+    "name": "Guild Mana Draught",
+    "cost": 0,
+    "sell": 0,
+    "description": "Restores 60% MP. Guild-issue supplies.",
+    "use": {
+      "manaRestore": 0.6
+    }
+  },
+  "guild-repair-kit": {
+    "type": "consumable",
+    "rarity": "rare",
+    "name": "Guild Repair Kit",
+    "cost": 0,
+    "sell": 0,
+    "description": "Fully repairs one equipped item. Use anywhere.",
+    "use": {
+      "repairKit": true
+    }
+  },
+  "guild-material-crate": {
+    "type": "consumable",
+    "rarity": "rare",
+    "name": "Guild Material Crate",
+    "cost": 0,
+    "sell": 0,
+    "description": "Contains 3 random crafting materials.",
+    "use": {
+      "materialCrate": true
+    }
+  }
+}

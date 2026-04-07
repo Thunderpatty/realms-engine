@@ -1,0 +1,578 @@
+{
+  "location": {
+    "slug": "howling-pass",
+    "name": "Howling Pass",
+    "type": "dungeon",
+    "realm": "frostreach",
+    "description": "A mountain pass where the wind has carved tunnels through solid rock. The constant howling drives most travelers mad within hours. Those who can endure it find rare ice-metal deposits \u2014 and the creatures that guard them.",
+    "connections": [
+      "glacial-vale"
+    ],
+    "mapX": 85,
+    "mapY": 65
+  },
+  "enemies": [
+    {
+      "slug": "wind-ripper",
+      "name": "Wind Ripper",
+      "hp": 993,
+      "attack": 36,
+      "defense": 19,
+      "xp": 821,
+      "gold": 322,
+      "level": 14,
+      "abilities": [
+        "rending-claws",
+        "poison-bite"
+      ],
+      "description": "A flying predator that rides the pass winds. Its wings are razor-edged and it strikes like a thrown blade."
+    },
+    {
+      "slug": "frost-giant-scout",
+      "name": "Frost Giant Scout",
+      "hp": 909,
+      "attack": 38,
+      "defense": 21,
+      "xp": 929,
+      "gold": 401,
+      "level": 15,
+      "abilities": [
+        "stunning-slam",
+        "war-cry",
+        "harden"
+      ],
+      "description": "A young frost giant, fifteen feet tall, scouting the pass for the giant clans deeper in the mountains. It carries a tree trunk as a club."
+    },
+    {
+      "slug": "howling-phantom",
+      "name": "Howling Phantom",
+      "hp": 944,
+      "attack": 36,
+      "defense": 20,
+      "xp": 974,
+      "gold": 433,
+      "level": 15,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "description": "Someone who went mad in the pass and died screaming. Their ghost IS the howling now \u2014 indistinguishable from the wind until it attacks."
+    },
+    {
+      "slug": "wind-tyrant",
+      "name": "The Wind Tyrant",
+      "hp": 1884,
+      "attack": 48,
+      "defense": 26,
+      "xp": 3058,
+      "gold": 1070,
+      "level": 16,
+      "boss": true,
+      "abilities": [
+        "stunning-slam",
+        "war-cry",
+        "harden"
+      ],
+      "drops": [],
+      "description": "[Boss of Howling Pass]",
+      "telegraphs": [
+        "crushing-blow",
+        "rallying-howl"
+      ],
+      "enrageThreshold": 0.3,
+      "enrageTelegraphs": [
+        "death-strike"
+      ]
+    }
+  ],
+  "locationThreat": 14,
+  "dungeonConfig": {
+    "boss": "wind-tyrant",
+    "name": "Howling Pass",
+    "minRooms": 4,
+    "maxRooms": 6,
+    "mechanic": {
+      "slug": "maddening-wind",
+      "name": "Maddening Wind",
+      "description": "The howling wind erodes sanity. 15% accuracy penalty from disorientation.",
+      "effect": {
+        "playerAccuracyPenalty": 15
+      }
+    }
+  },
+  "events": [
+    {
+      "slug": "pass-giant-camp",
+      "name": "Frost Giant Outpost",
+      "icon": "\ud83c\udfd4",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "A frost giant campsite, recently abandoned. Massive bones, crude tools, and a fire pit the size of a house.",
+      "choices": [
+        {
+          "label": "Search the camp (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "text": "You find giant-bone weapons, useful materials, and a pouch of oversized coins.",
+            "rewards": {
+              "gold": 40,
+              "items": [
+                {
+                  "slug": "giant-bone",
+                  "qty": 2
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "You trip a crude alarm. Rocks fall from above.",
+            "rewards": {
+              "xp": 8,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Study the tools for crafting insights (INT DC 13)",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "text": "Giant forging techniques \u2014 crude but effective. You learn something valuable.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "giant-bone",
+                  "qty": 1
+                },
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 2
+                }
+              ],
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "The tools are too large to be useful. You learn nothing.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Leave before the giants return",
+          "auto": true,
+          "success": {
+            "text": "Wise. You can hear thunder in the distance.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pass-wind-spirit",
+      "name": "Trapped Wind Spirit",
+      "icon": "\ud83c\udf2c",
+      "type": "npc",
+      "rarity": "uncommon",
+      "text": "A swirling vortex of snow and ice \u2014 a wind spirit, trapped in a cage of giant-forged chains.",
+      "choices": [
+        {
+          "label": "Free the spirit (STR DC 13)",
+          "check": {
+            "stat": "str",
+            "dc": 13
+          },
+          "success": {
+            "text": "The chains shatter. The spirit swirls around you gratefully, leaving a gift of pure wind-ice.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "glacial-essence",
+                  "qty": 2
+                },
+                {
+                  "slug": "spectral-ice",
+                  "qty": 1
+                }
+              ],
+              "xp": 32
+            }
+          },
+          "failure": {
+            "text": "The chains are too strong. The spirit howls in frustration, buffeting you.",
+            "rewards": {
+              "xp": 8,
+              "damage": 16
+            }
+          }
+        },
+        {
+          "label": "Siphon its energy (INT DC 12)",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "text": "You draw off some of the spirit's essence. It weakens but survives.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "spectral-ice",
+                  "qty": 2
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "The spirit lashes out at your intrusion. Wind cuts like knives.",
+            "rewards": {
+              "xp": 8,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Leave it",
+          "auto": true,
+          "success": {
+            "text": "Not your problem. The spirit watches you go.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pass-avalanche-zone",
+      "name": "Avalanche Zone",
+      "icon": "\ud83c\udfd4",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "The pass narrows between towering ice walls. Cracks spider across the surface above. One loud noise...",
+      "choices": [
+        {
+          "label": "Sprint through silently (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "text": "You ghost through the danger zone. Not a pebble disturbed.",
+            "rewards": {
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "Your foot slips. The ice above groans, then falls.",
+            "rewards": {
+              "xp": 8,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Trigger it intentionally from a safe distance (INT DC 13)",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "text": "The controlled avalanche clears the path and reveals hidden ore deposits.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 2
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The avalanche is bigger than expected. You barely dive clear.",
+            "rewards": {
+              "xp": 8,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Find another route",
+          "auto": true,
+          "success": {
+            "text": "You take the long way around. Safe and slow.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pass-frozen-waterfall",
+      "name": "Frozen Waterfall",
+      "icon": "\ud83e\uddca",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A massive waterfall frozen in mid-flow. Behind the ice curtain, you can see the outline of a cave.",
+      "choices": [
+        {
+          "label": "Chop through the ice (STR DC 12)",
+          "check": {
+            "stat": "str",
+            "dc": 12
+          },
+          "success": {
+            "text": "You break through to a hidden cave with ancient supplies and ore.",
+            "rewards": {
+              "gold": 35,
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 2
+                },
+                {
+                  "slug": "frost-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The ice is enchanted. It reforms as fast as you cut. Exhausting.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Find a thin spot (WIS DC 11)",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "text": "You find a section where the ice is paper-thin. One push and you're through.",
+            "rewards": {
+              "gold": 30,
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "Every spot seems equally thick. You waste time and energy.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "The cave can keep its secrets.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pass-phantom-caravan",
+      "name": "Phantom Caravan",
+      "icon": "\ud83d\udc7b",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "Ghostly figures march through the pass \u2014 a spectral caravan of traders who died here long ago. Their phantom wagons are loaded with glowing goods.",
+      "choices": [
+        {
+          "label": "Reach into the spectral goods (WIS DC 14)",
+          "check": {
+            "stat": "wis",
+            "dc": 14
+          },
+          "success": {
+            "text": "Your hand passes through... and comes back holding something real. The ghosts nod approval.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "glacial-essence",
+                  "qty": 2
+                },
+                {
+                  "slug": "spectral-ice",
+                  "qty": 2
+                }
+              ],
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "The phantoms turn hostile. Cold hands grab at you before they vanish.",
+            "rewards": {
+              "xp": 10,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Pay respects and follow the path they walked (CON DC 12)",
+          "check": {
+            "stat": "con",
+            "dc": 12
+          },
+          "success": {
+            "text": "Walking their path reveals a shortcut and a hidden cache the caravan protected.",
+            "rewards": {
+              "gold": 50,
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "The path leads to a dead end. The ghosts laugh as they fade.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Let them pass",
+          "auto": true,
+          "success": {
+            "text": "The phantom caravan passes in silence, then vanishes into the snow.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pass-bone-totem",
+      "name": "Giant Bone Totem",
+      "icon": "\ud83e\uddb4",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A totem of stacked frost giant bones, carved with runes. It marks territory \u2014 or something worse.",
+      "choices": [
+        {
+          "label": "Read the runes (INT DC 12)",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "text": "The runes describe a nearby cache. You find it buried in the snow.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "giant-bone",
+                  "qty": 2
+                },
+                {
+                  "slug": "frozen-hide",
+                  "qty": 1
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "The runes are a warning. You feel watched.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Scavenge bones from the totem (STR DC 11)",
+          "check": {
+            "stat": "str",
+            "dc": 11
+          },
+          "success": {
+            "text": "You pry loose several useful giant bones.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "giant-bone",
+                  "qty": 2
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The totem collapses. A bone catches your shin.",
+            "rewards": {
+              "xp": 5,
+              "damage": 14
+            }
+          }
+        },
+        {
+          "label": "Give it a wide berth",
+          "auto": true,
+          "success": {
+            "text": "You respect the boundary. Whatever it marks can stay marked.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "howling-pass-group-1",
+      "name": "Wind Ripper Cell Block",
+      "composition": [
+        {
+          "enemySlug": "wind-ripper",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "howling-pass-group-2",
+      "name": "Howling Phantom & Frost Giant Scout",
+      "composition": [
+        {
+          "enemySlug": "howling-phantom",
+          "count": 1
+        },
+        {
+          "enemySlug": "frost-giant-scout",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

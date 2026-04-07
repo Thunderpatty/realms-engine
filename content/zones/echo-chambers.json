@@ -1,0 +1,573 @@
+{
+  "location": {
+    "slug": "echo-chambers",
+    "name": "Echo Chambers",
+    "type": "dungeon",
+    "realm": "voidspire",
+    "description": "A maze of chambers where time echoes \u2014 you can hear your own future screams, see shadows of battles not yet fought. The walls show reflections of other timelines.",
+    "connections": [
+      "shattered-expanse"
+    ],
+    "mapX": 10,
+    "mapY": 20
+  },
+  "locationThreat": 39,
+  "dungeonConfig": {
+    "boss": "the-echo-king",
+    "name": "Echo Chambers",
+    "minRooms": 5,
+    "maxRooms": 7,
+    "mechanic": {
+      "slug": "temporal-echo",
+      "name": "Temporal Echo",
+      "description": "Time folds on itself. Take 3% max HP damage per room as past wounds echo forward.",
+      "effect": {
+        "roomDamagePct": 3
+      }
+    }
+  },
+  "enemies": [
+    {
+      "slug": "time-wraith",
+      "name": "Time Wraith",
+      "hp": 2138,
+      "attack": 82,
+      "defense": 48,
+      "xp": 3259,
+      "gold": 1348,
+      "level": 37,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "The ghost of someone killed in a collapsed timeline. It exists in all moments simultaneously and attacks from every angle."
+    },
+    {
+      "slug": "paradox-construct",
+      "name": "Paradox Construct",
+      "hp": 1988,
+      "attack": 93,
+      "defense": 46,
+      "xp": 3231,
+      "gold": 1641,
+      "level": 38,
+      "abilities": [
+        "stunning-slam",
+        "harden"
+      ],
+      "drops": [],
+      "description": "A golem made of contradictions \u2014 it exists and doesn't, moves and stands still. Fighting it is like wrestling a riddle."
+    },
+    {
+      "slug": "echo-hunter",
+      "name": "Echo Hunter",
+      "hp": 2380,
+      "attack": 83,
+      "defense": 49,
+      "xp": 3209,
+      "gold": 1672,
+      "level": 39,
+      "abilities": [
+        "rending-claws",
+        "dark-curse"
+      ],
+      "drops": [],
+      "description": "A predator that hunts by tracking temporal echoes. It knows where you'll be before you do."
+    },
+    {
+      "slug": "the-echo-king",
+      "name": "The Echo King",
+      "hp": 3823,
+      "attack": 133,
+      "defense": 64,
+      "xp": 10021,
+      "gold": 4354,
+      "level": 41,
+      "boss": true,
+      "abilities": [
+        "stunning-slam",
+        "dark-curse",
+        "regen-aura",
+        "weakening-hex",
+        "war-cry"
+      ],
+      "drops": [],
+      "description": "A being that has lived every possible version of its life simultaneously. It wears a crown of frozen moments and speaks in a voice that is thousands of voices, all slightly out of sync."
+    }
+  ],
+  "events": [
+    {
+      "slug": "echo-chambers-evt-1",
+      "name": "Reality Tear",
+      "icon": "\ud83c\udf00",
+      "type": "phenomenon",
+      "rarity": "common",
+      "text": "A tear in reality bleeds energy in the echo chambers. Dangerous but potentially useful.",
+      "choices": [
+        {
+          "label": "Investigate (INT DC 24)",
+          "check": {
+            "stat": "int",
+            "dc": 24
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "entropy-dust",
+                  "qty": 2
+                }
+              ],
+              "xp": 42
+            }
+          },
+          "failure": {
+            "text": "The echo chambers punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 32
+            }
+          }
+        },
+        {
+          "label": "Take action (STR DC 23)",
+          "check": {
+            "stat": "str",
+            "dc": 23
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 80,
+              "items": [
+                {
+                  "slug": "entropy-dust",
+                  "qty": 1
+                }
+              ],
+              "xp": 37
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 27
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The echo chambers is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "echo-chambers-evt-2",
+      "name": "Ancient Cache",
+      "icon": "\ud83d\udce6",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "A supply cache from a previous expedition, half-swallowed by the echo chambers.",
+      "choices": [
+        {
+          "label": "Investigate (WIS DC 24)",
+          "check": {
+            "stat": "wis",
+            "dc": 24
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "entropy-dust",
+                  "qty": 2
+                }
+              ],
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "The echo chambers punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 34
+            }
+          }
+        },
+        {
+          "label": "Take action (DEX DC 23)",
+          "check": {
+            "stat": "dex",
+            "dc": 23
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 95,
+              "items": [
+                {
+                  "slug": "entropy-dust",
+                  "qty": 1
+                }
+              ],
+              "xp": 39
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 29
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The echo chambers is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "echo-chambers-evt-3",
+      "name": "Void Surge",
+      "icon": "\u26a1",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "A surge of void energy ripples through the echo chambers, warping everything it touches.",
+      "choices": [
+        {
+          "label": "Investigate (DEX DC 25)",
+          "check": {
+            "stat": "dex",
+            "dc": 25
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "entropy-dust",
+                  "qty": 2
+                }
+              ],
+              "xp": 48
+            }
+          },
+          "failure": {
+            "text": "The echo chambers punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 36
+            }
+          }
+        },
+        {
+          "label": "Take action (CON DC 24)",
+          "check": {
+            "stat": "con",
+            "dc": 24
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 110,
+              "items": [
+                {
+                  "slug": "entropy-dust",
+                  "qty": 1
+                }
+              ],
+              "xp": 41
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 31
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The echo chambers is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "echo-chambers-evt-4",
+      "name": "Spectral Guide",
+      "icon": "\ud83d\udc7b",
+      "type": "npc",
+      "rarity": "uncommon",
+      "text": "A spectral figure beckons from the echo chambers. It may be a guide \u2014 or a trap.",
+      "choices": [
+        {
+          "label": "Investigate (STR DC 25)",
+          "check": {
+            "stat": "str",
+            "dc": 25
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "entropy-dust",
+                  "qty": 2
+                }
+              ],
+              "xp": 51
+            }
+          },
+          "failure": {
+            "text": "The echo chambers punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 38
+            }
+          }
+        },
+        {
+          "label": "Take action (INT DC 24)",
+          "check": {
+            "stat": "int",
+            "dc": 24
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 125,
+              "items": [
+                {
+                  "slug": "entropy-dust",
+                  "qty": 1
+                }
+              ],
+              "xp": 43
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 33
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The echo chambers is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "echo-chambers-evt-5",
+      "name": "Crystallized Memory",
+      "icon": "\ud83d\udc8e",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A crystal containing someone's memories sits in the echo chambers. Touching it might reveal secrets.",
+      "choices": [
+        {
+          "label": "Investigate (CON DC 26)",
+          "check": {
+            "stat": "con",
+            "dc": 26
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 54
+            }
+          },
+          "failure": {
+            "text": "The echo chambers punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 40
+            }
+          }
+        },
+        {
+          "label": "Take action (WIS DC 25)",
+          "check": {
+            "stat": "wis",
+            "dc": 25
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 140,
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 35
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The echo chambers is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "echo-chambers-evt-6",
+      "name": "The Threshold",
+      "icon": "\ud83d\udeaa",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "A doorway to somewhere else shimmers in the echo chambers. What lies beyond is anyone's guess.",
+      "choices": [
+        {
+          "label": "Investigate (INT DC 26)",
+          "check": {
+            "stat": "int",
+            "dc": 26
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 57
+            }
+          },
+          "failure": {
+            "text": "The echo chambers punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 42
+            }
+          }
+        },
+        {
+          "label": "Take action (STR DC 25)",
+          "check": {
+            "stat": "str",
+            "dc": 25
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 155,
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 47
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 37
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The echo chambers is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "echo-chambers-group-1",
+      "name": "Time Wraith Swarm",
+      "composition": [
+        {
+          "enemySlug": "time-wraith",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "echo-chambers-group-2",
+      "name": "Echo Hunter & Paradox Construct",
+      "composition": [
+        {
+          "enemySlug": "echo-hunter",
+          "count": 1
+        },
+        {
+          "enemySlug": "paradox-construct",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

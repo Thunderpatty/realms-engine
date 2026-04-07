@@ -1,0 +1,35 @@
+{
+  "name": "realms-of-ash-and-iron",
+  "version": "1.1.0",
+  "description": "Realms of Ash & Iron: text-based fantasy RPG with persistent state, crafting, PvP duels, arena, and more.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "rpg",
+    "fantasy",
+    "express",
+    "text-game"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "connect-pg-simple": "^10.0.0",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.1",
+    "express-session": "^1.19.0",
+    "helmet": "^8.1.0",
+    "pg": "^8.20.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "supertest": "^7.2.2",
+    "vitest": "^4.1.2"
+  }
+}

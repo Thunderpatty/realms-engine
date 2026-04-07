@@ -1,0 +1,117 @@
+[
+  {
+    "slug": "crystal-corruption",
+    "title": "The Crystal Corruption",
+    "location": "glacial-vale",
+    "minLevel": 12,
+    "description": "The crystal formations in Glacial Vale are growing uncontrolled, threatening to swallow the trade route.",
+    "stages": [
+      {
+        "text": "A ranger named Torvik flags you down on the path. 'See those crystal formations? A month ago, they were knee-high. Now they're taller than houses and growing faster every day. The trade route between Frosthollow and the eastern dungeons will be impassable within a week.' He points to a pulsing glow at the heart of the vale. 'Something in there is feeding the growth. I'm not brave enough to go in alone.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the crystal growth pattern",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Listen to the crystals' resonance",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Cut through the smaller formations",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "Deeper in, the crystals are warm to the touch \u2014 wrong for the Frostreach. They pulse in rhythm, like a heartbeat. You find the source: a crystal spider queen, far larger than normal, has bonded with a corrupted frost crystal. She's using it to expand her territory, converting the landscape to crystal to house her brood.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Approach carefully and study the corruption",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Prepare for a fight",
+            "check": {
+              "stat": "con",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Look for a way to separate spider from crystal",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The queen senses your presence. The crystals around you begin to grow, trying to trap you. Crystal spiders swarm from every crack. You have to deal with the queen before the corruption spreads further.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the crystal queen",
+            "combat": "crystal-spider"
+          },
+          {
+            "next": 3,
+            "label": "Shatter the corrupted core crystal",
+            "check": {
+              "stat": "str",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Override the resonance with counter-frequency",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The corruption shatters. The crystal formations stop growing and begin to recede, shrinking back to their natural size over the coming days. Torvik finds you on the cleared trade route, grinning. 'I can see the path again! The merchants will be thrilled.' He hands you materials he collected during the cleanup \u2014 high-quality frost crystals freed from the corruption.",
+        "complete": true,
+        "rewards": {
+          "gold": 130,
+          "xp": 200,
+          "items": [
+            {
+              "slug": "frost-crystal",
+              "qty": 5
+            },
+            {
+              "slug": "drake-scale-shard",
+              "qty": 1
+            }
+          ]
+        }
+      }
+    ],
+    "rewards": {
+      "xp": 200,
+      "gold": 130
+    }
+  }
+]

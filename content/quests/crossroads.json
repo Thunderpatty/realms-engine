@@ -1,0 +1,1154 @@
+[
+  {
+    "slug": "crossroads-noose",
+    "title": "The Hanging Tree Oath",
+    "location": "crossroads",
+    "minLevel": 5,
+    "description": "A murdered pilgrim's ghost manifests each night at the crossroads hanging tree, and a thief profits from the panic.",
+    "stages": [
+      {
+        "text": "A caravan master won't camp near the hanging tree. 'Every night a dead pilgrim appears at the rope, arms raised, and anyone who looks directly faints and wakes up missing their coin.' He's lost three guards this week to unexplained absences and is done with supernatural interference on his profit margin.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Ask about the pilgrim's identity from local records",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Listen to what witnesses actually describe at sunrise",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Keep watch near the tree at the right time",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask why the guards haven't come back",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "You establish that the manifestation happens within the first hour after midnight, that it has a consistent pattern \u2014 the pilgrim rises, raises its arms, and the fainting begins \u2014 and that a masked cutpurse has been following the crowd of onlookers afterward and relieving the unconscious of their valuables. Two separate problems with one shared schedule.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Position yourself to catch the cutpurse in the act",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Research the pilgrim's death to understand the ghost",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Prepare a ward against the fainting effect",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Alert the caravan guards to what is really happening",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "At sunset, a translucent pilgrim manifests beneath the branches with arms raised, and the masked cutpurse moves through the crowd of onlookers toward a target. The ghost's presence radiates cold intent that is designed to disorient. You are currently one of the few people still standing upright.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Run down the cutpurse before they can work the crowd",
+            "combat": "masked-cutpurse"
+          },
+          {
+            "next": 3,
+            "label": "Address the spirit directly to interrupt the manifestation",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Focus and resist the disorientation to stay functional",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Shout a warning to keep the crowd from fainting",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The cutpurse is dealt with, but the spirit remains \u2014 the ghost of the pilgrim is still here, still manifesting, still raising its arms in the gesture of someone who has something unfinished and cannot stop pointing at it. The noose creaks above with no wind.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Touch the hanging rope to sense what is anchored there",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Read the rope for evidence of the original crime",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Speak aloud the name of the guilty party",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Cut the noose down to release the binding",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "You see the truth: the pilgrim was murdered for a relic and hanged here to hide the crime as a suicide. The spirit needs the name spoken at the site where it happened, which is exactly here and exactly now.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Speak the name of the guilty and the nature of the crime",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 5,
+            "label": "Record the full account so the truth is in writing",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Complete the rite of acknowledgement at the tree",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The revenant bows its head and dissolves into pale light. The crossroads sleeps easier now. The shadow gem was hidden in the cutpurse's satchel \u2014 it belonged to the murdered pilgrim, which is why the ghost kept pointing.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 200,
+      "gold": 108,
+      "item": "shadow-gem"
+    }
+  },
+  {
+    "slug": "crossroads-smugglers",
+    "title": "The Smuggler's Wagon",
+    "location": "crossroads",
+    "minLevel": 4,
+    "description": "A suspicious wagon with a false floor has been seen at the crossroads. The cargo inside is still alive.",
+    "stages": [
+      {
+        "text": "A traveling cleric tugs your sleeve and will not let go. 'That wagon \u2014 I heard scratching from inside, and not from cargo. The driver threatened me when I looked too closely and gave me a silver to forget about it.' The wagon is still at the crossroads, driver circling with proprietary ease. Something inside it is desperate.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Observe the wagon from a distance to establish a pattern",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the crossroads innkeeper if they've seen this wagon before",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Read the wagon for signs of false compartments",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Create a distraction to draw the driver away from the wagon",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "With the driver occupied, you get a close look at the wagon. The floor boards are newer than the rest and don't flex the way load-bearing wood should \u2014 there is a compartment beneath. The scratching is louder here, and there is a muffled sound that is unmistakably mammalian and very unhappy.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Force the false floor open immediately",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Find the release mechanism without making noise",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Identify what is being transported from the sounds",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Check whether the driver is alone first",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "Under the false floor: caged animals \u2014 rare beasts meant for an underground fighting pit, each one worth more frightened than healthy. The driver has noticed you and is walking over with the patient expression of someone who does this for a living and has seen every kind of hero.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Confront the driver directly with what you found",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Free the animals before the driver reaches you",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Stand between the driver and the wagon",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Call witnesses from the crossroads crowd",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The driver draws a blade. 'Mind your own business, hero,' he says, in the tone of someone who has said this many times to many people and is thoroughly bored of the conversation.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the rogue mercenary driver",
+            "combat": "mercenary"
+          },
+          {
+            "next": 4,
+            "label": "Disarm him before he can commit to the attack",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Use the crowd of witnesses to weaken his nerve",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Feint high and take him low",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The driver is defeated. The animals are freed and a grateful druid who was apparently watching the whole thing from the crossroads crowd emerges to thank you at some length. The cages are broken open, the wagon is impounded, and the driver is someone else's problem now.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Help the druid release the remaining caged animals",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Question the driver about who hired him",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Accept the druid's thanks and the crowd's attention",
+            "check": {
+              "stat": "cha",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "The smuggler is defeated. You free the caged beasts and a grateful druid rewards you with an antidote kit from her own pack \u2014 the kind you need when things in cages bite back.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 152,
+      "gold": 70,
+      "item": "antidote"
+    }
+  },
+  {
+    "slug": "candles-at-noon",
+    "title": "Candles at Noon",
+    "location": "crossroads",
+    "minLevel": 5,
+    "description": "Someone has been leaving lit funeral candles at the crossroads in broad daylight.",
+    "stages": [
+      {
+        "text": "A peddler lowers her voice even though the crossroads is busy and bright. 'Every candle burns down to nothing in moments, and then someone goes missing by dusk. Three travelers since the new moon.' The candles are arranged in a pattern she can't explain \u2014 not random, not decorative. Something is marking them.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study the candle arrangement pattern",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask witnesses to describe what happens when they burn",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Read the wax for origin and quality",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Wait beside the candles while people still avoid them",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "You identify the pattern \u2014 the candles mark the exact spots where the missing travelers were last seen. Each marking is deliberate, placed precisely. Something is watching the crossroads and choosing its targets, and the candles are not cause but symptom.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Follow the sight lines from each candle to find the watcher",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Map the candle positions to identify the central point",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Move between the markers to draw attention",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Announce loudly that you know what the pattern means",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "A will-o'-wisp blooms out of the waxlight at noon \u2014 not at night, in full daylight, which means it has grown confident enough to stop hiding. It drifts toward the hanging tree at the crossroads edge, pulsing with a cold invitation that targets anyone who is frightened or uncertain or simply too tired to think clearly.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Chase the wisp down before it reaches the tree",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Trap it inside a lantern before it can flee",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Focus and resist its pull while closing the gap",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Shatter the nearest candle to disrupt its anchor",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The will-o'-wisp has reached the hanging tree and is circling it with the patience of something that has been doing this for weeks. Three more wisps rise from the ground around the tree's roots \u2014 this is not a lone spirit but a colony, and the tree is where they feed.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the will-o'-wisp",
+            "combat": "will-o-wisp"
+          },
+          {
+            "next": 4,
+            "label": "Sever the wisps from their anchor at the tree roots",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Drive them away from the tree with fire",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Contain them in sequence before they can combine",
+            "check": {
+              "stat": "dex",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "The noon haunt is broken. The candles stop appearing and the crossroads feels like itself again \u2014 loud, busy, and completely uninterested in the supernatural. A cleric who has been trying to deal with this for two weeks finds you at the inn that evening with an offering.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Accept the cleric's thanks and explanation",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Help the cleric mark where the wisps were anchored",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Tell the cleric what you found so she can prevent recurrence",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The noon haunt is broken. A thankful cleric places prayer beads in your hand before resuming the road \u2014 the kind blessed specifically against disorientation, which she says she suspects you'll find useful.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 118,
+      "gold": 66,
+      "item": "prayer-beads"
+    }
+  },
+  {
+    "slug": "crow-feather-contract",
+    "title": "The Crow Feather Contract",
+    "location": "crossroads",
+    "minLevel": 5,
+    "description": "A courier never arrived after taking a sealed contract through bandit country.",
+    "stages": [
+      {
+        "text": "Black feathers mark the beginning of the courier trail \u2014 placed deliberately, one per quarter-mile, as if someone wanted to be followed or mocked. The courier guild agent is past worried and into the cold professional mode of someone calculating losses. 'The contract was worth more than the courier's pay. Someone knew what was in the satchel.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the black feathers for origin",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Read the wagon ruts for direction and speed",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the guild agent what the contract contained",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Follow the feather trail immediately",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The trail leads to a hollow where the courier's horse is tied and unbothered. The courier himself is not here \u2014 but the satchel is, hidden under a root with the seal intact. Someone robbed the courier but left the contract. Either they didn't know what they had, or they were interrupted.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Read the area for signs of what interrupted the robbery",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Examine the satchel and its hidden position",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Track the courier from his last position",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Follow the newer set of footprints leaving the hollow",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The courier is ahead, being escorted at knife-point by a highway bandit also looking for the satchel. The bandit is focused on the courier and neither has noticed you yet. This window is narrow.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Create a diversion and pull the courier free",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Announce yourself to draw the bandit's attention",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Assess the bandit's vulnerabilities before committing",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Bluff that you already have the satchel",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "A highway bandit waits by the courier's decoy satchel, convinced no one will challenge him this far off the main road. He turns when you arrive and recalibrates quickly.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the highway bandit",
+            "combat": "highway-bandit"
+          },
+          {
+            "next": 4,
+            "label": "Disarm him before he can commit to the attack",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Invoke courier authority to wrong-foot him",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Overpower him with superior positioning",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The bandit is down, the courier is free, and the actual contract is still under the root where the robber missed it. The courier retrieves it with shaking hands and holds it to his chest for a long moment before looking up.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Escort the courier back to the crossroads",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Collect the bandit's information for the guild agent",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Accept the courier's sworn thanks",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The contract is recovered. The courier's guild pays you with a reinforced quiver prized by outriders \u2014 the kind of thing that survives a hard road and still works when you need it.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 118,
+      "gold": 68,
+      "item": "barbed-quiver"
+    }
+  },
+  {
+    "slug": "gamblers-grave",
+    "title": "Gambler's Grave",
+    "location": "crossroads",
+    "minLevel": 5,
+    "description": "A card sharp was buried at the crossroads with his winnings, and now his debtors keep vanishing.",
+    "stages": [
+      {
+        "text": "Coins glitter in the dirt around a shallow grave marker, but none of them stay where they are left \u2014 travelers report placing them out of respect and finding them rearranged each morning into a hand of cards. The gambler buried here owed debts and was owed them in equal measure, and apparently neither side of that ledger has closed.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Read the marker for the gambler's name and dates",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study the coin arrangement for a pattern",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask at the crossroads inn who the gambler was",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Dig at the grave to find what is actually there",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The gambler's history comes together: a professional cheat who won too much from the wrong people, was buried here by his creditors, and apparently never told anyone where the winnings were hidden. Three of those creditors have since vanished after visiting the grave late at night.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Stake out the grave during the dangerous hours",
+            "check": {
+              "stat": "dex",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Research the disappeared creditors for a pattern",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Read the grave site for physical evidence of the disappearances",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Make it known you are there to settle the debt",
+            "check": {
+              "stat": "cha",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "Coins begin moving on their own near midnight \u2014 sliding across the dirt in patterns too deliberate for wind. The gambler's luck, whatever it was, still runs here. And a masked cutpurse is watching from behind the marker stone, waiting for someone to be distracted enough to rob.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Spot the cutpurse and call them out",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Let the cutpurse make their move first",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Circle around the marker before they realise you've seen them",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 3,
+            "label": "Challenge them to identify themselves",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The masked cutpurse springs from behind the marker with a knife already in hand \u2014 no negotiation, no preamble, just a professional assessment that you are between her and the game she's been running here all month.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the masked cutpurse",
+            "combat": "masked-cutpurse"
+          },
+          {
+            "next": 4,
+            "label": "Disarm her before she can use the knife effectively",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 4,
+            "label": "Use the grave's uneven ground to your advantage",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Pin her with overwhelming force",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The cutpurse is dealt with. The coins settle into a final arrangement \u2014 a full hand, face up, laid out as though someone wanted it seen. Below the marker stone is the gambler's actual stash, and in it a fine nightcloak that apparently never went into the ground with its owner.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Consecrate the grave properly now that the debt is settled",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 5,
+            "label": "Take the nightcloak and the remaining coins",
+            "check": {
+              "stat": "dex",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Report the cutpurse's operation to the crossroads warden",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The grave is consecrated and the gambler's luck finally spent. Among the effects is a fine nightcloak \u2014 the gambler's best piece, it turns out, worn on the nights when the stakes were real.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 120,
+      "gold": 70,
+      "item": "nightcloak"
+    }
+  },
+  {
+    "slug": "rope-and-sigil",
+    "title": "Rope and Sigil",
+    "location": "crossroads",
+    "minLevel": 6,
+    "description": "A hanged templar's body disappeared years ago, but his sigils still flare on the rope in storms.",
+    "stages": [
+      {
+        "text": "Rain-dark bark creaks over the road in the still air between storms. The old sigils carved into the hanging tree's bark spark with pale light when wet, cycling through three symbols that a cleric identified as a templar's personal oath-seal. 'He was hanged here,' she says, 'but the body vanished before it could be brought down. That's the problem.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study the sigil cycle for its meaning and sequence",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the cleric everything she knows about the templar",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 1,
+            "label": "Stay through the storm to observe the full cycle",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask if anyone witnessed the execution and the disappearance",
+            "check": {
+              "stat": "cha",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "You piece together the templar's history: executed for a crime he did not commit, hanged on false testimony, his body removed by the order that wronged him to prevent martyrdom. The sigils are his oath \u2014 to seek acknowledgement and to not rest until it is given. The oath has been running for forty years.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Research the names of those who gave false testimony",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Find the templar's original records to reconstruct the truth",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 2,
+            "label": "Mark the full extent of the oath-binding at the tree",
+            "check": {
+              "stat": "dex",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Ask the cleric order to officially acknowledge the injustice",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "Keep vigil through the storm. The sigils flare with the lightning and the rope sheds water like something alive, swinging in a windless rain. A shadow forms beneath the tree's worst branch \u2014 not yet fully manifest, but gathering.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Hold your ground while the manifestation builds",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Prepare a warding to contain what is coming",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Study the manifestation pattern to understand its limits",
+            "check": {
+              "stat": "int",
+              "dc": 13
+            }
+          },
+          {
+            "next": 3,
+            "label": "Speak to the forming spirit before it fully sets",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          }
+        ]
+      },
+      {
+        "text": "A pilgrim revenant forms beneath the rope \u2014 the templar's enduring presence, armored in the image of what he wore on the day of his execution, still carrying the oath in every line of his posture. He looks at the sigils, then at you, and waits.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the pilgrim revenant",
+            "combat": "pilgrim-revenant"
+          },
+          {
+            "next": 4,
+            "label": "Speak the names of the guilty aloud at the site",
+            "check": {
+              "stat": "cha",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Read aloud the templar's original oath from the records",
+            "check": {
+              "stat": "wis",
+              "dc": 14
+            }
+          },
+          {
+            "next": 4,
+            "label": "Cut down the rope to release the oath-binding",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The revenant bows and dissolves. Folded at the base of the tree, preserved despite forty years of weather by the oath that kept them here, are templar vestments \u2014 the ones he was buried in, apparently, since the body was never found.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Retrieve the vestments and bring them to the cleric order",
+            "check": {
+              "stat": "wis",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Mark the site so the templar's name can be properly recorded",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          },
+          {
+            "next": 5,
+            "label": "Take the vestments as the oath's resolution",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The revenant bows and dissolves. Folded beside the tree roots are preserved templar vestments \u2014 forty years old and intact, waiting for someone who finished what a false verdict left undone.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 132,
+      "gold": 76,
+      "item": "templar-vestments"
+    }
+  }
+]

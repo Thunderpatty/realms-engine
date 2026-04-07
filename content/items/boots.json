@@ -1,0 +1,455 @@
+{
+  "ironmarch-boots": {
+    "name": "Ironmarch Boots",
+    "type": "boots",
+    "rarity": "rare",
+    "stats": {
+      "str": 1,
+      "con": 4,
+      "dex": 2
+    },
+    "cost": 203,
+    "sell": 50,
+    "description": "Armored boots built for punching through enemy lines without losing a single stride."
+  },
+  "glyphstep-sandals": {
+    "name": "Glyphstep Sandals",
+    "type": "boots",
+    "rarity": "rare",
+    "stats": {
+      "int": 2,
+      "wis": 2,
+      "con": 1,
+      "dex": 1
+    },
+    "cost": 203,
+    "sell": 50,
+    "description": "Sandals traced with leylines that sharpen spell focus with each measured step forward."
+  },
+  "shadowstep-boots": {
+    "name": "Shadowstep Boots",
+    "type": "boots",
+    "rarity": "rare",
+    "stats": {
+      "dex": 4,
+      "con": 1
+    },
+    "cost": 202,
+    "sell": 50,
+    "description": "Boots engineered for complete silence on stone, wood, and compacted earth alike."
+  },
+  "pilgrim-greaves": {
+    "name": "Pilgrim's Greaves",
+    "type": "boots",
+    "rarity": "rare",
+    "stats": {
+      "wis": 2,
+      "con": 4,
+      "dex": 2
+    },
+    "cost": 204,
+    "sell": 51,
+    "description": "Road-greaves worn thin by holy pilgrimage; sanctified enough to still turn blades."
+  },
+  "swifttrack-boots": {
+    "name": "Swifttrack Boots",
+    "type": "boots",
+    "rarity": "rare",
+    "stats": {
+      "dex": 4,
+      "con": 1,
+      "wis": 1
+    },
+    "cost": 203,
+    "sell": 50,
+    "description": "Lightweight hunting boots for closing distance without making a sound or a stumble."
+  },
+  "warbreaker-stompers": {
+    "name": "Warbreaker Stompers",
+    "type": "boots",
+    "rarity": "epic",
+    "stats": {
+      "str": 3,
+      "con": 4,
+      "dex": 2
+    },
+    "cost": 504,
+    "sell": 126,
+    "passive": {
+      "hpRegen": 1,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 20
+      }
+    },
+    "description": "Boots that turn a charge into a ground-shaking impact that leaves enemies bleeding."
+  },
+  "spellthread-sandals": {
+    "name": "Spellthread Sandals",
+    "type": "boots",
+    "rarity": "epic",
+    "stats": {
+      "int": 3,
+      "wis": 3,
+      "con": 2,
+      "dex": 2
+    },
+    "cost": 505,
+    "sell": 126,
+    "passive": {
+      "manaRegen": 2,
+      "onHitStatus": {
+        "slug": "weaken",
+        "turns": 2,
+        "chance": 22
+      }
+    },
+    "description": "Sandals threaded with living spellwork that sustains the caster through a long battle."
+  },
+  "wraithstep-boots": {
+    "name": "Wraithstep Boots",
+    "type": "boots",
+    "rarity": "epic",
+    "stats": {
+      "dex": 6,
+      "con": 1
+    },
+    "cost": 503,
+    "sell": 125,
+    "passive": {
+      "lifestealPct": 6,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 24
+      }
+    },
+    "description": "Boots of a wraith-dancer who leaves no footprints behind, only bleeding enemies."
+  },
+  "sacred-treads": {
+    "name": "Sacred Treads",
+    "type": "boots",
+    "rarity": "epic",
+    "stats": {
+      "wis": 3,
+      "con": 4,
+      "dex": 2
+    },
+    "cost": 504,
+    "sell": 126,
+    "passive": {
+      "hpRegen": 2,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 20
+      }
+    },
+    "description": "Blessed treads that sanctify every step, protecting the faithful from those who pursue them."
+  },
+  "windstrider-boots": {
+    "name": "Windstrider Boots",
+    "type": "boots",
+    "rarity": "epic",
+    "stats": {
+      "dex": 7,
+      "con": 2,
+      "wis": 2
+    },
+    "cost": 505,
+    "sell": 126,
+    "passive": {
+      "manaRegen": 1,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 30
+      }
+    },
+    "description": "Boots that move with the wind and leave pursuing enemies gasping in slowed misery."
+  },
+  "godstomper-boots": {
+    "name": "Godstomper Boots",
+    "type": "boots",
+    "rarity": "legendary",
+    "stats": {
+      "str": 4,
+      "con": 7,
+      "dex": 3
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "lifestealPct": 8,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 28
+      }
+    },
+    "description": "Boots forged in a godwar, still carrying the crushing force of that final charge."
+  },
+  "leyline-walkers": {
+    "name": "Leyline Walkers",
+    "type": "boots",
+    "rarity": "legendary",
+    "stats": {
+      "int": 5,
+      "wis": 4,
+      "con": 2,
+      "dex": 2
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "manaRegen": 3,
+      "onHitStatus": {
+        "slug": "burn",
+        "turns": 2,
+        "chance": 20
+      }
+    },
+    "description": "Sandals that walk the leylines, drawing raw power from every step into open ground."
+  },
+  "midnight-tread": {
+    "name": "Midnight Tread",
+    "type": "boots",
+    "rarity": "legendary",
+    "stats": {
+      "dex": 10,
+      "con": 2
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "lifestealPct": 10,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 30
+      }
+    },
+    "description": "Born from shadow and malice; the wearer becomes the dark itself, utterly unstoppable."
+  },
+  "heavenstrider-greaves": {
+    "name": "Heavenstrider Greaves",
+    "type": "boots",
+    "rarity": "legendary",
+    "stats": {
+      "wis": 5,
+      "con": 6,
+      "dex": 3
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "hpRegen": 3,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 22
+      }
+    },
+    "description": "Greaves touched by divine light; they carry the bearer forward through any storm."
+  },
+  "stormstrider-boots": {
+    "name": "Stormstrider Boots",
+    "type": "boots",
+    "rarity": "legendary",
+    "stats": {
+      "dex": 8,
+      "con": 2,
+      "wis": 3
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "manaRegen": 2,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 32
+      }
+    },
+    "description": "Woven through with storm energy; the wearer covers ground at the speed of lightning."
+  },
+  "leather-boots": {
+    "type": "boots",
+    "rarity": "common",
+    "name": "Leather Boots",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "con": 1,
+      "dex": 1
+    },
+    "description": "Sturdy walking boots. Nothing fancy, everything functional."
+  },
+  "cloth-sandals": {
+    "type": "boots",
+    "rarity": "common",
+    "name": "Cloth Sandals",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "int": 1,
+      "wis": 1
+    },
+    "description": "Light sandals worn by apprentice mages for grounding exercises."
+  },
+  "hide-treads": {
+    "type": "boots",
+    "rarity": "common",
+    "name": "Hide Treads",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "dex": 2
+    },
+    "description": "Soft-soled treads that barely leave a footprint."
+  },
+  "marching-boots": {
+    "type": "boots",
+    "rarity": "common",
+    "name": "Marching Boots",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "str": 1,
+      "con": 1
+    },
+    "description": "Regulation infantry boots. Built to march, not to impress."
+  },
+  "pilgrim-sandals": {
+    "type": "boots",
+    "rarity": "common",
+    "name": "Pilgrim Sandals",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "wis": 2
+    },
+    "description": "Simple rope sandals worn on holy pilgrimages."
+  },
+  "ironshod-boots": {
+    "type": "boots",
+    "rarity": "uncommon",
+    "name": "Ironshod Boots",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "str": 2,
+      "con": 3
+    },
+    "description": "Steel-toed boots that double as weapons in a brawl."
+  },
+  "leywalkers": {
+    "type": "boots",
+    "rarity": "uncommon",
+    "name": "Leywalkers",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "int": 3,
+      "wis": 2
+    },
+    "description": "Soft boots attuned to ley-line vibrations underfoot."
+  },
+  "softpad-boots": {
+    "type": "boots",
+    "rarity": "uncommon",
+    "name": "Softpad Boots",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "dex": 5
+    },
+    "description": "Padded soles for silent movement. A burglar essential."
+  },
+  "temple-greaves": {
+    "type": "boots",
+    "rarity": "uncommon",
+    "name": "Temple Greaves",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "wis": 3,
+      "con": 2
+    },
+    "description": "Consecrated greaves worn by temple guardians on night watch."
+  },
+  "trailrunner-boots": {
+    "type": "boots",
+    "rarity": "uncommon",
+    "name": "Trailrunner Boots",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "dex": 3,
+      "wis": 1,
+      "con": 1
+    },
+    "description": "Lightweight boots with reinforced ankles for rough terrain."
+  },
+  "snowstrider-boots": {
+    "slug": "snowstrider-boots",
+    "name": "Snowstrider Boots",
+    "type": "boots",
+    "slot": "boots",
+    "rarity": "rare",
+    "description": "Boots lined with frozen hide. Move silently across ice and snow.",
+    "stats": {
+      "dex": 5,
+      "con": 2,
+      "wis": 1
+    },
+    "cost": 360,
+    "sell": 90
+  },
+  "blizzard-treads": {
+    "slug": "blizzard-treads",
+    "name": "Blizzard Treads",
+    "type": "boots",
+    "slot": "boots",
+    "rarity": "epic",
+    "description": "Boots forged in the heart of a blizzard. The wind carries you forward.",
+    "stats": {
+      "dex": 6,
+      "con": 3,
+      "wis": 2
+    },
+    "cost": 0,
+    "sell": 1
+  },
+  "lavawalker-boots": {
+    "slug": "lavawalker-boots",
+    "name": "Lavawalker Boots",
+    "type": "boots",
+    "slot": "boots",
+    "rarity": "rare",
+    "stats": {
+      "dex": 6,
+      "con": 4,
+      "wis": 2
+    },
+    "description": "Boots enchanted to walk on cooling lava. The soles never burn.",
+    "cost": 660,
+    "sell": 165
+  },
+  "dimension-striders": {
+    "slug": "dimension-striders",
+    "name": "Dimension Striders",
+    "type": "boots",
+    "slot": "boots",
+    "rarity": "epic",
+    "stats": {
+      "dex": 8,
+      "con": 5,
+      "wis": 3
+    },
+    "description": "Boots that step between dimensions. The wearer flickers in and out of existence.",
+    "cost": 1100,
+    "sell": 275
+  }
+}

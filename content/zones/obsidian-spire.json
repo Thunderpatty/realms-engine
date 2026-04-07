@@ -1,0 +1,570 @@
+{
+  "location": {
+    "slug": "obsidian-spire",
+    "name": "Obsidian Spire",
+    "type": "dungeon",
+    "realm": "emberveil",
+    "description": "A tower of volcanic glass rising from the flats, riddled with chambers and passages. Demon cultists have claimed the upper levels as a temple to their fire god.",
+    "connections": [
+      "scorched-flats"
+    ],
+    "mapX": 40,
+    "mapY": 20
+  },
+  "locationThreat": 24,
+  "dungeonConfig": {
+    "boss": "high-priest-ignarius",
+    "name": "Obsidian Spire",
+    "minRooms": 4,
+    "maxRooms": 6,
+    "mechanic": {
+      "slug": "demonic-influence",
+      "name": "Demonic Influence",
+      "description": "Dark whispers erode your will. All status effect durations extended by 1 turn.",
+      "effect": {}
+    }
+  },
+  "enemies": [
+    {
+      "slug": "spire-sentinel",
+      "name": "Spire Sentinel",
+      "hp": 1468,
+      "attack": 53,
+      "defense": 28,
+      "xp": 1510,
+      "gold": 758,
+      "level": 23,
+      "abilities": [
+        "stunning-slam",
+        "harden"
+      ],
+      "drops": [],
+      "description": "An obsidian golem carved by the cultists. Its eyes burn with demonic fire."
+    },
+    {
+      "slug": "cult-pyromancer",
+      "name": "Cult Pyromancer",
+      "hp": 1578,
+      "attack": 56,
+      "defense": 33,
+      "xp": 1872,
+      "gold": 826,
+      "level": 24,
+      "abilities": [
+        "fire-breath",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "An elite cultist who has traded their humanity for mastery over fire. Their flesh is scarred and their eyes burn orange."
+    },
+    {
+      "slug": "demon-spawn",
+      "name": "Demon Spawn",
+      "hp": 1494,
+      "attack": 63,
+      "defense": 31,
+      "xp": 1602,
+      "gold": 730,
+      "level": 24,
+      "abilities": [
+        "rending-claws",
+        "dark-curse"
+      ],
+      "drops": [],
+      "description": "A lesser demon summoned by the cult. Half-formed and savage, it fights with feral cunning."
+    },
+    {
+      "slug": "high-priest-ignarius",
+      "name": "High Priest Ignarius",
+      "hp": 2509,
+      "attack": 83,
+      "defense": 42,
+      "xp": 5602,
+      "gold": 2331,
+      "level": 26,
+      "boss": true,
+      "abilities": [
+        "fire-breath",
+        "dark-curse",
+        "regen-aura",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "The leader of the Emberveil cult, who has become more demon than human. Fire wraps him like a second skin, and his voice echoes with infernal harmonics."
+    }
+  ],
+  "events": [
+    {
+      "slug": "obsidian-spire-event-1",
+      "name": "Demonic Altar",
+      "icon": "\ud83d\udd2e",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "You encounter demonic altar in the obsidian spire. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (INT DC 21)",
+          "check": {
+            "stat": "int",
+            "dc": 21
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the demonic altar.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 2
+                }
+              ],
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The demonic altar proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Take direct action (STR DC 20)",
+          "check": {
+            "stat": "str",
+            "dc": 20
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 50,
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 1
+                }
+              ],
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "obsidian-spire-event-2",
+      "name": "Trapped Stairway",
+      "icon": "\u26a0",
+      "type": "hazard",
+      "rarity": "uncommon",
+      "text": "You encounter trapped stairway in the obsidian spire. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (WIS DC 21)",
+          "check": {
+            "stat": "wis",
+            "dc": 21
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the trapped stairway.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 2
+                }
+              ],
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "The trapped stairway proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 27
+            }
+          }
+        },
+        {
+          "label": "Take direct action (DEX DC 20)",
+          "check": {
+            "stat": "dex",
+            "dc": 20
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 60,
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 1
+                }
+              ],
+              "xp": 33
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "obsidian-spire-event-3",
+      "name": "Cult Armory",
+      "icon": "\ud83d\udde1",
+      "type": "phenomenon",
+      "rarity": "common",
+      "text": "You encounter cult armory in the obsidian spire. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (DEX DC 22)",
+          "check": {
+            "stat": "dex",
+            "dc": 22
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the cult armory.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 2
+                }
+              ],
+              "xp": 41
+            }
+          },
+          "failure": {
+            "text": "The cult armory proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 29
+            }
+          }
+        },
+        {
+          "label": "Take direct action (CON DC 21)",
+          "check": {
+            "stat": "con",
+            "dc": 21
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 70,
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 1
+                }
+              ],
+              "xp": 36
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 24
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "obsidian-spire-event-4",
+      "name": "Obsidian Gallery",
+      "icon": "\ud83d\udc8e",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "You encounter obsidian gallery in the obsidian spire. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (STR DC 22)",
+          "check": {
+            "stat": "str",
+            "dc": 22
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the obsidian gallery.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 2
+                }
+              ],
+              "xp": 44
+            }
+          },
+          "failure": {
+            "text": "The obsidian gallery proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 31
+            }
+          }
+        },
+        {
+          "label": "Take direct action (INT DC 21)",
+          "check": {
+            "stat": "int",
+            "dc": 21
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 80,
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 1
+                }
+              ],
+              "xp": 39
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 26
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "obsidian-spire-event-5",
+      "name": "Summoning Circle",
+      "icon": "\u2b55",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "You encounter summoning circle in the obsidian spire. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (CON DC 23)",
+          "check": {
+            "stat": "con",
+            "dc": 23
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the summoning circle.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 2
+                }
+              ],
+              "xp": 47
+            }
+          },
+          "failure": {
+            "text": "The summoning circle proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 33
+            }
+          }
+        },
+        {
+          "label": "Take direct action (WIS DC 22)",
+          "check": {
+            "stat": "wis",
+            "dc": 22
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 90,
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 1
+                }
+              ],
+              "xp": 42
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 28
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "obsidian-spire-event-6",
+      "name": "Ritual Chamber",
+      "icon": "\ud83d\udd6f",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "You encounter ritual chamber in the obsidian spire. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (INT DC 23)",
+          "check": {
+            "stat": "int",
+            "dc": 23
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the ritual chamber.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 50
+            }
+          },
+          "failure": {
+            "text": "The ritual chamber proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 35
+            }
+          }
+        },
+        {
+          "label": "Take direct action (STR DC 22)",
+          "check": {
+            "stat": "str",
+            "dc": 22
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 100,
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 30
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "obsidian-spire-group-1",
+      "name": "Cult Pyromancer Ambush",
+      "composition": [
+        {
+          "enemySlug": "cult-pyromancer",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "obsidian-spire-group-2",
+      "name": "Spire Sentinel & Demon Spawn",
+      "composition": [
+        {
+          "enemySlug": "spire-sentinel",
+          "count": 1
+        },
+        {
+          "enemySlug": "demon-spawn",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

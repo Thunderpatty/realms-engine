@@ -1,0 +1,7663 @@
+{
+  "statusEffects": {
+    "poison": {
+      "slug": "poison",
+      "name": "Poison",
+      "icon": "\ud83e\uddea",
+      "type": "dot",
+      "stackable": false,
+      "damagePerTurn": 3,
+      "description": "Takes poison damage each turn."
+    },
+    "burn": {
+      "slug": "burn",
+      "name": "Burn",
+      "icon": "\ud83d\udd25",
+      "type": "dot",
+      "stackable": false,
+      "damagePerTurn": 4,
+      "description": "Takes fire damage each turn."
+    },
+    "bleed": {
+      "slug": "bleed",
+      "name": "Bleed",
+      "icon": "\ud83e\ude78",
+      "type": "dot",
+      "stackable": true,
+      "damagePerTurn": 2,
+      "description": "Loses blood each turn. Stacks."
+    },
+    "stun": {
+      "slug": "stun",
+      "name": "Stunned",
+      "icon": "\ud83d\udcab",
+      "type": "cc",
+      "stackable": false,
+      "description": "Cannot act this turn."
+    },
+    "slow": {
+      "slug": "slow",
+      "name": "Slowed",
+      "icon": "\ud83d\udc0c",
+      "type": "debuff",
+      "stackable": false,
+      "statMod": {
+        "attack": -3
+      },
+      "description": "Attack reduced."
+    },
+    "weaken": {
+      "slug": "weaken",
+      "name": "Weakened",
+      "icon": "\u2b07",
+      "type": "debuff",
+      "stackable": false,
+      "statMod": {
+        "attack": -4,
+        "defense": -2
+      },
+      "description": "Attack and defense reduced."
+    },
+    "regen": {
+      "slug": "regen",
+      "name": "Regen",
+      "icon": "\ud83d\udc9a",
+      "type": "hot",
+      "stackable": false,
+      "healPerTurn": 4,
+      "description": "Recovers HP each turn."
+    },
+    "fortify": {
+      "slug": "fortify",
+      "name": "Fortified",
+      "icon": "\ud83d\udee1",
+      "type": "buff",
+      "stackable": false,
+      "statMod": {
+        "defense": 4
+      },
+      "description": "Defense increased."
+    },
+    "frenzy": {
+      "slug": "frenzy",
+      "name": "Frenzy",
+      "icon": "\ud83d\udca2",
+      "type": "buff",
+      "stackable": false,
+      "statMod": {
+        "attack": 4
+      },
+      "description": "Attack increased."
+    },
+    "curse": {
+      "slug": "curse",
+      "name": "Cursed",
+      "icon": "\u2620",
+      "type": "debuff",
+      "stackable": false,
+      "statMod": {
+        "str": -2,
+        "dex": -2,
+        "int": -2
+      },
+      "description": "All primary stats reduced."
+    }
+  },
+  "enemyAbilities": {
+    "poison-bite": {
+      "slug": "poison-bite",
+      "name": "Poison Bite",
+      "effect": "poison",
+      "chance": 25,
+      "turns": 3,
+      "description": "A venomous bite that poisons."
+    },
+    "fire-breath": {
+      "slug": "fire-breath",
+      "name": "Fire Breath",
+      "effect": "burn",
+      "chance": 30,
+      "turns": 3,
+      "description": "Scorching breath that burns."
+    },
+    "rending-claws": {
+      "slug": "rending-claws",
+      "name": "Rending Claws",
+      "effect": "bleed",
+      "chance": 35,
+      "turns": 4,
+      "description": "Deep wounds that bleed."
+    },
+    "war-cry": {
+      "slug": "war-cry",
+      "name": "War Cry",
+      "effect": "frenzy",
+      "chance": 20,
+      "turns": 3,
+      "target": "self",
+      "description": "The enemy rages, increasing attack."
+    },
+    "dark-curse": {
+      "slug": "dark-curse",
+      "name": "Dark Curse",
+      "effect": "curse",
+      "chance": 15,
+      "turns": 3,
+      "description": "A hex that saps your strength."
+    },
+    "stunning-slam": {
+      "slug": "stunning-slam",
+      "name": "Stunning Slam",
+      "effect": "stun",
+      "chance": 20,
+      "turns": 1,
+      "description": "A crushing blow that stuns."
+    },
+    "weakening-hex": {
+      "slug": "weakening-hex",
+      "name": "Weakening Hex",
+      "effect": "weaken",
+      "chance": 20,
+      "turns": 3,
+      "description": "Saps physical power."
+    },
+    "harden": {
+      "slug": "harden",
+      "name": "Harden",
+      "effect": "fortify",
+      "chance": 25,
+      "turns": 3,
+      "target": "self",
+      "description": "The enemy fortifies its defenses."
+    },
+    "regen-aura": {
+      "slug": "regen-aura",
+      "name": "Regeneration",
+      "effect": "regen",
+      "chance": 20,
+      "turns": 3,
+      "target": "self",
+      "description": "The enemy regenerates health."
+    }
+  },
+  "perkPrefixes": {
+    "lifesteal": [
+      "Vampiric",
+      "Bloodthirsty",
+      "Leeching",
+      "Siphoning"
+    ],
+    "critBonus": [
+      "Precise",
+      "Keen",
+      "Deadly",
+      "Razor"
+    ],
+    "dodgeBonus": [
+      "Elusive",
+      "Nimble",
+      "Evasive",
+      "Phantom"
+    ],
+    "hpRegen": [
+      "Mending",
+      "Resilient",
+      "Vital",
+      "Restoring"
+    ],
+    "manaRegen": [
+      "Arcane",
+      "Channeling",
+      "Mystic",
+      "Flowing"
+    ],
+    "onHitBurn": [
+      "Burning",
+      "Scorching",
+      "Blazing",
+      "Searing"
+    ],
+    "onHitPoison": [
+      "Venomous",
+      "Toxic",
+      "Noxious",
+      "Blighted"
+    ],
+    "onHitStun": [
+      "Thundering",
+      "Concussive",
+      "Stunning",
+      "Jarring"
+    ],
+    "stat": {
+      "str": "Mighty",
+      "dex": "Swift",
+      "int": "Brilliant",
+      "wis": "Sagely",
+      "con": "Hardy",
+      "cha": "Lordly"
+    }
+  },
+  "perkPools": {
+    "rare": {
+      "rollChance": 15,
+      "maxPerks": 1,
+      "bonusPerkChance": 0,
+      "perks": [
+        {
+          "type": "stat",
+          "weight": 40,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "type": "lifesteal",
+          "weight": 12,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "type": "critBonus",
+          "weight": 12,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "type": "dodgeBonus",
+          "weight": 12,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "type": "hpRegen",
+          "weight": 12,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "type": "manaRegen",
+          "weight": 12,
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "epic": {
+      "rollChance": 100,
+      "maxPerks": 1,
+      "bonusPerkChance": 20,
+      "perks": [
+        {
+          "type": "stat",
+          "weight": 30,
+          "min": 1,
+          "max": 3
+        },
+        {
+          "type": "lifesteal",
+          "weight": 10,
+          "min": 1,
+          "max": 3
+        },
+        {
+          "type": "critBonus",
+          "weight": 10,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "type": "dodgeBonus",
+          "weight": 10,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "type": "hpRegen",
+          "weight": 10,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "type": "manaRegen",
+          "weight": 10,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "type": "onHitBurn",
+          "weight": 10,
+          "min": 5,
+          "max": 10
+        },
+        {
+          "type": "onHitPoison",
+          "weight": 10,
+          "min": 5,
+          "max": 10
+        }
+      ]
+    },
+    "legendary": {
+      "rollChance": 100,
+      "maxPerks": 2,
+      "bonusPerkChance": 25,
+      "perks": [
+        {
+          "type": "stat",
+          "weight": 25,
+          "min": 2,
+          "max": 4
+        },
+        {
+          "type": "lifesteal",
+          "weight": 10,
+          "min": 3,
+          "max": 6
+        },
+        {
+          "type": "critBonus",
+          "weight": 10,
+          "min": 2,
+          "max": 4
+        },
+        {
+          "type": "dodgeBonus",
+          "weight": 10,
+          "min": 2,
+          "max": 4
+        },
+        {
+          "type": "hpRegen",
+          "weight": 10,
+          "min": 1,
+          "max": 3
+        },
+        {
+          "type": "manaRegen",
+          "weight": 10,
+          "min": 1,
+          "max": 3
+        },
+        {
+          "type": "onHitBurn",
+          "weight": 8,
+          "min": 8,
+          "max": 15
+        },
+        {
+          "type": "onHitPoison",
+          "weight": 8,
+          "min": 8,
+          "max": 15
+        },
+        {
+          "type": "onHitStun",
+          "weight": 9,
+          "min": 5,
+          "max": 10
+        }
+      ]
+    },
+    "mythic": {
+      "rollChance": 100,
+      "maxPerks": 3,
+      "bonusPerkChance": 30,
+      "perks": [
+        {
+          "type": "stat",
+          "weight": 22,
+          "min": 3,
+          "max": 5
+        },
+        {
+          "type": "lifesteal",
+          "weight": 10,
+          "min": 5,
+          "max": 8
+        },
+        {
+          "type": "critBonus",
+          "weight": 10,
+          "min": 3,
+          "max": 5
+        },
+        {
+          "type": "dodgeBonus",
+          "weight": 10,
+          "min": 3,
+          "max": 5
+        },
+        {
+          "type": "hpRegen",
+          "weight": 10,
+          "min": 2,
+          "max": 4
+        },
+        {
+          "type": "manaRegen",
+          "weight": 10,
+          "min": 2,
+          "max": 4
+        },
+        {
+          "type": "onHitBurn",
+          "weight": 8,
+          "min": 10,
+          "max": 18
+        },
+        {
+          "type": "onHitPoison",
+          "weight": 8,
+          "min": 10,
+          "max": 18
+        },
+        {
+          "type": "onHitStun",
+          "weight": 12,
+          "min": 8,
+          "max": 15
+        }
+      ]
+    },
+    "exotic": {
+      "rollChance": 100,
+      "maxPerks": 4,
+      "bonusPerkChance": 50,
+      "perks": [
+        {
+          "type": "stat",
+          "weight": 22,
+          "min": 3,
+          "max": 5
+        },
+        {
+          "type": "lifesteal",
+          "weight": 10,
+          "min": 5,
+          "max": 8
+        },
+        {
+          "type": "critBonus",
+          "weight": 10,
+          "min": 3,
+          "max": 5
+        },
+        {
+          "type": "dodgeBonus",
+          "weight": 10,
+          "min": 3,
+          "max": 5
+        },
+        {
+          "type": "hpRegen",
+          "weight": 10,
+          "min": 2,
+          "max": 4
+        },
+        {
+          "type": "manaRegen",
+          "weight": 10,
+          "min": 2,
+          "max": 4
+        },
+        {
+          "type": "onHitBurn",
+          "weight": 8,
+          "min": 10,
+          "max": 18
+        },
+        {
+          "type": "onHitPoison",
+          "weight": 8,
+          "min": 10,
+          "max": 18
+        },
+        {
+          "type": "onHitStun",
+          "weight": 12,
+          "min": 8,
+          "max": 15
+        }
+      ]
+    }
+  },
+  "durabilityByRarity": {
+    "common": 60,
+    "uncommon": 120,
+    "rare": 200,
+    "epic": 500,
+    "legendary": 1000,
+    "mythic": 2000,
+    "exotic": 3000
+  },
+  "repairRarityMult": {
+    "common": 1,
+    "uncommon": 2,
+    "rare": 4,
+    "epic": 8,
+    "legendary": 12,
+    "mythic": 16
+  },
+  "equipmentSlots": [
+    "weapon",
+    "shield",
+    "body",
+    "helmet",
+    "gloves",
+    "boots",
+    "amulet",
+    "ring",
+    "trinket"
+  ],
+  "pveCooldowns": {
+    "shield-bash": 3,
+    "battle-cry": 3,
+    "second-wind": 2,
+    "reckless-blow": 2,
+    "cleave": 0,
+    "iron-fortress": 3,
+    "war-stomp": 4,
+    "berserker-rage": 3,
+    "fireball": 2,
+    "frost-nova": 4,
+    "arcane-barrier": 3,
+    "mana-surge": 4,
+    "ignite": 2,
+    "chain-lightning": 2,
+    "blink": 4,
+    "meteor": 5,
+    "arcane-intellect": 3,
+    "backstab": 2,
+    "poison-blade": 2,
+    "evade": 4,
+    "cheap-shot": 3,
+    "recuperate": 2,
+    "shadow-step": 2,
+    "fan-of-knives": 2,
+    "smoke-bomb": 4,
+    "assassinate": 3,
+    "heal": 2,
+    "bless": 4,
+    "divine-shield": 3,
+    "purify": 2,
+    "sacred-flame": 2,
+    "mass-heal": 5,
+    "holy-nova": 2,
+    "resurrection": 5,
+    "wrath-of-light": 3,
+    "trap": 3,
+    "nature-mend": 2,
+    "volley": 2,
+    "camouflage": 4,
+    "explosive-arrow": 2,
+    "barrage": 3,
+    "natures-wrath": 2,
+    "eagle-eye": 3,
+    "ground-slam": 3,
+    "blood-rage": 0,
+    "shatter-armor": 0,
+    "rallying-shout": 3,
+    "whirlwind": 0,
+    "vengeful-strike": 0,
+    "steel-wall": 3,
+    "execute": 4,
+    "hamstring": 0,
+    "battle-trance": 3,
+    "shield-wall": 3,
+    "crushing-blow": 3,
+    "intimidate": 0,
+    "bloodletting": 0,
+    "titan-grip": 3,
+    "onslaught": 0,
+    "endure": 0,
+    "sundering-strike": 0,
+    "unstoppable": 3,
+    "warlord-fury": 7,
+    "glacial-spike": 3,
+    "arcane-missiles": 0,
+    "mana-shield": 3,
+    "inferno": 0,
+    "thunderbolt": 0,
+    "frost-armor": 3,
+    "pyroblast": 4,
+    "arcane-surge": 0,
+    "frozen-orb": 0,
+    "spellsteal": 0,
+    "blizzard": 3,
+    "temporal-shift": 3,
+    "combustion": 0,
+    "mind-blast": 0,
+    "ward-of-ages": 3,
+    "frostfire-bolt": 0,
+    "arcane-torrent": 3,
+    "ice-block": 3,
+    "supernova": 8,
+    "ether-walk": 3,
+    "garrote": 0,
+    "blade-flurry": 0,
+    "vanish": 3,
+    "envenom": 0,
+    "ambush": 0,
+    "crippling-poison": 0,
+    "shadow-dance": 3,
+    "kidney-shot": 3,
+    "death-mark": 0,
+    "cloak-of-shadows": 3,
+    "shiv": 0,
+    "disembowel": 0,
+    "nerve-strike": 3,
+    "blade-storm": 3,
+    "evasive-roll": 0,
+    "expose-weakness": 4,
+    "shadow-strike": 0,
+    "preparation": 0,
+    "vendetta": 3,
+    "death-from-above": 6,
+    "holy-fire": 0,
+    "prayer-of-mending": 0,
+    "smite-evil": 0,
+    "sanctuary": 3,
+    "radiance": 0,
+    "divine-word": 3,
+    "penance": 0,
+    "absolution": 3,
+    "retribution": 3,
+    "beacon-of-light": 3,
+    "spirit-mend": 0,
+    "condemn": 0,
+    "angelic-wings": 3,
+    "exorcism": 0,
+    "prayer-of-fortitude": 3,
+    "flash-heal": 3,
+    "divine-storm": 0,
+    "lay-on-hands": 4,
+    "holy-wrath": 0,
+    "archangel": 8,
+    "serpent-sting": 0,
+    "multi-shot": 0,
+    "disengage": 0,
+    "aimed-shot": 0,
+    "entangling-roots": 3,
+    "rapid-fire": 3,
+    "survival-instinct": 0,
+    "natures-blessing": 3,
+    "concussive-shot": 3,
+    "wild-spirits": 0,
+    "sniper-shot": 4,
+    "thorns": 3,
+    "wind-burst": 0,
+    "flaming-arrow": 0,
+    "rejuvenation": 3,
+    "hunters-mark": 0,
+    "arrow-rain": 3,
+    "aspect-of-hawk": 3,
+    "kill-shot": 4,
+    "avatar-of-nature": 7,
+    "racial-adaptability": 5,
+    "racial-elven-grace": 5,
+    "racial-stoneblood": 5,
+    "racial-lucky-streak": 5,
+    "racial-blood-fury": 4,
+    "rallying-defense": 5,
+    "taunt": 5,
+    "arcane-shield": 5,
+    "mana-font": 3,
+    "smoke-screen": 5,
+    "heal-other": 3,
+    "resurrect-ally": 99,
+    "hunters-mark-party": 5,
+    "natures-ward": 5
+  },
+  "lootDropChance": {
+    "common": 40,
+    "uncommon": 28,
+    "rare": 18,
+    "epic": 15,
+    "legendary": 8,
+    "mythic": 0,
+    "exotic": 0
+  },
+  "maxActiveAbilities": 6,
+  "homeLocation": "thornwall",
+  "academyLocation": "sunspire",
+  "guildRegistrationCost": 500,
+  "guildRanks": [
+    {
+      "rank": 0,
+      "name": "Unranked",
+      "xpNeeded": 0
+    },
+    {
+      "rank": 1,
+      "name": "Initiate",
+      "xpNeeded": 50
+    },
+    {
+      "rank": 2,
+      "name": "Bronze",
+      "xpNeeded": 150
+    },
+    {
+      "rank": 3,
+      "name": "Silver",
+      "xpNeeded": 350
+    },
+    {
+      "rank": 4,
+      "name": "Gold",
+      "xpNeeded": 700
+    },
+    {
+      "rank": 5,
+      "name": "Platinum",
+      "xpNeeded": 1200
+    },
+    {
+      "rank": 6,
+      "name": "Champion",
+      "xpNeeded": 2000
+    }
+  ],
+  "guildVendorItems": [
+    {
+      "slug": "guild-health-kit",
+      "name": "Guild Health Kit",
+      "cost": 8,
+      "minRank": 1,
+      "type": "consumable",
+      "description": "Restores 60% HP. Guild-issue supplies.",
+      "use": {
+        "heal": 0.6
+      }
+    },
+    {
+      "slug": "guild-mana-draught",
+      "name": "Guild Mana Draught",
+      "cost": 8,
+      "minRank": 1,
+      "type": "consumable",
+      "description": "Restores 60% MP. Guild-issue supplies.",
+      "use": {
+        "manaRestore": 0.6
+      }
+    },
+    {
+      "slug": "guild-repair-kit",
+      "name": "Guild Repair Kit",
+      "cost": 15,
+      "minRank": 2,
+      "type": "consumable",
+      "description": "Fully repairs one equipped item anywhere.",
+      "use": {
+        "repairKit": true
+      }
+    },
+    {
+      "slug": "guild-material-crate",
+      "name": "Guild Material Crate",
+      "cost": 20,
+      "minRank": 3,
+      "type": "consumable",
+      "description": "Contains 3 random crafting materials.",
+      "use": {
+        "materialCrate": true
+      }
+    },
+    {
+      "slug": "guild-storage-deed",
+      "name": "Guild Storage Deed",
+      "cost": 40,
+      "minRank": 4,
+      "type": "consumable",
+      "description": "Permanently increases home storage by 10 slots.",
+      "use": {
+        "storageDeed": true
+      }
+    }
+  ],
+  "bountyConfig": {
+    "thornwall": {
+      "areas": [
+        "whispering-woods",
+        "kings-road",
+        "dark-hollow",
+        "ruined-shrine"
+      ],
+      "tiers": {
+        "easy": {
+          "killRange": [
+            3,
+            5
+          ],
+          "gold": [
+            20,
+            35
+          ],
+          "marks": [
+            2,
+            3
+          ],
+          "guildXp": 5
+        },
+        "medium": {
+          "killRange": [
+            4,
+            7
+          ],
+          "gold": [
+            40,
+            65
+          ],
+          "marks": [
+            4,
+            6
+          ],
+          "guildXp": 10
+        },
+        "hard": {
+          "killRange": [
+            1,
+            1
+          ],
+          "gold": [
+            60,
+            90
+          ],
+          "marks": [
+            7,
+            10
+          ],
+          "guildXp": 20,
+          "bossOnly": true
+        }
+      }
+    },
+    "ironhold": {
+      "areas": [
+        "kings-road",
+        "ember-mines",
+        "shadowfen",
+        "dark-hollow"
+      ],
+      "tiers": {
+        "easy": {
+          "killRange": [
+            3,
+            5
+          ],
+          "gold": [
+            35,
+            55
+          ],
+          "marks": [
+            3,
+            5
+          ],
+          "guildXp": 8
+        },
+        "medium": {
+          "killRange": [
+            4,
+            7
+          ],
+          "gold": [
+            60,
+            95
+          ],
+          "marks": [
+            6,
+            9
+          ],
+          "guildXp": 15
+        },
+        "hard": {
+          "killRange": [
+            1,
+            1
+          ],
+          "gold": [
+            90,
+            140
+          ],
+          "marks": [
+            10,
+            14
+          ],
+          "guildXp": 30,
+          "bossOnly": true
+        }
+      }
+    },
+    "sunspire": {
+      "areas": [
+        "crossroads",
+        "dragon-peak",
+        "witch-tower",
+        "shadowfen"
+      ],
+      "tiers": {
+        "easy": {
+          "killRange": [
+            3,
+            5
+          ],
+          "gold": [
+            50,
+            80
+          ],
+          "marks": [
+            5,
+            7
+          ],
+          "guildXp": 12
+        },
+        "medium": {
+          "killRange": [
+            4,
+            7
+          ],
+          "gold": [
+            80,
+            130
+          ],
+          "marks": [
+            8,
+            12
+          ],
+          "guildXp": 25
+        },
+        "hard": {
+          "killRange": [
+            1,
+            1
+          ],
+          "gold": [
+            130,
+            200
+          ],
+          "marks": [
+            14,
+            20
+          ],
+          "guildXp": 45,
+          "bossOnly": true
+        }
+      }
+    }
+  },
+  "bountyResetHourUtcCst": 10,
+  "bountyResetHourUtcCdt": 9,
+  "maxActiveBounties": 5,
+  "auctionHouse": {
+    "listingFeePct": 0,
+    "salesTaxPct": 0,
+    "maxListings": 50,
+    "durationHours": 48,
+    "pageSize": 30
+  },
+  "races": [
+    {
+      "slug": "human",
+      "name": "Human",
+      "stats": {
+        "str": 1,
+        "con": 1,
+        "int": 1,
+        "wis": 1,
+        "dex": 1,
+        "cha": 1
+      },
+      "description": "Versatile and adaptable. Balanced in all things."
+    },
+    {
+      "slug": "elf",
+      "name": "Elf",
+      "stats": {
+        "str": -1,
+        "con": -1,
+        "int": 2,
+        "wis": 2,
+        "dex": 3,
+        "cha": 1
+      },
+      "description": "Graceful and ancient. Keen senses and arcane affinity."
+    },
+    {
+      "slug": "dwarf",
+      "name": "Dwarf",
+      "stats": {
+        "str": 2,
+        "con": 3,
+        "int": 0,
+        "wis": 1,
+        "dex": -1,
+        "cha": 0
+      },
+      "description": "Stout and resilient. Born of stone and fire."
+    },
+    {
+      "slug": "halfling",
+      "name": "Halfling",
+      "stats": {
+        "str": -2,
+        "con": 1,
+        "int": 0,
+        "wis": 1,
+        "dex": 3,
+        "cha": 2
+      },
+      "description": "Small but lucky. Quick feet and quicker wits."
+    },
+    {
+      "slug": "orc",
+      "name": "Half-Orc",
+      "stats": {
+        "str": 4,
+        "con": 2,
+        "int": -2,
+        "wis": 0,
+        "dex": 0,
+        "cha": -1
+      },
+      "description": "Raw power and fury. Feared across every frontier."
+    }
+  ],
+  "classes": [
+    {
+      "slug": "warrior",
+      "name": "Warrior",
+      "baseHp": 162,
+      "baseMp": 12,
+      "primaryStat": "str",
+      "abilities": [
+        {
+          "slug": "power-strike",
+          "name": "Power Strike",
+          "cost": 3,
+          "damage": 1.6,
+          "type": "physical",
+          "description": "A devastating overhead blow.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 1.6
+            },
+            {
+              "damage": 1.92
+            },
+            {
+              "damage": 2.24,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.2,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "shield-bash",
+          "name": "Shield Bash",
+          "cost": 3,
+          "damage": 1,
+          "type": "physical",
+          "stun": true,
+          "description": "Slam your shield into the foe, stunning them for one turn.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 1
+            },
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.65
+            },
+            {
+              "damage": 2
+            }
+          ]
+        },
+        {
+          "slug": "battle-cry",
+          "name": "Battle Cry",
+          "cost": 4,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "str",
+            "amount": 2,
+            "turns": 3
+          },
+          "secondaryBuff": {
+            "stat": "defense",
+            "amount": 2,
+            "turns": 3
+          },
+          "description": "+2 STR and +2 DEF for 3 turns.",
+          "starter": true,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "second-wind",
+          "name": "Second Wind",
+          "cost": 2,
+          "damage": 0,
+          "type": "heal",
+          "healPct": 15,
+          "description": "Catch your breath. Recover 15% of max HP.",
+          "starter": true,
+          "ranks": [
+            {
+              "healPct": 15
+            },
+            {
+              "healPct": 18
+            },
+            {
+              "healPct": 21,
+              "cleanse": 1
+            },
+            {
+              "healPct": 24.8
+            },
+            {
+              "healPct": 30,
+              "cleanse": "all"
+            }
+          ]
+        },
+        {
+          "slug": "reckless-blow",
+          "name": "Reckless Blow",
+          "cost": 5,
+          "damage": 2.2,
+          "type": "physical",
+          "selfDamagePct": 10,
+          "description": "A wild, all-in strike for massive damage. Costs 10% of your max HP.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 2.2
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.08,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 3.63
+            },
+            {
+              "damage": 4.4,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "cleave",
+          "name": "Cleave",
+          "cost": 4,
+          "damage": 1.4,
+          "type": "physical",
+          "hits": 2,
+          "description": "A sweeping strike that cleaves through all enemies.",
+          "tokenCost": 5,
+          "ranks": [
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.96
+            },
+            {
+              "damage": 2.31
+            },
+            {
+              "damage": 2.8
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "iron-fortress",
+          "name": "Iron Fortress",
+          "cost": 5,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "defense",
+            "amount": 8,
+            "turns": 2
+          },
+          "description": "Become an immovable wall. +8 DEF for 2 turns.",
+          "tokenCost": 8,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "war-stomp",
+          "name": "War Stomp",
+          "cost": 6,
+          "damage": 1.8,
+          "type": "physical",
+          "stun": true,
+          "slow": true,
+          "description": "A thunderous stomp that damages, stuns, and slows all enemies.",
+          "tokenCost": 10,
+          "ranks": [
+            {
+              "damage": 1.8
+            },
+            {
+              "damage": 2.16
+            },
+            {
+              "damage": 2.52,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 2.97
+            },
+            {
+              "damage": 3.6,
+              "bonusCritChance": 10
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "berserker-rage",
+          "name": "Berserker Rage",
+          "cost": 3,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "str",
+            "amount": 5,
+            "turns": 3
+          },
+          "selfDamagePct": 8,
+          "description": "+5 STR for 3 turns, but costs 8% max HP.",
+          "tokenCost": 12,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "ground-slam",
+          "name": "Ground Slam",
+          "cost": 5,
+          "damage": 1.3,
+          "type": "physical",
+          "hits": 2,
+          "stun": true,
+          "description": "Smash the ground, sending shockwaves through all enemies with a chance to stun.",
+          "tokenCost": 6,
+          "ranks": [
+            {
+              "damage": 1.3
+            },
+            {
+              "damage": 1.56
+            },
+            {
+              "damage": 1.82
+            },
+            {
+              "damage": 2.15
+            },
+            {
+              "damage": 2.6
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "blood-rage",
+          "name": "Blood Rage",
+          "cost": 2,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "str",
+            "amount": 3,
+            "turns": 4
+          },
+          "selfDamagePct": 5,
+          "description": "Channel pain into power. +3 STR for 4 turns, costs 5% HP.",
+          "tokenCost": 7,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "shatter-armor",
+          "name": "Shatter Armor",
+          "cost": 4,
+          "damage": 1.2,
+          "type": "physical",
+          "statusEffect": {
+            "slug": "weaken",
+            "turns": 3
+          },
+          "description": "A precise strike that weakens the enemy's defenses for 3 turns.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.44
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.98
+            },
+            {
+              "damage": 2.4
+            }
+          ]
+        },
+        {
+          "slug": "rallying-shout",
+          "name": "Rallying Shout",
+          "cost": 5,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "all",
+            "amount": 2,
+            "turns": 3
+          },
+          "description": "A battle cry that boosts all stats by 2 for 3 turns.",
+          "tokenCost": 10,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "whirlwind",
+          "name": "Whirlwind",
+          "cost": 6,
+          "damage": 1,
+          "type": "physical",
+          "hits": 4,
+          "description": "Spin with your weapon, striking all enemies in a devastating whirl.",
+          "tokenCost": 10,
+          "ranks": [
+            {
+              "damage": 1
+            },
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.65
+            },
+            {
+              "damage": 2
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "vengeful-strike",
+          "name": "Vengeful Strike",
+          "cost": 4,
+          "damage": 2,
+          "type": "physical",
+          "description": "A furious counterattack that deals heavy damage. Stronger when wounded.",
+          "tokenCost": 9,
+          "ranks": [
+            {
+              "damage": 2
+            },
+            {
+              "damage": 2.4
+            },
+            {
+              "damage": 2.8,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 3.3
+            },
+            {
+              "damage": 4,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "steel-wall",
+          "name": "Steel Wall",
+          "cost": 6,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "defense",
+            "amount": 10,
+            "turns": 2
+          },
+          "healPct": 5,
+          "description": "Become an immovable fortress. +10 DEF for 2 turns and heal 5% HP.",
+          "tokenCost": 12,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "execute",
+          "name": "Execute",
+          "cost": 8,
+          "damage": 3,
+          "type": "physical",
+          "selfDamagePct": 8,
+          "description": "A devastating finishing blow. Massive damage but costs 8% max HP.",
+          "tokenCost": 14,
+          "ranks": [
+            {
+              "damage": 3
+            },
+            {
+              "damage": 3.6
+            },
+            {
+              "damage": 4.2,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 4.95
+            },
+            {
+              "damage": 6,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "hamstring",
+          "name": "Hamstring",
+          "cost": 3,
+          "damage": 1.1,
+          "type": "physical",
+          "slow": true,
+          "dot": {
+            "type": "bleed",
+            "damage": 2,
+            "turns": 4
+          },
+          "description": "Slash the enemy's legs. Slows and bleeds for 4 turns.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "damage": 1.1
+            },
+            {
+              "damage": 1.32
+            },
+            {
+              "damage": 1.54
+            },
+            {
+              "damage": 1.81
+            },
+            {
+              "damage": 2.2
+            }
+          ]
+        },
+        {
+          "slug": "battle-trance",
+          "name": "Battle Trance",
+          "cost": 4,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "str",
+            "amount": 4,
+            "turns": 3
+          },
+          "secondaryBuff": {
+            "stat": "dex",
+            "amount": 3,
+            "turns": 3
+          },
+          "description": "Enter a focused state. +4 STR and +3 DEX for 3 turns.",
+          "tokenCost": 11,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "shield-wall",
+          "name": "Shield Wall",
+          "cost": 3,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dodge",
+            "amount": 35,
+            "turns": 2
+          },
+          "description": "Raise your shield defensively. 35% dodge for 2 turns.",
+          "tokenCost": 9,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "crushing-blow",
+          "name": "Crushing Blow",
+          "cost": 7,
+          "damage": 2.5,
+          "type": "physical",
+          "stun": true,
+          "description": "An overhead smash that deals massive damage and stuns.",
+          "tokenCost": 13,
+          "ranks": [
+            {
+              "damage": 2.5
+            },
+            {
+              "damage": 3
+            },
+            {
+              "damage": 3.5,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 4.13
+            },
+            {
+              "damage": 5,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "intimidate",
+          "name": "Intimidate",
+          "cost": 3,
+          "damage": 0.5,
+          "type": "physical",
+          "statusEffect": {
+            "slug": "slow",
+            "turns": 3
+          },
+          "description": "A menacing roar that damages and slows all enemies.",
+          "tokenCost": 6,
+          "ranks": [
+            {
+              "damage": 0.5
+            },
+            {
+              "damage": 0.6
+            },
+            {
+              "damage": 0.7
+            },
+            {
+              "damage": 0.82
+            },
+            {
+              "damage": 1
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "bloodletting",
+          "name": "Bloodletting",
+          "cost": 4,
+          "damage": 0.8,
+          "type": "physical",
+          "dot": {
+            "type": "bleed",
+            "damage": 3,
+            "turns": 5
+          },
+          "description": "Open a deep wound. 3 bleed damage per turn for 5 turns.",
+          "tokenCost": 9,
+          "ranks": [
+            {
+              "damage": 0.8
+            },
+            {
+              "damage": 0.96
+            },
+            {
+              "damage": 1.12
+            },
+            {
+              "damage": 1.32
+            },
+            {
+              "damage": 1.6
+            }
+          ]
+        },
+        {
+          "slug": "titan-grip",
+          "name": "Titan Grip",
+          "cost": 5,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "str",
+            "amount": 7,
+            "turns": 2
+          },
+          "description": "Channel titanic strength. +7 STR for 2 turns.",
+          "tokenCost": 11,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "onslaught",
+          "name": "Onslaught",
+          "cost": 8,
+          "damage": 1.2,
+          "type": "physical",
+          "hits": 3,
+          "selfDamagePct": 6,
+          "description": "A triple-strike assault. Three hits but costs 6% max HP from exertion.",
+          "tokenCost": 13,
+          "ranks": [
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.44
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.98
+            },
+            {
+              "damage": 2.4
+            }
+          ]
+        },
+        {
+          "slug": "endure",
+          "name": "Endure",
+          "cost": 2,
+          "damage": 0,
+          "type": "heal",
+          "healPct": 20,
+          "description": "Grit your teeth and recover 20% of max HP.",
+          "tokenCost": 7,
+          "ranks": [
+            {
+              "healPct": 20
+            },
+            {
+              "healPct": 24
+            },
+            {
+              "healPct": 28,
+              "cleanse": 1
+            },
+            {
+              "healPct": 33
+            },
+            {
+              "healPct": 40,
+              "cleanse": "all"
+            }
+          ]
+        },
+        {
+          "slug": "sundering-strike",
+          "name": "Sundering Strike",
+          "cost": 6,
+          "damage": 1.8,
+          "type": "physical",
+          "statusEffect": {
+            "slug": "weaken",
+            "turns": 2
+          },
+          "description": "A blow that shatters resolve. High damage and weakens for 2 turns.",
+          "tokenCost": 12,
+          "ranks": [
+            {
+              "damage": 1.8
+            },
+            {
+              "damage": 2.16
+            },
+            {
+              "damage": 2.52,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 2.97
+            },
+            {
+              "damage": 3.6,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "unstoppable",
+          "name": "Unstoppable",
+          "cost": 4,
+          "damage": 0,
+          "type": "purify",
+          "healPct": 8,
+          "description": "Break free of all afflictions and recover 8% HP. Nothing holds you down.",
+          "tokenCost": 10,
+          "ranks": [
+            {},
+            {
+              "bonusHealPct": 5
+            },
+            {
+              "bonusHealPct": 10,
+              "cleanse": "all"
+            },
+            {
+              "bonusHealPct": 15,
+              "cleanse": "all",
+              "shield": 10
+            },
+            {
+              "bonusHealPct": 20,
+              "cleanse": "all",
+              "shield": 20
+            }
+          ]
+        },
+        {
+          "slug": "warlord-fury",
+          "name": "Warlord's Fury",
+          "cost": 10,
+          "damage": 2,
+          "type": "physical",
+          "hits": 3,
+          "stun": true,
+          "description": "Unleash a devastating triple-strike combo that stuns. The ultimate warrior technique.",
+          "tokenCost": 18,
+          "ranks": [
+            {
+              "damage": 2
+            },
+            {
+              "damage": 2.5
+            },
+            {
+              "damage": 3.1
+            },
+            {
+              "damage": 3.8
+            },
+            {
+              "damage": 5
+            }
+          ],
+          "ultimate": true
+        },
+        {
+          "slug": "rallying-defense",
+          "name": "Rallying Defense",
+          "cost": 10,
+          "type": "party-buff",
+          "description": "Raise your shield high and inspire your allies. All party members gain +4 DEF for 3 turns.",
+          "tokenCost": 14,
+          "partyBuff": {
+            "stat": "defense",
+            "amount": 4,
+            "turns": 3
+          },
+          "pveCooldown": 5,
+          "ranks": [
+            {
+              "buffAmount": 4
+            },
+            {
+              "buffAmount": 5
+            },
+            {
+              "buffAmount": 5,
+              "durationBonus": 1
+            },
+            {
+              "buffAmount": 6,
+              "durationBonus": 1
+            },
+            {
+              "buffAmount": 7,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "taunt",
+          "name": "Taunt",
+          "cost": 8,
+          "type": "taunt",
+          "description": "Roar a challenge. All enemies focus their attacks on you for 2 turns.",
+          "tokenCost": 12,
+          "tauntTurns": 2,
+          "pveCooldown": 5,
+          "ranks": [
+            {
+              "tauntTurns": 2
+            },
+            {
+              "tauntTurns": 2,
+              "bonusDefense": 2
+            },
+            {
+              "tauntTurns": 3,
+              "bonusDefense": 2
+            },
+            {
+              "tauntTurns": 3,
+              "bonusDefense": 4
+            },
+            {
+              "tauntTurns": 3,
+              "bonusDefense": 6
+            }
+          ]
+        }
+      ],
+      "description": "Master of arms. High HP, devastating melee attacks."
+    },
+    {
+      "slug": "mage",
+      "name": "Mage",
+      "baseHp": 112,
+      "baseMp": 40,
+      "primaryStat": "int",
+      "abilities": [
+        {
+          "slug": "fireball",
+          "name": "Fireball",
+          "cost": 7,
+          "damage": 2.5,
+          "type": "magic",
+          "description": "Hurl a ball of flame for devastating damage.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 2.5
+            },
+            {
+              "damage": 3
+            },
+            {
+              "damage": 3.5,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 4.13
+            },
+            {
+              "damage": 5,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "ice-lance",
+          "name": "Ice Lance",
+          "cost": 4,
+          "damage": 1.6,
+          "type": "magic",
+          "slow": true,
+          "description": "Pierce with ice, slowing the foe.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 1.6
+            },
+            {
+              "damage": 1.92
+            },
+            {
+              "damage": 2.24,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.2,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "frost-nova",
+          "name": "Frost Nova",
+          "cost": 6,
+          "damage": 1.2,
+          "type": "magic",
+          "stun": true,
+          "description": "Unleash a burst of frost that damages and stuns all enemies.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.44
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.98
+            },
+            {
+              "damage": 2.4
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "arcane-barrier",
+          "name": "Arcane Barrier",
+          "cost": 4,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "defense",
+            "amount": 4,
+            "turns": 2
+          },
+          "description": "Conjure a shimmering barrier. +4 DEF for 2 turns.",
+          "starter": true,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "mana-surge",
+          "name": "Mana Surge",
+          "cost": 0,
+          "damage": 0,
+          "type": "restore",
+          "restore": 12,
+          "description": "Channel ambient mana. Recover 12 MP.",
+          "starter": true,
+          "ranks": [
+            {},
+            {
+              "restoreBonus": 0.15
+            },
+            {
+              "restoreBonus": 0.3
+            },
+            {
+              "restoreBonus": 0.5
+            },
+            {
+              "restoreBonus": 0.75
+            }
+          ]
+        },
+        {
+          "slug": "ignite",
+          "name": "Ignite",
+          "cost": 3,
+          "damage": 0.8,
+          "type": "magic",
+          "dot": {
+            "type": "burn",
+            "damage": 4,
+            "turns": 3
+          },
+          "description": "Set the enemy ablaze. 4 fire damage/turn for 3 turns.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 0.8
+            },
+            {
+              "damage": 0.96
+            },
+            {
+              "damage": 1.12
+            },
+            {
+              "damage": 1.32
+            },
+            {
+              "damage": 1.6
+            }
+          ]
+        },
+        {
+          "slug": "chain-lightning",
+          "name": "Chain Lightning",
+          "cost": 8,
+          "damage": 2,
+          "type": "magic",
+          "hits": 2,
+          "description": "Lightning arcs between all targets, striking each one. More arcs at higher ranks.",
+          "tokenCost": 5,
+          "ranks": [
+            {
+              "damage": 2
+            },
+            {
+              "damage": 2.4,
+              "bonusHits": 1
+            },
+            {
+              "damage": 2.8,
+              "bonusHits": 1,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 3.3,
+              "bonusHits": 2
+            },
+            {
+              "damage": 4,
+              "bonusHits": 2,
+              "bonusDamageFlat": 8
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "blink",
+          "name": "Blink",
+          "cost": 3,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dodge",
+            "amount": 80,
+            "turns": 1
+          },
+          "description": "Teleport a short distance. 80% dodge for 1 turn.",
+          "tokenCost": 8,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "meteor",
+          "name": "Meteor",
+          "cost": 12,
+          "damage": 4,
+          "type": "magic",
+          "description": "Call down a meteor for catastrophic area damage. Enormous MP cost.",
+          "tokenCost": 12,
+          "ranks": [
+            {
+              "damage": 4
+            },
+            {
+              "damage": 4.8
+            },
+            {
+              "damage": 5.6,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 6.6
+            },
+            {
+              "damage": 8,
+              "bonusDamageFlat": 8
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "arcane-intellect",
+          "name": "Arcane Intellect",
+          "cost": 5,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "int",
+            "amount": 4,
+            "turns": 4
+          },
+          "description": "Sharpen your mind. +4 INT for 4 turns.",
+          "tokenCost": 8,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "glacial-spike",
+          "name": "Glacial Spike",
+          "cost": 5,
+          "damage": 1.8,
+          "type": "magic",
+          "stun": true,
+          "description": "A shard of pure ice that pierces and stuns the target.",
+          "tokenCost": 7,
+          "ranks": [
+            {
+              "damage": 1.8
+            },
+            {
+              "damage": 2.16
+            },
+            {
+              "damage": 2.52,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 2.97
+            },
+            {
+              "damage": 3.6,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "arcane-missiles",
+          "name": "Arcane Missiles",
+          "cost": 6,
+          "damage": 0.9,
+          "type": "magic",
+          "hits": 4,
+          "description": "Four bolts of arcane energy strike in rapid succession.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "damage": 0.9
+            },
+            {
+              "damage": 1.08
+            },
+            {
+              "damage": 1.26
+            },
+            {
+              "damage": 1.48
+            },
+            {
+              "damage": 1.8
+            }
+          ]
+        },
+        {
+          "slug": "mana-shield",
+          "name": "Mana Shield",
+          "cost": 8,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "defense",
+            "amount": 8,
+            "turns": 3
+          },
+          "description": "Weave mana into a protective barrier. +8 DEF for 3 turns.",
+          "tokenCost": 10,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "inferno",
+          "name": "Inferno",
+          "cost": 9,
+          "damage": 1.5,
+          "type": "magic",
+          "dot": {
+            "type": "burn",
+            "damage": 5,
+            "turns": 4
+          },
+          "description": "Engulf the enemy in hellfire. Damage plus 5 burn/turn for 4 turns.",
+          "tokenCost": 11,
+          "ranks": [
+            {
+              "damage": 1.5
+            },
+            {
+              "damage": 1.8
+            },
+            {
+              "damage": 2.1,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 2.47
+            },
+            {
+              "damage": 3,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "thunderbolt",
+          "name": "Thunderbolt",
+          "cost": 6,
+          "damage": 2.2,
+          "type": "magic",
+          "description": "Call down a bolt of lightning for devastating single-target damage.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "damage": 2.2
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.08,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 3.63
+            },
+            {
+              "damage": 4.4,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "frost-armor",
+          "name": "Frost Armor",
+          "cost": 4,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "defense",
+            "amount": 5,
+            "turns": 3
+          },
+          "secondaryBuff": {
+            "stat": "dodge",
+            "amount": 15,
+            "turns": 3
+          },
+          "description": "Encase yourself in frost. +5 DEF and +15% dodge for 3 turns.",
+          "tokenCost": 9,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "pyroblast",
+          "name": "Pyroblast",
+          "cost": 10,
+          "damage": 3.5,
+          "type": "magic",
+          "dot": {
+            "type": "burn",
+            "damage": 4,
+            "turns": 3
+          },
+          "description": "A massive fireball that scorches and burns. Enormous damage.",
+          "tokenCost": 14,
+          "ranks": [
+            {
+              "damage": 3.5
+            },
+            {
+              "damage": 4.2
+            },
+            {
+              "damage": 4.9,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 5.77
+            },
+            {
+              "damage": 7,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "arcane-surge",
+          "name": "Arcane Surge",
+          "cost": 0,
+          "damage": 0,
+          "type": "restore",
+          "restore": 20,
+          "description": "Tap into ley lines. Restore 20 MP instantly.",
+          "tokenCost": 9,
+          "ranks": [
+            {},
+            {
+              "restoreBonus": 0.15
+            },
+            {
+              "restoreBonus": 0.3
+            },
+            {
+              "restoreBonus": 0.5
+            },
+            {
+              "restoreBonus": 0.75
+            }
+          ]
+        },
+        {
+          "slug": "frozen-orb",
+          "name": "Frozen Orb",
+          "cost": 7,
+          "damage": 1.2,
+          "type": "magic",
+          "hits": 3,
+          "slow": true,
+          "description": "Hurl a frozen orb that splinters into three shards. Slows the target.",
+          "tokenCost": 10,
+          "ranks": [
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.44
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.98
+            },
+            {
+              "damage": 2.4
+            }
+          ]
+        },
+        {
+          "slug": "spellsteal",
+          "name": "Spellsteal",
+          "cost": 3,
+          "damage": 1,
+          "type": "magic",
+          "description": "Rip magical energy from the enemy. Deals damage and restores 4 MP.",
+          "restoreMp": 4,
+          "tokenCost": 7,
+          "ranks": [
+            {
+              "damage": 1
+            },
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.65
+            },
+            {
+              "damage": 2
+            }
+          ]
+        },
+        {
+          "slug": "blizzard",
+          "name": "Blizzard",
+          "cost": 8,
+          "damage": 1,
+          "type": "magic",
+          "hits": 3,
+          "stun": true,
+          "description": "Summon a localized blizzard. Three icy blasts hit all enemies with a chance to stun.",
+          "tokenCost": 12,
+          "ranks": [
+            {
+              "damage": 1
+            },
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.65
+            },
+            {
+              "damage": 2
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "temporal-shift",
+          "name": "Temporal Shift",
+          "cost": 5,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dodge",
+            "amount": 60,
+            "turns": 1
+          },
+          "restoreMp": 6,
+          "description": "Slip between moments. 60% dodge for 1 turn and recover 6 MP.",
+          "tokenCost": 10,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "combustion",
+          "name": "Combustion",
+          "cost": 6,
+          "damage": 2,
+          "type": "magic",
+          "dot": {
+            "type": "burn",
+            "damage": 6,
+            "turns": 2
+          },
+          "description": "Ignite the air around the enemy. Heavy damage plus intense burn.",
+          "tokenCost": 11,
+          "ranks": [
+            {
+              "damage": 2
+            },
+            {
+              "damage": 2.4
+            },
+            {
+              "damage": 2.8,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 3.3
+            },
+            {
+              "damage": 4,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "mind-blast",
+          "name": "Mind Blast",
+          "cost": 5,
+          "damage": 1.6,
+          "type": "magic",
+          "statusEffect": {
+            "slug": "slow",
+            "turns": 2
+          },
+          "description": "A psychic shockwave that damages and slows the target.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "damage": 1.6
+            },
+            {
+              "damage": 1.92
+            },
+            {
+              "damage": 2.24,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.2,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "ward-of-ages",
+          "name": "Ward of Ages",
+          "cost": 6,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "all",
+            "amount": 2,
+            "turns": 4
+          },
+          "description": "An ancient protective ward. +2 to all stats for 4 turns.",
+          "tokenCost": 12,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "frostfire-bolt",
+          "name": "Frostfire Bolt",
+          "cost": 7,
+          "damage": 2,
+          "type": "magic",
+          "slow": true,
+          "dot": {
+            "type": "burn",
+            "damage": 3,
+            "turns": 3
+          },
+          "description": "A bolt of contradictory magic. Slows and burns simultaneously.",
+          "tokenCost": 11,
+          "ranks": [
+            {
+              "damage": 2
+            },
+            {
+              "damage": 2.4
+            },
+            {
+              "damage": 2.8,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 3.3
+            },
+            {
+              "damage": 4,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "arcane-torrent",
+          "name": "Arcane Torrent",
+          "cost": 9,
+          "damage": 0.7,
+          "type": "magic",
+          "hits": 6,
+          "description": "Unleash a torrent of arcane bolts. Six rapid strikes hit all enemies.",
+          "tokenCost": 14,
+          "ranks": [
+            {
+              "damage": 0.7
+            },
+            {
+              "damage": 0.84
+            },
+            {
+              "damage": 0.98
+            },
+            {
+              "damage": 1.15
+            },
+            {
+              "damage": 1.4
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "ice-block",
+          "name": "Ice Block",
+          "cost": 4,
+          "damage": 0,
+          "type": "purify",
+          "healPct": 12,
+          "description": "Encase yourself in ice, cleansing afflictions and recovering 12% HP.",
+          "tokenCost": 10,
+          "ranks": [
+            {},
+            {
+              "bonusHealPct": 5
+            },
+            {
+              "bonusHealPct": 10,
+              "cleanse": "all"
+            },
+            {
+              "bonusHealPct": 15,
+              "cleanse": "all",
+              "shield": 10
+            },
+            {
+              "bonusHealPct": 20,
+              "cleanse": "all",
+              "shield": 20
+            }
+          ]
+        },
+        {
+          "slug": "supernova",
+          "name": "Supernova",
+          "cost": 14,
+          "damage": 5,
+          "type": "magic",
+          "selfDamagePct": 10,
+          "description": "Channel every ounce of arcane power into a cataclysmic burst. Costs 10% HP.",
+          "tokenCost": 18,
+          "ranks": [
+            {
+              "damage": 5
+            },
+            {
+              "damage": 6.25
+            },
+            {
+              "damage": 7.75
+            },
+            {
+              "damage": 9.5
+            },
+            {
+              "damage": 12.5
+            }
+          ],
+          "ultimate": true
+        },
+        {
+          "slug": "ether-walk",
+          "name": "Ether Walk",
+          "cost": 3,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dodge",
+            "amount": 45,
+            "turns": 2
+          },
+          "secondaryBuff": {
+            "stat": "int",
+            "amount": 3,
+            "turns": 2
+          },
+          "description": "Phase partially into the ether. 45% dodge and +3 INT for 2 turns.",
+          "tokenCost": 10,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "arcane-shield",
+          "name": "Arcane Shield",
+          "cost": 12,
+          "type": "party-buff",
+          "description": "Weave a shimmering barrier around all allies. +3 DEF and +2 INT for 3 turns.",
+          "tokenCost": 14,
+          "partyBuff": {
+            "stat": "defense",
+            "amount": 3,
+            "turns": 3
+          },
+          "partyBuff2": {
+            "stat": "attack",
+            "amount": 2,
+            "turns": 3
+          },
+          "pveCooldown": 5,
+          "ranks": [
+            {
+              "buffAmount": 3
+            },
+            {
+              "buffAmount": 4
+            },
+            {
+              "buffAmount": 4,
+              "durationBonus": 1
+            },
+            {
+              "buffAmount": 5,
+              "durationBonus": 1
+            },
+            {
+              "buffAmount": 6,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "mana-font",
+          "name": "Mana Font",
+          "cost": 10,
+          "type": "ally-restore",
+          "description": "Channel arcane energy into a target ally, restoring 15 MP.",
+          "tokenCost": 12,
+          "allyRestore": 15,
+          "pveCooldown": 3,
+          "ranks": [
+            {
+              "restore": 15
+            },
+            {
+              "restore": 18
+            },
+            {
+              "restore": 22
+            },
+            {
+              "restore": 26
+            },
+            {
+              "restore": 32
+            }
+          ]
+        }
+      ],
+      "description": "Arcane scholar. Devastating spells, crowd control, fragile frame."
+    },
+    {
+      "slug": "rogue",
+      "name": "Rogue",
+      "baseHp": 120,
+      "baseMp": 20,
+      "primaryStat": "dex",
+      "abilities": [
+        {
+          "slug": "backstab",
+          "name": "Backstab",
+          "cost": 4,
+          "damage": 2.2,
+          "type": "physical",
+          "description": "Strike from the shadows for massive damage.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 2.2
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.08,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 3.63
+            },
+            {
+              "damage": 4.4,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "poison-blade",
+          "name": "Poison Blade",
+          "cost": 3,
+          "damage": 1,
+          "type": "physical",
+          "dot": {
+            "damage": 4,
+            "turns": 3
+          },
+          "description": "Envenom your blade. 4 poison damage/turn for 3 turns.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 1
+            },
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.65
+            },
+            {
+              "damage": 2
+            }
+          ]
+        },
+        {
+          "slug": "evade",
+          "name": "Evade",
+          "cost": 2,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dodge",
+            "amount": 50,
+            "turns": 2
+          },
+          "description": "50% chance to dodge attacks for 2 turns.",
+          "starter": true,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "cheap-shot",
+          "name": "Cheap Shot",
+          "cost": 2,
+          "damage": 0.8,
+          "type": "physical",
+          "stun": true,
+          "description": "A dirty strike that stuns the enemy for one turn.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 0.8
+            },
+            {
+              "damage": 0.96
+            },
+            {
+              "damage": 1.12
+            },
+            {
+              "damage": 1.32
+            },
+            {
+              "damage": 1.6
+            }
+          ]
+        },
+        {
+          "slug": "recuperate",
+          "name": "Recuperate",
+          "cost": 1,
+          "damage": 0,
+          "type": "restore",
+          "restore": 6,
+          "description": "Steady your breathing. Recover 6 MP.",
+          "starter": true,
+          "ranks": [
+            {},
+            {
+              "restoreBonus": 0.15
+            },
+            {
+              "restoreBonus": 0.3
+            },
+            {
+              "restoreBonus": 0.5
+            },
+            {
+              "restoreBonus": 0.75
+            }
+          ]
+        },
+        {
+          "slug": "shadow-step",
+          "name": "Shadow Step",
+          "cost": 3,
+          "damage": 1.8,
+          "type": "physical",
+          "buff": {
+            "stat": "dodge",
+            "amount": 30,
+            "turns": 1
+          },
+          "description": "Teleport behind the enemy. High damage + 30% dodge for 1 turn.",
+          "tokenCost": 5,
+          "ranks": [
+            {
+              "damage": 1.8
+            },
+            {
+              "damage": 2.16
+            },
+            {
+              "damage": 2.52,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 2.97
+            },
+            {
+              "damage": 3.6,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "fan-of-knives",
+          "name": "Fan of Knives",
+          "cost": 5,
+          "damage": 1,
+          "type": "physical",
+          "hits": 3,
+          "description": "Fling blades in every direction, striking all enemies three times.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "damage": 1
+            },
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.65
+            },
+            {
+              "damage": 2
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "smoke-bomb",
+          "name": "Smoke Bomb",
+          "cost": 4,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dodge",
+            "amount": 60,
+            "turns": 2
+          },
+          "description": "Drop a smoke bomb. 60% dodge for 2 turns.",
+          "tokenCost": 10,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "assassinate",
+          "name": "Assassinate",
+          "cost": 7,
+          "damage": 3.5,
+          "type": "physical",
+          "selfDamagePct": 5,
+          "description": "A lethal strike. Massive damage but costs 5% max HP from exertion.",
+          "tokenCost": 12,
+          "ranks": [
+            {
+              "damage": 3.5
+            },
+            {
+              "damage": 4.2
+            },
+            {
+              "damage": 4.9,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 5.77
+            },
+            {
+              "damage": 7,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "garrote",
+          "name": "Garrote",
+          "cost": 3,
+          "damage": 0.6,
+          "type": "physical",
+          "dot": {
+            "type": "bleed",
+            "damage": 3,
+            "turns": 5
+          },
+          "description": "Strangle from behind. Light damage but heavy bleed for 5 turns.",
+          "tokenCost": 6,
+          "ranks": [
+            {
+              "damage": 0.6
+            },
+            {
+              "damage": 0.72
+            },
+            {
+              "damage": 0.84
+            },
+            {
+              "damage": 0.99
+            },
+            {
+              "damage": 1.2
+            }
+          ]
+        },
+        {
+          "slug": "blade-flurry",
+          "name": "Blade Flurry",
+          "cost": 5,
+          "damage": 0.9,
+          "type": "physical",
+          "hits": 4,
+          "description": "A dizzying flurry of four rapid slashes.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "damage": 0.9
+            },
+            {
+              "damage": 1.08
+            },
+            {
+              "damage": 1.26
+            },
+            {
+              "damage": 1.48
+            },
+            {
+              "damage": 1.8
+            }
+          ]
+        },
+        {
+          "slug": "vanish",
+          "name": "Vanish",
+          "cost": 3,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dodge",
+            "amount": 70,
+            "turns": 1
+          },
+          "restoreMp": 5,
+          "description": "Disappear into the shadows. 70% dodge for 1 turn and recover 5 MP.",
+          "tokenCost": 9,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "envenom",
+          "name": "Envenom",
+          "cost": 4,
+          "damage": 1.2,
+          "type": "physical",
+          "dot": {
+            "type": "poison",
+            "damage": 5,
+            "turns": 3
+          },
+          "description": "Coat your blade in lethal venom. 5 poison damage/turn for 3 turns.",
+          "tokenCost": 9,
+          "ranks": [
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.44
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.98
+            },
+            {
+              "damage": 2.4
+            }
+          ]
+        },
+        {
+          "slug": "ambush",
+          "name": "Ambush",
+          "cost": 6,
+          "damage": 2.8,
+          "type": "physical",
+          "description": "Strike from hiding for devastating damage. Pure burst.",
+          "tokenCost": 10,
+          "ranks": [
+            {
+              "damage": 2.8
+            },
+            {
+              "damage": 3.36
+            },
+            {
+              "damage": 3.92,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 4.62
+            },
+            {
+              "damage": 5.6,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "crippling-poison",
+          "name": "Crippling Poison",
+          "cost": 3,
+          "damage": 0.7,
+          "type": "physical",
+          "slow": true,
+          "statusEffect": {
+            "slug": "weaken",
+            "turns": 2
+          },
+          "description": "A poisoned strike that slows and weakens the target.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "damage": 0.7
+            },
+            {
+              "damage": 0.84
+            },
+            {
+              "damage": 0.98
+            },
+            {
+              "damage": 1.15
+            },
+            {
+              "damage": 1.4
+            }
+          ]
+        },
+        {
+          "slug": "shadow-dance",
+          "name": "Shadow Dance",
+          "cost": 5,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dex",
+            "amount": 5,
+            "turns": 3
+          },
+          "secondaryBuff": {
+            "stat": "dodge",
+            "amount": 25,
+            "turns": 3
+          },
+          "description": "Dance between shadows. +5 DEX and +25% dodge for 3 turns.",
+          "tokenCost": 11,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "kidney-shot",
+          "name": "Kidney Shot",
+          "cost": 4,
+          "damage": 1.5,
+          "type": "physical",
+          "stun": true,
+          "description": "A brutal targeted strike that stuns the enemy.",
+          "tokenCost": 9,
+          "ranks": [
+            {
+              "damage": 1.5
+            },
+            {
+              "damage": 1.8
+            },
+            {
+              "damage": 2.1,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 2.47
+            },
+            {
+              "damage": 3,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "death-mark",
+          "name": "Death Mark",
+          "cost": 5,
+          "damage": 1,
+          "type": "physical",
+          "dot": {
+            "type": "poison",
+            "damage": 4,
+            "turns": 4
+          },
+          "statusEffect": {
+            "slug": "weaken",
+            "turns": 3
+          },
+          "description": "Mark the target for death. Poison and weaken simultaneously.",
+          "tokenCost": 12,
+          "ranks": [
+            {
+              "damage": 1
+            },
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.65
+            },
+            {
+              "damage": 2
+            }
+          ]
+        },
+        {
+          "slug": "cloak-of-shadows",
+          "name": "Cloak of Shadows",
+          "cost": 4,
+          "damage": 0,
+          "type": "purify",
+          "description": "Shroud yourself in shadow, cleansing all afflictions.",
+          "tokenCost": 8,
+          "ranks": [
+            {},
+            {
+              "bonusHealPct": 5
+            },
+            {
+              "bonusHealPct": 10,
+              "cleanse": "all"
+            },
+            {
+              "bonusHealPct": 15,
+              "cleanse": "all",
+              "shield": 10
+            },
+            {
+              "bonusHealPct": 20,
+              "cleanse": "all",
+              "shield": 20
+            }
+          ]
+        },
+        {
+          "slug": "shiv",
+          "name": "Shiv",
+          "cost": 1,
+          "damage": 0.8,
+          "type": "physical",
+          "description": "A quick, cheap jab. Low cost, low damage, always reliable.",
+          "tokenCost": 5,
+          "ranks": [
+            {
+              "damage": 0.8
+            },
+            {
+              "damage": 0.96
+            },
+            {
+              "damage": 1.12
+            },
+            {
+              "damage": 1.32
+            },
+            {
+              "damage": 1.6
+            }
+          ]
+        },
+        {
+          "slug": "disembowel",
+          "name": "Disembowel",
+          "cost": 7,
+          "damage": 2.2,
+          "type": "physical",
+          "dot": {
+            "type": "bleed",
+            "damage": 4,
+            "turns": 4
+          },
+          "description": "A vicious strike that opens deep wounds. Heavy bleed.",
+          "tokenCost": 13,
+          "ranks": [
+            {
+              "damage": 2.2
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.08,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 3.63
+            },
+            {
+              "damage": 4.4,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "nerve-strike",
+          "name": "Nerve Strike",
+          "cost": 4,
+          "damage": 1.3,
+          "type": "physical",
+          "slow": true,
+          "stun": true,
+          "description": "Strike a pressure point. Damages, slows, and stuns.",
+          "tokenCost": 11,
+          "ranks": [
+            {
+              "damage": 1.3
+            },
+            {
+              "damage": 1.56
+            },
+            {
+              "damage": 1.82
+            },
+            {
+              "damage": 2.15
+            },
+            {
+              "damage": 2.6
+            }
+          ]
+        },
+        {
+          "slug": "blade-storm",
+          "name": "Blade Storm",
+          "cost": 7,
+          "damage": 0.7,
+          "type": "physical",
+          "hits": 5,
+          "description": "Become a whirlwind of blades, striking all enemies five times.",
+          "tokenCost": 12,
+          "ranks": [
+            {
+              "damage": 0.7
+            },
+            {
+              "damage": 0.84
+            },
+            {
+              "damage": 0.98
+            },
+            {
+              "damage": 1.15
+            },
+            {
+              "damage": 1.4
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "evasive-roll",
+          "name": "Evasive Roll",
+          "cost": 2,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dodge",
+            "amount": 40,
+            "turns": 2
+          },
+          "healPct": 5,
+          "description": "Tumble away from danger. 40% dodge for 2 turns and heal 5% HP.",
+          "tokenCost": 8,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "expose-weakness",
+          "name": "Expose Weakness",
+          "cost": 3,
+          "damage": 0.6,
+          "type": "party-debuff",
+          "statusEffect": {
+            "slug": "weaken",
+            "turns": 4
+          },
+          "description": "Study and exploit the enemy's flaws. Target takes 20% more damage from all sources and is weakened for 4 turns.",
+          "tokenCost": 9,
+          "ranks": [
+            {
+              "damage": 0.6,
+              "damageAmp": 20
+            },
+            {
+              "damage": 0.72,
+              "damageAmp": 22
+            },
+            {
+              "damage": 0.84,
+              "damageAmp": 25,
+              "durationBonus": 1
+            },
+            {
+              "damage": 0.99,
+              "damageAmp": 28,
+              "durationBonus": 1
+            },
+            {
+              "damage": 1.2,
+              "damageAmp": 30,
+              "durationBonus": 1
+            }
+          ],
+          "enemyDebuff": {
+            "slug": "weaken",
+            "turns": 4,
+            "damageAmp": 20
+          }
+        },
+        {
+          "slug": "shadow-strike",
+          "name": "Shadow Strike",
+          "cost": 5,
+          "damage": 2.4,
+          "type": "physical",
+          "description": "Teleport through shadows and strike. High burst damage.",
+          "tokenCost": 10,
+          "ranks": [
+            {
+              "damage": 2.4
+            },
+            {
+              "damage": 2.88
+            },
+            {
+              "damage": 3.36,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 3.96
+            },
+            {
+              "damage": 4.8,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "preparation",
+          "name": "Preparation",
+          "cost": 0,
+          "damage": 0,
+          "type": "restore",
+          "restore": 10,
+          "description": "Steady your focus and recover 10 MP.",
+          "tokenCost": 7,
+          "ranks": [
+            {},
+            {
+              "restoreBonus": 0.15
+            },
+            {
+              "restoreBonus": 0.3
+            },
+            {
+              "restoreBonus": 0.5
+            },
+            {
+              "restoreBonus": 0.75
+            }
+          ]
+        },
+        {
+          "slug": "vendetta",
+          "name": "Vendetta",
+          "cost": 6,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "str",
+            "amount": 6,
+            "turns": 3
+          },
+          "secondaryBuff": {
+            "stat": "dex",
+            "amount": 4,
+            "turns": 3
+          },
+          "description": "Swear vengeance. +6 STR and +4 DEX for 3 turns.",
+          "tokenCost": 14,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "death-from-above",
+          "name": "Death From Above",
+          "cost": 9,
+          "damage": 3.2,
+          "type": "physical",
+          "stun": true,
+          "selfDamagePct": 5,
+          "description": "Leap into the air and crash down on the enemy. Massive damage, stuns, costs 5% HP.",
+          "tokenCost": 18,
+          "ranks": [
+            {
+              "damage": 3.2
+            },
+            {
+              "damage": 4
+            },
+            {
+              "damage": 4.96
+            },
+            {
+              "damage": 6.08
+            },
+            {
+              "damage": 8
+            }
+          ],
+          "ultimate": true
+        },
+        {
+          "slug": "smoke-screen",
+          "name": "Smoke Screen",
+          "cost": 10,
+          "type": "party-buff",
+          "description": "Blanket the area in thick smoke. All allies gain +25% dodge for 2 turns.",
+          "tokenCost": 14,
+          "partyBuff": {
+            "stat": "dodge",
+            "amount": 25,
+            "turns": 2
+          },
+          "pveCooldown": 5,
+          "ranks": [
+            {
+              "buffAmount": 25
+            },
+            {
+              "buffAmount": 30
+            },
+            {
+              "buffAmount": 30,
+              "durationBonus": 1
+            },
+            {
+              "buffAmount": 35,
+              "durationBonus": 1
+            },
+            {
+              "buffAmount": 40,
+              "durationBonus": 1
+            }
+          ]
+        }
+      ],
+      "description": "Shadow operative. Burst damage, evasion, poison, and cunning combos."
+    },
+    {
+      "slug": "cleric",
+      "name": "Cleric",
+      "baseHp": 130,
+      "baseMp": 35,
+      "primaryStat": "wis",
+      "abilities": [
+        {
+          "slug": "smite",
+          "name": "Holy Smite",
+          "cost": 3,
+          "damage": 1.8,
+          "type": "magic",
+          "description": "Channel divine wrath into a searing strike.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 1.8
+            },
+            {
+              "damage": 2.16
+            },
+            {
+              "damage": 2.52,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 2.97
+            },
+            {
+              "damage": 3.6,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "heal",
+          "name": "Heal",
+          "cost": 4,
+          "damage": 0,
+          "type": "heal",
+          "healPct": 25,
+          "description": "Restore 25% of max HP with holy light.",
+          "starter": true,
+          "ranks": [
+            {
+              "healPct": 25
+            },
+            {
+              "healPct": 30
+            },
+            {
+              "healPct": 35,
+              "cleanse": 1
+            },
+            {
+              "healPct": 41.3
+            },
+            {
+              "healPct": 50,
+              "cleanse": "all"
+            }
+          ]
+        },
+        {
+          "slug": "bless",
+          "name": "Bless",
+          "cost": 5,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "all",
+            "amount": 3,
+            "turns": 3
+          },
+          "description": "+3 to all stats for 3 turns.",
+          "starter": true,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "divine-shield",
+          "name": "Divine Shield",
+          "cost": 4,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "defense",
+            "amount": 6,
+            "turns": 3
+          },
+          "description": "Invoke divine protection. +6 DEF for 3 turns.",
+          "starter": true,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "purify",
+          "name": "Purify",
+          "cost": 2,
+          "damage": 0,
+          "type": "purify",
+          "healPct": 10,
+          "description": "Cleanse all afflictions and restore 10% max HP.",
+          "starter": true,
+          "ranks": [
+            {},
+            {
+              "bonusHealPct": 5
+            },
+            {
+              "bonusHealPct": 10,
+              "cleanse": "all"
+            },
+            {
+              "bonusHealPct": 15,
+              "cleanse": "all",
+              "shield": 10
+            },
+            {
+              "bonusHealPct": 20,
+              "cleanse": "all",
+              "shield": 20
+            }
+          ]
+        },
+        {
+          "slug": "sacred-flame",
+          "name": "Sacred Flame",
+          "cost": 5,
+          "damage": 1.4,
+          "type": "magic",
+          "dot": {
+            "type": "burn",
+            "damage": 3,
+            "turns": 3
+          },
+          "healPct": 10,
+          "description": "Holy fire scorches the foe and mends your wounds. 3 burn/turn, heal 10% HP.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.96
+            },
+            {
+              "damage": 2.31
+            },
+            {
+              "damage": 2.8
+            }
+          ]
+        },
+        {
+          "slug": "mass-heal",
+          "name": "Mass Heal",
+          "cost": 16,
+          "damage": 0,
+          "type": "party-heal",
+          "healPct": 20,
+          "description": "A powerful prayer of restoration washes over the entire party, healing all allies for 20% max HP.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "healPct": 20
+            },
+            {
+              "healPct": 22
+            },
+            {
+              "healPct": 25,
+              "cleanse": 1
+            },
+            {
+              "healPct": 28
+            },
+            {
+              "healPct": 32,
+              "cleanse": "all"
+            }
+          ],
+          "partyHealPct": 20
+        },
+        {
+          "slug": "holy-nova",
+          "name": "Holy Nova",
+          "cost": 6,
+          "damage": 1.5,
+          "type": "magic",
+          "healPct": 12,
+          "description": "Burst of holy energy that damages all enemies and heals 12% HP.",
+          "tokenCost": 5,
+          "ranks": [
+            {
+              "damage": 1.5
+            },
+            {
+              "damage": 1.8
+            },
+            {
+              "damage": 2.1,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 2.47
+            },
+            {
+              "damage": 3,
+              "bonusDamageFlat": 8
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "resurrection",
+          "name": "Resurrection",
+          "cost": 10,
+          "damage": 0,
+          "type": "heal",
+          "healPct": 80,
+          "description": "Channel immense divine power. Restore 80% max HP. Huge MP cost.",
+          "tokenCost": 12,
+          "ranks": [
+            {
+              "healPct": 80
+            },
+            {
+              "healPct": 96
+            },
+            {
+              "healPct": 112,
+              "cleanse": 1
+            },
+            {
+              "healPct": 132
+            },
+            {
+              "healPct": 160,
+              "cleanse": "all"
+            }
+          ]
+        },
+        {
+          "slug": "wrath-of-light",
+          "name": "Wrath of Light",
+          "cost": 7,
+          "damage": 2.4,
+          "type": "magic",
+          "stun": true,
+          "description": "A blinding pillar of light that stuns and sears.",
+          "tokenCost": 10,
+          "ranks": [
+            {
+              "damage": 2.4
+            },
+            {
+              "damage": 2.88
+            },
+            {
+              "damage": 3.36,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 3.96
+            },
+            {
+              "damage": 4.8,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "holy-fire",
+          "name": "Holy Fire",
+          "cost": 5,
+          "damage": 1.6,
+          "type": "magic",
+          "dot": {
+            "type": "burn",
+            "damage": 3,
+            "turns": 3
+          },
+          "description": "Sacred flames scorch the enemy. 3 burn damage/turn for 3 turns.",
+          "tokenCost": 6,
+          "ranks": [
+            {
+              "damage": 1.6
+            },
+            {
+              "damage": 1.92
+            },
+            {
+              "damage": 2.24,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.2,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "prayer-of-mending",
+          "name": "Prayer of Mending",
+          "cost": 3,
+          "damage": 0,
+          "type": "heal",
+          "healPct": 15,
+          "description": "A gentle prayer that restores 15% of max HP.",
+          "tokenCost": 6,
+          "ranks": [
+            {
+              "healPct": 15
+            },
+            {
+              "healPct": 18
+            },
+            {
+              "healPct": 21,
+              "cleanse": 1
+            },
+            {
+              "healPct": 24.8
+            },
+            {
+              "healPct": 30,
+              "cleanse": "all"
+            }
+          ]
+        },
+        {
+          "slug": "smite-evil",
+          "name": "Smite Evil",
+          "cost": 6,
+          "damage": 2.2,
+          "type": "magic",
+          "description": "Channel divine wrath for devastating holy damage.",
+          "tokenCost": 9,
+          "ranks": [
+            {
+              "damage": 2.2
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.08,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 3.63
+            },
+            {
+              "damage": 4.4,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "sanctuary",
+          "name": "Sanctuary",
+          "cost": 6,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "defense",
+            "amount": 7,
+            "turns": 3
+          },
+          "healPct": 8,
+          "description": "Create a holy sanctuary. +7 DEF for 3 turns and heal 8% HP.",
+          "tokenCost": 10,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "radiance",
+          "name": "Radiance",
+          "cost": 7,
+          "damage": 1.3,
+          "type": "magic",
+          "healPct": 15,
+          "description": "Burst of holy light that damages the foe and heals 15% HP.",
+          "tokenCost": 11,
+          "ranks": [
+            {
+              "damage": 1.3
+            },
+            {
+              "damage": 1.56
+            },
+            {
+              "damage": 1.82
+            },
+            {
+              "damage": 2.15
+            },
+            {
+              "damage": 2.6
+            }
+          ]
+        },
+        {
+          "slug": "divine-word",
+          "name": "Divine Word",
+          "cost": 4,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "all",
+            "amount": 3,
+            "turns": 2
+          },
+          "description": "Speak a word of power. +3 to all stats for 2 turns.",
+          "tokenCost": 9,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "penance",
+          "name": "Penance",
+          "cost": 5,
+          "damage": 1,
+          "type": "magic",
+          "hits": 3,
+          "description": "Three bolts of holy energy strike in rapid succession.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "damage": 1
+            },
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.65
+            },
+            {
+              "damage": 2
+            }
+          ]
+        },
+        {
+          "slug": "absolution",
+          "name": "Absolution",
+          "cost": 6,
+          "damage": 0,
+          "type": "purify",
+          "healPct": 20,
+          "description": "Purge all afflictions and restore 20% max HP. Deep cleansing prayer.",
+          "tokenCost": 12,
+          "ranks": [
+            {},
+            {
+              "bonusHealPct": 5
+            },
+            {
+              "bonusHealPct": 10,
+              "cleanse": "all"
+            },
+            {
+              "bonusHealPct": 15,
+              "cleanse": "all",
+              "shield": 10
+            },
+            {
+              "bonusHealPct": 20,
+              "cleanse": "all",
+              "shield": 20
+            }
+          ]
+        },
+        {
+          "slug": "retribution",
+          "name": "Retribution",
+          "cost": 7,
+          "damage": 2,
+          "type": "magic",
+          "stun": true,
+          "description": "Divine judgment crashes down. Heavy damage and stuns.",
+          "tokenCost": 12,
+          "ranks": [
+            {
+              "damage": 2
+            },
+            {
+              "damage": 2.4
+            },
+            {
+              "damage": 2.8,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 3.3
+            },
+            {
+              "damage": 4,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "beacon-of-light",
+          "name": "Beacon of Light",
+          "cost": 8,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "defense",
+            "amount": 5,
+            "turns": 4
+          },
+          "healPct": 10,
+          "description": "Become a pillar of light. +5 DEF for 4 turns and heal 10% HP.",
+          "tokenCost": 13,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "spirit-mend",
+          "name": "Spirit Mend",
+          "cost": 2,
+          "damage": 0,
+          "type": "heal",
+          "healPct": 10,
+          "description": "A quick spiritual mend. Restores 10% of max HP cheaply.",
+          "tokenCost": 5,
+          "ranks": [
+            {
+              "healPct": 10
+            },
+            {
+              "healPct": 12
+            },
+            {
+              "healPct": 14,
+              "cleanse": 1
+            },
+            {
+              "healPct": 16.5
+            },
+            {
+              "healPct": 20,
+              "cleanse": "all"
+            }
+          ]
+        },
+        {
+          "slug": "condemn",
+          "name": "Condemn",
+          "cost": 5,
+          "damage": 1.4,
+          "type": "magic",
+          "statusEffect": {
+            "slug": "weaken",
+            "turns": 3
+          },
+          "description": "Pass divine judgment. Damages and weakens for 3 turns.",
+          "tokenCost": 9,
+          "ranks": [
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.96
+            },
+            {
+              "damage": 2.31
+            },
+            {
+              "damage": 2.8
+            }
+          ]
+        },
+        {
+          "slug": "angelic-wings",
+          "name": "Angelic Wings",
+          "cost": 4,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dodge",
+            "amount": 40,
+            "turns": 2
+          },
+          "description": "Manifest ethereal wings. 40% dodge for 2 turns.",
+          "tokenCost": 8,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "exorcism",
+          "name": "Exorcism",
+          "cost": 6,
+          "damage": 2.5,
+          "type": "magic",
+          "description": "Channel pure divine energy into a devastating attack.",
+          "tokenCost": 11,
+          "ranks": [
+            {
+              "damage": 2.5
+            },
+            {
+              "damage": 3
+            },
+            {
+              "damage": 3.5,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 4.13
+            },
+            {
+              "damage": 5,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "prayer-of-fortitude",
+          "name": "Prayer of Fortitude",
+          "cost": 5,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "con",
+            "amount": 5,
+            "turns": 4
+          },
+          "secondaryBuff": {
+            "stat": "defense",
+            "amount": 3,
+            "turns": 4
+          },
+          "description": "+5 CON and +3 DEF for 4 turns. A ward of endurance.",
+          "tokenCost": 10,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "flash-heal",
+          "name": "Flash Heal",
+          "cost": 5,
+          "damage": 0,
+          "type": "heal",
+          "healPct": 30,
+          "description": "An urgent burst of healing. Restore 30% of max HP.",
+          "tokenCost": 10,
+          "ranks": [
+            {
+              "healPct": 30
+            },
+            {
+              "healPct": 36
+            },
+            {
+              "healPct": 42,
+              "cleanse": 1
+            },
+            {
+              "healPct": 49.5
+            },
+            {
+              "healPct": 60,
+              "cleanse": "all"
+            }
+          ]
+        },
+        {
+          "slug": "divine-storm",
+          "name": "Divine Storm",
+          "cost": 8,
+          "damage": 1.2,
+          "type": "magic",
+          "hits": 3,
+          "healPct": 8,
+          "description": "Holy energy cascades outward, striking all enemies three times and healing 8% HP.",
+          "tokenCost": 13,
+          "ranks": [
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.44
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.98
+            },
+            {
+              "damage": 2.4
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "lay-on-hands",
+          "name": "Lay on Hands",
+          "cost": 12,
+          "damage": 0,
+          "type": "heal",
+          "healPct": 60,
+          "description": "Place your hands on yourself and channel. Restore 60% max HP. Enormous MP cost.",
+          "tokenCost": 14,
+          "ranks": [
+            {
+              "healPct": 60
+            },
+            {
+              "healPct": 72
+            },
+            {
+              "healPct": 84,
+              "cleanse": 1
+            },
+            {
+              "healPct": 99
+            },
+            {
+              "healPct": 120,
+              "cleanse": "all"
+            }
+          ]
+        },
+        {
+          "slug": "holy-wrath",
+          "name": "Holy Wrath",
+          "cost": 9,
+          "damage": 2.8,
+          "type": "magic",
+          "dot": {
+            "type": "burn",
+            "damage": 4,
+            "turns": 3
+          },
+          "description": "Unleash the full fury of divine wrath. Massive damage plus holy burn.",
+          "tokenCost": 15,
+          "ranks": [
+            {
+              "damage": 2.8
+            },
+            {
+              "damage": 3.36
+            },
+            {
+              "damage": 3.92,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 4.62
+            },
+            {
+              "damage": 5.6,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "archangel",
+          "name": "Archangel",
+          "cost": 10,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "all",
+            "amount": 4,
+            "turns": 3
+          },
+          "healPct": 15,
+          "description": "Ascend momentarily. +4 all stats for 3 turns and heal 15% HP. The ultimate blessing.",
+          "tokenCost": 18,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2,
+              "aoeAllies": true
+            }
+          ],
+          "ultimate": true
+        },
+        {
+          "slug": "heal-other",
+          "name": "Heal Other",
+          "cost": 12,
+          "type": "ally-heal",
+          "description": "Channel holy light into a wounded ally, restoring 30% of their max HP.",
+          "tokenCost": 12,
+          "allyHealPct": 30,
+          "pveCooldown": 3,
+          "ranks": [
+            {
+              "healPct": 30
+            },
+            {
+              "healPct": 33
+            },
+            {
+              "healPct": 36
+            },
+            {
+              "healPct": 40
+            },
+            {
+              "healPct": 45
+            }
+          ]
+        },
+        {
+          "slug": "resurrect-ally",
+          "name": "Resurrect Ally",
+          "cost": 25,
+          "type": "ally-revive",
+          "description": "Call a fallen ally back from the brink. Revives a downed party member at 40% HP. Once per combat.",
+          "tokenCost": 15,
+          "reviveHpPct": 40,
+          "pveCooldown": 99,
+          "ranks": [
+            {
+              "reviveHpPct": 40
+            },
+            {
+              "reviveHpPct": 45
+            },
+            {
+              "reviveHpPct": 50
+            },
+            {
+              "reviveHpPct": 55
+            },
+            {
+              "reviveHpPct": 60
+            }
+          ]
+        }
+      ],
+      "description": "Divine channeler. Sustained healing, purification, buffs, and holy fire."
+    },
+    {
+      "slug": "ranger",
+      "name": "Ranger",
+      "baseHp": 130,
+      "baseMp": 22,
+      "primaryStat": "dex",
+      "abilities": [
+        {
+          "slug": "twin-shot",
+          "name": "Twin Shot",
+          "cost": 3,
+          "damage": 1.3,
+          "type": "physical",
+          "hits": 2,
+          "description": "Fire two arrows in rapid succession.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 1.3
+            },
+            {
+              "damage": 1.56
+            },
+            {
+              "damage": 1.82
+            },
+            {
+              "damage": 2.15
+            },
+            {
+              "damage": 2.6
+            }
+          ]
+        },
+        {
+          "slug": "trap",
+          "name": "Bear Trap",
+          "cost": 4,
+          "damage": 0.8,
+          "type": "physical",
+          "stun": true,
+          "description": "Set a trap. Damages and stuns.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 0.8
+            },
+            {
+              "damage": 0.96
+            },
+            {
+              "damage": 1.12
+            },
+            {
+              "damage": 1.32
+            },
+            {
+              "damage": 1.6
+            }
+          ]
+        },
+        {
+          "slug": "nature-mend",
+          "name": "Nature's Mend",
+          "cost": 3,
+          "damage": 0,
+          "type": "heal",
+          "healPct": 20,
+          "description": "Draw deep healing from the wilds. Restore 20% max HP.",
+          "starter": true,
+          "ranks": [
+            {
+              "healPct": 20
+            },
+            {
+              "healPct": 24
+            },
+            {
+              "healPct": 28,
+              "cleanse": 1
+            },
+            {
+              "healPct": 33
+            },
+            {
+              "healPct": 40,
+              "cleanse": "all"
+            }
+          ]
+        },
+        {
+          "slug": "marked-shot",
+          "name": "Marked Shot",
+          "cost": 3,
+          "damage": 1.5,
+          "type": "physical",
+          "statusEffect": {
+            "slug": "weaken",
+            "turns": 2
+          },
+          "description": "A precise shot that weakens the target for 2 turns.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 1.5
+            },
+            {
+              "damage": 1.8
+            },
+            {
+              "damage": 2.1,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 2.47
+            },
+            {
+              "damage": 3,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "volley",
+          "name": "Volley",
+          "cost": 5,
+          "damage": 1,
+          "type": "physical",
+          "hits": 3,
+          "description": "Loose a volley of arrows, raining three shots on all enemies.",
+          "starter": true,
+          "ranks": [
+            {
+              "damage": 1
+            },
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.65
+            },
+            {
+              "damage": 2
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "camouflage",
+          "name": "Camouflage",
+          "cost": 2,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dodge",
+            "amount": 40,
+            "turns": 2
+          },
+          "restoreMp": 4,
+          "description": "Blend into your surroundings. 40% dodge for 2 turns, recover 4 MP.",
+          "starter": true,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "explosive-arrow",
+          "name": "Explosive Arrow",
+          "cost": 6,
+          "damage": 2.2,
+          "type": "physical",
+          "dot": {
+            "type": "burn",
+            "damage": 3,
+            "turns": 2
+          },
+          "description": "An arrow tipped with alchemist fire. Deals damage + burn.",
+          "tokenCost": 5,
+          "ranks": [
+            {
+              "damage": 2.2
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.08,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 3.63
+            },
+            {
+              "damage": 4.4,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "barrage",
+          "name": "Barrage",
+          "cost": 7,
+          "damage": 0.8,
+          "type": "physical",
+          "hits": 5,
+          "description": "Unleash five arrows in a devastating barrage that hits all enemies.",
+          "tokenCost": 10,
+          "ranks": [
+            {
+              "damage": 0.8
+            },
+            {
+              "damage": 0.96
+            },
+            {
+              "damage": 1.12
+            },
+            {
+              "damage": 1.32
+            },
+            {
+              "damage": 1.6
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "natures-wrath",
+          "name": "Nature's Wrath",
+          "cost": 5,
+          "damage": 1.6,
+          "type": "magic",
+          "statusEffect": {
+            "slug": "poison",
+            "turns": 3
+          },
+          "description": "Call upon nature to poison and strike the foe.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "damage": 1.6
+            },
+            {
+              "damage": 1.92
+            },
+            {
+              "damage": 2.24,
+              "bonusDamageFlat": 3
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.2,
+              "bonusDamageFlat": 8
+            }
+          ]
+        },
+        {
+          "slug": "eagle-eye",
+          "name": "Eagle Eye",
+          "cost": 3,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dex",
+            "amount": 5,
+            "turns": 3
+          },
+          "description": "Sharpen your senses. +5 DEX for 3 turns.",
+          "tokenCost": 8,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "serpent-sting",
+          "name": "Serpent Sting",
+          "cost": 3,
+          "damage": 0.7,
+          "type": "physical",
+          "dot": {
+            "type": "poison",
+            "damage": 4,
+            "turns": 4
+          },
+          "description": "A venomous arrow. 4 poison damage/turn for 4 turns.",
+          "tokenCost": 6,
+          "ranks": [
+            {
+              "damage": 0.7
+            },
+            {
+              "damage": 0.84
+            },
+            {
+              "damage": 0.98
+            },
+            {
+              "damage": 1.15
+            },
+            {
+              "damage": 1.4
+            }
+          ]
+        },
+        {
+          "slug": "multi-shot",
+          "name": "Multi-Shot",
+          "cost": 5,
+          "damage": 1,
+          "type": "physical",
+          "hits": 3,
+          "description": "Fire three arrows simultaneously, each seeking a different target.",
+          "tokenCost": 7,
+          "ranks": [
+            {
+              "damage": 1
+            },
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.65
+            },
+            {
+              "damage": 2
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "disengage",
+          "name": "Disengage",
+          "cost": 2,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dodge",
+            "amount": 50,
+            "turns": 1
+          },
+          "healPct": 5,
+          "description": "Leap backward to safety. 50% dodge for 1 turn and heal 5% HP.",
+          "tokenCost": 7,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "aimed-shot",
+          "name": "Aimed Shot",
+          "cost": 5,
+          "damage": 2.5,
+          "type": "physical",
+          "description": "A carefully aimed shot for maximum damage. Pure precision.",
+          "tokenCost": 9,
+          "ranks": [
+            {
+              "damage": 2.5
+            },
+            {
+              "damage": 3
+            },
+            {
+              "damage": 3.5,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 4.13
+            },
+            {
+              "damage": 5,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "entangling-roots",
+          "name": "Entangling Roots",
+          "cost": 4,
+          "damage": 0.6,
+          "type": "magic",
+          "stun": true,
+          "slow": true,
+          "description": "Summon roots to entangle the enemy. Damages, stuns, and slows.",
+          "tokenCost": 10,
+          "ranks": [
+            {
+              "damage": 0.6
+            },
+            {
+              "damage": 0.72
+            },
+            {
+              "damage": 0.84
+            },
+            {
+              "damage": 0.99
+            },
+            {
+              "damage": 1.2
+            }
+          ]
+        },
+        {
+          "slug": "rapid-fire",
+          "name": "Rapid Fire",
+          "cost": 7,
+          "damage": 0.6,
+          "type": "physical",
+          "hits": 6,
+          "description": "Unleash six arrows in a blistering hail of shots.",
+          "tokenCost": 12,
+          "ranks": [
+            {
+              "damage": 0.6
+            },
+            {
+              "damage": 0.72
+            },
+            {
+              "damage": 0.84
+            },
+            {
+              "damage": 0.99
+            },
+            {
+              "damage": 1.2
+            }
+          ]
+        },
+        {
+          "slug": "survival-instinct",
+          "name": "Survival Instinct",
+          "cost": 3,
+          "damage": 0,
+          "type": "heal",
+          "healPct": 18,
+          "description": "Tap into primal instincts. Recover 18% of max HP.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "healPct": 18
+            },
+            {
+              "healPct": 21.6
+            },
+            {
+              "healPct": 25.2,
+              "cleanse": 1
+            },
+            {
+              "healPct": 29.7
+            },
+            {
+              "healPct": 36,
+              "cleanse": "all"
+            }
+          ]
+        },
+        {
+          "slug": "natures-blessing",
+          "name": "Nature's Blessing",
+          "cost": 5,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "all",
+            "amount": 2,
+            "turns": 3
+          },
+          "healPct": 5,
+          "description": "Commune with nature. +2 all stats for 3 turns and heal 5% HP.",
+          "tokenCost": 10,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "concussive-shot",
+          "name": "Concussive Shot",
+          "cost": 4,
+          "damage": 1.4,
+          "type": "physical",
+          "stun": true,
+          "description": "A heavy-headed arrow that stuns on impact.",
+          "tokenCost": 9,
+          "ranks": [
+            {
+              "damage": 1.4
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.96
+            },
+            {
+              "damage": 2.31
+            },
+            {
+              "damage": 2.8
+            }
+          ]
+        },
+        {
+          "slug": "wild-spirits",
+          "name": "Wild Spirits",
+          "cost": 6,
+          "damage": 1.2,
+          "type": "magic",
+          "hits": 3,
+          "description": "Call upon forest spirits to strike the enemy three times.",
+          "tokenCost": 11,
+          "ranks": [
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.44
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.98
+            },
+            {
+              "damage": 2.4
+            }
+          ]
+        },
+        {
+          "slug": "sniper-shot",
+          "name": "Sniper Shot",
+          "cost": 6,
+          "damage": 3,
+          "type": "physical",
+          "description": "A single perfect shot from extreme range. Devastating damage.",
+          "tokenCost": 12,
+          "ranks": [
+            {
+              "damage": 3
+            },
+            {
+              "damage": 3.6
+            },
+            {
+              "damage": 4.2,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 4.95
+            },
+            {
+              "damage": 6,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "thorns",
+          "name": "Thorns",
+          "cost": 4,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "defense",
+            "amount": 5,
+            "turns": 3
+          },
+          "description": "Grow thorny bark on your armor. +5 DEF for 3 turns.",
+          "tokenCost": 8,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "wind-burst",
+          "name": "Wind Burst",
+          "cost": 4,
+          "damage": 1.2,
+          "type": "magic",
+          "statusEffect": {
+            "slug": "slow",
+            "turns": 3
+          },
+          "description": "A blast of wind that damages and slows the enemy for 3 turns.",
+          "tokenCost": 8,
+          "ranks": [
+            {
+              "damage": 1.2
+            },
+            {
+              "damage": 1.44
+            },
+            {
+              "damage": 1.68
+            },
+            {
+              "damage": 1.98
+            },
+            {
+              "damage": 2.4
+            }
+          ]
+        },
+        {
+          "slug": "flaming-arrow",
+          "name": "Flaming Arrow",
+          "cost": 5,
+          "damage": 1.6,
+          "type": "physical",
+          "dot": {
+            "type": "burn",
+            "damage": 3,
+            "turns": 3
+          },
+          "description": "An arrow wrapped in flame. Damage plus 3 burn/turn for 3 turns.",
+          "tokenCost": 9,
+          "ranks": [
+            {
+              "damage": 1.6
+            },
+            {
+              "damage": 1.92
+            },
+            {
+              "damage": 2.24,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 2.64
+            },
+            {
+              "damage": 3.2,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "rejuvenation",
+          "name": "Rejuvenation",
+          "cost": 4,
+          "damage": 0,
+          "type": "purify",
+          "healPct": 10,
+          "description": "Cleanse all afflictions with nature's touch and recover 10% HP.",
+          "tokenCost": 10,
+          "ranks": [
+            {},
+            {
+              "bonusHealPct": 5
+            },
+            {
+              "bonusHealPct": 10,
+              "cleanse": "all"
+            },
+            {
+              "bonusHealPct": 15,
+              "cleanse": "all",
+              "shield": 10
+            },
+            {
+              "bonusHealPct": 20,
+              "cleanse": "all",
+              "shield": 20
+            }
+          ]
+        },
+        {
+          "slug": "hunters-mark",
+          "name": "Hunter's Mark",
+          "cost": 3,
+          "damage": 0.5,
+          "type": "physical",
+          "statusEffect": {
+            "slug": "weaken",
+            "turns": 4
+          },
+          "description": "Mark the target. Light damage but weakened for 4 turns.",
+          "tokenCost": 9,
+          "ranks": [
+            {
+              "damage": 0.5
+            },
+            {
+              "damage": 0.6
+            },
+            {
+              "damage": 0.7
+            },
+            {
+              "damage": 0.82
+            },
+            {
+              "damage": 1
+            }
+          ]
+        },
+        {
+          "slug": "arrow-rain",
+          "name": "Arrow Rain",
+          "cost": 8,
+          "damage": 0.8,
+          "type": "physical",
+          "hits": 5,
+          "description": "Darken the sky with arrows. Five projectiles rain down on all enemies.",
+          "tokenCost": 13,
+          "ranks": [
+            {
+              "damage": 0.8
+            },
+            {
+              "damage": 0.96
+            },
+            {
+              "damage": 1.12
+            },
+            {
+              "damage": 1.32
+            },
+            {
+              "damage": 1.6
+            }
+          ],
+          "aoe": true
+        },
+        {
+          "slug": "aspect-of-hawk",
+          "name": "Aspect of the Hawk",
+          "cost": 5,
+          "damage": 0,
+          "type": "buff",
+          "buff": {
+            "stat": "dex",
+            "amount": 6,
+            "turns": 3
+          },
+          "secondaryBuff": {
+            "stat": "str",
+            "amount": 3,
+            "turns": 3
+          },
+          "description": "Channel the hawk's precision. +6 DEX and +3 STR for 3 turns.",
+          "tokenCost": 12,
+          "ranks": [
+            {},
+            {
+              "buffBonus": 0.15
+            },
+            {
+              "buffBonus": 0.3,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.5,
+              "durationBonus": 1
+            },
+            {
+              "buffBonus": 0.75,
+              "durationBonus": 2
+            }
+          ]
+        },
+        {
+          "slug": "kill-shot",
+          "name": "Kill Shot",
+          "cost": 8,
+          "damage": 3.8,
+          "type": "physical",
+          "selfDamagePct": 5,
+          "description": "A lethal finishing arrow. Massive damage but costs 5% HP from strain.",
+          "tokenCost": 15,
+          "ranks": [
+            {
+              "damage": 3.8
+            },
+            {
+              "damage": 4.56
+            },
+            {
+              "damage": 5.32,
+              "bonusCritChance": 5
+            },
+            {
+              "damage": 6.27
+            },
+            {
+              "damage": 7.6,
+              "bonusCritChance": 10
+            }
+          ]
+        },
+        {
+          "slug": "avatar-of-nature",
+          "name": "Avatar of Nature",
+          "cost": 10,
+          "damage": 1.5,
+          "type": "magic",
+          "hits": 3,
+          "healPct": 12,
+          "description": "Become one with nature. Three spirit strikes and heal 12% HP. The ultimate ranger technique.",
+          "tokenCost": 18,
+          "ranks": [
+            {
+              "damage": 1.5
+            },
+            {
+              "damage": 1.88
+            },
+            {
+              "damage": 2.33
+            },
+            {
+              "damage": 2.85
+            },
+            {
+              "damage": 3.75
+            }
+          ],
+          "ultimate": true
+        },
+        {
+          "slug": "hunters-mark-party",
+          "name": "Hunter's Mark",
+          "cost": 8,
+          "type": "party-debuff",
+          "description": "Mark a target. All allies deal +15% damage to the marked enemy for 4 turns.",
+          "tokenCost": 12,
+          "enemyDebuff": {
+            "slug": "weaken",
+            "turns": 4,
+            "damageAmp": 15
+          },
+          "pveCooldown": 5,
+          "ranks": [
+            {
+              "damageAmp": 15
+            },
+            {
+              "damageAmp": 18
+            },
+            {
+              "damageAmp": 20,
+              "durationBonus": 1
+            },
+            {
+              "damageAmp": 22,
+              "durationBonus": 1
+            },
+            {
+              "damageAmp": 25,
+              "durationBonus": 1
+            }
+          ]
+        },
+        {
+          "slug": "natures-ward",
+          "name": "Nature's Ward",
+          "cost": 14,
+          "type": "party-buff",
+          "description": "Channel the forest's protection. All allies gain +2 all stats for 3 turns.",
+          "tokenCost": 14,
+          "partyBuff": {
+            "stat": "all",
+            "amount": 2,
+            "turns": 3
+          },
+          "pveCooldown": 5,
+          "ranks": [
+            {
+              "buffAmount": 2
+            },
+            {
+              "buffAmount": 3
+            },
+            {
+              "buffAmount": 3,
+              "durationBonus": 1
+            },
+            {
+              "buffAmount": 4,
+              "durationBonus": 1
+            },
+            {
+              "buffAmount": 4,
+              "durationBonus": 2
+            }
+          ]
+        }
+      ],
+      "description": "Wild hunter. Ranged volleys, traps, debuffs, and survival instincts."
+    }
+  ],
+  "racialPassives": {
+    "human": {
+      "name": "Versatility",
+      "icon": "\ud83c\udf1f",
+      "description": "+5% XP gain, +5% gold gain, +2% crit chance",
+      "xpBonusPct": 5,
+      "goldBonusPct": 5,
+      "critBonusPct": 2
+    },
+    "elf": {
+      "name": "Arcane Affinity",
+      "icon": "\u2728",
+      "description": "+8% magic damage, +2 MP regen per combat turn, +3% dodge chance",
+      "magicDamagePct": 8,
+      "mpRegenFlat": 2,
+      "dodgeBonusPct": 3
+    },
+    "dwarf": {
+      "name": "Stoneborn Resilience",
+      "icon": "\ud83e\udea8",
+      "description": "+5% physical damage, +5% defense, +10% durability loss reduction",
+      "physicalDamagePct": 5,
+      "defensePct": 5,
+      "durabilityReductionPct": 10
+    },
+    "halfling": {
+      "name": "Fortune's Favor",
+      "icon": "\ud83c\udf40",
+      "description": "+4% crit chance, +4% dodge chance, +10% gold gain",
+      "critBonusPct": 4,
+      "dodgeBonusPct": 4,
+      "goldBonusPct": 10
+    },
+    "orc": {
+      "name": "Bloodrage",
+      "icon": "\ud83d\udd25",
+      "description": "+8% physical damage, +3% lifesteal, +2% crit chance",
+      "physicalDamagePct": 8,
+      "lifestealPct": 3,
+      "critBonusPct": 2
+    }
+  },
+  "racialAbilities": {
+    "human": {
+      "slug": "racial-adaptability",
+      "name": "Adaptability",
+      "cost": 0,
+      "damage": 0,
+      "type": "buff",
+      "buff": {
+        "stat": "all",
+        "amount": 2,
+        "turns": 3
+      },
+      "description": "Human versatility. +2 to all stats for 3 turns. No mana cost.",
+      "racial": true,
+      "race": "human"
+    },
+    "elf": {
+      "slug": "racial-elven-grace",
+      "name": "Elven Grace",
+      "cost": 0,
+      "damage": 0,
+      "type": "buff",
+      "buff": {
+        "stat": "dodge",
+        "amount": 60,
+        "turns": 1
+      },
+      "restoreMp": 4,
+      "description": "Elven agility and attunement. 60% dodge for 1 turn, recover 4 MP.",
+      "racial": true,
+      "race": "elf"
+    },
+    "dwarf": {
+      "slug": "racial-stoneblood",
+      "name": "Stoneblood",
+      "cost": 0,
+      "damage": 0,
+      "type": "purify",
+      "healPct": 20,
+      "description": "Dwarven resilience. Cleanse all afflictions and restore 20% HP. No mana cost.",
+      "racial": true,
+      "race": "dwarf"
+    },
+    "halfling": {
+      "slug": "racial-lucky-streak",
+      "name": "Lucky Streak",
+      "cost": 0,
+      "damage": 0,
+      "type": "buff",
+      "buff": {
+        "stat": "cha",
+        "amount": 5,
+        "turns": 3
+      },
+      "description": "Halfling luck. +5 CHA for 3 turns. No mana cost.",
+      "racial": true,
+      "race": "halfling"
+    },
+    "orc": {
+      "slug": "racial-blood-fury",
+      "name": "Blood Fury",
+      "cost": 0,
+      "damage": 0,
+      "type": "buff",
+      "buff": {
+        "stat": "str",
+        "amount": 6,
+        "turns": 2
+      },
+      "selfDamagePct": 5,
+      "description": "Orcish rage. +6 STR for 2 turns, costs 5% max HP. No mana cost.",
+      "racial": true,
+      "race": "orc"
+    }
+  },
+  "extraAbilities": [
+    {
+      "slug": "racial-adaptability",
+      "name": "Adaptability",
+      "cost": 0,
+      "damage": 0,
+      "type": "buff",
+      "buff": {
+        "stat": "all",
+        "amount": 2,
+        "turns": 3
+      },
+      "description": "Human versatility. +2 to all stats for 3 turns. No mana cost.",
+      "racial": true,
+      "race": "human"
+    },
+    {
+      "slug": "racial-elven-grace",
+      "name": "Elven Grace",
+      "cost": 0,
+      "damage": 0,
+      "type": "buff",
+      "buff": {
+        "stat": "dodge",
+        "amount": 60,
+        "turns": 1
+      },
+      "restoreMp": 4,
+      "description": "Elven agility and attunement. 60% dodge for 1 turn, recover 4 MP.",
+      "racial": true,
+      "race": "elf"
+    },
+    {
+      "slug": "racial-stoneblood",
+      "name": "Stoneblood",
+      "cost": 0,
+      "damage": 0,
+      "type": "purify",
+      "healPct": 20,
+      "description": "Dwarven resilience. Cleanse all afflictions and restore 20% HP. No mana cost.",
+      "racial": true,
+      "race": "dwarf"
+    },
+    {
+      "slug": "racial-lucky-streak",
+      "name": "Lucky Streak",
+      "cost": 0,
+      "damage": 0,
+      "type": "buff",
+      "buff": {
+        "stat": "cha",
+        "amount": 5,
+        "turns": 3
+      },
+      "description": "Halfling luck. +5 CHA for 3 turns. No mana cost.",
+      "racial": true,
+      "race": "halfling"
+    },
+    {
+      "slug": "racial-blood-fury",
+      "name": "Blood Fury",
+      "cost": 0,
+      "damage": 0,
+      "type": "buff",
+      "buff": {
+        "stat": "str",
+        "amount": 6,
+        "turns": 2
+      },
+      "selfDamagePct": 5,
+      "description": "Orcish rage. +6 STR for 2 turns, costs 5% max HP. No mana cost.",
+      "racial": true,
+      "race": "orc"
+    }
+  ],
+  "socketSlots": {
+    "common": 0,
+    "uncommon": 0,
+    "rare": 1,
+    "epic": 2,
+    "legendary": 3,
+    "mythic": 4,
+    "exotic": 5
+  },
+  "enchantCosts": {
+    "rare": {
+      "gold": 200,
+      "materials": 5,
+      "rareMaterials": 0
+    },
+    "epic": {
+      "gold": 500,
+      "materials": 10,
+      "rareMaterials": 2
+    },
+    "legendary": {
+      "gold": 1500,
+      "materials": 20,
+      "rareMaterials": 5
+    },
+    "mythic": {
+      "gold": 3000,
+      "materials": 30,
+      "rareMaterials": 10
+    }
+  },
+  "extractPerkCosts": {
+    "rare": 300,
+    "epic": 800,
+    "legendary": 2000,
+    "mythic": 5000
+  },
+  "extractGemCosts": {
+    "chipped": 50,
+    "cut": 150,
+    "flawless": 400
+  },
+  "commonMaterials": [
+    "iron-ore",
+    "wolf-pelt",
+    "linen-cloth",
+    "leather-scraps",
+    "spider-silk",
+    "boar-tusk",
+    "healing-herb",
+    "moonpetal",
+    "goblin-ear",
+    "bone-dust",
+    "serpent-fang",
+    "bandit-cloak"
+  ],
+  "rareMaterials": [
+    "shadow-ichor",
+    "wraith-essence",
+    "holy-shard"
+  ],
+  "companions": {
+    "wolf": {
+      "slug": "wolf",
+      "name": "Wolf Companion",
+      "icon": "\ud83d\udc3a",
+      "baseHp": 30,
+      "hpPerLevel": 8,
+      "baseAttack": 6,
+      "attackPerLevel": 2,
+      "baseDefense": 3,
+      "defensePerLevel": 1,
+      "scaleStat": "wis",
+      "abilities": [
+        {
+          "slug": "bite",
+          "name": "Bite",
+          "description": "A vicious bite dealing moderate damage.",
+          "type": "attack",
+          "damage": 1,
+          "unlock": 1
+        },
+        {
+          "slug": "rend",
+          "name": "Rend",
+          "description": "Tear into the enemy, causing bleeding.",
+          "type": "attack",
+          "damage": 1.2,
+          "dot": {
+            "type": "bleed",
+            "turns": 3,
+            "damage": 3
+          },
+          "unlock": 2
+        },
+        {
+          "slug": "howl",
+          "name": "Howl",
+          "description": "Howl to empower your master. +15% ATK for 3 turns. Wolf skips attack.",
+          "type": "buff",
+          "buff": {
+            "target": "player",
+            "stat": "attack",
+            "amount": 15,
+            "turns": 3
+          },
+          "unlock": 3
+        },
+        {
+          "slug": "pack-tactics",
+          "name": "Pack Tactics",
+          "description": "Coordinate with your master for 1.5x damage on the same target.",
+          "type": "attack",
+          "damage": 1.5,
+          "requireSameTarget": true,
+          "unlock": 4
+        }
+      ],
+      "xpCurve": [
+        0,
+        50,
+        150,
+        350,
+        700
+      ],
+      "tiers": [
+        {
+          "desc": "Wolf joins. Basic bite attack."
+        },
+        {
+          "bonuses": {
+            "slowOnHit": true,
+            "hpMul": 1.3
+          },
+          "desc": "Frost Fangs: attacks slow enemies. Wolf HP +30%."
+        },
+        {
+          "bonuses": {
+            "slowOnHit": true,
+            "hpMul": 1.3,
+            "packAlpha": true,
+            "atkMul": 1.25
+          },
+          "desc": "Pack Alpha: wolf kill \u2192 ranger +20% damage 2 turns. Wolf ATK +25%."
+        },
+        {
+          "bonuses": {
+            "slowOnHit": true,
+            "hpMul": 1.5,
+            "packAlpha": true,
+            "atkMul": 1.25,
+            "partyAtkBuff": 10,
+            "immortal": true,
+            "evolvedName": "Dire Wolf"
+          },
+          "desc": "Dire Wolf: AoE howl +10% ATK to party. Cannot be killed (respawns in 2 turns)."
+        }
+      ]
+    },
+    "hawk": {
+      "slug": "hawk",
+      "name": "Hawk Companion",
+      "icon": "\ud83e\udd85",
+      "baseHp": 18,
+      "hpPerLevel": 5,
+      "baseAttack": 8,
+      "attackPerLevel": 3,
+      "baseDefense": 1,
+      "defensePerLevel": 0,
+      "scaleStat": "dex",
+      "abilities": [
+        {
+          "slug": "talon-strike",
+          "name": "Talon Strike",
+          "description": "Swift talons slash the enemy.",
+          "type": "attack",
+          "damage": 1,
+          "unlock": 1
+        },
+        {
+          "slug": "dive-bomb",
+          "name": "Dive Bomb",
+          "description": "Dive from above for critical damage.",
+          "type": "attack",
+          "damage": 1.8,
+          "cooldown": 2,
+          "unlock": 2
+        },
+        {
+          "slug": "blinding-screech",
+          "name": "Blinding Screech",
+          "description": "Screech to blind the enemy, reducing accuracy.",
+          "type": "debuff",
+          "effect": {
+            "slug": "blind",
+            "turns": 2
+          },
+          "unlock": 3
+        },
+        {
+          "slug": "death-from-above",
+          "name": "Death From Above",
+          "description": "Devastating aerial assault on all enemies.",
+          "type": "attack",
+          "damage": 0.8,
+          "aoe": true,
+          "unlock": 4
+        }
+      ],
+      "xpCurve": [
+        0,
+        50,
+        150,
+        350,
+        700
+      ],
+      "tiers": [
+        {
+          "desc": "Hawk joins. Talon strike."
+        },
+        {
+          "bonuses": {
+            "rangerCritBonus": 10,
+            "atkMul": 1.2
+          },
+          "desc": "Eagle Eye: ranger +10% crit. Hawk ATK +20%."
+        },
+        {
+          "bonuses": {
+            "rangerCritBonus": 10,
+            "atkMul": 1.2,
+            "aoeStun": true,
+            "doubleAttack": true
+          },
+          "desc": "Storm Dive: AoE + stun chance. Hawk attacks twice."
+        },
+        {
+          "bonuses": {
+            "rangerCritBonus": 10,
+            "atkMul": 1.2,
+            "aoeStun": true,
+            "doubleAttack": true,
+            "markOnHit": 25,
+            "immortal": true,
+            "evolvedName": "Thunder Eagle"
+          },
+          "desc": "Thunder Eagle: marks target (+25% damage from ranger). Cannot be killed."
+        }
+      ]
+    },
+    "bear": {
+      "slug": "bear",
+      "name": "Bear Companion",
+      "icon": "\ud83d\udc3b",
+      "baseHp": 50,
+      "hpPerLevel": 12,
+      "baseAttack": 4,
+      "attackPerLevel": 1,
+      "baseDefense": 5,
+      "defensePerLevel": 2,
+      "scaleStat": "wis",
+      "abilities": [
+        {
+          "slug": "maul",
+          "name": "Maul",
+          "description": "A heavy swipe dealing moderate damage.",
+          "type": "attack",
+          "damage": 1,
+          "unlock": 1
+        },
+        {
+          "slug": "roar",
+          "name": "Roar",
+          "description": "Terrifying roar debuffs all enemies ATK by 20% for 2 turns.",
+          "type": "debuff",
+          "effect": {
+            "slug": "fear",
+            "turns": 2
+          },
+          "aoe": true,
+          "unlock": 2
+        },
+        {
+          "slug": "guardian-stance",
+          "name": "Guardian Stance",
+          "description": "Bear taunts, redirecting enemy attacks to itself for 2 turns.",
+          "type": "taunt",
+          "turns": 2,
+          "unlock": 3
+        },
+        {
+          "slug": "crushing-blow",
+          "name": "Crushing Blow",
+          "description": "Devastating slam with chance to stun.",
+          "type": "attack",
+          "damage": 2,
+          "stun": true,
+          "cooldown": 3,
+          "unlock": 4
+        }
+      ],
+      "xpCurve": [
+        0,
+        50,
+        150,
+        350,
+        700
+      ],
+      "tiers": [
+        {
+          "desc": "Bear joins. Maul attack."
+        },
+        {
+          "bonuses": {
+            "hpMul": 1.5,
+            "damageTakenMul": 0.8
+          },
+          "desc": "Thick Hide: bear HP +50%, -20% damage taken."
+        },
+        {
+          "bonuses": {
+            "hpMul": 1.5,
+            "damageTakenMul": 0.8,
+            "aoeAtkDebuff": 25
+          },
+          "desc": "Protective Roar: AoE debuff enemies -25% ATK for 3 turns."
+        },
+        {
+          "bonuses": {
+            "hpMul": 1.5,
+            "damageTakenMul": 0.8,
+            "aoeAtkDebuff": 25,
+            "permanentTaunt": true,
+            "rangerDmgReduction": 15,
+            "immortal": true,
+            "evolvedName": "Ancient Bear"
+          },
+          "desc": "Ancient Bear: taunts all permanently. Ranger -15% damage taken. Cannot be killed."
+        }
+      ]
+    },
+    "serpent": {
+      "slug": "serpent",
+      "name": "Serpent Companion",
+      "icon": "\ud83d\udc0d",
+      "baseHp": 22,
+      "hpPerLevel": 6,
+      "baseAttack": 5,
+      "attackPerLevel": 2,
+      "baseDefense": 2,
+      "defensePerLevel": 1,
+      "scaleStat": "int",
+      "abilities": [
+        {
+          "slug": "fang-strike",
+          "name": "Fang Strike",
+          "description": "Venomous bite dealing damage.",
+          "type": "attack",
+          "damage": 1,
+          "unlock": 1
+        },
+        {
+          "slug": "venom-spit",
+          "name": "Venom Spit",
+          "description": "Spit venom, applying poison DoT.",
+          "type": "attack",
+          "damage": 0.6,
+          "dot": {
+            "type": "poison",
+            "turns": 4,
+            "damage": 4
+          },
+          "unlock": 2
+        },
+        {
+          "slug": "constrict",
+          "name": "Constrict",
+          "description": "Wrap around enemy, applying slow for 3 turns.",
+          "type": "attack",
+          "damage": 0.8,
+          "slow": true,
+          "unlock": 3
+        },
+        {
+          "slug": "neurotoxin",
+          "name": "Neurotoxin",
+          "description": "Inject deadly neurotoxin. High damage + stun.",
+          "type": "attack",
+          "damage": 1.6,
+          "stun": true,
+          "cooldown": 3,
+          "unlock": 4
+        }
+      ],
+      "xpCurve": [
+        0,
+        50,
+        150,
+        350,
+        700
+      ],
+      "tiers": [
+        {
+          "desc": "Serpent joins. Venom bite."
+        },
+        {
+          "bonuses": {
+            "poisonStacks": 2,
+            "atkMul": 1.2
+          },
+          "desc": "Dual Venom: poison stacks 2\u00d7. Serpent ATK +20%."
+        },
+        {
+          "bonuses": {
+            "poisonStacks": 2,
+            "atkMul": 1.2,
+            "stunChance": 15,
+            "poisonDamageBonus": 50
+          },
+          "desc": "Paralyzing Bite: 15% stun. Poison damage +50%."
+        },
+        {
+          "bonuses": {
+            "poisonStacks": 2,
+            "atkMul": 1.2,
+            "stunChance": 15,
+            "poisonDamageBonus": 50,
+            "aoePoison": true,
+            "immortal": true,
+            "evolvedName": "World Serpent"
+          },
+          "desc": "World Serpent: poisons all enemies every turn (passive AoE DoT). Cannot be killed."
+        }
+      ]
+    }
+  },
+  "classBonuses": {
+    "berserker": {
+      "slug": "berserker",
+      "name": "Berserker Stance",
+      "class": "warrior",
+      "icon": "\ud83d\udd25",
+      "description": "+20% damage dealt, +10% damage taken. Bloodrage: after killing an enemy, next attack deals 2\u00d7 damage.",
+      "passive": {
+        "damageMul": 1.2,
+        "damageTakenMul": 1.1
+      },
+      "special": null,
+      "tiers": [
+        {
+          "passive": {
+            "damageMul": 1.2,
+            "damageTakenMul": 1.1
+          },
+          "desc": "+20% damage, +10% damage taken. Bloodrage on kills."
+        },
+        {
+          "passive": {
+            "damageMul": 1.2,
+            "damageTakenMul": 1.07,
+            "bloodrageCritBonus": 15
+          },
+          "desc": "Bloodrage grants +15% crit for 2 turns. Damage taken penalty reduced to +7%."
+        },
+        {
+          "passive": {
+            "damageMul": 1.25,
+            "damageTakenMul": 1.05,
+            "bloodrageCritBonus": 15,
+            "bloodrageChains": true
+          },
+          "desc": "+25% damage, +5% taken. Bloodrage chains on kill during Bloodrage."
+        },
+        {
+          "passive": {
+            "damageMul": 1.25,
+            "damageTakenMul": 1.05,
+            "bloodrageCritBonus": 15,
+            "bloodrageChains": true,
+            "deathlessRage": true
+          },
+          "desc": "+25% damage. Deathless Rage: survive killing blow at 1 HP, +50% damage for 3 turns. Once per combat."
+        }
+      ]
+    },
+    "guardian": {
+      "slug": "guardian",
+      "name": "Guardian Stance",
+      "class": "warrior",
+      "icon": "\ud83d\udee1",
+      "description": "-15% damage taken. Taunt: force one enemy to attack you for 2 turns. Allies take 0 damage.",
+      "passive": {
+        "damageTakenMul": 0.85
+      },
+      "special": {
+        "slug": "guardian-taunt",
+        "name": "Taunt",
+        "description": "Force enemies to target you for 2 turns.",
+        "type": "taunt",
+        "turns": 2,
+        "cooldown": 99
+      },
+      "tiers": [
+        {
+          "passive": {
+            "damageTakenMul": 0.85
+          },
+          "desc": "-15% damage taken. Taunt for 2 turns."
+        },
+        {
+          "passive": {
+            "damageTakenMul": 0.82,
+            "tauntReflect": 10
+          },
+          "desc": "-18% damage taken. Taunt reflects 10% damage."
+        },
+        {
+          "passive": {
+            "damageTakenMul": 0.8,
+            "tauntReflect": 10,
+            "tauntHpRegen": 3
+          },
+          "desc": "-20% damage taken. Taunting grants 3% HP regen/turn."
+        },
+        {
+          "passive": {
+            "damageTakenMul": 0.8,
+            "tauntReflect": 10,
+            "tauntHpRegen": 3,
+            "unbreakable": true
+          },
+          "desc": "-20% taken. Unbreakable: absorb 40% max HP as shield. Once per combat."
+        }
+      ]
+    },
+    "warlord": {
+      "slug": "warlord",
+      "name": "Warlord Stance",
+      "class": "warrior",
+      "icon": "\u2694",
+      "description": "+10% damage dealt. Battle Cry: buff all allies +20% ATK for 3 turns. Once per combat.",
+      "passive": {
+        "damageMul": 1.1
+      },
+      "special": {
+        "slug": "battle-cry",
+        "name": "Battle Cry",
+        "description": "Rally allies! +20% ATK for 3 turns.",
+        "type": "party-buff",
+        "stat": "attack",
+        "amount": 20,
+        "turns": 3,
+        "cooldown": 99
+      },
+      "tiers": [
+        {
+          "passive": {
+            "damageMul": 1.1
+          },
+          "desc": "+10% damage. Battle Cry: +20% ATK to allies for 3 turns."
+        },
+        {
+          "passive": {
+            "damageMul": 1.12
+          },
+          "special": {
+            "critBonus": 10
+          },
+          "desc": "+12% damage. Battle Cry also grants +10% crit."
+        },
+        {
+          "passive": {
+            "damageMul": 1.15
+          },
+          "special": {
+            "critBonus": 10,
+            "duration": 5
+          },
+          "desc": "+15% damage. Battle Cry lasts 5 turns."
+        },
+        {
+          "passive": {
+            "damageMul": 1.15
+          },
+          "special": {
+            "critBonus": 10,
+            "duration": 5,
+            "allyHealPct": 2,
+            "uses": 2
+          },
+          "desc": "+15% damage. Allies heal 2% HP/turn during Battle Cry. Usable twice."
+        }
+      ]
+    },
+    "pyromancy": {
+      "slug": "pyromancy",
+      "name": "Pyromancy",
+      "class": "mage",
+      "icon": "\ud83d\udd25",
+      "description": "15% chance to apply burn on damage abilities. Meteor: massive AoE damage, once per combat.",
+      "passive": {
+        "onHitBurnChance": 15
+      },
+      "special": {
+        "slug": "meteor",
+        "name": "Meteor",
+        "description": "Rain fire on all enemies for massive damage.",
+        "type": "aoe-damage",
+        "damageMul": 2.5,
+        "cooldown": 99
+      },
+      "tiers": [
+        {
+          "passive": {
+            "onHitBurnChance": 15
+          },
+          "desc": "15% burn on hit. Meteor: massive AoE."
+        },
+        {
+          "passive": {
+            "onHitBurnChance": 20,
+            "burnDamageBonus": 50
+          },
+          "desc": "20% burn. Burn damage +50%."
+        },
+        {
+          "passive": {
+            "onHitBurnChance": 25,
+            "burnDamageBonus": 50,
+            "burnVulnerability": 10
+          },
+          "desc": "25% burn. Burning enemies take +10% damage from you."
+        },
+        {
+          "passive": {
+            "onHitBurnChance": 25,
+            "burnDamageBonus": 50,
+            "burnVulnerability": 10,
+            "inferno": true
+          },
+          "desc": "25% burn. Inferno: burning enemies explode, dealing remaining burn to all. Once per combat."
+        }
+      ]
+    },
+    "cryomancy": {
+      "slug": "cryomancy",
+      "name": "Cryomancy",
+      "class": "mage",
+      "icon": "\u2744",
+      "description": "15% chance to apply slow on damage abilities. Flash Freeze: stun all enemies 1 turn, once per combat.",
+      "passive": {
+        "onHitSlowChance": 15
+      },
+      "special": {
+        "slug": "flash-freeze",
+        "name": "Flash Freeze",
+        "description": "Freeze all enemies in place for 1 turn.",
+        "type": "aoe-stun",
+        "turns": 1,
+        "cooldown": 99
+      },
+      "tiers": [
+        {
+          "passive": {
+            "onHitSlowChance": 15
+          },
+          "desc": "15% slow on hit. Flash Freeze: stun all 1 turn."
+        },
+        {
+          "passive": {
+            "onHitSlowChance": 20,
+            "slowAtkReduction": 15
+          },
+          "desc": "20% slow. Slowed enemies have -15% ATK."
+        },
+        {
+          "passive": {
+            "onHitSlowChance": 25,
+            "slowAtkReduction": 15,
+            "frozenVulnerability": 15
+          },
+          "special": {
+            "duration": 2
+          },
+          "desc": "25% slow. Flash Freeze 2 turns. Frozen enemies take +15% damage."
+        },
+        {
+          "passive": {
+            "onHitSlowChance": 25,
+            "slowAtkReduction": 15,
+            "frozenVulnerability": 15,
+            "absoluteZero": true
+          },
+          "special": {
+            "duration": 2
+          },
+          "desc": "25% slow. Absolute Zero: instantly kill non-boss enemies below 15% HP. Once per combat."
+        }
+      ]
+    },
+    "arcanistry": {
+      "slug": "arcanistry",
+      "name": "Arcanistry",
+      "class": "mage",
+      "icon": "\u2728",
+      "description": "-20% MP costs on all abilities. Arcane Surge: next 3 abilities cost 0 MP, once per combat.",
+      "passive": {
+        "mpCostReduction": 20
+      },
+      "special": {
+        "slug": "arcane-surge",
+        "name": "Arcane Surge",
+        "description": "Channel pure arcane energy. Next 3 abilities cost 0 MP.",
+        "type": "free-cast",
+        "charges": 3,
+        "cooldown": 99
+      },
+      "tiers": [
+        {
+          "passive": {
+            "mpCostReduction": 20
+          },
+          "desc": "-20% MP cost. Arcane Surge: 3 free casts."
+        },
+        {
+          "passive": {
+            "mpCostReduction": 25
+          },
+          "special": {
+            "charges": 4
+          },
+          "desc": "-25% MP cost. Arcane Surge: 4 free casts."
+        },
+        {
+          "passive": {
+            "mpCostReduction": 30
+          },
+          "special": {
+            "charges": 4,
+            "postSurgeDamage": 20
+          },
+          "desc": "-30% MP cost. After Surge ends, +20% damage for 3 turns."
+        },
+        {
+          "passive": {
+            "mpCostReduction": 30
+          },
+          "special": {
+            "charges": 4,
+            "postSurgeDamage": 20,
+            "infiniteArcana": true
+          },
+          "desc": "-30% MP. Infinite Arcana: 5 turns of 0 MP cost + 15% damage. Once per combat."
+        }
+      ]
+    },
+    "radiance": {
+      "slug": "radiance",
+      "name": "Blessing of Radiance",
+      "class": "cleric",
+      "icon": "\ud83d\udc9b",
+      "description": "Passive 3% HP regen per turn. Divine Restoration: full HP + MP restore, once per combat.",
+      "passive": {
+        "hpRegenPct": 3
+      },
+      "special": {
+        "slug": "divine-restoration",
+        "name": "Divine Restoration",
+        "description": "Restore all HP and MP.",
+        "type": "full-restore",
+        "cooldown": 99
+      },
+      "tiers": [
+        {
+          "passive": {
+            "hpRegenPct": 3
+          },
+          "desc": "3% HP regen/turn. Divine Restoration: full HP+MP."
+        },
+        {
+          "passive": {
+            "hpRegenPct": 4,
+            "drCleanse": true
+          },
+          "desc": "4% HP regen. DR also cleanses all debuffs."
+        },
+        {
+          "passive": {
+            "hpRegenPct": 5,
+            "drCleanse": true,
+            "partyRegen": true
+          },
+          "desc": "5% HP regen (extends to party). DR auto-triggers at 25% HP."
+        },
+        {
+          "passive": {
+            "hpRegenPct": 5,
+            "drCleanse": true,
+            "partyRegen": true,
+            "miracle": true
+          },
+          "desc": "5% regen. Miracle: auto-revive from death at 50% HP. Once per combat."
+        }
+      ]
+    },
+    "judgment": {
+      "slug": "judgment",
+      "name": "Blessing of Judgment",
+      "class": "cleric",
+      "icon": "\u26a1",
+      "description": "+15% damage on offensive abilities. Holy Smite: deal 3\u00d7 WIS as holy damage, ignore defense. Once per combat.",
+      "passive": {
+        "damageMul": 1.15
+      },
+      "special": {
+        "slug": "holy-smite",
+        "name": "Holy Smite",
+        "description": "Smite the enemy with holy fire, ignoring defense.",
+        "type": "true-damage",
+        "statMul": 3,
+        "stat": "wis",
+        "cooldown": 99
+      },
+      "tiers": [
+        {
+          "passive": {
+            "damageMul": 1.15
+          },
+          "desc": "+15% offensive damage. Holy Smite: 3\u00d7 WIS ignoring DEF."
+        },
+        {
+          "passive": {
+            "damageMul": 1.18,
+            "smiteBurn": true
+          },
+          "desc": "+18% damage. Holy Smite also applies burn."
+        },
+        {
+          "passive": {
+            "damageMul": 1.22,
+            "smiteBurn": true,
+            "offensiveStun": 10
+          },
+          "special": {
+            "multiplier": 4
+          },
+          "desc": "+22% damage. Smite deals 4\u00d7 WIS. 10% stun on offensive abilities."
+        },
+        {
+          "passive": {
+            "damageMul": 1.22,
+            "smiteBurn": true,
+            "offensiveStun": 10,
+            "wrathOfHeaven": true
+          },
+          "special": {
+            "multiplier": 4
+          },
+          "desc": "+22% damage. Wrath of Heaven: 5\u00d7 WIS holy AoE. Once per combat."
+        }
+      ]
+    },
+    "aegis": {
+      "slug": "aegis",
+      "name": "Blessing of Aegis",
+      "class": "cleric",
+      "icon": "\ud83d\udee1",
+      "description": "Allies take -10% damage. Divine Shield: absorb 50% max HP in damage. Once per combat.",
+      "passive": {
+        "allyDamageTakenMul": 0.9
+      },
+      "special": {
+        "slug": "divine-shield",
+        "name": "Divine Shield",
+        "description": "Create a shield that absorbs 50% of your max HP in damage.",
+        "type": "shield",
+        "hpPct": 50,
+        "cooldown": 99
+      },
+      "tiers": [
+        {
+          "passive": {
+            "allyDamageTakenMul": 0.9
+          },
+          "desc": "Allies -10% damage. Divine Shield: absorb 50% max HP."
+        },
+        {
+          "passive": {
+            "allyDamageTakenMul": 0.87
+          },
+          "special": {
+            "shieldPct": 60
+          },
+          "desc": "Allies -13% damage. Shield absorbs 60% HP."
+        },
+        {
+          "passive": {
+            "allyDamageTakenMul": 0.85
+          },
+          "special": {
+            "shieldPct": 60,
+            "shieldReflect": 15
+          },
+          "desc": "Allies -15% damage. Shield reflects 15% absorbed."
+        },
+        {
+          "passive": {
+            "allyDamageTakenMul": 0.85
+          },
+          "special": {
+            "shieldPct": 60,
+            "shieldReflect": 15,
+            "sanctuary": true
+          },
+          "desc": "Allies -15% damage. Sanctuary: party -40% damage for 3 turns. Once per combat."
+        }
+      ]
+    },
+    "shadowstep": {
+      "slug": "shadowstep",
+      "name": "Shadowstep",
+      "class": "rogue",
+      "icon": "\ud83c\udf11",
+      "description": "+10% dodge permanently. Vanish: invisible 1 turn (dodge all + next attack is guaranteed 2\u00d7 crit). Once per combat.",
+      "passive": {
+        "dodgeBonus": 10
+      },
+      "special": {
+        "slug": "vanish",
+        "name": "Vanish",
+        "description": "Vanish into shadow. Dodge all attacks this turn, next attack is a guaranteed critical.",
+        "type": "vanish",
+        "cooldown": 99
+      },
+      "tiers": [
+        {
+          "passive": {
+            "dodgeBonus": 10
+          },
+          "desc": "+10% dodge. Vanish: dodge all + guaranteed 2\u00d7 crit."
+        },
+        {
+          "passive": {
+            "dodgeBonus": 13,
+            "vanishCritMul": 3
+          },
+          "desc": "+13% dodge. Vanish crit deals 3\u00d7 instead of 2\u00d7."
+        },
+        {
+          "passive": {
+            "dodgeBonus": 15,
+            "vanishCritMul": 3,
+            "vanishBonusCrits": 2
+          },
+          "desc": "+15% dodge. After Vanish, next 2 attacks are guaranteed crits."
+        },
+        {
+          "passive": {
+            "dodgeBonus": 15,
+            "vanishCritMul": 3,
+            "vanishBonusCrits": 2,
+            "phaseStrike": true
+          },
+          "desc": "+15% dodge. Phase Strike: 5\u00d7 damage ignoring defense. Once per combat."
+        }
+      ]
+    },
+    "poison-mastery": {
+      "slug": "poison-mastery",
+      "name": "Poison Mastery",
+      "class": "rogue",
+      "icon": "\ud83e\uddea",
+      "description": "25% chance to poison on all attacks. Envenom: poison all enemies (5-turn DoT). Once per combat.",
+      "passive": {
+        "onHitPoisonChance": 25
+      },
+      "special": {
+        "slug": "envenom",
+        "name": "Envenom",
+        "description": "Coat your blade in deadly venom. All enemies are poisoned.",
+        "type": "aoe-dot",
+        "dotType": "poison",
+        "turns": 5,
+        "damage": 5,
+        "cooldown": 99
+      },
+      "tiers": [
+        {
+          "passive": {
+            "onHitPoisonChance": 25
+          },
+          "desc": "25% poison on hit. Envenom: poison all enemies."
+        },
+        {
+          "passive": {
+            "onHitPoisonChance": 30,
+            "poisonDefReduction": 10
+          },
+          "desc": "30% poison. Poisoned enemies -10% defense."
+        },
+        {
+          "passive": {
+            "onHitPoisonChance": 35,
+            "poisonDefReduction": 10,
+            "poisonStacks": 2,
+            "envenomDamageBonus": 100
+          },
+          "desc": "35% poison. Poison stacks 2\u00d7. Envenom damage doubled."
+        },
+        {
+          "passive": {
+            "onHitPoisonChance": 35,
+            "poisonDefReduction": 10,
+            "poisonStacks": 2,
+            "envenomDamageBonus": 100,
+            "plagueVector": true
+          },
+          "desc": "35% poison. Plague Vector: poison spreads from dead enemies to all living. Passive."
+        }
+      ]
+    },
+    "blade-dance": {
+      "slug": "blade-dance",
+      "name": "Blade Dance",
+      "class": "rogue",
+      "icon": "\u2694",
+      "description": "+1 hit on multi-hit abilities. Flurry: attack all enemies for 80% damage. Once per combat.",
+      "passive": {
+        "bonusHits": 1
+      },
+      "special": {
+        "slug": "flurry",
+        "name": "Flurry",
+        "description": "A whirlwind of blades strikes all enemies.",
+        "type": "aoe-damage",
+        "damageMul": 0.8,
+        "cooldown": 99
+      },
+      "tiers": [
+        {
+          "passive": {
+            "bonusHits": 1
+          },
+          "desc": "+1 hit on multi-hit. Flurry: AoE all enemies."
+        },
+        {
+          "passive": {
+            "bonusHits": 2
+          },
+          "special": {
+            "damageBonus": 25
+          },
+          "desc": "+2 hits on multi-hit. Flurry +25% damage."
+        },
+        {
+          "passive": {
+            "bonusHits": 2,
+            "extraHitCrit": 5
+          },
+          "special": {
+            "damageBonus": 25,
+            "uses": 2
+          },
+          "desc": "+2 hits (+5% crit each). Flurry usable twice."
+        },
+        {
+          "passive": {
+            "bonusHits": 2,
+            "extraHitCrit": 5,
+            "thousandCuts": true
+          },
+          "special": {
+            "damageBonus": 25,
+            "uses": 2
+          },
+          "desc": "+2 hits. Thousand Cuts: all attacks hit twice at full damage for 3 turns. Once per combat."
+        }
+      ]
+    }
+  },
+  "telegraphs": {
+    "crushing-blow": {
+      "name": "Crushing Blow",
+      "type": "heavy",
+      "icon": "\ud83d\udca5",
+      "damage": 2.5,
+      "warmup": 1,
+      "description": "winding up a devastating blow!"
+    },
+    "wild-charge": {
+      "name": "Wild Charge",
+      "type": "heavy",
+      "icon": "\ud83d\udc17",
+      "damage": 2,
+      "warmup": 1,
+      "description": "preparing to charge!"
+    },
+    "poison-cloud": {
+      "name": "Poison Cloud",
+      "type": "aoe",
+      "icon": "\u2601",
+      "dot": {
+        "type": "poison",
+        "turns": 3,
+        "damage": 4
+      },
+      "warmup": 1,
+      "description": "gathering toxic fumes!"
+    },
+    "rallying-howl": {
+      "name": "Rallying Howl",
+      "type": "buff",
+      "icon": "\ud83d\udc3a",
+      "buff": {
+        "stat": "attack",
+        "amount": 30,
+        "turns": 3
+      },
+      "warmup": 1,
+      "description": "howling to rally its strength!"
+    },
+    "summon-minions": {
+      "name": "Summon Minions",
+      "type": "summon",
+      "icon": "\ud83d\udc65",
+      "warmup": 2,
+      "description": "calling for reinforcements!"
+    },
+    "healing-ritual": {
+      "name": "Healing Ritual",
+      "type": "heal",
+      "icon": "\ud83d\udc9a",
+      "healPct": 30,
+      "warmup": 1,
+      "description": "channeling a healing spell!"
+    },
+    "fire-breath": {
+      "name": "Fire Breath",
+      "type": "aoe",
+      "icon": "\ud83d\udd25",
+      "damage": 1.8,
+      "warmup": 1,
+      "description": "inhaling deeply, flames building!"
+    },
+    "death-strike": {
+      "name": "Death Strike",
+      "type": "heavy",
+      "icon": "\ud83d\udc80",
+      "damage": 3,
+      "warmup": 2,
+      "description": "raising its weapon for a killing blow!"
+    }
+  },
+  "telegraphFrequency": {
+    "boss": {
+      "minTurns": 3,
+      "maxTurns": 4
+    },
+    "elite": {
+      "minTurns": 4,
+      "maxTurns": 5
+    },
+    "normal": {
+      "minTurns": 5,
+      "maxTurns": 7
+    }
+  },
+  "enrage": {
+    "threshold": 0.3,
+    "attackBonus": 0.3,
+    "defenseBonus": 0.15,
+    "telegraphFrequency": {
+      "minTurns": 2,
+      "maxTurns": 3
+    }
+  },
+  "combos": [
+    {
+      "slug": "exploit-opening",
+      "name": "Exploit Opening",
+      "class": "warrior",
+      "first": "shield-bash",
+      "second": "power-strike",
+      "effect": {
+        "damageMult": 1.5
+      },
+      "description": "Shield Bash stuns, Power Strike exploits the opening for +50% damage."
+    },
+    {
+      "slug": "inspired-fury",
+      "name": "Inspired Fury",
+      "class": "warrior",
+      "first": "battle-cry",
+      "second": "reckless-blow",
+      "effect": {
+        "noSelfDamage": true,
+        "damageMult": 1.2
+      },
+      "description": "Battle Cry inspires a Reckless Blow with no self-damage and +20% power."
+    },
+    {
+      "slug": "aftershock",
+      "name": "Aftershock",
+      "class": "warrior",
+      "first": "war-stomp",
+      "second": "cleave",
+      "effect": {
+        "damageMult": 1.3
+      },
+      "description": "War Stomp shakes the ground, empowering Cleave for +30% damage."
+    },
+    {
+      "slug": "shatter",
+      "name": "Shatter",
+      "class": "mage",
+      "first": "ice-lance",
+      "second": "fireball",
+      "effect": {
+        "damageMult": 1.8
+      },
+      "description": "Ice Lance freezes the target, Fireball shatters it for +80% damage."
+    },
+    {
+      "slug": "empowered-meteor",
+      "name": "Empowered Meteor",
+      "class": "mage",
+      "first": "arcane-barrier",
+      "second": "meteor",
+      "effect": {
+        "damageMult": 1.3
+      },
+      "description": "Arcane Barrier channels power into Meteor for +30% damage."
+    },
+    {
+      "slug": "frozen-conductor",
+      "name": "Frozen Conductor",
+      "class": "mage",
+      "first": "frost-nova",
+      "second": "chain-lightning",
+      "effect": {
+        "damageMult": 1.4
+      },
+      "description": "Frost Nova makes frozen enemies conduct Chain Lightning for +40% damage."
+    },
+    {
+      "slug": "ambush",
+      "name": "Ambush",
+      "class": "rogue",
+      "first": "cheap-shot",
+      "second": "backstab",
+      "effect": {
+        "guaranteedCrit": true
+      },
+      "description": "Cheap Shot stuns, Backstab strikes the exposed target for a guaranteed critical hit."
+    },
+    {
+      "slug": "lethal-dose",
+      "name": "Lethal Dose",
+      "class": "rogue",
+      "first": "poison-blade",
+      "second": "envenom",
+      "effect": {
+        "damageMult": 1.5
+      },
+      "description": "Poison Blade weakens defenses, Envenom delivers a lethal dose for +50% damage."
+    },
+    {
+      "slug": "shadow-strike",
+      "name": "Shadow Strike",
+      "class": "rogue",
+      "first": "evade",
+      "second": "assassinate",
+      "effect": {
+        "damageMult": 1.4
+      },
+      "description": "Evade creates an opening, Assassinate strikes from the shadows for +40% damage."
+    },
+    {
+      "slug": "divine-judgment",
+      "name": "Divine Judgment",
+      "class": "cleric",
+      "first": "bless",
+      "second": "smite",
+      "effect": {
+        "damageMult": 1.4
+      },
+      "description": "Bless empowers Holy Smite into Divine Judgment for +40% damage."
+    },
+    {
+      "slug": "protected-recovery",
+      "name": "Protected Recovery",
+      "class": "cleric",
+      "first": "divine-shield",
+      "second": "heal",
+      "effect": {
+        "healBonus": 1.5
+      },
+      "description": "Divine Shield protects while Heal recovers +50% more health."
+    },
+    {
+      "slug": "holy-fire",
+      "name": "Holy Fire",
+      "class": "cleric",
+      "first": "sacred-flame",
+      "second": "wrath-of-light",
+      "effect": {
+        "damageMult": 1.35
+      },
+      "description": "Sacred Flame ignites, Wrath of Light burns with +35% holy fire damage."
+    },
+    {
+      "slug": "focused-barrage",
+      "name": "Focused Barrage",
+      "class": "ranger",
+      "first": "marked-shot",
+      "second": "twin-shot",
+      "effect": {
+        "damageMult": 1.6
+      },
+      "description": "Marked Shot tags the target, Twin Shot focuses both arrows for +60% damage."
+    },
+    {
+      "slug": "killzone",
+      "name": "Killzone",
+      "class": "ranger",
+      "first": "trap",
+      "second": "volley",
+      "effect": {
+        "damageMult": 1.3
+      },
+      "description": "Bear Trap holds the enemy in place for Volley to rain down +30% damage."
+    },
+    {
+      "slug": "ambush-shot",
+      "name": "Ambush Shot",
+      "class": "ranger",
+      "first": "camouflage",
+      "second": "explosive-arrow",
+      "effect": {
+        "guaranteedCrit": true
+      },
+      "description": "Camouflage conceals you, Explosive Arrow strikes for a guaranteed critical hit."
+    },
+    {
+      "slug": "iron-storm",
+      "name": "Iron Storm",
+      "class": "warrior",
+      "first": "iron-fortress",
+      "second": "cleave",
+      "effect": {
+        "damageMult": 1.4
+      },
+      "description": "Iron Fortress hardens your blade, Cleave sweeps through with +40% damage and unbreakable resolve."
+    },
+    {
+      "slug": "berserker-onslaught",
+      "name": "Berserker Onslaught",
+      "class": "warrior",
+      "first": "berserker-rage",
+      "second": "warlord-fury",
+      "effect": {
+        "damageMult": 1.6
+      },
+      "description": "Berserker Rage fuels an unstoppable Warlord's Fury for +60% devastation."
+    },
+    {
+      "slug": "ground-pound",
+      "name": "Ground Pound",
+      "class": "warrior",
+      "first": "ground-slam",
+      "second": "shield-bash",
+      "effect": {
+        "damageMult": 1.3,
+        "guaranteedCrit": true
+      },
+      "description": "Ground Slam staggers enemies, Shield Bash capitalizes with a guaranteed critical strike."
+    },
+    {
+      "slug": "vengeful-wall",
+      "name": "Vengeful Wall",
+      "class": "warrior",
+      "first": "steel-wall",
+      "second": "vengeful-strike",
+      "effect": {
+        "damageMult": 1.5
+      },
+      "description": "Steel Wall absorbs punishment, Vengeful Strike channels the pain into +50% retaliatory damage."
+    },
+    {
+      "slug": "arcane-detonation",
+      "name": "Arcane Detonation",
+      "class": "mage",
+      "first": "arcane-missiles",
+      "second": "pyroblast",
+      "effect": {
+        "damageMult": 1.5
+      },
+      "description": "Arcane Missiles destabilize defenses, Pyroblast detonates for +50% explosive damage."
+    },
+    {
+      "slug": "glacial-cascade",
+      "name": "Glacial Cascade",
+      "class": "mage",
+      "first": "glacial-spike",
+      "second": "frozen-orb",
+      "effect": {
+        "damageMult": 1.4
+      },
+      "description": "Glacial Spike freezes the air, Frozen Orb cascades through for +40% shatter damage."
+    },
+    {
+      "slug": "temporal-nova",
+      "name": "Temporal Nova",
+      "class": "mage",
+      "first": "temporal-shift",
+      "second": "supernova",
+      "effect": {
+        "damageMult": 1.5
+      },
+      "description": "Temporal Shift bends time, Supernova erupts across all timelines for +50% annihilation."
+    },
+    {
+      "slug": "mana-overload",
+      "name": "Mana Overload",
+      "class": "mage",
+      "first": "mana-surge",
+      "second": "arcane-torrent",
+      "effect": {
+        "damageMult": 1.6
+      },
+      "description": "Mana Surge overcharges your reserves, Arcane Torrent unleashes +60% raw arcane power."
+    },
+    {
+      "slug": "death-sentence",
+      "name": "Death Sentence",
+      "class": "rogue",
+      "first": "death-mark",
+      "second": "assassinate",
+      "effect": {
+        "damageMult": 1.6
+      },
+      "description": "Death Mark condemns the target, Assassinate executes the sentence for +60% lethal damage."
+    },
+    {
+      "slug": "venom-rush",
+      "name": "Venom Rush",
+      "class": "rogue",
+      "first": "envenom",
+      "second": "blade-flurry",
+      "effect": {
+        "damageMult": 1.4
+      },
+      "description": "Envenom coats your weapons, Blade Flurry spreads venom with every strike for +40% toxic damage."
+    },
+    {
+      "slug": "shadow-ambush",
+      "name": "Shadow Ambush",
+      "class": "rogue",
+      "first": "vanish",
+      "second": "death-from-above",
+      "effect": {
+        "guaranteedCrit": true,
+        "damageMult": 1.3
+      },
+      "description": "Vanish into shadows, Death From Above strikes unseen for a guaranteed critical with +30% bonus."
+    },
+    {
+      "slug": "crippling-finish",
+      "name": "Crippling Finish",
+      "class": "rogue",
+      "first": "crippling-poison",
+      "second": "disembowel",
+      "effect": {
+        "damageMult": 1.5
+      },
+      "description": "Crippling Poison weakens defenses, Disembowel tears through for +50% damage to the helpless target."
+    },
+    {
+      "slug": "radiant-wrath",
+      "name": "Radiant Wrath",
+      "class": "cleric",
+      "first": "radiance",
+      "second": "retribution",
+      "effect": {
+        "damageMult": 1.5
+      },
+      "description": "Radiance blinds the enemy, Retribution channels divine fury for +50% holy damage."
+    },
+    {
+      "slug": "sanctified-strike",
+      "name": "Sanctified Strike",
+      "class": "cleric",
+      "first": "prayer-of-mending",
+      "second": "smite-evil",
+      "effect": {
+        "damageMult": 1.35,
+        "healBonus": 1.3
+      },
+      "description": "Prayer of Mending sanctifies your next attack, Smite Evil deals +35% damage and heals +30% more."
+    },
+    {
+      "slug": "divine-fortress",
+      "name": "Divine Fortress",
+      "class": "cleric",
+      "first": "sanctuary",
+      "second": "archangel",
+      "effect": {
+        "healBonus": 1.5
+      },
+      "description": "Sanctuary creates sacred ground, Archangel descends with +50% amplified healing to all."
+    },
+    {
+      "slug": "holy-cascade",
+      "name": "Holy Cascade",
+      "class": "cleric",
+      "first": "holy-fire",
+      "second": "divine-storm",
+      "effect": {
+        "damageMult": 1.5
+      },
+      "description": "Holy Fire ignites divine wrath, Divine Storm cascades holy energy for +50% damage to all enemies."
+    },
+    {
+      "slug": "nature-fury",
+      "name": "Nature's Fury",
+      "class": "ranger",
+      "first": "natures-wrath",
+      "second": "barrage",
+      "effect": {
+        "damageMult": 1.5
+      },
+      "description": "Nature's Wrath calls the wild, Barrage channels primal fury for +50% damage."
+    },
+    {
+      "slug": "sniper-ambush",
+      "name": "Sniper Ambush",
+      "class": "ranger",
+      "first": "eagle-eye",
+      "second": "sniper-shot",
+      "effect": {
+        "guaranteedCrit": true,
+        "damageMult": 1.3
+      },
+      "description": "Eagle Eye locks the target, Sniper Shot delivers a guaranteed critical with +30% precision damage."
+    },
+    {
+      "slug": "entangled-rain",
+      "name": "Entangled Rain",
+      "class": "ranger",
+      "first": "entangling-roots",
+      "second": "arrow-rain",
+      "effect": {
+        "damageMult": 1.5
+      },
+      "description": "Entangling Roots holds enemies in place, Arrow Rain showers +50% damage on the trapped targets."
+    },
+    {
+      "slug": "avatar-strike",
+      "name": "Avatar Strike",
+      "class": "ranger",
+      "first": "aspect-of-hawk",
+      "second": "avatar-of-nature",
+      "effect": {
+        "damageMult": 1.4
+      },
+      "description": "Aspect of the Hawk sharpens your senses, Avatar of Nature strikes with +40% primal devastation."
+    }
+  ]
+}

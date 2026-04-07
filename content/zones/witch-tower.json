@@ -1,0 +1,579 @@
+{
+  "location": {
+    "slug": "witch-tower",
+    "name": "Witch's Tower",
+    "type": "dungeon",
+    "description": "A crooked spire rising from the swamp. Dark sorcery crackles around its peak.",
+    "connections": [
+      "shadowfen"
+    ],
+    "mapX": 88,
+    "mapY": 18,
+    "realm": "ashlands"
+  },
+  "enemies": [
+    {
+      "slug": "hexbound-raven",
+      "hp": 455,
+      "xp": 163,
+      "gold": 74,
+      "name": "Hexbound Raven",
+      "drops": [
+        "shadow-gem",
+        "poison-kit-satchel",
+        "ranger-loop",
+        "knight-bastard-sword",
+        "bulwark-aegis",
+        "covenant-ring",
+        "doomhelm"
+      ],
+      "level": 5,
+      "attack": 16,
+      "defense": 7,
+      "abilities": [
+        "dark-curse"
+      ]
+    },
+    {
+      "slug": "candle-homunculus",
+      "hp": 456,
+      "xp": 161,
+      "gold": 77,
+      "name": "Candle Homunculus",
+      "drops": [
+        "holy-shard",
+        "reliquary",
+        "battle-scar-token",
+        "war-banner-charm",
+        "conqueror-signet",
+        "hawk-eye-band",
+        "mindfire-crown"
+      ],
+      "level": 5,
+      "attack": 15,
+      "defense": 7,
+      "abilities": [
+        "fire-breath"
+      ]
+    },
+    {
+      "slug": "animated-armor",
+      "name": "Animated Armor",
+      "hp": 469,
+      "attack": 17,
+      "defense": 7,
+      "xp": 144,
+      "gold": 72,
+      "level": 5,
+      "abilities": [
+        "harden",
+        "stunning-slam"
+      ],
+      "drops": [
+        "holy-shard",
+        "mystic-robe",
+        "vanguard-mail",
+        "ironwall-greathelm",
+        "consecrated-grips",
+        "warlord-tooth",
+        "nightwalker-mask"
+      ]
+    },
+    {
+      "slug": "dark-familiar",
+      "name": "Dark Familiar",
+      "hp": 456,
+      "attack": 16,
+      "defense": 8,
+      "xp": 169,
+      "gold": 62,
+      "level": 5,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "drops": [
+        "shadow-gem",
+        "silver-focus-ring",
+        "raven-mark",
+        "runehand-gloves",
+        "arcane-talisman",
+        "void-marble",
+        "divine-mitre"
+      ]
+    },
+    {
+      "slug": "witch-of-fen",
+      "name": "The Fen Witch",
+      "hp": 1239,
+      "attack": 25,
+      "defense": 12,
+      "xp": 763,
+      "gold": 309,
+      "level": 7,
+      "boss": true,
+      "abilities": [
+        "war-cry",
+        "stunning-slam"
+      ],
+      "drops": [
+        "witch-staff",
+        "rune-grimoire",
+        "voidweave-robes",
+        "cathedral-robes",
+        "halo-seal",
+        "spellthread-sandals",
+        "nightfall-wraps",
+        "void-pendant",
+        "shadow-fang-necklace",
+        "void-hands",
+        "leyline-walkers",
+        "midnight-tread",
+        "shadowstrike-wraps",
+        "abyssal-medallion",
+        "star-soul-pendant",
+        "lich-crown",
+        "phantom-veil"
+      ],
+      "mythicDrop": "hexweave-mantle",
+      "mythicDropChance": 2,
+      "telegraphs": [
+        "poison-cloud",
+        "healing-ritual",
+        "summon-minions"
+      ],
+      "enrageTelegraphs": [
+        "death-strike"
+      ],
+      "enrageThreshold": 0.3
+    },
+    {
+      "slug": "spell-stitched",
+      "name": "Spell-Stitched Horror",
+      "level": 6,
+      "hp": 483,
+      "attack": 20,
+      "defense": 8,
+      "xp": 195,
+      "gold": 103,
+      "abilities": [
+        "dark-curse",
+        "rending-claws",
+        "weakening-hex"
+      ],
+      "drops": [
+        "runic-cowl",
+        "consecrated-grips",
+        "pilgrim-greaves"
+      ]
+    },
+    {
+      "slug": "cursed-gargoyle",
+      "name": "Cursed Gargoyle",
+      "level": 6,
+      "hp": 489,
+      "attack": 18,
+      "defense": 9,
+      "xp": 197,
+      "gold": 94,
+      "abilities": [
+        "harden",
+        "stunning-slam"
+      ],
+      "drops": [
+        "viper-mask",
+        "swifttrack-boots",
+        "warlord-pendant"
+      ]
+    },
+    {
+      "slug": "blood-mage",
+      "name": "Blood Mage",
+      "level": 6,
+      "hp": 447,
+      "attack": 18,
+      "defense": 8,
+      "xp": 225,
+      "gold": 104,
+      "abilities": [
+        "fire-breath",
+        "dark-curse",
+        "regen-aura"
+      ],
+      "drops": [
+        "cinder-circlet",
+        "runehand-gloves",
+        "arcane-talisman"
+      ]
+    },
+    {
+      "slug": "living-tome",
+      "name": "Living Tome",
+      "level": 5,
+      "hp": 436,
+      "attack": 15,
+      "defense": 7,
+      "xp": 152,
+      "gold": 71,
+      "abilities": [
+        "weakening-hex",
+        "dark-curse"
+      ],
+      "drops": [
+        "leystone-band",
+        "bowmaster-grips",
+        "holy-pendant"
+      ]
+    },
+    {
+      "slug": "tower-sentinel",
+      "name": "Tower Sentinel",
+      "level": 6,
+      "hp": 491,
+      "attack": 18,
+      "defense": 8,
+      "xp": 227,
+      "gold": 88,
+      "abilities": [
+        "harden",
+        "war-cry",
+        "stunning-slam"
+      ],
+      "drops": [
+        "templar-crest-helm",
+        "windtracker-cap",
+        "eagle-torc"
+      ]
+    }
+  ],
+  "dungeonConfig": {
+    "boss": "witch-of-fen",
+    "name": "Witch's Tower Ascent",
+    "maxRooms": 6,
+    "minRooms": 4,
+    "mechanic": {
+      "slug": "arcane-disruption",
+      "name": "Arcane Disruption",
+      "description": "Arcane wards interfere with spellcasting. MP costs are increased by 25%.",
+      "effect": {
+        "mpCostIncrease": 25
+      }
+    }
+  },
+  "locationThreat": 8,
+  "events": [
+    {
+      "slug": "enchanted-mirror",
+      "name": "Enchanted Mirror",
+      "type": "puzzle",
+      "rarity": "uncommon",
+      "icon": "\ud83e\ude9e",
+      "text": "A tall mirror stands in an alcove, its surface swirling with purple mist. Your reflection moves independently, mimicking you with a mocking grin.",
+      "choices": [
+        {
+          "label": "Touch the mirror's surface",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "text": "You feel arcane energy flow through you as the mirror absorbs negative energy. Your mind feels sharper.",
+            "rewards": {
+              "manaPct": 50,
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "The mirror lashes out with psychic energy! Your reflection laughs silently.",
+            "rewards": {
+              "xp": 10,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Smash the mirror",
+          "check": {
+            "stat": "str",
+            "dc": 11
+          },
+          "success": {
+            "text": "The glass shatters and shadow ichor pools from the frame. You collect what you can.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "shadow-ichor",
+                  "qty": 2
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The mirror absorbs your blow and redirects it. Your fist aches.",
+            "rewards": {
+              "xp": 8,
+              "damage": 15
+            }
+          }
+        },
+        {
+          "label": "Walk past without looking",
+          "auto": true,
+          "success": {
+            "text": "You avert your gaze. Sometimes the best magic is restraint.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cursed-door",
+      "name": "Warded Door",
+      "type": "puzzle",
+      "rarity": "common",
+      "icon": "\ud83d\udeaa",
+      "text": "A heavy door is etched with arcane wards that glow and pulse. It seems to be sealed by magic, but the ward is old and weakening.",
+      "choices": [
+        {
+          "label": "Dispel the ward with focused will",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "text": "The ward crackles and fades. Behind the door: a forgotten study with useful scrolls and reagents.",
+            "rewards": {
+              "gold": 35,
+              "items": [
+                {
+                  "slug": "shadow-ichor",
+                  "qty": 1
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The ward fights back, sending a painful shock through your hands.",
+            "rewards": {
+              "xp": 10,
+              "damage": 15
+            }
+          }
+        },
+        {
+          "label": "Force it open physically",
+          "check": {
+            "stat": "str",
+            "dc": 14
+          },
+          "success": {
+            "text": "The hinges give way before the ward does. Inside you find gold and materials.",
+            "rewards": {
+              "gold": 30,
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The door doesn't budge. The ward flares in response, burning your palms.",
+            "rewards": {
+              "xp": 8,
+              "damage": 18
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spectral-guardian",
+      "name": "Spectral Guardian",
+      "type": "npc",
+      "rarity": "rare",
+      "icon": "\ud83d\udc41",
+      "text": "A spectral figure blocks the corridor, glowing with ethereal light. \"Prove your worth, mortal, and I shall grant you passage and a boon.\"",
+      "choices": [
+        {
+          "label": "Answer the guardian's riddle",
+          "check": {
+            "stat": "int",
+            "dc": 14
+          },
+          "success": {
+            "text": "\"Clever mortal!\" The guardian dissolves, leaving behind crystallized wraith essence and arcane knowledge.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "wraith-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 40
+            }
+          },
+          "failure": {
+            "text": "\"Foolish.\" Cold energy strikes you. \"Return when you are wiser.\"",
+            "rewards": {
+              "xp": 10,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Challenge the guardian to a test of will",
+          "check": {
+            "stat": "wis",
+            "dc": 13
+          },
+          "success": {
+            "text": "Your willpower impresses the spirit. It bows and bestows a blessing of restoration.",
+            "rewards": {
+              "healPct": 40,
+              "manaPct": 60,
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The guardian's presence overwhelms you. You retreat, shaken.",
+            "rewards": {
+              "xp": 10,
+              "damage": 15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "wt-enchanted-mirror",
+      "rarity": "uncommon",
+      "name": "Enchanted Mirror",
+      "icon": "\ud83e\ude9e",
+      "description": "A cracked mirror on the wall shows a different version of you \u2014 stronger, wiser.",
+      "choices": [
+        {
+          "text": "Touch the mirror (CHA DC 12)",
+          "check": {
+            "stat": "cha",
+            "dc": 12
+          },
+          "success": {
+            "xp": 25,
+            "heal": 10,
+            "text": "Your reflection reaches out and touches your hand. You feel... improved."
+          },
+          "failure": {
+            "damage": 12,
+            "text": "The mirror shatters and the shards bite into your skin!"
+          }
+        },
+        {
+          "text": "Smash the mirror",
+          "success": {
+            "gold": 8,
+            "text": "Behind the mirror: a small hidden compartment with coins."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "wt-potion-shelf",
+      "rarity": "common",
+      "name": "Potion Shelf",
+      "icon": "\ud83e\uddea",
+      "description": "Dusty bottles line a shelf. Most are empty or spoiled, but a few still bubble.",
+      "choices": [
+        {
+          "text": "Identify and drink one (INT DC 11)",
+          "check": {
+            "stat": "int",
+            "dc": 11
+          },
+          "success": {
+            "heal": 15,
+            "mana": 15,
+            "text": "A restoration elixir! Still potent after all these years."
+          },
+          "failure": {
+            "damage": 8,
+            "text": "Ugh \u2014 that was definitely not a healing potion."
+          }
+        },
+        {
+          "text": "Sell the bottles",
+          "success": {
+            "gold": 10,
+            "text": "The glasswork alone is worth something to an alchemist."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "wt-familiar-cage",
+      "rarity": "rare",
+      "name": "The Familiar's Cage",
+      "icon": "\ud83d\udc26",
+      "description": "A golden cage holds a tiny, glowing bird that chirps pleadingly.",
+      "choices": [
+        {
+          "text": "Free the bird (WIS DC 12)",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "xp": 30,
+            "mana": 15,
+            "text": "The bird bursts into light as it's freed, and the magic flows into you gratefully."
+          },
+          "failure": {
+            "damage": 10,
+            "text": "The cage is warded \u2014 magical feedback zaps you!"
+          }
+        },
+        {
+          "text": "Take the cage (it's gold)",
+          "success": {
+            "gold": 20,
+            "text": "The bird vanishes as you lift the cage. At least the gold is real."
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "witch-tower-group-1",
+      "name": "Tower Sentinel Cell Block",
+      "composition": [
+        {
+          "enemySlug": "tower-sentinel",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "witch-tower-group-2",
+      "name": "Spell-Stitched Horror & Living Tome",
+      "composition": [
+        {
+          "enemySlug": "spell-stitched",
+          "count": 1
+        },
+        {
+          "enemySlug": "living-tome",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

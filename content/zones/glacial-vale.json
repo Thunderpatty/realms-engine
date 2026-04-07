@@ -1,0 +1,575 @@
+{
+  "location": {
+    "slug": "glacial-vale",
+    "name": "Glacial Vale",
+    "type": "wild",
+    "realm": "frostreach",
+    "description": "A sheltered valley between ice mountains where ancient forests of petrified trees stand frozen mid-growth. Crystal formations dot the landscape, humming with trapped magical energy. The vale is beautiful and deeply wrong.",
+    "connections": [
+      "frosthollow",
+      "crystal-caverns",
+      "howling-pass"
+    ],
+    "mapX": 75,
+    "mapY": 35
+  },
+  "enemies": [
+    {
+      "slug": "crystal-spider",
+      "name": "Crystal Spider",
+      "hp": 762,
+      "attack": 28,
+      "defense": 16,
+      "xp": 506,
+      "gold": 278,
+      "level": 11,
+      "abilities": [
+        "poison-bite",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A spider with a body of living crystal. Its webs are threads of ice that shatter on contact but leave deep cuts."
+    },
+    {
+      "slug": "frozen-treant",
+      "name": "Frozen Treant",
+      "hp": 808,
+      "attack": 33,
+      "defense": 17,
+      "xp": 665,
+      "gold": 279,
+      "level": 12,
+      "abilities": [
+        "harden",
+        "stunning-slam"
+      ],
+      "drops": [],
+      "description": "One of the petrified trees has woken \u2014 a massive creature of ice-bound wood that moves with glacial slowness and terrible force."
+    },
+    {
+      "slug": "vale-phantom",
+      "name": "Vale Phantom",
+      "hp": 718,
+      "attack": 33,
+      "defense": 16,
+      "xp": 620,
+      "gold": 313,
+      "level": 12,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "The ghost of someone who died in the vale centuries ago. The crystal formations trap spirits here, endlessly reliving their final moments."
+    },
+    {
+      "slug": "frost-bear",
+      "name": "Frost Bear",
+      "hp": 788,
+      "attack": 28,
+      "defense": 15,
+      "xp": 552,
+      "gold": 247,
+      "level": 11,
+      "abilities": [
+        "rending-claws",
+        "war-cry"
+      ],
+      "drops": [],
+      "description": "A massive bear with ice growing from its shoulders like armor plates. It charges without warning and fights with primal fury."
+    },
+    {
+      "slug": "ice-harpy",
+      "name": "Ice Harpy",
+      "hp": 761,
+      "attack": 29,
+      "defense": 16,
+      "xp": 700,
+      "gold": 301,
+      "level": 12,
+      "abilities": [
+        "weakening-hex",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A winged predator with a woman's face and a raptor's talons. Its shriek can freeze blood and shatter concentration."
+    }
+  ],
+  "locationThreat": 12,
+  "events": [
+    {
+      "slug": "vale-crystal-grove",
+      "name": "Crystal Grove",
+      "icon": "\ud83d\udc8e",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "A grove of trees frozen in crystal \u2014 each one a perfect sculpture of ice. At the center, a large crystal pulses with blue light.",
+      "choices": [
+        {
+          "label": "Attune to the crystal (INT DC 12)",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "text": "The crystal shares its memory \u2014 an ancient ley line runs beneath this grove. You absorb some of its power.",
+            "rewards": {
+              "xp": 30,
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 3
+                }
+              ]
+            }
+          },
+          "failure": {
+            "text": "The crystal pulses painfully. Your head throbs for hours after.",
+            "rewards": {
+              "xp": 8,
+              "damage": 14
+            }
+          }
+        },
+        {
+          "label": "Harvest the smaller crystals (DEX DC 11)",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "You carefully extract several pristine frost crystals.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 4
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "A crystal shatters in your hands, sending shards everywhere.",
+            "rewards": {
+              "xp": 5,
+              "damage": 10
+            }
+          }
+        },
+        {
+          "label": "Admire and move on",
+          "auto": true,
+          "success": {
+            "text": "Some beauty is best left untouched.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "vale-frozen-traveler",
+      "name": "Frozen Traveler",
+      "icon": "\ud83e\uddca",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A figure stands frozen mid-stride, preserved perfectly in ice. Their pack is still intact on their back.",
+      "choices": [
+        {
+          "label": "Thaw the ice carefully to retrieve the pack (INT DC 11)",
+          "check": {
+            "stat": "int",
+            "dc": 11
+          },
+          "success": {
+            "text": "The pack contains dried rations, gold, and a journal with useful notes about local dangers.",
+            "rewards": {
+              "gold": 35,
+              "items": [
+                {
+                  "slug": "frostbloom-petal",
+                  "qty": 2
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The ice refreezes around your hands. You wrench free but lose feeling for a while.",
+            "rewards": {
+              "xp": 8,
+              "damage": 12
+            }
+          }
+        },
+        {
+          "label": "Smash the ice (STR DC 10)",
+          "check": {
+            "stat": "str",
+            "dc": 10
+          },
+          "success": {
+            "text": "The ice shatters. Most of the pack's contents are ruined, but some gold survives.",
+            "rewards": {
+              "gold": 20,
+              "xp": 12
+            }
+          },
+          "failure": {
+            "text": "The ice is supernaturally hard. Your arms ache from the effort.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Pay respects and move on",
+          "auto": true,
+          "success": {
+            "text": "You mark the location. Maybe someone will come for them someday.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "vale-phantom-echo",
+      "name": "Phantom Echo",
+      "icon": "\ud83d\udc7b",
+      "type": "encounter",
+      "rarity": "uncommon",
+      "text": "A translucent figure drifts between the frozen trees, repeating the same words over and over. It seems trapped in a loop.",
+      "choices": [
+        {
+          "label": "Listen and respond to break the loop (WIS DC 13)",
+          "check": {
+            "stat": "wis",
+            "dc": 13
+          },
+          "success": {
+            "text": "You speak the words it needs to hear. The phantom dissolves with a sigh, leaving behind spectral residue.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "spectral-ice",
+                  "qty": 2
+                }
+              ],
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "Your words anger it. The phantom screams and cold burns through your chest.",
+            "rewards": {
+              "xp": 8,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Dispel it with force of will (INT DC 12)",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "text": "You focus your mind and unmake the echo. It drops a crystallized memory.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "spectral-ice",
+                  "qty": 1
+                },
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "The phantom is too strong. It passes through you, leaving you shaken and cold.",
+            "rewards": {
+              "xp": 8,
+              "damage": 14
+            }
+          }
+        },
+        {
+          "label": "Avoid it entirely",
+          "auto": true,
+          "success": {
+            "text": "You give the phantom a wide berth. It continues its endless loop.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "vale-yeti-tracks",
+      "name": "Yeti Territory",
+      "icon": "\ud83e\uddb6",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "Massive footprints crater the snow. The stench of wet fur hangs in the air. You're in yeti territory.",
+      "choices": [
+        {
+          "label": "Follow the tracks to the nest (CON DC 12)",
+          "check": {
+            "stat": "con",
+            "dc": 12
+          },
+          "success": {
+            "text": "The nest is empty \u2014 the yeti is out hunting. You find bones, hides, and a stash of crystals.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frozen-hide",
+                  "qty": 2
+                },
+                {
+                  "slug": "giant-bone",
+                  "qty": 1
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The yeti returns. You barely escape, battered and bruised.",
+            "rewards": {
+              "xp": 8,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Set a snare and wait (DEX DC 11)",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "Your trap catches a smaller beast. You harvest its hide and move on.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frozen-hide",
+                  "qty": 2
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The snare snaps under the weight. Nothing caught.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Quietly leave the area",
+          "auto": true,
+          "success": {
+            "text": "You back away carefully. No need to tempt fate.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "vale-ice-bridge",
+      "name": "Crumbling Ice Bridge",
+      "icon": "\ud83c\udf09",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "A natural bridge of ice spans a deep ravine. It creaks ominously. On the far side, you can see something valuable glinting in the snow.",
+      "choices": [
+        {
+          "label": "Cross quickly and lightly (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "text": "You sprint across. The bridge holds \u2014 barely. On the other side: a pouch of gold and ore.",
+            "rewards": {
+              "gold": 40,
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 2
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The bridge cracks. You fall partway before catching yourself, losing skin and pride.",
+            "rewards": {
+              "xp": 8,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Test the ice methodically (INT DC 11)",
+          "check": {
+            "stat": "int",
+            "dc": 11
+          },
+          "success": {
+            "text": "You find the strongest path and cross safely. The treasure is yours.",
+            "rewards": {
+              "gold": 30,
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "Your testing weakens the bridge further. It collapses entirely. Opportunity lost.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Find another way around",
+          "auto": true,
+          "success": {
+            "text": "You take the long way. Safe but slow.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "vale-frostbloom-field",
+      "name": "Frostbloom Meadow",
+      "icon": "\ud83c\udf38",
+      "type": "discovery",
+      "rarity": "rare",
+      "text": "A hidden meadow carpeted in frostblooms \u2014 rare flowers that only grow where ley lines intersect. They glow softly blue in the eternal twilight.",
+      "choices": [
+        {
+          "label": "Harvest carefully, preserving the roots (WIS DC 12)",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "text": "You gather armfuls of pristine frostblooms without disturbing the ley line.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frostbloom-petal",
+                  "qty": 5
+                }
+              ],
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "You pull too aggressively. The ley line sparks and the remaining blooms wilt.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frostbloom-petal",
+                  "qty": 1
+                }
+              ],
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Meditate among the flowers (INT DC 13)",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "text": "The ley energy flows through you. You feel rejuvenated and enlightened.",
+            "rewards": {
+              "xp": 40,
+              "heal": 30
+            }
+          },
+          "failure": {
+            "text": "You can't quiet your mind. The cold seeps in instead.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Pick a few and go",
+          "auto": true,
+          "success": {
+            "text": "You take what you need and leave the rest for the land.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frostbloom-petal",
+                  "qty": 2
+                }
+              ],
+              "xp": 8
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "glacial-vale-group-1",
+      "name": "Frost Bear Ambush",
+      "composition": [
+        {
+          "enemySlug": "frost-bear",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "glacial-vale-group-2",
+      "name": "Crystal Spider & Ice Harpy",
+      "composition": [
+        {
+          "enemySlug": "crystal-spider",
+          "count": 1
+        },
+        {
+          "enemySlug": "ice-harpy",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

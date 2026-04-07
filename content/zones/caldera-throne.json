@@ -1,0 +1,577 @@
+{
+  "location": {
+    "slug": "caldera-throne",
+    "name": "Caldera Throne",
+    "type": "dungeon",
+    "realm": "emberveil",
+    "description": "The heart of the Emberveil \u2014 a massive volcanic caldera where an ancient fire lord sleeps. The cult's ultimate goal is to wake it. The lava here moves with purpose, and the very air burns with sentient rage.",
+    "connections": [
+      "cinderport"
+    ],
+    "mapX": 50,
+    "mapY": 75
+  },
+  "locationThreat": 33,
+  "dungeonConfig": {
+    "boss": "ignavus-the-undying-flame",
+    "name": "Caldera Throne",
+    "minRooms": 6,
+    "maxRooms": 8,
+    "mechanic": {
+      "slug": "living-caldera",
+      "name": "Living Caldera",
+      "description": "The volcano itself fights you. Take 5% max HP damage per room and enemies regenerate 2% HP per turn.",
+      "effect": {
+        "roomDamagePct": 5
+      }
+    }
+  },
+  "enemies": [
+    {
+      "slug": "caldera-guardian",
+      "name": "Caldera Guardian",
+      "hp": 1501,
+      "attack": 61,
+      "defense": 36,
+      "xp": 2247,
+      "gold": 952,
+      "level": 28,
+      "abilities": [
+        "stunning-slam",
+        "harden",
+        "war-cry"
+      ],
+      "drops": [],
+      "description": "A titan of volcanic stone, standing guard at the caldera's rim. Lava flows through cracks in its body like glowing veins."
+    },
+    {
+      "slug": "inferno-drake",
+      "name": "Inferno Drake",
+      "hp": 1601,
+      "attack": 64,
+      "defense": 37,
+      "xp": 2493,
+      "gold": 1067,
+      "level": 29,
+      "abilities": [
+        "fire-breath",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A fire drake that nests in magma pools. Its scales are living obsidian and its breath can melt castle walls."
+    },
+    {
+      "slug": "arch-demon",
+      "name": "Arch-Demon",
+      "hp": 1745,
+      "attack": 67,
+      "defense": 42,
+      "xp": 2237,
+      "gold": 1047,
+      "level": 30,
+      "abilities": [
+        "fire-breath",
+        "dark-curse",
+        "rending-claws",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "A greater demon of the highest order, summoned by centuries of cult worship. It fights with calculated brutality and infernal magic."
+    },
+    {
+      "slug": "ignavus-the-undying-flame",
+      "name": "Ignavus, the Undying Flame",
+      "hp": 3831,
+      "attack": 109,
+      "defense": 56,
+      "xp": 9126,
+      "gold": 3571,
+      "level": 35,
+      "boss": true,
+      "abilities": [
+        "fire-breath",
+        "stunning-slam",
+        "regen-aura",
+        "war-cry",
+        "dark-curse",
+        "harden"
+      ],
+      "drops": [],
+      "description": "The fire lord of the Emberveil \u2014 an entity older than the volcanoes themselves. Ignavus is not merely fire; it is the concept of burning given form and fury. Its awakening would consume the entire archipelago."
+    }
+  ],
+  "events": [
+    {
+      "slug": "caldera-throne-event-1",
+      "name": "Lava Flow",
+      "icon": "\ud83c\udf0b",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "You encounter lava flow in the caldera throne. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (INT DC 21)",
+          "check": {
+            "stat": "int",
+            "dc": 21
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the lava flow.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 2
+                }
+              ],
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The lava flow proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Take direct action (STR DC 20)",
+          "check": {
+            "stat": "str",
+            "dc": 20
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 50,
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 1
+                }
+              ],
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "caldera-throne-event-2",
+      "name": "Obsidian Throne",
+      "icon": "\ud83d\udc51",
+      "type": "hazard",
+      "rarity": "uncommon",
+      "text": "You encounter obsidian throne in the caldera throne. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (WIS DC 21)",
+          "check": {
+            "stat": "wis",
+            "dc": 21
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the obsidian throne.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "The obsidian throne proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 27
+            }
+          }
+        },
+        {
+          "label": "Take direct action (DEX DC 20)",
+          "check": {
+            "stat": "dex",
+            "dc": 20
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 60,
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 33
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "caldera-throne-event-3",
+      "name": "Fire Drake Nest",
+      "icon": "\ud83e\udd5a",
+      "type": "phenomenon",
+      "rarity": "common",
+      "text": "You encounter fire drake nest in the caldera throne. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (DEX DC 22)",
+          "check": {
+            "stat": "dex",
+            "dc": 22
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the fire drake nest.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "drake-fire-gland",
+                  "qty": 2
+                }
+              ],
+              "xp": 41
+            }
+          },
+          "failure": {
+            "text": "The fire drake nest proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 29
+            }
+          }
+        },
+        {
+          "label": "Take direct action (CON DC 21)",
+          "check": {
+            "stat": "con",
+            "dc": 21
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 70,
+              "items": [
+                {
+                  "slug": "drake-fire-gland",
+                  "qty": 1
+                }
+              ],
+              "xp": 36
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 24
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "caldera-throne-event-4",
+      "name": "Ancient Mural",
+      "icon": "\ud83d\uddbc",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "You encounter ancient mural in the caldera throne. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (STR DC 22)",
+          "check": {
+            "stat": "str",
+            "dc": 22
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the ancient mural.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 2
+                }
+              ],
+              "xp": 44
+            }
+          },
+          "failure": {
+            "text": "The ancient mural proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 31
+            }
+          }
+        },
+        {
+          "label": "Take direct action (INT DC 21)",
+          "check": {
+            "stat": "int",
+            "dc": 21
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 80,
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 1
+                }
+              ],
+              "xp": 39
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 26
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "caldera-throne-event-5",
+      "name": "Caldera Vent",
+      "icon": "\ud83d\udca8",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "You encounter caldera vent in the caldera throne. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (CON DC 23)",
+          "check": {
+            "stat": "con",
+            "dc": 23
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the caldera vent.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 2
+                }
+              ],
+              "xp": 47
+            }
+          },
+          "failure": {
+            "text": "The caldera vent proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 33
+            }
+          }
+        },
+        {
+          "label": "Take direct action (WIS DC 22)",
+          "check": {
+            "stat": "wis",
+            "dc": 22
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 90,
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 1
+                }
+              ],
+              "xp": 42
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 28
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "caldera-throne-event-6",
+      "name": "The Final Gate",
+      "icon": "\ud83d\udeaa",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "You encounter the final gate in the caldera throne. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (INT DC 23)",
+          "check": {
+            "stat": "int",
+            "dc": 23
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the the final gate.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 50
+            }
+          },
+          "failure": {
+            "text": "The the final gate proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 35
+            }
+          }
+        },
+        {
+          "label": "Take direct action (STR DC 22)",
+          "check": {
+            "stat": "str",
+            "dc": 22
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 100,
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 30
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "caldera-throne-group-1",
+      "name": "Arch-Demon Cell Block",
+      "composition": [
+        {
+          "enemySlug": "arch-demon",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "caldera-throne-group-2",
+      "name": "Caldera Guardian & Arch-Demon",
+      "composition": [
+        {
+          "enemySlug": "caldera-guardian",
+          "count": 1
+        },
+        {
+          "enemySlug": "arch-demon",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

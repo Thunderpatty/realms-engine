@@ -1,0 +1,603 @@
+{
+  "location": {
+    "slug": "ember-mines",
+    "name": "Ember Mines",
+    "type": "dungeon",
+    "description": "Abandoned dwarven mines now infested with fire elementals and worse. Rich veins of precious ore still glint in the walls.",
+    "connections": [
+      "ironhold"
+    ],
+    "mapX": 70,
+    "mapY": 82,
+    "realm": "ashlands"
+  },
+  "enemies": [
+    {
+      "slug": "fire-beetle",
+      "hp": 315,
+      "xp": 68,
+      "gold": 25,
+      "name": "Fire Beetle",
+      "drops": [
+        "fire-chitin",
+        "hunter-charm",
+        "linen-wraps",
+        "gauntlets-of-grip",
+        "example-moon-blade"
+      ],
+      "level": 3,
+      "attack": 12,
+      "defense": 5,
+      "abilities": [
+        "fire-breath"
+      ]
+    },
+    {
+      "slug": "magma-elemental",
+      "name": "Magma Elemental",
+      "hp": 450,
+      "attack": 16,
+      "defense": 8,
+      "xp": 170,
+      "gold": 63,
+      "level": 5,
+      "abilities": [
+        "fire-breath",
+        "harden"
+      ],
+      "drops": [
+        "molten-core",
+        "ember-wand",
+        "sanctified-mace",
+        "iron-vice-gauntlets",
+        "warlord-pendant",
+        "archmage-loop",
+        "sacred-bone"
+      ]
+    },
+    {
+      "slug": "mine-golem",
+      "name": "Mine Golem",
+      "hp": 380,
+      "attack": 15,
+      "defense": 8,
+      "xp": 149,
+      "gold": 71,
+      "level": 5,
+      "abilities": [
+        "harden",
+        "stunning-slam"
+      ],
+      "drops": [
+        "golem-heart",
+        "tower-heater",
+        "ironmarch-boots",
+        "iron-gorget",
+        "hydra-scale",
+        "phantom-ring",
+        "windcatcher-charm"
+      ]
+    },
+    {
+      "slug": "slag-hound",
+      "hp": 379,
+      "xp": 102,
+      "gold": 47,
+      "name": "Slag Hound",
+      "drops": [
+        "fire-chitin",
+        "falcon-talon-charm",
+        "spellthread-band",
+        "temple-greaves"
+      ],
+      "level": 4,
+      "attack": 13,
+      "defense": 7,
+      "abilities": [
+        "fire-breath"
+      ]
+    },
+    {
+      "slug": "ash-bat-swarm",
+      "hp": 396,
+      "xp": 106,
+      "gold": 45,
+      "name": "Ash Bat Swarm",
+      "drops": [
+        "molten-core",
+        "lucky-bone",
+        "quicksilver-ring",
+        "trailrunner-boots"
+      ],
+      "level": 4,
+      "attack": 14,
+      "defense": 6,
+      "abilities": [
+        "fire-breath"
+      ]
+    },
+    {
+      "slug": "inferno-golem",
+      "name": "Inferno Golem",
+      "hp": 1053,
+      "attack": 28,
+      "defense": 13,
+      "xp": 782,
+      "gold": 324,
+      "level": 7,
+      "boss": true,
+      "abilities": [
+        "fire-breath",
+        "harden"
+      ],
+      "drops": [
+        "golem-heart",
+        "enchanted-plate",
+        "voidweave-robes",
+        "lioncrest-plate",
+        "templar-vestments",
+        "warbreaker-stompers",
+        "crushers-of-doom",
+        "berserker-torc",
+        "titan-gauntlets",
+        "godstomper-boots",
+        "dragonbone-gorget",
+        "warlord-warhelm"
+      ],
+      "mythicDrop": "molten-core-gauntlets",
+      "mythicDropChance": 2,
+      "telegraphs": [
+        "fire-breath",
+        "crushing-blow"
+      ],
+      "enrageTelegraphs": [
+        "fire-breath",
+        "death-strike"
+      ],
+      "enrageThreshold": 0.3
+    },
+    {
+      "slug": "lava-spider",
+      "name": "Lava Spider",
+      "level": 4,
+      "hp": 365,
+      "attack": 13,
+      "defense": 6,
+      "xp": 98,
+      "gold": 52,
+      "abilities": [
+        "fire-breath",
+        "poison-bite"
+      ],
+      "drops": [
+        "tracker-hat",
+        "bowstring-gloves",
+        "trailrunner-boots"
+      ]
+    },
+    {
+      "slug": "ember-wraith",
+      "name": "Ember Wraith",
+      "level": 5,
+      "hp": 459,
+      "attack": 17,
+      "defense": 8,
+      "xp": 159,
+      "gold": 64,
+      "abilities": [
+        "fire-breath",
+        "dark-curse"
+      ],
+      "drops": [
+        "pathfinder-ring",
+        "warhammer-seal",
+        "leystone-band"
+      ]
+    },
+    {
+      "slug": "forge-golem",
+      "name": "Forge Golem",
+      "level": 6,
+      "hp": 433,
+      "attack": 18,
+      "defense": 9,
+      "xp": 225,
+      "gold": 103,
+      "abilities": [
+        "harden",
+        "stunning-slam",
+        "fire-breath"
+      ],
+      "drops": [
+        "ironwall-greathelm",
+        "iron-vice-gauntlets",
+        "ironmarch-boots"
+      ]
+    },
+    {
+      "slug": "tunnel-drake",
+      "name": "Tunnel Drake",
+      "level": 5,
+      "hp": 459,
+      "attack": 16,
+      "defense": 7,
+      "xp": 144,
+      "gold": 74,
+      "abilities": [
+        "fire-breath",
+        "rending-claws"
+      ],
+      "drops": [
+        "flame-visor",
+        "knifework-wraps",
+        "shadowstep-boots"
+      ]
+    },
+    {
+      "slug": "crazed-miner",
+      "name": "Crazed Miner",
+      "level": 4,
+      "hp": 394,
+      "attack": 13,
+      "defense": 7,
+      "xp": 100,
+      "gold": 52,
+      "abilities": [
+        "war-cry",
+        "stunning-slam"
+      ],
+      "drops": [
+        "battle-scar-token",
+        "ranger-loop",
+        "hunter-locket"
+      ]
+    }
+  ],
+  "dungeonConfig": {
+    "boss": "inferno-golem",
+    "name": "Ember Mine Depths",
+    "maxRooms": 6,
+    "minRooms": 4,
+    "mechanic": {
+      "slug": "cave-ins",
+      "name": "Unstable Tunnels",
+      "description": "The mines tremble. 15% chance of cave-in each room (STR check to reduce damage).",
+      "effect": {
+        "caveInChance": 15,
+        "caveInDC": 12
+      }
+    }
+  },
+  "locationThreat": 6,
+  "events": [
+    {
+      "slug": "ore-vein",
+      "name": "Rich Ore Vein",
+      "type": "discovery",
+      "rarity": "common",
+      "icon": "\u26cf",
+      "text": "A glistening vein of ore runs through the mine wall, catching the light of your torch. It looks richer than the usual deposits.",
+      "choices": [
+        {
+          "label": "Mine the vein with careful strikes",
+          "check": {
+            "stat": "str",
+            "dc": 11
+          },
+          "success": {
+            "text": "Chunks of quality ore break free. This will fetch a good price or make fine equipment.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "iron-ore",
+                  "qty": 4
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "Your strikes are too forceful. The vein shatters, yielding only fragments.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "iron-ore",
+                  "qty": 1
+                }
+              ],
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Examine the vein for rare minerals",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "text": "You identify traces of a rare mineral mixed in with the ore. Careful extraction yields a find.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "iron-ore",
+                  "qty": 2
+                }
+              ],
+              "gold": 25,
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "It's just standard ore. Good, but nothing special.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "iron-ore",
+                  "qty": 1
+                }
+              ],
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "trapped-miner",
+      "name": "Trapped Miner",
+      "type": "npc",
+      "rarity": "uncommon",
+      "icon": "\ud83d\udc77",
+      "text": "Muffled cries echo from behind a rockfall. A miner is trapped in a collapsed side tunnel, their lamp flickering weakly.",
+      "choices": [
+        {
+          "label": "Clear the rubble to free them",
+          "check": {
+            "stat": "str",
+            "dc": 12
+          },
+          "success": {
+            "text": "Stone by stone you clear a path. The miner crawls out, grateful beyond words, pressing ore and coin into your hands.",
+            "rewards": {
+              "gold": 30,
+              "items": [
+                {
+                  "slug": "iron-ore",
+                  "qty": 3
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The rubble shifts dangerously. You manage a small gap but rocks bruise you in the process.",
+            "rewards": {
+              "gold": 10,
+              "xp": 12,
+              "damage": 12
+            }
+          }
+        },
+        {
+          "label": "Look for another way around",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "text": "You find a narrow ventilation shaft and guide the miner out. They share their day's haul.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "iron-ore",
+                  "qty": 2
+                }
+              ],
+              "gold": 20,
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The shaft is a dead end. You return and help from the front, but it takes all your energy.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "unstable-tunnel",
+      "name": "Unstable Tunnel",
+      "type": "environmental",
+      "rarity": "common",
+      "icon": "\ud83d\udca5",
+      "text": "Timber supports groan ominously ahead. The tunnel could collapse, but you can see mine cart tracks leading to a deeper section.",
+      "choices": [
+        {
+          "label": "Rush through before it gives way",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "text": "You sprint through as dust rains down. Beyond, an untouched section of the mine yields good ore.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "iron-ore",
+                  "qty": 3
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "A beam clips your shoulder as the tunnel groans. You barely make it through.",
+            "rewards": {
+              "xp": 10,
+              "damage": 16
+            }
+          }
+        },
+        {
+          "label": "Reinforce the supports first",
+          "check": {
+            "stat": "str",
+            "dc": 10
+          },
+          "success": {
+            "text": "Bracing the timbers takes effort but the tunnel holds. You explore safely and find ember dust.",
+            "rewards": {
+              "gold": 20,
+              "xp": 15
+            }
+          },
+          "failure": {
+            "text": "Despite your effort, a support snaps. You retreat as the section caves in.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "em-lava-vent",
+      "rarity": "common",
+      "name": "Lava Vent",
+      "icon": "\ud83c\udf0b",
+      "description": "A crack in the floor glows orange. Heated air blasts upward, and something metallic glints within.",
+      "choices": [
+        {
+          "text": "Reach for the metal (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "gold": 22,
+            "text": "You snatch a chunk of raw ore before the heat drives you back. Valuable!"
+          },
+          "failure": {
+            "damage": 12,
+            "text": "The heat is too intense \u2014 you burn your hand badly!"
+          }
+        },
+        {
+          "text": "Use the heat to warm yourself",
+          "success": {
+            "heal": 8,
+            "text": "The warmth soothes your aching muscles."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "em-miners-ghost",
+      "rarity": "uncommon",
+      "name": "Miner's Ghost",
+      "icon": "\ud83d\udc7b",
+      "description": "A translucent figure in a hardhat gestures frantically, pointing deeper into the mines.",
+      "choices": [
+        {
+          "text": "Follow the ghost (WIS DC 11)",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "gold": 28,
+            "xp": 15,
+            "text": "It leads you to a hidden vein of precious ore and a forgotten tool cache."
+          },
+          "failure": {
+            "damage": 10,
+            "text": "The ghost leads you into a dead end \u2014 then the ceiling creaks ominously!"
+          }
+        },
+        {
+          "text": "Ignore it",
+          "success": {
+            "text": "You've learned not to follow ghosts. Smart."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "em-crystal-formation",
+      "rarity": "rare",
+      "name": "Crystal Formation",
+      "icon": "\ud83d\udc8e",
+      "description": "A stunning cluster of crystals juts from the wall, humming with energy.",
+      "choices": [
+        {
+          "text": "Extract a crystal (STR DC 13)",
+          "check": {
+            "stat": "str",
+            "dc": 13
+          },
+          "success": {
+            "gold": 35,
+            "xp": 20,
+            "text": "You carefully break free a perfect crystal. It pulses with warmth."
+          },
+          "failure": {
+            "damage": 15,
+            "text": "The formation shatters! Shards cut into you."
+          }
+        },
+        {
+          "text": "Meditate near the crystals (INT DC 12)",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "mana": 20,
+            "xp": 15,
+            "text": "The crystal's resonance amplifies your magical focus."
+          },
+          "failure": {
+            "text": "The humming is distracting rather than helpful."
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "ember-mines-group-1",
+      "name": "Mine Golem Guard Detail",
+      "composition": [
+        {
+          "enemySlug": "mine-golem",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "ember-mines-group-2",
+      "name": "Ember Wraith & Magma Elemental",
+      "composition": [
+        {
+          "enemySlug": "ember-wraith",
+          "count": 1
+        },
+        {
+          "enemySlug": "magma-elemental",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

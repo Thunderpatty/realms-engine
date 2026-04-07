@@ -1,0 +1,88 @@
+[
+  {
+    "slug": "mire-expedition",
+    "title": "Into the Mire",
+    "location": "void-mire",
+    "minLevel": 38,
+    "rewards": {
+      "xp": 780,
+      "gold": 500
+    },
+    "description": "A research team is trapped in the Void Mire. They have critical data about the Sovereign.",
+    "stages": [
+      {
+        "text": "Researcher Nola is frantic. 'My team \u2014 they went into the Mire three days ago to study the void leech colonies. Their last transmission said they found something incredible \u2014 data about the Sovereign's weaknesses. Then silence. Please, bring them back.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Trace their signal through the Mire",
+            "check": {
+              "stat": "int",
+              "dc": 28
+            }
+          },
+          {
+            "next": 1,
+            "label": "Track them by void-walker instinct",
+            "check": {
+              "stat": "wis",
+              "dc": 27
+            }
+          },
+          {
+            "next": 1,
+            "label": "Push through the Mire by force",
+            "check": {
+              "stat": "con",
+              "dc": 27
+            }
+          }
+        ]
+      },
+      {
+        "text": "You find them \u2014 alive but trapped on a shrinking island of reality in the mire. The void leeches have been draining the island. Two researchers are unconscious. The lead researcher clutches a data crystal. 'We found it \u2014 the Sovereign's binding point. Take this to the Bastion. It could save everything.'",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Carry them all out through the Mire",
+            "check": {
+              "stat": "str",
+              "dc": 29
+            }
+          },
+          {
+            "next": 2,
+            "label": "Create a reality bridge for extraction",
+            "check": {
+              "stat": "int",
+              "dc": 29
+            }
+          },
+          {
+            "next": 2,
+            "label": "Fight off the leeches to buy time",
+            "combat": "void-leech"
+          }
+        ]
+      },
+      {
+        "text": "All three researchers are extracted alive. Nola weeps with relief. The data crystal is delivered to the Bastion's scholars. 'This changes everything,' Vera whispers, studying the contents. 'We can fight the Sovereign. We actually have a chance.'",
+        "complete": true,
+        "rewards": {
+          "gold": 500,
+          "xp": 780,
+          "items": [
+            {
+              "slug": "thought-crystal",
+              "qty": 4
+            },
+            {
+              "slug": "abyssal-core",
+              "qty": 2
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

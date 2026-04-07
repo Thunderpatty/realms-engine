@@ -1,0 +1,573 @@
+{
+  "location": {
+    "slug": "sulfur-mines",
+    "name": "Sulfur Mines",
+    "type": "dungeon",
+    "realm": "emberveil",
+    "description": "Abandoned mining tunnels that descend into a sulfur-choked underworld. The air is toxic, the walls drip with acid, and the creatures here have adapted to survive where nothing should.",
+    "connections": [
+      "ashen-vale"
+    ],
+    "mapX": 85,
+    "mapY": 65
+  },
+  "locationThreat": 28,
+  "dungeonConfig": {
+    "boss": "the-sulfur-queen",
+    "name": "Sulfur Mines",
+    "minRooms": 5,
+    "maxRooms": 7,
+    "mechanic": {
+      "slug": "toxic-fumes",
+      "name": "Toxic Fumes",
+      "description": "Sulfurous gas poisons the air. Take 4% max HP damage per room.",
+      "effect": {
+        "roomDamagePct": 4
+      }
+    }
+  },
+  "enemies": [
+    {
+      "slug": "acid-slime",
+      "name": "Acid Slime",
+      "hp": 1447,
+      "attack": 62,
+      "defense": 36,
+      "xp": 1756,
+      "gold": 861,
+      "level": 25,
+      "abilities": [
+        "poison-bite"
+      ],
+      "drops": [],
+      "description": "A gelatinous mass of sulfuric acid that dissolves anything it touches. It splits when struck."
+    },
+    {
+      "slug": "mine-lurker",
+      "name": "Mine Lurker",
+      "hp": 1555,
+      "attack": 62,
+      "defense": 32,
+      "xp": 1918,
+      "gold": 854,
+      "level": 26,
+      "abilities": [
+        "rending-claws",
+        "stunning-slam"
+      ],
+      "drops": [],
+      "description": "A blind predator that navigates by vibration. Its claws are coated in crystallized sulfur \u2014 toxic and razor-sharp."
+    },
+    {
+      "slug": "sulfur-elemental",
+      "name": "Sulfur Elemental",
+      "hp": 1619,
+      "attack": 69,
+      "defense": 35,
+      "xp": 2163,
+      "gold": 889,
+      "level": 27,
+      "abilities": [
+        "poison-bite",
+        "harden",
+        "war-cry"
+      ],
+      "drops": [],
+      "description": "A sentient mass of crystallized sulfur and toxic gas. It reshapes itself mid-combat, growing new limbs and weapons."
+    },
+    {
+      "slug": "the-sulfur-queen",
+      "name": "The Sulfur Queen",
+      "hp": 3333,
+      "attack": 98,
+      "defense": 49,
+      "xp": 7131,
+      "gold": 2576,
+      "level": 30,
+      "boss": true,
+      "abilities": [
+        "poison-bite",
+        "dark-curse",
+        "regen-aura",
+        "stunning-slam",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "Once a mining foreman, now fused with the sulfur deposits she spent decades excavating. She is half-human, half-crystalline horror, and wholly furious at the world that abandoned her."
+    }
+  ],
+  "events": [
+    {
+      "slug": "sulfur-mines-event-1",
+      "name": "Toxic Pool",
+      "icon": "\u2620",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "You encounter toxic pool in the sulfur mines. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (INT DC 21)",
+          "check": {
+            "stat": "int",
+            "dc": 21
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the toxic pool.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "sulfur-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The toxic pool proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Take direct action (STR DC 20)",
+          "check": {
+            "stat": "str",
+            "dc": 20
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 50,
+              "items": [
+                {
+                  "slug": "sulfur-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "sulfur-mines-event-2",
+      "name": "Collapsed Tunnel",
+      "icon": "\ud83e\udea8",
+      "type": "hazard",
+      "rarity": "uncommon",
+      "text": "You encounter collapsed tunnel in the sulfur mines. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (WIS DC 21)",
+          "check": {
+            "stat": "wis",
+            "dc": 21
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the collapsed tunnel.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "basalt-plate",
+                  "qty": 2
+                }
+              ],
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "The collapsed tunnel proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 27
+            }
+          }
+        },
+        {
+          "label": "Take direct action (DEX DC 20)",
+          "check": {
+            "stat": "dex",
+            "dc": 20
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 60,
+              "items": [
+                {
+                  "slug": "basalt-plate",
+                  "qty": 1
+                }
+              ],
+              "xp": 33
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "sulfur-mines-event-3",
+      "name": "Crystal Chamber",
+      "icon": "\ud83d\udc8e",
+      "type": "phenomenon",
+      "rarity": "common",
+      "text": "You encounter crystal chamber in the sulfur mines. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (DEX DC 22)",
+          "check": {
+            "stat": "dex",
+            "dc": 22
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the crystal chamber.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "sulfur-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 41
+            }
+          },
+          "failure": {
+            "text": "The crystal chamber proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 29
+            }
+          }
+        },
+        {
+          "label": "Take direct action (CON DC 21)",
+          "check": {
+            "stat": "con",
+            "dc": 21
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 70,
+              "items": [
+                {
+                  "slug": "sulfur-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 36
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 24
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "sulfur-mines-event-4",
+      "name": "Abandoned Cart",
+      "icon": "\ud83d\uded2",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "You encounter abandoned cart in the sulfur mines. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (STR DC 22)",
+          "check": {
+            "stat": "str",
+            "dc": 22
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the abandoned cart.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 2
+                }
+              ],
+              "xp": 44
+            }
+          },
+          "failure": {
+            "text": "The abandoned cart proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 31
+            }
+          }
+        },
+        {
+          "label": "Take direct action (INT DC 21)",
+          "check": {
+            "stat": "int",
+            "dc": 21
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 80,
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 1
+                }
+              ],
+              "xp": 39
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 26
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "sulfur-mines-event-5",
+      "name": "Miner'S Ghost",
+      "icon": "\ud83d\udc7b",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "You encounter miner's ghost in the sulfur mines. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (CON DC 23)",
+          "check": {
+            "stat": "con",
+            "dc": 23
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the miner's ghost.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "sulfur-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 47
+            }
+          },
+          "failure": {
+            "text": "The miner's ghost proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 33
+            }
+          }
+        },
+        {
+          "label": "Take direct action (WIS DC 22)",
+          "check": {
+            "stat": "wis",
+            "dc": 22
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 90,
+              "items": [
+                {
+                  "slug": "sulfur-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 42
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 28
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "sulfur-mines-event-6",
+      "name": "The Deep Vein",
+      "icon": "\u26cf",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "You encounter the deep vein in the sulfur mines. The air crackles with danger and opportunity.",
+      "choices": [
+        {
+          "label": "Investigate carefully (INT DC 23)",
+          "check": {
+            "stat": "int",
+            "dc": 23
+          },
+          "success": {
+            "text": "Your caution pays off. You find valuable materials among the the deep vein.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 50
+            }
+          },
+          "failure": {
+            "text": "The the deep vein proves more dangerous than expected.",
+            "rewards": {
+              "xp": 12,
+              "damage": 35
+            }
+          }
+        },
+        {
+          "label": "Take direct action (STR DC 22)",
+          "check": {
+            "stat": "str",
+            "dc": 22
+          },
+          "success": {
+            "text": "Bold action yields results. Gold and materials.",
+            "rewards": {
+              "gold": 100,
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "Direct action backfires.",
+            "rewards": {
+              "xp": 10,
+              "damage": 30
+            }
+          }
+        },
+        {
+          "label": "Move on",
+          "auto": true,
+          "success": {
+            "text": "Not everything needs your attention.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "sulfur-mines-group-1",
+      "name": "Mine Lurker Patrol",
+      "composition": [
+        {
+          "enemySlug": "mine-lurker",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "sulfur-mines-group-2",
+      "name": "Acid Slime & Sulfur Elemental",
+      "composition": [
+        {
+          "enemySlug": "acid-slime",
+          "count": 1
+        },
+        {
+          "enemySlug": "sulfur-elemental",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

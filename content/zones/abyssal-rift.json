@@ -1,0 +1,578 @@
+{
+  "location": {
+    "slug": "abyssal-rift",
+    "name": "Abyssal Rift",
+    "type": "dungeon",
+    "realm": "voidspire",
+    "description": "A vertical tear in reality that descends into the Abyss itself. Gravity pulls downward into infinite darkness. The creatures here are not of any known realm \u2014 they are things that live in the spaces between existence.",
+    "connections": [
+      "void-mire"
+    ],
+    "mapX": 85,
+    "mapY": 65
+  },
+  "locationThreat": 44,
+  "dungeonConfig": {
+    "boss": "abyssal-sovereign",
+    "name": "Abyssal Rift",
+    "minRooms": 6,
+    "maxRooms": 8,
+    "mechanic": {
+      "slug": "abyssal-pull",
+      "name": "Abyssal Pull",
+      "description": "The Abyss pulls at your soul. Take 5% max HP damage per room.",
+      "effect": {
+        "roomDamagePct": 5
+      }
+    }
+  },
+  "enemies": [
+    {
+      "slug": "abyssal-tendril",
+      "name": "Abyssal Tendril",
+      "hp": 2246,
+      "attack": 85,
+      "defense": 51,
+      "xp": 3284,
+      "gold": 1652,
+      "level": 40,
+      "abilities": [
+        "poison-bite",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A tentacle of the Abyss itself, reaching up through the rift. It grabs, constricts, and drags things down into the dark."
+    },
+    {
+      "slug": "void-born",
+      "name": "Void-Born",
+      "hp": 2363,
+      "attack": 105,
+      "defense": 51,
+      "xp": 3638,
+      "gold": 1475,
+      "level": 42,
+      "abilities": [
+        "dark-curse",
+        "fire-breath",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "A being that was born in the void between realities. It has no concept of mercy, pain, or existence \u2014 only hunger."
+    },
+    {
+      "slug": "entropy-lord",
+      "name": "Entropy Lord",
+      "hp": 2157,
+      "attack": 100,
+      "defense": 51,
+      "xp": 3575,
+      "gold": 1773,
+      "level": 43,
+      "abilities": [
+        "stunning-slam",
+        "dark-curse",
+        "harden",
+        "war-cry"
+      ],
+      "drops": [],
+      "description": "A lord of decay and dissolution. Its presence accelerates entropy \u2014 metal rusts, stone crumbles, hope fades."
+    },
+    {
+      "slug": "abyssal-sovereign",
+      "name": "Abyssal Sovereign",
+      "hp": 3958,
+      "attack": 131,
+      "defense": 74,
+      "xp": 13169,
+      "gold": 4099,
+      "level": 46,
+      "boss": true,
+      "abilities": [
+        "fire-breath",
+        "stunning-slam",
+        "dark-curse",
+        "regen-aura",
+        "harden",
+        "weakening-hex",
+        "war-cry"
+      ],
+      "drops": [],
+      "description": "The ruler of the Rift \u2014 an entity of pure void that has consumed countless realities. It appears as a humanoid absence, a silhouette cut from existence itself. Where it stands, reality unravels."
+    }
+  ],
+  "events": [
+    {
+      "slug": "abyssal-rift-evt-1",
+      "name": "Reality Tear",
+      "icon": "\ud83c\udf00",
+      "type": "phenomenon",
+      "rarity": "common",
+      "text": "A tear in reality bleeds energy in the abyssal rift. Dangerous but potentially useful.",
+      "choices": [
+        {
+          "label": "Investigate (INT DC 28)",
+          "check": {
+            "stat": "int",
+            "dc": 28
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "abyssal-core",
+                  "qty": 2
+                }
+              ],
+              "xp": 60
+            }
+          },
+          "failure": {
+            "text": "The abyssal rift punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 45
+            }
+          }
+        },
+        {
+          "label": "Take action (STR DC 27)",
+          "check": {
+            "stat": "str",
+            "dc": 27
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 80,
+              "items": [
+                {
+                  "slug": "abyssal-core",
+                  "qty": 1
+                }
+              ],
+              "xp": 55
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 40
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The abyssal rift is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "abyssal-rift-evt-2",
+      "name": "Ancient Cache",
+      "icon": "\ud83d\udce6",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "A supply cache from a previous expedition, half-swallowed by the abyssal rift.",
+      "choices": [
+        {
+          "label": "Investigate (WIS DC 28)",
+          "check": {
+            "stat": "wis",
+            "dc": 28
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "abyssal-core",
+                  "qty": 2
+                }
+              ],
+              "xp": 63
+            }
+          },
+          "failure": {
+            "text": "The abyssal rift punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 47
+            }
+          }
+        },
+        {
+          "label": "Take action (DEX DC 27)",
+          "check": {
+            "stat": "dex",
+            "dc": 27
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 95,
+              "items": [
+                {
+                  "slug": "abyssal-core",
+                  "qty": 1
+                }
+              ],
+              "xp": 57
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 42
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The abyssal rift is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "abyssal-rift-evt-3",
+      "name": "Void Surge",
+      "icon": "\u26a1",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "A surge of void energy ripples through the abyssal rift, warping everything it touches.",
+      "choices": [
+        {
+          "label": "Investigate (DEX DC 29)",
+          "check": {
+            "stat": "dex",
+            "dc": 29
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "abyssal-core",
+                  "qty": 2
+                }
+              ],
+              "xp": 66
+            }
+          },
+          "failure": {
+            "text": "The abyssal rift punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 49
+            }
+          }
+        },
+        {
+          "label": "Take action (CON DC 28)",
+          "check": {
+            "stat": "con",
+            "dc": 28
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 110,
+              "items": [
+                {
+                  "slug": "abyssal-core",
+                  "qty": 1
+                }
+              ],
+              "xp": 59
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 44
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The abyssal rift is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "abyssal-rift-evt-4",
+      "name": "Spectral Guide",
+      "icon": "\ud83d\udc7b",
+      "type": "npc",
+      "rarity": "uncommon",
+      "text": "A spectral figure beckons from the abyssal rift. It may be a guide \u2014 or a trap.",
+      "choices": [
+        {
+          "label": "Investigate (STR DC 29)",
+          "check": {
+            "stat": "str",
+            "dc": 29
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "abyssal-core",
+                  "qty": 2
+                }
+              ],
+              "xp": 69
+            }
+          },
+          "failure": {
+            "text": "The abyssal rift punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 51
+            }
+          }
+        },
+        {
+          "label": "Take action (INT DC 28)",
+          "check": {
+            "stat": "int",
+            "dc": 28
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 125,
+              "items": [
+                {
+                  "slug": "abyssal-core",
+                  "qty": 1
+                }
+              ],
+              "xp": 61
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 46
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The abyssal rift is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "abyssal-rift-evt-5",
+      "name": "Crystallized Memory",
+      "icon": "\ud83d\udc8e",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A crystal containing someone's memories sits in the abyssal rift. Touching it might reveal secrets.",
+      "choices": [
+        {
+          "label": "Investigate (CON DC 30)",
+          "check": {
+            "stat": "con",
+            "dc": 30
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "sovereign-ichor",
+                  "qty": 2
+                }
+              ],
+              "xp": 72
+            }
+          },
+          "failure": {
+            "text": "The abyssal rift punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 53
+            }
+          }
+        },
+        {
+          "label": "Take action (WIS DC 29)",
+          "check": {
+            "stat": "wis",
+            "dc": 29
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 140,
+              "items": [
+                {
+                  "slug": "sovereign-ichor",
+                  "qty": 1
+                }
+              ],
+              "xp": 63
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 48
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The abyssal rift is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "abyssal-rift-evt-6",
+      "name": "The Threshold",
+      "icon": "\ud83d\udeaa",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "A doorway to somewhere else shimmers in the abyssal rift. What lies beyond is anyone's guess.",
+      "choices": [
+        {
+          "label": "Investigate (INT DC 30)",
+          "check": {
+            "stat": "int",
+            "dc": 30
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "sovereign-ichor",
+                  "qty": 2
+                }
+              ],
+              "xp": 75
+            }
+          },
+          "failure": {
+            "text": "The abyssal rift punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 55
+            }
+          }
+        },
+        {
+          "label": "Take action (STR DC 29)",
+          "check": {
+            "stat": "str",
+            "dc": 29
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 155,
+              "items": [
+                {
+                  "slug": "sovereign-ichor",
+                  "qty": 1
+                }
+              ],
+              "xp": 65
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 50
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The abyssal rift is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "abyssal-rift-group-1",
+      "name": "Entropy Lord Patrol",
+      "composition": [
+        {
+          "enemySlug": "entropy-lord",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "abyssal-rift-group-2",
+      "name": "Abyssal Tendril & Entropy Lord",
+      "composition": [
+        {
+          "enemySlug": "abyssal-tendril",
+          "count": 1
+        },
+        {
+          "enemySlug": "entropy-lord",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

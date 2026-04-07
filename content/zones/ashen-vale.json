@@ -1,0 +1,565 @@
+{
+  "location": {
+    "slug": "ashen-vale",
+    "name": "Ashen Vale",
+    "type": "wild",
+    "realm": "emberveil",
+    "description": "A valley of petrified trees and ash dunes, where demon cultists make their camps. The air shimmers with heat and the ground crunches with volcanic glass. Strange totems line the paths.",
+    "connections": [
+      "cinderport",
+      "demon-hold",
+      "sulfur-mines"
+    ],
+    "mapX": 75,
+    "mapY": 35
+  },
+  "locationThreat": 22,
+  "enemies": [
+    {
+      "slug": "ember-cultist",
+      "name": "Ember Cultist",
+      "hp": 1353,
+      "attack": 54,
+      "defense": 28,
+      "xp": 1369,
+      "gold": 733,
+      "level": 21,
+      "abilities": [
+        "fire-breath",
+        "dark-curse"
+      ],
+      "drops": [],
+      "description": "A robed figure wielding fire magic and chanting in an infernal tongue. They worship something in the volcano."
+    },
+    {
+      "slug": "ash-hound",
+      "name": "Ash Hound",
+      "hp": 1211,
+      "attack": 47,
+      "defense": 26,
+      "xp": 1573,
+      "gold": 677,
+      "level": 21,
+      "abilities": [
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A hairless, ember-eyed canine that hunts in packs across the ash dunes. Its bite cauterizes as it tears."
+    },
+    {
+      "slug": "obsidian-spider",
+      "name": "Obsidian Spider",
+      "hp": 1407,
+      "attack": 56,
+      "defense": 30,
+      "xp": 1719,
+      "gold": 685,
+      "level": 22,
+      "abilities": [
+        "poison-bite",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A spider the size of a horse, its body made of volcanic glass. Its webs are razor-sharp obsidian threads."
+    },
+    {
+      "slug": "lava-imp",
+      "name": "Lava Imp",
+      "hp": 1327,
+      "attack": 57,
+      "defense": 30,
+      "xp": 1684,
+      "gold": 719,
+      "level": 22,
+      "abilities": [
+        "fire-breath",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "A cackling minor demon of fire and mischief. Small but vicious, and they never come alone."
+    },
+    {
+      "slug": "petrified-treant",
+      "name": "Petrified Treant",
+      "hp": 1426,
+      "attack": 50,
+      "defense": 29,
+      "xp": 1600,
+      "gold": 675,
+      "level": 23,
+      "abilities": [
+        "stunning-slam",
+        "harden"
+      ],
+      "drops": [],
+      "description": "An ancient tree turned to stone by volcanic heat, still animated by stubborn nature magic. It moves like grinding boulders."
+    }
+  ],
+  "events": [
+    {
+      "slug": "vale-totem",
+      "name": "Cult Totem",
+      "icon": "\ud83d\uddff",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A totem of bone and obsidian, carved with demonic sigils. It radiates dark energy.",
+      "choices": [
+        {
+          "label": "Destroy the totem (STR DC 21)",
+          "check": {
+            "stat": "str",
+            "dc": 21
+          },
+          "success": {
+            "text": "The totem shatters. Released energy surges through you.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 2
+                }
+              ],
+              "xp": 40
+            }
+          },
+          "failure": {
+            "text": "The totem fights back. Infernal energy burns your hands.",
+            "rewards": {
+              "xp": 12,
+              "damage": 28
+            }
+          }
+        },
+        {
+          "label": "Study the sigils (INT DC 22)",
+          "check": {
+            "stat": "int",
+            "dc": 22
+          },
+          "success": {
+            "text": "You decipher the cult's binding magic. Useful knowledge.",
+            "rewards": {
+              "xp": 55,
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 1
+                }
+              ]
+            }
+          },
+          "failure": {
+            "text": "The sigils are a trap. Dark energy lashes your mind.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Leave it undisturbed",
+          "auto": true,
+          "success": {
+            "text": "Some dark magic is best left alone.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "vale-prisoner",
+      "name": "Caged Prisoner",
+      "icon": "\ud83d\udd12",
+      "type": "npc",
+      "rarity": "uncommon",
+      "text": "A cage of obsidian bars holds a battered merchant. \"Please \u2014 the cultists took me. I have gold hidden nearby if you free me.\"",
+      "choices": [
+        {
+          "label": "Break the cage (STR DC 20)",
+          "check": {
+            "stat": "str",
+            "dc": 20
+          },
+          "success": {
+            "text": "The bars shatter. The merchant leads you to his hidden stash.",
+            "rewards": {
+              "gold": 100,
+              "items": [
+                {
+                  "slug": "ember-dust",
+                  "qty": 3
+                }
+              ],
+              "xp": 42
+            }
+          },
+          "failure": {
+            "text": "The cage is magically reinforced. You can't break it.",
+            "rewards": {
+              "xp": 12
+            }
+          }
+        },
+        {
+          "label": "Pick the lock (DEX DC 22)",
+          "check": {
+            "stat": "dex",
+            "dc": 22
+          },
+          "success": {
+            "text": "The lock clicks open. The merchant is grateful beyond words.",
+            "rewards": {
+              "gold": 120,
+              "xp": 48
+            }
+          },
+          "failure": {
+            "text": "The lock triggers an alarm. You hear cultists approaching.",
+            "rewards": {
+              "xp": 12,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "You can't risk it right now",
+          "auto": true,
+          "success": {
+            "text": "\"I understand. Just... remember me if you come back.\"",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "vale-ritual-site",
+      "name": "Abandoned Ritual Site",
+      "icon": "\ud83d\udd2e",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A circle of charred stone with candles of black tallow still burning. Whatever ritual was performed here left residual energy.",
+      "choices": [
+        {
+          "label": "Absorb the residual energy (INT DC 21)",
+          "check": {
+            "stat": "int",
+            "dc": 21
+          },
+          "success": {
+            "text": "Infernal power flows into you. Dark but useful.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 2
+                },
+                {
+                  "slug": "ember-dust",
+                  "qty": 1
+                }
+              ],
+              "xp": 40
+            }
+          },
+          "failure": {
+            "text": "The energy is corrupted. It burns from the inside.",
+            "rewards": {
+              "xp": 12,
+              "damage": 30
+            }
+          }
+        },
+        {
+          "label": "Cleanse the site (WIS DC 22)",
+          "check": {
+            "stat": "wis",
+            "dc": 22
+          },
+          "success": {
+            "text": "Holy energy purifies the corruption. The land breathes easier.",
+            "rewards": {
+              "xp": 55,
+              "heal": 30
+            }
+          },
+          "failure": {
+            "text": "The corruption resists. It lashes back at your faith.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Leave the site alone",
+          "auto": true,
+          "success": {
+            "text": "Better to not meddle with infernal magic.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "vale-petrified-grove",
+      "name": "Petrified Grove",
+      "icon": "\ud83e\udea8",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A grove of trees turned to stone by volcanic heat. Some contain veins of volcanic glass where sap once flowed.",
+      "choices": [
+        {
+          "label": "Extract the glass veins (DEX DC 21)",
+          "check": {
+            "stat": "dex",
+            "dc": 21
+          },
+          "success": {
+            "text": "You carefully extract pristine volcanic glass.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 3
+                }
+              ],
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The stone crumbles unpredictably. Debris hits you.",
+            "rewards": {
+              "xp": 12,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Topple a tree for basalt plates (STR DC 20)",
+          "check": {
+            "stat": "str",
+            "dc": 20
+          },
+          "success": {
+            "text": "The tree falls, revealing layers of usable basalt.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "basalt-plate",
+                  "qty": 3
+                }
+              ],
+              "xp": 32
+            }
+          },
+          "failure": {
+            "text": "The tree is heavier than expected. It pins your foot briefly.",
+            "rewards": {
+              "xp": 10,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Move through quietly",
+          "auto": true,
+          "success": {
+            "text": "A graveyard of trees. No need to disturb them further.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "vale-imp-swarm",
+      "name": "Imp Swarm",
+      "icon": "\ud83d\ude08",
+      "type": "encounter",
+      "rarity": "uncommon",
+      "text": "A swarm of lava imps circles overhead, cackling and throwing embers. They're guarding something shiny.",
+      "choices": [
+        {
+          "label": "Intimidate them into scattering (STR DC 22)",
+          "check": {
+            "stat": "str",
+            "dc": 22
+          },
+          "success": {
+            "text": "Your war cry sends them fleeing. They drop their hoard \u2014 trinkets and demon shards.",
+            "rewards": {
+              "gold": 70,
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 2
+                }
+              ],
+              "xp": 42
+            }
+          },
+          "failure": {
+            "text": "They call your bluff and swarm you. Many tiny burns.",
+            "rewards": {
+              "xp": 12,
+              "damage": 30
+            }
+          }
+        },
+        {
+          "label": "Bribe them with food (WIS DC 20)",
+          "check": {
+            "stat": "wis",
+            "dc": 20
+          },
+          "success": {
+            "text": "They accept your offering and share their treasure. Imps respect a deal.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 1
+                },
+                {
+                  "slug": "magma-core",
+                  "qty": 1
+                }
+              ],
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "They take your food AND attack. Imps are liars.",
+            "rewards": {
+              "xp": 12,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Go around them",
+          "auto": true,
+          "success": {
+            "text": "Not worth the burns.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "vale-ash-storm",
+      "name": "Ash Storm",
+      "icon": "\ud83c\udf2a",
+      "type": "hazard",
+      "rarity": "rare",
+      "text": "A wall of volcanic ash sweeps across the vale. Visibility drops to nothing and breathing becomes agony.",
+      "choices": [
+        {
+          "label": "Push through with endurance (CON DC 23)",
+          "check": {
+            "stat": "con",
+            "dc": 23
+          },
+          "success": {
+            "text": "You endure the storm. On the other side, deposits of rare materials exposed by the wind.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "infernal-essence",
+                  "qty": 1
+                },
+                {
+                  "slug": "ember-dust",
+                  "qty": 3
+                }
+              ],
+              "xp": 55
+            }
+          },
+          "failure": {
+            "text": "The ash chokes and burns. You collapse before breaking through.",
+            "rewards": {
+              "xp": 15,
+              "damage": 40
+            }
+          }
+        },
+        {
+          "label": "Find shelter and wait (WIS DC 20)",
+          "check": {
+            "stat": "wis",
+            "dc": 20
+          },
+          "success": {
+            "text": "You find a cave. Inside: supplies left by other survivors.",
+            "rewards": {
+              "gold": 60,
+              "heal": 25,
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "Your shelter collapses. The storm finds you.",
+            "rewards": {
+              "xp": 12,
+              "damage": 28
+            }
+          }
+        },
+        {
+          "label": "Retreat to safety",
+          "auto": true,
+          "success": {
+            "text": "Discretion is the better part of not being buried in ash.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "ashen-vale-group-1",
+      "name": "Ash Hound Patrol",
+      "composition": [
+        {
+          "enemySlug": "ash-hound",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "ashen-vale-group-2",
+      "name": "Obsidian Spider & Ember Cultist",
+      "composition": [
+        {
+          "enemySlug": "obsidian-spider",
+          "count": 1
+        },
+        {
+          "enemySlug": "ember-cultist",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

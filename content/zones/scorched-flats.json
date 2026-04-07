@@ -1,0 +1,578 @@
+{
+  "location": {
+    "slug": "scorched-flats",
+    "name": "Scorched Flats",
+    "type": "wild",
+    "realm": "emberveil",
+    "description": "A vast plain of cracked basalt and sulfurous geysers. Lava worms burrow beneath the surface and fire elementals dance in the thermals. The ground is hot enough to blister boots.",
+    "connections": [
+      "cinderport",
+      "magma-pits",
+      "obsidian-spire"
+    ],
+    "mapX": 25,
+    "mapY": 35
+  },
+  "locationThreat": 21,
+  "enemies": [
+    {
+      "slug": "lava-worm",
+      "name": "Lava Worm",
+      "hp": 1266,
+      "attack": 48,
+      "defense": 28,
+      "xp": 1365,
+      "gold": 621,
+      "level": 20,
+      "abilities": [
+        "poison-bite",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A segmented worm of cooled magma, its body glowing red between obsidian plates. It erupts from the ground without warning."
+    },
+    {
+      "slug": "fire-elemental",
+      "name": "Fire Elemental",
+      "hp": 1238,
+      "attack": 54,
+      "defense": 28,
+      "xp": 1530,
+      "gold": 624,
+      "level": 21,
+      "abilities": [
+        "fire-breath"
+      ],
+      "drops": [],
+      "description": "A column of living flame that drifts across the flats. Its touch melts stone."
+    },
+    {
+      "slug": "basalt-golem",
+      "name": "Basalt Golem",
+      "hp": 1232,
+      "attack": 49,
+      "defense": 28,
+      "xp": 1451,
+      "gold": 712,
+      "level": 22,
+      "abilities": [
+        "stunning-slam",
+        "harden"
+      ],
+      "drops": [],
+      "description": "A crude humanoid form of volcanic rock, animated by the Emberveil's ambient magic. Slow but devastating."
+    },
+    {
+      "slug": "ash-crawler",
+      "name": "Ash Crawler",
+      "hp": 1287,
+      "attack": 46,
+      "defense": 26,
+      "xp": 1368,
+      "gold": 650,
+      "level": 20,
+      "abilities": [
+        "poison-bite"
+      ],
+      "drops": [],
+      "description": "A scorpion-like creature with an ashen exoskeleton. Its tail drips molten venom."
+    },
+    {
+      "slug": "sulfur-wraith",
+      "name": "Sulfur Wraith",
+      "hp": 1405,
+      "attack": 52,
+      "defense": 27,
+      "xp": 1353,
+      "gold": 612,
+      "level": 21,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "The ghost of someone killed by volcanic gas. It drifts through sulfur clouds, invisible until it strikes."
+    }
+  ],
+  "events": [
+    {
+      "slug": "flats-geyser",
+      "name": "Sulfur Geyser",
+      "icon": "\ud83d\udca8",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "A geyser of superheated sulfur erupts nearby. The blast zone is littered with crystallized deposits.",
+      "choices": [
+        {
+          "label": "Harvest crystals from the blast zone (DEX DC 21)",
+          "check": {
+            "stat": "dex",
+            "dc": 21
+          },
+          "success": {
+            "text": "You dart between eruptions and collect pristine sulfur crystals.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "sulfur-crystal",
+                  "qty": 3
+                },
+                {
+                  "slug": "ember-dust",
+                  "qty": 2
+                }
+              ],
+              "xp": 40
+            }
+          },
+          "failure": {
+            "text": "A geyser catches you mid-stride. Scalding.",
+            "rewards": {
+              "xp": 15,
+              "damage": 30
+            }
+          }
+        },
+        {
+          "label": "Study the eruption pattern (INT DC 20)",
+          "check": {
+            "stat": "int",
+            "dc": 20
+          },
+          "success": {
+            "text": "You predict the next eruption and harvest from the cooling deposits.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 3
+                }
+              ],
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "Your prediction is wrong. Painfully wrong.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Wait for it to stop",
+          "auto": true,
+          "success": {
+            "text": "You wait. It never stops. You move on.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "flats-caravan",
+      "name": "Burned Caravan",
+      "icon": "\ud83d\udd25",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A merchant caravan lies in ruins \u2014 wagons melted, goods scattered. The fire was recent and unnatural.",
+      "choices": [
+        {
+          "label": "Search the wreckage (DEX DC 20)",
+          "check": {
+            "stat": "dex",
+            "dc": 20
+          },
+          "success": {
+            "text": "You find a strongbox that survived the fire. Gold and materials inside.",
+            "rewards": {
+              "gold": 60,
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 2
+                }
+              ],
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The wreckage collapses. Hot metal burns your arms.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Track the attackers (WIS DC 21)",
+          "check": {
+            "stat": "wis",
+            "dc": 21
+          },
+          "success": {
+            "text": "Demon cultist tracks. You follow them to a cache of stolen goods.",
+            "rewards": {
+              "gold": 80,
+              "items": [
+                {
+                  "slug": "demon-shard",
+                  "qty": 1
+                }
+              ],
+              "xp": 40
+            }
+          },
+          "failure": {
+            "text": "The tracks vanish in the heat shimmer.",
+            "rewards": {
+              "xp": 12
+            }
+          }
+        },
+        {
+          "label": "Pay respects and move on",
+          "auto": true,
+          "success": {
+            "text": "You mark the site. The dead deserve remembrance.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "flats-elemental-vent",
+      "name": "Elemental Vent",
+      "icon": "\ud83c\udf0b",
+      "type": "phenomenon",
+      "rarity": "uncommon",
+      "text": "A crack in the earth vents pure elemental fire. The energy is intense \u2014 dangerous, but potentially useful.",
+      "choices": [
+        {
+          "label": "Channel the energy (INT DC 22)",
+          "check": {
+            "stat": "int",
+            "dc": 22
+          },
+          "success": {
+            "text": "You harness the elemental power. It surges through you, empowering and burning in equal measure.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 2
+                }
+              ],
+              "xp": 50
+            }
+          },
+          "failure": {
+            "text": "The energy is too wild. It throws you back.",
+            "rewards": {
+              "xp": 15,
+              "damage": 35
+            }
+          }
+        },
+        {
+          "label": "Seal the vent (STR DC 21)",
+          "check": {
+            "stat": "str",
+            "dc": 21
+          },
+          "success": {
+            "text": "You plug the vent with basalt. The pressure builds and ejects a chunk of crystallized fire.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 1
+                },
+                {
+                  "slug": "ember-dust",
+                  "qty": 3
+                }
+              ],
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "The vent explodes. You're thrown clear but burned.",
+            "rewards": {
+              "xp": 12,
+              "damage": 30
+            }
+          }
+        },
+        {
+          "label": "Give it a wide berth",
+          "auto": true,
+          "success": {
+            "text": "Smart. Elemental vents are unpredictable.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "flats-oasis",
+      "name": "Obsidian Oasis",
+      "icon": "\ud83d\udca7",
+      "type": "discovery",
+      "rarity": "rare",
+      "text": "An impossible sight \u2014 a pool of cool water surrounded by obsidian pillars. The water glows faintly blue.",
+      "choices": [
+        {
+          "label": "Drink from the oasis (CON DC 22)",
+          "check": {
+            "stat": "con",
+            "dc": 22
+          },
+          "success": {
+            "text": "The water is pure elemental refreshment. Your wounds close and your energy surges.",
+            "rewards": {
+              "heal": 60,
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "The water is an illusion. Liquid glass burns your throat.",
+            "rewards": {
+              "xp": 15,
+              "damage": 35
+            }
+          }
+        },
+        {
+          "label": "Harvest the obsidian pillars (STR DC 20)",
+          "check": {
+            "stat": "str",
+            "dc": 20
+          },
+          "success": {
+            "text": "You break off sections of enchanted volcanic glass.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 4
+                }
+              ],
+              "xp": 40
+            }
+          },
+          "failure": {
+            "text": "The pillars are harder than they look. Your weapons chip.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        },
+        {
+          "label": "Admire and leave",
+          "auto": true,
+          "success": {
+            "text": "Some beautiful things are best left alone.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "flats-worm-nest",
+      "name": "Lava Worm Nest",
+      "icon": "\ud83e\udeb1",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "The ground here is soft and warm \u2014 a lava worm nesting site. Eggs glow beneath the surface.",
+      "choices": [
+        {
+          "label": "Harvest the eggs carefully (DEX DC 21)",
+          "check": {
+            "stat": "dex",
+            "dc": 21
+          },
+          "success": {
+            "text": "You extract several eggs. Alchemists pay well for these.",
+            "rewards": {
+              "gold": 70,
+              "items": [
+                {
+                  "slug": "ember-dust",
+                  "qty": 3
+                }
+              ],
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "The mother worm notices. Her lunge barely misses.",
+            "rewards": {
+              "xp": 12,
+              "damage": 28
+            }
+          }
+        },
+        {
+          "label": "Collapse the nest (STR DC 20)",
+          "check": {
+            "stat": "str",
+            "dc": 20
+          },
+          "success": {
+            "text": "The nest caves in. Materials are exposed in the rubble.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "basalt-plate",
+                  "qty": 2
+                },
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 1
+                }
+              ],
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "The collapse triggers a chain reaction. Ground gives way.",
+            "rewards": {
+              "xp": 12,
+              "damage": 25
+            }
+          }
+        },
+        {
+          "label": "Leave the nest alone",
+          "auto": true,
+          "success": {
+            "text": "Even worms deserve a home.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "flats-mirage",
+      "name": "Heat Mirage",
+      "icon": "\ud83c\udf21",
+      "type": "phenomenon",
+      "rarity": "uncommon",
+      "text": "The heat creates visions \u2014 a city of gold, a frozen river, a doorway to somewhere else. One of them might be real.",
+      "choices": [
+        {
+          "label": "Focus and discern truth from illusion (WIS DC 22)",
+          "check": {
+            "stat": "wis",
+            "dc": 22
+          },
+          "success": {
+            "text": "You see through the mirages. One is real \u2014 a cache left by a previous explorer, hidden by the heat shimmer.",
+            "rewards": {
+              "gold": 90,
+              "items": [
+                {
+                  "slug": "magma-core",
+                  "qty": 1
+                }
+              ],
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "You walk toward an illusion. The real danger was behind you.",
+            "rewards": {
+              "xp": 12,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Dispel the mirages with force of will (INT DC 21)",
+          "check": {
+            "stat": "int",
+            "dc": 21
+          },
+          "success": {
+            "text": "The illusions shatter. Behind them, a pocket of crystallized heat energy.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "ember-dust",
+                  "qty": 3
+                },
+                {
+                  "slug": "volcanic-glass",
+                  "qty": 2
+                }
+              ],
+              "xp": 38
+            }
+          },
+          "failure": {
+            "text": "The mirages intensify. Your head pounds.",
+            "rewards": {
+              "xp": 12,
+              "damage": 15
+            }
+          }
+        },
+        {
+          "label": "Trust nothing and keep walking",
+          "auto": true,
+          "success": {
+            "text": "In the Emberveil, seeing is rarely believing.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "scorched-flats-group-1",
+      "name": "Fire Elemental Warband",
+      "composition": [
+        {
+          "enemySlug": "fire-elemental",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "scorched-flats-group-2",
+      "name": "Sulfur Wraith & Basalt Golem",
+      "composition": [
+        {
+          "enemySlug": "sulfur-wraith",
+          "count": 1
+        },
+        {
+          "enemySlug": "basalt-golem",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

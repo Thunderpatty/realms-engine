@@ -1,0 +1,350 @@
+{
+  "iron-ring": {
+    "cost": 20,
+    "name": "Iron Ring",
+    "sell": 5,
+    "type": "ring",
+    "stats": {
+      "con": 1
+    },
+    "rarity": "common",
+    "description": "A simple band."
+  },
+  "silver-focus-ring": {
+    "cost": 21,
+    "name": "Silver Focus Ring",
+    "sell": 5,
+    "type": "ring",
+    "stats": {
+      "int": 1,
+      "wis": 1
+    },
+    "rarity": "common",
+    "description": "A narrow ring that steadies spellcasting gestures."
+  },
+  "cutpurse-signet": {
+    "cost": 66,
+    "name": "Cutpurse Signet",
+    "sell": 16,
+    "type": "ring",
+    "stats": {
+      "cha": 1,
+      "dex": 2
+    },
+    "rarity": "uncommon",
+    "description": "A stolen noble seal repurposed as proof that bold lies often work."
+  },
+  "raven-mark": {
+    "cost": 202,
+    "name": "Raven Mark",
+    "sell": 50,
+    "type": "ring",
+    "stats": {
+      "cha": 2,
+      "dex": 3
+    },
+    "rarity": "rare",
+    "description": "An obsidian brooch traded only among killers with reputations to protect."
+  },
+  "halo-seal": {
+    "cost": 202,
+    "name": "Halo Seal",
+    "sell": 50,
+    "type": "ring",
+    "stats": {
+      "cha": 1,
+      "con": 1,
+      "wis": 3
+    },
+    "rarity": "rare",
+    "description": "A thin circle of blessed silver that settles over its bearer like calm."
+  },
+  "copper-band": {
+    "type": "ring",
+    "rarity": "common",
+    "name": "Copper Band",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "str": 2
+    },
+    "description": "A tarnished copper ring stamped with a fist."
+  },
+  "willow-ring": {
+    "type": "ring",
+    "rarity": "common",
+    "name": "Willow Ring",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "wis": 2
+    },
+    "description": "A thin ring carved from sacred willow wood."
+  },
+  "signet-of-valor": {
+    "type": "ring",
+    "rarity": "uncommon",
+    "name": "Signet of Valor",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "str": 3,
+      "con": 1
+    },
+    "description": "A signet ring awarded to soldiers who held the line."
+  },
+  "spellthread-band": {
+    "type": "ring",
+    "rarity": "uncommon",
+    "name": "Spellthread Band",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "int": 3,
+      "wis": 1
+    },
+    "description": "Woven from enchanted thread that hums when spells are near."
+  },
+  "quicksilver-ring": {
+    "type": "ring",
+    "rarity": "uncommon",
+    "name": "Quicksilver Ring",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "dex": 3,
+      "cha": 1
+    },
+    "description": "A liquid-silver band that seems to shift and flow."
+  },
+  "devotion-ring": {
+    "type": "ring",
+    "rarity": "uncommon",
+    "name": "Devotion Ring",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "wis": 3,
+      "con": 1
+    },
+    "description": "Blessed by a traveling priest during the autumn rites."
+  },
+  "ranger-loop": {
+    "type": "ring",
+    "rarity": "uncommon",
+    "name": "Ranger's Loop",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "dex": 2,
+      "wis": 2
+    },
+    "description": "A braided leather ring worn by frontier scouts."
+  },
+  "warhammer-seal": {
+    "type": "ring",
+    "rarity": "rare",
+    "name": "Warhammer Seal",
+    "cost": 203,
+    "sell": 50,
+    "stats": {
+      "str": 4,
+      "con": 2
+    },
+    "description": "An iron seal ring bearing the mark of a siege-breaker company."
+  },
+  "leystone-band": {
+    "type": "ring",
+    "rarity": "rare",
+    "name": "Leystone Band",
+    "cost": 203,
+    "sell": 50,
+    "stats": {
+      "int": 4,
+      "wis": 2
+    },
+    "description": "Cut from stone found at a ley-line convergence."
+  },
+  "pathfinder-ring": {
+    "type": "ring",
+    "rarity": "rare",
+    "name": "Pathfinder's Ring",
+    "cost": 203,
+    "sell": 50,
+    "stats": {
+      "dex": 3,
+      "wis": 2,
+      "con": 1
+    },
+    "description": "Worn by elite trailblazers who never lose their way."
+  },
+  "conqueror-signet": {
+    "type": "ring",
+    "rarity": "epic",
+    "name": "Conqueror's Signet",
+    "cost": 504,
+    "sell": 126,
+    "stats": {
+      "str": 6,
+      "con": 3
+    },
+    "description": "Taken from the hand of a fallen warlord. It still radiates command."
+  },
+  "archmage-loop": {
+    "type": "ring",
+    "rarity": "epic",
+    "name": "Archmage's Loop",
+    "cost": 504,
+    "sell": 126,
+    "stats": {
+      "int": 6,
+      "wis": 3
+    },
+    "description": "A ring that bends light around itself, humming with raw arcana."
+  },
+  "phantom-ring": {
+    "type": "ring",
+    "rarity": "epic",
+    "name": "Phantom Ring",
+    "cost": 504,
+    "sell": 126,
+    "stats": {
+      "dex": 7,
+      "cha": 2
+    },
+    "description": "Said to phase slightly out of reality, making the wearer harder to grasp."
+  },
+  "covenant-ring": {
+    "type": "ring",
+    "rarity": "epic",
+    "name": "Covenant Ring",
+    "cost": 504,
+    "sell": 126,
+    "stats": {
+      "wis": 6,
+      "con": 3
+    },
+    "description": "A ring exchanged between temple guardians as a vow of protection."
+  },
+  "hawk-eye-band": {
+    "type": "ring",
+    "rarity": "epic",
+    "name": "Hawk-Eye Band",
+    "cost": 504,
+    "sell": 126,
+    "stats": {
+      "dex": 5,
+      "wis": 3,
+      "con": 1
+    },
+    "description": "A jade ring carved with raptor eyes that sharpen distant sight."
+  },
+  "tyrant-seal": {
+    "type": "ring",
+    "rarity": "legendary",
+    "name": "Tyrant's Seal",
+    "cost": 0,
+    "sell": 301,
+    "stats": {
+      "str": 8,
+      "con": 4,
+      "cha": 2
+    },
+    "description": "The ruling ring of a conquered kingdom. Its weight feels like authority."
+  },
+  "voidloop": {
+    "type": "ring",
+    "rarity": "legendary",
+    "name": "Voidloop",
+    "cost": 0,
+    "sell": 301,
+    "stats": {
+      "int": 9,
+      "wis": 5
+    },
+    "description": "A ring of condensed void-matter that whispers forgotten incantations."
+  },
+  "shadow-sovereign": {
+    "type": "ring",
+    "rarity": "legendary",
+    "name": "Shadow Sovereign",
+    "cost": 0,
+    "sell": 301,
+    "stats": {
+      "dex": 10,
+      "cha": 3
+    },
+    "description": "A pitch-black band that drinks light. Thieves kill for this ring."
+  },
+  "saints-circle": {
+    "type": "ring",
+    "rarity": "legendary",
+    "name": "Saint's Circle",
+    "cost": 0,
+    "sell": 301,
+    "stats": {
+      "wis": 8,
+      "con": 5,
+      "cha": 2
+    },
+    "description": "A ring worn by the last true saint. It glows faintly in darkness."
+  },
+  "horizon-band": {
+    "type": "ring",
+    "rarity": "legendary",
+    "name": "Horizon Band",
+    "cost": 0,
+    "sell": 301,
+    "stats": {
+      "dex": 7,
+      "wis": 5,
+      "con": 3
+    },
+    "description": "Forged at the edge of the world where land meets sky."
+  },
+  "permafrost-band": {
+    "slug": "permafrost-band",
+    "name": "Permafrost Band",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "rare",
+    "description": "A ring forged from permafrost ore. Cold power circulates through it.",
+    "stats": {
+      "con": 4,
+      "str": 2,
+      "wis": 1
+    },
+    "cost": 320,
+    "sell": 80
+  },
+  "volcanic-signet": {
+    "slug": "volcanic-signet",
+    "name": "Volcanic Signet",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "rare",
+    "stats": {
+      "con": 5,
+      "str": 3,
+      "wis": 2
+    },
+    "description": "A ring forged in the caldera. It pulses with heat.",
+    "cost": 580,
+    "sell": 145
+  },
+  "void-signet": {
+    "slug": "void-signet",
+    "name": "Void Signet",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "epic",
+    "stats": {
+      "con": 6,
+      "str": 4,
+      "wis": 3
+    },
+    "description": "A ring that contains a pocket of void. Pulses with dark energy.",
+    "cost": 1000,
+    "sell": 250
+  }
+}

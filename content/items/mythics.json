@@ -1,0 +1,685 @@
+{
+  "worldbreaker": {
+    "name": "Worldbreaker",
+    "type": "weapon",
+    "rarity": "mythic",
+    "description": "Mythic weapon forged for the Warrior. Radiates unstoppable force.",
+    "stats": {
+      "str": 14,
+      "con": 7,
+      "dex": 5,
+      "attack": 8
+    },
+    "passive": {
+      "lifestealPct": 2
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "aegis-of-the-fallen": {
+    "name": "Aegis of the Fallen",
+    "type": "shield",
+    "rarity": "mythic",
+    "description": "Mythic shield forged for the Warrior. Radiates unstoppable force.",
+    "stats": {
+      "str": 10,
+      "con": 6,
+      "dex": 4,
+      "defense": 6
+    },
+    "passive": {
+      "lifestealPct": 2
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "dreadplate-of-the-conqueror": {
+    "name": "Dreadplate of the Conqueror",
+    "type": "body",
+    "rarity": "mythic",
+    "description": "Mythic body forged for the Warrior. Radiates unstoppable force.",
+    "stats": {
+      "str": 11,
+      "con": 6,
+      "dex": 4
+    },
+    "passive": {
+      "lifestealPct": 2
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "crown-of-the-warlord": {
+    "name": "Crown of the Warlord",
+    "type": "helmet",
+    "rarity": "mythic",
+    "description": "Mythic helmet forged for the Warrior. Radiates unstoppable force.",
+    "stats": {
+      "str": 9,
+      "con": 5,
+      "dex": 3
+    },
+    "passive": {
+      "lifestealPct": 2
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "crushfist-gauntlets": {
+    "name": "Crushfist Gauntlets",
+    "type": "gloves",
+    "rarity": "mythic",
+    "description": "Mythic gloves forged for the Warrior. Radiates unstoppable force.",
+    "stats": {
+      "str": 8,
+      "con": 4,
+      "dex": 3
+    },
+    "passive": {
+      "lifestealPct": 2
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "earthshaker-greaves": {
+    "name": "Earthshaker Greaves",
+    "type": "boots",
+    "rarity": "mythic",
+    "description": "Mythic boots forged for the Warrior. Radiates unstoppable force.",
+    "stats": {
+      "str": 9,
+      "con": 5,
+      "dex": 3
+    },
+    "passive": {
+      "lifestealPct": 2
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "warlord-s-medallion": {
+    "name": "Warlord's Medallion",
+    "type": "amulet",
+    "rarity": "mythic",
+    "description": "Mythic amulet forged for the Warrior. Radiates unstoppable force.",
+    "stats": {
+      "str": 9,
+      "con": 5,
+      "dex": 3
+    },
+    "passive": {
+      "lifestealPct": 2
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "signet-of-conquest": {
+    "name": "Signet of Conquest",
+    "type": "ring",
+    "rarity": "mythic",
+    "description": "Mythic ring forged for the Warrior. Radiates unstoppable force.",
+    "stats": {
+      "str": 9,
+      "con": 5,
+      "dex": 4
+    },
+    "passive": {
+      "lifestealPct": 2
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "trophy-of-the-vanquished": {
+    "name": "Trophy of the Vanquished",
+    "type": "trinket",
+    "rarity": "mythic",
+    "description": "Mythic trinket forged for the Warrior. Radiates unstoppable force.",
+    "stats": {
+      "str": 10,
+      "con": 5,
+      "dex": 4
+    },
+    "passive": {
+      "lifestealPct": 2
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "staff-of-the-void": {
+    "name": "Staff of the Void",
+    "type": "weapon",
+    "rarity": "mythic",
+    "description": "Mythic weapon forged for the Mage. Pulses with arcane energy.",
+    "stats": {
+      "int": 14,
+      "wis": 7,
+      "con": 5,
+      "attack": 8
+    },
+    "passive": {
+      "manaRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "arcane-bulwark": {
+    "name": "Arcane Bulwark",
+    "type": "shield",
+    "rarity": "mythic",
+    "description": "Mythic shield forged for the Mage. Pulses with arcane energy.",
+    "stats": {
+      "int": 10,
+      "wis": 6,
+      "con": 4,
+      "defense": 6
+    },
+    "passive": {
+      "manaRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "starweave-robes": {
+    "name": "Starweave Robes",
+    "type": "body",
+    "rarity": "mythic",
+    "description": "Mythic body forged for the Mage. Pulses with arcane energy.",
+    "stats": {
+      "int": 11,
+      "wis": 6,
+      "con": 4
+    },
+    "passive": {
+      "manaRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "crown-of-the-archmage": {
+    "name": "Crown of the Archmage",
+    "type": "helmet",
+    "rarity": "mythic",
+    "description": "Mythic helmet forged for the Mage. Pulses with arcane energy.",
+    "stats": {
+      "int": 9,
+      "wis": 5,
+      "con": 3
+    },
+    "passive": {
+      "manaRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "spellweaver-s-touch": {
+    "name": "Spellweaver's Touch",
+    "type": "gloves",
+    "rarity": "mythic",
+    "description": "Mythic gloves forged for the Mage. Pulses with arcane energy.",
+    "stats": {
+      "int": 8,
+      "wis": 4,
+      "con": 3
+    },
+    "passive": {
+      "manaRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "astral-striders": {
+    "name": "Astral Striders",
+    "type": "boots",
+    "rarity": "mythic",
+    "description": "Mythic boots forged for the Mage. Pulses with arcane energy.",
+    "stats": {
+      "int": 9,
+      "wis": 5,
+      "con": 3
+    },
+    "passive": {
+      "manaRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "eye-of-the-cosmos": {
+    "name": "Eye of the Cosmos",
+    "type": "amulet",
+    "rarity": "mythic",
+    "description": "Mythic amulet forged for the Mage. Pulses with arcane energy.",
+    "stats": {
+      "int": 9,
+      "wis": 5,
+      "con": 3
+    },
+    "passive": {
+      "manaRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "ring-of-boundless-power": {
+    "name": "Ring of Boundless Power",
+    "type": "ring",
+    "rarity": "mythic",
+    "description": "Mythic ring forged for the Mage. Pulses with arcane energy.",
+    "stats": {
+      "int": 9,
+      "wis": 5,
+      "con": 4
+    },
+    "passive": {
+      "manaRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "orb-of-the-planes": {
+    "name": "Orb of the Planes",
+    "type": "trinket",
+    "rarity": "mythic",
+    "description": "Mythic trinket forged for the Mage. Pulses with arcane energy.",
+    "stats": {
+      "int": 10,
+      "wis": 5,
+      "con": 4
+    },
+    "passive": {
+      "manaRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "whisper-of-death": {
+    "name": "Whisper of Death",
+    "type": "weapon",
+    "rarity": "mythic",
+    "description": "Mythic weapon forged for the Rogue. Seems to fade in and out of shadow.",
+    "stats": {
+      "dex": 14,
+      "cha": 7,
+      "con": 5,
+      "attack": 8
+    },
+    "passive": {
+      "onHitStatus": {
+        "slug": "poison",
+        "chance": 15,
+        "turns": 3
+      }
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "shadow-aegis": {
+    "name": "Shadow Aegis",
+    "type": "shield",
+    "rarity": "mythic",
+    "description": "Mythic shield forged for the Rogue. Seems to fade in and out of shadow.",
+    "stats": {
+      "dex": 10,
+      "cha": 6,
+      "con": 4,
+      "defense": 6
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "shadowskin-mantle": {
+    "name": "Shadowskin Mantle",
+    "type": "body",
+    "rarity": "mythic",
+    "description": "Mythic body forged for the Rogue. Seems to fade in and out of shadow.",
+    "stats": {
+      "dex": 11,
+      "cha": 6,
+      "con": 4
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "mask-of-the-unseen": {
+    "name": "Mask of the Unseen",
+    "type": "helmet",
+    "rarity": "mythic",
+    "description": "Mythic helmet forged for the Rogue. Seems to fade in and out of shadow.",
+    "stats": {
+      "dex": 9,
+      "cha": 5,
+      "con": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "nimble-death": {
+    "name": "Nimble Death",
+    "type": "gloves",
+    "rarity": "mythic",
+    "description": "Mythic gloves forged for the Rogue. Seems to fade in and out of shadow.",
+    "stats": {
+      "dex": 8,
+      "cha": 4,
+      "con": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "silent-step": {
+    "name": "Silent Step",
+    "type": "boots",
+    "rarity": "mythic",
+    "description": "Mythic boots forged for the Rogue. Seems to fade in and out of shadow.",
+    "stats": {
+      "dex": 9,
+      "cha": 5,
+      "con": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "locket-of-shadows": {
+    "name": "Locket of Shadows",
+    "type": "amulet",
+    "rarity": "mythic",
+    "description": "Mythic amulet forged for the Rogue. Seems to fade in and out of shadow.",
+    "stats": {
+      "dex": 9,
+      "cha": 5,
+      "con": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "ring-of-vanishing": {
+    "name": "Ring of Vanishing",
+    "type": "ring",
+    "rarity": "mythic",
+    "description": "Mythic ring forged for the Rogue. Seems to fade in and out of shadow.",
+    "stats": {
+      "dex": 9,
+      "cha": 5,
+      "con": 4
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "loaded-dice": {
+    "name": "Loaded Dice",
+    "type": "trinket",
+    "rarity": "mythic",
+    "description": "Mythic trinket forged for the Rogue. Seems to fade in and out of shadow.",
+    "stats": {
+      "dex": 10,
+      "cha": 5,
+      "con": 4
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "seraphim-s-judgment": {
+    "name": "Seraphim's Judgment",
+    "type": "weapon",
+    "rarity": "mythic",
+    "description": "Mythic weapon forged for the Cleric. Glows with divine light.",
+    "stats": {
+      "wis": 14,
+      "con": 7,
+      "int": 5,
+      "attack": 8
+    },
+    "passive": {
+      "hpRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "holy-bulwark": {
+    "name": "Holy Bulwark",
+    "type": "shield",
+    "rarity": "mythic",
+    "description": "Mythic shield forged for the Cleric. Glows with divine light.",
+    "stats": {
+      "wis": 10,
+      "con": 6,
+      "int": 4,
+      "defense": 6
+    },
+    "passive": {
+      "hpRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "vestments-of-the-ascended": {
+    "name": "Vestments of the Ascended",
+    "type": "body",
+    "rarity": "mythic",
+    "description": "Mythic body forged for the Cleric. Glows with divine light.",
+    "stats": {
+      "wis": 11,
+      "con": 6,
+      "int": 4
+    },
+    "passive": {
+      "hpRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "halo-of-the-exalted": {
+    "name": "Halo of the Exalted",
+    "type": "helmet",
+    "rarity": "mythic",
+    "description": "Mythic helmet forged for the Cleric. Glows with divine light.",
+    "stats": {
+      "wis": 9,
+      "con": 5,
+      "int": 3
+    },
+    "passive": {
+      "hpRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "hands-of-benediction": {
+    "name": "Hands of Benediction",
+    "type": "gloves",
+    "rarity": "mythic",
+    "description": "Mythic gloves forged for the Cleric. Glows with divine light.",
+    "stats": {
+      "wis": 8,
+      "con": 4,
+      "int": 3
+    },
+    "passive": {
+      "hpRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "pilgrim-s-path": {
+    "name": "Pilgrim's Path",
+    "type": "boots",
+    "rarity": "mythic",
+    "description": "Mythic boots forged for the Cleric. Glows with divine light.",
+    "stats": {
+      "wis": 9,
+      "con": 5,
+      "int": 3
+    },
+    "passive": {
+      "hpRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "holy-relic": {
+    "name": "Holy Relic",
+    "type": "amulet",
+    "rarity": "mythic",
+    "description": "Mythic amulet forged for the Cleric. Glows with divine light.",
+    "stats": {
+      "wis": 9,
+      "con": 5,
+      "int": 3
+    },
+    "passive": {
+      "hpRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "ring-of-sacred-light": {
+    "name": "Ring of Sacred Light",
+    "type": "ring",
+    "rarity": "mythic",
+    "description": "Mythic ring forged for the Cleric. Glows with divine light.",
+    "stats": {
+      "wis": 9,
+      "con": 5,
+      "int": 4
+    },
+    "passive": {
+      "hpRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "relic-of-redemption": {
+    "name": "Relic of Redemption",
+    "type": "trinket",
+    "rarity": "mythic",
+    "description": "Mythic trinket forged for the Cleric. Glows with divine light.",
+    "stats": {
+      "wis": 10,
+      "con": 5,
+      "int": 4
+    },
+    "passive": {
+      "hpRegen": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "gale-hunter-s-longbow": {
+    "name": "Gale Hunter's Longbow",
+    "type": "weapon",
+    "rarity": "mythic",
+    "description": "Mythic weapon forged for the Ranger. Hums with the fury of nature.",
+    "stats": {
+      "dex": 14,
+      "wis": 7,
+      "con": 5,
+      "attack": 8
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "wildwood-buckler": {
+    "name": "Wildwood Buckler",
+    "type": "shield",
+    "rarity": "mythic",
+    "description": "Mythic shield forged for the Ranger. Hums with the fury of nature.",
+    "stats": {
+      "dex": 10,
+      "wis": 6,
+      "con": 4,
+      "defense": 6
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "mantle-of-the-wild-hunt": {
+    "name": "Mantle of the Wild Hunt",
+    "type": "body",
+    "rarity": "mythic",
+    "description": "Mythic body forged for the Ranger. Hums with the fury of nature.",
+    "stats": {
+      "dex": 11,
+      "wis": 6,
+      "con": 4
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "eyes-of-the-hawk": {
+    "name": "Eyes of the Hawk",
+    "type": "helmet",
+    "rarity": "mythic",
+    "description": "Mythic helmet forged for the Ranger. Hums with the fury of nature.",
+    "stats": {
+      "dex": 9,
+      "wis": 5,
+      "con": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "grasps-of-the-gale": {
+    "name": "Grasps of the Gale",
+    "type": "gloves",
+    "rarity": "mythic",
+    "description": "Mythic gloves forged for the Ranger. Hums with the fury of nature.",
+    "stats": {
+      "dex": 8,
+      "wis": 4,
+      "con": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "windwalker-boots": {
+    "name": "Windwalker Boots",
+    "type": "boots",
+    "rarity": "mythic",
+    "description": "Mythic boots forged for the Ranger. Hums with the fury of nature.",
+    "stats": {
+      "dex": 9,
+      "wis": 5,
+      "con": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "fang-of-the-pack": {
+    "name": "Fang of the Pack",
+    "type": "amulet",
+    "rarity": "mythic",
+    "description": "Mythic amulet forged for the Ranger. Hums with the fury of nature.",
+    "stats": {
+      "dex": 9,
+      "wis": 5,
+      "con": 3
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "ring-of-the-wild": {
+    "name": "Ring of the Wild",
+    "type": "ring",
+    "rarity": "mythic",
+    "description": "Mythic ring forged for the Ranger. Hums with the fury of nature.",
+    "stats": {
+      "dex": 9,
+      "wis": 5,
+      "con": 4
+    },
+    "durability": 250,
+    "sell": 1
+  },
+  "feather-of-the-tempest": {
+    "name": "Feather of the Tempest",
+    "type": "trinket",
+    "rarity": "mythic",
+    "description": "Mythic trinket forged for the Ranger. Hums with the fury of nature.",
+    "stats": {
+      "dex": 10,
+      "wis": 5,
+      "con": 4
+    },
+    "durability": 250,
+    "sell": 1
+  }
+}

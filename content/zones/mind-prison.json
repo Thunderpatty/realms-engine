@@ -1,0 +1,576 @@
+{
+  "location": {
+    "slug": "mind-prison",
+    "name": "Mind Prison",
+    "type": "dungeon",
+    "realm": "voidspire",
+    "description": "A dungeon that exists inside a collective nightmare. The walls are made of fear, the corridors shift based on your thoughts, and the enemies know your weaknesses because they ARE your weaknesses.",
+    "connections": [
+      "void-mire"
+    ],
+    "mapX": 60,
+    "mapY": 20
+  },
+  "locationThreat": 42,
+  "dungeonConfig": {
+    "boss": "the-warden-of-minds",
+    "name": "Mind Prison",
+    "minRooms": 5,
+    "maxRooms": 7,
+    "mechanic": {
+      "slug": "psychic-pressure",
+      "name": "Psychic Pressure",
+      "description": "The prison feeds on your mind. Lose 4% max MP and 2% max HP per room.",
+      "effect": {
+        "roomDamagePct": 2
+      }
+    }
+  },
+  "enemies": [
+    {
+      "slug": "fear-shade",
+      "name": "Fear Shade",
+      "hp": 2218,
+      "attack": 89,
+      "defense": 48,
+      "xp": 3346,
+      "gold": 1379,
+      "level": 39,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "A manifestation of pure terror. It takes the form of whatever you fear most. Fighting it means fighting yourself."
+    },
+    {
+      "slug": "memory-devourer",
+      "name": "Memory Devourer",
+      "hp": 2237,
+      "attack": 85,
+      "defense": 52,
+      "xp": 3521,
+      "gold": 1386,
+      "level": 40,
+      "abilities": [
+        "stunning-slam",
+        "dark-curse",
+        "regen-aura"
+      ],
+      "drops": [],
+      "description": "A creature that eats memories. Each bite removes a piece of who you are. Veterans who survive it often can't remember their own names."
+    },
+    {
+      "slug": "nightmare-knight",
+      "name": "Nightmare Knight",
+      "hp": 2297,
+      "attack": 89,
+      "defense": 54,
+      "xp": 3263,
+      "gold": 1566,
+      "level": 41,
+      "abilities": [
+        "stunning-slam",
+        "war-cry",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A warrior forged from concentrated nightmares. It wears armor made of screams and wields a sword of crystallized dread."
+    },
+    {
+      "slug": "the-warden-of-minds",
+      "name": "The Warden of Minds",
+      "hp": 3558,
+      "attack": 127,
+      "defense": 73,
+      "xp": 11458,
+      "gold": 4668,
+      "level": 44,
+      "boss": true,
+      "abilities": [
+        "dark-curse",
+        "stunning-slam",
+        "weakening-hex",
+        "regen-aura",
+        "war-cry",
+        "harden"
+      ],
+      "drops": [],
+      "description": "The entity that created the Mind Prison \u2014 or perhaps the prison that became sentient. It knows every thought you've ever had, every fear you've ever felt, and it uses them all as weapons."
+    }
+  ],
+  "events": [
+    {
+      "slug": "mind-prison-evt-1",
+      "name": "Reality Tear",
+      "icon": "\ud83c\udf00",
+      "type": "phenomenon",
+      "rarity": "common",
+      "text": "A tear in reality bleeds energy in the mind prison. Dangerous but potentially useful.",
+      "choices": [
+        {
+          "label": "Investigate (INT DC 26)",
+          "check": {
+            "stat": "int",
+            "dc": 26
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "thought-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 50
+            }
+          },
+          "failure": {
+            "text": "The mind prison punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 38
+            }
+          }
+        },
+        {
+          "label": "Take action (STR DC 25)",
+          "check": {
+            "stat": "str",
+            "dc": 25
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 80,
+              "items": [
+                {
+                  "slug": "thought-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 45
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 33
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The mind prison is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "mind-prison-evt-2",
+      "name": "Ancient Cache",
+      "icon": "\ud83d\udce6",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "A supply cache from a previous expedition, half-swallowed by the mind prison.",
+      "choices": [
+        {
+          "label": "Investigate (WIS DC 26)",
+          "check": {
+            "stat": "wis",
+            "dc": 26
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "thought-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 53
+            }
+          },
+          "failure": {
+            "text": "The mind prison punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 40
+            }
+          }
+        },
+        {
+          "label": "Take action (DEX DC 25)",
+          "check": {
+            "stat": "dex",
+            "dc": 25
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 95,
+              "items": [
+                {
+                  "slug": "thought-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 47
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 35
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The mind prison is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "mind-prison-evt-3",
+      "name": "Void Surge",
+      "icon": "\u26a1",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "A surge of void energy ripples through the mind prison, warping everything it touches.",
+      "choices": [
+        {
+          "label": "Investigate (DEX DC 27)",
+          "check": {
+            "stat": "dex",
+            "dc": 27
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "thought-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 56
+            }
+          },
+          "failure": {
+            "text": "The mind prison punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 42
+            }
+          }
+        },
+        {
+          "label": "Take action (CON DC 26)",
+          "check": {
+            "stat": "con",
+            "dc": 26
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 110,
+              "items": [
+                {
+                  "slug": "thought-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 49
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 37
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The mind prison is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "mind-prison-evt-4",
+      "name": "Spectral Guide",
+      "icon": "\ud83d\udc7b",
+      "type": "npc",
+      "rarity": "uncommon",
+      "text": "A spectral figure beckons from the mind prison. It may be a guide \u2014 or a trap.",
+      "choices": [
+        {
+          "label": "Investigate (STR DC 27)",
+          "check": {
+            "stat": "str",
+            "dc": 27
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "thought-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 59
+            }
+          },
+          "failure": {
+            "text": "The mind prison punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 44
+            }
+          }
+        },
+        {
+          "label": "Take action (INT DC 26)",
+          "check": {
+            "stat": "int",
+            "dc": 26
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 125,
+              "items": [
+                {
+                  "slug": "thought-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 51
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 39
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The mind prison is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "mind-prison-evt-5",
+      "name": "Crystallized Memory",
+      "icon": "\ud83d\udc8e",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A crystal containing someone's memories sits in the mind prison. Touching it might reveal secrets.",
+      "choices": [
+        {
+          "label": "Investigate (CON DC 28)",
+          "check": {
+            "stat": "con",
+            "dc": 28
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 62
+            }
+          },
+          "failure": {
+            "text": "The mind prison punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 46
+            }
+          }
+        },
+        {
+          "label": "Take action (WIS DC 27)",
+          "check": {
+            "stat": "wis",
+            "dc": 27
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 140,
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 53
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 41
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The mind prison is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "mind-prison-evt-6",
+      "name": "The Threshold",
+      "icon": "\ud83d\udeaa",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "A doorway to somewhere else shimmers in the mind prison. What lies beyond is anyone's guess.",
+      "choices": [
+        {
+          "label": "Investigate (INT DC 28)",
+          "check": {
+            "stat": "int",
+            "dc": 28
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 65
+            }
+          },
+          "failure": {
+            "text": "The mind prison punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 48
+            }
+          }
+        },
+        {
+          "label": "Take action (STR DC 27)",
+          "check": {
+            "stat": "str",
+            "dc": 27
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 155,
+              "items": [
+                {
+                  "slug": "paradox-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 55
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 43
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The mind prison is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "mind-prison-group-1",
+      "name": "Fear Shade Patrol",
+      "composition": [
+        {
+          "enemySlug": "fear-shade",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "mind-prison-group-2",
+      "name": "Nightmare Knight & Memory Devourer",
+      "composition": [
+        {
+          "enemySlug": "nightmare-knight",
+          "count": 1
+        },
+        {
+          "enemySlug": "memory-devourer",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

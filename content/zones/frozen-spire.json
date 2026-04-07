@@ -1,0 +1,564 @@
+{
+  "location": {
+    "slug": "frozen-spire",
+    "name": "The Frozen Spire",
+    "type": "dungeon",
+    "realm": "frostreach",
+    "description": "A tower of solid ice that grows from the glacier like a tooth. Inside, spiral stairs climb through chambers where the laws of gravity disagree with the architecture.",
+    "connections": [
+      "frozen-wastes"
+    ],
+    "mapX": 40,
+    "mapY": 20
+  },
+  "enemies": [
+    {
+      "slug": "frost-golem",
+      "name": "Frost Golem",
+      "hp": 928,
+      "attack": 37,
+      "defense": 19,
+      "xp": 782,
+      "gold": 289,
+      "level": 13,
+      "abilities": [
+        "harden",
+        "stunning-slam"
+      ],
+      "description": "A construct of packed ice and frozen stone, animated by the Spire's ambient magic. It hits like a glacier calving."
+    },
+    {
+      "slug": "wind-wraith",
+      "name": "Wind Wraith",
+      "hp": 902,
+      "attack": 32,
+      "defense": 19,
+      "xp": 770,
+      "gold": 355,
+      "level": 13,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "description": "A spirit of the mountain wind trapped inside the Spire. It howls through corridors, freezing everything it touches."
+    },
+    {
+      "slug": "ice-knight",
+      "name": "Ice Knight",
+      "hp": 917,
+      "attack": 32,
+      "defense": 19,
+      "xp": 670,
+      "gold": 356,
+      "level": 13,
+      "abilities": [
+        "war-cry",
+        "stunning-slam"
+      ],
+      "description": "An armored warrior made entirely of enchanted ice. It wields a greatsword of frozen light and fights with terrible precision."
+    },
+    {
+      "slug": "spire-warden",
+      "name": "The Spire Warden",
+      "hp": 1941,
+      "attack": 43,
+      "defense": 25,
+      "xp": 2422,
+      "gold": 872,
+      "level": 14,
+      "boss": true,
+      "abilities": [
+        "stunning-slam",
+        "war-cry",
+        "harden"
+      ],
+      "drops": [],
+      "description": "[Boss of The Frozen Spire]",
+      "telegraphs": [
+        "crushing-blow",
+        "rallying-howl"
+      ],
+      "enrageThreshold": 0.3,
+      "enrageTelegraphs": [
+        "death-strike"
+      ]
+    }
+  ],
+  "locationThreat": 12,
+  "dungeonConfig": {
+    "boss": "spire-warden",
+    "name": "The Frozen Spire",
+    "minRooms": 3,
+    "maxRooms": 5,
+    "mechanic": {
+      "slug": "gravity-flux",
+      "name": "Gravity Flux",
+      "description": "Gravity shifts unpredictably. DEX saves or take falling damage.",
+      "effect": {
+        "caveInChance": 30,
+        "caveInDC": 13
+      }
+    }
+  },
+  "events": [
+    {
+      "slug": "spire-gravity-well",
+      "name": "Gravity Anomaly",
+      "icon": "\ud83c\udf00",
+      "type": "phenomenon",
+      "rarity": "uncommon",
+      "text": "Gravity shifts here. Objects float, water hangs in mid-air, and your stomach lurches.",
+      "choices": [
+        {
+          "label": "Navigate the anomaly (DEX DC 13)",
+          "check": {
+            "stat": "dex",
+            "dc": 13
+          },
+          "success": {
+            "text": "You float-swim to a platform holding ancient treasures.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "glacial-essence",
+                  "qty": 1
+                },
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 28
+            }
+          },
+          "failure": {
+            "text": "Gravity snaps back. You crash to the floor painfully.",
+            "rewards": {
+              "xp": 8,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Study the anomaly (INT DC 12)",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "text": "You understand the pattern and find a safe path through.",
+            "rewards": {
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "Your theories are wrong. You drift into a wall.",
+            "rewards": {
+              "xp": 8,
+              "damage": 14
+            }
+          }
+        },
+        {
+          "label": "Wait for it to stabilize",
+          "auto": true,
+          "success": {
+            "text": "After an hour, gravity returns to normal. You proceed.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spire-ice-golem-parts",
+      "name": "Golem Workshop",
+      "icon": "\ud83d\udd27",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A chamber filled with disassembled frost golem components. Some parts still hum with power.",
+      "choices": [
+        {
+          "label": "Salvage the power cores (INT DC 11)",
+          "check": {
+            "stat": "int",
+            "dc": 11
+          },
+          "success": {
+            "text": "You extract intact cores \u2014 pure permafrost ore infused with magic.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 3
+                },
+                {
+                  "slug": "glacial-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "A core overloads and explodes in your hands.",
+            "rewards": {
+              "xp": 8,
+              "damage": 16
+            }
+          }
+        },
+        {
+          "label": "Take the armor plating (STR DC 10)",
+          "check": {
+            "stat": "str",
+            "dc": 10
+          },
+          "success": {
+            "text": "Heavy but valuable. Golem plate fetches a good price.",
+            "rewards": {
+              "gold": 35,
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 1
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The plating is fused to the floor. You can't budge it.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Leave the golems be",
+          "auto": true,
+          "success": {
+            "text": "You'd rather not risk reactivating them.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spire-wind-tunnel",
+      "name": "Howling Wind Tunnel",
+      "icon": "\ud83d\udca8",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "A corridor where wind screams through at hurricane force. Objects and debris fly past like projectiles.",
+      "choices": [
+        {
+          "label": "Push through with brute strength (CON DC 12)",
+          "check": {
+            "stat": "con",
+            "dc": 12
+          },
+          "success": {
+            "text": "You lean into the wind and push through. On the other side, calm and treasures.",
+            "rewards": {
+              "gold": 30,
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "The wind hurls you backward. You crash into a wall.",
+            "rewards": {
+              "xp": 8,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Time the gusts and dash between them (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "text": "You sprint during a lull and make it through cleanly.",
+            "rewards": {
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "Bad timing. A gust catches you mid-stride.",
+            "rewards": {
+              "xp": 8,
+              "damage": 16
+            }
+          }
+        },
+        {
+          "label": "Find another way",
+          "auto": true,
+          "success": {
+            "text": "You detour around the wind tunnel.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spire-frozen-fountain",
+      "name": "Frozen Fountain",
+      "icon": "\u26f2",
+      "type": "shrine",
+      "rarity": "uncommon",
+      "text": "A fountain of ice, frozen mid-flow. The water glows with inner light. It looks like it might have healing properties.",
+      "choices": [
+        {
+          "label": "Drink from the fountain (CON DC 11)",
+          "check": {
+            "stat": "con",
+            "dc": 11
+          },
+          "success": {
+            "text": "The water is ice-cold but revitalizing. You feel renewed.",
+            "rewards": {
+              "heal": 40,
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "The water is cursed! Cold burns through your insides.",
+            "rewards": {
+              "xp": 8,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Collect the glowing water (WIS DC 12)",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "text": "You bottle some of the enchanted water. It crystallizes into glacial essence.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "glacial-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The water evaporates the moment you try to contain it.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "You don't trust magical fountains. Smart.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spire-runic-door",
+      "name": "Runic Seal Door",
+      "icon": "\ud83d\udeaa",
+      "type": "discovery",
+      "rarity": "rare",
+      "text": "A massive door covered in glowing runes. Behind it, you can hear the hum of powerful magic.",
+      "choices": [
+        {
+          "label": "Decipher and unlock the runes (INT DC 14)",
+          "check": {
+            "stat": "int",
+            "dc": 14
+          },
+          "success": {
+            "text": "The door opens to reveal a frost wizard's private vault. Jackpot.",
+            "rewards": {
+              "gold": 60,
+              "items": [
+                {
+                  "slug": "glacial-essence",
+                  "qty": 2
+                },
+                {
+                  "slug": "spectral-ice",
+                  "qty": 1
+                }
+              ],
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "Wrong sequence. The runes discharge energy into you.",
+            "rewards": {
+              "xp": 10,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Force it open (STR DC 14)",
+          "check": {
+            "stat": "str",
+            "dc": 14
+          },
+          "success": {
+            "text": "The door buckles. Inside, scattered treasures and ancient materials.",
+            "rewards": {
+              "gold": 40,
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 3
+                }
+              ],
+              "xp": 28
+            }
+          },
+          "failure": {
+            "text": "The door doesn't budge. Runic backlash throws you across the room.",
+            "rewards": {
+              "xp": 8,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Mark it and come back later",
+          "auto": true,
+          "success": {
+            "text": "You memorize the rune pattern for another day.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spire-crystal-formation",
+      "name": "Crystal Formation",
+      "icon": "\ud83d\udca0",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "Natural crystal formations jut from the walls and ceiling. Some are massive and clearly magical.",
+      "choices": [
+        {
+          "label": "Extract the magical crystals (DEX DC 11)",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "You carefully remove several pristine specimens.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 3
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The crystals shatter as you extract them. Worthless dust.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Analyze the magical properties (INT DC 11)",
+          "check": {
+            "stat": "int",
+            "dc": 11
+          },
+          "success": {
+            "text": "You identify the purest specimens and extract them efficiently.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                },
+                {
+                  "slug": "spectral-ice",
+                  "qty": 1
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "Your analysis is off. You collect ordinary ice by mistake.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Leave them",
+          "auto": true,
+          "success": {
+            "text": "Pretty, but you have places to be.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "frozen-spire-group-1",
+      "name": "Frost Golem Swarm",
+      "composition": [
+        {
+          "enemySlug": "frost-golem",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "frozen-spire-group-2",
+      "name": "Wind Wraith & Ice Knight",
+      "composition": [
+        {
+          "enemySlug": "wind-wraith",
+          "count": 1
+        },
+        {
+          "enemySlug": "ice-knight",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

@@ -1,0 +1,474 @@
+{
+  "flame-visor": {
+    "cost": 203,
+    "name": "Flame Visor",
+    "sell": 50,
+    "type": "helmet",
+    "stats": {
+      "str": 4,
+      "con": 2
+    },
+    "rarity": "rare",
+    "description": "Helm of a dragon knight."
+  },
+  "cinder-circlet": {
+    "cost": 203,
+    "name": "Cinder Circlet",
+    "sell": 50,
+    "type": "helmet",
+    "stats": {
+      "int": 4,
+      "con": 1,
+      "wis": 2
+    },
+    "rarity": "rare",
+    "description": "A scorched crown that sharpens the mind beneath falling ash."
+  },
+  "ironwall-greathelm": {
+    "name": "Ironwall Greathelm",
+    "type": "helmet",
+    "rarity": "rare",
+    "stats": {
+      "str": 4,
+      "con": 3
+    },
+    "cost": 203,
+    "sell": 50,
+    "description": "A reinforced plate helm for soldiers who advance into fire without hesitation."
+  },
+  "runic-cowl": {
+    "name": "Runic Cowl",
+    "type": "helmet",
+    "rarity": "rare",
+    "stats": {
+      "int": 4,
+      "con": 2,
+      "wis": 2
+    },
+    "cost": 204,
+    "sell": 51,
+    "description": "A hood stitched with containment runes that quiet unstable magic near the skull."
+  },
+  "viper-mask": {
+    "name": "Viper Mask",
+    "type": "helmet",
+    "rarity": "rare",
+    "stats": {
+      "dex": 4,
+      "con": 1
+    },
+    "cost": 202,
+    "sell": 50,
+    "description": "A sleek venomous-green mask that dulls the wearer's presence and sharpens lethal intent."
+  },
+  "templar-crest-helm": {
+    "name": "Templar Crest Helm",
+    "type": "helmet",
+    "rarity": "rare",
+    "stats": {
+      "wis": 4,
+      "con": 4
+    },
+    "cost": 204,
+    "sell": 51,
+    "description": "A cresthelm blessed at the cathedral's high anvil, worn by ordained holy warriors."
+  },
+  "windtracker-cap": {
+    "name": "Windtracker Cap",
+    "type": "helmet",
+    "rarity": "rare",
+    "stats": {
+      "dex": 4,
+      "con": 1,
+      "wis": 1
+    },
+    "cost": 203,
+    "sell": 50,
+    "description": "A waxed hunting cap fitted with a hidden compass needle for tracking prey into the wind."
+  },
+  "warlord-warhelm": {
+    "name": "Warlord's Warhelm",
+    "type": "helmet",
+    "rarity": "legendary",
+    "stats": {
+      "str": 8,
+      "con": 6
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "lifestealPct": 10,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 30
+      }
+    },
+    "description": "A fearsome warhelm passed between warlords whose names echo through history as legend."
+  },
+  "lich-crown": {
+    "name": "Lich Crown",
+    "type": "helmet",
+    "rarity": "legendary",
+    "stats": {
+      "int": 8,
+      "con": 2,
+      "wis": 4
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "manaRegen": 3,
+      "onHitStatus": {
+        "slug": "weaken",
+        "turns": 2,
+        "chance": 25
+      }
+    },
+    "description": "A crown of frozen bone worn by a sorcerer who outlived every empire they served."
+  },
+  "phantom-veil": {
+    "name": "Phantom Veil",
+    "type": "helmet",
+    "rarity": "legendary",
+    "stats": {
+      "dex": 10,
+      "con": 2
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "lifestealPct": 12,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 30
+      }
+    },
+    "description": "A veil that makes the wearer a ghost between heartbeats; witnesses see only shadow."
+  },
+  "seraph-halo": {
+    "name": "Seraph Halo",
+    "type": "helmet",
+    "rarity": "legendary",
+    "stats": {
+      "wis": 7,
+      "con": 5
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "hpRegen": 3,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 22
+      }
+    },
+    "description": "An ethereal halo granted by a dying angel to a champion of absolute and unshaken faith."
+  },
+  "hurricane-hood": {
+    "name": "Hurricane Hood",
+    "type": "helmet",
+    "rarity": "legendary",
+    "stats": {
+      "dex": 8,
+      "con": 2,
+      "wis": 3
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "manaRegen": 2,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 35
+      }
+    },
+    "description": "Woven from stormclouds by a ranger who survived seven hurricanes alone in the wilds."
+  },
+  "leather-cap": {
+    "type": "helmet",
+    "rarity": "common",
+    "name": "Leather Cap",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "con": 1,
+      "dex": 1
+    },
+    "description": "A simple cap that keeps the rain off and the worst blows softened."
+  },
+  "wool-hood": {
+    "type": "helmet",
+    "rarity": "common",
+    "name": "Wool Hood",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "wis": 2
+    },
+    "description": "A heavy wool hood favored by traveling monks."
+  },
+  "iron-skullcap": {
+    "type": "helmet",
+    "rarity": "common",
+    "name": "Iron Skullcap",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "str": 1,
+      "con": 1
+    },
+    "description": "Bare-bones head protection. Better than nothing."
+  },
+  "cloth-circlet": {
+    "type": "helmet",
+    "rarity": "common",
+    "name": "Cloth Circlet",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "int": 2
+    },
+    "description": "A simple headband stitched with minor focusing runes."
+  },
+  "scout-bandana": {
+    "type": "helmet",
+    "rarity": "common",
+    "name": "Scout Bandana",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "dex": 2
+    },
+    "description": "A dark bandana that keeps hair and sweat out of your eyes."
+  },
+  "steel-helm": {
+    "type": "helmet",
+    "rarity": "uncommon",
+    "name": "Steel Helm",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "str": 2,
+      "con": 3
+    },
+    "description": "Standard military issue. Dented but dependable."
+  },
+  "arcanist-circlet": {
+    "type": "helmet",
+    "rarity": "uncommon",
+    "name": "Arcanist Circlet",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "int": 3,
+      "wis": 2
+    },
+    "description": "A thin silver circlet etched with concentration glyphs."
+  },
+  "shadow-cowl": {
+    "type": "helmet",
+    "rarity": "uncommon",
+    "name": "Shadow Cowl",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "dex": 4,
+      "con": 1
+    },
+    "description": "A deep cowl that keeps the face hidden and the mind sharp."
+  },
+  "pilgrim-hood": {
+    "type": "helmet",
+    "rarity": "uncommon",
+    "name": "Pilgrim's Hood",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "wis": 3,
+      "con": 2
+    },
+    "description": "Blessed during the Long Walk. Comforts the faithful."
+  },
+  "tracker-hat": {
+    "type": "helmet",
+    "rarity": "uncommon",
+    "name": "Tracker's Hat",
+    "cost": 67,
+    "sell": 16,
+    "stats": {
+      "dex": 3,
+      "wis": 2
+    },
+    "description": "A wide-brimmed hat that shades the eyes for long-distance spotting."
+  },
+  "doomhelm": {
+    "type": "helmet",
+    "rarity": "epic",
+    "name": "Doomhelm",
+    "cost": 505,
+    "sell": 126,
+    "stats": {
+      "str": 6,
+      "con": 4
+    },
+    "description": "A horned war helm blackened by dragonfire. Inspires terror."
+  },
+  "mindfire-crown": {
+    "type": "helmet",
+    "rarity": "epic",
+    "name": "Mindfire Crown",
+    "cost": 505,
+    "sell": 126,
+    "stats": {
+      "int": 6,
+      "wis": 4
+    },
+    "description": "A crown of crystallized thought-flame. Spells come faster."
+  },
+  "nightwalker-mask": {
+    "type": "helmet",
+    "rarity": "epic",
+    "name": "Nightwalker Mask",
+    "cost": 504,
+    "sell": 126,
+    "stats": {
+      "dex": 7,
+      "con": 2
+    },
+    "description": "A featureless black mask. Those who wear it seem to vanish mid-sentence."
+  },
+  "divine-mitre": {
+    "type": "helmet",
+    "rarity": "epic",
+    "name": "Divine Mitre",
+    "cost": 505,
+    "sell": 126,
+    "stats": {
+      "wis": 6,
+      "con": 4
+    },
+    "description": "A ceremonial mitre that channels divine will into mortal form."
+  },
+  "eagle-helm": {
+    "type": "helmet",
+    "rarity": "epic",
+    "name": "Eagle Helm",
+    "cost": 505,
+    "sell": 126,
+    "stats": {
+      "dex": 5,
+      "wis": 3,
+      "con": 2
+    },
+    "description": "A winged helm worn by master rangers who command the frontier."
+  },
+  "frostguard-helm": {
+    "slug": "frostguard-helm",
+    "name": "Frostguard Helm",
+    "type": "helmet",
+    "slot": "helmet",
+    "rarity": "rare",
+    "description": "A helm of permafrost ore. Keeps the head warm and the mind clear.",
+    "stats": {
+      "con": 5,
+      "str": 3,
+      "wis": 1
+    },
+    "cost": 380,
+    "sell": 95
+  },
+  "iceweave-hood": {
+    "slug": "iceweave-hood",
+    "name": "Iceweave Hood",
+    "type": "helmet",
+    "slot": "helmet",
+    "rarity": "rare",
+    "description": "A hood spun from frostbloom fibers. Enhances magical focus.",
+    "stats": {
+      "int": 4,
+      "wis": 4,
+      "con": 1
+    },
+    "cost": 370,
+    "sell": 92
+  },
+  "frozen-crown": {
+    "slug": "frozen-crown",
+    "name": "Frozen Crown",
+    "type": "helmet",
+    "slot": "helmet",
+    "rarity": "epic",
+    "description": "A crown of living ice. Frost spirits whisper secrets to the wearer.",
+    "stats": {
+      "int": 5,
+      "wis": 4,
+      "con": 2
+    },
+    "cost": 0,
+    "sell": 1
+  },
+  "basalt-warhelm": {
+    "slug": "basalt-warhelm",
+    "name": "Basalt Warhelm",
+    "type": "helmet",
+    "slot": "helmet",
+    "rarity": "rare",
+    "stats": {
+      "con": 6,
+      "str": 4,
+      "wis": 2
+    },
+    "description": "A helm carved from solid basalt. Heavy but nearly unbreakable.",
+    "cost": 700,
+    "sell": 175
+  },
+  "emberweave-cowl": {
+    "slug": "emberweave-cowl",
+    "name": "Emberweave Cowl",
+    "type": "helmet",
+    "slot": "helmet",
+    "rarity": "rare",
+    "stats": {
+      "int": 5,
+      "wis": 5,
+      "con": 2
+    },
+    "description": "A hood woven from fire-resistant fibers. Enhances fire magic.",
+    "cost": 680,
+    "sell": 170
+  },
+  "void-crown": {
+    "slug": "void-crown",
+    "name": "Void Crown",
+    "type": "helmet",
+    "slot": "helmet",
+    "rarity": "epic",
+    "stats": {
+      "con": 7,
+      "str": 5,
+      "wis": 3
+    },
+    "description": "A helm of compressed void. Protects the mind from psychic assault.",
+    "cost": 1200,
+    "sell": 300
+  },
+  "paradox-hood": {
+    "slug": "paradox-hood",
+    "name": "Paradox Hood",
+    "type": "helmet",
+    "slot": "helmet",
+    "rarity": "epic",
+    "stats": {
+      "int": 7,
+      "wis": 6,
+      "con": 2
+    },
+    "description": "A hood that exists in multiple states simultaneously.",
+    "cost": 1180,
+    "sell": 295
+  }
+}

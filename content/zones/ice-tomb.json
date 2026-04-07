@@ -1,0 +1,564 @@
+{
+  "location": {
+    "slug": "ice-tomb",
+    "name": "The Ice Tomb",
+    "type": "dungeon",
+    "realm": "frostreach",
+    "description": "An ancient burial chamber sealed in permafrost. The dead here were interred with their weapons \u2014 and their grudges.",
+    "connections": [
+      "frozen-wastes"
+    ],
+    "mapX": 10,
+    "mapY": 20
+  },
+  "enemies": [
+    {
+      "slug": "frozen-revenant",
+      "name": "Frozen Revenant",
+      "hp": 862,
+      "attack": 33,
+      "defense": 17,
+      "xp": 608,
+      "gold": 268,
+      "level": 12,
+      "abilities": [
+        "war-cry",
+        "rending-claws"
+      ],
+      "description": "A warrior entombed in ice for millennia, now risen with frost-crusted armor and a blade that cuts to the bone."
+    },
+    {
+      "slug": "crypt-ice",
+      "name": "Crypt Ice",
+      "hp": 663,
+      "attack": 28,
+      "defense": 15,
+      "xp": 602,
+      "gold": 227,
+      "level": 11,
+      "abilities": [
+        "harden",
+        "stunning-slam"
+      ],
+      "description": "Living ice that has grown over the tomb's walls and floor. It forms crude humanoid shapes to defend the burial chambers."
+    },
+    {
+      "slug": "death-rattle",
+      "name": "Death Rattle",
+      "hp": 784,
+      "attack": 32,
+      "defense": 15,
+      "xp": 669,
+      "gold": 288,
+      "level": 12,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "description": "The spectral remains of a shaman, its jaw permanently open in a frozen scream. The sound it makes steals warmth from the living."
+    },
+    {
+      "slug": "tomb-guardian",
+      "name": "The Tomb Guardian",
+      "hp": 1620,
+      "attack": 45,
+      "defense": 18,
+      "xp": 2290,
+      "gold": 869,
+      "level": 13,
+      "boss": true,
+      "abilities": [
+        "stunning-slam",
+        "war-cry",
+        "harden"
+      ],
+      "drops": [],
+      "description": "[Boss of The Ice Tomb]",
+      "telegraphs": [
+        "crushing-blow",
+        "rallying-howl"
+      ],
+      "enrageThreshold": 0.3,
+      "enrageTelegraphs": [
+        "death-strike"
+      ]
+    }
+  ],
+  "locationThreat": 11,
+  "dungeonConfig": {
+    "boss": "tomb-guardian",
+    "name": "The Ice Tomb",
+    "minRooms": 3,
+    "maxRooms": 4,
+    "mechanic": {
+      "slug": "permafrost",
+      "name": "Permafrost",
+      "description": "The bitter cold saps your strength. Take 2% max HP damage per room.",
+      "effect": {
+        "roomDamagePct": 2
+      }
+    }
+  },
+  "events": [
+    {
+      "slug": "tomb-coffin",
+      "name": "Sealed Sarcophagus",
+      "icon": "\u26b0",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A massive stone sarcophagus, sealed with frost runes. Something scrapes inside.",
+      "choices": [
+        {
+          "label": "Break the seal (STR DC 12)",
+          "check": {
+            "stat": "str",
+            "dc": 12
+          },
+          "success": {
+            "text": "Inside: a long-dead warrior clutching ancient treasures.",
+            "rewards": {
+              "gold": 35,
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 2
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "The seal explodes outward, throwing you against the wall.",
+            "rewards": {
+              "xp": 8,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Read the runes first (INT DC 11)",
+          "check": {
+            "stat": "int",
+            "dc": 11
+          },
+          "success": {
+            "text": "The runes reveal a safe way to open it. The contents are yours.",
+            "rewards": {
+              "gold": 25,
+              "items": [
+                {
+                  "slug": "spectral-ice",
+                  "qty": 1
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "Your translation is wrong. The runes flash and burn your eyes.",
+            "rewards": {
+              "xp": 8,
+              "damage": 12
+            }
+          }
+        },
+        {
+          "label": "Leave it sealed",
+          "auto": true,
+          "success": {
+            "text": "Some tombs are best left closed.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "tomb-ghost",
+      "name": "Tomb Guardian Spirit",
+      "icon": "\ud83d\udc7b",
+      "type": "npc",
+      "rarity": "uncommon",
+      "text": "A spectral figure materializes, holding a spectral sword. \"Prove your worth, or leave this place.\"",
+      "choices": [
+        {
+          "label": "Accept the challenge (CON DC 13)",
+          "check": {
+            "stat": "con",
+            "dc": 13
+          },
+          "success": {
+            "text": "You endure the spirit's test of endurance. It nods and offers a reward.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "spectral-ice",
+                  "qty": 2
+                }
+              ],
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "The spirit's cold aura overwhelms you. You collapse, barely conscious.",
+            "rewards": {
+              "xp": 8,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Show respect and ask to pass (WIS DC 11)",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "text": "\"Humility is strength.\" The spirit steps aside and leaves a gift.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "\"Weakness is not humility.\" The spirit strikes you aside.",
+            "rewards": {
+              "xp": 5,
+              "damage": 15
+            }
+          }
+        },
+        {
+          "label": "Flee deeper into the tomb",
+          "auto": true,
+          "success": {
+            "text": "You run. The spirit does not follow.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "tomb-trap-hall",
+      "name": "Trapped Corridor",
+      "icon": "\u26a0",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "The hallway ahead is lined with holes in the walls. Frost coats the floor in a suspicious pattern.",
+      "choices": [
+        {
+          "label": "Navigate the pattern (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "text": "You dance through the frozen gauntlet unscathed.",
+            "rewards": {
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "Ice darts pepper you from every direction.",
+            "rewards": {
+              "xp": 8,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Trigger traps from a distance (INT DC 11)",
+          "check": {
+            "stat": "int",
+            "dc": 11
+          },
+          "success": {
+            "text": "You toss debris to trigger each trap safely. The hallway is clear.",
+            "rewards": {
+              "xp": 20,
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 1
+                }
+              ]
+            }
+          },
+          "failure": {
+            "text": "One trap fires backward. You dodge, mostly.",
+            "rewards": {
+              "xp": 8,
+              "damage": 14
+            }
+          }
+        },
+        {
+          "label": "Find another route",
+          "auto": true,
+          "success": {
+            "text": "You backtrack and find a side passage.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "tomb-frozen-library",
+      "name": "Frozen Library",
+      "icon": "\ud83d\udcda",
+      "type": "discovery",
+      "rarity": "rare",
+      "text": "Shelves of books frozen in ice. The knowledge of an ancient civilization, perfectly preserved.",
+      "choices": [
+        {
+          "label": "Study the texts (INT DC 13)",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "text": "You decipher a technique lost to time. Invaluable knowledge.",
+            "rewards": {
+              "xp": 40,
+              "items": [
+                {
+                  "slug": "glacial-essence",
+                  "qty": 1
+                }
+              ]
+            }
+          },
+          "failure": {
+            "text": "The language is too alien. Hours wasted on gibberish.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        },
+        {
+          "label": "Take the most valuable-looking tome (DEX DC 11)",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "You extract a pristine volume. It might be worth something to scholars.",
+            "rewards": {
+              "gold": 50,
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The book crumbles to ice dust the moment you touch it.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Leave the library undisturbed",
+          "auto": true,
+          "success": {
+            "text": "Some knowledge should stay buried.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "tomb-permafrost-vein",
+      "name": "Permafrost Vein",
+      "icon": "\u26cf",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A thick vein of blue-grey permafrost ore runs through the tomb wall. Valuable, if you can extract it.",
+      "choices": [
+        {
+          "label": "Mine it carefully (STR DC 11)",
+          "check": {
+            "stat": "str",
+            "dc": 11
+          },
+          "success": {
+            "text": "You extract several chunks of high-quality ore.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 3
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The wall collapses partially. You dig yourself out with bruises.",
+            "rewards": {
+              "xp": 8,
+              "damage": 14
+            }
+          }
+        },
+        {
+          "label": "Use precision tools (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "text": "Delicate work yields the best specimens.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 2
+                },
+                {
+                  "slug": "frost-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "You crack the ore. Still usable, but barely.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 1
+                }
+              ],
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Leave it for now",
+          "auto": true,
+          "success": {
+            "text": "You mark the location mentally and move on.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "tomb-whispering-wall",
+      "name": "Whispering Wall",
+      "icon": "\ud83d\uddff",
+      "type": "phenomenon",
+      "rarity": "uncommon",
+      "text": "A section of wall murmurs in ancient tongues. Press your ear to it and you can almost understand...",
+      "choices": [
+        {
+          "label": "Listen intently (WIS DC 12)",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "text": "The wall reveals a hidden chamber with ancient offerings.",
+            "rewards": {
+              "gold": 30,
+              "items": [
+                {
+                  "slug": "spectral-ice",
+                  "qty": 1
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The whispers become screams. You stagger back, ears ringing.",
+            "rewards": {
+              "xp": 8,
+              "damage": 16
+            }
+          }
+        },
+        {
+          "label": "Push through the wall (STR DC 13)",
+          "check": {
+            "stat": "str",
+            "dc": 13
+          },
+          "success": {
+            "text": "The wall gives way! A secret passage leads to a cache of treasures.",
+            "rewards": {
+              "gold": 45,
+              "xp": 28
+            }
+          },
+          "failure": {
+            "text": "Solid stone. Your shoulder disagrees with your decision.",
+            "rewards": {
+              "xp": 5,
+              "damage": 12
+            }
+          }
+        },
+        {
+          "label": "Ignore the whispers",
+          "auto": true,
+          "success": {
+            "text": "Probably for the best. Those whispers sounded hungry.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "ice-tomb-group-1",
+      "name": "Death Rattle Guard Detail",
+      "composition": [
+        {
+          "enemySlug": "death-rattle",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "ice-tomb-group-2",
+      "name": "Frozen Revenant & Crypt Ice",
+      "composition": [
+        {
+          "enemySlug": "frozen-revenant",
+          "count": 1
+        },
+        {
+          "enemySlug": "crypt-ice",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

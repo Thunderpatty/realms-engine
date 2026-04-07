@@ -1,0 +1,117 @@
+[
+  {
+    "slug": "lost-expedition",
+    "title": "The Lost Expedition",
+    "location": "frozen-wastes",
+    "minLevel": 11,
+    "description": "A research expedition from Sunspire went missing in the Frozen Wastes. Their families want answers.",
+    "stages": [
+      {
+        "text": "A woman named Sera finds you in Frosthollow, eyes red from crying and cold. 'My husband led an expedition from Sunspire to study the aurora surges. Six scholars. They sent a final message two weeks ago \u2014 something about finding an ice formation that shouldn't exist. Then nothing.' She presses a torn page into your hands \u2014 coordinates pointing deep into the Frozen Wastes.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study the page for clues about their destination",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Track their route from the last known camp",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask local hunters if they've seen anything",
+            "check": {
+              "stat": "cha",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "You find the expedition's base camp \u2014 tents intact but abandoned. Notes describe a 'crystalline anomaly' that appeared during an aurora surge. The team's tracks lead north-east, toward an area the locals avoid. 'The Singing Ice,' they call it \u2014 a field of crystal formations that drive people mad.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Follow the tracks into the Singing Ice",
+            "check": {
+              "stat": "con",
+              "dc": 12
+            }
+          },
+          {
+            "next": 2,
+            "label": "Protect your mind against the crystals' influence",
+            "check": {
+              "stat": "wis",
+              "dc": 13
+            }
+          },
+          {
+            "next": 2,
+            "label": "Find an alternate route using the expedition's notes",
+            "check": {
+              "stat": "int",
+              "dc": 12
+            }
+          }
+        ]
+      },
+      {
+        "text": "The Singing Ice is worse than described. Crystal formations vibrate at frequencies that blur thought and vision. At the center, you find three of the scholars frozen in crystal \u2014 alive but trapped. The anomaly itself is a rift in reality, and something on the other side is pulling energy through. A glacial elemental guards the rift, feeding on its power.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Destroy the elemental and close the rift",
+            "combat": "glacial-elemental"
+          },
+          {
+            "next": 3,
+            "label": "Disrupt the rift's resonance frequency",
+            "check": {
+              "stat": "int",
+              "dc": 14
+            }
+          },
+          {
+            "next": 3,
+            "label": "Shatter the crystals imprisoning the scholars",
+            "check": {
+              "stat": "str",
+              "dc": 13
+            }
+          }
+        ]
+      },
+      {
+        "text": "The rift closes. The crystals release their prisoners \u2014 the three surviving scholars collapse, gasping but alive. The other three... didn't survive the initial crystallization. Sera's husband is among the living. The reunion is tearful and grateful. 'You've given me my family back,' Sera whispers, pressing something cold and heavy into your hand \u2014 an heirloom passed down through generations.",
+        "complete": true,
+        "rewards": {
+          "gold": 140,
+          "xp": 220,
+          "items": [
+            {
+              "slug": "glacial-essence",
+              "qty": 2
+            },
+            {
+              "slug": "spectral-ice",
+              "qty": 3
+            }
+          ]
+        }
+      }
+    ],
+    "rewards": {
+      "xp": 220,
+      "gold": 140
+    }
+  }
+]

@@ -1,0 +1,1051 @@
+[
+  {
+    "slug": "wolves-of-thornwall",
+    "title": "Wolves at the Gate",
+    "location": "thornwall",
+    "minLevel": 1,
+    "description": "The village elder asks you to thin the wolf packs threatening livestock in the Whispering Woods.",
+    "stages": [
+      {
+        "text": "Elder Maren grips your arm with a farmer's hand and a veteran's grip. 'The wolves grow bolder each night \u2014 three families lost sheep this week, and last night the Yorrens lost a dog at the pen.' She spreads a rough map and taps the forest edge. 'They den somewhere in the south thicket. Find them.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study Maren's map for the likely den site",
+            "check": {
+              "stat": "int",
+              "dc": 8
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask about the wolves' attack patterns",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          },
+          {
+            "next": 1,
+            "label": "Negotiate for better pay before you go",
+            "check": {
+              "stat": "cha",
+              "dc": 8
+            }
+          }
+        ]
+      },
+      {
+        "text": "The south thicket grows dark quickly. Claw marks scar every tree below head height, and the undergrowth smells of a large animal that has been sleeping here and eating well. Something watches from the ridge above \u2014 patient, unhurried, perfectly still.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Move toward the ridge directly",
+            "check": {
+              "stat": "str",
+              "dc": 9
+            }
+          },
+          {
+            "next": 2,
+            "label": "Circle the thicket to find the den entrance",
+            "check": {
+              "stat": "dex",
+              "dc": 9
+            }
+          },
+          {
+            "next": 2,
+            "label": "Read the marks and track the pack's movement",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "You find the den: a hollow beneath two fallen oaks, wide enough for a dozen wolves, with scattered bones around the entrance and three sets of tracks going in and two sets coming out. The alpha has left one guard.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Draw the guard out with a thrown stone",
+            "check": {
+              "stat": "dex",
+              "dc": 10
+            }
+          },
+          {
+            "next": 3,
+            "label": "Wait for the right moment to rush the guard",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 3,
+            "label": "Watch the guard's rhythm and slip past it",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "The alpha returns at dusk \u2014 a large grey wolf with old scars and a long memory. It drops into a hunting crouch the moment it sees you. Behind it, two younger wolves wait at the tree line for a signal.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the alpha wolf",
+            "combat": "timber-wolf"
+          },
+          {
+            "next": 4,
+            "label": "Drive it back with fire before it closes",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 4,
+            "label": "Charge first and break its nerve",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Set a snare and bait the alpha in",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The alpha falls and the younger wolves scatter into the dark without looking back. You collect proof of the kill and begin the walk back to Thornwall in the sudden quiet of a forest that has just lost its apex hunter for the season.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Bring back the pelt as proof",
+            "check": {
+              "stat": "str",
+              "dc": 8
+            }
+          },
+          {
+            "next": 5,
+            "label": "Scout the remaining wolves' retreat direction",
+            "check": {
+              "stat": "dex",
+              "dc": 8
+            }
+          },
+          {
+            "next": 5,
+            "label": "Return to Maren and report what you found",
+            "check": {
+              "stat": "cha",
+              "dc": 8
+            }
+          }
+        ]
+      },
+      {
+        "text": "Maren nods with grim satisfaction and presses the agreed pay into your hand. The sheep are safe for now, and the village sleeps with the palisade unguarded for the first time all week.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 48,
+      "gold": 28
+    }
+  },
+  {
+    "slug": "goblin-hollow",
+    "title": "Clear Dark Hollow",
+    "location": "thornwall",
+    "minLevel": 2,
+    "description": "Goblins have stolen a shipment of iron and fortified a nearby hollow. They need to be driven out.",
+    "stages": [
+      {
+        "text": "Gruff the blacksmith slams his hammer down hard enough to dent the anvil. 'Those green vermin stole a shipment of iron I spent three months waiting for, and now they've dug themselves into Dark Hollow like they own the place.' He draws a rough sketch of the terrain on his apron and shoves it at you. 'Get my iron back.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study Gruff's sketch of the hollow carefully",
+            "check": {
+              "stat": "int",
+              "dc": 9
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask Gruff how many goblins he spotted",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          },
+          {
+            "next": 1,
+            "label": "Negotiate for better terms before committing",
+            "check": {
+              "stat": "cha",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Head straight for Dark Hollow",
+            "check": {
+              "stat": "str",
+              "dc": 8
+            }
+          }
+        ]
+      },
+      {
+        "text": "The hollow is ringed with a crude palisade of sharpened sticks, and you can hear goblins arguing on the other side. Two sentries pace the main gap, blades out, clearly bored but alert enough to matter. A second gap sits half-hidden in the undergrowth to the left.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Charge the main entrance directly",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 2,
+            "label": "Slip through the hidden gap on the left",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 2,
+            "label": "Distract the sentries with a thrown stone",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 2,
+            "label": "Watch the patrol pattern and time the gap",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "Inside the hollow, a goblin shaman stands on a stump screaming orders at a dozen scurrying grunts who are sorting through the stolen iron with no idea what any of it is for. The shaman spots you immediately and raises its staff.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Fight the goblin shaman",
+            "combat": "goblin-shaman"
+          },
+          {
+            "next": 3,
+            "label": "Knock the shaman off the stump before it can act",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Disrupt the shaman's concentration mid-chant",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Use the grunts' confusion to isolate the shaman",
+            "check": {
+              "stat": "wis",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The shaman is down but a goblin grunt grabs the iron and bolts for the far gap, screaming at the others to follow. Two more turn to cover the retreat with rusty swords. If the iron leaves the hollow it becomes a lot harder to recover.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the remaining goblins",
+            "combat": "goblin-grunt"
+          },
+          {
+            "next": 4,
+            "label": "Cut off the runner before it reaches the gap",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Knock the far gap entrance down to block escape",
+            "check": {
+              "stat": "str",
+              "dc": 12
+            }
+          },
+          {
+            "next": 4,
+            "label": "Shout to scatter the remaining grunts",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The iron is recovered. Most of the goblins have scattered into the forest, and the hollow sits empty except for their leavings and the faint smell of campfire smoke. You haul the iron out in armfuls \u2014 it's heavier than it looks.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Carry the iron back to Gruff in one trip",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 5,
+            "label": "Stack it efficiently to make fewer trips",
+            "check": {
+              "stat": "int",
+              "dc": 9
+            }
+          },
+          {
+            "next": 5,
+            "label": "Check the iron for damage before returning it",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "You return the iron to Gruff. He grins and presses a bag of coins into your hand, then adds a militia blade from his wall \u2014 one he made himself, he says, and it's better than it looks.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 72,
+      "gold": 44,
+      "item": "iron-sword"
+    }
+  },
+  {
+    "slug": "missing-millers-son",
+    "title": "The Miller's Missing Son",
+    "location": "thornwall",
+    "minLevel": 2,
+    "description": "The miller's son went to deliver grain and never came back. The trail leads toward the forest.",
+    "stages": [
+      {
+        "text": "Miller Hobb wrings his flour-stained hands and hasn't stopped since yesterday morning. 'Tarin took the grain to the trapper's hut two days ago \u2014 it's only an hour's walk.' His voice breaks on the last word. 'His cart is still on the road. The horse came back alone.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the abandoned cart for clues",
+            "check": {
+              "stat": "int",
+              "dc": 9
+            }
+          },
+          {
+            "next": 1,
+            "label": "Question neighbors who use that road regularly",
+            "check": {
+              "stat": "cha",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Read the road for tracks leaving the cart",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          },
+          {
+            "next": 1,
+            "label": "Follow the road immediately before the trail goes cold",
+            "check": {
+              "stat": "dex",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "You find tracks near the cart: one set human, one set wolf, and then signs of a scramble where the human ran off the road and into the brush. Somewhere further in, branches are broken at about head-height for a running boy.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Follow the wolf tracks to find where they led",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 2,
+            "label": "Follow the broken branches to track the boy",
+            "check": {
+              "stat": "dex",
+              "dc": 10
+            }
+          },
+          {
+            "next": 2,
+            "label": "Call out for Tarin carefully",
+            "check": {
+              "stat": "cha",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "A timber wolf is nosing at a thorn thicket where something is hiding. The wolf hasn't attacked yet, but it's circling tighter each pass, and whatever is in the thicket is running out of time to stay hidden.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Draw the wolf away from the thicket",
+            "check": {
+              "stat": "dex",
+              "dc": 10
+            }
+          },
+          {
+            "next": 3,
+            "label": "Charge the wolf head-on to scare it off",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 3,
+            "label": "Fight the timber wolf",
+            "combat": "timber-wolf"
+          },
+          {
+            "next": 3,
+            "label": "Use a distraction to redirect the wolf's attention",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "Tarin is alive in the thicket, frightened but uninjured, when a bandit scout emerges from behind a fallen oak with a blade already drawn. 'The boy saw our camp,' the scout says flatly. 'He stays with us.'",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the bandit scout",
+            "combat": "bandit-scout"
+          },
+          {
+            "next": 4,
+            "label": "Bluff that there are more of you close behind",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Rush the scout before it can position",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Circle wide to flank while it focuses on you",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The scout is dealt with and Tarin stumbles to his feet, clutching your arm the whole walk back. He is shaking and extremely talkative, which is, under the circumstances, a very good sign.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Carry Tarin on your back through the rough ground",
+            "check": {
+              "stat": "str",
+              "dc": 9
+            }
+          },
+          {
+            "next": 5,
+            "label": "Navigate the safest route back to the road",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          },
+          {
+            "next": 5,
+            "label": "Keep Tarin calm and talking on the way back",
+            "check": {
+              "stat": "cha",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "Hobb bursts into tears when Tarin appears in the doorway. The whole mill smells of celebration baking within an hour. He presses a leather vest and all the coin he has on him into your hands before you can refuse either.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 62,
+      "gold": 38,
+      "item": "leather-vest"
+    }
+  },
+  {
+    "slug": "night-watch-palisade",
+    "title": "Night Watch at the Palisade",
+    "location": "thornwall",
+    "minLevel": 1,
+    "description": "The village palisade gate keeps banging open at night. Something is testing it.",
+    "stages": [
+      {
+        "text": "The gate guard's eyes are ringed with exhaustion, his knuckles raw from hammering the latch back into place each morning. 'Something hits it every night around the second watch \u2014 not hard enough to break through, but hard enough to know it's thinking about it.' Paw prints ring the post, long and deliberate.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Examine the gate for signs of damage",
+            "check": {
+              "stat": "int",
+              "dc": 8
+            }
+          },
+          {
+            "next": 1,
+            "label": "Study the paw prints in the mud",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask the guard what he heard and when",
+            "check": {
+              "stat": "cha",
+              "dc": 8
+            }
+          }
+        ]
+      },
+      {
+        "text": "You take up a position behind the post as darkness settles over Thornwall. An hour passes, then another \u2014 and then a shape moves along the tree line, low and deliberate, testing the shadows for movement. It circles once, then again, each pass a little closer.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Move to intercept it before it reaches the gate",
+            "check": {
+              "stat": "str",
+              "dc": 9
+            }
+          },
+          {
+            "next": 2,
+            "label": "Hold still and let it commit to the approach",
+            "check": {
+              "stat": "dex",
+              "dc": 9
+            }
+          },
+          {
+            "next": 2,
+            "label": "Watch the pattern and predict where it will strike",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "A second wolf emerges from the brush and begins howling to signal the pack. If the pack rallies now, one gate guard and a hired hand won't be enough to hold the palisade until morning.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Silence the howling wolf immediately",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 3,
+            "label": "Chase it off with a torch from the gate",
+            "check": {
+              "stat": "int",
+              "dc": 9
+            }
+          },
+          {
+            "next": 3,
+            "label": "Circle wide and cut it off before it can call",
+            "check": {
+              "stat": "dex",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "The pack's lead wolf breaks from the trees and charges the gate head-on, shouldering into the timber hard enough to crack one post at the base. The guard shouts from the wall. This is the push \u2014 stop it here, or nothing holds.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the lead wolf",
+            "combat": "timber-wolf"
+          },
+          {
+            "next": 4,
+            "label": "Drop a burning brand in its path",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 4,
+            "label": "Drive it back against the wall with your weight",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Slip sideways and redirect its charge into the post",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The pack retreats when the lead wolf falls. The guard is already hammering the cracked post before the wolves reach the tree line again, and when he finishes he stands there looking at the quiet forest like a man who has earned a full night's sleep for the first time all week.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Help reinforce the cracked post before dawn",
+            "check": {
+              "stat": "str",
+              "dc": 8
+            }
+          },
+          {
+            "next": 5,
+            "label": "Scout the tree line to confirm the pack has gone",
+            "check": {
+              "stat": "dex",
+              "dc": 9
+            }
+          },
+          {
+            "next": 5,
+            "label": "Advise the guard on better nighttime watch rotations",
+            "check": {
+              "stat": "wis",
+              "dc": 8
+            }
+          }
+        ]
+      },
+      {
+        "text": "The village wakes to an intact gate and a guard who has finally slept. You have earned an honest morning in Thornwall, and a bow from the armoury kept for exactly this kind of debt.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 42,
+      "gold": 24,
+      "item": "ashwood-bow"
+    }
+  },
+  {
+    "slug": "ratcatchers-tithe",
+    "title": "The Ratcatcher's Tithe",
+    "location": "thornwall",
+    "minLevel": 1,
+    "description": "The grain stores are infested, and the professional ratcatcher hasn't been seen in three days.",
+    "stages": [
+      {
+        "text": "The storekeeper's hands are shaking as she shows you the gnawed sacks \u2014 not just one or two, but all of them, chewed through from the inside and the grain pooling like sand. 'The ratcatcher took the job four days ago,' she says. 'Haven't seen him since. Haven't heard him either, which is worse.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Follow gnaw marks to find their source",
+            "check": {
+              "stat": "int",
+              "dc": 8
+            }
+          },
+          {
+            "next": 1,
+            "label": "Listen beneath the floorboards for sounds",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask neighbors if they saw where he went",
+            "check": {
+              "stat": "cha",
+              "dc": 8
+            }
+          }
+        ]
+      },
+      {
+        "text": "A trail of disturbed flour leads beneath the raised floorboards, where the ratcatcher apparently crawled in and \u2014 based on the drag marks and the silence \u2014 never came out on his own. Something below shifts. Then several somethings. Then too many.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Pry up the floorboards by force",
+            "check": {
+              "stat": "str",
+              "dc": 9
+            }
+          },
+          {
+            "next": 2,
+            "label": "Slip under the boards to search quietly",
+            "check": {
+              "stat": "dex",
+              "dc": 9
+            }
+          },
+          {
+            "next": 2,
+            "label": "Count the sounds to gauge the colony size",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "You find the ratcatcher wedged into a corner beneath the boards, very much alive and very much done with his career. He hasn't moved in two days, surrounded by a dire rat swarm that has taken a particular interest in him and is now taking an interest in you.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Haul the ratcatcher out and seal the gap",
+            "check": {
+              "stat": "str",
+              "dc": 10
+            }
+          },
+          {
+            "next": 3,
+            "label": "Lure the swarm away before grabbing him",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 3,
+            "label": "Slip through and pull him out quietly",
+            "check": {
+              "stat": "dex",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "The ratcatcher is safe but the swarm is still down here, and if it isn't dealt with now it will simply recolonise the stores within the week. The boards are up, the light is in, and the swarm is angry.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the swarm directly",
+            "combat": "dire-rat-swarm"
+          },
+          {
+            "next": 4,
+            "label": "Scatter them with fire and smoke",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 4,
+            "label": "Drive them toward the open drain and block it",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Use the ratcatcher's abandoned bait to lead them out",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "The swarm breaks. The storekeeper helps you nail boards over the worst gaps while the ratcatcher sits outside looking at the sky with the expression of a man reconsidering his profession entirely.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Help seal the floor gaps so it can't happen again",
+            "check": {
+              "stat": "str",
+              "dc": 8
+            }
+          },
+          {
+            "next": 5,
+            "label": "Check all remaining sacks for damage",
+            "check": {
+              "stat": "int",
+              "dc": 8
+            }
+          },
+          {
+            "next": 5,
+            "label": "Reassure the storekeeper the stores are safe",
+            "check": {
+              "stat": "cha",
+              "dc": 8
+            }
+          }
+        ]
+      },
+      {
+        "text": "The stores are saved, the ratcatcher is alive, and Thornwall owes you a debt. The hunter's charm was the ratcatcher's \u2014 he says you've earned it more than he has, and he means it.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 38,
+      "gold": 22,
+      "item": "hunter-charm"
+    }
+  },
+  {
+    "slug": "flour-trail-ambush",
+    "title": "The Flour Trail Ambush",
+    "location": "thornwall",
+    "minLevel": 2,
+    "description": "A baker's flour deliveries keep vanishing on the forest road, and the drivers are too scared to say what they saw.",
+    "stages": [
+      {
+        "text": "The baker's apprentice won't meet your eyes. 'He told me not to say anything, but someone needs to do something.' A flour trail leads from the market road into the brush, thin but unbroken, as if the sacks were dragged and leaking the whole way. The drivers say it happens near the old tree at the road bend.",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Follow the flour trail into the brush",
+            "check": {
+              "stat": "dex",
+              "dc": 9
+            }
+          },
+          {
+            "next": 1,
+            "label": "Question the drivers to get the full story",
+            "check": {
+              "stat": "cha",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Examine the ambush site for clues",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 1,
+            "label": "Get there before the next delivery is due",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "The trail leads to a crude stockpile behind a collapsed wood-gatherer's hut \u2014 at least six stolen sacks, a gnawed rope, and several sets of small booted footprints circling the whole area. Goblins, probably, but organized ones with a stash and a pattern.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Search the hut for more clues about the operation",
+            "check": {
+              "stat": "int",
+              "dc": 10
+            }
+          },
+          {
+            "next": 2,
+            "label": "Study the footprints to estimate how many there are",
+            "check": {
+              "stat": "wis",
+              "dc": 10
+            }
+          },
+          {
+            "next": 2,
+            "label": "Set up to observe the stockpile without being seen",
+            "check": {
+              "stat": "dex",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "You spot the lookout too late \u2014 a goblin grunt perched in the big beech above the stockpile, already raising a bone horn to its lips. If it calls for the others, your window closes entirely.",
+        "choices": [
+          {
+            "next": 3,
+            "label": "Sprint and silence it before it blows",
+            "check": {
+              "stat": "dex",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Throw something to knock it from the tree",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 3,
+            "label": "Startle it so it blows too early",
+            "check": {
+              "stat": "cha",
+              "dc": 10
+            }
+          }
+        ]
+      },
+      {
+        "text": "Three goblin grunts charge from behind the hut with crude blades up, shouting over each other. They are small and fierce and completely convinced that this flour belongs to them.",
+        "choices": [
+          {
+            "next": 4,
+            "label": "Fight the goblin grunts",
+            "combat": "goblin-grunt"
+          },
+          {
+            "next": 4,
+            "label": "Topple the flour stash onto them",
+            "check": {
+              "stat": "str",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Divide and isolate them before they can coordinate",
+            "check": {
+              "stat": "int",
+              "dc": 11
+            }
+          },
+          {
+            "next": 4,
+            "label": "Drive them off with noise and aggression",
+            "check": {
+              "stat": "cha",
+              "dc": 11
+            }
+          }
+        ]
+      },
+      {
+        "text": "The goblins scatter. You haul the stolen flour sacks back toward the road, two at a time, while the stockpile slowly collapses behind you. The baker's apprentice is waiting at the road junction, and her relief is very loud.",
+        "choices": [
+          {
+            "next": 5,
+            "label": "Carry all the sacks back yourself",
+            "check": {
+              "stat": "str",
+              "dc": 9
+            }
+          },
+          {
+            "next": 5,
+            "label": "Set a warning at the ambush site to deter future attempts",
+            "check": {
+              "stat": "int",
+              "dc": 9
+            }
+          },
+          {
+            "next": 5,
+            "label": "Teach the drivers what to watch for next time",
+            "check": {
+              "stat": "wis",
+              "dc": 9
+            }
+          }
+        ]
+      },
+      {
+        "text": "The baker rewards you with the coin he'd been saving for a real guard and a thief's stiletto he found wedged in one of the returned sacks \u2014 apparently someone lost it there before you arrived.",
+        "complete": true
+      }
+    ],
+    "rewards": {
+      "xp": 58,
+      "gold": 33,
+      "item": "thief-stiletto"
+    }
+  }
+]

@@ -1,0 +1,568 @@
+{
+  "location": {
+    "slug": "throne-of-frost",
+    "name": "Throne of Frost",
+    "type": "dungeon",
+    "realm": "frostreach",
+    "description": "The seat of the Frost King \u2014 an ancient giant who has ruled the Frostreach since before memory. His throne room is a cathedral of ice a mile deep, where the temperature drops below anything natural. This is the heart of the cold that thinks.",
+    "connections": [
+      "frosthollow"
+    ],
+    "mapX": 50,
+    "mapY": 75
+  },
+  "enemies": [
+    {
+      "slug": "frost-giant-warrior",
+      "name": "Frost Giant Warrior",
+      "hp": 1015,
+      "attack": 47,
+      "defense": 23,
+      "xp": 1088,
+      "gold": 545,
+      "level": 17,
+      "abilities": [
+        "stunning-slam",
+        "war-cry",
+        "harden"
+      ],
+      "description": "A fully armored frost giant \u2014 twenty feet of ice-blue muscle and enchanted iron. They fight with discipline learned over centuries."
+    },
+    {
+      "slug": "ice-drake",
+      "name": "Ice Drake",
+      "hp": 1153,
+      "attack": 45,
+      "defense": 24,
+      "xp": 1106,
+      "gold": 513,
+      "level": 18,
+      "abilities": [
+        "fire-breath",
+        "rending-claws",
+        "stunning-slam"
+      ],
+      "description": "A dragon cousin adapted to the extreme cold. Its breath weapon is a cone of absolute zero that flash-freezes everything it touches."
+    },
+    {
+      "slug": "throne-guardian",
+      "name": "Throne Guardian",
+      "hp": 1179,
+      "attack": 46,
+      "defense": 26,
+      "xp": 1110,
+      "gold": 537,
+      "level": 18,
+      "abilities": [
+        "harden",
+        "regen-aura",
+        "stunning-slam",
+        "war-cry"
+      ],
+      "description": "An elite guardian forged from enchanted ice by the Frost King himself. It is programmed with a thousand years of combat technique."
+    },
+    {
+      "slug": "frost-king-aldric",
+      "name": "Frost King Aldric",
+      "hp": 2629,
+      "attack": 64,
+      "defense": 34,
+      "xp": 3807,
+      "gold": 1717,
+      "level": 20,
+      "boss": true,
+      "abilities": [
+        "stunning-slam",
+        "war-cry",
+        "harden"
+      ],
+      "drops": [],
+      "description": "[Boss of Throne of Frost]",
+      "telegraphs": [
+        "crushing-blow",
+        "rallying-howl"
+      ],
+      "enrageThreshold": 0.3,
+      "enrageTelegraphs": [
+        "death-strike"
+      ]
+    }
+  ],
+  "locationThreat": 18,
+  "dungeonConfig": {
+    "boss": "frost-king-aldric",
+    "name": "Throne of Frost",
+    "minRooms": 6,
+    "maxRooms": 8,
+    "mechanic": {
+      "slug": "absolute-zero",
+      "name": "Absolute Zero",
+      "description": "The cold is supernatural. Take 3% max HP damage per room and all healing reduced by 20%.",
+      "effect": {
+        "roomDamagePct": 3
+      }
+    }
+  },
+  "events": [
+    {
+      "slug": "throne-frozen-army",
+      "name": "Frozen Legion",
+      "icon": "\u2694",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "Hundreds of frost giant warriors, frozen mid-battle in perfect ice. Their weapons are still raised, their faces locked in fury.",
+      "choices": [
+        {
+          "label": "Loot weapons from the frozen giants (STR DC 13)",
+          "check": {
+            "stat": "str",
+            "dc": 13
+          },
+          "success": {
+            "text": "You pry a giant's weapon free. The metal is incredible quality.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "giant-bone",
+                  "qty": 2
+                },
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 3
+                }
+              ],
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "The ice grabs your arm. You wrench free but lose skin.",
+            "rewards": {
+              "xp": 8,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Study the battle formation (INT DC 12)",
+          "check": {
+            "stat": "int",
+            "dc": 12
+          },
+          "success": {
+            "text": "You recognize tactical patterns. This knowledge will serve you in combat.",
+            "rewards": {
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The formations make no sense. Giant warfare is alien to you.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Pass through respectfully",
+          "auto": true,
+          "success": {
+            "text": "You walk among the dead. They deserve that much.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "throne-ice-throne-room",
+      "name": "Lesser Throne",
+      "icon": "\ud83d\udc51",
+      "type": "discovery",
+      "rarity": "rare",
+      "text": "A smaller throne room \u2014 a lieutenant's chamber. The throne itself is made of drake bones and permafrost.",
+      "choices": [
+        {
+          "label": "Sit on the throne (CON DC 14)",
+          "check": {
+            "stat": "con",
+            "dc": 14
+          },
+          "success": {
+            "text": "Cold power surges through you. The throne accepts you, temporarily. Ancient knowledge fills your mind.",
+            "rewards": {
+              "xp": 45,
+              "items": [
+                {
+                  "slug": "drake-scale-shard",
+                  "qty": 1
+                }
+              ]
+            }
+          },
+          "failure": {
+            "text": "The throne rejects you. Frost burns through your armor, searing flesh.",
+            "rewards": {
+              "xp": 10,
+              "damage": 28
+            }
+          }
+        },
+        {
+          "label": "Strip the throne for materials (STR DC 12)",
+          "check": {
+            "stat": "str",
+            "dc": 12
+          },
+          "success": {
+            "text": "You extract drake bone and permafrost ore from the throne's structure.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "drake-scale-shard",
+                  "qty": 1
+                },
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 2
+                }
+              ],
+              "xp": 28
+            }
+          },
+          "failure": {
+            "text": "The throne is magically reinforced. You can't break it apart.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Leave the throne untouched",
+          "auto": true,
+          "success": {
+            "text": "Thrones are for kings. You're not ready for that yet.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "throne-drake-nest",
+      "name": "Ice Drake Nest",
+      "icon": "\ud83e\udd5a",
+      "type": "hazard",
+      "rarity": "uncommon",
+      "text": "A nest of ice and bone, with massive drake eggs radiating cold. The drake parents are somewhere nearby.",
+      "choices": [
+        {
+          "label": "Take an egg (DEX DC 14)",
+          "check": {
+            "stat": "dex",
+            "dc": 14
+          },
+          "success": {
+            "text": "You snatch an egg and escape before the parents return. Incredibly valuable.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "drake-scale-shard",
+                  "qty": 2
+                }
+              ],
+              "gold": 50,
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "A drake returns. Its ice breath catches your back as you flee.",
+            "rewards": {
+              "xp": 10,
+              "damage": 28
+            }
+          }
+        },
+        {
+          "label": "Harvest shed scales from the nest (WIS DC 12)",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "text": "You find shed drake scales among the nesting material. Less risky, still valuable.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "drake-scale-shard",
+                  "qty": 1
+                },
+                {
+                  "slug": "frozen-hide",
+                  "qty": 2
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "You disturb the eggs. They emit a piercing shriek that draws attention.",
+            "rewards": {
+              "xp": 8,
+              "damage": 16
+            }
+          }
+        },
+        {
+          "label": "Leave the nest alone",
+          "auto": true,
+          "success": {
+            "text": "You're brave, not stupid. Drake parents are not to be trifled with.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "throne-armory",
+      "name": "Giant Armory",
+      "icon": "\ud83d\udde1",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A vast room filled with giant-sized weapons and armor. Most are too large for you, but the materials are priceless.",
+      "choices": [
+        {
+          "label": "Salvage the best metals (STR DC 12)",
+          "check": {
+            "stat": "str",
+            "dc": 12
+          },
+          "success": {
+            "text": "You strip down several weapons for their ore and bone.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 3
+                },
+                {
+                  "slug": "giant-bone",
+                  "qty": 2
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "A weapon rack collapses on you. Heavy.",
+            "rewards": {
+              "xp": 8,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Find human-sized equipment (DEX DC 11)",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "Hidden among the giant gear, you find equipment sized for a human \u2014 trophies from past victims.",
+            "rewards": {
+              "gold": 40,
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "Nothing your size. Everything here was built for beings three times taller.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Pass through",
+          "auto": true,
+          "success": {
+            "text": "Impressive, but impractical for your needs.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "throne-frozen-spring",
+      "name": "Deep Frozen Spring",
+      "icon": "\ud83d\udca7",
+      "type": "shrine",
+      "rarity": "common",
+      "text": "A spring of liquid water in the deepest part of the throne. Impossible \u2014 nothing should be liquid here. It glows faintly.",
+      "choices": [
+        {
+          "label": "Drink from the spring (CON DC 12)",
+          "check": {
+            "stat": "con",
+            "dc": 12
+          },
+          "success": {
+            "text": "The water is pure power. Cold, but it heals and restores.",
+            "rewards": {
+              "heal": 50,
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The water is supernaturally cold. It burns like fire going down.",
+            "rewards": {
+              "xp": 8,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Collect the water (WIS DC 11)",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "text": "You bottle some of the magical water. It crystallizes into essence.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "glacial-essence",
+                  "qty": 2
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "The water refuses to be contained. It freezes solid in your hands.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Leave it undisturbed",
+          "auto": true,
+          "success": {
+            "text": "The spring bubbles quietly. A mystery for another day.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "throne-aldric-mural",
+      "name": "Aldric's History",
+      "icon": "\ud83d\uddbc",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "Massive murals depict the Frost King's rise to power. One panel shows a hidden vault, its location encoded in runes.",
+      "choices": [
+        {
+          "label": "Decode the vault location (INT DC 13)",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "text": "You find the vault behind a false wall. Inside: the king's personal reserve of drake scales.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "drake-scale-shard",
+                  "qty": 2
+                },
+                {
+                  "slug": "glacial-essence",
+                  "qty": 1
+                }
+              ],
+              "xp": 35
+            }
+          },
+          "failure": {
+            "text": "The code leads you to a trapped alcove. Ice spears fire from the walls.",
+            "rewards": {
+              "xp": 10,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Study the history for tactical advantage (WIS DC 11)",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "text": "You learn Aldric's fighting style from the murals. Useful for the coming battle.",
+            "rewards": {
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "The murals are propagandistic and misleading. No real intel.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Keep moving",
+          "auto": true,
+          "success": {
+            "text": "History is written by the victors. Time to make some history of your own.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "throne-of-frost-group-1",
+      "name": "Frost Giant Warrior Swarm",
+      "composition": [
+        {
+          "enemySlug": "frost-giant-warrior",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "throne-of-frost-group-2",
+      "name": "Throne Guardian & Ice Drake",
+      "composition": [
+        {
+          "enemySlug": "throne-guardian",
+          "count": 1
+        },
+        {
+          "enemySlug": "ice-drake",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

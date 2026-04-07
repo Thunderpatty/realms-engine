@@ -1,0 +1,125 @@
+[
+  {
+    "slug": "portal-frostreach",
+    "title": "The Northern Gate",
+    "location": "sunspire",
+    "requiredLevel": 10,
+    "portalUnlocks": "frostreach",
+    "type": "portal",
+    "stages": [
+      {
+        "text": "A scholar at the Sunspire Citadel approaches you with urgency. 'You've proven yourself in these lands, adventurer. But there are threats beyond our borders that dwarf anything you've faced here. The Northern Gate \u2014 a portal sealed since the Frost Wars \u2014 has begun to thaw. The Frostreach beyond it stirs with ancient power. We need someone to cross through and establish contact with the outpost at Frosthollow. Will you go where others dare not?'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "I'll go. Open the gate."
+          },
+          {
+            "next": 1,
+            "bonusXp": 20,
+            "label": "Tell me more about the Frostreach first."
+          },
+          {
+            "next": null,
+            "label": "Not yet. (Decline)"
+          }
+        ]
+      },
+      {
+        "text": "The scholar leads you to the Northern Gate \u2014 a massive arch of blue-veined stone buried beneath the Citadel. Runes flare to life as you approach, recognizing your strength. The portal shimmers open, revealing a landscape of endless white \u2014 snow-covered peaks, frozen forests, and a sky streaked with auroral light.\n\n'Frosthollow is through there,' the scholar says. 'A trading post on the edge of the Frostreach. They'll be expecting you. Be warned \u2014 the cold there isn't just temperature. It thinks.'\n\nYou step through. The gate closes behind you. The cold hits like a wall.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Step through the portal."
+          }
+        ]
+      },
+      {
+        "text": "You emerge into the Frostreach. The air is sharp enough to cut. Snow crunches beneath your boots and the sky burns with green and violet light. In the distance, the spires of Frosthollow rise from a frozen lake \u2014 a town of ice and iron, built by people who learned to live where nothing should.\n\nA guard waves you through the gate. 'Another one from the south? Good. We need the help. Welcome to the Frostreach, adventurer. Try not to freeze.'",
+        "complete": true
+      }
+    ],
+    "description": "The Northern Gate beneath Sunspire has begun to thaw. A new realm awaits beyond.",
+    "minLevel": 10,
+    "rewards": {
+      "xp": 500,
+      "gold": 200
+    }
+  },
+  {
+    "slug": "portal-emberveil",
+    "title": "The Ember Passage",
+    "location": "frosthollow",
+    "requiredLevel": 20,
+    "portalUnlocks": "emberveil",
+    "type": "portal",
+    "stages": [
+      {
+        "text": "A Frostreach explorer has discovered something impossible \u2014 a rift in the ice shelf that radiates heat. Through it, you can see a landscape of fire and ash: volcanic islands floating on a sea of magma. 'We call it the Emberveil,' she says. 'Nobody's been through and come back. The council wants someone expendable \u2014 er, experienced \u2014 to investigate. The passage is stable but it won't stay open forever.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "I've walked through worse. Open it."
+          },
+          {
+            "next": 1,
+            "bonusXp": 30,
+            "label": "What do you know about the other side?"
+          },
+          {
+            "next": null,
+            "label": "Not yet. (Decline)"
+          }
+        ]
+      },
+      {
+        "text": "The rift crackles with opposing energies \u2014 ice on this side, fire on the other. You step through and the temperature swings from freezing to scorching in a single breath. The Emberveil stretches before you: a shattered landscape of volcanic islands connected by bridges of cooled obsidian, the sky permanently orange with ash and ember. Cinderport \u2014 the trading hub \u2014 clings to the largest island like a barnacle on a whale.\n\nYou've arrived. The Emberveil awaits.",
+        "complete": true
+      }
+    ],
+    "description": "A rift in the Frostreach ice shelf leads to a volcanic realm of fire and ash.",
+    "minLevel": 20,
+    "rewards": {
+      "xp": 1500,
+      "gold": 500
+    }
+  },
+  {
+    "slug": "portal-voidspire",
+    "title": "The Rift Beyond",
+    "location": "cinderport",
+    "requiredLevel": 35,
+    "portalUnlocks": "voidspire",
+    "type": "portal",
+    "stages": [
+      {
+        "text": "At the summit of the Emberveil's highest volcano, a tear in reality bleeds darkness. Not shadow \u2014 void. Through it, you can see floating islands suspended above an infinite abyss, connected by bridges of crystallized light. 'The Voidspire,' whispers a scholar of the arcane. 'The edge of everything. Where the world runs out and something else begins. If you go through, there's no guarantee the rules you know will still apply.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Rules were made to be broken. I'm going."
+          },
+          {
+            "next": 1,
+            "bonusXp": 50,
+            "label": "What's on the other side?"
+          },
+          {
+            "next": null,
+            "label": "Not yet. (Decline)"
+          }
+        ]
+      },
+      {
+        "text": "You step through the rift and gravity becomes a suggestion. The Voidspire unfolds around you \u2014 islands of impossible geometry floating in a sky that isn't a sky, connected by bridges of pure light. In the distance, Nexus Bastion hangs like a fortress carved from a falling star, the last outpost of sanity at the edge of existence.\n\n'Welcome to the end of the map,' says a voice that comes from everywhere. 'What you do here matters more than anywhere else. Because here, reality is listening.'",
+        "complete": true
+      }
+    ],
+    "description": "A tear in reality at the Emberveil summit opens to the edge of existence itself.",
+    "minLevel": 35,
+    "rewards": {
+      "xp": 5000,
+      "gold": 1000
+    }
+  }
+]

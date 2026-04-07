@@ -1,0 +1,338 @@
+{
+  "slug": "the-depths",
+  "name": "The Depths of Ashenmaw",
+  "difficulty": "easy",
+  "floorCount": 3,
+  "levelReq": 5,
+  "icon": "🕳",
+  "description": "Beneath the ruins of Ashenmaw Keep, a corruption festers. The dead no longer rest, and the walls themselves seem to breathe. Adventurers who enter rarely return unchanged.",
+  "loreIntro": "The old garrison of Ashenmaw was abandoned a century ago when the well water turned black. Soldiers reported hearing voices from below — whispers promising power, knowledge, salvation. One by one, they descended into the catacombs and never returned. Now the corruption has grown strong enough to seep through the earth itself, tainting the surrounding lands. The Sunspire Council has posted a bounty for any who can reach the heart of the corruption and destroy it.",
+  "rewards": {
+    "goldBase": 60,
+    "goldPerFloor": 25,
+    "xpBase": 100,
+    "xpPerFloor": 40,
+    "arcaneTokens": 4,
+    "completionBonus": {
+      "gold": 200,
+      "xp": 250
+    }
+  },
+  "enemies": [
+    {
+      "slug": "ashen-shambler",
+      "name": "Ashen Shambler",
+      "hp": 180,
+      "attack": 16,
+      "defense": 8,
+      "xp": 35,
+      "gold": 18,
+      "level": 6,
+      "abilities": ["poison-bite", "rending-claws"],
+      "drops": [],
+      "description": "A shuffling corpse wrapped in tattered burial linens. Its jaw hangs open in a silent scream, fingers blackened and curled into claws."
+    },
+    {
+      "slug": "tomb-crawler",
+      "name": "Tomb Crawler",
+      "hp": 140,
+      "attack": 19,
+      "defense": 6,
+      "xp": 30,
+      "gold": 15,
+      "level": 6,
+      "abilities": ["rending-claws", "poison-bite"],
+      "drops": [],
+      "description": "A bloated spider-like creature that nests in coffins and leaps at the living. Its mandibles drip with embalming fluid turned caustic."
+    },
+    {
+      "slug": "crypt-warden",
+      "name": "Crypt Warden",
+      "hp": 260,
+      "attack": 20,
+      "defense": 14,
+      "xp": 50,
+      "gold": 28,
+      "level": 7,
+      "abilities": ["stunning-slam", "war-cry", "harden"],
+      "drops": [],
+      "description": "The animated armor of a long-dead knight. It moves with eerie purpose, its empty helm flickering with pale blue fire where eyes once were."
+    },
+    {
+      "slug": "whispering-shade",
+      "name": "Whispering Shade",
+      "hp": 120,
+      "attack": 22,
+      "defense": 4,
+      "xp": 40,
+      "gold": 20,
+      "level": 7,
+      "abilities": ["dark-curse", "weakening-hex"],
+      "drops": [],
+      "description": "A translucent wraith that flickers between visibility. It speaks fragments of the voices that first corrupted this place — promises of eternity, whispered too sweetly."
+    },
+    {
+      "slug": "bone-amalgam",
+      "name": "Bone Amalgam",
+      "hp": 320,
+      "attack": 18,
+      "defense": 16,
+      "xp": 55,
+      "gold": 30,
+      "level": 7,
+      "abilities": ["rending-claws", "harden", "stunning-slam"],
+      "drops": [],
+      "description": "Dozens of skeletons fused into a towering mass of interlocking bones. It reshapes itself constantly — sprouting arms, jaws, and ribcage prisons from its bulk."
+    }
+  ],
+  "floors": [
+    {
+      "floor": 1,
+      "name": "The Antechamber of Echoes",
+      "lore": "The stone stairs descend into darkness. As you cross the threshold, the air turns cold and wet, carrying the smell of old earth and something sweeter — rot masked by incense. Braziers that haven't been lit in decades flicker to life as you pass, casting dancing shadows on walls carved with protective wards. The wards are cracked. Someone — or something — has been scratching through them from the other side.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["ashen-shambler", "ashen-shambler"],
+          "count": [1, 2],
+          "intro": "Shapes lurch from the burial alcoves along the walls, burial wrappings trailing behind them like tattered wings."
+        },
+        {
+          "type": "choice",
+          "title": "The Defaced Shrine",
+          "text": "Between the burial alcoves, you find a small shrine to Solara, goddess of rest. The statue has been defaced — its eyes scratched out, its hands broken off. But the offering bowl still glows faintly with residual divine energy.\n\nBeside it, scratched into the stone in a desperate hand: 'POUR YOUR BLOOD AND BE SHIELDED. POUR YOUR FAITH AND SEE THE TRUTH.'",
+          "choices": [
+            {
+              "label": "Offer blood to the shrine",
+              "check": { "stat": "con", "dc": 12 },
+              "success": {
+                "text": "You cut your palm and let the blood fill the bowl. The glow intensifies, and warmth floods through your body. Golden light seals your wound and hardens your skin. The scratched-out eyes of the statue seem to weep golden light for a moment. You feel armored by something older and kinder than the corruption.",
+                "effect": { "healPct": 20, "buffStat": "defense", "buffAmount": 4, "buffTurns": 99 }
+              },
+              "failure": {
+                "text": "The blood hits the bowl and turns black instantly. The corruption in the shrine latches onto your offering and follows it back through the wound. Ice races up your arm, your vision blurs, and something cold settles into your bones. The shrine was already corrupted — and now so is some of your blood.",
+                "effect": { "damagePct": 15, "debuff": { "slug": "curse", "turns": 4, "name": "Corrupted Blood" } }
+              }
+            },
+            {
+              "label": "Pray at the shrine",
+              "check": { "stat": "wis", "dc": 13 },
+              "success": {
+                "text": "You kneel and speak the old words of rest. The corruption recoils from you like a living thing, hissing in a voice that sounds almost human. For a moment, you can see the threads of dark energy running through the walls — and where they converge deeper below. The knowledge steels your mind and restores your focus.",
+                "effect": { "manaPct": 30, "buffStat": "attack", "buffAmount": 3, "buffTurns": 99 }
+              },
+              "failure": {
+                "text": "The whispers grow louder as you pray, drowning out your words. They twist your prayer into something else — a pledge, an invitation. Your concentration shatters and mana bleeds from you like heat from a dying fire. You stumble back, head pounding, and the shrine goes dark.",
+                "effect": { "mpDrain": 25, "damagePct": 8 }
+              }
+            },
+            {
+              "label": "Smash the corrupted shrine",
+              "check": { "stat": "str", "dc": 11 },
+              "success": {
+                "text": "Your weapon shatters the statue with a satisfying crack. A pulse of released energy blasts outward — the wards on the nearby walls flare bright, burning away a layer of corruption. The air feels cleaner. Your muscles surge with the freed divine energy, and the ground ahead seems less threatening.",
+                "effect": { "buffStat": "attack", "buffAmount": 3, "buffTurns": 99, "healPct": 10 }
+              },
+              "failure": {
+                "text": "You swing hard but the corruption has made the stone unnaturally dense. Your weapon bounces off and the impact jars your arm to the shoulder. The shrine pulses with dark energy in response — a counterattack. Pain lances through your weapon arm and your grip weakens.",
+                "effect": { "damagePct": 12, "debuff": { "slug": "weaken", "turns": 3, "name": "Jarred Arm" } }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["tomb-crawler", "ashen-shambler"],
+          "count": [1, 1],
+          "intro": "A clicking sound echoes from the ceiling as a crawler drops into your path. Behind you, something drags itself from a shattered sarcophagus."
+        }
+      ],
+      "boss": {
+        "slug": "warden-castellus",
+        "name": "Warden Castellus",
+        "hp": 650,
+        "attack": 22,
+        "defense": 14,
+        "xp": 120,
+        "gold": 55,
+        "level": 7,
+        "boss": true,
+        "abilities": ["stunning-slam", "war-cry", "harden"],
+        "drops": ["crypt-warden-gauntlets", "bone-amalgam-ring"],
+        "dropChance": 25,
+        "description": "The former commander of Ashenmaw's garrison, still wearing his corroded plate armor. He stands before the stairway to the second level, sword drawn, a hollow wind howling through his empty visor. He speaks: 'I was told to guard this door. I have forgotten why. I have forgotten everything except the guarding.'",
+        "telegraphs": ["crushing-blow", "rallying-howl"],
+        "enrageThreshold": 0.3,
+        "enrageTelegraphs": ["death-strike"],
+        "intro": "🔥 FLOOR BOSS — Warden Castellus rises from his eternal vigil. His voice echoes: 'None pass. None have ever passed. I remember that much.'"
+      }
+    },
+    {
+      "floor": 2,
+      "name": "The Ossuary of Voices",
+      "lore": "Below the antechamber, the architecture changes. This was never part of the garrison — it's older, much older. The walls are lined with thousands of skulls set into alcoves, each one facing inward as if listening to something deeper in the earth. Some of the skulls still have scraps of flesh. Others are polished smooth by centuries of the same fetid wind. As you move through the corridors, you realize the whispers aren't echoes. Each skull is speaking, very quietly, very urgently, all at once.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["whispering-shade", "whispering-shade"],
+          "count": [1, 1],
+          "intro": "Two shades materialize from the skull-lined walls, their forms overlapping and separating like smoke in a draft."
+        },
+        {
+          "type": "choice",
+          "title": "The Speaking Skull",
+          "text": "One skull in the wall is larger than the others. Its jaw is wired shut with golden thread, but the thread is fraying. As you approach, the whispers from the other skulls fall silent.\n\nThe golden-threaded skull's eyes glow. It speaks through clenched teeth: 'Free me and I will tell you what waits below. Leave me and you walk blind into the dark.'",
+          "choices": [
+            {
+              "label": "Cut the golden thread carefully",
+              "check": { "stat": "dex", "dc": 13 },
+              "success": {
+                "text": "You carefully snip the thread with surgical precision. The skull's jaw drops open and it speaks rapidly: 'The heart of this place is a WELLSPRING. It feeds on despair. It will try to make you feel hopeless — resist it. And beware the Revenant — she remembers what she was, and that makes her more dangerous than the mindless dead.' The skull's glow fades, and it crumbles to dust, finally at peace. Its grateful energy flows into you — you feel stronger, quicker, more certain.",
+                "effect": { "buffStat": "attack", "buffAmount": 4, "buffTurns": 99, "healPct": 15 }
+              },
+              "failure": {
+                "text": "Your blade slips and shatters the skull entirely. The golden thread whips free and cuts across your hand — but that's the least of it. The other skulls in the wall begin screaming in unison — a psychic shriek that claws at your mind, your confidence, your will to continue. You stagger back, ears ringing, vision doubled, and the screaming doesn't fully stop. It recedes to a low drone at the edge of your hearing.",
+                "effect": { "damagePct": 12, "debuff": { "slug": "weaken", "turns": 4, "name": "Psychic Shriek" }, "mpDrain": 20 }
+              }
+            },
+            {
+              "label": "Listen to the whispers instead",
+              "check": { "stat": "int", "dc": 14 },
+              "success": {
+                "text": "You press your ear to the wall and filter through the cacophony. It takes immense concentration, but fragments emerge: battle formations of the enemies below, weaknesses in the Revenant's technique, the resonance frequency of the corruption itself. You memorize what you can. The knowledge burns — it's not meant for the living — but it's yours now.",
+                "effect": { "manaPct": 25, "buffStat": "defense", "buffAmount": 3, "buffTurns": 99, "healPct": 10 }
+              },
+              "failure": {
+                "text": "The whispers flood your mind — too many voices, too many pleas, too many truths spoken simultaneously. Your nose bleeds. Your vision whites out. When you come back to yourself, you're on your knees and something in your head feels... loosened. Thoughts come slower. Your mana feels scattered and thin.",
+                "effect": { "damagePct": 15, "mpDrain": 30, "debuff": { "slug": "slow", "turns": 3, "name": "Psychic Overload" } }
+              }
+            },
+            {
+              "label": "Walk away — nothing good comes from talking skulls",
+              "check": { "stat": "wis", "dc": 10 },
+              "success": {
+                "text": "Wisdom is knowing when to walk away, and you've earned enough wisdom to recognize a trap wrapped in temptation. You press deeper into the ossuary, leaving the dead to their conversations. The skull's glow fades behind you, and you feel a small measure of peace from the refusal itself. Sometimes the bravest choice is no choice at all.",
+                "effect": { "healPct": 10, "manaPct": 10 }
+              },
+              "failure": {
+                "text": "You turn to leave, but the skull screams after you: 'COWARD! YOU REFUSE THE GIFT AND EARN THE CURSE!' The other skulls pick up the chant. The word 'coward' echoes through the ossuary until it feels less like sound and more like a physical weight on your shoulders. Your confidence wavers. Your steps feel heavier.",
+                "effect": { "debuff": { "slug": "curse", "turns": 3, "name": "Skull's Rebuke" }, "damagePct": 5 }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["crypt-warden", "ashen-shambler"],
+          "count": [1, 2],
+          "intro": "A warden blocks the corridor ahead while shamblers close in from a side passage. They move together — coordinated, not mindless."
+        },
+        {
+          "type": "combat",
+          "enemies": ["bone-amalgam"],
+          "count": [1, 1],
+          "intro": "The corridor opens into a vaulted chamber. In the center, a mass of bones rises from a pile, assembling itself into a grotesque tower of fused skeletons that scrapes the ceiling."
+        }
+      ],
+      "boss": {
+        "slug": "revenant-thessaly",
+        "name": "Revenant Thessaly",
+        "hp": 850,
+        "attack": 25,
+        "defense": 12,
+        "xp": 150,
+        "gold": 70,
+        "level": 8,
+        "boss": true,
+        "abilities": ["dark-curse", "weakening-hex", "rending-claws"],
+        "drops": ["ashenmaw-vestments", "shade-whisper-amulet", "ashenmaw-treads"],
+        "dropChance": 25,
+        "description": "A woman in the remains of scholar's robes, her skin pale grey, her eyes burning with coherent fury. Unlike the other undead, she moves with precision and intelligence. She was one of the first to descend, seeking to study the corruption. It studied her instead.",
+        "telegraphs": ["poison-cloud", "healing-ritual", "death-strike"],
+        "enrageThreshold": 0.35,
+        "enrageTelegraphs": ["death-strike", "fire-breath"],
+        "intro": "🔥 FLOOR BOSS — Revenant Thessaly blocks the descent. Her voice is sharp and clear: 'I came here to understand it. Now I understand everything. You cannot destroy what has already won.'"
+      }
+    },
+    {
+      "floor": 3,
+      "name": "The Wellspring of Despair",
+      "lore": "The final stairway spirals down into a vast underground cavern. The ceiling is lost in darkness above, but the floor glows — a pool of black water sits at the center, perfectly still, reflecting nothing. The air is thick with a presence that presses against your thoughts, probing for weakness, for doubt, for the quiet voice that says 'what's the point?' This is the Wellspring. It doesn't attack with claws or magic. It attacks with truth — your failures, your fears, the certainty that nothing you do will matter in the end. Every undead in Ashenmaw was born from this pool's influence. Destroying the creature that guards it won't end the corruption, but it will weaken it enough to seal.",
+      "encounters": [
+        {
+          "type": "combat",
+          "enemies": ["whispering-shade", "crypt-warden", "ashen-shambler"],
+          "count": [2, 1, 1],
+          "intro": "The Wellspring's guardians materialize — shades flanking a towering armored revenant, all moving in terrible coordination. This is the inner sanctum's first line of defense."
+        },
+        {
+          "type": "choice",
+          "title": "The Wellspring's Offer",
+          "text": "As you approach the black pool, your reflection appears — but wrong. It smiles when you don't. It speaks with your voice:\n\n'You've come so far. You're tired. I can feel it. Let me help you. Drink from the pool and I'll give you strength — real strength. Not the borrowed kind you've been scraping together. All I ask is that you remember what it feels like to give up. Just for a moment. Just to know the shape of it.'\n\nThe water ripples invitingly.",
+          "choices": [
+            {
+              "label": "Refuse and steel yourself against the despair",
+              "check": { "stat": "wis", "dc": 14 },
+              "success": {
+                "text": "You close your eyes and think of why you came here. Not for glory. Not for gold. Because someone had to, and you were the one who didn't look away. The reflection screams — a sound of pure frustration — and shatters. The pool's surface cracks like glass, and clean light filters through from somewhere impossibly far above. Warm energy floods your body. The despair can't touch you now. You've found the thing it can't corrupt: purpose without ego.",
+                "effect": { "healPct": 35, "manaPct": 35, "buffStat": "attack", "buffAmount": 5, "buffTurns": 99 }
+              },
+              "failure": {
+                "text": "You try to resist but the Wellspring knows you better than you know yourself. It finds the doubt — the real doubt, not the theatrical kind, but the quiet 3 AM certainty that you aren't enough. Just for a heartbeat, you believe it. A heartbeat is all it needs. Cold lances through your chest, your vision goes grey, and something vital drains away. You're still standing. But the Wellspring took something. You can feel the empty space where it used to be.",
+                "effect": { "damagePct": 20, "mpDrain": 30, "debuff": { "slug": "curse", "turns": 5, "name": "Wellspring's Mark" } }
+              }
+            },
+            {
+              "label": "Drink from the pool",
+              "auto": true,
+              "success": {
+                "text": "The water is ice cold and tastes of iron and old promises. Power floods through you — genuine, undeniable power. Your wounds close, your fatigue evaporates, your abilities sharpen. But with it comes a flash of memory that isn't yours: the first soldier who drank, the relief he felt, the slow surrender that followed. Then another memory — the second drinker, then the tenth, the hundredth. A parade of people who chose the easy path and paid a price they didn't understand until it was too late. The power remains, but it burns where it should warm. The Wellspring gave you strength, but it took something too. You just can't tell what yet.",
+                "effect": { "healPct": 25, "buffStat": "attack", "buffAmount": 6, "buffTurns": 99, "damagePct": 15, "debuff": { "slug": "curse", "turns": 3, "name": "Wellspring's Bargain" } }
+              }
+            },
+            {
+              "label": "Hurl a light source into the pool",
+              "check": { "stat": "cha", "dc": 13 },
+              "success": {
+                "text": "Your torch hits the water and for an instant the pool is transparent. You see the bottom — and the hundreds of figures standing in the depths, mouths open, arms reaching upward, eyes wide with a recognition that comes too late. You see the Hollow King being assembled from their collective surrender. You see the threads of corruption that connect him to the pool like puppet strings. Now you know exactly where to strike. The knowledge is a weapon sharper than any blade.",
+                "effect": { "buffStat": "defense", "buffAmount": 5, "buffTurns": 99, "buffStat2": "attack", "buffAmount2": 3, "buffTurns2": 99, "healPct": 10 }
+              },
+              "failure": {
+                "text": "The light is swallowed instantly. The darkness seems deeper now, pressing closer, more personal. Your torch is gone and the pool churns — offended. Tendrils of black water lash out and splash across your armor. Where they touch, the metal corrodes and your skin burns with cold. The Wellspring is angry now. Whatever you face next will be harder because of it.",
+                "effect": { "damagePct": 18, "debuff": { "slug": "weaken", "turns": 4, "name": "Wellspring's Wrath" } }
+              }
+            }
+          ]
+        },
+        {
+          "type": "combat",
+          "enemies": ["bone-amalgam", "whispering-shade"],
+          "count": [1, 2],
+          "intro": "The Wellspring surges. Bones erupt from the water, assembling into a hulking guardian while shades swirl around it like a living shroud."
+        }
+      ],
+      "boss": {
+        "slug": "the-hollow-king",
+        "name": "The Hollow King",
+        "hp": 1200,
+        "attack": 28,
+        "defense": 16,
+        "xp": 200,
+        "gold": 100,
+        "level": 9,
+        "boss": true,
+        "abilities": ["dark-curse", "stunning-slam", "regen-aura", "weakening-hex"],
+        "drops": ["ashenmaw-crown", "wellspring-blade", "thessaly-grimoire", "castellus-oath-shield"],
+        "dropChance": 30,
+        "mythicDrop": true,
+        "mythicDropChance": 100,
+        "description": "It rises from the Wellspring itself — a crowned figure of black water and bone, ten feet tall, wearing the faces of everyone who ever surrendered to the pool. Its crown is made of the golden ward-threads stripped from the walls above. It does not speak. It does not need to. You can feel what it wants: for you to stop. To kneel. To drink. To join the drowned chorus in the pool's depths.",
+        "telegraphs": ["crushing-blow", "poison-cloud", "healing-ritual", "summon-minions"],
+        "enrageThreshold": 0.25,
+        "enrageTelegraphs": ["death-strike", "fire-breath"],
+        "intro": "🔥 RAID BOSS — The Wellspring erupts. A crowned figure of black water and bone rises, towering above you. The Hollow King has no words. Only the crushing weight of despair, given form and fury."
+      }
+    }
+  ],
+  "completionLore": "The Hollow King shatters. The crown of golden threads disintegrates, and the Wellspring's black water begins to drain, spiraling downward into whatever deeper darkness spawned it. The cavern shudders. Dust falls from above.\n\nYou don't have long. As you climb back through the Ossuary, the skulls are silent — truly silent, for the first time in a century. In the Antechamber, the protective wards on the walls glow faintly, renewed. Castellus's armor lies empty where he fell, finally released from his post.\n\nYou emerge into daylight. The air above Ashenmaw smells clean.\n\nThe corruption isn't gone — you can feel it still, deep below, weakened but patient. It will rebuild. It always does. But for now, the dead rest. And you climbed back out, which is more than most can say."
+}

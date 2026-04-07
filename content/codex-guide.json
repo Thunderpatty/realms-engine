@@ -1,0 +1,104 @@
+[
+  {
+    "slug": "getting-started",
+    "title": "Getting Started",
+    "icon": "🏠",
+    "content": "<p>You begin your journey in <strong>Thornwall Village</strong>, a small frontier settlement. Here's what to do first:</p><ul><li><strong>Explore</strong> — Click ⚔ Explore in the story panel to find enemies and events</li><li><strong>Fight</strong> — Defeat enemies to earn XP, gold, and loot</li><li><strong>Level up</strong> — XP fills your bar; leveling increases your HP, MP, and stats</li><li><strong>Buy gear</strong> — Visit the shop (🏪 Market) to upgrade your equipment</li><li><strong>Rest</strong> — Stay at the inn to restore HP and MP</li><li><strong>Travel</strong> — Use the nav panel to move between connected locations</li><li><strong>Store items</strong> — Visit Home in Thornwall to store items, craft, and use the Forge</li></ul><p><strong>First goal:</strong> Reach level 3-4 and clear the <em>Dark Hollow</em> dungeon. Explore Whispering Woods and King's Road to level up safely first.</p>"
+  },
+  {
+    "slug": "combat",
+    "title": "Combat",
+    "icon": "⚔",
+    "content": "<p>Combat is <strong>turn-based</strong>. Each turn you choose one action:</p><ul><li><strong>⚔ Attack</strong> — Basic attack using your weapon. Free, no cooldown.</li><li><strong>✨ Ability</strong> — Use a class ability. Costs MP, may have cooldowns.</li><li><strong>🛡 Defend</strong> — Halve incoming damage this turn. Builds +2 momentum. Costs nothing.</li><li><strong>🧪 Use Item</strong> — Use a consumable (health potion, etc.) from your inventory.</li><li><strong>🏃 Flee</strong> — Attempt to escape. Success chance scales with DEX. Not available in arena.</li></ul><p><strong>Key mechanics:</strong></p><ul><li><strong>Crits</strong> — Based on CHA stat. Deal 1.5× damage.</li><li><strong>Dodge</strong> — Based on DEX stat. Avoid enemy attacks entirely.</li><li><strong>Defense</strong> — Reduces damage by DEF/(DEF+50) percentage.</li><li><strong>Telegraphs</strong> — Enemies warn before powerful attacks. Defend or prepare when you see ⚠ warnings!</li><li><strong>Status effects</strong> — Burn, poison, freeze, stun, slow. Applied by abilities and enemy attacks.</li><li><strong>Death</strong> — Respawn at Thornwall, lose 10% gold. All combat progress is lost.</li></ul>"
+  },
+  {
+    "slug": "momentum",
+    "title": "Momentum",
+    "icon": "⚡",
+    "content": "<p>Momentum is a combat gauge (0-10) that rewards sustained tactical play.</p><p><strong>How it builds:</strong></p><ul><li>Attack or use damage ability: <strong>+1</strong></li><li>Defend: <strong>+2</strong></li><li>Dodge an enemy attack: <strong>+1</strong></li><li>Land a critical hit: <strong>+1 bonus</strong></li></ul><p><strong>How it drops:</strong></p><ul><li>Take damage: <strong>-1</strong></li><li>Take a critical hit: <strong>-2</strong></li><li>Flee: <strong>reset to 0</strong></li></ul><p><strong>Threshold bonuses:</strong></p><ul><li><strong>3 — Warmed Up:</strong> +5% damage</li><li><strong>5 — In The Zone:</strong> +10% damage, +5% crit chance</li><li><strong>7 — Battle Focus:</strong> +15% damage, +10% crit, -10% MP costs</li><li><strong>9 — Unstoppable:</strong> +25% damage, +15% crit, -25% MP costs</li></ul><p>Defending is powerful — it reduces damage AND builds momentum faster than attacking.</p>"
+  },
+  {
+    "slug": "ability-ranks",
+    "title": "Ability Ranks",
+    "icon": "⬆",
+    "content": "<p>Every ability can be upgraded from <strong>Rank 1 to Rank 5</strong> at the Arcane Academy in Sunspire.</p><p><strong>Upgrade costs (Arcane Tokens):</strong></p><ul><li>Rank 1 → 2: <strong>5✦</strong></li><li>Rank 2 → 3: <strong>10✦</strong></li><li>Rank 3 → 4: <strong>18✦</strong></li><li>Rank 4 → 5: <strong>30✦</strong></li><li>Total to max one ability: <strong>63✦</strong></li></ul><p>Higher ranks increase damage and healing. <strong>Rank 3</strong> and <strong>Rank 5</strong> unlock bonus effects like bonus crit chance, cleansing debuffs on heals, increased buff duration, and more.</p><p><strong>Strategy:</strong> Focus on upgrading your 2-3 most-used abilities first before spreading tokens across all abilities.</p>"
+  },
+  {
+    "slug": "combos",
+    "title": "Combo System",
+    "icon": "⚡",
+    "content": "<p>Certain ability sequences trigger <strong>combo bonuses</strong> — extra damage, guaranteed crits, or special effects.</p><p><strong>How combos work:</strong></p><ul><li>Use a specific ability, then follow it with another specific ability on the next turn</li><li>If the sequence matches a combo, the second ability gets a powerful bonus</li><li>A ⚡ COMBO message appears in the combat log when triggered</li></ul><p><strong>Discovery:</strong></p><ul><li>Each class has <strong>3 combos</strong> to discover</li><li>Combos are hidden until you trigger them naturally</li><li>Discovered combos appear in the <strong>Combos</strong> section of the Codex</li><li>Experiment with different ability sequences to find them all!</li></ul><p><em>Hint: Think about which abilities set up opportunities for other abilities. A stun followed by a power attack, a buff followed by a finisher...</em></p>"
+  },
+  {
+    "slug": "classes",
+    "title": "Classes",
+    "icon": "🎭",
+    "content": "<p>Five classes, each with a unique playstyle:</p><ul><li><strong>⚔ Warrior</strong> (STR) — Melee tank. Highest HP, physical damage, self-healing, and armor buffs. Excels in sustained fights.</li><li><strong>🔮 Mage</strong> (INT) — Spell caster. Highest MP, powerful AoE magic, crowd control (freeze, burn). Glass cannon — high damage, lower HP.</li><li><strong>🗡 Rogue</strong> (DEX) — Stealth DPS. Critical hits, poisons, evasion, and burst damage. Fast kills but fragile.</li><li><strong>✨ Cleric</strong> (WIS) — Healer/support. Healing, shields, cleansing, and holy damage. Best survivability through sustain.</li><li><strong>🏹 Ranger</strong> (DEX/WIS) — Ranged hybrid. Traps, companion pet, nature magic. Versatile with strong pet synergy.</li></ul><p>Each class has <strong>5 starter abilities</strong> plus 20+ learnable abilities at the Academy. Max 6 active abilities at a time.</p>"
+  },
+  {
+    "slug": "equipment",
+    "title": "Equipment & Gear",
+    "icon": "🛡",
+    "content": "<p><strong>9 equipment slots:</strong> Weapon, Shield, Body, Helmet, Gloves, Boots, Amulet, Ring, Trinket</p><p><strong>Rarity tiers:</strong></p><ul><li><span style='color:#aaa'>Common</span> — Basic stats, cheap</li><li><span style='color:#2e8b57'>Uncommon</span> — Better stats</li><li><span style='color:#4682b4'>Rare</span> — Random perks, 1 gem socket</li><li><span style='color:#9068d0'>Epic</span> — Strong perks, 2 gem sockets</li><li><span style='color:#b8860b'>Legendary</span> — Powerful perks, 3 sockets. Drop-only.</li><li><span style='color:#dc2626'>Mythic</span> — Best in slot, 4 sockets, class-specific. Boss drops only.</li></ul><p><strong>Durability:</strong> Gear degrades in combat. Repair at shops. If durability hits 0, the item breaks and is destroyed.</p><p><strong>Perks:</strong> Random bonuses on rare+ gear — bonus stats, lifesteal, crit chance, HP regen, and more.</p>"
+  },
+  {
+    "slug": "forge",
+    "title": "The Forge",
+    "icon": "🔨",
+    "content": "<p>The Forge is in your <strong>Home at Thornwall</strong>. It works on equipped rare+ gear.</p><p><strong>💎 Socketing:</strong></p><ul><li>Insert gems into socket slots for percentage-based bonuses</li><li>Socket slots by rarity: Rare=1, Epic=2, Legendary=3, Mythic=4</li><li>6 gem types: Ruby (ATK%), Sapphire (DEF%), Emerald (HP Regen%), Amethyst (MP Regen%), Topaz (Crit%), Opal (Dodge%)</li><li>3 gem tiers: Chipped → Cut → Flawless (better bonuses)</li><li>Gems can be extracted (costs gold)</li></ul><p><strong>✨ Enchanting:</strong></p><ul><li>Roll new random perks on rare+ gear</li><li>Costs gold + materials</li><li>Replaces existing perks</li></ul><p><strong>🔮 Perk Crystals:</strong></p><ul><li>Extract perks from gear into a tradeable crystal (75% success, 25% item destroyed)</li><li>Apply crystals to other gear to transfer perks</li></ul>"
+  },
+  {
+    "slug": "crafting",
+    "title": "Crafting",
+    "icon": "🛠",
+    "content": "<p>Craft items at <strong>Home in Thornwall</strong>.</p><p><strong>How it works:</strong></p><ul><li>You need a <strong>recipe</strong> + the required <strong>materials</strong></li><li>Materials drop from enemies during exploration and combat</li><li>Recipes are discovered from boss kills, exploration events, and quest rewards</li><li>Check the recipe book in your Home crafting tab to see what you can make</li></ul><p><strong>What you can craft:</strong> Consumables (potions, food), equipment, and materials for the Forge.</p><p><strong>Tips:</strong></p><ul><li>Explore different zones — each has unique material drops</li><li>Boss enemies have a chance to drop rare recipe scrolls</li><li>You can craft multiple items at once if you have enough materials</li></ul>"
+  },
+  {
+    "slug": "guild",
+    "title": "Adventurer's Guild",
+    "icon": "⚔",
+    "content": "<p>Join the Adventurer's Guild for <strong>500 gold</strong> (one-time fee) at any town.</p><p><strong>Bounties:</strong></p><ul><li>3 bounties per town per day (easy, medium, hard)</li><li>Accept a bounty → kill the required enemies → claim your reward</li><li>Rewards: Guild XP, Guild Marks, gold, XP</li><li>Bounties refresh at midnight</li></ul><p><strong>Guild Ranks:</strong> Initiate → Bronze → Silver → Gold → Platinum → Champion. Rank up by earning Guild XP from bounties.</p><p><strong>Guild Vendor:</strong> Sells exclusive gear for Guild Marks. Higher ranks unlock better items.</p>"
+  },
+  {
+    "slug": "academy",
+    "title": "Arcane Academy",
+    "icon": "📚",
+    "content": "<p>The Academy is in <strong>Sunspire Citadel</strong>.</p><p><strong>Learn Abilities:</strong> Spend Arcane Tokens (✦) to learn new class abilities. Tokens are earned from boss kills (1-3 per boss).</p><p><strong>Upgrade Ranks:</strong> Upgrade your abilities from Rank 1-5 for increased power and bonus effects. See the <em>Ability Ranks</em> guide for costs.</p><p><strong>Ability Loadout:</strong></p><ul><li>Max <strong>6 active abilities</strong> at a time</li><li>Swap abilities freely at the Academy</li><li>Separate <strong>PvE</strong> and <strong>PvP</strong> loadouts</li><li>PvP loadout defaults to your PvE loadout until customized</li></ul><p><strong>Strategy:</strong> Don't learn everything at once. Focus on abilities that complement your playstyle and upgrade those first.</p>"
+  },
+  {
+    "slug": "arena",
+    "title": "Arena — The Crucible",
+    "icon": "🏟",
+    "content": "<p>Wave survival mode available at any town.</p><p><strong>Rules:</strong></p><ul><li>Fight waves of increasingly difficult enemies</li><li><strong>No fleeing</strong>, <strong>no consumables</strong> — abilities and basic attacks only</li><li>HP and MP carry between waves</li><li>Fight until you die or leave</li></ul><p><strong>Between waves</strong>, choose one:</p><ul><li>❤ Heal 30% HP</li><li>💧 Restore 30% MP</li><li>⚡ +50% AP bonus next wave</li></ul><p><strong>Arena Points (AP):</strong> Earned per wave cleared. Scales with wave number. Spend at the Arena Store for exclusive gear.</p><p><strong>Boss waves:</strong> Every 5th wave. Gems drop from boss waves 30+.</p><p><strong>Arena Store:</strong> 6 slots by rarity. Per-slot reroll available. One free reroll per day.</p>"
+  },
+  {
+    "slug": "exploration",
+    "title": "Exploration & Events",
+    "icon": "🗺",
+    "content": "<p><strong>Wild zones</strong> (Whispering Woods, King's Road, Crossroads, Shadowfen) and <strong>dungeons</strong> (Dark Hollow, Ruined Shrine, Ember Mines, Witch's Tower, Dragon Peak) have combat encounters.</p><p><strong>Exploration events:</strong> ~22% chance to get a non-combat event instead of a fight. Types include NPCs, shrines, puzzles, merchants, and environmental encounters.</p><p><strong>Stat checks:</strong> Events use D&D-style checks — roll d20 + your stat modifier vs a difficulty (DC). Higher stats = better odds.</p><p><strong>Dungeons:</strong></p><ul><li>Multiple rooms + boss at the end</li><li>HP/MP carry between rooms</li><li>Each dungeon has a <strong>unique mechanic</strong>: darkness, cursed ground, cave-ins, arcane disruption, scorching heat</li><li>10% chance of hidden bonus rooms with extra loot</li></ul>"
+  },
+  {
+    "slug": "progression-tips",
+    "title": "Progression Tips",
+    "icon": "📈",
+    "content": "<p><strong>Leveling path:</strong></p><ul><li><strong>Lv 1-3:</strong> Whispering Woods, King's Road. Do Thornwall quests. Buy uncommon gear.</li><li><strong>Lv 3-4:</strong> Clear Dark Hollow dungeon. Move to Crossroads and Shadowfen.</li><li><strong>Lv 4-5:</strong> Clear Ruined Shrine. Start Shadowfen quests.</li><li><strong>Lv 5-7:</strong> Ember Mines and Witch's Tower. Join the Guild. Start bounties.</li><li><strong>Lv 7-10:</strong> Dragon Peak. Visit Sunspire Academy. Learn and upgrade abilities.</li><li><strong>Endgame:</strong> Arena for AP and gems. Max ability ranks. Collect mythic gear.</li></ul><p><strong>If you're stuck:</strong></p><ul><li>Upgrade your weapon first — it has the biggest impact on damage</li><li>Craft health potions for tough fights</li><li>Use Defend to build momentum before unleashing abilities</li><li>Try different ability combos for bonus damage</li><li>Grind bounties for guild marks and buy guild vendor gear</li></ul>"
+  },
+  {
+    "slug": "currencies",
+    "title": "Currencies",
+    "icon": "💰",
+    "content": "<p>Four currencies, each earned and spent differently:</p><ul><li><strong>💰 Gold</strong> — Earned from combat, quests, selling items. Spent at shops, repairs, inn, crafting, Forge, Guild registration.</li><li><strong>⚔ Guild Marks</strong> — Earned from bounty board rewards. Spent at the Guild Vendor for exclusive gear.</li><li><strong>✦ Arcane Tokens</strong> — Earned from boss kills (1-3 per boss). Spent at the Academy to learn abilities and upgrade ranks.</li><li><strong>🏟 Arena Points</strong> — Earned from arena wave survival. Spent at the Arena Store for arena-exclusive gear and rerolls.</li></ul><p><strong>Tips:</strong></p><ul><li>Gold is the most versatile — repair gear regularly to avoid breakage</li><li>Arcane Tokens are rare and valuable — prioritize upgrading your best abilities</li><li>Guild Marks come from daily bounties — do them consistently</li><li>Arena Points scale with wave — pushing deeper is more efficient</li></ul>"
+  },
+  {
+    "slug": "raids",
+    "title": "Raid Tower",
+    "icon": "🕳",
+    "content": "<h3>🕳 The Raid Tower</h3><p>The Raid Tower at Sunspire Citadel contains multi-floor raids — the most challenging content in the game. Raids require a <strong>party of 2-5 players</strong> and feature unique enemies, lore-driven choices, and powerful exclusive loot.</p><h4>How Raids Work</h4><ul><li><strong>Party Required</strong>: Form a party at Sunspire using the Friends List. All members must be at Sunspire and ready.</li><li><strong>Locked In</strong>: Once you enter, there is no retreat between floors. No fleeing, no consumables. Fight through or fall.</li><li><strong>Floor Structure</strong>: Each floor has combat encounters, choice events (voted on by party), a pre-boss recovery, and a boss fight.</li><li><strong>Choice Events</strong>: The party votes on decisions. Success grants buffs; failure causes damage and debuffs that carry into the next combat.</li><li><strong>Pre-Boss Recovery</strong>: Before each boss, every player independently chooses to restore 25% HP, 25% MP, or 15% of both.</li><li><strong>Death</strong>: If you fall, you're \"down\" until combat ends (auto-revive at 25% HP). A Cleric can resurrect mid-combat. If ALL players fall, the raid fails.</li></ul><h4>Loot</h4><ul><li><strong>Boss Drops</strong>: Raid-exclusive legendary and mythic gear (25-30% chance per player, personal loot)</li><li><strong>Exotic Drops</strong>: The final boss can drop class-locked Exotic items — the rarest gear in the game (18% chance per living player). Exotic items have 5 socket slots and the strongest stats.</li><li><strong>Gold/XP/Tokens</strong>: Distributed per floor and on completion.</li></ul><h4>Available Raids</h4><p><strong>The Depths of Ashenmaw</strong> (Easy, 3 floors, Level 5+) — Beneath the ruins of Ashenmaw Keep, a corruption festers. Features undead enemies, the Hollow King boss, and the Vestiges of the Wellspring exotic set.</p>"
+  },
+  {
+    "slug": "party-system",
+    "title": "Party & Friends",
+    "icon": "👥",
+    "content": "<h3>👥 Party & Friends</h3><h4>Friends List</h4><p>Click the <strong>👥 button</strong> in the navigation panel to open your Friends List. You can:</p><ul><li><strong>Add friends</strong> by typing their character name</li><li><strong>Accept or decline</strong> incoming requests</li><li>See who's <strong>online</strong> (green dot) and where they are</li><li><strong>Invite</strong> online friends at Sunspire directly to your raid party</li></ul><h4>Forming a Party</h4><ol><li>Travel to <strong>Sunspire Citadel</strong></li><li>Open the <strong>Raid Tower</strong> and click <strong>Create Raid Party</strong></li><li>Invite friends using the <strong>+ Invite Friend</strong> button (they must be at Sunspire)</li><li>Wait for all members to click <strong>Ready</strong></li><li>The leader selects a raid and clicks <strong>Start Raid</strong></li></ol><h4>Party Combat</h4><p>In party combat, all players submit their action simultaneously each round. You have <strong>30 seconds</strong> to choose — if time runs out, you auto-defend. Actions resolve in <strong>DEX order</strong> (fastest players act first), then allies (pets), then enemies.</p><h4>Party Support Abilities</h4><p>Each class has special abilities designed for party play:</p><ul><li><strong>Warrior</strong>: Rallying Defense (party DEF buff), Taunt (absorb enemy attacks)</li><li><strong>Mage</strong>: Arcane Shield (party DEF+INT), Mana Font (restore ally MP)</li><li><strong>Rogue</strong>: Smoke Screen (party dodge), Expose Weakness (enemy takes +20% damage)</li><li><strong>Cleric</strong>: Heal Other, Mass Heal, Resurrect Ally (revive downed player)</li><li><strong>Ranger</strong>: Hunter's Mark (+15% damage to target), Nature's Ward (party all-stats)</li></ul><p>These abilities also work solo — party buffs apply to yourself, heal-other heals yourself, etc.</p>"
+  }
+]

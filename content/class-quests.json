@@ -1,0 +1,936 @@
+{
+  "ranger": [
+    {
+      "slug": "rangers-bond",
+      "title": "The Ranger's Bond",
+      "class": "ranger",
+      "requiredLevel": 5,
+      "description": "A seasoned tracker at the Class Hall speaks of an ancient ranger tradition \u2014 bonding with a wild companion.",
+      "stages": [
+        {
+          "text": "The tracker Varek leans against the wall, arms crossed. \"Every true ranger carries the wild within them. Not through force \u2014 through kinship. I can teach you, if you're ready.\"",
+          "choices": [
+            {
+              "text": "\"I'm ready. Tell me what I must do.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Varek nods. \"Deep in the Whispering Woods, there's a glade where wounded creatures gather. The magic there is old \u2014 older than the kingdoms. Go there, sit, wait. The right companion will find you.\"",
+          "choices": [
+            {
+              "text": "Travel to the glade and wait.",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "You sit in the moonlit glade. The forest grows quiet. Then, rustling from four directions \u2014 creatures emerge from the treeline, each watching you with knowing eyes.",
+          "choices": [
+            {
+              "text": "\ud83d\udc3a Bond with the Wolf \u2014 a fierce hunter with bleeding fangs",
+              "next": 3,
+              "companionChoice": "wolf"
+            },
+            {
+              "text": "\ud83e\udd85 Bond with the Hawk \u2014 a swift predator with razor talons",
+              "next": 3,
+              "companionChoice": "hawk"
+            },
+            {
+              "text": "\ud83d\udc3b Bond with the Bear \u2014 a mighty guardian with crushing strength",
+              "next": 3,
+              "companionChoice": "bear"
+            },
+            {
+              "text": "\ud83d\udc0d Bond with the Serpent \u2014 a cunning hunter with deadly venom",
+              "next": 3,
+              "companionChoice": "serpent"
+            }
+          ]
+        },
+        {
+          "text": "The creature approaches slowly. You extend your hand. A flash of warmth flows through you \u2014 an ancient bond, forged in the wild magic of the glade. You are no longer alone.",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 100,
+        "gold": 0
+      },
+      "location": "thornwall",
+      "prerequisite": null,
+      "ranksUnlocked": 2
+    },
+    {
+      "slug": "rangers-instinct",
+      "title": "The Ranger's Instinct",
+      "class": "ranger",
+      "requiredLevel": 12,
+      "location": "frosthollow",
+      "prerequisite": "rangers-bond",
+      "ranksUnlocked": 3,
+      "description": "A Frostreach tracker teaches you to hunt in the most unforgiving wilderness.",
+      "stages": [
+        {
+          "text": "Tracker Svenna crouches in the snow, reading signs invisible to you. \"Your bond with nature is real, but you're still thinking like a person. Want to think like the land itself?\"",
+          "choices": [
+            {
+              "text": "\"Teach me.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Svenna takes you deep into the frozen wastes with no supplies. Three days later, you emerge \u2014 alive, thriving. You can feel the heartbeat of the land beneath the ice. \"Now you listen.\"",
+          "choices": [
+            {
+              "text": "\"I hear it.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "Svenna claps your back. \"You're not a ranger who walks through nature anymore. You're nature walking through the world. Your instincts will guide your aim true.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 300,
+        "gold": 150,
+        "tokens": 5
+      }
+    },
+    {
+      "slug": "rangers-fury",
+      "title": "The Ranger's Fury",
+      "class": "ranger",
+      "requiredLevel": 22,
+      "location": "cinderport",
+      "prerequisite": "rangers-instinct",
+      "ranksUnlocked": 4,
+      "description": "A volcanic beast-tamer teaches you to channel the wild rage of nature itself.",
+      "stages": [
+        {
+          "text": "Beast-tamer Korath sits among fire drakes as if they were house cats. \"Nature isn't just gentle streams and singing birds. It's eruptions, tsunamis, earthquakes. Learn its fury.\"",
+          "choices": [
+            {
+              "text": "\"Show me nature's rage.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Korath has you stand in the path of a volcanic vent and channel the energy rather than resist it. Your connection to the wild deepens into something primal and terrifying. \"Feel that? That's the world fighting back.\"",
+          "choices": [
+            {
+              "text": "\"I am the storm.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "Korath grins. \"You carry the fury of the earth itself now. Your strikes will hit with the weight of mountains behind them.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 600,
+        "gold": 300,
+        "tokens": 8
+      }
+    },
+    {
+      "slug": "rangers-communion",
+      "title": "The Ranger's Communion",
+      "class": "ranger",
+      "requiredLevel": 38,
+      "location": "nexus-bastion",
+      "prerequisite": "rangers-fury",
+      "ranksUnlocked": 5,
+      "description": "At the boundary of existence, merge completely with the spirit of the wild.",
+      "stages": [
+        {
+          "text": "In a garden that grows in the Void, an ancient nature spirit waits. \"You have walked the path from bond to instinct to fury. One step remains \u2014 communion. To become one with every living thing that has ever been or will be.\"",
+          "choices": [
+            {
+              "text": "\"I am ready for communion.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "The spirit opens your senses completely. You feel every leaf, every creature, every seed waiting to sprout across all four realms \u2014 simultaneously. The connection is overwhelming and perfect.",
+          "choices": [
+            {
+              "text": "\"I am one with all.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "The spirit dissolves into the garden, and the garden dissolves into you. \"You are the wild's chosen champion. Your mastery is absolute. Walk between the worlds and let nothing stand against nature's will.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 1200,
+        "gold": 500,
+        "tokens": 12
+      }
+    }
+  ],
+  "warrior": [
+    {
+      "slug": "warriors-path",
+      "title": "The Warrior's Path",
+      "class": "warrior",
+      "requiredLevel": 5,
+      "description": "A grizzled weapons master offers to teach you the art of focused combat. Choose your fighting style.",
+      "stages": [
+        {
+          "text": "The weapons master Kael stands in the training yard, surrounded by dented practice dummies. \"You've got talent, but no discipline. A warrior without a path is just a brute with a sword. Let me show you what real combat looks like.\"",
+          "choices": [
+            {
+              "text": "\"Teach me.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Kael leads you to three weapon racks, each marked with a different sigil. \"Every great warrior follows a path. The Berserker channels rage into destruction. The Guardian becomes an unbreakable wall. The Warlord inspires those around them. Choose.\"",
+          "choices": [
+            {
+              "text": "\ud83d\udd25 Berserker \u2014 +20% damage, Bloodrage on kills, +10% damage taken",
+              "next": 2,
+              "classBonusChoice": "berserker"
+            },
+            {
+              "text": "\ud83d\udee1 Guardian \u2014 -15% damage taken, Taunt ability to protect allies",
+              "next": 2,
+              "classBonusChoice": "guardian"
+            },
+            {
+              "text": "\u2694 Warlord \u2014 +10% damage, Battle Cry to empower allies",
+              "next": 2,
+              "classBonusChoice": "warlord"
+            }
+          ]
+        },
+        {
+          "text": "You grip the weapon and feel its power surge through you. Kael nods with approval. \"Now you fight with purpose. Go show the world what a true warrior can do.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 100,
+        "gold": 0
+      },
+      "location": "thornwall",
+      "prerequisite": null,
+      "ranksUnlocked": 2
+    },
+    {
+      "slug": "warriors-resolve",
+      "title": "The Warrior's Resolve",
+      "class": "warrior",
+      "requiredLevel": 12,
+      "location": "frosthollow",
+      "prerequisite": "warriors-path",
+      "ranksUnlocked": 3,
+      "description": "A Frostreach battle-master challenges you to prove your combat discipline in the frozen wastes.",
+      "stages": [
+        {
+          "text": "A scarred veteran named Hjalda stands guard at the Frosthollow barracks. \"I've heard tales of your path. But the cold tests warriors differently than fire. Show me your resolve.\"",
+          "choices": [
+            {
+              "text": "\"I'm ready.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Hjalda leads you through a series of grueling drills in the bitter wind. \"A warrior who fights only with strength will freeze here. You must fight with purpose \u2014 every strike must count.\" After hours of training, she nods. \"You understand now.\"",
+          "choices": [
+            {
+              "text": "\"My blade is sharper for it.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "Hjalda clasps your arm. \"You carry the discipline of the Frostreach now. Your techniques will cut deeper.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 300,
+        "gold": 150,
+        "tokens": 5
+      }
+    },
+    {
+      "slug": "warriors-fury",
+      "title": "The Warrior's Fury",
+      "class": "warrior",
+      "requiredLevel": 22,
+      "location": "cinderport",
+      "prerequisite": "warriors-resolve",
+      "ranksUnlocked": 4,
+      "description": "A volcanic forge-master offers to temper your fighting style in the fires of Emberveil.",
+      "stages": [
+        {
+          "text": "The forge-master Ignara works at a white-hot anvil. \"Your steel is good, but it hasn't been tested by true heat. Let the Emberveil burn away your weakness.\"",
+          "choices": [
+            {
+              "text": "\"Forge me.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Ignara has you spar atop cooling lava flows, the ground cracking beneath your feet. \"Fight through the pain. A warrior who fears the fire will never master it.\" Your muscles scream, but your form holds.",
+          "choices": [
+            {
+              "text": "\"I am forged in flame.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "Ignara drives her fist into the anvil, sending sparks flying. \"You are tempered. Go \u2014 your strikes will burn hotter than any forge.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 600,
+        "gold": 300,
+        "tokens": 8
+      }
+    },
+    {
+      "slug": "warriors-legend",
+      "title": "The Warrior's Legend",
+      "class": "warrior",
+      "requiredLevel": 38,
+      "location": "nexus-bastion",
+      "prerequisite": "warriors-fury",
+      "ranksUnlocked": 5,
+      "description": "An echo of a legendary warrior challenges you to master the impossible at the edge of reality.",
+      "stages": [
+        {
+          "text": "In the training hall of Nexus Bastion, a shimmering figure materializes \u2014 a warrior from a forgotten age. \"I am Valdris, the Last Blade. If you would master what I mastered, you must fight beyond the limits of mortal combat.\"",
+          "choices": [
+            {
+              "text": "\"I accept your challenge.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Valdris phases through dimensions as you spar, attacking from impossible angles. Reality bends around every swing. When it ends, you stand \u2014 changed. Your body moves before your mind commands it.",
+          "choices": [
+            {
+              "text": "\"I understand now.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "Valdris salutes and fades. \"You have surpassed my legacy. Your techniques have reached their absolute peak. Use them well \u2014 the Void does not forgive mistakes.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 1200,
+        "gold": 500,
+        "tokens": 12
+      }
+    }
+  ],
+  "mage": [
+    {
+      "slug": "arcane-specialization",
+      "title": "Arcane Specialization",
+      "class": "mage",
+      "requiredLevel": 5,
+      "description": "An archmage at the Class Hall offers to unlock your latent magical potential. Choose your school of magic.",
+      "stages": [
+        {
+          "text": "The archmage Thessara hovers cross-legged above a circle of runes, three orbs of different colors orbiting her head. \"Your raw power is impressive, but unfocused. Magic without specialization is like a river without banks \u2014 powerful but directionless.\"",
+          "choices": [
+            {
+              "text": "\"I wish to specialize.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "The three orbs descend before you \u2014 one blazing red, one crystalline blue, one shimmering violet. \"Each school offers a unique path. Pyromancy for destruction. Cryomancy for control. Arcanistry for mastery of magic itself.\"",
+          "choices": [
+            {
+              "text": "\ud83d\udd25 Pyromancy \u2014 15% burn on spells, Meteor (massive AoE) once per combat",
+              "next": 2,
+              "classBonusChoice": "pyromancy"
+            },
+            {
+              "text": "\u2744 Cryomancy \u2014 15% slow on spells, Flash Freeze (stun all) once per combat",
+              "next": 2,
+              "classBonusChoice": "cryomancy"
+            },
+            {
+              "text": "\u2728 Arcanistry \u2014 -20% MP costs, Arcane Surge (3 free casts) once per combat",
+              "next": 2,
+              "classBonusChoice": "arcanistry"
+            }
+          ]
+        },
+        {
+          "text": "The orb dissolves into your hands, and you feel the magic reshape itself within you. Thessara smiles. \"The specialization is complete. Use it wisely \u2014 or don't. I'm not your mother.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 100,
+        "gold": 0
+      },
+      "location": "thornwall",
+      "prerequisite": null,
+      "ranksUnlocked": 2
+    },
+    {
+      "slug": "frost-arcanum",
+      "title": "The Frost Arcanum",
+      "class": "mage",
+      "requiredLevel": 12,
+      "location": "frosthollow",
+      "prerequisite": "arcane-specialization",
+      "ranksUnlocked": 3,
+      "description": "A Frostreach ice-sage offers to expand your magical understanding with ancient frost magic theory.",
+      "stages": [
+        {
+          "text": "The ice-sage Yvelda sits in a tower of frozen crystal, reading from a tome made of solid ice. \"Your arcane foundation is sound, but magic without breadth is brittle. Let me teach you how cold itself thinks.\"",
+          "choices": [
+            {
+              "text": "\"Teach me.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Yvelda has you channel spells through ice crystals, each one refracting your magic in new ways. \"Feel how the cold amplifies? Every spell has harmonics you've been ignoring.\" Your understanding deepens.",
+          "choices": [
+            {
+              "text": "\"I feel the resonance.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "Yvelda smiles, frost forming at the corners of her lips. \"You hear the song of magic now. Your spells will carry deeper power.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 300,
+        "gold": 150,
+        "tokens": 5
+      }
+    },
+    {
+      "slug": "ember-arcanum",
+      "title": "The Ember Arcanum",
+      "class": "mage",
+      "requiredLevel": 22,
+      "location": "cinderport",
+      "prerequisite": "frost-arcanum",
+      "ranksUnlocked": 4,
+      "description": "A volcanic arcanist challenges you to control the most volatile element.",
+      "stages": [
+        {
+          "text": "Arcanist Phael stands at the edge of a lava vent, casually redirecting eruptions with one hand. \"Ice teaches patience. Fire teaches control. You need both.\"",
+          "choices": [
+            {
+              "text": "\"Show me.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Phael has you channel raw volcanic energy, forcing you to shape it before it explodes. \"Magic at this intensity will kill you if you flinch. Don't flinch.\" Your hands burn, but your control is absolute.",
+          "choices": [
+            {
+              "text": "\"I will not flinch.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "Phael nods, the lava calming around them. \"You can shape destruction itself now. Your magic has entered a new tier.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 600,
+        "gold": 300,
+        "tokens": 8
+      }
+    },
+    {
+      "slug": "void-arcanum",
+      "title": "The Void Arcanum",
+      "class": "mage",
+      "requiredLevel": 38,
+      "location": "nexus-bastion",
+      "prerequisite": "ember-arcanum",
+      "ranksUnlocked": 5,
+      "description": "A mage who has touched the Void offers the ultimate magical knowledge \u2014 at a price.",
+      "stages": [
+        {
+          "text": "A figure with stars for eyes sits cross-legged in the Nexus library. \"You seek the final arcanum. The Void is not an element \u2014 it is the absence of all elements. To cast with it is to unmake reality briefly. Are you prepared?\"",
+          "choices": [
+            {
+              "text": "\"I am prepared.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "The lesson is silent. No words, no gestures. The mage opens a hole in space and you fall through your own mind, seeing every spell you've ever cast from the outside. When you return, seconds have passed \u2014 and lifetimes.",
+          "choices": [
+            {
+              "text": "\"I see everything.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "\"You've touched the edge of infinity. Your spells will carry the weight of the Void behind them. Use this power wisely \u2014 or don't. The Void doesn't judge.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 1200,
+        "gold": 500,
+        "tokens": 12
+      }
+    }
+  ],
+  "cleric": [
+    {
+      "slug": "divine-blessing",
+      "title": "The Divine Blessing",
+      "class": "cleric",
+      "requiredLevel": 5,
+      "description": "A high priest at the Class Hall channels divine power and offers three sacred blessings. Choose your path of faith.",
+      "stages": [
+        {
+          "text": "High Priest Aldric kneels before a radiant altar, three beams of light streaming from its surface. \"The divine speaks through those who listen. You have proven your faith \u2014 now it is time to receive your blessing.\"",
+          "choices": [
+            {
+              "text": "\"I am ready to receive.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Three symbols materialize in the air \u2014 a golden sun, a crackling bolt, and a silver shield. \"Radiance sustains. Judgment destroys. Aegis protects. Each is a facet of the divine will. Which calls to you?\"",
+          "choices": [
+            {
+              "text": "\ud83d\udc9b Radiance \u2014 3% HP regen/turn, Divine Restoration (full HP+MP) once per combat",
+              "next": 2,
+              "classBonusChoice": "radiance"
+            },
+            {
+              "text": "\u26a1 Judgment \u2014 +15% damage, Holy Smite (ignore defense) once per combat",
+              "next": 2,
+              "classBonusChoice": "judgment"
+            },
+            {
+              "text": "\ud83d\udee1 Aegis \u2014 Allies -10% damage, Divine Shield (absorb 50% HP) once per combat",
+              "next": 2,
+              "classBonusChoice": "aegis"
+            }
+          ]
+        },
+        {
+          "text": "The light envelops you, and for a moment you feel the presence of something vast and ancient. When it fades, you are changed \u2014 the blessing burns quietly in your chest, waiting to be called upon.",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 100,
+        "gold": 0
+      },
+      "location": "thornwall",
+      "prerequisite": null,
+      "ranksUnlocked": 2
+    },
+    {
+      "slug": "divine-expansion",
+      "title": "Expanded Devotion",
+      "class": "cleric",
+      "requiredLevel": 12,
+      "location": "frosthollow",
+      "prerequisite": "divine-blessing",
+      "ranksUnlocked": 3,
+      "description": "A frost-priest teaches that true devotion is tested by suffering.",
+      "stages": [
+        {
+          "text": "Father Aldric tends to frostbitten refugees in a stone chapel. \"You have faith, child, but faith untested is just optimism. The cold teaches us what we're truly willing to sacrifice.\"",
+          "choices": [
+            {
+              "text": "\"Test my faith.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Aldric has you channel divine energy to warm an entire frozen ward \u2014 for hours, with no rest. Your reserves empty. You draw from somewhere deeper. \"There it is,\" he whispers. \"The well beneath the well.\"",
+          "choices": [
+            {
+              "text": "\"I found it.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "Aldric places a hand on your shoulder. \"You've touched the deeper current. Your prayers will carry greater power now.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 300,
+        "gold": 150,
+        "tokens": 5
+      }
+    },
+    {
+      "slug": "divine-crucible",
+      "title": "The Divine Crucible",
+      "class": "cleric",
+      "requiredLevel": 22,
+      "location": "cinderport",
+      "prerequisite": "divine-expansion",
+      "ranksUnlocked": 4,
+      "description": "A fire-priest challenges your understanding of healing and harm.",
+      "stages": [
+        {
+          "text": "Sister Ember stands in a temple built atop a lava flow. \"You heal. How pleasant. But can you heal what fire has taken? Can you restore what should be ash?\" She gestures to burned villagers around her.",
+          "choices": [
+            {
+              "text": "\"I will try.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Under Ember's guidance, you learn to pour divine energy into wounds that resist healing \u2014 burns, curses, corruption. It takes everything you have, but the impossible wounds close. \"Now you understand suffering.\"",
+          "choices": [
+            {
+              "text": "\"Through fire, compassion.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "Ember bows. \"You have been refined. Your divine connection runs deeper than any flame. Go \u2014 the world needs what you've become.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 600,
+        "gold": 300,
+        "tokens": 8
+      }
+    },
+    {
+      "slug": "divine-ascension",
+      "title": "Divine Ascension",
+      "class": "cleric",
+      "requiredLevel": 38,
+      "location": "nexus-bastion",
+      "prerequisite": "divine-crucible",
+      "ranksUnlocked": 5,
+      "description": "At the edge of the Void, make contact with your divine source directly.",
+      "stages": [
+        {
+          "text": "In a chapel that exists in multiple dimensions simultaneously, a being of pure light speaks: \"You have served faithfully. Would you hear the voice directly? Not through prayer \u2014 face to face?\"",
+          "choices": [
+            {
+              "text": "\"I am ready.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "The light envelops you. For an instant, you understand everything \u2014 every prayer answered, every life saved, every sacrifice. The weight is immense and beautiful. When it fades, you are forever changed.",
+          "choices": [
+            {
+              "text": "\"I carry the light.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "The being speaks one last time: \"You are the vessel perfected. Your devotion is absolute. Go \u2014 you are my hand in the world now.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 1200,
+        "gold": 500,
+        "tokens": 12
+      }
+    }
+  ],
+  "rogue": [
+    {
+      "slug": "shadow-arts",
+      "title": "The Shadow Arts",
+      "class": "rogue",
+      "requiredLevel": 5,
+      "description": "A hooded figure in the shadows of the Class Hall offers to teach you forbidden techniques. Choose your shadow art.",
+      "stages": [
+        {
+          "text": "You almost miss her in the corner \u2014 a woman wrapped in darkness, only her eyes visible. \"You move well. But 'well' won't keep you alive where you're going. I can teach you to move through shadow itself.\"",
+          "choices": [
+            {
+              "text": "\"Show me.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "She produces three vials from her cloak \u2014 one of swirling darkness, one of sickly green liquid, and one that seems to contain a tiny storm. \"Shadowstep for evasion and assassination. Poison Mastery for slow, inevitable death. Blade Dance for overwhelming force.\"",
+          "choices": [
+            {
+              "text": "\ud83c\udf11 Shadowstep \u2014 +10% dodge, Vanish (dodge all + guaranteed crit) once per combat",
+              "next": 2,
+              "classBonusChoice": "shadowstep"
+            },
+            {
+              "text": "\ud83e\uddea Poison Mastery \u2014 25% poison on attacks, Envenom (poison all) once per combat",
+              "next": 2,
+              "classBonusChoice": "poison-mastery"
+            },
+            {
+              "text": "\u2694 Blade Dance \u2014 +1 hit on multi-hit, Flurry (AoE attack) once per combat",
+              "next": 2,
+              "classBonusChoice": "blade-dance"
+            }
+          ]
+        },
+        {
+          "text": "She presses the vial into your palm. It shatters, and the contents sink into your skin. \"It's part of you now. Don't waste it.\" When you look up, she's gone.",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 100,
+        "gold": 0
+      },
+      "location": "thornwall",
+      "prerequisite": null,
+      "ranksUnlocked": 2
+    },
+    {
+      "slug": "shadow-mastery",
+      "title": "Shadow Mastery",
+      "class": "rogue",
+      "requiredLevel": 12,
+      "location": "frosthollow",
+      "prerequisite": "shadow-arts",
+      "ranksUnlocked": 3,
+      "description": "A Frostreach spy-master teaches the art of striking from impossible positions.",
+      "stages": [
+        {
+          "text": "A voice from nowhere says, \"You're sloppy. I counted three openings before you reached this room.\" A figure peels away from the wall \u2014 Kira, the Frost Phantom. \"Want to learn how to be invisible?\"",
+          "choices": [
+            {
+              "text": "\"Teach me.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Kira trains you in blizzard-stalking \u2014 using the howling wind and snow to mask your movements completely. \"In the cold, sound dies fast. Use that.\" By the end, even she loses track of you twice.",
+          "choices": [
+            {
+              "text": "\"You won't see me coming.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "Kira flickers and vanishes. Her voice echoes: \"Good. Your strikes will find their marks from deeper shadows now.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 300,
+        "gold": 150,
+        "tokens": 5
+      }
+    },
+    {
+      "slug": "shadow-perfection",
+      "title": "Shadow Perfection",
+      "class": "rogue",
+      "requiredLevel": 22,
+      "location": "cinderport",
+      "prerequisite": "shadow-mastery",
+      "ranksUnlocked": 4,
+      "description": "A master assassin in the volcanic underbelly teaches lethal precision.",
+      "stages": [
+        {
+          "text": "In a smoke-filled den beneath Cinderport, a figure shuffles cards made of obsidian. \"They call me Sable. I kill things that don't want to die. Want to learn how?\"",
+          "choices": [
+            {
+              "text": "\"Show me.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "Sable has you practice on training dummies rigged with traps \u2014 miss the vital point, and you get burned. \"Precision isn't about speed. It's about knowing where to cut before you move.\" Your strikes become surgical.",
+          "choices": [
+            {
+              "text": "\"Every cut counts.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "Sable flips an obsidian card to you. \"Keep it. Reminder that every target has a weakness. You just learned to find it faster.\"",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 600,
+        "gold": 300,
+        "tokens": 8
+      }
+    },
+    {
+      "slug": "shadow-transcendence",
+      "title": "Shadow Transcendence",
+      "class": "rogue",
+      "requiredLevel": 38,
+      "location": "nexus-bastion",
+      "prerequisite": "shadow-perfection",
+      "ranksUnlocked": 5,
+      "description": "At the boundary of reality, learn to become the shadow itself.",
+      "stages": [
+        {
+          "text": "A patch of darkness that isn't a shadow speaks to you. \"I am what remains when a rogue reaches perfection. I am the shadow between dimensions. Would you learn to walk where I walk?\"",
+          "choices": [
+            {
+              "text": "\"I would.\"",
+              "next": 1
+            },
+            {
+              "text": "\"Not yet.\" (Leave)",
+              "next": -1
+            }
+          ]
+        },
+        {
+          "text": "You step into the darkness and feel yourself become weightless, formless. When you emerge, you can see the threads that hold reality together \u2014 and exactly where to cut them.",
+          "choices": [
+            {
+              "text": "\"I am the shadow.\"",
+              "next": 2
+            }
+          ]
+        },
+        {
+          "text": "The darkness disperses. You feel it now \u2014 part of you remains in that space between spaces. Your techniques have reached their ultimate form.",
+          "complete": true
+        }
+      ],
+      "rewards": {
+        "xp": 1200,
+        "gold": 500,
+        "tokens": 12
+      }
+    }
+  ]
+}

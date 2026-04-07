@@ -1,0 +1,88 @@
+[
+  {
+    "slug": "reality-anchors",
+    "title": "Anchor the Real",
+    "location": "shattered-expanse",
+    "minLevel": 36,
+    "rewards": {
+      "xp": 750,
+      "gold": 480
+    },
+    "description": "Reality anchors in the Shattered Expanse are failing. They must be repaired before the islands drift into the Abyss.",
+    "stages": [
+      {
+        "text": "Engineer Pell waves you over urgently. 'Three reality anchors have gone offline. Without them, the floating islands \u2014 including the one we're standing on \u2014 will drift into the Abyss. I need someone who can survive the Expanse to reach the anchors and restart them.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Get technical specs for the anchors",
+            "check": {
+              "stat": "int",
+              "dc": 27
+            }
+          },
+          {
+            "next": 1,
+            "label": "Navigate to the first anchor",
+            "check": {
+              "stat": "wis",
+              "dc": 26
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask about dangers en route",
+            "check": {
+              "stat": "cha",
+              "dc": 26
+            }
+          }
+        ]
+      },
+      {
+        "text": "The first anchor is guarded by void stalkers feeding on its energy. The second is encased in a reality fracture. The third... the third is inside a thought eater colony.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Fight through the stalkers",
+            "combat": "void-stalker"
+          },
+          {
+            "next": 2,
+            "label": "Bypass the fracture with dimensional phasing",
+            "check": {
+              "stat": "int",
+              "dc": 28
+            }
+          },
+          {
+            "next": 2,
+            "label": "Distract the thought eaters",
+            "check": {
+              "stat": "wis",
+              "dc": 28
+            }
+          }
+        ]
+      },
+      {
+        "text": "All three anchors hum back to life. The islands stabilize. Pell's relief is audible even over the comms. 'You just saved every soul on these islands. I owe you a drink and more.'",
+        "complete": true,
+        "rewards": {
+          "gold": 480,
+          "xp": 750,
+          "items": [
+            {
+              "slug": "reality-fragment",
+              "qty": 5
+            },
+            {
+              "slug": "void-shard",
+              "qty": 4
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

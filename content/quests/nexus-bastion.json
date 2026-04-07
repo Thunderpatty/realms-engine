@@ -1,0 +1,177 @@
+[
+  {
+    "slug": "void-breach",
+    "title": "The Void Breach",
+    "location": "nexus-bastion",
+    "minLevel": 35,
+    "rewards": {
+      "xp": 700,
+      "gold": 450
+    },
+    "description": "Reality is failing. The Nexus Bastion's shields are weakening. Someone must investigate the source.",
+    "stages": [
+      {
+        "text": "Warden Kyros grips the railing of the observation deck, knuckles white. Below, the Abyss churns \u2014 darker than usual, more active. 'The shields are failing. Something is eating them from the outside. Three probe teams have gone into the Shattered Expanse and none returned. I need someone who can survive the impossible.' He turns to you. 'Find out what's attacking us. Stop it.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Analyze the shield degradation pattern",
+            "check": {
+              "stat": "int",
+              "dc": 28
+            }
+          },
+          {
+            "next": 1,
+            "label": "Consult the void-walkers for guidance",
+            "check": {
+              "stat": "wis",
+              "dc": 27
+            }
+          },
+          {
+            "next": 1,
+            "label": "Scout the perimeter for the attack source",
+            "check": {
+              "stat": "dex",
+              "dc": 27
+            }
+          }
+        ]
+      },
+      {
+        "text": "Deep in the Shattered Expanse, you find the source \u2014 an entity feeding on the barrier between realities. It's not attacking the shields; it's eating the reality they're anchored to. If it finishes, the Nexus Bastion will fall into the Abyss.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Attack the entity directly",
+            "combat": "void-stalker"
+          },
+          {
+            "next": 2,
+            "label": "Reinforce the reality anchors",
+            "check": {
+              "stat": "int",
+              "dc": 29
+            }
+          },
+          {
+            "next": 2,
+            "label": "Lure it away from the shields",
+            "check": {
+              "stat": "wis",
+              "dc": 29
+            }
+          }
+        ]
+      },
+      {
+        "text": "The entity retreats. The shields stabilize. Kyros meets you at the gate with a rare smile. 'You've bought us time. Maybe enough. The scholars are already working on permanent reinforcements.' He hands you a chest of supplies and rare materials. 'The Bastion stands because of you.'",
+        "complete": true,
+        "rewards": {
+          "gold": 450,
+          "xp": 700,
+          "items": [
+            {
+              "slug": "void-shard",
+              "qty": 5
+            },
+            {
+              "slug": "abyssal-core",
+              "qty": 3
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "slug": "sovereign-hunt",
+    "title": "Hunt the Sovereign",
+    "location": "nexus-bastion",
+    "minLevel": 40,
+    "rewards": {
+      "xp": 900,
+      "gold": 600
+    },
+    "description": "The Void Sovereign stirs. A preemptive strike is the only option.",
+    "stages": [
+      {
+        "text": "Scholar Vera's instruments are screaming. 'The Sovereign is waking. Not fully \u2014 not yet \u2014 but it's dreaming, and its dreams are becoming real. Every nightmare creature, every reality fracture, every surge of void energy \u2014 they're all symptoms of its approach.' She spreads a map of the Voidspire. 'We need to weaken it before it fully manifests. Strike at its anchors \u2014 the nodes it uses to pull itself into our reality.'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Study the anchor locations on the map",
+            "check": {
+              "stat": "int",
+              "dc": 30
+            }
+          },
+          {
+            "next": 1,
+            "label": "Prepare a void-walker ritual to trace the anchors",
+            "check": {
+              "stat": "wis",
+              "dc": 29
+            }
+          },
+          {
+            "next": 1,
+            "label": "Gear up for a long expedition",
+            "check": {
+              "stat": "con",
+              "dc": 28
+            }
+          }
+        ]
+      },
+      {
+        "text": "You find the first anchor \u2014 a crystal of compressed void embedded in the Abyssal Rift. Destroying it sends shockwaves through the Voidspire. The ground shakes. The sky tears. Something vast and dark notices you.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Destroy the second anchor before it can respond",
+            "check": {
+              "stat": "str",
+              "dc": 30
+            }
+          },
+          {
+            "next": 2,
+            "label": "Shield yourself against the Sovereign's attention",
+            "check": {
+              "stat": "wis",
+              "dc": 30
+            }
+          },
+          {
+            "next": 2,
+            "label": "Use the shockwave to locate the remaining anchors",
+            "check": {
+              "stat": "int",
+              "dc": 30
+            }
+          }
+        ]
+      },
+      {
+        "text": "Three anchors destroyed. The Sovereign's approach slows dramatically. Vera's instruments calm. 'It's retreating \u2014 not defeated, but delayed. Possibly for years.' She presses a container of sovereign ichor into your hands. 'Harvested from the destroyed anchors. Use it well. You've earned it.'",
+        "complete": true,
+        "rewards": {
+          "gold": 600,
+          "xp": 900,
+          "items": [
+            {
+              "slug": "sovereign-ichor",
+              "qty": 3
+            },
+            {
+              "slug": "paradox-essence",
+              "qty": 4
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

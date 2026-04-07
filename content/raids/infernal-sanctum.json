@@ -1,0 +1,133 @@
+{
+  "slug": "infernal-sanctum",
+  "name": "The Infernal Sanctum",
+  "difficulty": "hard",
+  "floorCount": 4,
+  "levelReq": 25,
+  "icon": "🔥",
+  "description": "Deep beneath the Caldera Throne, the demon cult built a sanctum to channel infernal energy directly from the hells. The rituals performed here threaten to tear open a permanent gateway between worlds.",
+  "loreIntro": "The Cinderport intelligence network has confirmed what the cult prisoners hinted at — a sanctum beneath the caldera, older than the cult itself, built into the volcanic rock by demons who first colonized this realm millennia ago. The cult has reactivated it, channeling enough infernal energy to open a stable portal to the demon realms. If they succeed, the Emberveil — and eventually the world — will be overrun. The sanctum must be breached, the ritual disrupted, and the portal sealed. Permanently.",
+  "rewards": {
+    "goldBase": 150,
+    "goldPerFloor": 65,
+    "xpBase": 300,
+    "xpPerFloor": 120,
+    "arcaneTokens": 8,
+    "completionBonus": { "gold": 600, "xp": 800 }
+  },
+  "enemies": [
+    { "slug": "sanctum-zealot", "name": "Sanctum Zealot", "hp": 1100, "attack": 62, "defense": 32, "xp": 200, "gold": 100, "level": 25, "abilities": ["fire-breath", "dark-curse"], "drops": [], "description": "An elite cultist who has undergone the Burning Rite — half their body is charred obsidian, the other half wreathed in living flame." },
+    { "slug": "bound-demon", "name": "Bound Demon", "hp": 1300, "attack": 68, "defense": 36, "xp": 220, "gold": 110, "level": 26, "abilities": ["fire-breath", "rending-claws", "dark-curse"], "drops": [], "description": "A demon pulled through the weakening barrier and bound with chains of volcanic iron. It rages against its bindings — and everything else." },
+    { "slug": "infernal-smith", "name": "Infernal Smith", "hp": 1500, "attack": 64, "defense": 42, "xp": 230, "gold": 115, "level": 27, "abilities": ["stunning-slam", "harden", "war-cry"], "drops": [], "description": "A demon-forger who hammers weapons from brimstone and soul-fire. Its workshop is its battlefield — anvils, tongs, and white-hot metal become weapons." },
+    { "slug": "hellfire-oracle", "name": "Hellfire Oracle", "hp": 1000, "attack": 74, "defense": 28, "xp": 225, "gold": 112, "level": 27, "abilities": ["fire-breath", "weakening-hex", "regen-aura"], "drops": [], "description": "A seer who reads the future in flames. It knows what you'll do before you do it — and prepares accordingly." },
+    { "slug": "pit-champion", "name": "Pit Champion", "hp": 1800, "attack": 72, "defense": 44, "xp": 250, "gold": 125, "level": 28, "abilities": ["stunning-slam", "war-cry", "rending-claws", "harden"], "drops": [], "description": "The arena champion of the demon pits — a twelve-foot brute of muscle, horn, and hate. It lives to fight and fights to kill." },
+    { "slug": "sanctum-archon", "name": "Sanctum Archon", "hp": 1400, "attack": 70, "defense": 38, "xp": 240, "gold": 120, "level": 28, "abilities": ["fire-breath", "dark-curse", "weakening-hex", "regen-aura"], "drops": [], "description": "A high-ranking demon who serves as the sanctum's administrator. It wields infernal bureaucracy as effectively as infernal magic." }
+  ],
+  "floors": [
+    {
+      "lore": "The entrance is hidden behind a false wall in the Caldera Throne's deepest chamber. Beyond it, stairs of fused obsidian descend into oppressive heat. The walls are carved with infernal contracts — binding agreements between the cult and entities from beyond. The first level is the Gauntlet: a proving ground where the cult tests recruits against bound demons.",
+      "encounters": [
+        { "type": "combat", "enemies": ["sanctum-zealot", "sanctum-zealot"] },
+        { "type": "choice", "title": "The Binding Chains", "text": "A demon writhes in chains of volcanic iron, begging for release. 'Free me and I will fight for you. Leave me and my brothers on the next floor will be warned of your coming.'",
+          "choices": [
+            { "label": "Free the demon and bind it to your service", "check": { "stat": "int", "dc": 22 }, "success": { "text": "The demon's chains shatter. True to its word, it shares knowledge of the sanctum's defenses. Your strategy improves.", "effect": { "buffStat": "attack", "buffAmount": 5, "buffTurns": 99, "healPct": 15 } }, "failure": { "text": "The demon breaks free but has no intention of serving anyone. It attacks before fleeing deeper into the sanctum.", "effect": { "damagePct": 15, "debuff": { "slug": "curse", "turns": 4, "name": "Demon's Spite" } } } },
+            { "label": "Destroy the demon to prevent it warning others", "check": { "stat": "str", "dc": 21 }, "success": { "text": "The demon shatters under your blow. Its infernal energy disperses, and you absorb some of the residual power.", "effect": { "buffStat": "defense", "buffAmount": 4, "buffTurns": 99, "healPct": 10 } }, "failure": { "text": "The demon is tougher than it looks. It takes longer than expected, and the noise draws attention.", "effect": { "damagePct": 12 } } },
+            { "label": "Leave it and move quickly", "check": { "stat": "dex", "dc": 20 }, "success": { "text": "You slip past before the demon can raise an alarm. Speed is its own advantage.", "effect": { "healPct": 10 } }, "failure": { "text": "The demon screams as you pass. Its warning echoes through the halls.", "effect": { "damagePct": 8 } } }
+          ]
+        },
+        { "type": "combat", "enemies": ["bound-demon", "sanctum-zealot"] }
+      ],
+      "boss": {
+        "slug": "the-gauntlet-master",
+        "name": "The Gauntlet Master",
+        "hp": 5000, "attack": 72, "defense": 42, "xp": 500, "gold": 250, "level": 27, "boss": true,
+        "abilities": ["stunning-slam", "war-cry", "fire-breath", "rending-claws"],
+        "drops": ["sanctum-gauntlets", "binding-chain-ring"],
+        "dropChance": 22,
+        "description": "The demon who runs the Gauntlet — a scarred veteran of a thousand pit fights. It tests recruits by trying to kill them. Most fail the test.",
+        "telegraphs": ["crushing-blow", "fire-breath"], "enrageThreshold": 0.25, "enrageTelegraphs": ["death-strike"],
+        "intro": "🔥 RAID BOSS — The Gauntlet Master rises from its throne of bones. 'Another batch of warm-bloods? Let's see if you last longer than the last ones.' It draws twin blades of brimstone."
+      }
+    },
+    {
+      "lore": "The second level is the Forge — where demon-smiths craft weapons of infernal power. The heat here is beyond volcanic; it's the heat of hellfire itself, channeled through vents in the floor. Molten metal flows in channels along the walls, and the ring of hammers on anvils is deafening.",
+      "encounters": [
+        { "type": "combat", "enemies": ["infernal-smith", "bound-demon"] },
+        { "type": "choice", "title": "The Hellfire Forge", "text": "The main forge blazes with infernal fire hot enough to melt anything. Weapons line the walls — some half-finished, some radiating terrible power. The forge itself could be used to enhance your equipment, or destroyed to weaken the cult's arsenal.",
+          "choices": [
+            { "label": "Use the forge to temper your weapons", "check": { "stat": "con", "dc": 23 }, "success": { "text": "You endure the hellfire heat. Your weapons glow with infernal enhancement — stronger, sharper, more deadly.", "effect": { "buffStat": "attack", "buffAmount": 6, "buffTurns": 99, "healPct": 10 } }, "failure": { "text": "The heat is too much. You stagger back, burned and weakened.", "effect": { "damagePct": 18, "debuff": { "slug": "weaken", "turns": 4, "name": "Forge Burns" } } } },
+            { "label": "Destroy the forge to cut off their weapon supply", "check": { "stat": "str", "dc": 22 }, "success": { "text": "The forge explodes spectacularly. The blast weakens the sanctum's structural integrity — and its defenders.", "effect": { "buffStat": "defense", "buffAmount": 5, "buffTurns": 99, "manaPct": 20 } }, "failure": { "text": "The forge resists destruction. The backlash of infernal energy burns you.", "effect": { "damagePct": 15 } } },
+            { "label": "Loot the finished weapons and move on", "check": { "stat": "dex", "dc": 21 }, "success": { "text": "You grab the best pieces and run. The infernal craftsmanship is impressive — and useful.", "effect": { "healPct": 15, "manaPct": 15 } }, "failure": { "text": "A weapon is booby-trapped. It detonates in your hands.", "effect": { "damagePct": 12, "debuff": { "slug": "curse", "turns": 3, "name": "Trap Burn" } } } }
+          ]
+        },
+        { "type": "combat", "enemies": ["infernal-smith", "sanctum-zealot", "bound-demon"] },
+        { "type": "combat", "enemies": ["hellfire-oracle", "sanctum-zealot"] }
+      ],
+      "boss": {
+        "slug": "forge-master-kravax",
+        "name": "Forge-Master Kravax",
+        "hp": 6000, "attack": 78, "defense": 48, "xp": 600, "gold": 300, "level": 29, "boss": true,
+        "abilities": ["stunning-slam", "harden", "war-cry", "fire-breath", "regen-aura"],
+        "drops": ["kravax-apron", "hellforged-amulet", "sanctum-treads"],
+        "dropChance": 22,
+        "description": "The master smith of the sanctum — a demon who has forged weapons for a thousand years. Its body is fused with its forge, and it fights with hammers that reshape reality on impact.",
+        "telegraphs": ["crushing-blow", "fire-breath", "healing-ritual"], "enrageThreshold": 0.3, "enrageTelegraphs": ["death-strike", "crushing-blow"],
+        "intro": "🔥 RAID BOSS — Kravax turns from his forge, hammer in each hand. 'You come to break my forge? Then you face the Forge-Master. Every weapon in this sanctum — I MADE THEM ALL.' The anvil glows white-hot."
+      }
+    },
+    {
+      "lore": "The third level is the Oracle Chamber — a vast room of swirling flame where the cult's seers peer into the future. Pools of liquid fire serve as scrying instruments, and the walls are covered in prophecies written in languages that predate mortal civilization. The oracles here don't just predict the future — they shape it.",
+      "encounters": [
+        { "type": "combat", "enemies": ["hellfire-oracle", "hellfire-oracle"] },
+        { "type": "choice", "title": "The Prophecy Pool", "text": "A pool of liquid fire shows visions of possible futures. In one, you see victory. In another, defeat. In a third, something worse than either. The pool offers to show you the true future — for a price.",
+          "choices": [
+            { "label": "Look into the true future", "check": { "stat": "wis", "dc": 24 }, "success": { "text": "You see the path to victory. The knowledge fortifies your resolve and reveals the final boss's weakness.", "effect": { "buffStat": "attack", "buffAmount": 5, "buffTurns": 99, "buffStat2": "defense", "buffAmount2": 3, "manaPct": 25 } }, "failure": { "text": "You see your own death. The vision sears itself into your mind. You can't unsee it.", "effect": { "damagePct": 20, "debuff": { "slug": "curse", "turns": 5, "name": "Death Vision" } } } },
+            { "label": "Shatter the pool to blind the oracles", "check": { "stat": "str", "dc": 23 }, "success": { "text": "The pool explodes. The oracles scream as their sight is destroyed. The remaining enemies will be easier to fight.", "effect": { "buffStat": "attack", "buffAmount": 4, "buffTurns": 99, "healPct": 20 } }, "failure": { "text": "The pool fights back. Liquid fire splashes over you.", "effect": { "damagePct": 18 } } },
+            { "label": "Ignore the pool and press forward", "check": { "stat": "con", "dc": 21 }, "success": { "text": "You resist the temptation. Ignorance can be armor.", "effect": { "healPct": 15, "manaPct": 15 } }, "failure": { "text": "The pool pulls at your attention against your will. You lose focus briefly.", "effect": { "damagePct": 10 } } }
+          ]
+        },
+        { "type": "combat", "enemies": ["pit-champion", "sanctum-archon"] },
+        { "type": "combat", "enemies": ["sanctum-archon", "hellfire-oracle", "bound-demon"] }
+      ],
+      "boss": {
+        "slug": "oracle-supreme-vythara",
+        "name": "Oracle Supreme Vythara",
+        "hp": 7000, "attack": 84, "defense": 44, "xp": 700, "gold": 350, "level": 31, "boss": true,
+        "abilities": ["fire-breath", "dark-curse", "weakening-hex", "regen-aura", "stunning-slam"],
+        "drops": ["vythara-crown", "oracle-codex"],
+        "dropChance": 25,
+        "description": "The supreme oracle of the sanctum — a demon who has seen every possible future and chosen the one where demons win. Its predictions are never wrong. Its magic reshapes probability itself.",
+        "telegraphs": ["poison-cloud", "healing-ritual", "crushing-blow"], "enrageThreshold": 0.25, "enrageTelegraphs": ["death-strike", "fire-breath"],
+        "intro": "🔥 RAID BOSS — Vythara floats above the shattered prophecy pools, six eyes blazing. 'I have seen ten thousand futures. In NONE of them do you survive this encounter.' The air ignites."
+      }
+    },
+    {
+      "lore": "The final level — the Portal Chamber. A cathedral of obsidian and hellfire, dominated by the half-open gateway to the demon realms. The portal pulses with every heartbeat, growing wider. Through it, you can see an army waiting — millions of demons, ready to pour through the moment the gateway stabilizes. At the portal's heart stands the Sanctum Lord — the demon prince who orchestrated everything.",
+      "encounters": [
+        { "type": "combat", "enemies": ["pit-champion", "sanctum-archon", "bound-demon"] },
+        { "type": "choice", "title": "The Infernal Gateway", "text": "The portal to the demon realms yawns before you, half-open and growing. You can feel the pull — reality itself being dragged toward the breach. You could try to seal it before facing the Sanctum Lord, but the ritual is complex and the lord won't wait.",
+          "choices": [
+            { "label": "Begin the sealing ritual", "check": { "stat": "int", "dc": 25 }, "success": { "text": "You destabilize the portal. It won't close completely, but the Sanctum Lord will be weakened without its power source. The demon army beyond howls in frustration.", "effect": { "buffStat": "attack", "buffAmount": 6, "buffTurns": 99, "buffStat2": "defense", "buffAmount2": 4, "healPct": 20 } }, "failure": { "text": "The portal resists. Energy backlashes into you. The Sanctum Lord laughs.", "effect": { "damagePct": 20, "mpDrain": 25 } } },
+            { "label": "Charge straight for the Sanctum Lord", "check": { "stat": "str", "dc": 23 }, "success": { "text": "You catch the lord off-guard, closing the distance before it can fully draw on the portal's power. First-strike advantage.", "effect": { "buffStat": "attack", "buffAmount": 7, "buffTurns": 99, "healPct": 15 } }, "failure": { "text": "The lord sees you coming. A wall of hellfire intercepts you.", "effect": { "damagePct": 18, "debuff": { "slug": "weaken", "turns": 4, "name": "Hellfire Wall" } } } },
+            { "label": "Draw power from the portal yourself", "check": { "stat": "con", "dc": 25 }, "success": { "text": "Infernal energy surges through you. It burns, but you control it — barely. The power is immense.", "effect": { "buffStat": "attack", "buffAmount": 8, "buffTurns": 99, "damagePct": 10 } }, "failure": { "text": "The power is too much. It burns through your defenses and nearly kills you.", "effect": { "damagePct": 25, "debuff": { "slug": "curse", "turns": 5, "name": "Infernal Overload" } } } }
+          ]
+        },
+        { "type": "combat", "enemies": ["pit-champion", "pit-champion"] }
+      ],
+      "boss": {
+        "slug": "sanctum-lord-azareth",
+        "name": "Sanctum Lord Azareth",
+        "hp": 9000, "attack": 92, "defense": 50, "xp": 1000, "gold": 500, "level": 35, "boss": true,
+        "abilities": ["fire-breath", "stunning-slam", "dark-curse", "regen-aura", "war-cry", "harden", "weakening-hex"],
+        "drops": ["azareth-crown", "infernal-throne-blade", "sanctum-signet", "portal-shard-codex"],
+        "dropChance": 28,
+        "mythicDrop": true, "mythicDropChance": 100,
+        "description": "The demon prince who built the sanctum and leads the invasion. Azareth is ancient, powerful, and utterly convinced of demonic superiority. Its body is wreathed in portal energy — attacking it is like attacking a tear in reality.",
+        "telegraphs": ["crushing-blow", "poison-cloud", "fire-breath", "healing-ritual", "summon-minions"],
+        "enrageThreshold": 0.2, "enrageTelegraphs": ["death-strike", "fire-breath", "crushing-blow"],
+        "intro": "🔥 RAID BOSS — Sanctum Lord Azareth turns from the portal, eyes blazing. 'You've fought well, mortals. I respect that. But respect changes nothing. The gateway opens. The army comes. And you — you are merely the last obstacle.' The portal flares. The final battle begins."
+      }
+    }
+  ],
+  "completionLore": "Azareth falls. The portal shudders, destabilizes, and collapses inward with a sound like reality tearing. The demon army beyond screams — a billion voices cut off mid-howl as the gateway seals itself. The sanctum begins to crumble.\n\nYou run. The obsidian halls crack and fold behind you. Hellfire vents seal. The forge goes dark. The oracle pools shatter. By the time you reach the surface, the entrance has collapsed into rubble.\n\nIn Cinderport, Commander Vesra watches the smoke rise from the caldera. The perpetual volcanic haze is already thinning. 'The ground stopped shaking,' she says quietly. 'For the first time in years, the ground stopped shaking.' She turns to you. 'Whatever you did down there — the Emberveil owes you everything.'"
+}

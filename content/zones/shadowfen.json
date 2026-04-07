@@ -1,0 +1,558 @@
+{
+  "location": {
+    "slug": "shadowfen",
+    "name": "Shadowfen Marsh",
+    "type": "wild",
+    "description": "Toxic mist clings to the bog. Undead shamble through the murk and will-o-wisps lure the unwary.",
+    "connections": [
+      "crossroads",
+      "witch-tower"
+    ],
+    "mapX": 72,
+    "mapY": 30,
+    "realm": "ashlands"
+  },
+  "enemies": [
+    {
+      "slug": "fen-leech",
+      "hp": 281,
+      "xp": 66,
+      "gold": 27,
+      "name": "Fen Leech",
+      "drops": [
+        "rotting-flesh",
+        "iron-tooth",
+        "cloth-sandals",
+        "ironshod-boots",
+        "runic-dice"
+      ],
+      "level": 3,
+      "attack": 11,
+      "defense": 4,
+      "abilities": [
+        "poison-bite"
+      ]
+    },
+    {
+      "slug": "bog-zombie",
+      "hp": 335,
+      "xp": 61,
+      "gold": 31,
+      "name": "Bog Zombie",
+      "drops": [
+        "rotting-flesh",
+        "scripture",
+        "hide-treads",
+        "leywalkers",
+        "blessed-relic"
+      ],
+      "level": 3,
+      "attack": 12,
+      "defense": 5,
+      "abilities": [
+        "poison-bite",
+        "stunning-slam"
+      ]
+    },
+    {
+      "slug": "will-o-wisp",
+      "name": "Will-o'-Wisp",
+      "hp": 360,
+      "attack": 15,
+      "defense": 7,
+      "xp": 107,
+      "gold": 47,
+      "level": 4,
+      "abilities": [
+        "dark-curse"
+      ],
+      "drops": [
+        "wisp-lantern",
+        "hawksight-talisman",
+        "glyphstep-sandals",
+        "plate-armor"
+      ]
+    },
+    {
+      "slug": "marsh-ghoul",
+      "name": "Marsh Ghoul",
+      "hp": 333,
+      "attack": 12,
+      "defense": 7,
+      "xp": 107,
+      "gold": 51,
+      "level": 4,
+      "abilities": [
+        "poison-bite",
+        "weakening-hex"
+      ],
+      "drops": [
+        "wisp-lantern",
+        "nightcloak",
+        "hunter-locket",
+        "shadowstep-boots"
+      ]
+    },
+    {
+      "slug": "swamp-hydra",
+      "name": "Swamp Hydra",
+      "hp": 699,
+      "attack": 21,
+      "defense": 10,
+      "xp": 581,
+      "gold": 217,
+      "level": 6,
+      "abilities": [
+        "poison-bite",
+        "rending-claws",
+        "regen-aura"
+      ],
+      "drops": [
+        "rotting-flesh",
+        "hydra-eye-charm",
+        "stormfeather-quiver",
+        "knifework-wraps",
+        "viper-mask",
+        "wraithstep-boots",
+        "tyrant-seal",
+        "horizon-band",
+        "worldsplitter",
+        "aegis-of-the-fallen",
+        "godplate"
+      ],
+      "boss": true,
+      "mythicDrop": "living-bulwark",
+      "mythicDropChance": 2,
+      "telegraphs": [
+        "poison-cloud",
+        "healing-ritual"
+      ]
+    },
+    {
+      "slug": "mire-crawler",
+      "name": "Mire Crawler",
+      "level": 3,
+      "hp": 305,
+      "attack": 11,
+      "defense": 5,
+      "xp": 60,
+      "gold": 30,
+      "abilities": [
+        "poison-bite"
+      ],
+      "drops": [
+        "shadow-cowl",
+        "softpad-boots",
+        "shadow-cord"
+      ]
+    },
+    {
+      "slug": "drowned-soldier",
+      "name": "Drowned Soldier",
+      "level": 4,
+      "hp": 370,
+      "attack": 14,
+      "defense": 6,
+      "xp": 108,
+      "gold": 47,
+      "abilities": [
+        "war-cry",
+        "rending-claws"
+      ],
+      "drops": [
+        "steel-helm",
+        "gauntlets-of-grip",
+        "signet-of-valor"
+      ]
+    },
+    {
+      "slug": "swamp-witch",
+      "name": "Swamp Witch",
+      "level": 5,
+      "hp": 413,
+      "attack": 18,
+      "defense": 8,
+      "xp": 150,
+      "gold": 72,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex",
+        "poison-bite"
+      ],
+      "drops": [
+        "arcanist-circlet",
+        "spellweave-gloves",
+        "spellthread-band"
+      ],
+      "telegraphs": [
+        "poison-cloud",
+        "summon-minions"
+      ]
+    },
+    {
+      "slug": "rot-toad",
+      "name": "Giant Rot Toad",
+      "level": 3,
+      "hp": 308,
+      "attack": 12,
+      "defense": 5,
+      "xp": 62,
+      "gold": 26,
+      "abilities": [
+        "poison-bite",
+        "stunning-slam"
+      ],
+      "drops": [
+        "pilgrim-hood",
+        "prayer-wraps",
+        "devotion-ring"
+      ]
+    },
+    {
+      "slug": "bog-wisp",
+      "name": "Bog Wisp",
+      "level": 4,
+      "hp": 374,
+      "attack": 13,
+      "defense": 6,
+      "xp": 98,
+      "gold": 42,
+      "abilities": [
+        "fire-breath",
+        "dark-curse"
+      ],
+      "drops": [
+        "leywalkers",
+        "focus-pendant",
+        "quicksilver-ring"
+      ]
+    }
+  ],
+  "locationThreat": 6,
+  "events": [
+    {
+      "slug": "bog-lights",
+      "name": "Dancing Bog Lights",
+      "type": "environmental",
+      "rarity": "common",
+      "icon": "\ud83d\udca1",
+      "text": "Eerie lights dance across the murky water, beckoning you deeper into the swamp. The air is thick with the scent of decay.",
+      "choices": [
+        {
+          "label": "Follow the lights carefully",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "text": "The lights lead to a dry mound where rare shadow ichor has pooled in natural basins.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "shadow-ichor",
+                  "qty": 2
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "You stumble into a sinkhole! Murky water fills your boots as you scramble out, coughing.",
+            "rewards": {
+              "xp": 8,
+              "damage": 15
+            }
+          }
+        },
+        {
+          "label": "Avoid them and search the banks instead",
+          "check": {
+            "stat": "dex",
+            "dc": 10
+          },
+          "success": {
+            "text": "Along the bank you find serpent fangs and useful herbs among the reeds.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "serpent-fang",
+                  "qty": 2
+                }
+              ],
+              "xp": 15
+            }
+          },
+          "failure": {
+            "text": "The mud is treacherous. You slip and lose your footing, barely avoiding the swamp.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "sunken-ruin",
+      "name": "Sunken Ruin",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "icon": "\ud83c\udfda",
+      "text": "Stone pillars rise from the muck \u2014 the remnants of a structure swallowed by the swamp centuries ago. Something glints beneath the murky water.",
+      "choices": [
+        {
+          "label": "Dive into the murky water to investigate",
+          "check": {
+            "stat": "con",
+            "dc": 13
+          },
+          "success": {
+            "text": "You endure the foul water and pull up a corroded chest with gold and shadow ichor inside.",
+            "rewards": {
+              "gold": 40,
+              "items": [
+                {
+                  "slug": "shadow-ichor",
+                  "qty": 1
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The cold saps your strength. You surface gasping, with only a mouthful of swamp water for your trouble.",
+            "rewards": {
+              "xp": 10,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Study the ruins from the bank",
+          "check": {
+            "stat": "int",
+            "dc": 11
+          },
+          "success": {
+            "text": "The inscriptions reveal this was a shadow mage's sanctum. You learn from the ancient writings.",
+            "rewards": {
+              "xp": 30
+            }
+          },
+          "failure": {
+            "text": "The inscriptions are too weathered. Only fragments remain legible.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "poison-mist",
+      "name": "Toxic Miasma",
+      "type": "environmental",
+      "rarity": "common",
+      "icon": "\u2601\ufe0f",
+      "text": "A thick green mist rolls across your path, smelling of rot and sulfur. You can try to push through or find another way around.",
+      "choices": [
+        {
+          "label": "Hold your breath and push through",
+          "check": {
+            "stat": "con",
+            "dc": 11
+          },
+          "success": {
+            "text": "You make it through with lungs burning but intact. On the other side, rare herbs grow untouched.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "healing-herb",
+                  "qty": 3
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The poison sears your throat. You stumble through, retching.",
+            "rewards": {
+              "xp": 8,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Navigate around through the reeds",
+          "check": {
+            "stat": "dex",
+            "dc": 10
+          },
+          "success": {
+            "text": "You pick your way through the reeds and emerge unscathed with some spider silk caught on the reeds.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "spider-silk",
+                  "qty": 2
+                }
+              ],
+              "xp": 12
+            }
+          },
+          "failure": {
+            "text": "A wrong step plunges you knee-deep in muck. You extract yourself but waste valuable time.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "sf-sinking-path",
+      "rarity": "common",
+      "name": "Sinking Path",
+      "icon": "\ud83c\udf0a",
+      "description": "The ground ahead grows soft and treacherous. Bubbles rise from the muck.",
+      "choices": [
+        {
+          "text": "Pick your way carefully (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "xp": 15,
+            "text": "You navigate the bog expertly, finding solid ground."
+          },
+          "failure": {
+            "damage": 10,
+            "text": "You sink to your waist before clawing free. Disgusting."
+          }
+        },
+        {
+          "text": "Search the muck for lost items (STR DC 11)",
+          "check": {
+            "stat": "str",
+            "dc": 11
+          },
+          "success": {
+            "gold": 20,
+            "text": "You pull a waterlogged satchel from the mud. Coins inside!"
+          },
+          "failure": {
+            "damage": 8,
+            "text": "Something bites your hand under the water!"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "sf-ghost-lights",
+      "rarity": "uncommon",
+      "name": "Ghost Lights",
+      "icon": "\ud83d\udca1",
+      "description": "Eerie lights drift through the fog, seeming to beckon you deeper into the fen.",
+      "choices": [
+        {
+          "text": "Follow the lights (WIS DC 13)",
+          "check": {
+            "stat": "wis",
+            "dc": 13
+          },
+          "success": {
+            "xp": 30,
+            "gold": 15,
+            "text": "The lights lead you to a forgotten shrine with offerings still intact."
+          },
+          "failure": {
+            "damage": 15,
+            "text": "The lights scatter \u2014 you stumble into a sinkhole!"
+          }
+        },
+        {
+          "text": "Ignore them and press on",
+          "success": {
+            "text": "You resist their call. Wise \u2014 not everything that glitters is gold."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "sf-rotting-boat",
+      "rarity": "common",
+      "name": "The Rotting Boat",
+      "icon": "\ud83d\udea3",
+      "description": "A half-sunken rowboat sits in the shallows. A locked chest is visible inside.",
+      "choices": [
+        {
+          "text": "Wade out and open the chest (STR DC 11)",
+          "check": {
+            "stat": "str",
+            "dc": 11
+          },
+          "success": {
+            "gold": 25,
+            "text": "The lock breaks easily. Treasure from some unfortunate traveler."
+          },
+          "failure": {
+            "damage": 8,
+            "text": "The boat collapses \u2014 you splash into leech-infested water!"
+          }
+        },
+        {
+          "text": "Throw rocks to knock it loose (DEX DC 12)",
+          "check": {
+            "stat": "dex",
+            "dc": 12
+          },
+          "success": {
+            "gold": 20,
+            "text": "A well-aimed throw dislodges the chest. It floats within reach!"
+          },
+          "failure": {
+            "text": "Your throws miss. The chest stays put."
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "swamp-pack",
+      "name": "Swamp Hunters",
+      "composition": [
+        {
+          "enemySlug": "mire-crawler",
+          "count": 1
+        },
+        {
+          "enemySlug": "rot-toad",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "undead-patrol",
+      "name": "Undead Patrol",
+      "composition": [
+        {
+          "enemySlug": "bog-zombie",
+          "count": 2
+        },
+        {
+          "enemySlug": "drowned-soldier",
+          "count": [
+            0,
+            1
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

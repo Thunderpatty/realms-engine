@@ -1,0 +1,83 @@
+{
+  "ashenmaw-crown": {
+    "name": "Crown of the Hollow King",
+    "type": "helmet",
+    "rarity": "mythic",
+    "stats": { "int": 14, "wis": 12, "con": 8 },
+    "description": "The golden ward-thread crown torn from the Hollow King himself. It whispers, but you've learned not to listen.",
+    "passive": { "mpRegenPct": 8, "lifestealPct": 5 },
+    "cost": 0, "sell": 800
+  },
+  "wellspring-blade": {
+    "name": "Wellspring Edge",
+    "type": "weapon",
+    "rarity": "mythic",
+    "stats": { "str": 14, "dex": 10, "cha": 6 },
+    "description": "A sword quenched in the black water of the Wellspring. Its edge cuts through hope and armor alike.",
+    "passive": { "lifestealPct": 8, "onHitStatus": { "slug": "curse", "chance": 15, "turns": 3 } },
+    "cost": 0, "sell": 800
+  },
+  "thessaly-grimoire": {
+    "name": "Thessaly's Unfinished Thesis",
+    "type": "trinket",
+    "rarity": "mythic",
+    "stats": { "int": 16, "wis": 8 },
+    "description": "The revenant's research notes on the corruption. Reading them grants terrible clarity — and terrible power.",
+    "passive": { "mpRegenPct": 10, "critBonus": 5 },
+    "cost": 0, "sell": 800
+  },
+  "castellus-oath-shield": {
+    "name": "Castellus's Oathbound Shield",
+    "type": "shield",
+    "rarity": "mythic",
+    "stats": { "con": 14, "str": 10, "wis": 6 },
+    "description": "The shield of the warden who guarded a door for a century. It still remembers its duty — and shares it with the bearer.",
+    "passive": { "hpRegenPct": 6, "dodgeBonus": 4 },
+    "cost": 0, "sell": 800
+  },
+  "ashenmaw-vestments": {
+    "name": "Vestments of the Drowned Chorus",
+    "type": "body",
+    "rarity": "legendary",
+    "stats": { "con": 10, "wis": 8, "int": 6 },
+    "description": "Robes woven from burial linens and threaded with golden wards. The voices of the ossuary sing through them, but quietly.",
+    "passive": { "hpRegenPct": 4 },
+    "cost": 0, "sell": 450
+  },
+  "crypt-warden-gauntlets": {
+    "name": "Gauntlets of the Eternal Watch",
+    "type": "gloves",
+    "rarity": "legendary",
+    "stats": { "str": 9, "con": 7, "dex": 4 },
+    "description": "Gauntlets pried from the undying wardens of Ashenmaw. They grip weapons with inhuman certainty.",
+    "passive": { "critBonus": 4 },
+    "cost": 0, "sell": 450
+  },
+  "bone-amalgam-ring": {
+    "name": "Ring of the Amalgam",
+    "type": "ring",
+    "rarity": "legendary",
+    "stats": { "con": 8, "str": 6, "dex": 6 },
+    "description": "A ring carved from the fused bones of the amalgam. It reshapes itself to fit any finger — disturbingly.",
+    "passive": { "dodgeBonus": 3 },
+    "cost": 0, "sell": 450
+  },
+  "shade-whisper-amulet": {
+    "name": "Amulet of Silenced Whispers",
+    "type": "amulet",
+    "rarity": "legendary",
+    "stats": { "wis": 10, "int": 6, "cha": 4 },
+    "description": "An amulet that absorbs the whispers of the shades. Wearing it brings unsettling silence — and clarity.",
+    "passive": { "mpRegenPct": 5 },
+    "cost": 0, "sell": 450
+  },
+  "ashenmaw-treads": {
+    "name": "Treads of the Descender",
+    "type": "boots",
+    "rarity": "legendary",
+    "stats": { "dex": 9, "con": 5, "str": 4 },
+    "description": "Boots worn smooth by the endless stairs of Ashenmaw. They make no sound on stone — or bone.",
+    "passive": { "dodgeBonus": 3 },
+    "cost": 0, "sell": 450
+  }
+}

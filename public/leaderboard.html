@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy RPG Leaderboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Crimson+Pro:wght@400;500;600&family=Azeret+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0814; --bg2: #161020; --panel: rgba(24,17,39,.84);
+      --line: rgba(214,176,95,.24); --text: #f4efe6; --muted: #b9adc9;
+      --gold: #d6b05f; --emerald: #6fe0a8; --violet: #8b5cf6;
+      --red: #ff7e8a; --ember: #ff7e8a; --blue: #60a5fa; --purple: #c084fc;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body { min-height:100vh; color:var(--text); font-family:'Crimson Pro',Georgia,serif; background:var(--bg); }
+    .container { max-width:860px; margin:0 auto; padding:24px 16px; }
+    header { text-align:center; margin-bottom:24px; }
+    header h1 { font-family:Cinzel,serif; font-weight:800; font-size:1.8rem; color:var(--gold); }
+    header .sub { color:var(--muted); font-size:.88rem; margin-top:4px; }
+    .updated { text-align:center; font-size:.7rem; color:var(--muted); margin-bottom:14px; }
+
+    .mono { font-family:'Azeret Mono',monospace; }
+
+    /* Card */
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:16px 18px; margin-bottom:10px; }
+    .card.r1 { border-color:var(--gold); box-shadow:0 0 20px rgba(214,176,95,.08); }
+    .card.r2 { border-color:rgba(192,192,210,.25); }
+    .card.r3 { border-color:rgba(180,120,60,.25); }
+
+    /* Header row */
+    .head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+    .rank-badge { font-family:Cinzel,serif; font-weight:800; font-size:1.3rem; color:var(--gold); min-width:28px; }
+    .r2 .rank-badge { color:#c0c0d2; }
+    .r3 .rank-badge { color:#b4783c; }
+    .name { font-family:Cinzel,serif; font-weight:700; font-size:1.05rem; }
+    .identity { font-size:.8rem; color:var(--muted); margin-top:1px; }
+    .tag { font-size:.64rem; padding:2px 7px; border-radius:10px; display:inline-block; margin-left:4px; vertical-align:middle; }
+    .tag.guild { background:rgba(96,165,250,.1); border:1px solid rgba(96,165,250,.2); color:var(--blue); }
+    .tag.loc { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); color:var(--muted); }
+    .right { text-align:right; white-space:nowrap; }
+    .right .lv { font-size:1rem; font-weight:700; }
+    .right .gold-line { font-size:.82rem; color:var(--gold); }
+    .right .currencies { font-size:.7rem; color:var(--muted); margin-top:2px; }
+
+    /* Bars */
+    .bars { display:flex; gap:10px; margin:8px 0 6px; }
+    .bar-g { flex:1; }
+    .bar-l { font-size:.58rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+    .bar { height:5px; background:rgba(255,255,255,.07); border-radius:99px; overflow:hidden; margin-top:2px; }
+    .bar .f { height:100%; border-radius:99px; }
+    .bar .f.hp { background:linear-gradient(90deg,#ff7e8a,#ff5c6e); }
+    .bar .f.mp { background:linear-gradient(90deg,var(--blue),var(--violet)); }
+    .bar .f.xp { background:linear-gradient(90deg,var(--emerald),#34d399); }
+
+    /* Stat chips */
+    .sec { font-size:.56rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:8px 0 4px; }
+    .chips { display:flex; gap:4px; flex-wrap:wrap; }
+    .chip { font-size:.66rem; padding:2px 6px; border-radius:5px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.06); }
+    .chip.highlight { background:rgba(214,176,95,.1); border-color:rgba(214,176,95,.2); color:var(--gold); }
+
+    /* Gear grid */
+    .gear-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:4px; }
+    .gear-item { font-size:.72rem; padding:5px 7px; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.02); overflow:hidden; }
+    .gear-slot-label { font-size:.5rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin-bottom:1px; }
+    .gear-name { font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .gear-stats { font-size:.6rem; color:var(--muted); margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .gear-perk { font-size:.55rem; padding:1px 4px; border-radius:4px; background:rgba(192,132,252,.1); color:var(--purple); display:inline-block; margin-top:1px; }
+    .gear-empty { color:rgba(255,255,255,.2); font-style:italic; font-size:.68rem; }
+
+    /* Rarity colors */
+    .rarity-common { color:#b9adc9; } .rarity-uncommon { color:var(--emerald); } .rarity-rare { color:#7dd3fc; }
+    .rarity-epic { color:var(--purple); } .rarity-legendary { color:#fbbf24; } .rarity-mythic { color:var(--red); }
+
+    /* Abilities */
+    .abil-chip { font-size:.58rem; padding:2px 5px; border-radius:5px; text-transform:uppercase; letter-spacing:.03em; }
+    .abil-chip.physical { background:rgba(251,191,36,.08); color:#fbbf24; }
+    .abil-chip.magic { background:rgba(96,165,250,.08); color:var(--blue); }
+    .abil-chip.buff { background:rgba(111,224,168,.08); color:var(--emerald); }
+    .abil-chip.heal { background:rgba(111,224,168,.08); color:var(--emerald); }
+    .abil-chip.restore { background:rgba(192,132,252,.08); color:var(--purple); }
+    .abil-chip.purify { background:rgba(255,255,255,.05); color:var(--text); }
+
+    /* Combat/meta row */
+    .meta-row { display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 4px; }
+    .meta-item { font-size:.72rem; color:var(--muted); }
+    .meta-item span { font-weight:600; color:var(--text); }
+
+    .empty { text-align:center; padding:40px; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>⚔ Realms of Ash &amp; Iron</h1>
+      <div class="sub">Live Leaderboard — Top Adventurers</div>
+    </header>
+    <div class="updated" id="updatedAt">Loading...</div>
+    <div id="board"><div class="empty">Loading leaderboard…</div></div>
+  </div>
+  <script>
+    const B = document.getElementById('board');
+    const U = document.getElementById('updatedAt');
+    const e = (s) => String(s??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const slots = ['weapon','shield','body','helmet','gloves','boots','amulet','ring','trinket'];
+    const slotLabel = {weapon:'Weapon',shield:'Shield',body:'Body',helmet:'Helm',gloves:'Gloves',boots:'Boots',amulet:'Amulet',ring:'Ring',trinket:'Trinket'};
+    const statLabel = {str:'STR',dex:'DEX',int:'INT',wis:'WIS',con:'CON',cha:'CHA',attack:'ATK',defense:'DEF'};
+    const perkLabel = {lifestealPct:'Lifesteal',manaRegen:'MP Regen',hpRegen:'HP Regen',onHitStatus:'On-Hit',critBonus:'Crit+',dodgeBonus:'Dodge+',damageBonus:'Dmg+'};
+    const primaryStat = {warrior:'str',mage:'int',rogue:'dex',cleric:'wis',ranger:'dex'};
+
+    function renderGear(gear) {
+      return slots.map(slot => {
+        const item = gear?.[slot];
+        if (!item) return `<div class="gear-item"><div class="gear-slot-label">${slotLabel[slot]}</div><div class="gear-empty">Empty</div></div>`;
+        const stats = item.stats ? Object.entries(item.stats).filter(([,v])=>v).map(([k,v])=>`${v>0?'+':''}${v} ${statLabel[k]||k.toUpperCase()}`).join(' · ') : '';
+        const perks = (item.perks||[]).map(p => `<span class="gear-perk">${perkLabel[p.type]||p.type}${p.value?' +'+p.value:''}</span>`).join(' ');
+        const dur = item.durability !== undefined ? ` <span style="opacity:.5">${item.durability}/${item.maxDurability}</span>` : '';
+        return `<div class="gear-item">
+          <div class="gear-slot-label">${slotLabel[slot]}${dur}</div>
+          <div class="gear-name rarity-${e(item.rarity)}">${e(item.name)}</div>
+          ${stats ? `<div class="gear-stats">${stats}</div>` : ''}
+          ${perks ? `<div>${perks}</div>` : ''}
+        </div>`;
+      }).join('');
+    }
+
+    function renderChar(c, i) {
+      const rc = i<3 ? ` r${i+1}` : '';
+      const hp = c.maxHp ? Math.round(c.hp/c.maxHp*100) : 100;
+      const mp = c.maxMp ? Math.round(c.mp/c.maxMp*100) : 100;
+      const xp = c.xpNeeded ? Math.min(100, Math.round(c.xp/c.xpNeeded*100)) : 0;
+      const ps = primaryStat[c.class] || 'str';
+
+      const statChips = ['str','dex','int','wis','con','cha','attack','defense']
+        .filter(k => c.stats?.[k])
+        .map(k => `<span class="mono chip${k===ps?' highlight':''}">${statLabel[k]} ${c.stats[k]}</span>`).join('');
+
+      const abilChips = (c.activeAbilities||[]).map(a =>
+        `<span class="mono abil-chip ${e(a.type)}">${e(a.name)} (${a.cost})</span>`
+      ).join(' ');
+
+      return `<article class="card${rc}">
+        <div class="head">
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span class="rank-badge">#${i+1}</span>
+            <div>
+              <div class="name">${e(c.name)}${c.guildRank?`<span class="tag guild">⚔ ${e(c.guildRank)}</span>`:''}${c.location?`<span class="tag loc">📍 ${e(c.location)}</span>`:''}</div>
+              <div class="identity">${e(c.race)} ${e(c.class)} · Lv ${c.level}</div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="gold-line">💰 ${(c.gold||0).toLocaleString()}g</div>
+            <div class="currencies">
+              ${c.guildMarks?`<span style="color:var(--blue)">⚔ ${c.guildMarks}</span> `:''}<span style="color:var(--purple)">✦ ${c.arcaneTokens||0}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bars">
+          <div class="bar-g"><div class="bar-l mono">HP ${c.hp||0}/${c.maxHp||0}</div><div class="bar"><div class="f hp" style="width:${hp}%"></div></div></div>
+          <div class="bar-g"><div class="bar-l mono">MP ${c.mp||0}/${c.maxMp||0}</div><div class="bar"><div class="f mp" style="width:${mp}%"></div></div></div>
+          <div class="bar-g"><div class="bar-l mono">XP ${c.xp||0}/${c.xpNeeded||0}</div><div class="bar"><div class="f xp" style="width:${xp}%"></div></div></div>
+        </div>
+
+        <div class="meta-row">
+          <div class="meta-item">🎯 Dodge <span>${c.dodgePct||0}%</span></div>
+          <div class="meta-item">⚡ Crit <span>${c.critPct||0}%</span></div>
+          ${c.knownRecipeCount?`<div class="meta-item">📜 Recipes <span>${c.knownRecipeCount}</span></div>`:''}
+          ${c.guildRegistered&&c.guildXp!==undefined?`<div class="meta-item">🎖 Guild XP <span>${c.guildXp}</span></div>`:''}
+          ${c.arenaBestWave?`<div class="meta-item">🏟 Arena Best <span style="color:#fbbf24">Wave ${c.arenaBestWave}</span></div>`:''}
+          ${c.arenaPoints?`<div class="meta-item">🏟 AP <span style="color:#fbbf24">${c.arenaPoints}</span></div>`:''}
+        </div>
+
+        <div class="sec mono">STATS</div>
+        <div class="chips">${statChips}</div>
+
+        <div class="sec mono">GEAR</div>
+        <div class="gear-grid">${renderGear(c.gear)}</div>
+
+        ${abilChips ? `<div class="sec mono">ABILITIES</div><div class="chips">${abilChips}</div>` : ''}
+      </article>`;
+    }
+
+    async function load() {
+      try {
+        const res = await fetch('/api/fantasy/leaderboard', { credentials: 'omit' });
+        const d = await res.json();
+        if (!res.ok) throw new Error(d.error || 'Failed.');
+        B.innerHTML = (d.characters||[]).length
+          ? d.characters.map(renderChar).join('')
+          : '<div class="empty">No characters yet.</div>';
+        U.textContent = `Updated ${new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}`;
+      } catch (err) {
+        B.innerHTML = `<div class="empty">${e(err.message)}</div>`;
+      }
+    }
+    load();
+    setInterval(load, 30000);
+  </script>
+</body>
+</html>

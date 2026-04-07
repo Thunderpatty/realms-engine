@@ -1,0 +1,522 @@
+{
+  "leather-vest": {
+    "cost": 21,
+    "name": "Leather Vest",
+    "sell": 5,
+    "type": "body",
+    "stats": {
+      "dex": 2,
+      "con": 1
+    },
+    "rarity": "common",
+    "description": "Basic protection."
+  },
+  "novice-robes": {
+    "cost": 22,
+    "name": "Novice Robes",
+    "sell": 5,
+    "type": "body",
+    "stats": {
+      "int": 2,
+      "wis": 2
+    },
+    "rarity": "common",
+    "description": "Simple robes lined with thread meant to hold cantrips."
+  },
+  "chainmail": {
+    "cost": 68,
+    "name": "Chainmail",
+    "sell": 16,
+    "type": "body",
+    "stats": {
+      "con": 4,
+      "str": 2,
+      "dex": -1
+    },
+    "rarity": "uncommon",
+    "description": "Interlocking iron rings."
+  },
+  "mystic-robe": {
+    "cost": 69,
+    "name": "Mystic Robe",
+    "sell": 17,
+    "type": "body",
+    "stats": {
+      "int": 4,
+      "wis": 4,
+      "con": 1
+    },
+    "rarity": "uncommon",
+    "description": "Layered blue cloth stitched with warding script."
+  },
+  "plate-armor": {
+    "cost": 206,
+    "name": "Plate Armor",
+    "sell": 51,
+    "type": "body",
+    "stats": {
+      "con": 9,
+      "str": 4,
+      "dex": -2
+    },
+    "rarity": "rare",
+    "description": "Heavy but nearly impenetrable."
+  },
+  "archmage-raiment": {
+    "cost": 207,
+    "name": "Archmage Raiment",
+    "sell": 51,
+    "type": "body",
+    "stats": {
+      "int": 7,
+      "wis": 5,
+      "con": 2,
+      "dex": 1
+    },
+    "rarity": "rare",
+    "description": "A regal mantle embroidered with constellations and circles of power."
+  },
+  "enchanted-plate": {
+    "cost": 509,
+    "name": "Enchanted Plate",
+    "sell": 127,
+    "type": "body",
+    "stats": {
+      "con": 12,
+      "str": 5,
+      "wis": 1
+    },
+    "rarity": "epic",
+    "description": "Armor animated by sorcery, now stilled.",
+    "passive": {
+      "hpRegen": 1
+    }
+  },
+  "voidweave-robes": {
+    "cost": 509,
+    "name": "Voidweave Robes",
+    "sell": 127,
+    "type": "body",
+    "stats": {
+      "int": 9,
+      "wis": 7,
+      "con": 2
+    },
+    "rarity": "epic",
+    "description": "Black silk woven through with threads that drink moonlight.",
+    "passive": {
+      "manaRegen": 2
+    }
+  },
+  "trail-leathers": {
+    "cost": 22,
+    "name": "Trail Leathers",
+    "sell": 5,
+    "type": "body",
+    "stats": {
+      "dex": 2,
+      "con": 1,
+      "wis": 1
+    },
+    "rarity": "common",
+    "description": "Supple leathers dyed to disappear beneath leaves and dusk."
+  },
+  "scout-mantle": {
+    "cost": 69,
+    "name": "Scout Mantle",
+    "sell": 17,
+    "type": "body",
+    "stats": {
+      "dex": 5,
+      "con": 2,
+      "wis": 1
+    },
+    "rarity": "uncommon",
+    "description": "A weatherproof cloak and leather harness favored by border wardens."
+  },
+  "warden-cloak": {
+    "cost": 205,
+    "name": "Warden Cloak",
+    "sell": 51,
+    "type": "body",
+    "stats": {
+      "dex": 7,
+      "con": 3,
+      "wis": 1
+    },
+    "rarity": "rare",
+    "description": "A layered cloak of treated hide and feather-light shadowcloth."
+  },
+  "vanguard-mail": {
+    "cost": 69,
+    "name": "Vanguard Mail",
+    "sell": 17,
+    "type": "body",
+    "stats": {
+      "con": 6,
+      "str": 3
+    },
+    "rarity": "uncommon",
+    "description": "Linked mail reinforced at the shoulders for relentless front-line pushes."
+  },
+  "lioncrest-plate": {
+    "cost": 206,
+    "name": "Lioncrest Plate",
+    "sell": 51,
+    "type": "body",
+    "stats": {
+      "con": 9,
+      "str": 4
+    },
+    "rarity": "rare",
+    "description": "Golden-etched plate once worn by the sworn defenders of a fallen keep."
+  },
+  "dusk-leathers": {
+    "cost": 22,
+    "name": "Dusk Leathers",
+    "sell": 5,
+    "type": "body",
+    "stats": {
+      "dex": 3,
+      "con": 1
+    },
+    "rarity": "common",
+    "description": "Supple dark leathers that move without a whisper."
+  },
+  "nightcloak": {
+    "cost": 68,
+    "name": "Nightcloak",
+    "sell": 16,
+    "type": "body",
+    "stats": {
+      "dex": 5,
+      "con": 2
+    },
+    "rarity": "uncommon",
+    "description": "A charcoal cloak that melts into alleys, reeds, and midnight hedgerows."
+  },
+  "gloomweave": {
+    "cost": 204,
+    "name": "Gloomweave Jerkin",
+    "sell": 51,
+    "type": "body",
+    "stats": {
+      "dex": 7,
+      "con": 2
+    },
+    "rarity": "rare",
+    "description": "A sleek jerkin woven with greythread that confuses the eye at a glance."
+  },
+  "acolyte-vestments": {
+    "cost": 22,
+    "name": "Acolyte Vestments",
+    "sell": 5,
+    "type": "body",
+    "stats": {
+      "wis": 2,
+      "int": 1,
+      "con": 1
+    },
+    "rarity": "common",
+    "description": "Plain but reverent vestments sewn with protective scripture."
+  },
+  "templar-vestments": {
+    "cost": 69,
+    "name": "Templar Vestments",
+    "sell": 17,
+    "type": "body",
+    "stats": {
+      "wis": 4,
+      "int": 2,
+      "con": 2
+    },
+    "rarity": "uncommon",
+    "description": "Layered clerical armor for those who bring mercy with a shield-arm."
+  },
+  "cathedral-robes": {
+    "cost": 206,
+    "name": "Cathedral Robes",
+    "sell": 51,
+    "type": "body",
+    "stats": {
+      "int": 4,
+      "wis": 6,
+      "con": 2
+    },
+    "rarity": "rare",
+    "description": "High ceremonial robes layered with hidden wards and ash-proof lining."
+  },
+  "soulbound-vestments": {
+    "name": "Soulbound Vestments",
+    "type": "body",
+    "rarity": "mythic",
+    "cost": 0,
+    "sell": 502,
+    "stats": {
+      "wis": 10,
+      "con": 6,
+      "int": 3
+    },
+    "description": "Robes woven from the prayers of a hundred clerics, bound to the soul of whoever dons them.",
+    "durability": 250
+  },
+  "hexweave-mantle": {
+    "name": "Hexweave Mantle",
+    "type": "body",
+    "rarity": "mythic",
+    "cost": 0,
+    "sell": 502,
+    "stats": {
+      "int": 10,
+      "wis": 7,
+      "con": 2
+    },
+    "description": "A cloak of living spellwork stripped from the Fen Witch. It whispers cantrips in dead languages.",
+    "passive": {
+      "manaRegen": 3
+    },
+    "durability": 250
+  },
+  "godplate": {
+    "type": "body",
+    "rarity": "legendary",
+    "name": "Godplate",
+    "cost": 0,
+    "sell": 302,
+    "stats": {
+      "con": 14,
+      "str": 7,
+      "dex": -2
+    },
+    "description": "Armor forged by a dead god. Heavier than sin, harder than faith."
+  },
+  "leyweave-vestments": {
+    "type": "body",
+    "rarity": "legendary",
+    "name": "Leyweave Vestments",
+    "cost": 0,
+    "sell": 302,
+    "stats": {
+      "int": 10,
+      "wis": 7,
+      "con": 3
+    },
+    "description": "Robes woven from pure ley-energy. They shimmer between realities."
+  },
+  "abyssal-leathers": {
+    "type": "body",
+    "rarity": "legendary",
+    "name": "Abyssal Leathers",
+    "cost": 0,
+    "sell": 302,
+    "stats": {
+      "dex": 12,
+      "con": 4
+    },
+    "description": "Leather cut from something that should not have had skin."
+  },
+  "miracle-vestments": {
+    "type": "body",
+    "rarity": "legendary",
+    "name": "Miracle Vestments",
+    "cost": 0,
+    "sell": 302,
+    "stats": {
+      "wis": 10,
+      "con": 6,
+      "int": 2
+    },
+    "description": "Vestments that glow when prayer is answered. They glow often."
+  },
+  "horizon-cloak": {
+    "type": "body",
+    "rarity": "legendary",
+    "name": "Horizon Cloak",
+    "cost": 0,
+    "sell": 302,
+    "stats": {
+      "dex": 9,
+      "wis": 5,
+      "con": 4
+    },
+    "description": "A cloak that blends with any terrain. The horizon is always behind you."
+  },
+  "permafrost-mail": {
+    "slug": "permafrost-mail",
+    "name": "Permafrost Mail",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "rare",
+    "description": "Chainmail forged from permafrost ore. Cold to the touch but warm in battle.",
+    "stats": {
+      "con": 9,
+      "str": 4
+    },
+    "cost": 500,
+    "sell": 125
+  },
+  "frozen-weave-robes": {
+    "slug": "frozen-weave-robes",
+    "name": "Frozen Weave Robes",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "rare",
+    "description": "Robes woven with spectral ice threads. They shimmer with inner light.",
+    "stats": {
+      "int": 7,
+      "wis": 5,
+      "con": 2
+    },
+    "cost": 520,
+    "sell": 130
+  },
+  "frostreach-leathers": {
+    "slug": "frostreach-leathers",
+    "name": "Frostreach Leathers",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "rare",
+    "description": "Cured in the freezing winds. Light, warm, and nearly silent.",
+    "stats": {
+      "dex": 6,
+      "con": 4,
+      "wis": 2
+    },
+    "cost": 490,
+    "sell": 122
+  },
+  "drakebone-plate": {
+    "slug": "drakebone-plate",
+    "name": "Drakebone Plate",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "epic",
+    "description": "Armor plated with ice drake scales. Nearly impervious to cold and steel.",
+    "stats": {
+      "con": 12,
+      "str": 4,
+      "dex": 2
+    },
+    "cost": 0,
+    "sell": 1
+  },
+  "volcanic-mail": {
+    "slug": "volcanic-mail",
+    "name": "Volcanic Mail",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "rare",
+    "stats": {
+      "con": 12,
+      "str": 5
+    },
+    "description": "Chainmail forged in volcanic heat. Resists fire and blade.",
+    "cost": 900,
+    "sell": 225
+  },
+  "demonhide-robes": {
+    "slug": "demonhide-robes",
+    "name": "Demonhide Robes",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "rare",
+    "stats": {
+      "int": 9,
+      "wis": 7,
+      "con": 3
+    },
+    "description": "Robes stitched from demon leather. They writhe subtly.",
+    "cost": 920,
+    "sell": 230
+  },
+  "ashveil-leathers": {
+    "slug": "ashveil-leathers",
+    "name": "Ashveil Leathers",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "rare",
+    "stats": {
+      "dex": 8,
+      "con": 6,
+      "wis": 3
+    },
+    "description": "Armor cured in sulfur and ash. Light and fire-resistant.",
+    "cost": 880,
+    "sell": 220
+  },
+  "caldera-plate": {
+    "slug": "caldera-plate",
+    "name": "Caldera Plate",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "epic",
+    "stats": {
+      "con": 16,
+      "str": 6,
+      "dex": 2
+    },
+    "description": "Plate armor forged in the caldera's heart. Nearly indestructible.",
+    "cost": 0,
+    "sell": 400
+  },
+  "voidplate-armor": {
+    "slug": "voidplate-armor",
+    "name": "Voidplate Armor",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "epic",
+    "stats": {
+      "con": 18,
+      "str": 6,
+      "dex": 2
+    },
+    "description": "Plate armor infused with void energy. Partially exists in another dimension.",
+    "cost": 1600,
+    "sell": 400
+  },
+  "reality-weave-robes": {
+    "slug": "reality-weave-robes",
+    "name": "Reality Weave Robes",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "epic",
+    "stats": {
+      "int": 12,
+      "wis": 9,
+      "con": 4
+    },
+    "description": "Robes woven from threads of stabilized reality. They resist void corruption.",
+    "cost": 1580,
+    "sell": 395
+  },
+  "shadow-veil-leathers": {
+    "slug": "shadow-veil-leathers",
+    "name": "Shadow Veil Leathers",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "epic",
+    "stats": {
+      "dex": 10,
+      "con": 8,
+      "wis": 4
+    },
+    "description": "Leather armor that shifts between realities. Hard to hit what isn't fully there.",
+    "cost": 1540,
+    "sell": 385
+  },
+  "sovereign-plate": {
+    "slug": "sovereign-plate",
+    "name": "Sovereign Plate",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "legendary",
+    "stats": {
+      "con": 22,
+      "str": 8,
+      "wis": 4
+    },
+    "description": "Armor forged from sovereign ichor and omega plates. The ultimate protection.",
+    "cost": 0,
+    "sell": 500
+  }
+}

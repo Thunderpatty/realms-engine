@@ -1,0 +1,183 @@
+{
+  "sanctum-gauntlets": {
+    "slug": "sanctum-gauntlets",
+    "name": "Sanctum Gauntlets",
+    "type": "gloves",
+    "slot": "gloves",
+    "rarity": "legendary",
+    "stats": {
+      "str": 10,
+      "con": 6,
+      "dex": 3
+    },
+    "description": "Gauntlets forged in hellfire. They grip with infernal strength.",
+    "cost": 0,
+    "sell": 120
+  },
+  "binding-chain-ring": {
+    "slug": "binding-chain-ring",
+    "name": "Binding Chain Ring",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "legendary",
+    "stats": {
+      "int": 8,
+      "wis": 6,
+      "con": 4
+    },
+    "description": "A ring made from demon-binding chains. It constrains dark magic.",
+    "cost": 0,
+    "sell": 115
+  },
+  "kravax-apron": {
+    "slug": "kravax-apron",
+    "name": "Kravax's Forge Apron",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "legendary",
+    "stats": {
+      "con": 14,
+      "str": 6,
+      "wis": 2
+    },
+    "description": "The forge-master's apron. Fireproof, bladeproof, and terrifyingly heavy.",
+    "cost": 0,
+    "sell": 130
+  },
+  "hellforged-amulet": {
+    "slug": "hellforged-amulet",
+    "name": "Hellforged Amulet",
+    "type": "amulet",
+    "slot": "amulet",
+    "rarity": "legendary",
+    "stats": {
+      "wis": 9,
+      "con": 5,
+      "int": 4
+    },
+    "description": "An amulet forged in the sanctum. It burns faintly against the skin.",
+    "cost": 0,
+    "sell": 118
+  },
+  "sanctum-treads": {
+    "slug": "sanctum-treads",
+    "name": "Sanctum Treads",
+    "type": "boots",
+    "slot": "boots",
+    "rarity": "legendary",
+    "stats": {
+      "dex": 8,
+      "con": 5,
+      "wis": 3
+    },
+    "description": "Boots that walked through hellfire. They leave scorch marks.",
+    "cost": 0,
+    "sell": 110
+  },
+  "vythara-crown": {
+    "slug": "vythara-crown",
+    "name": "Vythara's Crown",
+    "type": "helmet",
+    "slot": "helmet",
+    "rarity": "mythic",
+    "stats": {
+      "int": 16,
+      "wis": 12,
+      "con": 6
+    },
+    "description": "The oracle's crown. It whispers possible futures. Most are terrible.",
+    "passive": {
+      "mpRegenPct": 10,
+      "bonusMagicDmg": 12
+    },
+    "cost": 0,
+    "sell": 200
+  },
+  "oracle-codex": {
+    "slug": "oracle-codex",
+    "name": "Oracle Codex",
+    "type": "shield",
+    "slot": "shield",
+    "rarity": "legendary",
+    "stats": {
+      "int": 10,
+      "wis": 8,
+      "con": 3
+    },
+    "description": "A tome of prophecies. Every page you read changes the future.",
+    "cost": 0,
+    "sell": 125
+  },
+  "azareth-crown": {
+    "slug": "azareth-crown",
+    "name": "Azareth's Crown",
+    "type": "helmet",
+    "slot": "helmet",
+    "rarity": "mythic",
+    "stats": {
+      "str": 12,
+      "con": 14,
+      "wis": 8
+    },
+    "description": "The demon prince's crown. Wearing it commands obedience from lesser demons.",
+    "passive": {
+      "damageReduction": 8,
+      "hpRegenPct": 6
+    },
+    "cost": 0,
+    "sell": 220
+  },
+  "infernal-throne-blade": {
+    "slug": "infernal-throne-blade",
+    "name": "Infernal Throne Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "mythic",
+    "stats": {
+      "str": 26,
+      "con": 8,
+      "dex": 4
+    },
+    "description": "Azareth's sword, forged from a collapsed star and quenched in demon blood.",
+    "passive": {
+      "lifestealPct": 8,
+      "onHitEffect": "burn"
+    },
+    "cost": 0,
+    "sell": 250
+  },
+  "sanctum-signet": {
+    "slug": "sanctum-signet",
+    "name": "Sanctum Signet",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "legendary",
+    "stats": {
+      "str": 7,
+      "con": 7,
+      "wis": 4
+    },
+    "description": "The seal of the Infernal Sanctum. It radiates dark authority.",
+    "cost": 0,
+    "sell": 120
+  },
+  "portal-shard-codex": {
+    "slug": "portal-shard-codex",
+    "name": "Portal Shard Codex",
+    "type": "trinket",
+    "slot": "trinket",
+    "rarity": "mythic",
+    "stats": {
+      "int": 20,
+      "wis": 10,
+      "con": 4
+    },
+    "description": "A codex containing the secrets of infernal portal magic. Reading it feels like standing in a doorway between worlds.",
+    "passive": {
+      "mpRegenPct": 12,
+      "bonusMagicDmg": 10
+    },
+    "cost": 0,
+    "sell": 230
+  }
+}

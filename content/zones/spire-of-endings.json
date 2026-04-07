@@ -1,0 +1,580 @@
+{
+  "location": {
+    "slug": "spire-of-endings",
+    "name": "Spire of Endings",
+    "type": "dungeon",
+    "realm": "voidspire",
+    "description": "The apex of the Voidspire \u2014 a tower that pierces the boundary between existence and oblivion. At its peak, the Void Sovereign waits: the entity that will end all things if it is not stopped. This is the final challenge.",
+    "connections": [
+      "nexus-bastion"
+    ],
+    "mapX": 50,
+    "mapY": 75
+  },
+  "locationThreat": 48,
+  "dungeonConfig": {
+    "boss": "the-void-sovereign",
+    "name": "Spire of Endings",
+    "minRooms": 7,
+    "maxRooms": 9,
+    "mechanic": {
+      "slug": "unraveling",
+      "name": "The Unraveling",
+      "description": "Reality itself dissolves. Take 6% max HP damage per room and all stats reduced by 1.",
+      "effect": {
+        "roomDamagePct": 6
+      }
+    }
+  },
+  "enemies": [
+    {
+      "slug": "void-sentinel",
+      "name": "Void Sentinel",
+      "hp": 2369,
+      "attack": 101,
+      "defense": 60,
+      "xp": 3696,
+      "gold": 1660,
+      "level": 42,
+      "abilities": [
+        "stunning-slam",
+        "harden",
+        "war-cry"
+      ],
+      "drops": [],
+      "description": "The final guardians of the Spire \u2014 beings of crystallized void, older than the concept of age. They exist to prevent anything from reaching the top."
+    },
+    {
+      "slug": "annihilation-wraith",
+      "name": "Annihilation Wraith",
+      "hp": 2122,
+      "attack": 92,
+      "defense": 58,
+      "xp": 3774,
+      "gold": 1655,
+      "level": 44,
+      "abilities": [
+        "fire-breath",
+        "dark-curse",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "The remnant of a reality that was destroyed. It exists as pure destruction \u2014 a wave of unmake that sweeps through everything in its path."
+    },
+    {
+      "slug": "omega-construct",
+      "name": "Omega Construct",
+      "hp": 2170,
+      "attack": 114,
+      "defense": 64,
+      "xp": 4084,
+      "gold": 2005,
+      "level": 45,
+      "abilities": [
+        "stunning-slam",
+        "harden",
+        "war-cry",
+        "regen-aura"
+      ],
+      "drops": [],
+      "description": "The ultimate golem \u2014 built from the compressed remains of destroyed universes. It is the last thing many realities ever saw."
+    },
+    {
+      "slug": "the-void-sovereign",
+      "name": "The Void Sovereign",
+      "hp": 4637,
+      "attack": 155,
+      "defense": 76,
+      "xp": 12457,
+      "gold": 5458,
+      "level": 50,
+      "boss": true,
+      "abilities": [
+        "fire-breath",
+        "stunning-slam",
+        "dark-curse",
+        "regen-aura",
+        "harden",
+        "weakening-hex",
+        "war-cry",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "The end of all things. The Void Sovereign is not a creature \u2014 it is a concept made manifest. It is the final silence after the last star dies. It wears the face of every hero who ever failed, and speaks in a voice that is the absence of sound. This is the ultimate test."
+    }
+  ],
+  "events": [
+    {
+      "slug": "spire-of-endings-evt-1",
+      "name": "Reality Tear",
+      "icon": "\ud83c\udf00",
+      "type": "phenomenon",
+      "rarity": "common",
+      "text": "A tear in reality bleeds energy in the spire of endings. Dangerous but potentially useful.",
+      "choices": [
+        {
+          "label": "Investigate (INT DC 28)",
+          "check": {
+            "stat": "int",
+            "dc": 28
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "omega-plate",
+                  "qty": 2
+                }
+              ],
+              "xp": 60
+            }
+          },
+          "failure": {
+            "text": "The spire of endings punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 45
+            }
+          }
+        },
+        {
+          "label": "Take action (STR DC 27)",
+          "check": {
+            "stat": "str",
+            "dc": 27
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 80,
+              "items": [
+                {
+                  "slug": "omega-plate",
+                  "qty": 1
+                }
+              ],
+              "xp": 55
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 40
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The spire of endings is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spire-of-endings-evt-2",
+      "name": "Ancient Cache",
+      "icon": "\ud83d\udce6",
+      "type": "discovery",
+      "rarity": "uncommon",
+      "text": "A supply cache from a previous expedition, half-swallowed by the spire of endings.",
+      "choices": [
+        {
+          "label": "Investigate (WIS DC 28)",
+          "check": {
+            "stat": "wis",
+            "dc": 28
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "omega-plate",
+                  "qty": 2
+                }
+              ],
+              "xp": 63
+            }
+          },
+          "failure": {
+            "text": "The spire of endings punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 47
+            }
+          }
+        },
+        {
+          "label": "Take action (DEX DC 27)",
+          "check": {
+            "stat": "dex",
+            "dc": 27
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 95,
+              "items": [
+                {
+                  "slug": "omega-plate",
+                  "qty": 1
+                }
+              ],
+              "xp": 57
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 42
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The spire of endings is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spire-of-endings-evt-3",
+      "name": "Void Surge",
+      "icon": "\u26a1",
+      "type": "hazard",
+      "rarity": "common",
+      "text": "A surge of void energy ripples through the spire of endings, warping everything it touches.",
+      "choices": [
+        {
+          "label": "Investigate (DEX DC 29)",
+          "check": {
+            "stat": "dex",
+            "dc": 29
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "omega-plate",
+                  "qty": 2
+                }
+              ],
+              "xp": 66
+            }
+          },
+          "failure": {
+            "text": "The spire of endings punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 49
+            }
+          }
+        },
+        {
+          "label": "Take action (CON DC 28)",
+          "check": {
+            "stat": "con",
+            "dc": 28
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 110,
+              "items": [
+                {
+                  "slug": "omega-plate",
+                  "qty": 1
+                }
+              ],
+              "xp": 59
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 44
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The spire of endings is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spire-of-endings-evt-4",
+      "name": "Spectral Guide",
+      "icon": "\ud83d\udc7b",
+      "type": "npc",
+      "rarity": "uncommon",
+      "text": "A spectral figure beckons from the spire of endings. It may be a guide \u2014 or a trap.",
+      "choices": [
+        {
+          "label": "Investigate (STR DC 29)",
+          "check": {
+            "stat": "str",
+            "dc": 29
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "omega-plate",
+                  "qty": 2
+                }
+              ],
+              "xp": 69
+            }
+          },
+          "failure": {
+            "text": "The spire of endings punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 51
+            }
+          }
+        },
+        {
+          "label": "Take action (INT DC 28)",
+          "check": {
+            "stat": "int",
+            "dc": 28
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 125,
+              "items": [
+                {
+                  "slug": "omega-plate",
+                  "qty": 1
+                }
+              ],
+              "xp": 61
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 46
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The spire of endings is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spire-of-endings-evt-5",
+      "name": "Crystallized Memory",
+      "icon": "\ud83d\udc8e",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "A crystal containing someone's memories sits in the spire of endings. Touching it might reveal secrets.",
+      "choices": [
+        {
+          "label": "Investigate (CON DC 30)",
+          "check": {
+            "stat": "con",
+            "dc": 30
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "sovereign-ichor",
+                  "qty": 2
+                }
+              ],
+              "xp": 72
+            }
+          },
+          "failure": {
+            "text": "The spire of endings punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 53
+            }
+          }
+        },
+        {
+          "label": "Take action (WIS DC 29)",
+          "check": {
+            "stat": "wis",
+            "dc": 29
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 140,
+              "items": [
+                {
+                  "slug": "sovereign-ichor",
+                  "qty": 1
+                }
+              ],
+              "xp": 63
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 48
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The spire of endings is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spire-of-endings-evt-6",
+      "name": "The Threshold",
+      "icon": "\ud83d\udeaa",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "A doorway to somewhere else shimmers in the spire of endings. What lies beyond is anyone's guess.",
+      "choices": [
+        {
+          "label": "Investigate (INT DC 30)",
+          "check": {
+            "stat": "int",
+            "dc": 30
+          },
+          "success": {
+            "text": "Your careful approach reveals valuable materials.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "sovereign-ichor",
+                  "qty": 2
+                }
+              ],
+              "xp": 75
+            }
+          },
+          "failure": {
+            "text": "The spire of endings punishes your intrusion.",
+            "rewards": {
+              "xp": 15,
+              "damage": 55
+            }
+          }
+        },
+        {
+          "label": "Take action (STR DC 29)",
+          "check": {
+            "stat": "str",
+            "dc": 29
+          },
+          "success": {
+            "text": "Bold action pays off. Gold and materials.",
+            "rewards": {
+              "gold": 155,
+              "items": [
+                {
+                  "slug": "sovereign-ichor",
+                  "qty": 1
+                }
+              ],
+              "xp": 65
+            }
+          },
+          "failure": {
+            "text": "Direct approach backfires.",
+            "rewards": {
+              "xp": 12,
+              "damage": 50
+            }
+          }
+        },
+        {
+          "label": "Leave it alone",
+          "auto": true,
+          "success": {
+            "text": "The spire of endings is dangerous enough without taking risks.",
+            "rewards": {
+              "xp": 10
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "spire-of-endings-group-1",
+      "name": "Void Sentinel Patrol",
+      "composition": [
+        {
+          "enemySlug": "void-sentinel",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "spire-of-endings-group-2",
+      "name": "Omega Construct & Annihilation Wraith",
+      "composition": [
+        {
+          "enemySlug": "omega-construct",
+          "count": 1
+        },
+        {
+          "enemySlug": "annihilation-wraith",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

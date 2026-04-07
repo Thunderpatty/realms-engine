@@ -1,0 +1,22 @@
+{
+  "chipped-ruby": { "name": "Chipped Ruby", "type": "gem", "rarity": "uncommon", "description": "+3% Attack", "gem": { "type": "ruby", "tier": "chipped", "bonus": { "attackPct": 3 } }, "sell": 15 },
+  "chipped-sapphire": { "name": "Chipped Sapphire", "type": "gem", "rarity": "uncommon", "description": "+3% Defense", "gem": { "type": "sapphire", "tier": "chipped", "bonus": { "defensePct": 3 } }, "sell": 15 },
+  "chipped-emerald": { "name": "Chipped Emerald", "type": "gem", "rarity": "uncommon", "description": "+2% HP Regen per turn", "gem": { "type": "emerald", "tier": "chipped", "bonus": { "hpRegenPct": 2 } }, "sell": 15 },
+  "chipped-amethyst": { "name": "Chipped Amethyst", "type": "gem", "rarity": "uncommon", "description": "+2% MP Regen per turn", "gem": { "type": "amethyst", "tier": "chipped", "bonus": { "mpRegenPct": 2 } }, "sell": 15 },
+  "chipped-topaz": { "name": "Chipped Topaz", "type": "gem", "rarity": "uncommon", "description": "+1% Crit Chance", "gem": { "type": "topaz", "tier": "chipped", "bonus": { "critPct": 1 } }, "sell": 15 },
+  "chipped-opal": { "name": "Chipped Opal", "type": "gem", "rarity": "uncommon", "description": "+1% Dodge Chance", "gem": { "type": "opal", "tier": "chipped", "bonus": { "dodgePct": 1 } }, "sell": 15 },
+
+  "cut-ruby": { "name": "Cut Ruby", "type": "gem", "rarity": "rare", "description": "+5% Attack", "gem": { "type": "ruby", "tier": "cut", "bonus": { "attackPct": 5 } }, "sell": 40 },
+  "cut-sapphire": { "name": "Cut Sapphire", "type": "gem", "rarity": "rare", "description": "+5% Defense", "gem": { "type": "sapphire", "tier": "cut", "bonus": { "defensePct": 5 } }, "sell": 40 },
+  "cut-emerald": { "name": "Cut Emerald", "type": "gem", "rarity": "rare", "description": "+3% HP Regen per turn", "gem": { "type": "emerald", "tier": "cut", "bonus": { "hpRegenPct": 3 } }, "sell": 40 },
+  "cut-amethyst": { "name": "Cut Amethyst", "type": "gem", "rarity": "rare", "description": "+3% MP Regen per turn", "gem": { "type": "amethyst", "tier": "cut", "bonus": { "mpRegenPct": 3 } }, "sell": 40 },
+  "cut-topaz": { "name": "Cut Topaz", "type": "gem", "rarity": "rare", "description": "+2% Crit Chance", "gem": { "type": "topaz", "tier": "cut", "bonus": { "critPct": 2 } }, "sell": 40 },
+  "cut-opal": { "name": "Cut Opal", "type": "gem", "rarity": "rare", "description": "+2% Dodge Chance", "gem": { "type": "opal", "tier": "cut", "bonus": { "dodgePct": 2 } }, "sell": 40 },
+
+  "flawless-ruby": { "name": "Flawless Ruby", "type": "gem", "rarity": "epic", "description": "+8% Attack", "gem": { "type": "ruby", "tier": "flawless", "bonus": { "attackPct": 8 } }, "sell": 100 },
+  "flawless-sapphire": { "name": "Flawless Sapphire", "type": "gem", "rarity": "epic", "description": "+8% Defense", "gem": { "type": "sapphire", "tier": "flawless", "bonus": { "defensePct": 8 } }, "sell": 100 },
+  "flawless-emerald": { "name": "Flawless Emerald", "type": "gem", "rarity": "epic", "description": "+5% HP Regen per turn", "gem": { "type": "emerald", "tier": "flawless", "bonus": { "hpRegenPct": 5 } }, "sell": 100 },
+  "flawless-amethyst": { "name": "Flawless Amethyst", "type": "gem", "rarity": "epic", "description": "+5% MP Regen per turn", "gem": { "type": "amethyst", "tier": "flawless", "bonus": { "mpRegenPct": 5 } }, "sell": 100 },
+  "flawless-topaz": { "name": "Flawless Topaz", "type": "gem", "rarity": "epic", "description": "+4% Crit Chance", "gem": { "type": "topaz", "tier": "flawless", "bonus": { "critPct": 4 } }, "sell": 100 },
+  "flawless-opal": { "name": "Flawless Opal", "type": "gem", "rarity": "epic", "description": "+4% Dodge Chance", "gem": { "type": "opal", "tier": "flawless", "bonus": { "dodgePct": 4 } }, "sell": 100 }
+}

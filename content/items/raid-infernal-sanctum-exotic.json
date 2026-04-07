@@ -1,0 +1,107 @@
+{
+  "azareths-wrath": {
+    "slug": "azareths-wrath",
+    "name": "Azareth's Wrath",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "exotic",
+    "classReq": "warrior",
+    "stats": {
+      "str": 30,
+      "con": 16,
+      "dex": 6
+    },
+    "description": "The demon prince's personal weapon, reforged in the closing portal. It burns with the fury of a failed invasion.",
+    "passive": {
+      "lifestealPct": 12,
+      "bonusDmgPct": 10,
+      "onHitEffect": "burn"
+    },
+    "cost": 0,
+    "sell": 400
+  },
+  "vytharas-all-seeing-eye": {
+    "slug": "vytharas-all-seeing-eye",
+    "name": "Vythara's All-Seeing Eye",
+    "type": "trinket",
+    "slot": "trinket",
+    "rarity": "exotic",
+    "classReq": "mage",
+    "stats": {
+      "int": 32,
+      "wis": 14,
+      "con": 4
+    },
+    "description": "The oracle's eye, crystallized and set in a pendant. It shows all possible futures simultaneously.",
+    "passive": {
+      "mpRegenPct": 18,
+      "bonusMagicDmg": 18,
+      "spellCritBonus": 10
+    },
+    "cost": 0,
+    "sell": 400
+  },
+  "shadowflame-leathers": {
+    "slug": "shadowflame-leathers",
+    "name": "Shadowflame Leathers",
+    "type": "armor",
+    "slot": "armor",
+    "rarity": "exotic",
+    "classReq": "rogue",
+    "stats": {
+      "dex": 28,
+      "con": 12,
+      "wis": 6
+    },
+    "description": "Armor woven from shadow and flame. The wearer flickers between visibility states.",
+    "passive": {
+      "dodgeBonus": 14,
+      "critBonus": 12,
+      "damageReduction": 5
+    },
+    "cost": 0,
+    "sell": 400
+  },
+  "sanctified-bulwark": {
+    "slug": "sanctified-bulwark",
+    "name": "Sanctified Bulwark",
+    "type": "shield",
+    "slot": "shield",
+    "rarity": "exotic",
+    "classReq": "cleric",
+    "stats": {
+      "wis": 28,
+      "con": 16,
+      "int": 6
+    },
+    "description": "A shield consecrated in the destruction of the Infernal Sanctum. It radiates anti-demonic power.",
+    "passive": {
+      "healBonus": 18,
+      "damageReduction": 10,
+      "hpRegenPct": 12
+    },
+    "cost": 0,
+    "sell": 400
+  },
+  "hellgate-bow": {
+    "slug": "hellgate-bow",
+    "name": "Hellgate Bow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "exotic",
+    "classReq": "ranger",
+    "stats": {
+      "dex": 26,
+      "wis": 16,
+      "con": 6
+    },
+    "description": "A bow strung with demon sinew, carved from the Infernal Gateway's frame. Arrows fired from it carry portal energy.",
+    "passive": {
+      "critBonus": 14,
+      "bonusDmgPct": 10,
+      "onHitEffect": "burn"
+    },
+    "cost": 0,
+    "sell": 400
+  }
+}

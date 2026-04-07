@@ -1,0 +1,88 @@
+[
+  {
+    "slug": "cult-infiltration",
+    "title": "Into the Cult",
+    "location": "ashen-vale",
+    "minLevel": 22,
+    "rewards": {
+      "xp": 440,
+      "gold": 280
+    },
+    "description": "Intelligence suggests the cult is planning a major summoning. Someone needs to infiltrate.",
+    "stages": [
+      {
+        "text": "Spy-master Kael finds you in Cinderport. 'The cult in the Ashen Vale is planning something catastrophic. We've intercepted fragments \u2014 a summoning of unprecedented scale. I need someone to infiltrate their ranks, learn the details, and sabotage the ritual from inside. Are you willing?'",
+        "choices": [
+          {
+            "next": 1,
+            "label": "Accept the mission and plan your approach",
+            "check": {
+              "stat": "int",
+              "dc": 21
+            }
+          },
+          {
+            "next": 1,
+            "label": "Ask for cultist disguises and intelligence",
+            "check": {
+              "stat": "wis",
+              "dc": 20
+            }
+          },
+          {
+            "next": 1,
+            "label": "Demand appropriate compensation first",
+            "check": {
+              "stat": "cha",
+              "dc": 22
+            }
+          }
+        ]
+      },
+      {
+        "text": "Disguised as a cultist, you enter the vale camp. The inner circle is preparing for something called 'The Burning Gate' \u2014 a permanent portal to the demon realms. The ritual requires a living sacrifice and three days of continuous chanting. It starts tomorrow.",
+        "choices": [
+          {
+            "next": 2,
+            "label": "Sabotage the ritual components",
+            "check": {
+              "stat": "dex",
+              "dc": 22
+            }
+          },
+          {
+            "next": 2,
+            "label": "Turn cult members against each other",
+            "check": {
+              "stat": "cha",
+              "dc": 23
+            }
+          },
+          {
+            "next": 2,
+            "label": "Fight your way to the ritual site",
+            "combat": "ember-cultist"
+          }
+        ]
+      },
+      {
+        "text": "The ritual fails. The Burning Gate collapses before it can stabilize. The cult is thrown into chaos. Kael's agents move in and scatter the remaining cultists. 'Outstanding work,' Kael says, handing you a heavy purse. 'You've bought Cinderport months, maybe years, of breathing room.'",
+        "complete": true,
+        "rewards": {
+          "gold": 280,
+          "xp": 440,
+          "items": [
+            {
+              "slug": "demon-shard",
+              "qty": 4
+            },
+            {
+              "slug": "infernal-essence",
+              "qty": 1
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

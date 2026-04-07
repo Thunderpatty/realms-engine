@@ -1,0 +1,583 @@
+{
+  "location": {
+    "slug": "frozen-wastes",
+    "name": "The Frozen Wastes",
+    "type": "wild",
+    "realm": "frostreach",
+    "description": "An endless expanse of ice and snow where the wind never stops. Frost wolves hunt in packs, and ice elementals form from the blizzards themselves. The auroral sky provides the only color in a world of white.",
+    "connections": [
+      "frosthollow",
+      "ice-tomb",
+      "frozen-spire"
+    ],
+    "mapX": 25,
+    "mapY": 35
+  },
+  "enemies": [
+    {
+      "slug": "frost-wolf",
+      "name": "Frost Wolf",
+      "hp": 744,
+      "attack": 26,
+      "defense": 13,
+      "xp": 455,
+      "gold": 209,
+      "level": 10,
+      "abilities": [
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A massive wolf with fur like packed snow and eyes like blue lanterns. It hunts in packs and its bite carries the cold of the grave."
+    },
+    {
+      "slug": "ice-wraith",
+      "name": "Ice Wraith",
+      "hp": 814,
+      "attack": 32,
+      "defense": 15,
+      "xp": 578,
+      "gold": 246,
+      "level": 11,
+      "abilities": [
+        "dark-curse",
+        "weakening-hex"
+      ],
+      "drops": [],
+      "description": "A spectral figure formed from frozen mist. It drifts across the wastes seeking warmth to consume, leaving frost-burned corpses in its wake."
+    },
+    {
+      "slug": "glacial-elemental",
+      "name": "Glacial Elemental",
+      "hp": 893,
+      "attack": 32,
+      "defense": 18,
+      "xp": 594,
+      "gold": 321,
+      "level": 12,
+      "abilities": [
+        "stunning-slam",
+        "harden"
+      ],
+      "drops": [],
+      "description": "A towering construct of living ice, formed when blizzard winds concentrate enough magical cold in one place. It moves slowly but hits like an avalanche."
+    },
+    {
+      "slug": "frost-stalker",
+      "name": "Frost Stalker",
+      "hp": 691,
+      "attack": 32,
+      "defense": 15,
+      "xp": 518,
+      "gold": 249,
+      "level": 11,
+      "abilities": [
+        "poison-bite",
+        "rending-claws"
+      ],
+      "drops": [],
+      "description": "A six-legged predator adapted to the tundra. Its white carapace makes it nearly invisible against the snow until it strikes."
+    },
+    {
+      "slug": "snow-bandit",
+      "name": "Snow Bandit",
+      "hp": 733,
+      "attack": 26,
+      "defense": 15,
+      "xp": 486,
+      "gold": 211,
+      "level": 10,
+      "abilities": [
+        "war-cry"
+      ],
+      "drops": [],
+      "description": "Desperate outlaws who survive by raiding caravans between Frosthollow and the southern passes. They fight with the ferocity of people who have nothing left to lose."
+    }
+  ],
+  "locationThreat": 11,
+  "events": [
+    {
+      "slug": "frozen-wastes-camp",
+      "name": "Abandoned Camp",
+      "icon": "\ud83c\udfd5",
+      "type": "discovery",
+      "rarity": "common",
+      "text": "You find the remains of a camp \u2014 torn tents, scattered supplies, frozen blood. Whatever happened here was recent.",
+      "choices": [
+        {
+          "label": "Search the wreckage (DEX DC 11)",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "You find a stash hidden beneath the fire pit. Supplies that might still be useful.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                },
+                {
+                  "slug": "frozen-hide",
+                  "qty": 1
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The wreckage shifts and a frozen beam catches your leg.",
+            "rewards": {
+              "xp": 8,
+              "damage": 15
+            }
+          }
+        },
+        {
+          "label": "Track whatever attacked them (WIS DC 12)",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "text": "The tracks lead to a frost wolf den \u2014 and a cache of supplies the wolves dragged here.",
+            "rewards": {
+              "gold": 30,
+              "items": [
+                {
+                  "slug": "frozen-hide",
+                  "qty": 2
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The tracks disappear in the blowing snow. You waste time and energy.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Move on quickly",
+          "auto": true,
+          "success": {
+            "text": "You leave the dead to their rest.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "frozen-wastes-shrine",
+      "name": "Frost Shrine",
+      "icon": "\u2744",
+      "type": "shrine",
+      "rarity": "uncommon",
+      "text": "A pillar of ice carved with ancient runes. It radiates cold power that makes your bones ache.",
+      "choices": [
+        {
+          "label": "Pray at the shrine (WIS DC 12)",
+          "check": {
+            "stat": "wis",
+            "dc": 12
+          },
+          "success": {
+            "text": "The runes glow blue. A wave of frost energy washes through you, sharpening your senses.",
+            "rewards": {
+              "xp": 30,
+              "items": [
+                {
+                  "slug": "spectral-ice",
+                  "qty": 1
+                }
+              ]
+            }
+          },
+          "failure": {
+            "text": "The shrine rejects you. Frost burns your palms.",
+            "rewards": {
+              "xp": 8,
+              "damage": 12
+            }
+          }
+        },
+        {
+          "label": "Chip off a piece (STR DC 11)",
+          "check": {
+            "stat": "str",
+            "dc": 11
+          },
+          "success": {
+            "text": "You break off a shard of enchanted ice. It hums with power.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 3
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The ice is harder than steel. Your weapon rebounds painfully.",
+            "rewards": {
+              "xp": 5,
+              "damage": 10
+            }
+          }
+        },
+        {
+          "label": "Leave it undisturbed",
+          "auto": true,
+          "success": {
+            "text": "Some things are better left frozen.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "frozen-wastes-merchant",
+      "name": "Frozen Merchant",
+      "icon": "\ud83e\uddca",
+      "type": "npc",
+      "rarity": "common",
+      "text": "A merchant sits beside a sled packed with goods, shivering violently. \"T-trade? I have supplies. P-please, before I freeze.\"",
+      "choices": [
+        {
+          "label": "Trade supplies for information (INT DC 10)",
+          "check": {
+            "stat": "int",
+            "dc": 10
+          },
+          "success": {
+            "text": "He tells you about a hidden cache nearby and gives you a frost crystal as thanks.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 2
+                },
+                {
+                  "slug": "frostbloom-petal",
+                  "qty": 2
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "He rambles incoherently. The cold has taken his mind.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Help him build a fire (CON DC 10)",
+          "check": {
+            "stat": "con",
+            "dc": 10
+          },
+          "success": {
+            "text": "The fire warms him enough to share some of his wares gratefully.",
+            "rewards": {
+              "gold": 25,
+              "items": [
+                {
+                  "slug": "frostbloom-petal",
+                  "qty": 3
+                }
+              ],
+              "xp": 18
+            }
+          },
+          "failure": {
+            "text": "The wind defeats every attempt. He curses the Frostreach and limps away.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Rob him while he's weak",
+          "auto": true,
+          "success": {
+            "text": "You take what you can carry. The cold will finish the rest.",
+            "rewards": {
+              "gold": 15,
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "frozen-wastes-crevasse",
+      "name": "Treacherous Crevasse",
+      "icon": "\ud83d\udd73",
+      "type": "hazard",
+      "rarity": "uncommon",
+      "text": "A deep crevasse splits the ice ahead. Something glints at the bottom \u2014 but the edges are crumbling.",
+      "choices": [
+        {
+          "label": "Climb down carefully (DEX DC 13)",
+          "check": {
+            "stat": "dex",
+            "dc": 13
+          },
+          "success": {
+            "text": "You reach the bottom and find a vein of permafrost ore embedded in the ice wall.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "permafrost-ore",
+                  "qty": 3
+                }
+              ],
+              "xp": 28
+            }
+          },
+          "failure": {
+            "text": "The ice gives way. You slide down painfully and barely scramble out.",
+            "rewards": {
+              "xp": 8,
+              "damage": 22
+            }
+          }
+        },
+        {
+          "label": "Toss a rope and hook the glinting object (DEX DC 11)",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "You snag a frozen pouch. Inside: gold and a strange crystal.",
+            "rewards": {
+              "gold": 40,
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 1
+                }
+              ],
+              "xp": 20
+            }
+          },
+          "failure": {
+            "text": "The rope snaps. Whatever was down there stays down there.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Go around",
+          "auto": true,
+          "success": {
+            "text": "Better safe than frozen at the bottom of a hole.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "frozen-wastes-wolves",
+      "name": "Wolf Pack Standoff",
+      "icon": "\ud83d\udc3a",
+      "type": "encounter",
+      "rarity": "common",
+      "text": "A pack of frost wolves circles you, hackles raised. They guard something behind them \u2014 a frozen carcass with supplies strapped to it.",
+      "choices": [
+        {
+          "label": "Intimidate the pack (STR DC 12)",
+          "check": {
+            "stat": "str",
+            "dc": 12
+          },
+          "success": {
+            "text": "You roar and stomp. The wolves scatter, leaving the carcass and its supplies.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frozen-hide",
+                  "qty": 2
+                },
+                {
+                  "slug": "frostbloom-petal",
+                  "qty": 2
+                }
+              ],
+              "xp": 22
+            }
+          },
+          "failure": {
+            "text": "The alpha lunges. You drive it back but take a nasty bite.",
+            "rewards": {
+              "xp": 10,
+              "damage": 18
+            }
+          }
+        },
+        {
+          "label": "Calm them with animal knowledge (WIS DC 11)",
+          "check": {
+            "stat": "wis",
+            "dc": 11
+          },
+          "success": {
+            "text": "You speak softly and move slowly. The pack parts, letting you take what you need.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frozen-hide",
+                  "qty": 3
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "They're too hungry to be reasoned with. You back away slowly.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        },
+        {
+          "label": "Leave them to their meal",
+          "auto": true,
+          "success": {
+            "text": "The wolves watch you go. A wise choice.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "slug": "frozen-wastes-aurora",
+      "name": "Aurora Surge",
+      "icon": "\ud83c\udf0c",
+      "type": "phenomenon",
+      "rarity": "rare",
+      "text": "The northern lights flare with sudden intensity. The air crackles with energy and the snow glows purple-green. You feel power flowing through the ground beneath you.",
+      "choices": [
+        {
+          "label": "Channel the energy through your body (INT DC 13)",
+          "check": {
+            "stat": "int",
+            "dc": 13
+          },
+          "success": {
+            "text": "Arcane power floods your veins. You feel stronger, sharper, more alive than you have in days.",
+            "rewards": {
+              "xp": 40,
+              "items": [
+                {
+                  "slug": "glacial-essence",
+                  "qty": 1
+                },
+                {
+                  "slug": "spectral-ice",
+                  "qty": 1
+                }
+              ]
+            }
+          },
+          "failure": {
+            "text": "The energy is too wild. It throws you back and leaves your ears ringing.",
+            "rewards": {
+              "xp": 10,
+              "damage": 20
+            }
+          }
+        },
+        {
+          "label": "Collect the charged ice crystals forming around you (DEX DC 11)",
+          "check": {
+            "stat": "dex",
+            "dc": 11
+          },
+          "success": {
+            "text": "You gather a handful of aurora-charged crystals before the surge fades.",
+            "rewards": {
+              "items": [
+                {
+                  "slug": "frost-crystal",
+                  "qty": 3
+                },
+                {
+                  "slug": "spectral-ice",
+                  "qty": 1
+                }
+              ],
+              "xp": 25
+            }
+          },
+          "failure": {
+            "text": "The crystals melt the moment you touch them. Frustrating.",
+            "rewards": {
+              "xp": 8
+            }
+          }
+        },
+        {
+          "label": "Take shelter until it passes",
+          "auto": true,
+          "success": {
+            "text": "The aurora fades. You emerge unscathed but empty-handed.",
+            "rewards": {
+              "xp": 5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "enemyGroups": [
+    {
+      "slug": "frozen-wastes-group-1",
+      "name": "Glacial Elemental Ambush",
+      "composition": [
+        {
+          "enemySlug": "glacial-elemental",
+          "count": [
+            2,
+            3
+          ]
+        }
+      ],
+      "spawnWeight": 12
+    },
+    {
+      "slug": "frozen-wastes-group-2",
+      "name": "Frost Stalker & Frost Wolf",
+      "composition": [
+        {
+          "enemySlug": "frost-stalker",
+          "count": 1
+        },
+        {
+          "enemySlug": "frost-wolf",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ],
+      "spawnWeight": 10
+    }
+  ]
+}

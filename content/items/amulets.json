@@ -1,0 +1,477 @@
+{
+  "dragon-heart": {
+    "cost": 0,
+    "name": "Dragon's Heart",
+    "sell": 302,
+    "type": "amulet",
+    "stats": {
+      "str": 10,
+      "con": 10
+    },
+    "rarity": "legendary",
+    "description": "The still-warm heart of an ancient wyrm. Radiates immense power.",
+    "passive": {
+      "lifestealPct": 10,
+      "onHitStatus": {
+        "slug": "burn",
+        "chance": 25,
+        "turns": 2
+      }
+    }
+  },
+  "hydra-scale": {
+    "cost": 503,
+    "name": "Hydra Scale Amulet",
+    "sell": 125,
+    "type": "amulet",
+    "stats": {
+      "con": 7
+    },
+    "rarity": "epic",
+    "description": "Grants unnatural resilience.",
+    "passive": {
+      "hpRegen": 3
+    }
+  },
+  "hydra-eye-charm": {
+    "cost": 504,
+    "name": "Hydra Eye Charm",
+    "sell": 126,
+    "type": "amulet",
+    "stats": {
+      "con": 3,
+      "int": 3,
+      "wis": 3
+    },
+    "rarity": "epic",
+    "description": "A murky talisman said to let a sorcerer think in many directions at once.",
+    "passive": {
+      "manaRegen": 1,
+      "onHitStatus": {
+        "slug": "poison",
+        "chance": 24,
+        "turns": 3
+      }
+    }
+  },
+  "hawksight-talisman": {
+    "cost": 202,
+    "name": "Hawksight Talisman",
+    "sell": 50,
+    "type": "amulet",
+    "stats": {
+      "cha": 1,
+      "dex": 3,
+      "wis": 1
+    },
+    "rarity": "rare",
+    "description": "A polished lens and bone charm that narrows the world to one perfect shot."
+  },
+  "iron-gorget": {
+    "name": "Iron Gorget",
+    "type": "amulet",
+    "rarity": "uncommon",
+    "stats": {
+      "str": 1,
+      "con": 2
+    },
+    "cost": 66,
+    "sell": 16,
+    "description": "A crude iron gorget that protects the throat and steels the will for front-line combat."
+  },
+  "focus-pendant": {
+    "name": "Focus Pendant",
+    "type": "amulet",
+    "rarity": "uncommon",
+    "stats": {
+      "int": 2
+    },
+    "cost": 66,
+    "sell": 16,
+    "description": "A crystal pendant that steadies the mind and sharpens spell focus under battle pressure."
+  },
+  "pilgrim-medallion": {
+    "name": "Pilgrim Medallion",
+    "type": "amulet",
+    "rarity": "uncommon",
+    "stats": {
+      "wis": 2
+    },
+    "cost": 66,
+    "sell": 16,
+    "description": "A worn holy medallion carried by those who walk sacred roads seeking divine guidance."
+  },
+  "hunter-locket": {
+    "name": "Hunter's Locket",
+    "type": "amulet",
+    "rarity": "uncommon",
+    "stats": {
+      "dex": 1,
+      "wis": 1
+    },
+    "cost": 66,
+    "sell": 16,
+    "description": "A small locket holding a tuft of prey fur and a carved arrow for tracking luck."
+  },
+  "warlord-pendant": {
+    "name": "Warlord's Pendant",
+    "type": "amulet",
+    "rarity": "rare",
+    "stats": {
+      "str": 3,
+      "con": 2
+    },
+    "cost": 202,
+    "sell": 50,
+    "description": "A pendant stamped with the iron seal of a warlord; grants fierce resolve in the line of battle."
+  },
+  "arcane-talisman": {
+    "name": "Arcane Talisman",
+    "type": "amulet",
+    "rarity": "rare",
+    "stats": {
+      "int": 3,
+      "wis": 2
+    },
+    "cost": 202,
+    "sell": 50,
+    "description": "A talisman crackling with concentrated spell energy between polished obsidian plates."
+  },
+  "blade-locket": {
+    "name": "Blade Locket",
+    "type": "amulet",
+    "rarity": "rare",
+    "stats": {
+      "dex": 3
+    },
+    "cost": 201,
+    "sell": 50,
+    "description": "A locket fitted with a hidden blade and battle-honed runes; luck and killing edge in one."
+  },
+  "holy-pendant": {
+    "name": "Holy Pendant",
+    "type": "amulet",
+    "rarity": "rare",
+    "stats": {
+      "wis": 3,
+      "con": 2
+    },
+    "cost": 202,
+    "sell": 50,
+    "description": "A pure silver pendant consecrated at the Grand Temple, worn by devoted holy warriors."
+  },
+  "eagle-torc": {
+    "name": "Eagle Torc",
+    "type": "amulet",
+    "rarity": "rare",
+    "stats": {
+      "dex": 3,
+      "wis": 2
+    },
+    "cost": 202,
+    "sell": 50,
+    "description": "A torc shaped as a diving eagle that sharpens the eyes and steadies the marksman's aim."
+  },
+  "berserker-torc": {
+    "name": "Berserker's Torc",
+    "type": "amulet",
+    "rarity": "epic",
+    "stats": {
+      "str": 6,
+      "con": 2
+    },
+    "cost": 504,
+    "sell": 126,
+    "passive": {
+      "lifestealPct": 6,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 26
+      }
+    },
+    "description": "A blood-iron torc worn by berserkers who made blood pacts with fury itself."
+  },
+  "void-pendant": {
+    "name": "Void Pendant",
+    "type": "amulet",
+    "rarity": "epic",
+    "stats": {
+      "int": 4,
+      "wis": 3
+    },
+    "cost": 503,
+    "sell": 125,
+    "passive": {
+      "manaRegen": 2,
+      "onHitStatus": {
+        "slug": "weaken",
+        "turns": 2,
+        "chance": 24
+      }
+    },
+    "description": "A pendant holding a sliver of void that slowly drains the strength from nearby enemies."
+  },
+  "shadow-fang-necklace": {
+    "name": "Shadow Fang Necklace",
+    "type": "amulet",
+    "rarity": "epic",
+    "stats": {
+      "dex": 5
+    },
+    "cost": 502,
+    "sell": 125,
+    "passive": {
+      "lifestealPct": 8,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 22
+      }
+    },
+    "description": "A necklace of viper fangs; each hit draws blood back to the wearer's veins."
+  },
+  "radiant-reliquary": {
+    "name": "Radiant Reliquary",
+    "type": "amulet",
+    "rarity": "epic",
+    "stats": {
+      "wis": 4,
+      "con": 2
+    },
+    "cost": 503,
+    "sell": 125,
+    "passive": {
+      "hpRegen": 2,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 22
+      }
+    },
+    "description": "A reliquary holding a saint's fingerbone that radiates soft healing light in battle."
+  },
+  "storm-torc": {
+    "name": "Storm Torc",
+    "type": "amulet",
+    "rarity": "epic",
+    "stats": {
+      "dex": 4,
+      "wis": 2
+    },
+    "cost": 503,
+    "sell": 125,
+    "passive": {
+      "manaRegen": 1,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 28
+      }
+    },
+    "description": "A thunder-charged torc that slows enemies caught within the wearer's storm path."
+  },
+  "dragonbone-gorget": {
+    "name": "Dragonbone Gorget",
+    "type": "amulet",
+    "rarity": "legendary",
+    "stats": {
+      "str": 5,
+      "con": 7
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "lifestealPct": 10,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 28
+      }
+    },
+    "description": "A gorget cut from a dragon's neck bone; grants draconic savagery to any warrior."
+  },
+  "star-soul-pendant": {
+    "name": "Star Soul Pendant",
+    "type": "amulet",
+    "rarity": "legendary",
+    "stats": {
+      "int": 8,
+      "wis": 4
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "manaRegen": 3,
+      "onHitStatus": {
+        "slug": "burn",
+        "turns": 2,
+        "chance": 22
+      }
+    },
+    "description": "A pendant containing a captured star-soul; rains celestial fire upon those it opposes."
+  },
+  "abyssal-medallion": {
+    "name": "Abyssal Medallion",
+    "type": "amulet",
+    "rarity": "legendary",
+    "stats": {
+      "dex": 9
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "lifestealPct": 12,
+      "onHitStatus": {
+        "slug": "bleed",
+        "turns": 2,
+        "chance": 30
+      }
+    },
+    "description": "A medallion from the deep abyss; each wound feeds the wearer's insatiable hunger."
+  },
+  "divine-crown-pendant": {
+    "name": "Divine Crown Pendant",
+    "type": "amulet",
+    "rarity": "legendary",
+    "stats": {
+      "wis": 7,
+      "con": 5
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "hpRegen": 3,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 22
+      }
+    },
+    "description": "A pendant shaped as a divine crown; grants near-angelic resilience to any true believer."
+  },
+  "tempest-amulet": {
+    "name": "Tempest Amulet",
+    "type": "amulet",
+    "rarity": "legendary",
+    "stats": {
+      "dex": 7,
+      "wis": 4
+    },
+    "cost": 0,
+    "sell": 301,
+    "passive": {
+      "manaRegen": 2,
+      "onHitStatus": {
+        "slug": "slow",
+        "turns": 2,
+        "chance": 35
+      }
+    },
+    "description": "An amulet filled with imprisoned tempest; the air itself becomes a weapon in the wearer's hands."
+  },
+  "tin-locket": {
+    "type": "amulet",
+    "rarity": "common",
+    "name": "Tin Locket",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "con": 1,
+      "str": 1
+    },
+    "description": "A cheap locket with a faded portrait inside. Sentimental value only."
+  },
+  "glass-bead-necklace": {
+    "type": "amulet",
+    "rarity": "common",
+    "name": "Glass Bead Necklace",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "int": 1,
+      "wis": 1
+    },
+    "description": "Colorful glass beads strung on twine. Popular with apprentices."
+  },
+  "bone-pendant": {
+    "type": "amulet",
+    "rarity": "common",
+    "name": "Bone Pendant",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "dex": 1,
+      "con": 1
+    },
+    "description": "A small animal bone carved into a charm. Keeps the bad luck away, maybe."
+  },
+  "wooden-holy-symbol": {
+    "type": "amulet",
+    "rarity": "common",
+    "name": "Wooden Holy Symbol",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "wis": 2
+    },
+    "description": "A hand-carved holy symbol. Simple but sincere."
+  },
+  "feather-cord": {
+    "type": "amulet",
+    "rarity": "common",
+    "name": "Feather Cord",
+    "cost": 21,
+    "sell": 5,
+    "stats": {
+      "dex": 1,
+      "wis": 1
+    },
+    "description": "A leather cord strung with hawk feathers. Worn by aspiring rangers."
+  },
+  "frostbloom-pendant": {
+    "slug": "frostbloom-pendant",
+    "name": "Frostbloom Pendant",
+    "type": "amulet",
+    "slot": "amulet",
+    "rarity": "rare",
+    "description": "A pendant containing a preserved frostbloom. Enhances natural recovery.",
+    "stats": {
+      "wis": 5,
+      "con": 2,
+      "int": 1
+    },
+    "cost": 340,
+    "sell": 85
+  },
+  "cinderport-charm": {
+    "slug": "cinderport-charm",
+    "name": "Cinderport Charm",
+    "type": "amulet",
+    "slot": "amulet",
+    "rarity": "rare",
+    "stats": {
+      "wis": 6,
+      "con": 4,
+      "int": 2
+    },
+    "description": "A charm blessed by Cinderport healers. Wards against fire and poison.",
+    "cost": 620,
+    "sell": 155
+  },
+  "nexus-charm": {
+    "slug": "nexus-charm",
+    "name": "Nexus Charm",
+    "type": "amulet",
+    "slot": "amulet",
+    "rarity": "epic",
+    "stats": {
+      "wis": 8,
+      "con": 5,
+      "int": 3
+    },
+    "description": "A charm from the Nexus Bastion. Stabilizes reality around the wearer.",
+    "cost": 1080,
+    "sell": 270
+  }
+}

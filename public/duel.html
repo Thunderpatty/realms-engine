@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duel Arena — Realms of Ash & Iron</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Azeret+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0814;
+      --bg2: #161020;
+      --panel: rgba(24, 17, 39, 0.82);
+      --panel-2: rgba(34, 23, 54, 0.82);
+      --line: rgba(214, 176, 95, 0.22);
+      --line-strong: rgba(214, 176, 95, 0.45);
+      --text: #f4efe6;
+      --muted: #b9adc9;
+      --gold: #d6b05f;
+      --emerald: #6fe0a8;
+      --violet: #a77bff;
+      --red: #ff7e8a;
+      --shadow: 0 30px 80px rgba(0,0,0,.45);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Crimson Pro', Georgia, serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 126, 138, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(214, 176, 95, 0.14), transparent 24%),
+        linear-gradient(160deg, #0b0711 0%, #120d1d 40%, #09070f 100%);
+      min-height: 100vh;
+      font-size: 16px;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,.02), rgba(255,255,255,.02)),
+        repeating-linear-gradient(180deg, transparent 0 2px, rgba(255,255,255,.012) 2px 3px);
+      opacity: .6;
+    }
+
+    /* ── Nav bar ── */
+    .nav-bar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; gap: 16px;
+      padding: 0 22px; height: 52px;
+      background: linear-gradient(180deg, rgba(16, 11, 26, .96), rgba(12, 8, 20, .96));
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-family: 'Azeret Mono', monospace; font-size: .82rem;
+    }
+    .nav-bar .nav-title {
+      font-family: Cinzel, serif; font-weight: 700; font-size: 1rem;
+      color: var(--red); margin-right: auto; white-space: nowrap;
+    }
+    .nav-bar .nav-info { color: var(--muted); font-size: .78rem; }
+    .nav-bar .nav-gold { color: var(--gold); font-weight: 700; }
+
+    .shell { max-width: 960px; margin: 0 auto; padding: 26px; position: relative; z-index: 1; }
+    .panel {
+      background: linear-gradient(180deg, rgba(29, 21, 44, 0.92), rgba(16, 11, 25, 0.88));
+      border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 18px; margin-bottom: 18px;
+    }
+    .panel h2, .panel h3 { margin: 0 0 12px; font-family: Cinzel, serif; font-weight: 700; }
+    .eyebrow {
+      color: var(--gold); text-transform: uppercase; font-size: .7rem;
+      letter-spacing: .22em; margin-bottom: 8px;
+      font-family: 'Azeret Mono', monospace;
+    }
+    .muted { color: var(--muted); }
+    .mono { font-family: 'Azeret Mono', monospace; }
+    .hidden { display: none !important; }
+
+    /* ── Buttons ── */
+    .btn, button {
+      appearance: none; border: 1px solid transparent; border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), #f1d18d);
+      color: #1a1308; padding: 10px 16px; font-weight: 700;
+      cursor: pointer; text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease, opacity .2s ease;
+      box-shadow: 0 10px 24px rgba(214, 176, 95, .24);
+      font-family: 'Crimson Pro', serif; font-size: .95rem;
+    }
+    .btn:hover, button:hover { transform: translateY(-1px); }
+    .btn.secondary, button.secondary { background: rgba(255,255,255,.04); color: var(--text); border-color: var(--line); box-shadow: none; }
+    .btn.violet, button.violet { background: linear-gradient(135deg, var(--violet), #d5c0ff); color: #170d2c; box-shadow: 0 10px 24px rgba(167,123,255,.24); }
+    .btn.green, button.green { background: linear-gradient(135deg, var(--emerald), #bbf5d3); color: #082013; box-shadow: 0 10px 24px rgba(111,224,168,.24); }
+    .btn.danger, button.danger { background: linear-gradient(135deg, var(--red), #ffb1b9); color: #25080d; box-shadow: 0 10px 24px rgba(255,126,138,.24); }
+    .btn.small, button.small { padding: 7px 12px; font-size: .85rem; }
+    button:disabled, .btn:disabled { opacity: .4; cursor: not-allowed; transform: none !important; }
+    .btn.primary-action, button.primary-action {
+      padding: 13px 28px; font-size: 1.05rem;
+      box-shadow: 0 10px 34px rgba(214, 176, 95, .35), 0 0 0 1px rgba(214,176,95,.2);
+    }
+
+    /* ── Bars ── */
+    .bar { height: 10px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; margin-top: 6px; border: 1px solid rgba(255,255,255,.05); }
+    .bar.thick { height: 14px; }
+    .fill { height: 100%; border-radius: 999px; }
+    .fill.hp { background: linear-gradient(90deg, #b81d43, #ff7e8a); }
+    .fill.mp { background: linear-gradient(90deg, #6641d9, #a77bff); }
+    .fill.hp-enemy { background: linear-gradient(90deg, #9b3030, #d97070); }
+
+    .label { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; font-family: 'Azeret Mono', monospace; }
+
+    /* ── Lobby ── */
+    .lobby-player {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px; border: 1px solid var(--line); border-radius: 16px;
+      background: rgba(255,255,255,.03); margin-bottom: 8px;
+      transition: background .15s;
+    }
+    .lobby-player:hover { background: rgba(255,255,255,.05); }
+    .lobby-player .lp-info { flex: 1; }
+    .lobby-player .lp-name { font-weight: 700; font-size: 1.05rem; }
+    .lobby-player .lp-meta { color: var(--muted); font-size: .85rem; margin-top: 2px; }
+
+    .challenge-card {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px; border: 1px solid rgba(255,126,138,.25); border-radius: 16px;
+      background: rgba(255,126,138,.06); margin-bottom: 8px;
+      animation: pulse-border 2s ease-in-out infinite;
+    }
+    @keyframes pulse-border {
+      0%, 100% { border-color: rgba(255,126,138,.25); }
+      50% { border-color: rgba(255,126,138,.55); }
+    }
+    .challenge-card .cc-info { flex: 1; }
+    .challenge-card .cc-actions { display: flex; gap: 8px; }
+
+    /* ── Combat view ── */
+    .combat-arena {
+      border: 1px solid rgba(255,126,138,.2);
+      background: linear-gradient(180deg, rgba(59, 18, 34, .45), rgba(24,11,18,.55));
+      border-radius: 18px; padding: 20px; margin-bottom: 18px;
+    }
+    .fighter-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+    .fighter-card {
+      border: 1px solid var(--line); border-radius: 16px; padding: 14px;
+      background: rgba(255,255,255,.03);
+    }
+    .fighter-card.active-turn { border-color: var(--gold); box-shadow: 0 0 20px rgba(214,176,95,.15); }
+    .fighter-card .f-name { font-family: Cinzel, serif; font-weight: 700; font-size: 1.15rem; }
+    .fighter-card .f-meta { color: var(--muted); font-size: .82rem; margin-top: 2px; font-family: 'Azeret Mono', monospace; }
+    .fighter-card .f-stats { margin-top: 8px; font-family: 'Azeret Mono', monospace; font-size: .78rem; color: var(--muted); }
+
+    .turn-banner {
+      text-align: center; padding: 12px;
+      font-family: Cinzel, serif; font-weight: 700; font-size: 1.1rem;
+      border-radius: 14px; margin-bottom: 14px;
+    }
+    .turn-banner.my-turn { background: rgba(214,176,95,.1); color: var(--gold); border: 1px solid rgba(214,176,95,.3); }
+    .turn-banner.their-turn { background: rgba(167,123,255,.08); color: var(--violet); border: 1px solid rgba(167,123,255,.2); }
+    .turn-banner.finished { background: rgba(111,224,168,.08); color: var(--emerald); border: 1px solid rgba(111,224,168,.2); }
+    .turn-banner.lost { background: rgba(255,126,138,.08); color: var(--red); border: 1px solid rgba(255,126,138,.2); }
+
+    .actions-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+
+    /* ── Status effects ── */
+    .status-effects { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .status-pill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 12px; font-size: .75rem; font-family: 'Azeret Mono', monospace; }
+    .status-pill.dot { background: rgba(255,126,138,.15); color: #ff7e8a; border: 1px solid rgba(255,126,138,.25); }
+    .status-pill.debuff { background: rgba(167,123,255,.12); color: #a77bff; border: 1px solid rgba(167,123,255,.2); }
+    .status-pill.cc { background: rgba(251,191,36,.12); color: #fbbf24; border: 1px solid rgba(251,191,36,.2); }
+    .status-pill.buff { background: rgba(52,211,153,.12); color: #34d399; border: 1px solid rgba(52,211,153,.2); }
+    .status-pill.hot { background: rgba(52,211,153,.12); color: #34d399; border: 1px solid rgba(52,211,153,.2); }
+
+    /* ── Tooltips ── */
+    .tt-wrap { position: relative; display: inline-block; }
+    .tt-wrap .tt {
+      visibility: hidden; opacity: 0; pointer-events: none;
+      position: absolute; z-index: 100; bottom: calc(100% + 8px); left: 50%;
+      transform: translateX(-50%); width: max-content; max-width: 260px;
+      background: #1e1e2e; color: #e0e0e0;
+      border: 1px solid #333; border-radius: 10px;
+      padding: 10px 13px; font-size: .78rem; line-height: 1.45;
+      font-family: 'Azeret Mono', monospace; box-shadow: 0 4px 18px rgba(0,0,0,.45);
+      transition: opacity .15s, visibility .15s;
+    }
+    .tt-wrap .tt::after {
+      content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      border: 6px solid transparent; border-top-color: #333;
+    }
+    .tt-wrap:hover .tt { visibility: visible; opacity: 1; }
+    .tt .tt-title { font-family: Cinzel, serif; font-size: .85rem; margin-bottom: 4px; }
+    .tt .tt-cost { color: #a78bfa; font-size: .72rem; margin-bottom: 4px; }
+    .tt .tt-desc { color: #ccc; font-size: .74rem; }
+    .tt .tt-meta { color: #888; font-size: .68rem; margin-top: 5px; border-top: 1px solid rgba(255,255,255,.08); padding-top: 5px; }
+    .tt .tt-tag { display: inline-block; padding: 1px 6px; border-radius: 6px; font-size: .65rem; margin-right: 4px; }
+    .tt .tt-tag.physical { background: rgba(251,191,36,.15); color: #fbbf24; }
+    .tt .tt-tag.magic { background: rgba(139,92,246,.15); color: #a78bfa; }
+    .tt .tt-tag.buff { background: rgba(52,211,153,.15); color: #34d399; }
+    .tt .tt-tag.heal { background: rgba(52,211,153,.15); color: #34d399; }
+    .tt .tt-tag.restore { background: rgba(96,165,250,.15); color: #60a5fa; }
+    .tt .tt-tag.purify { background: rgba(251,191,36,.15); color: #fbbf24; }
+
+    /* ── Combat log ── */
+    .combat-log {
+      max-height: 280px; overflow-y: auto;
+      border: 1px solid var(--line); border-radius: 14px;
+      background: rgba(0,0,0,.25); padding: 8px 12px;
+      font-size: .88rem; line-height: 1.55;
+    }
+    .combat-log::-webkit-scrollbar { width: 6px; }
+    .combat-log::-webkit-scrollbar-track { background: transparent; }
+    .combat-log::-webkit-scrollbar-thumb { background: rgba(214,176,95,.2); border-radius: 99px; }
+    .combat-log .cl-entry { padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .combat-log .cl-entry:last-child { border-bottom: none; }
+
+    /* ── History ── */
+    .history-row {
+      display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+      border: 1px solid var(--line); border-radius: 14px;
+      background: rgba(255,255,255,.03); margin-bottom: 6px; font-size: .9rem;
+    }
+    .history-row.win { border-left: 3px solid var(--emerald); }
+    .history-row.loss { border-left: 3px solid var(--red); }
+    .history-row .hr-result { font-weight: 700; min-width: 44px; font-family: 'Azeret Mono', monospace; font-size: .78rem; }
+    .history-row .hr-result.win { color: var(--emerald); }
+    .history-row .hr-result.loss { color: var(--red); }
+
+    /* ── Tabs ── */
+    .tab-bar { display: flex; gap: 2px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+    .tab-btn {
+      appearance: none; border: none; border-radius: 10px 10px 0 0;
+      background: transparent; color: var(--muted);
+      padding: 8px 14px; font-weight: 600; cursor: pointer;
+      font-size: .74rem; font-family: 'Azeret Mono', monospace;
+      letter-spacing: .06em; text-transform: uppercase;
+      transition: color .15s, background .15s;
+      box-shadow: none !important; transform: none !important;
+    }
+    .tab-btn:hover { color: var(--text); background: rgba(255,255,255,.04); }
+    .tab-btn.active { color: var(--gold); background: rgba(214, 176, 95, .1); border-bottom: 2px solid var(--gold); }
+
+    .wager-input {
+      width: 90px; border-radius: 10px; border: 1px solid var(--line);
+      background: rgba(255,255,255,.06); color: var(--gold); padding: 6px 10px;
+      font-family: 'Azeret Mono', monospace; font-size: .85rem;
+      text-align: center; outline: none;
+    }
+    .wager-input:focus { border-color: var(--gold); }
+
+    /* ── Challenge modal ── */
+    .challenge-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.65); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      animation: fadeIn .2s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .challenge-modal {
+      background: linear-gradient(180deg, rgba(29, 21, 44, 0.98), rgba(16, 11, 25, 0.96));
+      border: 1px solid var(--line-strong); border-radius: var(--radius);
+      box-shadow: 0 30px 80px rgba(0,0,0,.6); padding: 24px; width: 340px; max-width: 90vw;
+      animation: modalSlide .25s ease;
+    }
+    @keyframes modalSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .challenge-modal .cm-name { font-family: Cinzel, serif; font-weight: 700; font-size: 1.15rem; margin-bottom: 4px; }
+    .challenge-modal .cm-meta { color: var(--muted); font-size: .85rem; margin-bottom: 16px; }
+    .challenge-modal .cm-label { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; font-family: 'Azeret Mono', monospace; margin-bottom: 6px; }
+    .challenge-modal .cm-actions { display: flex; gap: 8px; margin-top: 18px; }
+
+    .waiting-dots::after {
+      content: ''; animation: dots 1.5s steps(3, end) infinite;
+    }
+    @keyframes dots {
+      0% { content: '.'; }
+      33% { content: '..'; }
+      66% { content: '...'; }
+    }
+
+    @media (max-width: 700px) {
+      .shell { padding: 14px; }
+      .fighter-row { grid-template-columns: 1fr; }
+      .nav-bar { height: auto; padding: 8px 14px; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-bar">
+    <span class="nav-title">⚔ Duel Arena</span>
+    <span class="nav-info" id="navInfo"></span>
+    <span class="nav-gold" id="navGold"></span>
+    <button class="btn secondary small" onclick="goBack()">← Back to Game</button>
+    <button class="btn secondary small" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="shell">
+    <div id="message" class="panel hidden" style="border-color: rgba(214,176,95,.35); background: rgba(214,176,95,.08);"></div>
+
+    <!-- LOBBY VIEW -->
+    <div id="lobbyView">
+      <div class="panel">
+        <div class="eyebrow">⚔ DUEL ARENA</div>
+        <h2>Challenge another player</h2>
+        <div class="muted">Players in the arena lobby appear below. Set a gold wager or fight for honor alone.</div>
+      </div>
+
+      <!-- Incoming challenges -->
+      <div id="incomingSection" class="hidden">
+        <div class="panel" style="border-color: rgba(255,126,138,.25);">
+          <div class="eyebrow" style="color: var(--red);">⚔ INCOMING CHALLENGES</div>
+          <div id="incomingList"></div>
+        </div>
+      </div>
+
+      <!-- Outgoing challenges -->
+      <div id="outgoingSection" class="hidden">
+        <div class="panel" style="border-color: rgba(167,123,255,.2);">
+          <div class="eyebrow" style="color: var(--violet);">⏳ AWAITING RESPONSE</div>
+          <div id="outgoingList"></div>
+        </div>
+      </div>
+
+      <!-- Lobby list -->
+      <div class="panel">
+        <div class="tab-bar">
+          <button class="tab-btn active" id="tabLobby" onclick="switchMainTab('lobby')">Lobby</button>
+          <button class="tab-btn" id="tabHistory" onclick="switchMainTab('history')">Duel History</button>
+        </div>
+        <div id="lobbyTab">
+          <div id="lobbyList">
+            <div class="muted" style="padding:20px;text-align:center">Scanning for opponents<span class="waiting-dots"></span></div>
+          </div>
+        </div>
+        <div id="historyTab" class="hidden"></div>
+      </div>
+    </div>
+
+    <!-- COMBAT VIEW -->
+    <div id="combatView" class="hidden"></div>
+  </div>
+
+  <script>
+    let myCharId = null;
+    let myCharName = '';
+    let myCharLevel = 0;
+    let myCharClass = '';
+    let myGold = 0;
+    let activeDuelId = null;
+    let heartbeatInterval = null;
+    let pollInterval = null;
+    let currentTab = 'lobby';
+    let historyLoaded = false;
+
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+    async function api(url, options = {}) {
+      const res = await fetch(url, { credentials: 'same-origin', headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }, ...options });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Request failed');
+      return data;
+    }
+    async function post(url, body = {}) { return api(url, { method: 'POST', body: JSON.stringify(body) }); }
+
+    function showMessage(text, isError = false) {
+      const el = $('message');
+      el.textContent = text;
+      el.classList.remove('hidden');
+      el.style.borderColor = isError ? 'rgba(255,126,138,.35)' : 'rgba(214,176,95,.35)';
+      el.style.background = isError ? 'rgba(255,126,138,.08)' : 'rgba(214,176,95,.08)';
+      setTimeout(() => el.classList.add('hidden'), 4000);
+    }
+
+    function goBack() {
+      // Leave lobby gracefully
+      post('/api/duel/leave').catch(() => {});
+      window.location.href = '/fantasy-rpg';
+    }
+
+    async function logout() {
+      try {
+        post('/api/duel/leave').catch(() => {});
+        const res = await post('/api/logout');
+        window.location.href = res.redirect || '/';
+      } catch (err) { window.location.href = '/'; }
+    }
+
+    // ══════════════════════════════════════
+    //  LOBBY
+    // ══════════════════════════════════════
+
+    async function heartbeat() {
+      try {
+        const data = await post('/api/duel/heartbeat');
+        myCharId = data.charId;
+        myCharName = data.charName;
+        myCharLevel = data.charLevel;
+        myCharClass = data.charClass;
+        myGold = data.charGold;
+
+        $('navInfo').textContent = `${data.charName} · Lv ${data.charLevel} ${data.charClass}`;
+        $('navGold').textContent = `💰 ${data.charGold}`;
+
+        // If we have an active duel, switch to combat view
+        if (data.activeDuelId) {
+          activeDuelId = data.activeDuelId;
+          showCombatView();
+          return;
+        }
+
+        if (activeDuelId && !data.activeDuelId) {
+          // Duel ended, back to lobby
+          activeDuelId = null;
+          showLobbyView();
+        }
+
+        renderLobby(data);
+      } catch (err) {
+        if (err.message.includes('Authentication')) {
+          window.location.href = '/';
+        }
+      }
+    }
+
+    function renderLobby(data) {
+      // Incoming challenges
+      if (data.incoming.length) {
+        $('incomingSection').classList.remove('hidden');
+        $('incomingList').innerHTML = data.incoming.map(c => `
+          <div class="challenge-card">
+            <div class="cc-info">
+              <strong>${esc(c.char_name)}</strong>
+              <span class="muted"> · Lv ${c.char_level} ${esc(c.char_class)}</span>
+              ${c.wager > 0 ? `<span class="mono" style="color:var(--gold);margin-left:8px">Wager: ${c.wager}g</span>` : '<span class="muted" style="margin-left:8px">Friendly</span>'}
+            </div>
+            <div class="cc-actions">
+              <button class="green small" onclick="acceptDuel(${c.id})">Accept</button>
+              <button class="danger small" onclick="declineDuel(${c.id})">Decline</button>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        $('incomingSection').classList.add('hidden');
+      }
+
+      // Outgoing challenges
+      if (data.outgoing.length) {
+        $('outgoingSection').classList.remove('hidden');
+        $('outgoingList').innerHTML = data.outgoing.map(c => `
+          <div class="lobby-player" style="border-color: rgba(167,123,255,.2);">
+            <div class="lp-info">
+              <div class="lp-name">${esc(c.char_name)}</div>
+              <div class="lp-meta">Lv ${c.char_level} ${esc(c.char_class)} ${c.wager > 0 ? `· Wager: ${c.wager}g` : '· Friendly'}</div>
+            </div>
+            <button class="secondary small" onclick="declineDuel(${c.id})">Cancel</button>
+          </div>
+        `).join('');
+      } else {
+        $('outgoingSection').classList.add('hidden');
+      }
+
+      // Lobby players
+      if (data.lobby.length) {
+        const hasChallenge = data.outgoing.length > 0;
+        $('lobbyList').innerHTML = data.lobby.map(p => `
+          <div class="lobby-player">
+            <div class="lp-info">
+              <div class="lp-name">${esc(p.char_name)}</div>
+              <div class="lp-meta">Lv ${p.char_level} ${esc(p.char_class)} · ${esc(p.char_race)}</div>
+            </div>
+            <button class="small" onclick="openChallengeModal(${p.char_id}, '${esc(p.char_name)}', ${p.char_level}, '${esc(p.char_class)}')" ${hasChallenge ? 'disabled' : ''}>⚔ Duel</button>
+          </div>
+        `).join('');
+      } else {
+        $('lobbyList').innerHTML = '<div class="muted" style="padding:20px;text-align:center">No other players in the arena right now. Waiting<span class="waiting-dots"></span></div>';
+      }
+    }
+
+    let challengeModalTarget = null;
+
+    function openChallengeModal(charId, name, level, cls) {
+      challengeModalTarget = charId;
+      const overlay = document.createElement('div');
+      overlay.className = 'challenge-overlay';
+      overlay.id = 'challengeOverlay';
+      overlay.onclick = (e) => { if (e.target === overlay) closeChallengeModal(); };
+      overlay.innerHTML = `
+        <div class="challenge-modal">
+          <div class="eyebrow" style="color:var(--red)">⚔ CHALLENGE</div>
+          <div class="cm-name">${esc(name)}</div>
+          <div class="cm-meta">Lv ${level} ${esc(cls)}</div>
+          <div class="cm-label">GOLD WAGER</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <input type="number" class="wager-input" id="modalWager" min="0" max="${myGold}" value="0" placeholder="0g" style="width:120px" />
+            <span class="muted mono" style="font-size:.78rem">/ ${myGold}g</span>
+          </div>
+          <div class="muted" style="font-size:.82rem;margin-top:6px">Set to 0 for a friendly duel.</div>
+          <div class="cm-actions">
+            <button class="small" onclick="confirmChallenge()">⚔ Send Challenge</button>
+            <button class="secondary small" onclick="closeChallengeModal()">Cancel</button>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+      setTimeout(() => document.getElementById('modalWager')?.focus(), 50);
+    }
+
+    function closeChallengeModal() {
+      challengeModalTarget = null;
+      const overlay = document.getElementById('challengeOverlay');
+      if (overlay) overlay.remove();
+    }
+
+    async function confirmChallenge() {
+      if (!challengeModalTarget) return;
+      try {
+        const wagerInput = document.getElementById('modalWager');
+        const wager = Math.max(0, parseInt(wagerInput?.value) || 0);
+        const targetCharId = challengeModalTarget;
+        closeChallengeModal();
+        await post('/api/duel/challenge', { targetCharId, wager });
+        showMessage('Challenge sent!');
+      } catch (err) { showMessage(err.message, true); }
+    }
+
+    async function acceptDuel(duelId) {
+      try {
+        const data = await post('/api/duel/accept', { duelId });
+        activeDuelId = data.duelId;
+        showCombatView();
+      } catch (err) { showMessage(err.message, true); }
+    }
+
+    async function declineDuel(duelId) {
+      try {
+        await post('/api/duel/decline', { duelId });
+      } catch (err) { showMessage(err.message, true); }
+    }
+
+    // ══════════════════════════════════════
+    //  COMBAT VIEW
+    // ══════════════════════════════════════
+
+    function showCombatView() {
+      $('lobbyView').classList.add('hidden');
+      $('combatView').classList.remove('hidden');
+      // Stop heartbeat, start combat polling
+      if (heartbeatInterval) { clearInterval(heartbeatInterval); heartbeatInterval = null; }
+      pollDuelState();
+      if (!pollInterval) pollInterval = setInterval(pollDuelState, 2500);
+    }
+
+    function showLobbyView() {
+      $('combatView').classList.add('hidden');
+      $('lobbyView').classList.remove('hidden');
+      $('combatView').innerHTML = '';
+      if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+      if (!heartbeatInterval) heartbeatInterval = setInterval(heartbeat, 3000);
+      heartbeat();
+    }
+
+    async function pollDuelState() {
+      if (!activeDuelId) return;
+      try {
+        const data = await api(`/api/duel/state?duelId=${activeDuelId}`);
+        renderCombat(data.duel);
+      } catch (err) {
+        console.error('Poll error:', err);
+      }
+    }
+
+    function renderStatusEffects(effects = []) {
+      if (!effects.length) return '';
+      return `<div class="status-effects">${effects.map(e =>
+        `<span class="status-pill ${esc(e.type || 'debuff')}">${esc(e.icon || '✦')} ${esc(e.name)} ${e.turnsLeft}</span>`
+      ).join('')}</div>`;
+    }
+
+    function renderAbilityButton(a, disabled, cooldownLeft) {
+      const onCd = cooldownLeft > 0;
+      const isDisabled = disabled || onCd;
+      const meta = [];
+      if (a.type === 'physical' || a.type === 'magic') {
+        meta.push(`<span class="tt-tag ${esc(a.type)}">${esc(a.type)}</span>`);
+        if (a.damage) meta.push(`<span class="tt-tag ${esc(a.type)}">${a.hits ? a.hits + '×' : ''}${a.damage}x</span>`);
+      } else {
+        meta.push(`<span class="tt-tag ${esc(a.type)}">${esc(a.type)}</span>`);
+      }
+      if (a.stun) meta.push(`<span class="tt-tag" style="background:rgba(251,191,36,.12);color:#fbbf24">stun</span>`);
+      if (a.slow) meta.push(`<span class="tt-tag" style="background:rgba(96,165,250,.15);color:#60a5fa">slow</span>`);
+      if (a.dot) meta.push(`<span class="tt-tag" style="background:rgba(255,126,138,.15);color:#ff7e8a">${a.dot.damage} ${a.dot.type||'poison'}/t</span>`);
+      if (a.healPct) meta.push(`<span class="tt-tag heal">heal ${a.healPct}%</span>`);
+      if (a.selfDamagePct) meta.push(`<span class="tt-tag" style="background:rgba(255,126,138,.15);color:#ff7e8a">self −${a.selfDamagePct}%</span>`);
+      const cdLabel = onCd ? ` [${cooldownLeft}t]` : '';
+      const btnStyle = onCd ? 'style="opacity:.45"' : '';
+      return `<span class="tt-wrap"><button class="violet small" onclick="duelAction('ability','${a.slug}')" ${isDisabled ? 'disabled' : ''} ${btnStyle}>${esc(a.name)} (${a.cost} MP)${cdLabel}</button><span class="tt"><div class="tt-title">${esc(a.name)}</div><div class="tt-cost">${a.cost} MP</div><div class="tt-desc">${esc(a.description || '')}</div><div class="tt-meta">${meta.join(' ')}</div></span></span>`;
+    }
+
+    function renderCombat(duel) {
+      if (!duel || !duel.me || !duel.opponent) {
+        $('combatView').innerHTML = '<div class="panel"><div class="muted">Loading duel...</div></div>';
+        return;
+      }
+
+      const me = duel.me;
+      const opp = duel.opponent;
+      const isFinished = duel.state === 'finished';
+      const isMyTurn = duel.isMyTurn && !isFinished;
+
+      const meHpPct = Math.max(0, Math.min(100, (me.hp / me.maxHp) * 100));
+      const meMpPct = Math.max(0, Math.min(100, (me.mp / me.maxMp) * 100));
+      const oppHpPct = Math.max(0, Math.min(100, (opp.hp / opp.maxHp) * 100));
+      const oppMpPct = Math.max(0, Math.min(100, (opp.mp / opp.maxMp) * 100));
+
+      let banner = '';
+      if (isFinished) {
+        if (duel.iWon) {
+          banner = `<div class="turn-banner finished">🏆 VICTORY! You defeated ${esc(opp.name)}!${duel.wager > 0 ? ` Won ${duel.wager} gold!` : ''}</div>`;
+        } else {
+          banner = `<div class="turn-banner lost">☠ DEFEAT! ${esc(opp.name)} wins.${duel.wager > 0 ? ` Lost ${duel.wager} gold.` : ''}</div>`;
+        }
+      } else if (isMyTurn) {
+        banner = `<div class="turn-banner my-turn">⚔ Your Turn — Choose your action</div>`;
+      } else {
+        banner = `<div class="turn-banner their-turn">⏳ ${esc(opp.name)}'s Turn<span class="waiting-dots"></span></div>`;
+      }
+
+      let html = `
+        <div class="combat-arena">
+          <div class="eyebrow">⚔ DUEL${duel.wager > 0 ? ` · WAGER: ${duel.wager} GOLD` : ' · FRIENDLY'} · TURN ${duel.turnNumber}</div>
+          ${banner}
+          <div class="fighter-row">
+            <div class="fighter-card ${isMyTurn ? 'active-turn' : ''}">
+              <div class="f-name" style="color:var(--emerald)">${esc(me.name)} <span class="muted" style="font-size:.8rem">(You)</span></div>
+              <div class="f-meta">Lv ${me.level} ${esc(me.race)} ${esc(me.class)}</div>
+              <div style="margin-top:10px">
+                <div class="label">HP ${me.hp}/${me.maxHp}</div>
+                <div class="bar thick"><div class="fill hp" style="width:${meHpPct}%"></div></div>
+              </div>
+              <div style="margin-top:6px">
+                <div class="label">MP ${me.mp}/${me.maxMp}</div>
+                <div class="bar"><div class="fill mp" style="width:${meMpPct}%"></div></div>
+              </div>
+              <div class="f-stats">ATK ${me.stats.attack} · DEF ${me.stats.defense}</div>
+              ${renderStatusEffects(me.effects)}
+            </div>
+            <div class="fighter-card ${!isMyTurn && !isFinished ? 'active-turn' : ''}">
+              <div class="f-name" style="color:var(--red)">${esc(opp.name)}</div>
+              <div class="f-meta">Lv ${opp.level} ${esc(opp.race)} ${esc(opp.class)}</div>
+              <div style="margin-top:10px">
+                <div class="label">HP ${opp.hp}/${opp.maxHp}</div>
+                <div class="bar thick"><div class="fill hp-enemy" style="width:${oppHpPct}%"></div></div>
+              </div>
+              <div style="margin-top:6px">
+                <div class="label">MP ${opp.mp}/${opp.maxMp}</div>
+                <div class="bar"><div class="fill mp" style="width:${oppMpPct}%"></div></div>
+              </div>
+              <div class="f-stats">ATK ${opp.stats.attack} · DEF ${opp.stats.defense}</div>
+              ${renderStatusEffects(opp.effects)}
+            </div>
+          </div>`;
+
+      // Actions (only on my turn)
+      if (isMyTurn) {
+        html += `
+          <div class="actions-bar">
+            <button class="primary-action" onclick="duelAction('attack')">⚔ Attack</button>
+            <button class="danger" onclick="forfeitDuel()">🏳 Forfeit</button>
+          </div>
+          <div style="margin-top:14px">
+            <div class="label">ABILITIES</div>
+            <div class="actions-bar" style="margin-top:8px">
+              ${(me.abilities || []).map(a => renderAbilityButton(a, me.mp < a.cost, (me.cooldowns || {})[a.slug] || 0)).join('') || '<span class="muted">No abilities.</span>'}
+            </div>
+          </div>`;
+      } else if (isFinished) {
+        html += `
+          <div class="actions-bar" style="justify-content:center">
+            <button class="primary-action" onclick="returnToLobby()">Return to Lobby</button>
+          </div>`;
+      }
+
+      html += `</div>`; // end combat-arena
+
+      // Combat log
+      const logEntries = duel.log || [];
+      html += `
+        <div class="panel">
+          <div class="eyebrow">COMBAT LOG</div>
+          <div class="combat-log" id="combatLog">
+            ${logEntries.map(l => `<div class="cl-entry">${esc(l)}</div>`).join('')}
+          </div>
+        </div>`;
+
+      $('combatView').innerHTML = html;
+
+      // Auto-scroll log to bottom
+      const logEl = $('combatLog');
+      if (logEl) logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    async function duelAction(action, abilitySlug = null) {
+      try {
+        const data = await post('/api/duel/action', { duelId: activeDuelId, action, abilitySlug });
+        renderCombat(data.duel);
+      } catch (err) { showMessage(err.message, true); }
+    }
+
+    async function forfeitDuel() {
+      if (!confirm('Are you sure you want to forfeit this duel?')) return;
+      try {
+        const data = await post('/api/duel/forfeit', { duelId: activeDuelId });
+        renderCombat(data.duel);
+      } catch (err) { showMessage(err.message, true); }
+    }
+
+    function returnToLobby() {
+      activeDuelId = null;
+      showLobbyView();
+    }
+
+    // ══════════════════════════════════════
+    //  HISTORY TAB
+    // ══════════════════════════════════════
+
+    function switchMainTab(tab) {
+      currentTab = tab;
+      $('tabLobby').classList.toggle('active', tab === 'lobby');
+      $('tabHistory').classList.toggle('active', tab === 'history');
+      $('lobbyTab').classList.toggle('hidden', tab !== 'lobby');
+      $('historyTab').classList.toggle('hidden', tab !== 'history');
+      if (tab === 'history' && !historyLoaded) loadHistory();
+    }
+
+    async function loadHistory() {
+      try {
+        const data = await api('/api/duel/history');
+        historyLoaded = true;
+        let html = `
+          <div style="margin-bottom:14px">
+            <span class="mono" style="color:var(--emerald);font-size:.9rem">Wins: ${data.wins}</span>
+            <span class="muted" style="margin:0 8px">·</span>
+            <span class="mono" style="color:var(--red);font-size:.9rem">Losses: ${data.losses}</span>
+          </div>`;
+
+        if (data.history.length) {
+          html += data.history.map(h => {
+            const isWin = h.winner_id === data.charId;
+            const oppName = h.challenger_id === data.charId ? h.defender_name : h.challenger_name;
+            const oppClass = h.challenger_id === data.charId ? h.defender_class : h.challenger_class;
+            const oppLevel = h.challenger_id === data.charId ? h.defender_level : h.challenger_level;
+            const date = new Date(h.finished_at).toLocaleDateString();
+            return `<div class="history-row ${isWin ? 'win' : 'loss'}">
+              <span class="hr-result ${isWin ? 'win' : 'loss'}">${isWin ? 'WIN' : 'LOSS'}</span>
+              <span style="flex:1"><strong>${esc(oppName)}</strong> <span class="muted">Lv ${oppLevel} ${esc(oppClass)}</span></span>
+              ${h.wager > 0 ? `<span class="mono" style="color:var(--gold);font-size:.82rem">${h.wager}g</span>` : ''}
+              <span class="muted mono" style="font-size:.75rem">${h.turns} turns · ${date}</span>
+            </div>`;
+          }).join('');
+        } else {
+          html += '<div class="muted" style="padding:20px;text-align:center">No duels fought yet.</div>';
+        }
+
+        $('historyTab').innerHTML = html;
+      } catch (err) {
+        $('historyTab').innerHTML = `<div class="muted">Failed to load history.</div>`;
+      }
+    }
+
+    // ══════════════════════════════════════
+    //  INIT
+    // ══════════════════════════════════════
+
+    async function init() {
+      await heartbeat();
+      heartbeatInterval = setInterval(heartbeat, 3000);
+    }
+
+    // Cleanup on page leave
+    window.addEventListener('beforeunload', () => {
+      // Fire-and-forget lobby leave
+      navigator.sendBeacon('/api/duel/leave', new Blob(['{}'], { type: 'application/json' }));
+    });
+
+    init();
+  </script>
+</body>
+</html>

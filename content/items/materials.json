@@ -1,0 +1,434 @@
+{
+  "wolf-pelt": {
+    "cost": 0,
+    "name": "Wolf Pelt",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "A rough grey pelt."
+  },
+  "spider-silk": {
+    "cost": 0,
+    "name": "Spider Silk",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Sticky but strong."
+  },
+  "boar-tusk": {
+    "cost": 0,
+    "name": "Boar Tusk",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Curved and sharp."
+  },
+  "leather-scraps": {
+    "cost": 0,
+    "name": "Leather Scraps",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Scraps of worn leather."
+  },
+  "bandit-cloak": {
+    "cost": 0,
+    "name": "Bandit Cloak",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "A tattered cloak."
+  },
+  "serpent-fang": {
+    "cost": 0,
+    "name": "Serpent Fang",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Drips with venom."
+  },
+  "bone-dust": {
+    "cost": 0,
+    "name": "Bone Dust",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Powdered remains."
+  },
+  "wraith-essence": {
+    "cost": 0,
+    "name": "Wraith Essence",
+    "sell": 8,
+    "type": "material",
+    "rarity": "uncommon",
+    "description": "A cold, swirling mist in a vial."
+  },
+  "holy-shard": {
+    "cost": 0,
+    "name": "Holy Shard",
+    "sell": 8,
+    "type": "material",
+    "rarity": "uncommon",
+    "description": "Fragment of a consecrated weapon."
+  },
+  "goblin-ear": {
+    "cost": 0,
+    "name": "Goblin Ear",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Proof of the kill."
+  },
+  "shaman-staff-shard": {
+    "cost": 0,
+    "name": "Shaman Staff Shard",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Cracked wood with faint runes."
+  },
+  "troll-hide": {
+    "cost": 0,
+    "name": "Troll Hide",
+    "sell": 8,
+    "type": "material",
+    "rarity": "uncommon",
+    "description": "Thick, regenerating hide."
+  },
+  "fire-chitin": {
+    "cost": 0,
+    "name": "Fire Chitin",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Warm to the touch."
+  },
+  "molten-core": {
+    "cost": 0,
+    "name": "Molten Core",
+    "sell": 8,
+    "type": "material",
+    "rarity": "uncommon",
+    "description": "Glows with inner heat."
+  },
+  "golem-heart": {
+    "cost": 0,
+    "name": "Golem Heart",
+    "sell": 20,
+    "type": "material",
+    "rarity": "rare",
+    "description": "A heavy stone etched with runes."
+  },
+  "rat-tail": {
+    "cost": 0,
+    "name": "Rat Tail",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Disgusting but someone will buy it."
+  },
+  "rotting-flesh": {
+    "cost": 0,
+    "name": "Rotting Flesh",
+    "sell": 3,
+    "type": "material",
+    "rarity": "common",
+    "description": "Why are you carrying this."
+  },
+  "wisp-lantern": {
+    "cost": 0,
+    "name": "Wisp Lantern",
+    "sell": 8,
+    "type": "material",
+    "rarity": "uncommon",
+    "description": "Flickers with ghostly light."
+  },
+  "frost-crystal": {
+    "slug": "frost-crystal",
+    "name": "Frost Crystal",
+    "type": "material",
+    "slot": "material",
+    "rarity": "common",
+    "description": "A shard of crystallized cold. Hums faintly when touched.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 8,
+    "sell": 3
+  },
+  "frozen-hide": {
+    "slug": "frozen-hide",
+    "name": "Frozen Hide",
+    "type": "material",
+    "slot": "material",
+    "rarity": "common",
+    "description": "Thick animal hide preserved by supernatural cold. Tough and supple.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 10,
+    "sell": 4
+  },
+  "permafrost-ore": {
+    "slug": "permafrost-ore",
+    "name": "Permafrost Ore",
+    "type": "material",
+    "slot": "material",
+    "rarity": "common",
+    "description": "Dense blue-grey metal found in frozen veins. Never fully thaws.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 12,
+    "sell": 5
+  },
+  "spectral-ice": {
+    "slug": "spectral-ice",
+    "name": "Spectral Ice",
+    "type": "material",
+    "slot": "material",
+    "rarity": "uncommon",
+    "description": "A translucent shard of ice that glows from within. Wraith residue.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 18,
+    "sell": 8
+  },
+  "giant-bone": {
+    "slug": "giant-bone",
+    "name": "Giant Bone",
+    "type": "material",
+    "slot": "material",
+    "rarity": "uncommon",
+    "description": "A massive femur fragment from a frost giant. Dense and heavy.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 20,
+    "sell": 9
+  },
+  "glacial-essence": {
+    "slug": "glacial-essence",
+    "name": "Glacial Essence",
+    "type": "material",
+    "slot": "material",
+    "rarity": "uncommon",
+    "description": "Condensed elemental cold extracted from glacial creatures. Radiates power.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 25,
+    "sell": 12
+  },
+  "drake-scale-shard": {
+    "slug": "drake-scale-shard",
+    "name": "Drake Scale Shard",
+    "type": "material",
+    "slot": "material",
+    "rarity": "rare",
+    "description": "A fragment of ice drake scale. Nearly indestructible and bitterly cold.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 40,
+    "sell": 20
+  },
+  "frostbloom-petal": {
+    "slug": "frostbloom-petal",
+    "name": "Frostbloom Petal",
+    "type": "material",
+    "slot": "material",
+    "rarity": "common",
+    "description": "A delicate flower that only blooms in extreme cold. Used in frost alchemy.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 8,
+    "sell": 3
+  },
+  "volcanic-glass": {
+    "slug": "volcanic-glass",
+    "name": "Volcanic Glass",
+    "type": "material",
+    "slot": "material",
+    "rarity": "common",
+    "description": "Sharp, glittering obsidian. Useful for blades and enchantments.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 15,
+    "sell": 6
+  },
+  "ember-dust": {
+    "slug": "ember-dust",
+    "name": "Ember Dust",
+    "type": "material",
+    "slot": "material",
+    "rarity": "common",
+    "description": "Fine powder of perpetually smoldering ash. Warm to the touch.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 12,
+    "sell": 5
+  },
+  "magma-core": {
+    "slug": "magma-core",
+    "name": "Magma Core",
+    "type": "material",
+    "slot": "material",
+    "rarity": "uncommon",
+    "description": "A sphere of contained magma, harvested from elementals. Pulses with heat.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 30,
+    "sell": 14
+  },
+  "demon-shard": {
+    "slug": "demon-shard",
+    "name": "Demon Shard",
+    "type": "material",
+    "slot": "material",
+    "rarity": "uncommon",
+    "description": "A fragment of crystallized infernal energy. Throbs with dark power.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 35,
+    "sell": 16
+  },
+  "basalt-plate": {
+    "slug": "basalt-plate",
+    "name": "Basalt Plate",
+    "type": "material",
+    "slot": "material",
+    "rarity": "common",
+    "description": "A thick slab of heat-treated basalt. Nearly indestructible.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 18,
+    "sell": 7
+  },
+  "sulfur-crystal": {
+    "slug": "sulfur-crystal",
+    "name": "Sulfur Crystal",
+    "type": "material",
+    "slot": "material",
+    "rarity": "common",
+    "description": "A toxic yellow crystal that smells of brimstone. Handle with care.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 14,
+    "sell": 5
+  },
+  "infernal-essence": {
+    "slug": "infernal-essence",
+    "name": "Infernal Essence",
+    "type": "material",
+    "slot": "material",
+    "rarity": "rare",
+    "description": "Distilled demonic energy, volatile and powerful. Used in the strongest Emberveil crafting.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 60,
+    "sell": 28
+  },
+  "drake-fire-gland": {
+    "slug": "drake-fire-gland",
+    "name": "Drake Fire Gland",
+    "type": "material",
+    "slot": "material",
+    "rarity": "uncommon",
+    "description": "The fire-producing organ of an inferno drake. Still hot.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 40,
+    "sell": 18
+  },
+  "void-shard": {
+    "slug": "void-shard",
+    "name": "Void Shard",
+    "type": "material",
+    "slot": "material",
+    "rarity": "common",
+    "description": "A fragment of crystallized nothingness. Cold, dark, and slightly translucent.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 25,
+    "sell": 10
+  },
+  "reality-fragment": {
+    "slug": "reality-fragment",
+    "name": "Reality Fragment",
+    "type": "material",
+    "slot": "material",
+    "rarity": "common",
+    "description": "A piece of solid reality, broken off from the world's edge. Shimmers with possibility.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 22,
+    "sell": 9
+  },
+  "entropy-dust": {
+    "slug": "entropy-dust",
+    "name": "Entropy Dust",
+    "type": "material",
+    "slot": "material",
+    "rarity": "common",
+    "description": "The powdered remains of decayed timelines. Handle carefully \u2014 it ages what it touches.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 20,
+    "sell": 8
+  },
+  "abyssal-core": {
+    "slug": "abyssal-core",
+    "name": "Abyssal Core",
+    "type": "material",
+    "slot": "material",
+    "rarity": "uncommon",
+    "description": "A sphere of compressed void energy. Pulses with the heartbeat of the Abyss.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 50,
+    "sell": 22
+  },
+  "thought-crystal": {
+    "slug": "thought-crystal",
+    "name": "Thought Crystal",
+    "type": "material",
+    "slot": "material",
+    "rarity": "uncommon",
+    "description": "Crystallized consciousness. It whispers the thoughts of whoever it was extracted from.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 45,
+    "sell": 20
+  },
+  "paradox-essence": {
+    "slug": "paradox-essence",
+    "name": "Paradox Essence",
+    "type": "material",
+    "slot": "material",
+    "rarity": "uncommon",
+    "description": "Distilled logical impossibility. It exists and doesn't. Using it in crafting produces unpredictable but powerful results.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 55,
+    "sell": 24
+  },
+  "sovereign-ichor": {
+    "slug": "sovereign-ichor",
+    "name": "Sovereign Ichor",
+    "type": "material",
+    "slot": "material",
+    "rarity": "rare",
+    "description": "The blood of a void sovereign \u2014 liquid anti-reality. The most dangerous crafting material known to exist.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 100,
+    "sell": 45
+  },
+  "omega-plate": {
+    "slug": "omega-plate",
+    "name": "Omega Plate",
+    "type": "material",
+    "slot": "material",
+    "rarity": "uncommon",
+    "description": "Armor plating from an omega construct. Forged from the compressed remains of dead universes.",
+    "stackable": true,
+    "maxStack": 99,
+    "cost": 60,
+    "sell": 26
+  }
+}
