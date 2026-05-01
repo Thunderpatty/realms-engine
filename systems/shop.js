@@ -273,6 +273,11 @@ function register(app, requireAuth, ctx) {
       const char = await getChar(req.session.userId, req.session.activeCharId);
       if (!char) return res.status(400).json({ error: 'No character.' });
       if (char.in_combat) return res.status(400).json({ error: 'Use combat item actions during combat.' });
+      if (char.raid_state) return res.status(400).json({ error: 'No consumables during a raid — rely on the recovery choices.' });
+      if (char.party_id) {
+        const p = await q1('SELECT state FROM fantasy_parties WHERE id=$1', [char.party_id]);
+        if (p && p.state === 'in_raid') return res.status(400).json({ error: 'No consumables during a raid — rely on the recovery choices.' });
+      }
       const { itemSlug } = req.body;
       const item = getContent().items[itemSlug];
       if (!item || item.type !== 'consumable') return res.status(400).json({ error: 'That item cannot be used.' });

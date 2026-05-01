@@ -250,6 +250,10 @@ const MIGRATIONS = [
   'ALTER TABLE fantasy_characters ADD COLUMN raid_state JSONB DEFAULT NULL',
   'ALTER TABLE fantasy_characters ADD COLUMN party_id INTEGER DEFAULT NULL',
   "ALTER TABLE fantasy_characters ADD COLUMN unlocked_realms JSONB DEFAULT '[\"ashlands\"]'",
+  'ALTER TABLE fantasy_characters ADD COLUMN active_abilities_raid JSONB DEFAULT NULL',
+  'ALTER TABLE fantasy_party_members ADD COLUMN lobby_joined BOOLEAN NOT NULL DEFAULT FALSE',
+  'ALTER TABLE fantasy_raid_runs ADD COLUMN duration_seconds INTEGER',
+  "ALTER TABLE fantasy_characters ADD COLUMN spec_state JSONB DEFAULT '{}'",
 ];
 
 const TABLES_V2 = [
@@ -404,6 +408,11 @@ async function createSchema(db) {
       }
     }
   }
+  // One-time cleanup: clear stale party raid stubs from characters
+  try {
+    await db.query("UPDATE fantasy_characters SET raid_state = NULL WHERE raid_state IS NOT NULL AND raid_state->>'partyRaid' = 'true'");
+  } catch(e) { /* ignore */ }
+
   // Create performance indexes (idempotent)
   for (const sql of INDEXES) {
     try {

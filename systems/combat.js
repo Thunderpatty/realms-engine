@@ -4,6 +4,7 @@
 // ═══════════════════════════════════════════════════════════════
 
 const { validate, schemas } = require('../validation');
+const SPECS = require('../shared/class-specs');
 const GAME_CONFIG = require('../shared/game-config');
 
 function register(app, requireAuth, ctx) {
@@ -249,6 +250,7 @@ function register(app, requireAuth, ctx) {
       // Ensure status effect arrays exist
       cs.playerEffects = cs.playerEffects || [];
       cs.playerTempPassives = cs.playerTempPassives || [];
+      cs.specState = cs.specState || {};
       for (const en of cs.enemies) {
         en.effects = en.effects || [];
         if (en.stunned && !en.effects.some(e => e.slug === 'stun')) {
@@ -261,6 +263,24 @@ function register(app, requireAuth, ctx) {
       const effectiveStats = { ...stats };
       for (const [k, v] of Object.entries(playerEffectMods)) {
         if (effectiveStats[k] !== undefined) effectiveStats[k] = Math.max(0, effectiveStats[k] + v);
+      }
+      // Apply active player buffs to stats. Defense/dodge/damage are consumed
+      // separately in the damage-taken path; everything else (str/int/wis/dex/
+      // cha/attack and 'all') was previously pushed onto playerBuffs but never
+      // read, making every stat-boosting ability cosmetic. Scaled by level so
+      // flat values remain relevant at high level: effective = amount + level*0.15
+      if (cs.playerBuffs) {
+        for (const b of cs.playerBuffs) {
+          if (b.stat === 'defense' || b.stat === 'dodge' || b.stat === 'damage') continue;
+          const scaled = Math.max(1, Math.floor((b.amount || 0) + (char.level || 1) * 0.15));
+          if (b.stat === 'all') {
+            for (const s of ['str', 'int', 'wis', 'dex', 'cha', 'attack']) {
+              if (effectiveStats[s] !== undefined) effectiveStats[s] = Math.max(0, effectiveStats[s] + scaled);
+            }
+          } else if (effectiveStats[b.stat] !== undefined) {
+            effectiveStats[b.stat] = Math.max(0, effectiveStats[b.stat] + scaled);
+          }
+        }
       }
       const perkBonuses = getEquipmentPerkBonuses(equipment);
 
@@ -288,19 +308,47 @@ function register(app, requireAuth, ctx) {
       }
       const rangerDmgReduction = (compTB.rangerDmgReduction && compAlly?.hp > 0) ? (1 - compTB.rangerDmgReduction / 100) : 1;
       // Track arcane surge charges
-      cs.arcaneSurgeCharges = cs.arcaneSurgeCharges || 0;
+      cs.specState.arcaneSurgeCharges = cs.specState.arcaneSurgeCharges || 0;
       // Track vanish state
-      cs.vanishActive = cs.vanishActive || false;
+      cs.specState.vanishActive = cs.specState.vanishActive || false;
       // Track bloodrage state (berserker: next attack 2× after kill)
-      cs.bloodrageActive = cs.bloodrageActive || false;
+      cs.specState.bloodrageActive = cs.specState.bloodrageActive || false;
       // Track divine shield
       cs.divineShield = cs.divineShield || 0;
+
+      // Build spec context for class-specs hook calls this turn.
+      // All hooks read/write state via ctx.state (= cs.specState).
+      const specCtx = {
+        player: char,
+        target: null,  // set before each damage calc
+        attacker: null,
+        passive: cbPassive,
+        spec: classBonus,
+        specSlug: classBonus?.slug || null,
+        specTier,
+        special: cbTierData.special ? { ...(classBonus?.special || {}), ...cbTierData.special } : classBonus?.special,
+        allEnemies: cs.enemies || [],
+        allAllies: cs.allies || [],
+        log,
+        toast: null,
+        rand,
+        applyEffect,
+        STATUS_EFFECTS,
+        state: cs.specState,
+        combatState: cs,
+        abilityType: null,
+        abilitySlug: null,
+      };
+      // Fire combat-start hook (idempotent — won't re-fire once combatStartFired)
+      SPECS.specCombatStart(specCtx);
+      // Per-turn ticks (hp regen, tick bloodrage/deathlessRage timers, party regen)
+      SPECS.specTurnStart(specCtx);
 
       // Clear defend flag from previous turn
       cs.defending = false;
       // Clear vanish after one round
-      if (cs.vanishActive && cs.vanishUsedTurn && cs.vanishUsedTurn < cs.turn) {
-        cs.vanishActive = false;
+      if (cs.specState.vanishActive && cs.specState.vanishUsedTurn && cs.specState.vanishUsedTurn < cs.turn) {
+        cs.specState.vanishActive = false;
       }
 
       // Dungeon mechanic: scorching heat DoT
@@ -326,7 +374,11 @@ function register(app, requireAuth, ctx) {
       const effectiveTargetDefense = target ? Math.max(0, target.defense + (targetEffectMods.defense || 0)) : 0;
       const enemyDodgeChance = target ? calcEnemyDodgeChance(target.defense) + darknessPenalty : 0;
       const momentumTier = getMomentumTier(cs.momentum || 0);
-      const playerCritChance = Math.min(35, calcCritChance(effectiveStats.cha) + perkBonuses.critBonus + momentumTier.critBonus + (rp?.critBonusPct || 0));
+      // Rogue's primary stat is DEX — let it contribute to crit on top of CHA.
+      // Without this, rogue crit scales only from CHA (a secondary stat) and the
+      // 18% CHA cap makes crit builds non-viable. +1% per 4 DEX, capped at +15%.
+      const rogueCritBonus = (char.class === 'rogue') ? Math.min(15, Math.floor((effectiveStats.dex || 0) / 4)) : 0;
+      const playerCritChance = Math.min(40, calcCritChance(effectiveStats.cha) + rogueCritBonus + perkBonuses.critBonus + momentumTier.critBonus + (rp?.critBonusPct || 0));
 
       if (action === 'attack') {
         if (rand(1, 100) <= enemyDodgeChance) {
@@ -334,15 +386,25 @@ function register(app, requireAuth, ctx) {
         } else {
           let rawDmg = Math.floor(effectiveStats.attack * 0.92) + rand(0, 3);
           let dmg = applyDefenseReduction(rawDmg, effectiveTargetDefense);
-          const isCrit = cs.vanishActive ? true : (rand(1, 100) <= playerCritChance);
-          if (isCrit) dmg = Math.floor(dmg * 1.5);
+          const isCrit = cs.specState.vanishActive ? true : (rand(1, 100) <= playerCritChance);
+          if (isCrit) dmg = Math.floor(dmg * 2.0);
           dmg = Math.floor(dmg * cbDamageMul);
-          if (cs.bloodrageActive) { dmg = Math.floor(dmg * 2); cs.bloodrageActive = false; log.push(`🔥 Bloodrage! Double damage!`); }
+          if (cs.specState.bloodrageActive) { dmg = Math.floor(dmg * 2); cs.specState.bloodrageActive = false; log.push(`🔥 Bloodrage! Double damage!`); }
+          // Cryomancy T3+: frozen/slowed enemies take +15% damage
+          if (cbPassive.frozenVulnerability && (target.effects || []).some(e => e.slug === 'slow' || e.slug === 'stun')) {
+            dmg = Math.floor(dmg * (1 + cbPassive.frozenVulnerability / 100));
+          }
           dmg = applyRacialDamageBonus(dmg, char.race, 'attack');
           if (target.marked) dmg = Math.floor(dmg * 1.25); // hawk mark bonus
           target.hp -= dmg;
           playerDamage += dmg;
           log.push(isCrit ? `⚡ Critical hit! You strike the ${target.name} for ${dmg} damage.` : `You strike the ${target.name} for ${dmg} damage.`);
+          // Absolute Zero: Cryomancy T4 execute non-boss ≤15% HP once per combat
+          if (target.hp > 0 && cbPassive.absoluteZero && !cs.specState.absoluteZeroUsed && !target.boss && target.hp <= Math.floor((target.maxHp || target.hp) * 0.15)) {
+            target.hp = 0;
+            cs.specState.absoluteZeroUsed = true;
+            log.push(`❄ Absolute Zero! The ${target.name} shatters to frozen dust!`);
+          }
           // On-hit passives from class bonus
           if (cbPassive.onHitBurnChance && rand(1, 100) <= cbPassive.onHitBurnChance) {
             const eff = applyEffect(target.effects, 'burn', 3, 'Pyromancy');
@@ -376,7 +438,7 @@ function register(app, requireAuth, ctx) {
         if (mTier.mpDiscount > 0) effectiveCost = Math.floor(effectiveCost * (1 - mTier.mpDiscount));
         if (cbPassive.mpCostReduction) effectiveCost = Math.floor(effectiveCost * (1 - cbPassive.mpCostReduction / 100));
         if (cs.dungeonMechanic === 'arcane-disruption') effectiveCost = Math.ceil(effectiveCost * 1.25);
-        if (cs.arcaneSurgeCharges > 0) { effectiveCost = 0; cs.arcaneSurgeCharges--; }
+        if (cs.specState.arcaneSurgeCharges > 0) { effectiveCost = 0; cs.specState.arcaneSurgeCharges--; }
         if (char.mp < effectiveCost) return res.status(400).json({ error: `Not enough MP.${cs.dungeonMechanic === 'arcane-disruption' ? ' (Arcane Disruption: costs +25%)' : ''}` });
         char.mp -= effectiveCost;
 
@@ -429,7 +491,7 @@ function register(app, requireAuth, ctx) {
               const dmg = applyDefenseReduction(rawHit, tDef);
               totalDmg += dmg;
             }
-            if (isCrit) totalDmg = Math.floor(totalDmg * 1.5);
+            if (isCrit) totalDmg = Math.floor(totalDmg * 2.0);
             // AoE deals 70% damage to non-primary targets
             if (isAoe && t.id !== target.id) totalDmg = Math.floor(totalDmg * 0.7);
             totalDmg = Math.floor(totalDmg * cbDamageMul);
@@ -442,6 +504,10 @@ function register(app, requireAuth, ctx) {
               const bonusDmg = Math.floor(totalDmg / ability.hits);
               totalDmg += bonusDmg;
             }
+            // Cryomancy T3+: frozen/slowed enemies take bonus damage
+            if (cbPassive.frozenVulnerability && (t.effects || []).some(e => e.slug === 'slow' || e.slug === 'stun')) {
+              totalDmg = Math.floor(totalDmg * (1 + cbPassive.frozenVulnerability / 100));
+            }
             totalDmg = applyRacialDamageBonus(totalDmg, char.race, ability.type);
             if (t.marked) totalDmg = Math.floor(totalDmg * 1.25); // hawk mark bonus
             t.hp -= totalDmg;
@@ -449,6 +515,12 @@ function register(app, requireAuth, ctx) {
             playerDamageTarget = t;
             const targetLabel = targets.length > 1 ? ` the ${t.name}` : '';
             log.push(isCrit ? `⚡ Critical! ${ability.name} hits${targetLabel} for ${totalDmg}!` : `You use ${ability.name}${targetLabel} for ${totalDmg} damage.`);
+            // Absolute Zero exec (ability)
+            if (t.hp > 0 && cbPassive.absoluteZero && !cs.specState.absoluteZeroUsed && !t.boss && t.hp <= Math.floor((t.maxHp || t.hp) * 0.15)) {
+              t.hp = 0;
+              cs.specState.absoluteZeroUsed = true;
+              log.push(`❄ Absolute Zero! The ${t.name} shatters to frozen dust!`);
+            }
             // On-hit passives from class bonus on abilities
             if (cbPassive.onHitBurnChance && rand(1, 100) <= cbPassive.onHitBurnChance) {
               const eff = applyEffect(t.effects, 'burn', 3, 'Pyromancy');
@@ -463,13 +535,15 @@ function register(app, requireAuth, ctx) {
               if (eff) log.push(`🧪 ${ability.name} poisons ${t.name}!`);
             }
 
-            // Status effects on target
+            // Status effects on target (stun/slow duration scales with rank)
             if (ability.stun) {
-              const eff = applyEffect(t.effects, 'stun', 1, ability.name);
-              if (eff) log.push(`💫 The ${t.name} is stunned!`);
+              const stunTurns = 1 + (rankData.durationBonus || 0);
+              const eff = applyEffect(t.effects, 'stun', stunTurns, ability.name);
+              if (eff) log.push(`💫 The ${t.name} is stunned${stunTurns > 1 ? ` for ${stunTurns} turns` : ''}!`);
             }
             if (ability.slow) {
-              const eff = applyEffect(t.effects, 'slow', 3, ability.name);
+              const slowTurns = 3 + (rankData.durationBonus || 0);
+              const eff = applyEffect(t.effects, 'slow', slowTurns, ability.name);
               if (eff) log.push(`🐌 The ${t.name} is slowed!`);
             }
             if (ability.dot) {
@@ -585,11 +659,25 @@ function register(app, requireAuth, ctx) {
           char.hp += healed;
           log.push(`💚 You use ${ability.name} and recover ${healed} HP.`);
         } else if (ability.type === 'ally-restore') {
-          // Solo: restore own MP
-          const restoreAmt = rankData.restore || ability.allyRestore || 15;
-          const restored = Math.min(restoreAmt, char.max_mp - char.mp);
-          char.mp += restored;
-          log.push(`💜 You use ${ability.name} and recover ${restored} MP.`);
+          // Solo: restore own MP (with optional HP cost for Life Tap)
+          const hpCostPct = rankData.hpCostPct || ability.hpCostPct || 0;
+          if (hpCostPct > 0) {
+            const hpCost = Math.max(1, Math.floor(char.max_hp * hpCostPct / 100));
+            char.hp -= hpCost;
+            log.push(`💔 You sacrifice ${hpCost} HP.`);
+          }
+          const restorePct = rankData.restorePct || ability.allyRestorePct || 0;
+          if (restorePct > 0) {
+            const restoreAmt = Math.max(1, Math.floor(char.max_mp * restorePct / 100));
+            const restored = Math.min(restoreAmt, char.max_mp - char.mp);
+            char.mp += restored;
+            log.push(`💜 You use ${ability.name} and recover ${restored} MP.`);
+          } else {
+            const restoreAmt = rankData.restore || ability.allyRestore || 15;
+            const restored = Math.min(restoreAmt, char.max_mp - char.mp);
+            char.mp += restored;
+            log.push(`💜 You use ${ability.name} and recover ${restored} MP.`);
+          }
         } else if (ability.type === 'party-debuff') {
           // Solo: debuff enemy + deal damage
           if (target) {
@@ -631,64 +719,17 @@ function register(app, requireAuth, ctx) {
       } else if (action === 'classAbility') {
         if (!classBonus?.special) return res.status(400).json({ error: 'No class ability available.' });
         cs.classCooldowns = cs.classCooldowns || {};
-        if (cs.classCooldowns[classBonus.special.slug] > 0) return res.status(400).json({ error: `${classBonus.special.name} has already been used this combat.` });
-        cs.classCooldowns[classBonus.special.slug] = classBonus.special.cooldown || 99;
-        const sp = classBonus.special;
-
-        if (sp.type === 'full-restore') {
-          // Radiance: full HP + MP
-          char.hp = char.max_hp;
-          char.mp = char.max_mp;
-          log.push(`💛 Divine Restoration! Fully restored to ${char.max_hp} HP and ${char.max_mp} MP!`);
-        } else if (sp.type === 'true-damage') {
-          // Judgment: Holy Smite — true damage ignoring defense
-          const dmg = Math.floor((effectiveStats[sp.stat] || 10) * sp.statMul);
-          if (target) { target.hp -= dmg; playerDamage += dmg; }
-          log.push(`⚡ Holy Smite! ${dmg} holy damage to ${target?.name || 'the enemy'}, ignoring defense!`);
-        } else if (sp.type === 'shield') {
-          // Aegis: Divine Shield — absorb damage
-          cs.divineShield = Math.floor(char.max_hp * sp.hpPct / 100);
-          log.push(`🛡 Divine Shield! Absorbing up to ${cs.divineShield} damage.`);
-        } else if (sp.type === 'aoe-damage') {
-          // Pyromancy Meteor / Blade Dance Flurry
-          const baseDmg = Math.floor(effectiveStats.attack * sp.damageMul);
-          for (const en of livingEnemies) {
-            const dmg = Math.max(1, baseDmg + rand(0, 5));
-            en.hp -= dmg;
-            playerDamage += dmg;
-            log.push(`${classBonus.icon} ${sp.name} hits ${en.name} for ${dmg} damage!`);
-          }
-        } else if (sp.type === 'aoe-stun') {
-          // Cryomancy: Flash Freeze
-          for (const en of livingEnemies) {
-            const eff = applyEffect(en.effects, 'stun', sp.turns || 1, sp.name);
-            if (eff) log.push(`❄ ${sp.name} freezes ${en.name}!`);
-          }
-        } else if (sp.type === 'free-cast') {
-          // Arcanistry: Arcane Surge
-          cs.arcaneSurgeCharges = sp.charges || 3;
-          log.push(`✨ Arcane Surge! Your next ${sp.charges} abilities cost 0 MP.`);
-        } else if (sp.type === 'vanish') {
-          // Shadowstep: Vanish
-          cs.vanishActive = true;
-          cs.vanishUsedTurn = cs.turn;
-          log.push(`🌑 You vanish into shadow! Dodging all attacks this turn. Next attack is a guaranteed critical.`);
-        } else if (sp.type === 'taunt') {
-          // Guardian: Taunt (player taunts enemies onto self — useful when allies exist)
-          cs.playerTaunting = sp.turns || 2;
-          log.push(`🛡 You taunt the enemies! They focus their attacks on you for ${sp.turns} turns.`);
-        } else if (sp.type === 'party-buff') {
-          // Warlord: Battle Cry
-          cs.playerBuffs = cs.playerBuffs || [];
-          cs.playerBuffs.push({ stat: sp.stat, amount: sp.amount, name: sp.name, turnsLeft: sp.turns });
-          log.push(`⚔ Battle Cry! +${sp.amount}% ${sp.stat.toUpperCase()} for ${sp.turns} turns!`);
-        } else if (sp.type === 'aoe-dot') {
-          // Poison Mastery: Envenom
-          for (const en of livingEnemies) {
-            const eff = applyEffect(en.effects, sp.dotType || 'poison', sp.turns || 5, sp.name);
-            if (eff) { eff.damagePerTurn = sp.damage || 5; log.push(`🧪 ${sp.name} poisons ${en.name}!`); }
-          }
-        }
+        const specAbilitySlug = classBonus.special.slug;
+        if (cs.classCooldowns[specAbilitySlug] > 0) return res.status(400).json({ error: `${classBonus.special.name} has already been used this combat.` });
+        cs.classCooldowns[specAbilitySlug] = classBonus.special.cooldown || 99;
+        // Delegate to the shared spec engine — handles all 10 special.type variants
+        // including redesigned Miracle (Radiance T4), Overchannel (Arcanistry T4),
+        // and all T4 tier-aware behaviors.
+        specCtx.target = target;
+        SPECS.specClassAbility(specCtx);
+        // Track damage dealt for post-combat accounting (aoe-damage + true-damage)
+        // The hook mutates target.hp / enemy.hp directly, so playerDamage is updated
+        // via the cs.enemies iteration after this block.
       } else if (action === 'defend') {
         cs.defending = true;
         log.push(`🛡 You brace yourself, reducing incoming damage this turn.`);
@@ -785,13 +826,13 @@ function register(app, requireAuth, ctx) {
       }
       cs.allies = cs.allies.filter(a => a.hp > 0 || a.immortal);
 
-      // ── Berserker bloodrage: trigger on any enemy death ──
-      if (classBonus?.slug === 'berserker') {
-        for (const en of cs.enemies) {
-          if (en.hp <= 0 && !en._deathLogged) {
-            cs.bloodrageActive = true;
-            en._deathLogged = true;
-          }
+      // ── Spec onKill hooks: bloodrage (berserker), inferno (pyromancy T4),
+      //     plague vector (poison-mastery T4). Fires for each newly-dead enemy. ──
+      for (const en of cs.enemies) {
+        if (en.hp <= 0 && !en._deathHookFired) {
+          en._deathHookFired = true;
+          specCtx.target = en;
+          SPECS.specOnKill(specCtx);
         }
       }
 
@@ -1140,7 +1181,7 @@ function register(app, requireAuth, ctx) {
                 if (cs.defending) tgDmg = Math.max(1, Math.floor(tgDmg * 0.5));
                 tgDmg = Math.max(1, Math.floor(tgDmg * cbDamageTakenMul));
                 if (cs.divineShield > 0) { const ab = Math.min(cs.divineShield, tgDmg); cs.divineShield -= ab; tgDmg -= ab; if (ab > 0) log.push('🛡 Divine Shield absorbs ' + ab + '!'); }
-                if (cs.vanishActive) { log.push('🌑 ' + tg.name + ' passes through your shadow!'); }
+                if (cs.specState.vanishActive) { log.push('🌑 ' + tg.name + ' passes through your shadow!'); }
                 else { char.hp -= Math.max(0, tgDmg); log.push('${tg.icon} ${en.name} unleashes ${tg.name} for ${tgDmg} damage!'.replace(/\$\{tg\.icon\}/g, tgDef.icon||'💥').replace(/\$\{en\.name\}/g, en.name).replace(/\$\{tg\.name\}/g, tg.name).replace(/\$\{tgDmg\}/g, tgDmg)); }
               } else if (tgDef.type === 'aoe') {
                 if (tgDef.damage) {
@@ -1148,7 +1189,7 @@ function register(app, requireAuth, ctx) {
                   let tgDmg = Math.floor(enAtkNow * tgDef.damage);
                   tgDmg = Math.max(1, Math.floor(tgDmg * cbDamageTakenMul));
                   if (cs.defending) tgDmg = Math.max(1, Math.floor(tgDmg * 0.5));
-                  if (!cs.vanishActive) { char.hp -= tgDmg; log.push((tgDef.icon||'💥') + ' ' + en.name + ' unleashes ' + tg.name + ' for ' + tgDmg + ' damage!'); }
+                  if (!cs.specState.vanishActive) { char.hp -= tgDmg; log.push((tgDef.icon||'💥') + ' ' + en.name + ' unleashes ' + tg.name + ' for ' + tgDmg + ' damage!'); }
                   else { log.push('🌑 ' + tg.name + ' passes through your shadow!'); }
                   // Hit allies too
                   for (const ally of cs.allies) {
@@ -1243,7 +1284,7 @@ function register(app, requireAuth, ctx) {
 
           // Enemy basic attack
           // Vanish: dodge everything
-          if (cs.vanishActive) {
+          if (cs.specState.vanishActive) {
             log.push(`🌑 The ${en.name}'s attack passes through your shadow!`);
             continue;
           }
@@ -1275,7 +1316,12 @@ function register(app, requireAuth, ctx) {
             const enemyCrit = rand(1, 100) <= enemyCritChance;
             if (enemyCrit) enemyDmg = Math.floor(enemyDmg * 1.5);
             if (cs.defending) enemyDmg = Math.max(1, Math.floor(enemyDmg * 0.5));
-            enemyDmg = Math.max(1, Math.floor(enemyDmg * cbDamageTakenMul * rangerDmgReduction));
+            enemyDmg = Math.max(1, Math.floor(enemyDmg * rangerDmgReduction));
+            // Spec damage-taken hooks: damageTakenMul, Bulwark (cap at 20% maxHp),
+            // tauntReflect, Deathless Rage (survive at 1 HP + 50% dmg 3 turns).
+            specCtx.target = null;
+            specCtx.attacker = en;
+            enemyDmg = SPECS.specDmgTaken(enemyDmg, specCtx);
             // Divine Shield absorbs damage
             if (cs.divineShield > 0) {
               const absorbed = Math.min(cs.divineShield, enemyDmg);
@@ -1331,12 +1377,7 @@ function register(app, requireAuth, ctx) {
         if (mpGain > 0) { char.mp += mpGain; log.push(`✨ ${rp.name} restores ${mpGain} MP.`); }
       }
 
-      // Class bonus: Radiance HP regen
-      if (cbPassive.hpRegenPct && char.hp > 0) {
-        const regen = Math.max(1, Math.floor(char.max_hp * cbPassive.hpRegenPct / 100));
-        const healed = Math.min(regen, char.max_hp - char.hp);
-        if (healed > 0) { char.hp += healed; log.push(`💛 Radiance heals you for ${healed} HP.`); }
-      }
+      // Class bonus: Radiance HP regen (now handled by SPECS.specTurnStart at top of action)
 
       if (cs.playerTempPassives?.length) {
         for (const passive of cs.playerTempPassives) passive.turnsLeft--;

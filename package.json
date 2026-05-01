@@ -14,13 +14,13 @@
     "express",
     "text-game"
   ],
-  "author": "",
+  "author": "thunderpatty",
   "license": "UNLICENSED",
   "private": true,
   "type": "commonjs",
   "dependencies": {
     "bcryptjs": "^3.0.3",
-    "compression": "^1.8.0",
+    "compression": "^1.8.1",
     "connect-pg-simple": "^10.0.0",
     "express": "^5.2.1",
     "express-rate-limit": "^8.3.1",

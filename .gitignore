@@ -1,6 +1,34 @@
+# Dependencies
 node_modules/
-.env
+
+# Runtime data
 data/
+tmpdb/
+pg-data/
+logs/
+
+# Logs / pids
 *.log
 *.pid
-.pm2/
+
+# Local auth / secrets
+cookies.txt
+*.secret
+.env
+.env.*
+!.env.example
+
+# Backups (kept locally, not in repo)
+backups/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~

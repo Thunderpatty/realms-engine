@@ -15,8 +15,153 @@
     let homeTab = 'crafting';
     let selectedRecipeSlug = null;
     let craftQty = 1;
-    let academyLoadoutMode = 'pve'; // 'pve' | 'pvp'
+    let academyLoadoutMode = 'pve'; // 'pve' | 'pvp' | 'raid'
     let _lastSeenLogId = null; // Track newest log entry ID for toast detection
+
+    // ══════════════════════════════════════════
+    //  AUDIO ENGINE — realm-based music system
+    // ══════════════════════════════════════════
+    const MUSIC_TRACKS = {
+      // Login / character creation
+      'login':      '/assets/music/login.mp3',
+      // Ambient tracks (one per realm — plays everywhere in that realm)
+      'ashlands':   '/assets/music/ashlands.mp3',
+      'frostreach': '/assets/music/frostreach.mp3',
+      'emberveil':  '/assets/music/emberveil.mp3',
+      'voidspire':  '/assets/music/voidspire.mp3',
+      // Combat tracks (one per realm + raid boss)
+      'combat-ashlands':   '/assets/music/combat-ashlands.mp3',
+      'combat-frostreach': '/assets/music/combat-frostreach.mp3',
+      'combat-emberveil':  '/assets/music/combat-emberveil.mp3',
+      'combat-voidspire':  '/assets/music/combat-voidspire.mp3',
+      'combat-raidboss':   '/assets/music/combat-raidboss.mp3',
+    };
+
+    const _audio = {
+      current: null,       // currently playing Audio element
+      currentTrack: null,  // track key currently playing
+      volume: 0.3,         // master volume (0-1)
+      muted: false,
+      fadeMs: 1500,         // crossfade duration
+      cache: {},            // preloaded Audio elements
+      enabled: true,
+      unlocked: false,      // needs user interaction to unlock Web Audio
+    };
+
+    function audioGetOrCreate(trackKey) {
+      if (_audio.cache[trackKey]) return _audio.cache[trackKey];
+      const src = MUSIC_TRACKS[trackKey];
+      if (!src) return null;
+      const a = new Audio(src);
+      a.loop = true;
+      a.volume = 0;
+      a.addEventListener('error', () => { delete _audio.cache[trackKey]; });
+      _audio.cache[trackKey] = a;
+      return a;
+    }
+
+    function audioUnlock() {
+      if (_audio.unlocked) return;
+      _audio.unlocked = true;
+      // After unlock, try to play the desired track
+      audioUpdateTrack();
+    }
+
+    function audioFadeTo(trackKey) {
+      if (!_audio.enabled || _audio.muted || !_audio.unlocked) return;
+      if (trackKey === _audio.currentTrack) return;
+      const newAudio = audioGetOrCreate(trackKey);
+      if (!newAudio) return;
+
+      const oldAudio = _audio.current;
+      _audio.currentTrack = trackKey;
+      _audio.current = newAudio;
+
+      // Fade out old
+      if (oldAudio) {
+        const fadeOut = oldAudio;
+        const startVol = fadeOut.volume;
+        const steps = 20;
+        const stepMs = _audio.fadeMs / steps;
+        let step = 0;
+        const fadeOutInterval = setInterval(() => {
+          step++;
+          fadeOut.volume = Math.max(0, startVol * (1 - step / steps));
+          if (step >= steps) {
+            clearInterval(fadeOutInterval);
+            fadeOut.pause();
+            fadeOut.volume = 0;
+          }
+        }, stepMs);
+      }
+
+      // Fade in new
+      newAudio.volume = 0;
+      newAudio.play().then(() => {
+        const targetVol = _audio.volume;
+        const steps = 20;
+        const stepMs = _audio.fadeMs / steps;
+        let step = 0;
+        const fadeInInterval = setInterval(() => {
+          step++;
+          newAudio.volume = Math.min(targetVol, targetVol * (step / steps));
+          if (step >= steps) clearInterval(fadeInInterval);
+        }, stepMs);
+      }).catch(() => {
+        // Autoplay blocked — clear track so next unlock retries
+        _audio.currentTrack = null;
+        _audio.current = null;
+      });
+    }
+
+    function audioSetVolume(vol) {
+      _audio.volume = Math.max(0, Math.min(1, vol));
+      if (_audio.current && !_audio.muted) _audio.current.volume = _audio.volume;
+      localStorage.setItem('musicVolume', _audio.volume);
+    }
+
+    function audioToggleMute() {
+      _audio.muted = !_audio.muted;
+      if (_audio.muted) {
+        if (_audio.current) { _audio.current.pause(); _audio.current.volume = 0; }
+        _audio.currentTrack = null;
+        _audio.current = null;
+      } else {
+        audioUpdateTrack();
+      }
+      localStorage.setItem('musicMuted', _audio.muted ? '1' : '0');
+    }
+
+    function audioGetDesiredTrack() {
+      if (!state?.character) return 'login';
+      const c = state.character;
+      const realm = state.currentRealm || 'ashlands';
+
+      // Raid boss combat
+      if (partyCombatData && partyCombatData.isBossRoom) return 'combat-raidboss';
+      // Party combat (raid)
+      if (partyCombatData && partyCombatData.phase && partyCombatData.phase !== 'victory' && partyCombatData.phase !== 'wipe') {
+        return 'combat-' + realm;
+      }
+      // Solo combat
+      if (c.in_combat) return 'combat-' + realm;
+      // Realm ambient
+      return realm;
+    }
+
+    function audioUpdateTrack() {
+      if (!_audio.enabled || _audio.muted) return;
+      const desired = audioGetDesiredTrack();
+      if (desired && desired !== _audio.currentTrack) {
+        audioFadeTo(desired);
+      }
+    }
+
+    function audioInit() {
+      const savedVol = localStorage.getItem('musicVolume');
+      if (savedVol !== null) _audio.volume = parseFloat(savedVol);
+      _audio.muted = localStorage.getItem('musicMuted') === '1';
+    }
 
     // Quest presentation state
     let questMode = null; // { slug, showChoices: bool, outcome: null | { messages, rollInfo, success } }
@@ -28,8 +173,8 @@
 
     const EQUIP_SLOTS = ['weapon', 'shield', 'body', 'helmet', 'gloves', 'boots', 'amulet', 'ring', 'trinket'];
     function isRaidTown(loc) { return (gameData?.realms || []).some(r => r.raidTown === loc); }
-    const _rankCostMul = [1.0, 1.15, 1.35, 1.6, 2.0];
-    const _rankCostFloor = [0, 1, 2, 4, 5];
+    const _rankCostMul = [1.0, 1.1, 1.2, 1.4, 1.7];
+    const _rankCostFloor = [0, 1, 1, 3, 4];
     function getAbilityRankCost(base, rank) { const i = Math.max(0, Math.min(4, rank-1)); return Math.max(Math.floor(base*_rankCostMul[i]), base+_rankCostFloor[i]); }
 
     // Asset image helpers — graceful fallback if image doesn't exist
@@ -232,11 +377,8 @@
     }
 
     function showMessage(text, isError = false) {
-      const el = $('message');
-      el.textContent = text;
-      el.classList.remove('hidden');
-      el.style.borderColor = isError ? 'rgba(196,64,64,.3)' : 'rgba(214,176,95,.35)';
-      el.style.background = isError ? 'rgba(255,126,138,.08)' : 'rgba(214,176,95,.08)';
+      if (!text) return;
+      showToast(isError ? 'error' : 'info', isError ? 'Error' : '', text);
     }
 
     // ── Loading state + connection error handling ──
@@ -545,6 +687,7 @@
       $('createView').classList.remove('hidden');
       $('gameView').classList.add('hidden');
       $('statusBar').classList.add('hidden');
+      audioUpdateTrack();
       $('raceOptions').innerHTML = gameData.races.map(r => {
         const rp = gameData.racialPassives?.[r.slug];
         return `
@@ -622,6 +765,32 @@
       }
       const xpFill = document.getElementById('sbXpFill');
       if (xpFill) xpFill.style.width = xpPct + '%';
+      // Music control in status bar
+      let musicBtn = document.getElementById('sbMusic');
+      if (!musicBtn) {
+        musicBtn = document.createElement('div');
+        musicBtn.id = 'sbMusic';
+        musicBtn.style.cssText = 'display:flex;align-items:center;gap:4px;margin-left:auto;padding-left:8px;';
+        $('statusBar').appendChild(musicBtn);
+      }
+      const volPct = Math.round(_audio.volume * 100);
+      musicBtn.innerHTML = `
+        <button class="small" data-action="musicToggle" style="padding:1px 6px;font-size:.65rem;background:none;border:1px solid var(--line);min-width:0;box-shadow:none;opacity:${_audio.muted ? '.4' : '1'}" title="${_audio.muted ? 'Unmute' : 'Mute'} music">${_audio.muted ? '🔇' : '🎵'}</button>
+        <input type="range" id="musicVolumeSlider" min="0" max="100" value="${volPct}" style="width:60px;height:4px;accent-color:var(--gold);cursor:pointer;opacity:${_audio.muted ? '.3' : '.7'}" title="Volume ${volPct}%" ${_audio.muted ? 'disabled' : ''} />`;
+      // Party indicator on social button
+      const partyBtn = document.getElementById('sbPartyBtn');
+      if (partyBtn) {
+        const hasInvites = partyInvites && partyInvites.length > 0;
+        const inParty = !!partyData;
+        partyBtn.textContent = inParty ? '⚔' : '👥';
+        partyBtn.title = inParty ? `Party (${partyData.members.length})` : 'Party & Friends';
+        partyBtn.style.color = inParty ? '#14b8a6' : '';
+        // Notification dot for invites
+        let dot = partyBtn.querySelector('.invite-dot');
+        if (hasInvites && !inParty) {
+          if (!dot) { dot = document.createElement('span'); dot.className = 'invite-dot'; dot.style.cssText = 'position:absolute;top:2px;right:2px;width:8px;height:8px;border-radius:50%;background:#fbbf24;'; partyBtn.appendChild(dot); }
+        } else if (dot) { dot.remove(); }
+      }
     }
 
     // ══════════════════════════════════════════
@@ -675,7 +844,7 @@
           : isRaid ? (isBoss ? `🔥 RAID BOSS — FLOOR ${cs.raidFloor || '?'}` : `🕳 RAID COMBAT — FLOOR ${cs.raidFloor || '?'}`)
           : cs.dungeonRun ? (isBoss ? '🔥 BOSS ENCOUNTER' : '🏰 DUNGEON COMBAT') : (hasElite ? '⭐ ELITE COMBAT' : '⚔ COMBAT');
         html += `
-          <div class="${isArena ? 'arena-box' : 'combat-box'}" style="position:relative;overflow:hidden">
+          <div class="${isArena ? 'arena-box' : 'combat-box'}" style="position:relative">
             <div class="combat-bg"><img src="${locationImageUrl(c.location)}" alt="" onerror="this.parentElement.style.display='none'"></div>
             <div style="display:flex;justify-content:space-between;align-items:center;position:relative">
               <div class="eyebrow">${combatEyebrow}</div>
@@ -1833,21 +2002,25 @@
       const abils = state.abilities;
       if (!abils) return '<div class="shop-empty">No ability data.</div>';
       const tokens = c.arcane_tokens || 0;
-      const currentModeLoadout = academyLoadoutMode === 'pvp' ? (abils.activePvp || abils.active) : abils.active;
+      const currentModeLoadout = academyLoadoutMode === 'pvp' ? (abils.activePvp || abils.active) : academyLoadoutMode === 'raid' ? (abils.activeRaid || abils.active) : abils.active;
       const loadout = pendingLoadout || [...currentModeLoadout];
       const MAX_SLOTS = 6;
       const isPvp = academyLoadoutMode === 'pvp';
-      const pvpCustomized = abils.pvpCustomized;
+      const isRaid = academyLoadoutMode === 'raid';
 
       let html = _academyTip;
 
-      // ── PvE / PvP mode toggle ──
+      // ── PvE / PvP / Raid mode toggle ──
       html += `<div style="display:flex;gap:4px;margin-bottom:12px;padding:3px;background:rgba(255,255,255,.04);border-radius:10px;border:1px solid var(--line);width:fit-content">
-        <button class="${!isPvp ? '' : 'secondary'} small" data-action="setAcademyLoadoutMode" data-value="pve" style="border-radius:8px;min-width:80px;${!isPvp ? '' : 'box-shadow:none;border-color:transparent'}">⚔ PvE</button>
-        <button class="${isPvp ? '' : 'secondary'} small" data-action="setAcademyLoadoutMode" data-value="pvp" style="border-radius:8px;min-width:80px;${isPvp ? 'background:linear-gradient(135deg,#6b1010,#8b2020);' : 'box-shadow:none;border-color:transparent'}">🏟 PvP</button>
+        <button class="${academyLoadoutMode === 'pve' ? '' : 'secondary'} small" data-action="setAcademyLoadoutMode" data-value="pve" style="border-radius:8px;min-width:70px;${academyLoadoutMode === 'pve' ? '' : 'box-shadow:none;border-color:transparent'}">⚔ PvE</button>
+        <button class="${isPvp ? '' : 'secondary'} small" data-action="setAcademyLoadoutMode" data-value="pvp" style="border-radius:8px;min-width:70px;${isPvp ? 'background:linear-gradient(135deg,#6b1010,#8b2020);' : 'box-shadow:none;border-color:transparent'}">🏟 PvP</button>
+        <button class="${isRaid ? '' : 'secondary'} small" data-action="setAcademyLoadoutMode" data-value="raid" style="border-radius:8px;min-width:70px;${isRaid ? 'background:linear-gradient(135deg,#0d6949,#14b8a6);' : 'box-shadow:none;border-color:transparent'}">🕳 Raid</button>
       </div>`;
-      if (isPvp && !pvpCustomized) {
+      if (isPvp && !abils.pvpCustomized) {
         html += `<div class="gated-notice" style="margin-bottom:10px;border-color:rgba(139,32,32,.3);background:rgba(139,32,32,.06);color:#c44">⚠ No PvP loadout set yet — currently mirroring your PvE loadout. Save here to customize.</div>`;
+      }
+      if (isRaid && !abils.raidCustomized) {
+        html += `<div class="gated-notice" style="margin-bottom:10px;border-color:rgba(20,184,166,.3);background:rgba(20,184,166,.06);color:#14b8a6">⚠ No Raid loadout set yet — currently mirroring your PvE loadout. Save here to customize for party raids.</div>`;
       }
 
       // ── Current loadout bar ──
@@ -1870,11 +2043,13 @@
       html += `</div>`;
 
       // Save / Reset
-      const changed = JSON.stringify(loadout) !== JSON.stringify(currentModeLoadout);
+      const notCustomized = (isPvp && !abils.pvpCustomized) || (isRaid && !abils.raidCustomized);
+      const changed = JSON.stringify(loadout) !== JSON.stringify(currentModeLoadout) || (notCustomized && pendingLoadout);
       if (changed) {
-        const saveLabel = isPvp ? '💾 Save PvP Loadout' : '💾 Save PvE Loadout';
+        const saveLabel = isPvp ? '💾 Save PvP Loadout' : isRaid ? '💾 Save Raid Loadout' : '💾 Save PvE Loadout';
+        const saveClass = isPvp ? 'danger' : isRaid ? 'primary-action' : 'green';
         html += `<div style="margin-bottom:12px;display:flex;gap:8px;justify-content:center">
-          <button class="${isPvp ? 'danger' : 'green'}" data-action="saveLoadout">${saveLabel}</button>
+          <button class="${saveClass}" data-action="saveLoadout">${saveLabel}</button>
           <button class="secondary" data-action="resetLoadout">Reset</button>
         </div>`;
       }
@@ -2683,6 +2858,7 @@
       renderNavPanel();
       renderLogTab();
       ensureLoadingCleared();
+      audioUpdateTrack();
 
       // Trigger or continue guided tutorial
       if (shouldShowTutorial()) {
@@ -2720,6 +2896,11 @@
     function selectShopItem(id) { selectedShopItem = selectedShopItem === id ? null : id; renderGame(); }
 
     function openInventoryModal() {
+      // Block inventory during raids except pre-boss recovery phase
+      if (partyRaidState && partyRaidState.phase !== 'preBoss' && partyRaidState.phase !== 'complete') {
+        showMessage('Inventory is locked during raids. You can access it before each boss fight.', true);
+        return;
+      }
       const existing = document.getElementById('invOverlay');
       if (existing) existing.remove();
       invSelectedKey = null;
@@ -2853,7 +3034,7 @@
           ${equipped && compareStats ? '<div class="compare-hint muted" style="font-size:.72rem;margin-top:6px">vs equipped: <strong class="rarity-' + (equipped.rarity||'common') + '">' + esc(equipped.name||'—') + '</strong></div>' : ''}
           <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)">
             ${!sel.junk && EQUIP_SLOTS.includes(getItemEquipSlot(sel)) ? '<button class="secondary small" data-action="equipFromModal" data-item-slug="' + sel.slug + '" data-inventory-id="' + (sel.inventoryId||'') + '"' + (c.in_combat ? ' disabled' : '') + '>Equip</button>' : ''}
-            ${!sel.junk && sel.type === 'consumable' && !c.in_combat && !sel.use?.combatOnly ? '<button class="green small" data-action="useFromModal" data-slug="' + sel.slug + '">Use</button>' : ''}
+            ${!sel.junk && sel.type === 'consumable' && !c.in_combat && !sel.use?.combatOnly && !(partyData?.state === 'in_raid') && !c.raid_state ? '<button class="green small" data-action="useFromModal" data-slug="' + sel.slug + '">Use</button>' : ''}
             ${!sel.junk && sel.type === 'recipe' && !c.in_combat ? '<button class="violet small" data-action="learnFromModal" data-slug="' + sel.slug + '">Study</button>' : ''}
             ${!sel.junk && state.home?.isAtHome && !c.in_combat && sel.type !== 'recipe' ? '<button class="small" data-action="storeFromModal" data-item-slug="' + sel.slug + '" data-qty="' + sel.quantity + '">Store</button>' : ''}
             ${!c.in_combat ? '<button class="junk-btn small' + (sel.junk ? ' active' : '') + '" data-action="toggleJunkFromModal" data-slug="' + sel.slug + '" data-inventory-id="' + (sel.inventoryId||'') + '">' + (sel.junk ? '↩ Unmark' : '🗑 Junk') + '</button>' : ''}
@@ -2866,6 +3047,7 @@
       // Build or update overlay
       let overlay = document.getElementById('invOverlay');
       const savedEqScroll = overlay?.querySelector('.inv-equip-col')?.scrollTop || 0;
+      const savedListScroll = overlay?.querySelector('.ah-item-list')?.scrollTop || 0;
       if (!overlay) {
         overlay = document.createElement('div');
         overlay.className = 'inv-overlay';
@@ -2886,6 +3068,8 @@
         </div>`;
       const newEqCol = overlay.querySelector('.inv-equip-col');
       if (newEqCol) newEqCol.scrollTop = savedEqScroll;
+      const newListCol = overlay.querySelector('.ah-item-list');
+      if (newListCol) newListCol.scrollTop = savedListScroll;
       // Wire search input
       const searchEl = overlay.querySelector('#invSearchInput');
       if (searchEl) {
@@ -2906,6 +3090,7 @@
 
     // Modal-aware action wrappers — perform action, refresh game, re-render modal
     async function equipFromModal(itemSlug, inventoryId) {
+      _tutDidEquip = true;
       await act(post('/api/fantasy/equip', { itemSlug, inventoryId }), 'Item equipped.');
       renderInventoryModal();
     }
@@ -3366,7 +3551,7 @@
       { id: 'welcome',       text: 'Welcome, adventurer! Let\'s get you started. First, <strong>visit the Market</strong> to buy some gear.', goal: 'Open the Market', check: () => storyView === 'market' },
       { id: 'filter-class',  text: 'Good! Now filter by <strong>"My Class"</strong> to see gear suited for you.', goal: 'Filter by My Class', check: () => storyView === 'market' && shopSlotFilter === 'myclass' },
       { id: 'buy-item',      text: 'Pick a piece of gear and <strong>buy it</strong>. A weapon or body armor is a good start.', goal: 'Buy an item', check: () => _tutLastInvCount !== null && state.inventory.length > _tutLastInvCount },
-      { id: 'equip-item',    text: 'Now open your <strong>🎒 Inventory</strong> and <strong>equip</strong> your new gear.', goal: 'Equip an item', check: () => _tutLastEquipCount !== null && Object.values(state.equipment || {}).filter(Boolean).length > _tutLastEquipCount },
+      { id: 'equip-item',    text: 'Now open your <strong>🎒 Inventory</strong> and <strong>equip</strong> your new gear.', goal: 'Equip an item', check: () => _tutDidEquip },
       { id: 'durability',    text: 'Notice the <strong>durability bar</strong> on your equipment. Gear wears down in combat — when it breaks, you lose its stats! Keep it repaired.', goal: 'Continue', check: () => _tutWaitContinue },
       { id: 'travel-woods',  text: 'Time for adventure! Click <strong>Whispering Woods</strong> on the minimap to the right, then confirm your travel.', goal: 'Travel to Whispering Woods', check: () => state.character?.location === 'whispering-woods' },
       { id: 'accept-quest',  text: 'You\'ve arrived! There\'s a <strong>quest available</strong> here. Accept it and see what awaits.', goal: 'Accept a quest', check: () => state.activeQuests?.length > 0 },
@@ -3384,6 +3569,7 @@
     let _tutStartCompletedCount = 0;
     let _tutWaitContinue = false;
     let _tutDidRest = false;
+    let _tutDidEquip = false;
     let _tutRewardClaimed = false;
 
     function getTutorialKey() {
@@ -3726,19 +3912,24 @@
     function setAcademyFilter(filter) { academyFilter = filter; selectedTalent = null; renderGame(); }
     function selectTalent(slug) { selectedTalent = selectedTalent === slug ? null : slug; renderGame(); }
 
+    function _getCurrentLoadout() {
+      const a = state.abilities;
+      if (!a) return [];
+      return academyLoadoutMode === 'pvp' ? (a.activePvp || a.active) : academyLoadoutMode === 'raid' ? (a.activeRaid || a.active) : a.active;
+    }
     function addToLoadout(slug) {
-      if (!pendingLoadout) pendingLoadout = [...(state.abilities?.active || [])];
+      if (!pendingLoadout) pendingLoadout = [..._getCurrentLoadout()];
       if (pendingLoadout.length >= 6) return;
       if (!pendingLoadout.includes(slug)) { pendingLoadout.push(slug); renderGame(); }
     }
     function removeFromLoadout(slug) {
-      if (!pendingLoadout) pendingLoadout = [...(state.abilities?.active || [])];
+      if (!pendingLoadout) pendingLoadout = [..._getCurrentLoadout()];
       pendingLoadout = pendingLoadout.filter(s => s !== slug);
       renderGame();
     }
     function resetLoadout() { pendingLoadout = null; renderGame(); }
     function setAcademyLoadoutMode(mode) {
-      academyLoadoutMode = mode === 'pvp' ? 'pvp' : 'pve';
+      academyLoadoutMode = mode === 'pvp' ? 'pvp' : mode === 'raid' ? 'raid' : 'pve';
       pendingLoadout = null;
       selectedTalent = null;
       renderGame();
@@ -3847,6 +4038,7 @@
     let partyTargetAlly = null;   // selected player id for heals/buffs
     let _pollFailures = 0;
     const POLL_FAIL_THRESHOLD = 3;
+    let partyEventSource = null;  // SSE connection
 
     function trackPollSuccess() {
       if (_pollFailures >= POLL_FAIL_THRESHOLD) hideConnectionBanner();
@@ -3859,12 +4051,126 @@
       }
     }
 
+    // ── SSE-based updates (all authenticated players) ──
+    function startSSE() {
+      if (partyEventSource) return; // already connected
+      if (typeof EventSource === 'undefined') return;
+      partyEventSource = new EventSource('/api/fantasy/party/stream');
+      partyEventSource.onopen = () => { console.log('[SSE] Connected'); trackPollSuccess(); };
+      partyEventSource.onmessage = (e) => {
+        try {
+          trackPollSuccess();
+          const data = JSON.parse(e.data);
+          console.log('[SSE] Event:', data.type, data);
+          if (data.type === 'state') handlePartySSE(data);
+          else if (data.type === 'invites') handleInviteSSE(data);
+          else if (data.type === 'invite') handleSingleInvite(data);
+          else if (data.type === 'friendUpdate') handleFriendUpdate(data);
+        } catch (err) { console.error('SSE parse error:', err); }
+      };
+      partyEventSource.onerror = () => {
+        trackPollFailure();
+        // EventSource auto-reconnects (3s retry set by server)
+      };
+    }
+    function stopSSE() {
+      if (partyEventSource) { partyEventSource.close(); partyEventSource = null; }
+    }
+    function handlePartySSE(data) {
+      const hadParty = !!partyData;
+      const wasInRaid = partyData?.state === 'in_raid';
+      const prevPhase = partyRaidState?.phase;
+      const prevLeaderName = (partyData?.members || []).find(m => m.isLeader)?.name;
+      partyData = data.party;
+      if (data.raidState !== undefined) { partyRaidState = data.raidState; if (data.raidState && data.raidState.phase !== 'choice') _raidVoteCast = false; }
+      if (data.combat !== undefined) partyCombatData = data.combat;
+
+      // Party disbanded
+      if (hadParty && !partyData) {
+        partyRaidState = null; partyCombatData = null;
+        stopPartyCombatPolling();
+        const wasRaidComplete = prevPhase === 'complete';
+        const leaderName = prevLeaderName || 'The leader';
+        showToast('info', 'Party', wasRaidComplete ? 'Raid complete — your adventure continues.' : 'The party was disbanded.');
+        if (storyView === 'raidTower') storyView = 'menu';
+        // Refetch character state — raid_state, HP/MP, gold/XP rewards all changed on the server.
+        fetch('/api/fantasy/state', { credentials: 'include' }).then(r => r.json()).then(st => {
+          if (st) state = { ...state, ...st };
+          if (friendsOpen) renderFriendsOverlay();
+          renderGame();
+        }).catch(() => {
+          if (friendsOpen) renderFriendsOverlay();
+          renderGame();
+        });
+        return;
+      }
+      // Detect raid start
+      if (partyData?.state === 'in_raid' && !wasInRaid) {
+        storyView = 'raidTower';
+        fetch('/api/fantasy/state', { credentials: 'include' }).then(r => r.json()).then(st => {
+          if (st) state = { ...state, ...st };
+          renderGame();
+        }).catch(() => renderGame());
+        return;
+      }
+      if (friendsOpen) renderFriendsOverlay();
+      // Always re-render story panel so raid tower party UI updates
+      if (storyView === 'raidTower') renderStoryPanel();
+      // Victory/wipe
+      if (partyCombatData?.phase === 'wipe') {
+        partyData = null; partyCombatData = null; partyRaidState = null;
+        showToast('death', 'Party Wipe', 'The raid is lost. All party members respawn.');
+        fetch('/api/fantasy/state', { credentials: 'include' }).then(r => r.json()).then(st => {
+          if (st) state = { ...state, ...st };
+          storyView = 'menu';
+          renderGame();
+        }).catch(() => renderGame());
+        return;
+      }
+      renderGame();
+    }
+    function handleInviteSSE(data) {
+      const prevCount = partyInvites.length;
+      partyInvites = data.pendingInvites || [];
+      // Toast if a brand-new invite slipped in during a disconnect window
+      if (partyInvites.length > prevCount) {
+        const latest = partyInvites[0];
+        showToast('info', 'Party Invite', `${latest?.from_name || 'Someone'} invited you to a raid party!`);
+      }
+      if (friendsOpen) renderFriendsOverlay();
+      renderGame();
+    }
+    function handleFriendUpdate(data) {
+      showToast('info', 'Friends', data.message || 'Friend list updated.');
+      // Reload friends data if overlay is open
+      if (friendsOpen) loadFriends();
+    }
+    function handleSingleInvite(data) {
+      // Toast immediately — don't let a flaky poll swallow the notification
+      showToast('info', 'Party Invite', `${data.invite?.from_name || 'Someone'} invited you to a raid party!`);
+      // Then reload full invites from server for accuracy (real invite_id, etc.)
+      fetch('/api/fantasy/party/poll', { credentials: 'include' }).then(r => r.json()).then(d => {
+        partyInvites = d.pendingInvites || [];
+        if (d.party) { partyData = d.party; }
+        if (friendsOpen) renderFriendsOverlay();
+        renderGame();
+      }).catch(() => {});
+    }
+
     function startPartyPolling() {
+      startSSE();
       stopPartyPolling();
+      // SSE is the fast path. Also keep a slow safety-net poll running so that
+      // any missed SSE event (proxy hiccup, brief disconnect before reconnect
+      // initial-state fires, etc.) doesn't leave party/raid UI stale.
+      // Interval scales with whether SSE is live: 20s when SSE is connected,
+      // 5s when falling back to polling alone.
+      const interval = partyEventSource ? 20_000 : 5_000;
       pollParty();
-      partyPollTimer = setInterval(pollParty, 5000);
+      partyPollTimer = setInterval(pollParty, interval);
     }
     function stopPartyPolling() {
+      // Don't stop SSE -- it stays connected for invite notifications
       if (partyPollTimer) { clearInterval(partyPollTimer); partyPollTimer = null; }
     }
     async function pollParty() {
@@ -3886,7 +4192,7 @@
           return;
         }
         // Pick up raid/combat state from party poll
-        if (data.raidState) partyRaidState = data.raidState;
+        if (data.raidState) { partyRaidState = data.raidState; if (data.raidState.phase !== 'choice') _raidVoteCast = false; }
         if (data.combat) partyCombatData = data.combat;
 
         // Detect raid start — transition ALL members (not just leader) to raid polling
@@ -3903,8 +4209,9 @@
         if (partyData?.state === 'in_raid' && !partyCombatPollTimer) {
           startPartyCombatPolling();
         }
-        // Re-render if we're on the raid tower view
+        // Re-render UI everywhere partyData is shown
         if (storyView === 'raidTower') renderStoryPanel();
+        if (friendsOpen) renderFriendsOverlay();
         renderGame();
       } catch (e) { trackPollFailure(); }
     }
@@ -3913,31 +4220,29 @@
       try {
         const res = await post('/api/fantasy/party/create');
         partyData = res.party;
-        startPartyPolling();
-        renderStoryPanel();
+        partyInvites = res.pendingInvites || [];
+        friendsTab = 'party';
+        // Reconnect SSE with new party_id
+        stopSSE(); startSSE();
+        // Refresh character state (party_id changed)
+        const st = await fetch('/api/fantasy/state', { credentials: 'include' }).then(r => r.json());
+        if (st) state = { ...state, ...st };
+        if (friendsOpen) renderFriendsOverlay();
+        renderGame();
       } catch (err) { showMessage(err.message, true); }
     }
+    let _partyInviteList = null; // null = hidden, [] = loaded but empty, [...] = friends to show
     async function openPartyInvite() {
-      // Load friends and show invite picker
+      if (_partyInviteList) { _partyInviteList = null; if (friendsOpen) renderFriendsOverlay(); renderStoryPanel(); return; } // toggle off
       try {
         const resp = await fetch('/api/fantasy/friends', { credentials: 'include' });
         if (!resp.ok) return;
         const data = await resp.json();
-        const onlineFriends = (data.friends || []).filter(f => f.online && isRaidTown(f.location));
-        if (onlineFriends.length === 0) {
-          showMessage('No friends online at a Raid Tower town to invite.', true);
-          return;
-        }
-        // Show a simple picker
-        const CLASS_ICONS = { warrior: '⚔', mage: '🔮', rogue: '🗡', cleric: '✝', ranger: '🏹' };
-        const list = onlineFriends.map(f => `${f.name} (${CLASS_ICONS[f.class]||''} Lv${f.level})`).join('\n');
-        const name = prompt('Invite a friend at a Raid Tower town:\n\n' + list + '\n\nType their name:');
-        if (!name) return;
-        const friend = onlineFriends.find(f => f.name.toLowerCase() === name.trim().toLowerCase());
-        if (!friend) { showMessage('Friend not found at a Raid Tower town.', true); return; }
-        const res = await post('/api/fantasy/party/invite', { charId: friend.charId });
-        partyData = res.party;
-        showToast('info', 'Party', res.message || `Invited ${friend.name}.`);
+        const alreadyInParty = new Set((partyData?.members || []).map(m => m.charId));
+        const alreadyInvited = new Set((partyData?.invites || []).map(i => i.toCharId));
+        const onlineFriends = (data.friends || []).filter(f => f.online && !alreadyInParty.has(f.charId) && !alreadyInvited.has(f.charId));
+        _partyInviteList = onlineFriends;
+        if (friendsOpen) renderFriendsOverlay();
         renderStoryPanel();
       } catch (err) { showMessage(err.message, true); }
     }
@@ -3945,12 +4250,18 @@
       try {
         const res = await post('/api/fantasy/party/accept', { inviteId: Number(id) });
         partyData = res.party;
-        partyInvites = [];
-        startPartyPolling();
-        // Re-fetch full state since party_id changed
+        partyInvites = res.pendingInvites || [];
+        partyRaidState = res.raidState || null;
+        partyCombatData = res.combat || null;
+        friendsTab = 'party';
+        showToast('info', 'Party', 'Joined the party! Head to a Raid Tower to ready up.');
+        // Refresh character state (party_id changed)
         const st = await fetch('/api/fantasy/state', { credentials: 'include' }).then(r => r.json());
         if (st) { state = { ...state, ...st }; }
-        renderStoryPanel();
+        // Reconnect SSE with new party_id
+        stopSSE(); startSSE();
+        if (friendsOpen) renderFriendsOverlay();
+        renderGame();
       } catch (err) { showMessage(err.message, true); }
     }
     async function partyDecline(id) {
@@ -3964,7 +4275,8 @@
       try {
         const res = await post('/api/fantasy/party/ready');
         partyData = res.party;
-        renderStoryPanel();
+        if (friendsOpen) renderFriendsOverlay();
+        renderGame();
       } catch (err) { showMessage(err.message, true); }
     }
     async function partyLeave() {
@@ -3974,6 +4286,7 @@
       try {
         const res = await post('/api/fantasy/party/leave');
         partyData = null;
+        _partyInviteList = null;
         stopPartyPolling();
         applyState(res);
         renderStoryPanel();
@@ -4010,6 +4323,8 @@
 
     // ── Party Combat ──
     function startPartyCombatPolling() {
+      // SSE delivers combat state — skip polling if SSE is active
+      if (partyEventSource) return;
       stopPartyCombatPolling();
       pollPartyCombat();
       partyCombatPollTimer = setInterval(pollPartyCombat, 3000);
@@ -4055,12 +4370,17 @@
         renderGame();
       } catch (err) { showMessage(err.message, true); }
     }
+    let _raidVoteCast = false;
     async function partyRaidChoice(idx) {
       try {
         const res = await post('/api/fantasy/party/raid/choice', { choiceIdx: Number(idx) });
         partyRaidState = res.raidState;
         if (res.allVoted && partyRaidState?.phase === 'choiceResult') {
+          _raidVoteCast = false;
           showToast('info', 'Vote', partyRaidState.lastChoiceOutcome?.success ? 'The party chose wisely!' : 'The vote\'s outcome was... unfortunate.');
+        } else {
+          _raidVoteCast = true;
+          showToast('info', 'Vote', 'Vote cast! Waiting for party...');
         }
         renderGame();
       } catch (err) { showMessage(err.message, true); }
@@ -4110,12 +4430,13 @@
       } catch (err) { showMessage(err.message, true); }
     }
     async function partyCombatAck() {
-      // After victory, acknowledge and continue
+      // After victory, clear combat and advance raid
       partyCombatData = null;
-      // Poll for updated raid state
-      await pollPartyCombat();
-      if (!partyCombatData && partyRaidState) {
-        // Back to raid flow
+      stopPartyCombatPolling();
+      const isLeader = partyData?.leaderId === state.character?.id;
+      if (isLeader) {
+        await partyRaidAdvance();
+      } else {
         renderGame();
       }
     }
@@ -4144,21 +4465,29 @@
 
       let html = '';
       const eyebrow = cs.isBossRoom ? `🔥 PARTY RAID BOSS — FLOOR ${cs.raidFloor || '?'}` : `⚔ PARTY COMBAT — FLOOR ${cs.raidFloor || '?'}`;
-      html += `<div class="combat-box"><div class="eyebrow">${eyebrow}</div>`;
+      const raidBg = partyRaidState?.raidSlug ? locationImageUrl('raid-' + partyRaidState.raidSlug) : locationImageUrl(c.location);
+      html += `<div class="combat-box" style="position:relative;max-height:80vh;display:flex;flex-direction:column">
+        <div class="combat-bg"><img src="${raidBg}" alt="" onerror="this.parentElement.style.display='none'"></div>
+        <div class="eyebrow" style="position:relative">${eyebrow}</div>
+        <div style="overflow-y:auto;flex:1;position:relative">`;
 
       // ── ENEMIES (clickable for targeting) ──
+      html += `<div class="enemy-gallery">`;
       for (const en of cs.enemies) {
         const dead = en.hp <= 0;
         const isTarget = en.id === partyTargetEnemy && !dead;
         const hpPct = Math.max(0, Math.round((en.hp / en.maxHp) * 100));
-        const border = isTarget ? 'border:2px solid rgba(214,176,95,.6);' : 'border:2px solid transparent;';
-        const click = !dead && canAct ? `data-action="selectPartyEnemy" data-id="${en.id}" style="cursor:pointer;${border}padding:6px;border-radius:8px;margin-bottom:4px;${dead?'opacity:.3;':''}"` : `style="${border}padding:6px;border-radius:8px;margin-bottom:4px;${dead?'opacity:.3;':''}"`;
-        html += `<div ${click}>
-          <div style="font-size:1.1rem;font-weight:700">${en.boss ? '🔥 ' : ''}${esc(en.name)}${dead ? ' ☠' : ''}${isTarget ? ' ◄' : ''}</div>
-          ${!dead ? `<div class="muted" style="font-size:.72rem">ATK ${en.attack} · DEF ${en.defense} · HP ${en.hp}/${en.maxHp}</div>
+        const targetClass = isTarget ? ' enemy-card-target' : '';
+        const deadClass = dead ? ' enemy-card-dead' : '';
+        const clickAttr = !dead && canAct ? `data-action="selectPartyEnemy" data-id="${en.id}" style="cursor:pointer"` : '';
+        html += `<div class="enemy-card${targetClass}${deadClass}" ${clickAttr}>
+          <div class="enemy-card-name">${en.boss ? '🔥 ' : ''}${esc(en.name)}${dead ? ' ☠' : ''}${isTarget ? ' ◄' : ''}</div>
+          ${!dead ? renderEnemyPortrait(en.slug, { dead }) : ''}
+          ${!dead ? `<div class="enemy-card-stats">ATK ${en.attack} · DEF ${en.defense} · HP ${en.hp}/${en.maxHp}</div>
           <div class="bar"><div class="fill hp" style="width:${hpPct}%"></div></div>` : ''}
         </div>`;
       }
+      html += `</div>`;
 
       // ── PARTY MEMBERS (clickable for ally targeting) ──
       html += `<div style="margin:12px 0;padding:10px;background:rgba(20,184,166,.04);border:1px solid rgba(20,184,166,.15);border-radius:8px">
@@ -4194,6 +4523,10 @@
               <div style="display:flex;gap:4px;margin-top:2px">
                 <div class="bar thin" style="flex:1"><div class="fill hp" style="width:${hpPct}%"></div></div>
                 <span style="font-size:.6rem;color:var(--red);width:50px">${p.hp}/${p.maxHp}</span>
+              </div>
+              <div style="display:flex;gap:4px;margin-top:1px">
+                <div class="bar thin" style="flex:1"><div class="fill mp" style="width:${Math.round((p.mp / p.maxMp) * 100)}%"></div></div>
+                <span style="font-size:.6rem;color:var(--sky);width:50px">${p.mp}/${p.maxMp}</span>
               </div>
             </div>
           </div>
@@ -4236,7 +4569,8 @@
               const isAllyAbility = needsAllyTarget(a.type);
               const targetLabel = isAllyAbility ? (partyTargetAlly ? '' : ' [select ally]') : '';
               const needsTarget = isAllyAbility && !partyTargetAlly;
-              html += `<button class="action-btn ${a.type}" data-action="partyCombatAction" data-type="ability" data-ability="${a.slug}" ${canUse && !needsTarget ? '' : 'disabled'} title="${esc(a.description||'')} (${cost} MP)${onCd ? ' CD:'+me.cooldowns[a.slug] : ''}${isAllyAbility ? ' — targets ally' : ''}" style="font-size:.78rem;padding:4px 8px">${esc(a.name)} <span class="muted">${cost}</span>${targetLabel}</button>`;
+              const cdLabel = onCd ? ` [${me.cooldowns[a.slug]}t]` : '';
+              html += `<button class="action-btn ${a.type}" data-action="partyCombatAction" data-type="ability" data-ability="${a.slug}" ${canUse && !needsTarget ? '' : 'disabled'} title="${esc(a.description||'')} (${cost} MP)${onCd ? ' CD:'+me.cooldowns[a.slug] : ''}${isAllyAbility ? ' — targets ally' : ''}" style="font-size:.78rem;padding:4px 8px;${onCd ? 'opacity:.45;' : ''}">${esc(a.name)} <span class="muted">${cost}</span>${cdLabel}${targetLabel}</button>`;
             }
             html += `</div>`;
           }
@@ -4247,6 +4581,22 @@
         }
       }
 
+      // Momentum bar
+      if (me && me.hp > 0) {
+        const m = me.momentum || 0;
+        const tierNames = ['', '', '', 'Warmed Up', 'Warmed Up', 'In The Zone', 'In The Zone', 'Battle Focus', 'Battle Focus', 'Unstoppable', 'Unstoppable'];
+        const tierName = tierNames[m] || '';
+        const pct = (m / 10) * 100;
+        const tierColor = m >= 9 ? '#fbbf24' : m >= 7 ? '#f97316' : m >= 5 ? '#3b82f6' : m >= 3 ? '#22c55e' : 'var(--muted)';
+        html += `<div style="margin-top:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+            <span class="label" style="margin:0">⚡ Momentum</span>
+            <span style="font-size:.72rem;font-family:'Fira Code',monospace;color:${tierColor}">${tierName ? tierName + ' ' : ''}${m}/10</span>
+          </div>
+          <div class="bar" style="height:6px;margin:0"><div class="fill" style="width:${pct}%;background:linear-gradient(90deg,${tierColor},${tierColor}88);transition:width .4s ease"></div></div>
+        </div>`;
+      }
+
       // Round log
       if (cs.roundLog?.length) {
         html += `<div style="margin-top:10px;padding:8px;background:rgba(0,0,0,.2);border-radius:8px;max-height:200px;overflow-y:auto;font-size:.8rem;line-height:1.5">`;
@@ -4254,15 +4604,25 @@
         html += `</div>`;
       }
 
-      // Victory/wipe
+      // Victory/wipe — sticky at bottom so it's always reachable
       if (cs.phase === 'victory') {
-        html += `<div style="text-align:center;padding:16px;color:#22c55e;font-weight:700;font-size:1.1rem">⚔ Victory!</div>
-          <button class="primary-action" data-action="partyCombatAck">Continue</button>`;
+        const isLeader = partyData?.leaderId === c.id;
+        const leaderName = (partyData?.members || []).find(m => m.isLeader)?.name || 'the leader';
+        html += `</div><div style="position:sticky;bottom:0;padding:12px 16px;background:linear-gradient(to top,rgba(14,12,10,.98) 60%,transparent);text-align:center;z-index:2">
+          <div style="color:#22c55e;font-weight:700;font-size:1.1rem;margin-bottom:8px">⚔ Victory!</div>
+          ${isLeader
+            ? `<button class="primary-action" data-action="partyCombatAck">Continue</button>`
+            : `<div class="primary-action" style="pointer-events:none;opacity:.6;background:linear-gradient(135deg,#3a2f20,#4a3a28);cursor:default;font-style:italic">⏳ Waiting for ${esc(leaderName)} to continue...</div>`}
+        </div>`;
+        // Close the scrollable wrapper
+        html += `</div>`;
       } else if (cs.phase === 'wipe') {
-        html += `<div style="text-align:center;padding:16px;color:#ef4444;font-weight:700;font-size:1.1rem">💀 Party Wipe</div>`;
+        html += `</div><div style="position:sticky;bottom:0;padding:12px 16px;background:linear-gradient(to top,rgba(14,12,10,.98) 60%,transparent);text-align:center;z-index:2">
+          <div style="color:#ef4444;font-weight:700;font-size:1.1rem">💀 Party Wipe</div>
+        </div></div>`;
+      } else {
+        html += `</div></div>`;
       }
-
-      html += `</div>`;
       return html;
     }
 
@@ -4270,23 +4630,59 @@
       try {
         const res = await post('/api/fantasy/party/invite', { charId: Number(id) });
         partyData = res.party;
+        _partyInviteList = null;
         showToast('info', 'Party', res.message || 'Invited!');
         renderFriendsOverlay();
         if (storyView === 'raidTower') renderStoryPanel();
       } catch (err) { showMessage(err.message, true); }
     }
-    async function partyStartRaid(slug) {
+    async function partyStartRaid() {
       const ok = await appConfirm('Start the raid with your party? All members will be locked in.', 'Start Raid', 'Cancel');
       if (!ok) return;
       try {
-        const res = await post('/api/fantasy/party/start', { raidSlug: slug });
+        const res = await post('/api/fantasy/party/start');
         partyData = res.party;
-        partyRaidState = partyData?.state === 'in_raid' ? (await q1PartyRaidState()) : null;
-        // Re-fetch full state since raid_state changed  
+        // Re-fetch full state since raid_state changed
         const st = await fetch('/api/fantasy/state', { credentials: 'include' }).then(r => r.json());
         if (st) { state = { ...state, ...st }; }
-        startPartyCombatPolling(); // Start polling for party raid
+        startPartyCombatPolling();
         storyView = 'menu';
+        renderGame();
+      } catch (err) { showMessage(err.message, true); }
+    }
+    let _partyRaidPickerOpen = false;
+    async function togglePartyRaidPicker() {
+      if (_partyRaidPickerOpen) { _partyRaidPickerOpen = false; if (friendsOpen) renderFriendsOverlay(); renderGame(); return; }
+      if (!raidListData) { await loadRaidList(); }
+      _partyRaidPickerOpen = true;
+      if (friendsOpen) renderFriendsOverlay();
+      renderGame();
+    }
+    async function partySelectRaid(slug) {
+      try {
+        const res = await post('/api/fantasy/party/select-raid', { raidSlug: slug });
+        partyData = res.party;
+        _partyRaidPickerOpen = false;
+        showToast('info', 'Lobby', 'Raid lobby opened — invite your party to join.');
+        if (friendsOpen) renderFriendsOverlay();
+        renderGame();
+      } catch (err) { showMessage(err.message, true); }
+    }
+    async function partyCancelLobby() {
+      const ok = await appConfirm('Cancel the raid lobby? Everyone will have to rejoin when you pick a new raid.', 'Cancel Lobby', 'Keep');
+      if (!ok) return;
+      try {
+        const res = await post('/api/fantasy/party/cancel-lobby');
+        partyData = res.party;
+        if (friendsOpen) renderFriendsOverlay();
+        renderGame();
+      } catch (err) { showMessage(err.message, true); }
+    }
+    async function partyJoinLobby() {
+      try {
+        const res = await post('/api/fantasy/party/join-lobby');
+        partyData = res.party;
+        if (friendsOpen) renderFriendsOverlay();
         renderGame();
       } catch (err) { showMessage(err.message, true); }
     }
@@ -5316,64 +5712,24 @@
           </div>
         </div>`;
 
-      // ── PARTY UI ──
-      if (partyData) {
-        const p = partyData;
-        const isLeader = p.leaderId === c.id;
-        const allReady = p.members.filter(m => m.charId !== p.leaderId).every(m => m.ready);
-        const canStart = isLeader && p.members.length >= 2 && allReady;
-
+      // Party setup now lives entirely in the side-panel party tab.
+      if (!partyData) {
         html += `
-          <div style="background:rgba(20,184,166,.06);border:1px solid rgba(20,184,166,.2);border-radius:12px;padding:14px;margin-bottom:16px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-              <div class="eyebrow" style="color:#14b8a6">👥 RAID PARTY (${p.members.length}/5)</div>
-              ${isLeader ? '<span style="font-size:.7rem;color:#fbbf24;font-weight:600">★ LEADER</span>' : ''}
-            </div>`;
-
-        // Members
-        for (const m of p.members) {
-          const hpPct = Math.round((m.hp / m.maxHp) * 100);
-          const readyIcon = m.isLeader ? '★' : m.ready ? '✓' : '⏳';
-          const readyColor = m.isLeader ? '#fbbf24' : m.ready ? '#22c55e' : '#888';
-          html += `<div style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:4px">
-            <div style="display:flex;align-items:center;gap:8px">
-              <span style="color:${readyColor};font-weight:700;width:16px">${readyIcon}</span>
-              <div>
-                <div style="font-weight:600;font-size:.88rem">${CLASS_ICONS[m.class]||''} ${esc(m.name)}</div>
-                <div class="muted" style="font-size:.7rem">${(m.class||'').charAt(0).toUpperCase()+(m.class||'').slice(1)} Lv${m.level} · HP ${m.hp}/${m.maxHp}</div>
-              </div>
-            </div>
-            ${isLeader && !m.isLeader ? `<button class="secondary small" data-action="partyKick" data-id="${m.charId}" style="padding:2px 6px;font-size:.65rem;opacity:.5">✕</button>` : ''}
-          </div>`;
-        }
-
-        // Pending invites
-        if (isLeader && p.invites.length > 0) {
-          html += `<div class="muted" style="font-size:.72rem;margin-top:6px">Pending invites: ${p.invites.map(i => esc(i.toName)).join(', ')}</div>`;
-        }
-
-        // Actions
-        html += `<div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">`;
-        if (!isLeader) {
-          const me = p.members.find(m => m.charId === c.id);
-          html += `<button class="${me?.ready ? 'secondary' : 'green'} small" data-action="partyReady">${me?.ready ? '⏳ Unready' : '✓ Ready'}</button>`;
-        }
-        if (isLeader && p.members.length < 5) {
-          html += `<button class="small" data-action="openPartyInvite">+ Invite Friend</button>`;
-        }
-        html += `<button class="secondary small" data-action="partyLeave" style="color:var(--ember)">${isLeader ? '🗑 Disband' : '🚪 Leave'}</button>`;
-        html += `</div></div>`;
-      } else if (!state.partyId) {
-        // No party — show create button
-        html += `
-          <div style="margin-bottom:16px">
+          <div style="background:rgba(20,184,166,.06);border:1px solid rgba(20,184,166,.2);border-radius:12px;padding:14px;margin-bottom:16px;text-align:center">
+            <div style="font-size:.9rem;margin-bottom:8px">Raids require a party of 2–5.</div>
             <button class="primary-action" data-action="partyCreate" style="width:100%">👥 Create Raid Party</button>
-            <div class="muted" style="text-align:center;margin-top:6px;font-size:.82rem">Raids require a party of 2-5 players</div>
+            <div class="muted" style="margin-top:8px;font-size:.78rem">Form your party in the Friends panel — no location needed.</div>
+          </div>`;
+      } else {
+        html += `
+          <div style="background:rgba(20,184,166,.06);border:1px solid rgba(20,184,166,.2);border-radius:12px;padding:12px 14px;margin-bottom:16px;text-align:center">
+            <div class="eyebrow" style="color:#14b8a6">👥 PARTY OF ${partyData.members.length}</div>
+            <div class="muted" style="font-size:.82rem;margin-top:6px">Pick a raid and manage the lobby from the <strong>Party panel</strong> on the right.</div>
           </div>`;
       }
 
-      // Pending party invites (for non-party members)
-      if (partyInvites && partyInvites.length > 0 && !state.partyId) {
+      // Pending party invites (if no party)
+      if (partyInvites && partyInvites.length > 0 && !partyData) {
         html += `<div style="background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.15);border-radius:12px;padding:12px;margin-bottom:16px">
           <div class="label" style="color:#fbbf24;margin-bottom:6px">📨 PARTY INVITES</div>`;
         for (const inv of partyInvites) {
@@ -5388,36 +5744,29 @@
         html += `</div>`;
       }
 
-      // ── RAID LIST ──
-      html += `<div class="muted" style="margin-bottom:12px">Multi-floor raids with unique enemies, lore, and powerful bosses. Once you enter, there is no retreat between floors.</div>`;
+      // ── RAID LIST (informational only) ──
+      html += `<div class="muted" style="margin-bottom:12px">Multi-floor raids with unique enemies, lore, and powerful bosses. Once the party enters, there is no retreat between floors.</div>`;
 
       for (const raid of raids) {
         const comp = completions[raid.slug];
         const canEnter = raid.canEnter;
         const diffColor = diffColors[raid.difficulty] || '#888';
         const diffLabel = diffLabels[raid.difficulty] || raid.difficulty.toUpperCase();
-        const hasParty = !!partyData;
-        const isLeader = partyData?.leaderId === c.id;
-        const allReady = partyData?.members.filter(m => m.charId !== partyData.leaderId).every(m => m.ready);
-        const canStartParty = hasParty && isLeader && partyData.members.length >= 2 && allReady && canEnter;
 
         html += `
-          <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;${!canEnter ? 'opacity:.5;' : ''}">
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;${!canEnter ? 'opacity:.55;' : ''}">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
               <div style="font-size:1.2rem;font-weight:700">${raid.icon} ${esc(raid.name)}</div>
               <span style="background:${diffColor};color:#000;padding:2px 10px;border-radius:20px;font-size:.72rem;font-weight:800;letter-spacing:.5px">${diffLabel}</span>
             </div>
             <div class="muted" style="margin-bottom:8px;line-height:1.5">${esc(raid.description)}</div>
-            <div style="display:flex;gap:16px;font-size:.82rem;margin-bottom:10px">
+            <div style="display:flex;gap:16px;font-size:.82rem;flex-wrap:wrap">
               <span>📊 ${raid.floors} Floors</span>
               <span>⚔ Level ${raid.levelReq}+</span>
               ${comp ? `<span style="color:#22c55e">✅ Cleared ${comp.clears}×</span>` : '<span class="muted">Not yet cleared</span>'}
+              ${comp?.bestTimeSeconds != null ? `<span style="color:#fbbf24">⏱ Best ${Math.floor(comp.bestTimeSeconds/60)}:${String(comp.bestTimeSeconds%60).padStart(2,'0')}</span>` : ''}
             </div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap">
-              ${canStartParty ? `<button class="primary-action" data-action="partyStartRaid" data-slug="${raid.slug}" style="background:linear-gradient(135deg,#0d9488,#14b8a6)">⚔ Start Raid</button>` : ''}
-              ${canEnter && !hasParty ? `<div class="muted" style="font-size:.82rem">Form a party to enter</div>` : ''}
-              ${!canEnter ? `<div class="muted" style="font-style:italic">Requires Level ${raid.levelReq}</div>` : ''}
-            </div>
+            ${!canEnter ? `<div class="muted" style="font-style:italic;margin-top:6px;font-size:.8rem">Requires Level ${raid.levelReq}</div>` : ''}
           </div>`;
       }
 
@@ -5430,9 +5779,16 @@
       const rs = partyRaidState;
       if (!rs) return '';
 
+      const isLeader = partyData?.leaderId === c.id;
+      const leaderMember = (partyData?.members || []).find(m => m.isLeader);
+      const leaderName = leaderMember?.name || 'the leader';
+      const waitingBtn = `<div class="primary-action" style="pointer-events:none;opacity:.6;text-align:center;background:linear-gradient(135deg,#3a2f20,#4a3a28);cursor:default;font-style:italic">⏳ Waiting for ${esc(leaderName)} to continue...</div>`;
+
       const hpPct = Math.round((c.hp / c.max_hp) * 100);
       const mpPct = Math.round((c.mp / c.max_mp) * 100);
       const progressPct = Math.round((rs.floorsCleared / rs.totalFloors) * 100);
+      const raidBgUrl = locationImageUrl('raid-' + rs.raidSlug);
+      const raidBox = `<div class="combat-box" style="position:relative;overflow:hidden"><div class="combat-bg"><img src="${raidBgUrl}" alt="" onerror="this.parentElement.style.display='none'"></div><div style="position:relative">`;
 
       // Active buffs/debuffs indicators
       const activeMods = [];
@@ -5456,61 +5812,160 @@
 
       // ── COMPLETE ──
       if (rs.phase === 'complete') {
-        return raidHeader + `
-          <div class="combat-box" style="border-color:#22c55e40">
-            <div class="eyebrow" style="color:#22c55e">🏆 RAID COMPLETE</div>
-            <h3 style="margin:8px 0;color:#fbbf24">${esc(rs.raidSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))}</h3>
-            ${rs.completionLore ? `<div style="line-height:1.7;margin:16px 0;white-space:pre-line;font-size:.92rem;color:#ccc">${esc(rs.completionLore)}</div>` : ''}
-            <div style="display:flex;gap:16px;justify-content:center;margin:16px 0;font-size:.9rem">
-              <span>💰 ${rs.totalGold || 0} gold</span>
-              <span>⭐ ${rs.totalXp || 0} XP</span>
+        const raidName = rs.raidSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        const partySize = (partyData?.members || []).length || 1;
+
+        // Run time
+        let runTimeHtml = '';
+        if (rs.startedAt && rs.completedAt) {
+          const ms = new Date(rs.completedAt).getTime() - new Date(rs.startedAt).getTime();
+          const totalSec = Math.max(0, Math.floor(ms / 1000));
+          const mm = Math.floor(totalSec / 60);
+          const ss = String(totalSec % 60).padStart(2, '0');
+          runTimeHtml = `<div style="font-size:1.8rem;font-weight:800;color:#fbbf24;font-family:'Fira Code',monospace;letter-spacing:.06em">${mm}:${ss}</div>
+            <div class="muted" style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase">Run time</div>`;
+        }
+
+        // Personal rewards (for this character)
+        const mine = rs.personalRewards?.[c.id] || null;
+        const myXp = mine?.xp ?? Math.floor((rs.totalXp || 0) / partySize);
+        const myGold = mine?.gold ?? Math.floor((rs.totalGold || 0) / partySize);
+        const myTokens = mine?.tokens ?? 0;
+        const myLoot = mine?.loot || [];
+
+        const rarityColor = { common:'#aaa', uncommon:'#22c55e', rare:'#3b82f6', epic:'#a855f7', mythic:'#fbbf24', exotic:'#06b6d4' };
+        const lootHtml = myLoot.length
+          ? myLoot.map(it => {
+              const c = rarityColor[it.rarity] || '#ccc';
+              const icon = it.source === 'exotic' ? '🔷' : it.rarity === 'mythic' ? '🟡' : '🔴';
+              return `<div style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:rgba(255,255,255,.03);border-left:3px solid ${c};border-radius:4px;margin-bottom:4px">
+                <span style="font-size:1rem">${icon}</span>
+                <div style="flex:1;min-width:0">
+                  <div style="color:${c};font-weight:600;font-size:.86rem">${esc(it.name)}</div>
+                  <div class="muted" style="font-size:.7rem;text-transform:capitalize">${esc(it.rarity || 'common')}${it.source === 'exotic' ? ' · class exclusive' : ''}</div>
+                </div>
+              </div>`;
+            }).join('')
+          : `<div class="muted" style="text-align:center;font-style:italic;padding:8px;font-size:.85rem">No items dropped this run — the loot tables were quiet.</div>`;
+
+        return raidHeader + raidBox + `
+            <div style="text-align:center;margin-bottom:14px">
+              <div style="font-size:2.4rem;line-height:1">🏆</div>
+              <div class="eyebrow" style="color:#22c55e;font-size:.72rem;margin-top:6px">RAID COMPLETE</div>
+              <h2 style="margin:6px 0 0;color:#fbbf24;font-size:1.4rem">${esc(raidName)}</h2>
             </div>
-            <button class="primary-action" data-action="partyRaidDismiss" style="margin-top:8px">🏠 Return to Sunspire</button>
-          </div>`;
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0;text-align:center">
+              <div style="background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.2);border-radius:8px;padding:10px">
+                ${runTimeHtml || `<div style="font-size:1.4rem;font-weight:700;color:#fbbf24">—</div><div class="muted" style="font-size:.68rem;text-transform:uppercase">Run time</div>`}
+              </div>
+              <div style="background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:10px">
+                <div style="font-size:1.4rem;font-weight:700;color:#22c55e">${rs.floorsCleared}/${rs.totalFloors}</div>
+                <div class="muted" style="font-size:.68rem;text-transform:uppercase">Floors Cleared</div>
+              </div>
+              <div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px">
+                <div style="font-size:1.4rem;font-weight:700;color:#a78bfa">${partySize}</div>
+                <div class="muted" style="font-size:.68rem;text-transform:uppercase">Party Size</div>
+              </div>
+            </div>
+
+            ${rs.completionLore ? `<div style="line-height:1.7;margin:14px 0;white-space:pre-line;font-size:.92rem;color:#ccc;padding:12px;background:rgba(255,255,255,.02);border-left:3px solid #fbbf24;border-radius:4px;font-style:italic">${esc(rs.completionLore)}</div>` : ''}
+
+            <div style="margin:16px 0 10px">
+              <div class="label" style="margin-bottom:8px;color:#fbbf24">YOUR HAUL</div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px">
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center">
+                  <div style="font-size:1.1rem;font-weight:700;color:#fbbf24">💰 ${myGold}</div>
+                  <div class="muted" style="font-size:.66rem;text-transform:uppercase">Gold</div>
+                </div>
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center">
+                  <div style="font-size:1.1rem;font-weight:700;color:#22c55e">⭐ ${myXp}</div>
+                  <div class="muted" style="font-size:.66rem;text-transform:uppercase">Experience</div>
+                </div>
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center">
+                  <div style="font-size:1.1rem;font-weight:700;color:#a78bfa">✦ ${myTokens}</div>
+                  <div class="muted" style="font-size:.66rem;text-transform:uppercase">Tokens</div>
+                </div>
+              </div>
+              <div class="label" style="margin-bottom:6px">LOOT (${myLoot.length})</div>
+              <div>${lootHtml}</div>
+            </div>
+
+            <button class="primary-action" data-action="partyRaidDismiss" style="margin-top:16px;width:100%;background:linear-gradient(135deg,#0d9488,#14b8a6);padding:10px;font-size:1rem">✓ Finish Raid</button>
+            <div class="muted" style="text-align:center;margin-top:6px;font-size:.72rem;font-style:italic">Takes you back to wherever you were. Others can stay on this screen as long as they like.</div>
+          </div></div>`;
       }
 
       // ── LORE ──
       if (rs.phase === 'lore') {
         const loreText = getRaidFloorLore(rs);
-        return raidHeader + `
-          <div class="combat-box">
+        return raidHeader + raidBox + `
             <div class="eyebrow">📜 FLOOR ${rs.currentFloor} — ${esc(getRaidFloorName(rs))}</div>
             <div style="line-height:1.7;margin:14px 0;white-space:pre-line;font-size:.92rem;color:#ccc">${esc(loreText)}</div>
-            <button class="primary-action" data-action="partyRaidAdvance">⚔ Continue Deeper</button>
-          </div>`;
+            ${isLeader ? `<button class="primary-action" data-action="partyRaidAdvance">⚔ Continue Deeper</button>` : waitingBtn}
+          </div></div>`;
       }
 
       // ── ENCOUNTER ──
       if (rs.phase === 'encounter') {
-        return raidHeader + `
-          <div class="combat-box">
+        return raidHeader + raidBox + `
             <div class="eyebrow">🕳 FLOOR ${rs.currentFloor}</div>
             <div style="margin:12px 0;color:#ccc">Something stirs in the darkness ahead...</div>
-            <button class="primary-action" data-action="partyRaidAdvance">⚔ Advance</button>
+            ${isLeader ? `<button class="primary-action" data-action="partyRaidAdvance">⚔ Advance</button>` : waitingBtn}
             <button class="secondary" data-action="leaveRaid" style="margin-top:8px">🚪 Abandon Raid</button>
-          </div>`;
+          </div></div>`;
       }
 
       // ── CHOICE ──
       if (rs.phase === 'choice') {
         const choiceData = getRaidCurrentChoice(rs);
         if (choiceData) {
+          const votes = rs.votes || {};
+          const myVote = votes[c.id];
+          const haveVoted = myVote !== undefined;
+          const members = partyData?.members || [];
+          const totalMembers = members.length;
+          const votedCount = Object.keys(votes).length;
+
+          // Build voter name list per choice
+          const votersByChoice = {};
+          for (const [charIdStr, choiceIdx] of Object.entries(votes)) {
+            const voterId = Number(charIdStr);
+            const voter = members.find(m => m.charId === voterId);
+            const name = voter?.name || '?';
+            if (!votersByChoice[choiceIdx]) votersByChoice[choiceIdx] = [];
+            votersByChoice[choiceIdx].push(name);
+          }
+
           let choicesHtml = '';
           (choiceData.choices || []).forEach((ch, idx) => {
-            const checkLabel = '';
+            const voters = votersByChoice[idx] || [];
+            const isMyChoice = myVote === idx;
+            const voterBadges = voters.map(n => `<span style="background:rgba(34,197,94,.15);border:1px solid #22c55e;color:#22c55e;padding:2px 8px;border-radius:10px;font-size:.72rem;font-weight:600;white-space:nowrap">✓ ${esc(n)}</span>`).join('');
+            const selectedStyle = isMyChoice ? 'background:rgba(34,197,94,.12);border:2px solid #22c55e;' : '';
+            const lockedStyle = haveVoted && !isMyChoice ? 'opacity:.55;' : '';
+            const interactiveAttr = haveVoted ? 'style="text-align:left;padding:12px 16px;pointer-events:none;' + selectedStyle + lockedStyle + '"' : `style="text-align:left;padding:12px 16px;${selectedStyle}"`;
             choicesHtml += `
-              <button class="arena-choice-card" data-action="partyRaidChoice" data-value="${idx}" style="text-align:left;padding:12px 16px">
-                <div style="font-weight:700">${esc(ch.label)}${checkLabel}</div>
+              <button class="arena-choice-card" data-action="partyRaidChoice" data-value="${idx}" ${interactiveAttr}>
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+                  <div style="font-weight:700;flex:1;min-width:180px">${isMyChoice ? '✓ ' : ''}${esc(ch.label)}</div>
+                  ${voterBadges ? `<div style="display:flex;gap:4px;flex-wrap:wrap">${voterBadges}</div>` : ''}
+                </div>
               </button>`;
           });
-          return raidHeader + `
-            <div class="combat-box">
+
+          const statusLine = haveVoted
+            ? `<div style="text-align:center;margin-top:10px;color:#22c55e;font-size:.88rem;font-weight:600">✓ Locked in — waiting for party (${votedCount}/${totalMembers} voted)</div>`
+            : `<div style="text-align:center;margin-top:10px;color:var(--muted);font-size:.82rem">${votedCount}/${totalMembers} voted</div>`;
+
+          return raidHeader + raidBox + `
               <div class="eyebrow">📜 ${esc(choiceData.title || 'A Choice')}</div>
               <div style="line-height:1.7;margin:14px 0;white-space:pre-line;font-size:.92rem;color:#ccc">${esc(choiceData.text)}</div>
               <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">${choicesHtml}</div>
-            </div>`;
+              ${statusLine}
+            </div></div>`;
         }
-        return raidHeader + `<div class="combat-box"><button class="primary-action" data-action="partyRaidAdvance">Continue</button></div>`;
+        return raidHeader + raidBox + `<div style="text-align:center;padding:16px;color:var(--muted);font-style:italic">Loading raid data...</div></div></div>`;
       }
 
       // ── CHOICE RESULT (shows what happened) ──
@@ -5526,22 +5981,53 @@
           const cls = m.includes('⬆') || m.includes('Healed') || m.includes('Restored') || m.includes('⭐') ? 'color:#22c55e' : m.includes('💔') || m.includes('☠') || m.includes('Lost') ? 'color:#ef4444' : 'color:#ccc';
           return `<div style="${cls};font-size:.88rem;padding:2px 0">${esc(m)}</div>`;
         }).join('');
-        return raidHeader + `
-          <div class="combat-box" style="border-color:${resultColor}30">
+
+        // Vote breakdown — shows what each player picked and which option won
+        let voteBreakdownHtml = '';
+        if (o.choiceLabels && o.voteCounts) {
+          const members = partyData?.members || [];
+          const rows = o.choiceLabels.map((label, idx) => {
+            const count = o.voteCounts[idx] || 0;
+            const voterIds = (o.voters && o.voters[idx]) || [];
+            const voterNames = voterIds
+              .map(cid => members.find(m => m.charId === cid)?.name || '?')
+              .map(esc)
+              .join(', ');
+            const isWinner = idx === o.winningIdx;
+            const rowStyle = isWinner
+              ? 'border-left:3px solid #22c55e;background:rgba(34,197,94,.08)'
+              : 'border-left:3px solid transparent';
+            return `
+              <div style="padding:6px 10px;margin:4px 0;border-radius:4px;${rowStyle}">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+                  <div style="font-weight:${isWinner ? '700' : '500'};${isWinner ? 'color:#22c55e' : 'color:#ccc'}">${isWinner ? '★ ' : ''}${esc(label)}</div>
+                  <div style="font-size:.78rem;color:var(--muted)">${count} vote${count === 1 ? '' : 's'}</div>
+                </div>
+                ${voterNames ? `<div style="font-size:.72rem;color:#9ca3af;margin-top:2px">${voterNames}</div>` : ''}
+              </div>`;
+          }).join('');
+          voteBreakdownHtml = `
+            <div style="margin:12px 0;padding:10px;background:rgba(255,255,255,.04);border-radius:8px">
+              <div class="label" style="margin-bottom:4px">🗳 PARTY CHOSE</div>
+              ${rows}
+            </div>`;
+        }
+
+        return raidHeader + raidBox + `
             <div class="eyebrow" style="color:${resultColor}">${resultIcon} ${esc(o.title || 'Outcome')}</div>
+            ${voteBreakdownHtml}
             <div style="line-height:1.7;margin:14px 0;white-space:pre-line;font-size:.92rem;color:#ccc">${esc(o.text)}</div>
             ${rollHtml}
             ${effectsHtml ? `<div style="margin:12px 0;padding:10px;background:rgba(255,255,255,.03);border-radius:8px">${effectsHtml}</div>` : ''}
-            <button class="primary-action" data-action="partyRaidAdvance" style="margin-top:8px">⚔ Continue</button>
-          </div>`;
+            ${isLeader ? `<button class="primary-action" data-action="partyRaidAdvance" style="margin-top:8px">⚔ Continue</button>` : waitingBtn}
+          </div></div>`;
       }
 
       // ── PRE-BOSS RECOVERY ──
       if (rs.phase === 'preBoss') {
-        const choiceMade = rs.preBossChoiceMade;
+        const choiceMade = rs.preBossChoiceMade?.[c.id];
         const bossInfo = getRaidFloorBoss(rs);
-        return raidHeader + `
-          <div class="combat-box" style="border-color:rgba(239,68,68,.2)">
+        return raidHeader + raidBox + `
             <div class="eyebrow" style="color:#ef4444">🔥 BOSS AHEAD — FLOOR ${rs.currentFloor}</div>
             ${bossInfo ? `<div style="margin:8px 0;font-size:1.1rem;font-weight:700;color:#fbbf24">${esc(bossInfo.name)}</div>
             <div style="line-height:1.6;margin:8px 0;font-size:.88rem;color:#999;font-style:italic">${esc(bossInfo.description || '')}</div>` : ''}
@@ -5565,19 +6051,20 @@
             ` : `
               <div style="text-align:center;padding:8px;margin-bottom:14px;color:var(--muted);font-size:.88rem">Prepared. Ready to fight.</div>
             `}
-            <button class="primary-action" data-action="partyRaidAdvance" style="background:linear-gradient(135deg,#b91c1c,#dc2626)" ${!choiceMade ? 'disabled' : ''}>⚔ Face the Boss</button>
+            ${isLeader
+              ? `<button class="primary-action" data-action="partyRaidAdvance" style="background:linear-gradient(135deg,#b91c1c,#dc2626)" ${!choiceMade ? 'disabled' : ''}>⚔ Face the Boss</button>`
+              : waitingBtn}
             <button class="secondary" data-action="leaveRaid" style="margin-top:8px">🚪 Abandon Raid</button>
-          </div>`;
+          </div></div>`;
       }
 
       // ── NEXT FLOOR (no transition — straight to next) ──
       if (rs.phase === 'nextFloor') {
-        return raidHeader + `
-          <div class="combat-box" style="border-color:rgba(34,197,94,.2)">
+        return raidHeader + raidBox + `
             <div class="eyebrow" style="color:#22c55e">✅ FLOOR ${rs.currentFloor} CLEARED</div>
             <div style="margin:12px 0;color:#ccc">The way deeper opens before you. There is no turning back.</div>
-            <button class="primary-action" data-action="partyRaidAdvance">⚔ Descend to Floor ${rs.currentFloor + 1}</button>
-          </div>`;
+            ${isLeader ? `<button class="primary-action" data-action="partyRaidAdvance">⚔ Descend to Floor ${rs.currentFloor + 1}</button>` : waitingBtn}
+          </div></div>`;
       }
 
       return raidHeader + '<div class="muted">Unknown raid state.</div>';
@@ -5625,6 +6112,8 @@
         const encounter = floor?.encounters?.[rs.encounterIndex];
         if (encounter?.type === 'choice') return encounter;
       }
+      // Trigger async load if cache is missing
+      loadRaidContent(rs.raidSlug);
       return null;
     }
     async function loadRaidContent(slug) {
@@ -6134,6 +6623,7 @@
     }
 
     async function init() {
+      audioInit();
       try {
         const [dataRes, stateRes] = await Promise.all([api('/api/fantasy/data'), api('/api/fantasy/state')]);
         gameData = dataRes;
@@ -6144,7 +6634,20 @@
         }
         selectedRace = gameData.races[0]?.slug || null;
         selectedClass = gameData.classes[0]?.slug || null;
-        if (!state.hasCharacter) renderCreateView(); else { checkTutorialReset(); renderGame(); }
+        if (!state.hasCharacter) renderCreateView(); else {
+          checkTutorialReset();
+          // Always start SSE for invite notifications
+          startSSE();
+          // Restore party/raid state on page load
+          if (state.partyId) {
+            if (state.raidState?.phase) {
+              partyRaidState = state.raidState;
+              partyCombatData = state.partyCombat || null;
+              storyView = 'raidTower';
+            }
+          }
+          renderGame();
+        }
       } catch (err) { showMessage(err.message || 'Failed to load the game.', true); }
     }
 
@@ -6152,6 +6655,10 @@
     document.addEventListener('input', (e) => {
       if (e.target.id === 'ahPriceInput') {
         ahSellPrice = e.target.value;
+      }
+      if (e.target.id === 'musicVolumeSlider') {
+        audioSetVolume(parseInt(e.target.value) / 100);
+        e.target.title = `Volume ${e.target.value}%`;
       }
     });
     document.addEventListener('change', (e) => {
@@ -6242,6 +6749,7 @@
     // ══════════════════════════════════════════
     let friendsData = null;
     let friendsOpen = false;
+    let friendsTab = 'friends'; // 'friends' | 'party'
 
     async function openFriends() {
       if (friendsOpen) { closeFriends(); return; }
@@ -6252,21 +6760,63 @@
     }
     function closeFriends() {
       friendsOpen = false;
+      _addFriendOpen = false;
+      if (_invitePollTimer) { clearInterval(_invitePollTimer); _invitePollTimer = null; }
       const el = document.getElementById('friendsOverlay');
       if (el) el.remove();
+    }
+    let _invitePollTimer = null;
+    function setFriendsTab(tab) {
+      friendsTab = tab;
+      // Start/stop invite polling when on party tab without a party
+      if (tab === 'party' && !partyData && !_invitePollTimer) {
+        _invitePollTimer = setInterval(async () => {
+          if (!friendsOpen || friendsTab !== 'party' || partyData) { clearInterval(_invitePollTimer); _invitePollTimer = null; return; }
+          try {
+            const resp = await fetch('/api/fantasy/party/poll', { credentials: 'include' });
+            if (resp.ok) {
+              const data = await resp.json();
+              partyInvites = data.pendingInvites || [];
+              if (data.party) { partyData = data.party; startPartyPolling(); clearInterval(_invitePollTimer); _invitePollTimer = null; }
+              renderFriendsOverlay();
+            }
+          } catch(e) {}
+        }, 5000);
+      } else if (tab !== 'party' && _invitePollTimer) {
+        clearInterval(_invitePollTimer); _invitePollTimer = null;
+      }
+      renderFriendsOverlay();
     }
     async function loadFriends() {
       try {
         const resp = await fetch('/api/fantasy/friends', { credentials: 'include' });
-        if (resp.ok) { friendsData = await resp.json(); renderFriendsOverlay(); }
+        if (resp.ok) { friendsData = await resp.json(); }
+        // Always refresh party state on panel open. Even with SSE active, any
+        // missed event would leave partyData stale — opening the panel is the
+        // user's implicit "show me what's happening now" signal.
+        try {
+          const pollResp = await fetch('/api/fantasy/party/poll', { credentials: 'include' });
+          if (pollResp.ok) {
+            const pollData = await pollResp.json();
+            partyInvites = pollData.pendingInvites || [];
+            // pollData.party is null when char has no party
+            partyData = pollData.party || null;
+            if (partyData && !partyEventSource) startPartyPolling();
+          }
+        } catch (_) {}
+        renderFriendsOverlay();
       } catch(e) {}
     }
-    async function addFriend() {
-      const name = prompt('Enter character name to add:');
-      if (!name || !name.trim()) return;
+    let _addFriendOpen = false;
+    function addFriend() { _addFriendOpen = !_addFriendOpen; renderFriendsOverlay(); }
+    async function submitAddFriend() {
+      const input = document.getElementById('addFriendInput');
+      const name = input?.value?.trim();
+      if (!name) return;
       try {
-        const res = await post('/api/fantasy/friends/add', { name: name.trim() });
+        const res = await post('/api/fantasy/friends/add', { name });
         showToast('info', 'Friends', res.message || 'Request sent!');
+        _addFriendOpen = false;
         await loadFriends();
       } catch (err) { showMessage(err.message, true); }
     }
@@ -6307,12 +6857,30 @@
       }
 
       const { friends, incoming, outgoing } = friendsData;
+      const hasParty = !!partyData;
       let html = `
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-          <div class="eyebrow">👥 FRIENDS (${friends.length})</div>
+          <div class="eyebrow">👥 SOCIAL</div>
           <button class="secondary small" data-action="closeFriends" style="padding:4px 10px">✕</button>
         </div>
-        <button class="small" data-action="addFriend" style="width:100%;margin-bottom:14px">+ Add Friend</button>`;
+        <div style="display:flex;gap:2px;margin-bottom:14px;padding:3px;background:rgba(255,255,255,.04);border-radius:10px;border:1px solid var(--line)">
+          <button class="${friendsTab === 'friends' ? '' : 'secondary'} small" data-action="setFriendsTab" data-tab="friends" style="flex:1;border-radius:8px;${friendsTab === 'friends' ? '' : 'box-shadow:none;border-color:transparent'}">👥 Friends (${friends.length})</button>
+          <button class="${friendsTab === 'party' ? '' : 'secondary'} small" data-action="setFriendsTab" data-tab="party" style="flex:1;border-radius:8px;${friendsTab === 'party' ? 'background:linear-gradient(135deg,#0d6949,#14b8a6);' : 'box-shadow:none;border-color:transparent'}">${hasParty ? '⚔' : '👥'} Party${hasParty ? ' (' + partyData.members.length + ')' : ''}</button>
+        </div>`;
+
+      if (friendsTab === 'party') {
+        html += renderPartyTab();
+        el.innerHTML = html;
+        return;
+      }
+
+      // ── FRIENDS TAB ──
+      html += `
+        <button class="small" data-action="addFriend" style="width:100%;margin-bottom:${_addFriendOpen ? '8px' : '14px'}">${_addFriendOpen ? '✕ Cancel' : '+ Add Friend'}</button>
+        ${_addFriendOpen ? `<div style="display:flex;gap:6px;margin-bottom:14px">
+          <input type="text" id="addFriendInput" placeholder="Character name..." style="flex:1;padding:8px 12px;font-size:.85rem;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--text)" />
+          <button class="green small" data-action="submitAddFriend" style="padding:6px 14px">Send</button>
+        </div>` : ''}`;
 
       // Incoming requests
       if (incoming.length > 0) {
@@ -6363,7 +6931,7 @@
               </div>
             </div>
             <div style="display:flex;gap:3px">
-              ${f.online && isRaidTown(f.location) && partyData && partyData.leaderId === state.character?.id && partyData.members.length < 5 ? `<button class="small" data-action="partyInviteFriend" data-id="${f.charId}" style="padding:2px 6px;font-size:.65rem;background:#0d9488">Invite</button>` : ''}
+              ${f.online && partyData && partyData.leaderId === state.character?.id && partyData.members.length < 5 ? `<button class="small" data-action="partyInviteFriend" data-id="${f.charId}" style="padding:2px 6px;font-size:.65rem;background:#0d9488">Invite</button>` : ''}
               <button class="secondary small" data-action="removeFriend" data-id="${f.friendshipId}" style="padding:2px 6px;font-size:.65rem;opacity:.5">✕</button>
             </div>
           </div>`;
@@ -6371,6 +6939,192 @@
       }
 
       el.innerHTML = html;
+      const addInput = document.getElementById('addFriendInput');
+      if (addInput) {
+        addInput.focus();
+        addInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') submitAddFriend(); });
+      }
+    }
+
+    // ── Party Tab (inside friends overlay) ──
+    function renderPartyTab() {
+      const c = state.character;
+      const CLASS_ICONS = { warrior: '⚔', mage: '🔮', rogue: '🗡', cleric: '✝', ranger: '🏹' };
+      let html = '';
+
+      // Pending invites (show even without a party)
+      if (partyInvites && partyInvites.length > 0 && !partyData) {
+        html += `<div style="background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.15);border-radius:12px;padding:12px;margin-bottom:14px">
+          <div class="label" style="color:#fbbf24;margin-bottom:6px">📨 PARTY INVITES</div>`;
+        for (const inv of partyInvites) {
+          html += `<div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0">
+            <span>${esc(inv.from_name)} (${CLASS_ICONS[inv.from_class]||''} Lv${inv.from_level})</span>
+            <div style="display:flex;gap:4px">
+              <button class="green small" data-action="partyAccept" data-id="${inv.invite_id}">Join</button>
+              <button class="secondary small" data-action="partyDecline" data-id="${inv.invite_id}">✕</button>
+            </div>
+          </div>`;
+        }
+        html += `</div>`;
+      }
+
+      if (!partyData) {
+        // No party
+        html += `<div style="text-align:center;padding:20px 0">
+          <div class="muted" style="margin-bottom:12px">You are not in a party.</div>
+          <button class="primary-action" data-action="partyCreate" style="width:100%">⚔ Create Raid Party</button>
+          <div class="muted" style="margin-top:6px;font-size:.82rem">Form a party, invite friends, and run raids together — from anywhere.</div>
+        </div>`;
+        return html;
+      }
+
+      // ── Active party ──
+      const p = partyData;
+      const isLeader = p.leaderId === c.id;
+      const me = p.members.find(m => m.charId === c.id);
+      const stateLabel = p.state === 'forming' ? 'FORMING' : p.state === 'lobby' ? 'LOBBY' : p.state === 'in_raid' ? 'IN RAID' : p.state.toUpperCase();
+      const stateColor = p.state === 'lobby' ? '#14b8a6' : p.state === 'in_raid' ? '#ef4444' : '#94a3b8';
+
+      html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <div class="label" style="color:${stateColor}">RAID PARTY (${p.members.length}/5) — ${stateLabel}</div>
+        ${isLeader ? '<span style="font-size:.7rem;color:#fbbf24;font-weight:600">★ LEADER</span>' : ''}
+      </div>`;
+
+      // Selected raid banner (lobby or in_raid)
+      if ((p.state === 'lobby' || p.state === 'in_raid') && p.raidSlug) {
+        const raid = (raidListData?.raids || []).find(r => r.slug === p.raidSlug);
+        html += `<div style="background:linear-gradient(135deg,#0f766e,#14b8a6);border-radius:10px;padding:10px 12px;margin-bottom:10px;color:#e0f2fe">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+            <div style="flex:1;min-width:0">
+              <div style="font-size:.65rem;opacity:.8;letter-spacing:.08em;text-transform:uppercase">${p.state === 'in_raid' ? 'RAID IN PROGRESS' : 'RAID SELECTED'}</div>
+              <div style="font-size:1rem;font-weight:700">${raid ? esc(raid.icon || '🕳') + ' ' + esc(raid.name) : esc(p.raidSlug)}</div>
+              ${raid ? `<div style="font-size:.72rem;opacity:.85">${raid.floors} floors · Level ${raid.levelReq}+</div>` : ''}
+            </div>
+            ${isLeader && p.state === 'lobby' ? `<button class="secondary small" data-action="partyCancelLobby" style="font-size:.7rem;padding:3px 8px">Change</button>` : ''}
+          </div>
+        </div>`;
+      }
+
+      // Members — state-aware status indicators
+      for (const m of p.members) {
+        let statusIcon = '·', statusColor = '#888', statusText = '';
+        if (p.state === 'forming') {
+          statusIcon = m.isLeader ? '★' : '·';
+          statusColor = m.isLeader ? '#fbbf24' : '#888';
+        } else if (p.state === 'lobby') {
+          if (!m.lobbyJoined) { statusIcon = '⏳'; statusColor = '#888'; statusText = 'Not joined'; }
+          else if (m.ready) { statusIcon = '✓'; statusColor = '#22c55e'; statusText = 'Ready'; }
+          else { statusIcon = '⏱'; statusColor = '#fbbf24'; statusText = 'Joined, not ready'; }
+        } else if (p.state === 'in_raid') {
+          const hpPct = Math.round((m.hp / m.maxHp) * 100);
+          statusIcon = hpPct > 50 ? '⚔' : hpPct > 0 ? '🩸' : '💀';
+          statusColor = hpPct > 50 ? '#22c55e' : hpPct > 0 ? '#fbbf24' : '#ef4444';
+          statusText = `HP ${m.hp}/${m.maxHp}`;
+        }
+        html += `<div style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:4px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="color:${statusColor};font-weight:700;width:16px;text-align:center">${statusIcon}</span>
+            <div>
+              <div style="font-weight:600;font-size:.85rem">${CLASS_ICONS[m.class]||''} ${esc(m.name)}${m.isLeader ? ' <span style="font-size:.62rem;color:#fbbf24">★</span>' : ''}</div>
+              <div class="muted" style="font-size:.68rem">${(m.class||'').charAt(0).toUpperCase()+(m.class||'').slice(1)} Lv${m.level}${statusText ? ' · ' + statusText : ''}</div>
+            </div>
+          </div>
+          ${isLeader && !m.isLeader && p.state !== 'in_raid' ? `<button class="secondary small" data-action="partyKick" data-id="${m.charId}" style="padding:2px 6px;font-size:.65rem;opacity:.5">✕</button>` : ''}
+        </div>`;
+      }
+
+      // Pending invites sent
+      if (isLeader && p.invites.length > 0) {
+        html += `<div class="muted" style="font-size:.72rem;margin-top:6px">Pending invites: ${p.invites.map(i => esc(i.toName)).join(', ')}</div>`;
+      }
+
+      // Actions by state
+      html += `<div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">`;
+
+      if (p.state === 'forming') {
+        if (isLeader) {
+          if (p.members.length < 5) {
+            html += `<button class="small" data-action="openPartyInvite">${_partyInviteList ? '✕ Close' : '+ Invite'}</button>`;
+          }
+          if (p.members.length >= 2) {
+            html += `<button class="primary-action small" data-action="togglePartyRaidPicker" style="background:linear-gradient(135deg,#0d9488,#14b8a6);padding:6px 12px;font-size:.78rem">${_partyRaidPickerOpen ? '✕ Close Picker' : '🎯 Select Raid'}</button>`;
+          }
+        }
+      } else if (p.state === 'lobby') {
+        if (isLeader) {
+          const allJoined = p.members.every(m => m.lobbyJoined);
+          const allReady = p.members.every(m => m.ready);
+          if (me?.lobbyJoined) {
+            html += `<button class="${me.ready ? 'secondary' : 'green'} small" data-action="partyReady">${me.ready ? '⏳ Unready' : '✓ Ready'}</button>`;
+          }
+          if (allJoined && allReady) {
+            html += `<button class="primary-action small" data-action="partyStartRaid" style="background:linear-gradient(135deg,#b91c1c,#dc2626);padding:6px 12px;font-size:.78rem">⚔ Start Raid</button>`;
+          } else {
+            const waitingFor = p.members.filter(m => !m.lobbyJoined).map(m => m.name)
+              .concat(p.members.filter(m => m.lobbyJoined && !m.ready).map(m => m.name + ' (not ready)'));
+            html += `<button class="primary-action small" disabled style="opacity:.45;cursor:not-allowed;padding:6px 12px;font-size:.78rem" title="Waiting for: ${esc(waitingFor.join(', '))}">⚔ Start Raid</button>`;
+          }
+        } else {
+          if (!me?.lobbyJoined) {
+            html += `<button class="green" data-action="partyJoinLobby" style="padding:6px 14px">🚪 Join Lobby</button>`;
+          } else {
+            html += `<button class="${me.ready ? 'secondary' : 'green'} small" data-action="partyReady">${me.ready ? '⏳ Unready' : '✓ Ready'}</button>`;
+          }
+        }
+      }
+      // in_raid: no ready/start actions
+      html += `<button class="secondary small" data-action="partyLeave" style="color:var(--ember)" ${p.state === 'in_raid' ? 'disabled title="Cannot leave mid-raid"' : ''}>${isLeader ? '🗑 Disband' : '🚪 Leave'}</button>`;
+      html += `</div>`;
+
+      // Inline raid picker (leader, forming)
+      if (isLeader && p.state === 'forming' && _partyRaidPickerOpen) {
+        const raids = raidListData?.raids || [];
+        if (raids.length === 0) {
+          html += `<div style="margin-top:10px;padding:10px;background:rgba(20,184,166,.04);border:1px solid rgba(20,184,166,.12);border-radius:10px;text-align:center;font-size:.82rem;color:var(--muted);font-style:italic">Loading raids...</div>`;
+        } else {
+          html += `<div style="margin-top:10px;padding:10px;background:rgba(20,184,166,.04);border:1px solid rgba(20,184,166,.12);border-radius:10px">
+            <div class="label" style="margin-bottom:8px">CHOOSE A RAID</div>`;
+          for (const raid of raids) {
+            const minLevel = raid.levelReq || 1;
+            const somebodyLow = p.members.some(m => m.level < minLevel);
+            html += `<button class="arena-choice-card" data-action="partySelectRaid" data-slug="${raid.slug}" style="width:100%;text-align:left;padding:10px 12px;margin-bottom:6px;${somebodyLow ? 'opacity:.45;pointer-events:none' : ''}">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+                <div style="min-width:0">
+                  <div style="font-weight:700">${esc(raid.icon || '🕳')} ${esc(raid.name)}</div>
+                  <div class="muted" style="font-size:.7rem">${raid.floors} floors · Level ${minLevel}+${raid.difficulty ? ' · ' + esc(raid.difficulty) : ''}</div>
+                </div>
+                ${somebodyLow ? `<span style="font-size:.68rem;color:#ef4444;white-space:nowrap">Need Lv${minLevel}</span>` : ''}
+              </div>
+            </button>`;
+          }
+          html += `</div>`;
+        }
+      }
+
+      // Inline invite list (leader, not in_raid)
+      if (isLeader && _partyInviteList && p.state !== 'in_raid') {
+        if (_partyInviteList.length === 0) {
+          html += `<div style="margin-top:10px;padding:10px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;text-align:center;font-size:.82rem;color:var(--muted);font-style:italic">No friends online to invite.</div>`;
+        } else {
+          html += `<div style="margin-top:10px;padding:10px;background:rgba(20,184,166,.04);border:1px solid rgba(20,184,166,.12);border-radius:10px">
+            <div class="muted" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Online Friends</div>`;
+          for (const f of _partyInviteList) {
+            html += `<div style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:4px">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="color:#22c55e;font-size:.6rem">●</span>
+                <div>
+                  <div style="font-weight:600;font-size:.85rem">${CLASS_ICONS[f.class]||''} ${esc(f.name)}</div>
+                  <div class="muted" style="font-size:.68rem">${(f.class||'').charAt(0).toUpperCase()+(f.class||'').slice(1)} Lv${f.level}</div>
+                </div>
+              </div>
+              <button class="green small" data-action="partyInviteFriend" data-id="${f.charId}" style="padding:3px 10px;font-size:.72rem">Invite</button>
+            </div>`;
+          }
+          html += `</div>`;
+        }
+      }
+
+      return html;
     }
 
     //  WORLD MAP OVERLAY
@@ -6622,14 +7376,14 @@
       if (lastMessages.length) {
         const outcome = { messages: [...lastMessages], rollInfo: null, success: null };
         for (const m of lastMessages) {
-          const passMatch = m.match(/Stat check passed! \((\w+) roll: (\d+) vs DC (\d+)\)/);
-          const failMatch = m.match(/Stat check failed! \((\w+) roll: (\d+) vs DC (\d+)\)/);
+          const passMatch = m.match(/Stat check passed! \((\w+) d20:(\d+)([+-]\d+)=(\d+) vs DC (\d+)\)/);
+          const failMatch = m.match(/Stat check failed! \((\w+) d20:(\d+)([+-]\d+)=(\d+) vs DC (\d+)\)/);
           if (passMatch) {
             outcome.success = true;
-            outcome.rollInfo = { stat: passMatch[1], total: parseInt(passMatch[2]), dc: parseInt(passMatch[3]) };
+            outcome.rollInfo = { stat: passMatch[1], roll: parseInt(passMatch[2]), modifier: parseInt(passMatch[3]), total: parseInt(passMatch[4]), dc: parseInt(passMatch[5]) };
           } else if (failMatch) {
             outcome.success = false;
-            outcome.rollInfo = { stat: failMatch[1], total: parseInt(failMatch[2]), dc: parseInt(failMatch[3]) };
+            outcome.rollInfo = { stat: failMatch[1], roll: parseInt(failMatch[2]), modifier: parseInt(failMatch[3]), total: parseInt(failMatch[4]), dc: parseInt(failMatch[5]) };
           }
         }
         // Filter out the stage narrative text from outcome messages (it's shown as next stage text)
@@ -6707,6 +7461,7 @@
     async function equip(itemSlug, inventoryId) {
       const body = { itemSlug };
       if (inventoryId) body.inventoryId = inventoryId;
+      _tutDidEquip = true;
       await act(post('/api/fantasy/equip', body), 'Item equipped.');
     }
     async function unequip(slot) { await act(post('/api/fantasy/unequip', { slot }), 'Item unequipped.'); }
@@ -6838,6 +7593,7 @@
       enterArena, arenaNextWave, arenaChoice, leaveArena, enterArenaStore, leaveArenaStore, arenaStoreBuy, arenaStoreReroll, arenaStoreRerollSlot, selectArenaStoreSlot,
       enterRaidTower, leaveRaidTower,
       partyCreate, openPartyInvite, partyAccept, partyDecline, partyReady, partyLeave, partyKick, partyVoteKick, partyStartRaid, partyInviteFriend,
+      togglePartyRaidPicker, partySelectRaid, partyCancelLobby, partyJoinLobby,
       partyRaidAdvance, partyRaidChoice, partyRaidFloorChoice, partyRaidDismiss, partyCombatAction, partyCombatAck,
       selectPartyEnemy, selectPartyAlly,
       enterClassTrainer, leaveClassTrainer, setClassTrainerTab, classTrainerAccept, classTrainerChoice, classTrainerSetAbility, classTrainerRespec,
@@ -6845,7 +7601,7 @@
       enterCodex, leaveCodex, codexBack, codexNav,
       enterGuild, leaveGuild, enterAcademy, leaveAcademy, enterAuction, leaveAuction,
       leaveDungeon, dismissCombatResult, dismissTip, toggleProfileMenu,
-      openFriends, closeFriends, addFriend, acceptFriend, removeFriend,
+      openFriends, closeFriends, addFriend, submitAddFriend, acceptFriend, removeFriend, setFriendsTab,
       openWorldMap, closeWorldMap, setWorldMapRealm, switchMiniRealm,
       // Market/Shop
       buyItem, sellItem, sellBulk, sellAllJunk, shopBuyback, setShopTab, setShopSlotFilter, selectShopItem,
@@ -6891,9 +7647,12 @@
       logout,
       // Misc navigation
       goToDuel: () => { if (state.character?.in_combat) { showMessage('Cannot duel during combat!', true); return; } window.location.href = '/duel'; },
+      // Music controls
+      musicToggle: () => { audioToggleMute(); renderGame(); },
     };
 
     document.addEventListener('click', (e) => {
+      audioUnlock(); // Unlock Web Audio on first user interaction
       const el = e.target.closest('[data-action]');
       if (!el) return;
       if (_loading) { e.preventDefault(); return; } // Block all clicks while loading

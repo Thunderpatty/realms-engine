@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { validate, schemas } = require('../validation');
 const GAME_CONFIG = require('../shared/game-config');
+const SPECS = require('../shared/class-specs');
 
 const ROUND_TIMEOUT_MS = 30 * 1000; // 30 seconds
 const AFK_DOWN_ROUNDS = 3; // auto-down after 3 consecutive missed rounds
@@ -62,6 +63,15 @@ function register(app, requireAuth, ctx) {
       const stats = computeStats(char, equipment);
       const charAbils = getCharAbilities(char);
       const perkBonuses = getEquipmentPerkBonuses(equipment);
+      const combatPassives = getCombatPassives(equipment);
+
+      // Class specialization (berserker/guardian/cryomancy/radiance/etc.)
+      // stored on char.companion.classBonus + specTier, same as solo combat.
+      const cbSlug = char.companion?.classBonus || null;
+      const classBonus = cbSlug ? (GAME_CONFIG.classBonuses?.[cbSlug] || null) : null;
+      const specTier = char.companion?.specTier || 1;
+      const cbTierData = classBonus?.tiers?.[specTier - 1] || {};
+      const cbPassive = cbTierData.passive || classBonus?.passive || {};
 
       players[char.id] = {
         charId: char.id,
@@ -75,8 +85,9 @@ function register(app, requireAuth, ctx) {
         maxMp: char.max_mp,
         stats,
         perkBonuses,
+        combatPassives,
         abilityRanks: char.ability_ranks || {},
-        activeAbilities: charAbils.activeAbilities.map(a => a.slug),
+        activeAbilities: charAbils.activeRaid.length ? charAbils.activeRaid : charAbils.activeAbilities.map(a => a.slug),
         buffs: (raidState?.floorBuffs || []).filter(b => b.turnsLeft > 0).map(b => ({ ...b })),
         effects: [],
         cooldowns: {},
@@ -86,6 +97,16 @@ function register(app, requireAuth, ctx) {
         defending: false,
         missedRounds: 0,
         lastPoll: new Date().toISOString(),
+        // Spec / class-bonus state
+        classBonusSlug: cbSlug,
+        classBonusIcon: classBonus?.icon || '',
+        specTier,
+        cbPassive,
+        cbSpecial: cbTierData.special ? { ...classBonus?.special, ...cbTierData.special } : classBonus?.special,
+        cbDamageMul: cbPassive.damageMul || 1,
+        cbDamageTakenMul: cbPassive.damageTakenMul || 1,
+        classCooldowns: {},
+        specState: {},  // populated by SPECS.specCombatStart during first resolveRound
       };
 
       // Add debuffs from raid events
@@ -137,59 +158,70 @@ function register(app, requireAuth, ctx) {
   // ── SUBMIT COMBAT ACTION ──
   app.post('/api/fantasy/party/combat/action', requireAuth, validate(schemas.combatAction), async (req, res) => {
     try {
-      const { char, party } = await getCharParty(req.session.userId, req.session.activeCharId);
-      if (!char || !party) return res.status(400).json({ error: 'Not in a party raid.' });
-      if (party.state !== 'in_raid' || !party.combat_state) return res.status(400).json({ error: 'Not in party combat.' });
-
-      const cs = party.combat_state;
-      if (cs.phase !== 'submit') return res.status(400).json({ error: 'Round is resolving. Wait for results.' });
-
-      const player = cs.players[char.id];
-      if (!player) return res.status(400).json({ error: 'Not in this combat.' });
-      if (player.hp <= 0) return res.status(400).json({ error: 'You are down. Wait for revival or combat end.' });
-      if (player.pendingAction) return res.status(400).json({ error: 'Already submitted action this round.' });
+      const char = await getChar(req.session.userId, req.session.activeCharId);
+      if (!char || !char.party_id) return res.status(400).json({ error: 'Not in a party raid.' });
 
       const { action, abilitySlug, targetId, petAbility } = req.body;
 
-      // Validate action
-      if (action === 'flee') return res.status(400).json({ error: 'Cannot flee from a raid!' });
-      if (action === 'item') return res.status(400).json({ error: 'Consumables not allowed in raids!' });
+      // Lock party row for the entire read-modify-write cycle
+      const shouldResolve = await withTransaction(async (tx) => {
+        const pRow = (await tx.query('SELECT * FROM fantasy_parties WHERE id=$1 FOR UPDATE', [char.party_id])).rows[0];
+        if (!pRow || pRow.state !== 'in_raid' || !pRow.combat_state) throw new Error('Not in party combat.');
 
-      if (action === 'ability') {
-        const cls = CLASSES.find(c => c.slug === player.class);
-        const allAbilities = cls?.abilities || [];
-        const ability = allAbilities.find(a => a.slug === abilitySlug && player.activeAbilities.includes(a.slug));
-        if (!ability) return res.status(400).json({ error: 'Unknown ability.' });
-        if ((player.cooldowns[abilitySlug] || 0) > 0) return res.status(400).json({ error: `${ability.name} on cooldown (${player.cooldowns[abilitySlug]} turns).` });
+        const cs = pRow.combat_state;
+        if (cs.phase !== 'submit') throw new Error('Round is resolving. Wait for results.');
 
-        const rank = player.abilityRanks[abilitySlug] || 1;
-        const rd = ability.ranks?.[rank - 1] || {};
-        let cost = getAbilityRankCost(ability.cost || 0, rank);
-        const mTier = getMomentumTier(player.momentum || 0);
-        if (mTier.mpDiscount > 0) cost = Math.floor(cost * (1 - mTier.mpDiscount));
-        if (player.mp < cost) return res.status(400).json({ error: 'Not enough MP.' });
+        const player = cs.players[char.id];
+        if (!player) throw new Error('Not in this combat.');
+        if (player.hp <= 0) throw new Error('You are down. Wait for revival or combat end.');
+        if (player.pendingAction) throw new Error('Already submitted action this round.');
+
+        if (action === 'flee') throw new Error('Cannot flee from a raid!');
+        if (action === 'item') throw new Error('Consumables not allowed in raids!');
+
+        if (action === 'ability') {
+          const cls = CLASSES.find(c => c.slug === player.class);
+          const allAbilities = cls?.abilities || [];
+          const ability = allAbilities.find(a => a.slug === abilitySlug && player.activeAbilities.includes(a.slug));
+          if (!ability) throw new Error('Unknown ability.');
+          if ((player.cooldowns[abilitySlug] || 0) > 0) throw new Error(`${ability.name} on cooldown (${player.cooldowns[abilitySlug]} turns).`);
+          const rank = player.abilityRanks[abilitySlug] || 1;
+          let cost = getAbilityRankCost(ability.cost || 0, rank);
+          const mTier = getMomentumTier(player.momentum || 0);
+          if (mTier.mpDiscount > 0) cost = Math.floor(cost * (1 - mTier.mpDiscount));
+          if (player.mp < cost) throw new Error('Not enough MP.');
+        }
+
+        // Store pending action
+        player.pendingAction = { action, abilitySlug, targetId, petAbility };
+        player.submittedAt = new Date().toISOString();
+        player.lastPoll = new Date().toISOString();
+        player.missedRounds = 0;
+
+        await tx.query('UPDATE fantasy_parties SET combat_state=$1 WHERE id=$2', [JSON.stringify(cs), pRow.id]);
+
+        // Check if all living players submitted
+        const livingPlayers = Object.values(cs.players).filter(p => p.hp > 0);
+        const allReady = livingPlayers.every(p => p.pendingAction);
+        console.log(`[combat] Action submitted by ${char.id}. Living: ${livingPlayers.length}, allReady: ${allReady}, players:`, Object.values(cs.players).map(p => `${p.name} hp=${p.hp} pending=${!!p.pendingAction}`).join(', '));
+        return allReady;
+      });
+
+      // Resolve outside the lock (resolveRound acquires its own lock)
+      console.log(`[combat] shouldResolve: ${shouldResolve}`);
+      if (shouldResolve) {
+        await resolveRound(char.party_id);
       }
 
-      // Store pending action
-      player.pendingAction = { action, abilitySlug, targetId, petAbility };
-      player.submittedAt = new Date().toISOString();
-      player.lastPoll = new Date().toISOString();
-      player.missedRounds = 0; // reset on any manual action
-
-      await db.query('UPDATE fantasy_parties SET combat_state=$1 WHERE id=$2', [JSON.stringify(cs), party.id]);
-
-      // Check if all living players submitted
-      const livingPlayers = Object.values(cs.players).filter(p => p.hp > 0);
-      const allSubmitted = livingPlayers.every(p => p.pendingAction);
-
-      if (allSubmitted) {
-        // Resolve immediately
-        await resolveRound(party.id);
-      }
-
-      const updated = await q1('SELECT combat_state FROM fantasy_parties WHERE id=$1', [party.id]);
+      if (ctx.notifyParty) ctx.notifyParty(char.party_id);
+      const updated = await q1('SELECT combat_state FROM fantasy_parties WHERE id=$1', [char.party_id]);
       res.json({ ok: true, combat: updated.combat_state });
-    } catch (e) { console.error(e); res.status(500).json({ error: 'Action failed.' }); }
+    } catch (e) {
+      if (e.message && !e.message.includes('ROLLBACK')) {
+        return res.status(400).json({ error: e.message });
+      }
+      console.error(e); res.status(500).json({ error: 'Action failed.' });
+    }
   });
 
   // ── POLL COMBAT STATE ──
@@ -201,8 +233,8 @@ function register(app, requireAuth, ctx) {
       if (ctx.friendsOnline) ctx.friendsOnline.touchOnline(char.id);
       await db.query('UPDATE fantasy_party_members SET last_poll=NOW() WHERE party_id=$1 AND char_id=$2', [party.id, char.id]);
 
-      // Update lastPoll in combat state for this player
-      if (party.combat_state && party.combat_state.players[char.id]) {
+      // Update lastPoll in combat state for this player (only during active combat)
+      if (party.combat_state && party.combat_state.phase === 'submit' && party.combat_state.players[char.id]) {
         party.combat_state.players[char.id].lastPoll = new Date().toISOString();
         await db.query('UPDATE fantasy_parties SET combat_state=$1 WHERE id=$2', [JSON.stringify(party.combat_state), party.id]);
       }
@@ -239,11 +271,8 @@ function register(app, requireAuth, ctx) {
             }
           }
           await db.query('UPDATE fantasy_parties SET combat_state=$1 WHERE id=$2', [JSON.stringify(cs), party.id]);
-          // Only resolve if there are still living players
-          const hasLiving = Object.values(cs.players).some(p => p.hp > 0);
-          if (hasLiving) {
-            await resolveRound(party.id);
-          }
+          // Resolve round — handles both normal combat and wipe detection
+          await resolveRound(party.id);
           const updated = await q1('SELECT combat_state, raid_state FROM fantasy_parties WHERE id=$1', [party.id]);
           return res.json({ ok: true, combat: updated.combat_state, raidState: updated.raid_state });
         }
@@ -257,7 +286,8 @@ function register(app, requireAuth, ctx) {
   // ROUND RESOLUTION — the heart of party combat
   // ═══════════════════════════════════════════════════════════════
   async function resolveRound(partyId) {
-    const party = await q1('SELECT * FROM fantasy_parties WHERE id=$1', [partyId]);
+    // Lock party row during round resolution to prevent races
+    const party = await q1('SELECT * FROM fantasy_parties WHERE id=$1 FOR UPDATE', [partyId]);
     if (!party || !party.combat_state) return;
     const cs = party.combat_state;
     cs.phase = 'resolving';
@@ -288,10 +318,57 @@ function register(app, requireAuth, ctx) {
       }
 
       player.defending = false;
-      const pStats = player.stats || {};
+      // Apply active buffs to pStats. Defense is consumed later in the
+      // damage-taken path (line ~649) so skip it here to avoid double-counting.
+      // Dodge and damage are handled separately. Everything else was silently
+      // ignored by the old code. Level-scaled so low flat values stay useful.
+      const baseStats = player.stats || {};
+      const pStats = { ...baseStats };
+      if (player.buffs) {
+        for (const b of player.buffs) {
+          if (b.stat === 'defense' || b.stat === 'dodge' || b.stat === 'damage') continue;
+          const scaled = Math.max(1, Math.floor((b.amount || 0) + (player.level || 1) * 0.15));
+          if (b.stat === 'all') {
+            for (const s of ['str', 'int', 'wis', 'dex', 'cha', 'attack']) {
+              if (pStats[s] !== undefined) pStats[s] = Math.max(0, pStats[s] + scaled);
+            }
+          } else if (pStats[b.stat] !== undefined) {
+            pStats[b.stat] = Math.max(0, pStats[b.stat] + scaled);
+          }
+        }
+      }
       const mTier = getMomentumTier(player.momentum || 0);
       const prp = getRacialPassive(player.race);
-      const critChance = Math.min(35, calcCritChance(pStats.cha || 10) + (player.perkBonuses?.critBonus || 0) + mTier.critBonus + (prp?.critBonusPct || 0));
+      // Rogue DEX → crit (see matching comment in combat.js)
+      const rogueCritBonus = (player.class === 'rogue') ? Math.min(15, Math.floor((pStats.dex || 0) / 4)) : 0;
+      const critChance = Math.min(40, calcCritChance(pStats.cha || 10) + rogueCritBonus + (player.perkBonuses?.critBonus || 0) + mTier.critBonus + (prp?.critBonusPct || 0));
+
+      // Build spec context reused across hook calls for this player action.
+      player.specState = player.specState || {};
+      const livingAllies = Object.values(cs.players).filter(p => p.hp > 0);
+      const specCtx = {
+        player,
+        target: null,
+        attacker: null,
+        passive: player.cbPassive || {},
+        spec: null, // resolved via ctx.specSlug
+        specSlug: player.classBonusSlug,
+        specTier: player.specTier || 1,
+        special: player.cbSpecial,
+        allEnemies: cs.enemies || [],
+        allAllies: livingAllies,
+        log,
+        toast: null,
+        rand,
+        applyEffect,
+        STATUS_EFFECTS,
+        state: player.specState,
+        combatState: cs,
+        abilityType: null,
+        abilitySlug: null,
+      };
+      SPECS.specCombatStart(specCtx);
+      SPECS.specTurnStart(specCtx);
 
       if (action.action === 'attack') {
         if (!target) continue;
@@ -302,17 +379,57 @@ function register(app, requireAuth, ctx) {
           let dmg = Math.floor((pStats.attack || 10) * 0.92) + rand(0, 3);
           dmg = applyDefenseReduction(dmg, target.defense || 0);
           const isCrit = rand(1, 100) <= critChance;
-          if (isCrit) dmg = Math.floor(dmg * 1.5);
+          if (isCrit) dmg = Math.floor(dmg * 2.0);
           if (mTier.dmgBonus > 0) dmg = Math.floor(dmg * (1 + mTier.dmgBonus));
+          // Class spec damage mul (berserker/pyromancy T-bonuses)
+          if (player.cbDamageMul && player.cbDamageMul !== 1) dmg = Math.floor(dmg * player.cbDamageMul);
+          if (player.specState.bloodrageActive) { dmg = Math.floor(dmg * 2); player.specState.bloodrageActive = false; log.push(`🔥 Bloodrage! Double damage!`); }
+          // Cryomancy T3+: slowed/frozen enemies take bonus damage
+          if (player.cbPassive?.frozenVulnerability && (target.effects || []).some(e => e.slug === 'slow' || e.slug === 'stun')) {
+            dmg = Math.floor(dmg * (1 + player.cbPassive.frozenVulnerability / 100));
+          }
           const ampEff = (target.effects || []).find(e => e.damageAmp);
           if (ampEff) dmg = Math.floor(dmg * (1 + ampEff.damageAmp / 100));
           dmg = applyRacialDamageBonus(dmg, player.race, 'attack');
           target.hp -= dmg;
           log.push(isCrit ? `⚡ ${player.name} crits ${target.name} for ${dmg}!` : `${player.name} strikes ${target.name} for ${dmg}.`);
+          // Class-bonus on-hit passives
+          if (player.cbPassive?.onHitBurnChance && rand(1, 100) <= player.cbPassive.onHitBurnChance) {
+            applyEffect(target.effects, 'burn', 3, 'Pyromancy');
+          }
+          if (player.cbPassive?.onHitSlowChance && rand(1, 100) <= player.cbPassive.onHitSlowChance) {
+            applyEffect(target.effects, 'slow', 3, 'Cryomancy');
+          }
+          if (player.cbPassive?.onHitPoisonChance && rand(1, 100) <= player.cbPassive.onHitPoisonChance) {
+            applyEffect(target.effects, 'poison', 3, 'Poison Mastery');
+          }
+          // Absolute Zero: Cryomancy T4 — execute non-boss ≤15% HP once per combat
+          if (target.hp > 0 && player.cbPassive?.absoluteZero && !player.specState.absoluteZeroUsed && !target.boss && target.hp <= Math.floor((target.maxHp || target.hp) * 0.15)) {
+            target.hp = 0;
+            player.specState.absoluteZeroUsed = true;
+            log.push(`❄ Absolute Zero! ${target.name} shatters to frozen dust!`);
+          }
+          // Spec onKill hooks: bloodrage (berserker), inferno (pyromancy T4),
+          // plague vector (poison-mastery T4)
+          if (target.hp <= 0) {
+            specCtx.target = target;
+            SPECS.specOnKill(specCtx);
+          }
           // Racial lifesteal
           if (prp?.lifestealPct) {
             const rHeal = Math.min(player.maxHp - player.hp, Math.max(0, Math.floor(dmg * prp.lifestealPct / 100)));
             if (rHeal > 0) { player.hp += rHeal; log.push(`🔥 ${prp.name} restores ${rHeal} HP to ${player.name}.`); }
+          }
+          // Equipment passives (lifesteal, on-hit effects)
+          for (const passive of (player.combatPassives || [])) {
+            if (passive.lifestealPct) {
+              const healed = Math.min(player.maxHp - player.hp, Math.max(0, Math.floor(dmg * (passive.lifestealPct / 100))));
+              if (healed > 0) { player.hp += healed; log.push(`🩸 ${passive.source} restores ${healed} HP through lifesteal.`); }
+            }
+            if (passive.onHitStatus && rand(1, 100) <= (passive.onHitStatus.chance || 100)) {
+              const eff = applyEffect(target.effects || [], passive.onHitStatus.slug, passive.onHitStatus.turns || 1, passive.source);
+              if (eff) log.push(`${eff.icon} ${passive.source} inflicts ${eff.name} on ${target.name}!`);
+            }
           }
         }
         adjustPlayerMomentum(player, 1);
@@ -333,6 +450,10 @@ function register(app, requireAuth, ctx) {
 
         let cost = getAbilityRankCost(ability.cost || 0, rank);
         if (mTier.mpDiscount > 0) cost = Math.floor(cost * (1 - mTier.mpDiscount));
+        // Arcanistry MP cost reduction
+        if (player.cbPassive?.mpCostReduction) cost = Math.floor(cost * (1 - player.cbPassive.mpCostReduction / 100));
+        // Arcane Surge free-cast charges
+        if (player.specState.arcaneSurgeCharges > 0) { cost = 0; player.specState.arcaneSurgeCharges--; }
         if (player.mp < cost) { log.push(`${player.name} lacks MP for ${ability.name}!`); continue; }
         player.mp -= cost;
 
@@ -359,25 +480,63 @@ function register(app, requireAuth, ctx) {
             }
             totalDmg = applyDefenseReduction(totalDmg, tDef);
             const isCrit = rand(1, 100) <= (critChance + rankBonusCrit);
-            if (isCrit) totalDmg = Math.floor(totalDmg * 1.5);
+            if (isCrit) totalDmg = Math.floor(totalDmg * 2.0);
             if (isAoe && t.id !== target?.id) totalDmg = Math.floor(totalDmg * 0.7);
             if (mTier.dmgBonus > 0) totalDmg = Math.floor(totalDmg * (1 + mTier.dmgBonus));
+            // Class spec damage mul + bloodrage + frozen vuln
+            if (player.cbDamageMul && player.cbDamageMul !== 1) totalDmg = Math.floor(totalDmg * player.cbDamageMul);
+            if (player.specState.bloodrageActive) { totalDmg = Math.floor(totalDmg * 2); player.specState.bloodrageActive = false; log.push(`🔥 Bloodrage! Double damage on ${ability.name}!`); }
+            if (player.cbPassive?.frozenVulnerability && (t.effects || []).some(e => e.slug === 'slow' || e.slug === 'stun')) {
+              totalDmg = Math.floor(totalDmg * (1 + player.cbPassive.frozenVulnerability / 100));
+            }
             // Damage amp from party-debuff (expose weakness, hunter's mark)
             const ampEffect = (t.effects || []).find(e => e.damageAmp);
             if (ampEffect) totalDmg = Math.floor(totalDmg * (1 + ampEffect.damageAmp / 100));
             totalDmg = applyRacialDamageBonus(totalDmg, player.race, ability.type);
             t.hp -= totalDmg;
+            // Class-bonus on-hit passives (ability)
+            if (player.cbPassive?.onHitBurnChance && rand(1, 100) <= player.cbPassive.onHitBurnChance) {
+              applyEffect(t.effects, 'burn', 3, 'Pyromancy');
+            }
+            if (player.cbPassive?.onHitSlowChance && rand(1, 100) <= player.cbPassive.onHitSlowChance) {
+              applyEffect(t.effects, 'slow', 3, 'Cryomancy');
+            }
+            if (player.cbPassive?.onHitPoisonChance && rand(1, 100) <= player.cbPassive.onHitPoisonChance) {
+              applyEffect(t.effects, 'poison', 3, 'Poison Mastery');
+            }
+            // Absolute Zero exec
+            if (t.hp > 0 && player.cbPassive?.absoluteZero && !player.specState.absoluteZeroUsed && !t.boss && t.hp <= Math.floor((t.maxHp || t.hp) * 0.15)) {
+              t.hp = 0;
+              player.specState.absoluteZeroUsed = true;
+              log.push(`❄ Absolute Zero! ${t.name} shatters to frozen dust!`);
+            }
+            // Spec onKill hooks
+            if (t.hp <= 0) {
+              specCtx.target = t;
+              SPECS.specOnKill(specCtx);
+            }
             log.push(isCrit ? `⚡ ${player.name}'s ${ability.name} crits ${t.name} for ${totalDmg}!` : `${player.name} uses ${ability.name} on ${t.name} for ${totalDmg}.`);
             // Racial lifesteal
             if (prp?.lifestealPct) {
               const rHeal = Math.min(player.maxHp - player.hp, Math.max(0, Math.floor(totalDmg * prp.lifestealPct / 100)));
               if (rHeal > 0) { player.hp += rHeal; log.push(`🔥 ${prp.name} restores ${rHeal} HP to ${player.name}.`); }
             }
+            // Equipment passives (lifesteal, on-hit effects)
+            for (const passive of (player.combatPassives || [])) {
+              if (passive.lifestealPct) {
+                const healed = Math.min(player.maxHp - player.hp, Math.max(0, Math.floor(totalDmg * (passive.lifestealPct / 100))));
+                if (healed > 0) { player.hp += healed; log.push(`🩸 ${passive.source} restores ${healed} HP through lifesteal.`); }
+              }
+              if (passive.onHitStatus && rand(1, 100) <= (passive.onHitStatus.chance || 100)) {
+                const eff = applyEffect(t.effects || [], passive.onHitStatus.slug, passive.onHitStatus.turns || 1, passive.source);
+                if (eff) log.push(`${eff.icon} ${passive.source} inflicts ${eff.name} on ${t.name}!`);
+              }
+            }
 
             // Status effects
-            if (ability.stun) { const eff = applyEffect(t.effects, 'stun', 1, ability.name); if (eff) log.push(`💫 ${t.name} is stunned!`); }
-            if (ability.slow) { const eff = applyEffect(t.effects, 'slow', 3, ability.name); if (eff) log.push(`🐌 ${t.name} is slowed!`); }
-            if (ability.dot) { const eff = applyEffect(t.effects, ability.dot.type || 'poison', ability.dot.turns || 3, ability.name); if (eff) { eff.damagePerTurn = ability.dot.damage || 3; log.push(`🧪 ${ability.name} applies ${ability.dot.type} to ${t.name}!`); } }
+            if (ability.stun) { const stunTurns = 1 + (rd.durationBonus || 0); const eff = applyEffect(t.effects, 'stun', stunTurns, ability.name); if (eff) log.push(`💫 ${t.name} is stunned${stunTurns > 1 ? ` for ${stunTurns} turns` : ''}!`); }
+            if (ability.slow) { const slowTurns = 3 + (rd.durationBonus || 0); const eff = applyEffect(t.effects, 'slow', slowTurns, ability.name); if (eff) log.push(`🐌 ${t.name} is slowed!`); }
+            if (ability.dot) { const dotTurns = (ability.dot.turns || 3) + (rd.durationBonus || 0); const eff = applyEffect(t.effects, ability.dot.type || 'poison', dotTurns, ability.name); if (eff) { eff.damagePerTurn = ability.dot.damage || 3; log.push(`🧪 ${ability.name} applies ${ability.dot.type || 'poison'} to ${t.name}!`); } }
           }
           if (ability.healPct) {
             const healAmt = Math.floor(player.maxHp * ability.healPct / 100);
@@ -480,10 +639,28 @@ function register(app, requireAuth, ctx) {
           const targetPlayerId = action.targetPlayerId || action.targetId;
           const restoreTarget = targetPlayerId ? cs.players[targetPlayerId] : player;
           if (restoreTarget) {
-            const restoreAmt = rd.restore || ability.allyRestore || 15;
-            const restored = Math.min(restoreAmt, restoreTarget.maxMp - restoreTarget.mp);
-            restoreTarget.mp += restored;
-            log.push(`💜 ${player.name} restores ${restored} MP to ${restoreTarget.name} with ${ability.name}.`);
+            // HP cost (Life Tap style) — sacrifice HP to grant MP
+            const hpCostPct = rd.hpCostPct || ability.hpCostPct || 0;
+            if (hpCostPct > 0) {
+              const hpCost = Math.max(1, Math.floor(player.maxHp * hpCostPct / 100));
+              player.hp -= hpCost;
+              log.push(`💔 ${player.name} sacrifices ${hpCost} HP.`);
+              if (player.hp <= 0) { player.hp = 0; log.push(`💀 ${player.name} is DOWN!`); }
+            }
+            // Percentage-based restore
+            const restorePct = rd.restorePct || ability.allyRestorePct || 0;
+            if (restorePct > 0) {
+              const restoreAmt = Math.max(1, Math.floor(restoreTarget.maxMp * restorePct / 100));
+              const restored = Math.min(restoreAmt, restoreTarget.maxMp - restoreTarget.mp);
+              restoreTarget.mp += restored;
+              log.push(`💜 ${player.name} restores ${restored} MP to ${restoreTarget.name} with ${ability.name}.`);
+            } else {
+              // Flat restore (existing behavior)
+              const restoreAmt = rd.restore || ability.allyRestore || 15;
+              const restored = Math.min(restoreAmt, restoreTarget.maxMp - restoreTarget.mp);
+              restoreTarget.mp += restored;
+              log.push(`💜 ${player.name} restores ${restored} MP to ${restoreTarget.name} with ${ability.name}.`);
+            }
           }
         } else if (ability.type === 'ally-revive') {
           // Revive a downed party member
@@ -525,22 +702,120 @@ function register(app, requireAuth, ctx) {
           }
           log.push(`🛡 ${player.name} TAUNTS! All enemies focus on ${player.name} for ${tauntTurns} turns.`);
         }
+      } else if (action.action === 'classAbility') {
+        if (!player.cbSpecial) { log.push(`${player.name} has no class ability.`); continue; }
+        player.classCooldowns = player.classCooldowns || {};
+        if (player.classCooldowns[player.cbSpecial.slug] > 0) {
+          log.push(`${player.name}'s ${player.cbSpecial.name} already used this combat.`);
+          continue;
+        }
+        player.classCooldowns[player.cbSpecial.slug] = player.cbSpecial.cooldown || 99;
+        // Delegate to shared spec engine — handles all 10 special.type variants
+        // with tier-aware behavior (Miracle for Radiance T4, Overchannel etc.)
+        specCtx.target = target;
+        SPECS.specClassAbility(specCtx);
       }
     }
 
-    // ── ALLY TURNS ──
+    // ── ALLY TURNS ── (mirrors solo combat.js resolveAllyTurn)
     for (const ally of cs.allies) {
       if (ally.hp <= 0) continue;
       const livingEnemies = cs.enemies.filter(e => e.hp > 0);
       if (livingEnemies.length === 0) continue;
-      const target = livingEnemies.reduce((a, b) => a.hp < b.hp ? a : b);
+
+      // Tick cooldowns
+      ally.cooldowns = ally.cooldowns || {};
+      for (const slug of Object.keys(ally.cooldowns)) {
+        ally.cooldowns[slug]--;
+        if (ally.cooldowns[slug] <= 0) delete ally.cooldowns[slug];
+      }
+
+      // Resolve ability if available
+      const compDef = ally.companionData ? GAME_CONFIG.companions?.[ally.type] : null;
+      const abilSlug = ally.activeAbility;
+      const abilDef = compDef?.abilities?.find(a => a.slug === abilSlug);
+      const onCooldown = abilDef && ally.cooldowns[abilSlug] > 0;
+      const useAbility = abilDef && !onCooldown;
+
+      const icon = ally.icon || '🐾';
       const allyAtk = ally.attack || 5;
-      const rawDmg = Math.floor(allyAtk * 0.9) + rand(0, 2);
-      const dmg = Math.max(1, applyDefenseReduction(rawDmg, target.defense || 0));
-      target.hp -= dmg;
-      log.push(`${ally.icon || '🐾'} ${ally.name} attacks ${target.name} for ${dmg}.`);
+      const target = livingEnemies.reduce((a, b) => a.hp < b.hp ? a : b);
+
+      // Buff ability — buff the owner player
+      if (useAbility && abilDef.type === 'buff') {
+        const owner = cs.players[ally.ownerId];
+        if (owner) {
+          owner.buffs = owner.buffs || [];
+          const buff = abilDef.buff;
+          const amount = Math.floor(allyAtk * (buff.amount || 0) / 100) || (buff.amount || 2);
+          owner.buffs.push({ stat: buff.stat, amount, name: abilDef.name, turnsLeft: buff.turns || 3 });
+          log.push(`${icon} ${ally.name} uses ${abilDef.name}! (+${amount} ${buff.stat.toUpperCase()} to ${owner.name} for ${buff.turns || 3} turns)`);
+        }
+        if (abilDef.cooldown) ally.cooldowns[abilSlug] = abilDef.cooldown;
+        continue;
+      }
+
+      // Debuff ability — apply status to enemies (single or AoE)
+      if (useAbility && abilDef.type === 'debuff') {
+        const targets = abilDef.aoe ? livingEnemies : [target];
+        for (const t of targets) {
+          const eff = applyEffect(t.effects, abilDef.effect.slug, abilDef.effect.turns || 2, abilDef.name);
+          if (eff) log.push(`${icon} ${ally.name} uses ${abilDef.name} on ${t.name}!`);
+        }
+        if (abilDef.cooldown) ally.cooldowns[abilSlug] = abilDef.cooldown;
+        continue;
+      }
+
+      // Attack ability (or default attack)
+      const dmgMul = useAbility ? (abilDef.damage || 1.0) : 1.0;
+      const isAoe = useAbility && abilDef.aoe;
+      const targets = isAoe ? livingEnemies : [target];
+      for (const t of targets) {
+        const rawDmg = Math.floor(allyAtk * dmgMul * 0.9) + rand(0, 2);
+        const dmg = Math.max(1, applyDefenseReduction(rawDmg, t.defense || 0));
+        const aoeMul = isAoe && t.id !== target.id ? 0.7 : 1;
+        const finalDmg = Math.max(1, Math.floor(dmg * aoeMul));
+        t.hp -= finalDmg;
+        log.push(`${icon} ${ally.name} ${useAbility ? 'uses ' + abilDef.name + ' on' : 'attacks'} ${t.name} for ${finalDmg}.`);
+
+        if (useAbility && abilDef.dot) {
+          const eff = applyEffect(t.effects, abilDef.dot.type || 'poison', abilDef.dot.turns || 3, abilDef.name);
+          if (eff) eff.damagePerTurn = abilDef.dot.damage || 3;
+        }
+        if (useAbility && abilDef.stun && rand(1, 100) <= (abilDef.stun.chance || 30)) {
+          applyEffect(t.effects, 'stun', abilDef.stun.turns || 1, abilDef.name);
+        }
+        if (useAbility && abilDef.slow) {
+          applyEffect(t.effects, 'slow', abilDef.slow.turns || 3, abilDef.name);
+        }
+      }
+      if (useAbility && abilDef.cooldown) ally.cooldowns[abilSlug] = abilDef.cooldown;
+
+      // Tier bonuses
+      const tb = ally.tierBonuses || {};
+      if (tb.slowOnHit && !isAoe) applyEffect(target.effects, 'slow', 2, ally.name);
+      if (tb.stunChance && rand(1, 100) <= tb.stunChance && !isAoe) applyEffect(target.effects, 'stun', 1, ally.name);
+      if (tb.aoePoison) {
+        for (const en of livingEnemies) {
+          const eff = applyEffect(en.effects, 'poison', 3, ally.name);
+          if (eff) eff.damagePerTurn = Math.floor(allyAtk * 0.15);
+        }
+      }
     }
-    cs.allies = cs.allies.filter(a => a.hp > 0);
+
+    // Handle pet death + immortal respawn
+    for (const ally of cs.allies) {
+      if (ally.hp <= 0 && ally.tierBonuses?.immortal) {
+        ally.respawnTimer = ally.respawnTimer || 2;
+        ally.respawnTimer--;
+        if (ally.respawnTimer <= 0) {
+          ally.hp = ally.maxHp;
+          delete ally.respawnTimer;
+          log.push(`✨ ${ally.name} returns from beyond!`);
+        }
+      }
+    }
+    cs.allies = cs.allies.filter(a => a.hp > 0 || a.tierBonuses?.immortal);
 
     // ── ENEMY TURNS ──
     const livingPlayersForEnemies = Object.values(cs.players).filter(p => p.hp > 0);
@@ -602,6 +877,28 @@ function register(app, requireAuth, ctx) {
       const eCrit = rand(1, 100) <= calcEnemyCritChance(en.attack || 10);
       if (eCrit) eDmg = Math.floor(eDmg * 1.5);
       if (victim.defending) eDmg = Math.max(1, Math.floor(eDmg * 0.5));
+      // Spec damage-taken hooks: damageTakenMul (guardian/berserker), Bulwark,
+      // Deathless Rage, Taunt Reflect, Aegis ally reduction.
+      victim.specState = victim.specState || {};
+      const victimLivingAllies = Object.values(cs.players).filter(p => p.hp > 0);
+      const victimCtx = {
+        player: victim,
+        attacker: en,
+        target: null,
+        passive: victim.cbPassive || {},
+        specSlug: victim.classBonusSlug,
+        specTier: victim.specTier || 1,
+        allAllies: victimLivingAllies,
+        allEnemies: cs.enemies,
+        log,
+        toast: null,
+        rand,
+        applyEffect,
+        STATUS_EFFECTS,
+        state: victim.specState,
+        combatState: cs,
+      };
+      eDmg = SPECS.specDmgTaken(eDmg, victimCtx);
       victim.hp -= eDmg;
       adjustPlayerMomentum(victim, eCrit ? -2 : -1);
       log.push(eCrit ? `⚡ ${en.name} crits ${victim.name} for ${eDmg}!` : `${en.name} attacks ${victim.name} for ${eDmg}.`);
@@ -638,6 +935,29 @@ function register(app, requireAuth, ctx) {
       if (rpP?.mpRegenFlat) {
         const mpGain = Math.min(rpP.mpRegenFlat, p.maxMp - p.mp);
         if (mpGain > 0) { p.mp += mpGain; log.push(`✨ ${rpP.name} restores ${mpGain} MP to ${p.name}.`); }
+      }
+    }
+
+    // Equipment passives: per-turn regen (mana regen, hp regen, gem regen)
+    for (const p of Object.values(cs.players)) {
+      if (p.hp <= 0) continue;
+      for (const passive of (p.combatPassives || [])) {
+        if (passive.manaRegen) {
+          const restored = Math.min(passive.manaRegen, p.maxMp - p.mp);
+          if (restored > 0) { p.mp += restored; log.push(`✨ ${passive.source} restores ${restored} MP.`); }
+        }
+        if (passive.mpRegenPct) {
+          const restored = Math.min(Math.floor(p.maxMp * passive.mpRegenPct / 100), p.maxMp - p.mp);
+          if (restored > 0) { p.mp += restored; log.push(`✨ ${passive.source} restores ${restored} MP (${passive.mpRegenPct}%).`); }
+        }
+        if (passive.hpRegen) {
+          const healed = Math.min(passive.hpRegen, p.maxHp - p.hp);
+          if (healed > 0) { p.hp += healed; log.push(`💚 ${passive.source} restores ${healed} HP.`); }
+        }
+        if (passive.hpRegenPct) {
+          const healed = Math.min(Math.floor(p.maxHp * passive.hpRegenPct / 100), p.maxHp - p.hp);
+          if (healed > 0) { p.hp += healed; log.push(`💚 ${passive.source} restores ${healed} HP (${passive.hpRegenPct}%).`); }
+        }
       }
     }
 
@@ -705,8 +1025,14 @@ function register(app, requireAuth, ctx) {
       await withTransaction(async (tx) => {
         for (const p of Object.values(cs.players)) {
           const cid = Number(p.charId);
+          // Apply racial XP/gold bonuses (human: +5% each)
+          const rp = getRacialPassive(p.race);
+          let pXp = p.hp > 0 ? perPlayerXp : 0;
+          let pGold = p.hp > 0 ? perPlayerGold : 0;
+          if (rp?.xpBonusPct) pXp = Math.floor(pXp * (1 + rp.xpBonusPct / 100));
+          if (rp?.goldBonusPct) pGold = Math.floor(pGold * (1 + rp.goldBonusPct / 100));
           await tx.query('UPDATE fantasy_characters SET hp=$1, mp=$2, xp=xp+$3, gold=gold+$4 WHERE id=$5',
-            [p.hp, p.mp, p.hp > 0 ? perPlayerXp : 0, p.hp > 0 ? perPlayerGold : 0, cid]);
+            [p.hp, p.mp, pXp, pGold, cid]);
           // Check level up
           const charRow = await q1('SELECT * FROM fantasy_characters WHERE id=$1', [Number(p.charId)], tx);
           if (charRow) {
@@ -729,14 +1055,52 @@ function register(app, requireAuth, ctx) {
               const floorXp = (raid.rewards?.xpBase || 80) + (raid.rewards?.xpPerFloor || 30) * rs.currentFloor;
               rs.totalXp = (rs.totalXp || 0) + floorXp;
               rs.totalGold = (rs.totalGold || 0) + floorGold;
+              rs.personalRewards = rs.personalRewards || {};
               log.push(`🏰 Floor ${rs.currentFloor} cleared! +${floorXp} XP, +${floorGold} gold`);
 
               // Distribute floor rewards + tokens
               for (const p of Object.values(cs.players)) {
                 const tokens = rand(1, 2);
+                const frp = getRacialPassive(p.race);
+                let fXp = Math.floor(floorXp / livingCount);
+                let fGold = Math.floor(floorGold / livingCount);
+                if (frp?.xpBonusPct) fXp = Math.floor(fXp * (1 + frp.xpBonusPct / 100));
+                if (frp?.goldBonusPct) fGold = Math.floor(fGold * (1 + frp.goldBonusPct / 100));
                 await tx.query('UPDATE fantasy_characters SET gold=gold+$1, xp=xp+$2, arcane_tokens=arcane_tokens+$3 WHERE id=$4',
-                  [Math.floor(floorGold / livingCount), Math.floor(floorXp / livingCount), tokens, Number(p.charId)]);
+                  [fGold, fXp, tokens, Number(p.charId)]);
                 log.push(`${p.name}: +${tokens}✦`);
+                const cid = Number(p.charId);
+                rs.personalRewards[cid] = rs.personalRewards[cid] || { xp: 0, gold: 0, tokens: 0, loot: [] };
+                rs.personalRewards[cid].xp += fXp;
+                rs.personalRewards[cid].gold += fGold;
+                rs.personalRewards[cid].tokens += tokens;
+
+                // Companion XP (mirrors solo combat.js:1067): half of player's floor XP
+                // awarded to living pets. Previously raids silently ignored pets.
+                const ally = cs.allies?.find(a => a.companionData && a.ownerId === p.charId && a.hp > 0);
+                if (ally) {
+                  const charRow = await tx.query('SELECT companion FROM fantasy_characters WHERE id=$1', [Number(p.charId)]);
+                  const companion = charRow.rows[0]?.companion;
+                  if (companion) {
+                    const compXp = Math.floor(fXp * 0.5);
+                    companion.xp = (companion.xp || 0) + compXp;
+                    const compDef = GAME_CONFIG.companions?.[companion.type];
+                    if (compDef) {
+                      const currentLevel = companion.level || 1;
+                      const xpNeeded = compDef.xpCurve?.[currentLevel] || 999999;
+                      if (companion.xp >= xpNeeded && currentLevel < 5) {
+                        companion.level = currentLevel + 1;
+                        companion.xp -= xpNeeded;
+                        const newAbilities = (compDef.abilities || []).filter(a => a.unlock === companion.level);
+                        log.push(`🎉 ${companion.name || compDef.name} reaches level ${companion.level}!`);
+                        for (const ab of newAbilities) log.push(`✨ New pet ability unlocked: ${ab.name}!`);
+                      } else {
+                        log.push(`${compDef.icon || '🐾'} ${companion.name || compDef.name} +${compXp} XP`);
+                      }
+                    }
+                    await tx.query('UPDATE fantasy_characters SET companion=$1 WHERE id=$2', [JSON.stringify(companion), Number(p.charId)]);
+                  }
+                }
               }
 
               // Boss drops (raid-exclusive, personal loot per player)
@@ -752,6 +1116,9 @@ function register(app, requireAuth, ctx) {
                       await addItem(Number(p.charId), dropSlug, 1, perks, tx);
                       const name = perks ? (getPerkPrefix(perks) + ' ' + item.name) : item.name;
                       log.push(`${item.rarity === 'mythic' ? '🔴' : '🟡'} ${p.name} receives: ${name}!`);
+                      const cid = Number(p.charId);
+                      rs.personalRewards[cid] = rs.personalRewards[cid] || { xp: 0, gold: 0, tokens: 0, loot: [] };
+                      rs.personalRewards[cid].loot.push({ slug: dropSlug, name, rarity: item.rarity, source: 'boss' });
                     }
                   }
                 }
@@ -764,13 +1131,27 @@ function register(app, requireAuth, ctx) {
                 rs.totalGold += bonus.gold || 0;
                 log.push(`\n🏆 ═══ RAID COMPLETE: ${raid.name} ═══`);
                 for (const p of Object.values(cs.players)) {
+                  const crp = getRacialPassive(p.race);
+                  let cXp = Math.floor((bonus.xp||0)/livingCount);
+                  let cGold = Math.floor((bonus.gold||0)/livingCount);
+                  if (crp?.xpBonusPct) cXp = Math.floor(cXp * (1 + crp.xpBonusPct / 100));
+                  if (crp?.goldBonusPct) cGold = Math.floor(cGold * (1 + crp.goldBonusPct / 100));
+                  const cTokens = raid.rewards?.arcaneTokens || 2;
                   await tx.query('UPDATE fantasy_characters SET gold=gold+$1, xp=xp+$2, arcane_tokens=arcane_tokens+$3 WHERE id=$4',
-                    [Math.floor((bonus.gold||0)/livingCount), Math.floor((bonus.xp||0)/livingCount), raid.rewards?.arcaneTokens || 2, Number(p.charId)]);
+                    [cGold, cXp, cTokens, Number(p.charId)]);
+                  const cid = Number(p.charId);
+                  rs.personalRewards[cid] = rs.personalRewards[cid] || { xp: 0, gold: 0, tokens: 0, loot: [] };
+                  rs.personalRewards[cid].xp += cXp;
+                  rs.personalRewards[cid].gold += cGold;
+                  rs.personalRewards[cid].tokens += cTokens;
                 }
-                // Record completion
+                // Record completion — capture duration for best-time leaderboards
+                const durationSec = rs.startedAt
+                  ? Math.max(0, Math.floor((Date.now() - new Date(rs.startedAt).getTime()) / 1000))
+                  : null;
                 for (const p of Object.values(cs.players)) {
-                  await tx.query('INSERT INTO fantasy_raid_runs (char_id, raid_slug, floors_reached, completed, ended_at) VALUES ($1,$2,$3,TRUE,NOW())',
-                    [Number(p.charId), rs.raidSlug, rs.floorsCleared]);
+                  await tx.query('INSERT INTO fantasy_raid_runs (char_id, raid_slug, floors_reached, completed, ended_at, duration_seconds) VALUES ($1,$2,$3,TRUE,NOW(),$4)',
+                    [Number(p.charId), rs.raidSlug, rs.floorsCleared, durationSec]);
                 }
 
                 // ── EXOTIC DROPS (party-only, final boss, class-locked) ──
@@ -792,12 +1173,17 @@ function register(app, requireAuth, ctx) {
                       if (gameEvents) {
                         gameEvents.emit('item-looted', { charId: Number(p.charId), itemSlug: exSlug, source: 'exotic-drop', perks }).catch(() => {});
                       }
+                      const cid = Number(p.charId);
+                      rs.personalRewards[cid] = rs.personalRewards[cid] || { xp: 0, gold: 0, tokens: 0, loot: [] };
+                      rs.personalRewards[cid].loot.push({ slug: exSlug, name: displayName, rarity: 'exotic', source: 'exotic' });
                     }
                   }
                 }
 
+                rs.partySize = Object.values(cs.players).length;
                 rs.phase = 'complete';
                 rs.completionLore = raid.completionLore || null;
+                rs.completedAt = new Date().toISOString();
               } else {
                 rs.phase = 'nextFloor';
                 rs.floorDebuffs = [];
@@ -843,6 +1229,7 @@ function register(app, requireAuth, ctx) {
 
     cs.roundLog = log;
     await db.query('UPDATE fantasy_parties SET combat_state=$1 WHERE id=$2', [JSON.stringify(cs), party.id]);
+    if (ctx.notifyParty) ctx.notifyParty(partyId);
   }
 
   function adjustPlayerMomentum(player, delta) {

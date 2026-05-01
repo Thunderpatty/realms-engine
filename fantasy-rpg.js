@@ -718,10 +718,14 @@ function registerFantasyRoutes(app, db, requireAuth, requireAdmin = requireAuth)
     // PvP loadout — falls back to PvE loadout if not set
     const activePvpRaw = char.active_abilities_pvp ? (typeof char.active_abilities_pvp === 'string' ? JSON.parse(char.active_abilities_pvp) : char.active_abilities_pvp) : null;
     const activePvp = activePvpRaw || active;
+    // Raid loadout — falls back to PvE loadout if not set
+    const activeRaidRaw = char.active_abilities_raid ? (typeof char.active_abilities_raid === 'string' ? JSON.parse(char.active_abilities_raid) : char.active_abilities_raid) : null;
+    const activeRaid = activeRaidRaw || active;
     // Filter out racial from active/learned in case it was injected by old code
     const cleanLearned = learned.filter(s => s !== racialAbility?.slug);
     const cleanActive = active.filter(s => s !== racialAbility?.slug);
     const cleanActivePvp = activePvp.filter(s => s !== racialAbility?.slug);
+    const cleanActiveRaid = activeRaid.filter(s => s !== racialAbility?.slug);
     // Resolve class abilities for the PvE loadout
     const activeAbilities = cleanActive.map(s => ABILITY_INDEX[s] || cls.abilities.find(a => a.slug === s)).filter(Boolean);
     // Append racial at the end — always present, outside the loadout
@@ -731,7 +735,9 @@ function registerFantasyRoutes(app, db, requireAuth, requireAdmin = requireAuth)
       learned: cleanLearned,
       active: cleanActive,       // PvE loadout slugs
       activePvp: cleanActivePvp, // PvP loadout slugs
+      activeRaid: cleanActiveRaid, // Raid loadout slugs
       pvpCustomized: !!activePvpRaw, // whether PvP loadout was explicitly set
+      raidCustomized: !!activeRaidRaw, // whether Raid loadout was explicitly set
       activeAbilities, // PvE class loadout + racial appended (used by combat engine)
       racialAbility,
     };
@@ -1117,18 +1123,20 @@ function registerFantasyRoutes(app, db, requireAuth, requireAdmin = requireAuth)
     const char = await getChar(userId, activeCharId);
     if (!char) return { hasCharacter: false, races: RACES, classes: CLASSES, charList, maxChars: 10 };
 
-    // ── Stale party/raid cleanup ──
+    // ── Stale party cleanup ──
     // If character has party_id but the party is disbanded/gone, clear it
+    let partyRow = null;
     if (char.party_id) {
-      const party = await q1("SELECT id, state FROM fantasy_parties WHERE id = $1", [char.party_id]);
-      if (!party || party.state === 'disbanded') {
+      partyRow = await q1("SELECT id, state, raid_state, combat_state FROM fantasy_parties WHERE id = $1", [char.party_id]);
+      if (!partyRow || partyRow.state === 'disbanded') {
         await db.query('UPDATE fantasy_characters SET party_id = NULL, raid_state = NULL WHERE id = $1', [char.id]);
         char.party_id = null;
         char.raid_state = null;
+        partyRow = null;
       }
     }
-    // If character has raid_state.partyRaid but no party_id, clear it
-    if (char.raid_state?.partyRaid && !char.party_id) {
+    // Clean stale party raid stubs from character (legacy cleanup)
+    if (char.raid_state?.partyRaid) {
       await db.query('UPDATE fantasy_characters SET raid_state = NULL WHERE id = $1', [char.id]);
       char.raid_state = null;
     }
@@ -1274,7 +1282,8 @@ function registerFantasyRoutes(app, db, requireAuth, requireAdmin = requireAuth)
       hasRaidTower: (getContent().realms || []).some(r => r.raidTown === char.location),
       hasClassTrainer: hasCraftingAccess(char.location),
       arenaState: char.arena_state || null,
-      raidState: char.raid_state || null,
+      raidState: (char.party_id && partyRow?.state === 'in_raid') ? partyRow.raid_state : (char.raid_state || null),
+      partyCombat: (char.party_id && partyRow?.state === 'in_raid') ? partyRow.combat_state : null,
       partyId: char.party_id || null,
       arenaBestWave: ((await q('SELECT MAX(wave_reached) as best FROM fantasy_arena_runs WHERE char_id = $1', [char.id]))[0]?.best) || 0,
       locationThreat: getContent().locationThreat || {},
@@ -1298,7 +1307,13 @@ function registerFantasyRoutes(app, db, requireAuth, requireAdmin = requireAuth)
       patch.character = { ...char, combat_state: char.combat_state || null };
       patch.xpNeeded = xpForLevel(char.level);
       patch.arenaState = char.arena_state || null;
-      patch.raidState = char.raid_state || null;
+      if (char.party_id) {
+        const pp = await q1("SELECT raid_state, combat_state, state FROM fantasy_parties WHERE id=$1", [char.party_id]);
+        patch.raidState = (pp?.state === 'in_raid') ? pp.raid_state : null;
+        patch.partyCombat = (pp?.state === 'in_raid') ? pp.combat_state : null;
+      } else {
+        patch.raidState = char.raid_state || null;
+      }
       patch.arenaBestWave = ((await q('SELECT MAX(wave_reached) as best FROM fantasy_arena_runs WHERE char_id = $1', [char.id]))[0]?.best) || 0;
     }
 
@@ -1715,7 +1730,7 @@ function registerFantasyRoutes(app, db, requireAuth, requireAdmin = requireAuth)
       const realmDef = (getContent().realms || []).find(r => r.slug === realm);
       if (realmDef?.hub) return realmDef.hub;
     }
-    return HOME_LOCATION; // fallback
+    return 'thornwall'; // fallback
   }
 
   const moduleCtx = {
@@ -1760,6 +1775,12 @@ function registerFantasyRoutes(app, db, requireAuth, requireAdmin = requireAuth)
   require('./systems/friends').register(app, requireAuth, moduleCtx);
   require('./systems/party-combat').register(app, requireAuth, moduleCtx);
   require('./systems/party').register(app, requireAuth, moduleCtx);
+  require('./systems/sse').register(app, requireAuth, moduleCtx);
+
+  // Expose shutdown for SSE cleanup
+  registerFantasyRoutes._shutdown = () => {
+    if (moduleCtx.sseCloseAll) moduleCtx.sseCloseAll();
+  };
 }
 
 module.exports = { initFantasyDb, registerFantasyRoutes, getContent, gameEvents };

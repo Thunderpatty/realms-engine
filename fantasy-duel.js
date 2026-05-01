@@ -312,7 +312,7 @@ function pvpProcessAction(duelData, actorKey, action, abilitySlug) {
         const totalDef = effectiveDefenderDefense + getDefenderBuffDef(defender);
         const rawDmg = Math.max(1, pvpApplyDefenseReduction(Math.floor((effectiveStats.attack + buffBonusStr) * 0.92) + rand(0, 3), totalDef));
         const isCrit = rand(1, 100) <= (actorCritChance + atkMTier.critBonus);
-        let dmg = Math.max(1, Math.floor(rawDmg * PVP_DAMAGE_SCALE * (isCrit ? 1.5 : 1)));
+        let dmg = Math.max(1, Math.floor(rawDmg * PVP_DAMAGE_SCALE * (isCrit ? 2.0 : 1)));
         if (atkMTier.dmgBonus > 0) dmg = Math.floor(dmg * (1 + atkMTier.dmgBonus));
         if (defender.defending) dmg = Math.max(1, Math.floor(dmg * 0.5));
         defender.hp -= dmg;
@@ -378,7 +378,7 @@ function pvpProcessAction(duelData, actorKey, action, abilitySlug) {
             const rawHit = Math.max(1, pvpApplyDefenseReduction(Math.floor(baseDmg * rankedDamage) + rand(0, 2) + rankBonusDmgFlat, effectiveDefenderDefense + getDefenderBuffDef(defender)));
             abilityTotalDmg += Math.max(1, Math.floor(rawHit * PVP_DAMAGE_SCALE));
           }
-          if (isCrit) abilityTotalDmg = Math.floor(abilityTotalDmg * 1.5);
+          if (isCrit) abilityTotalDmg = Math.floor(abilityTotalDmg * 2.0);
           // Momentum damage bonus
           if (mTier.dmgBonus > 0) abilityTotalDmg = Math.floor(abilityTotalDmg * (1 + mTier.dmgBonus));
           // Combo damage bonus

@@ -435,7 +435,7 @@ function register(app, requireAuth, ctx) {
       if (!isTrainerLocation(char.location)) return res.status(400).json({ error: 'Visit a realm hub town to change loadout.' });
       if (char.in_combat) return res.status(400).json({ error: 'Cannot change abilities during combat.' });
       const { activeAbilities, mode } = req.body;
-      const loadoutMode = mode === 'pvp' ? 'pvp' : 'pve';
+      const loadoutMode = mode === 'pvp' ? 'pvp' : mode === 'raid' ? 'raid' : 'pve';
       if (!Array.isArray(activeAbilities) || activeAbilities.length < 1 || activeAbilities.length > MAX_ACTIVE_ABILITIES) {
         return res.status(400).json({ error: `Select 1-${MAX_ACTIVE_ABILITIES} abilities.` });
       }
@@ -443,9 +443,9 @@ function register(app, requireAuth, ctx) {
       for (const slug of activeAbilities) {
         if (!abils.learned.includes(slug)) return res.status(400).json({ error: `You haven't learned ${slug}.` });
       }
-      const col = loadoutMode === 'pvp' ? 'active_abilities_pvp' : 'active_abilities';
+      const col = loadoutMode === 'pvp' ? 'active_abilities_pvp' : loadoutMode === 'raid' ? 'active_abilities_raid' : 'active_abilities';
       await db.query(`UPDATE fantasy_characters SET ${col}=$1 WHERE id=$2`, [JSON.stringify(activeAbilities), char.id]);
-      const modeLabel = loadoutMode === 'pvp' ? 'PvP' : 'PvE';
+      const modeLabel = loadoutMode === 'pvp' ? 'PvP' : loadoutMode === 'raid' ? 'Raid' : 'PvE';
       await addLog(char.id, 'story', `📖 Updated ${modeLabel} ability loadout.`);
       const state = await buildState(req.session.userId, req.session.activeCharId);
       res.json({ ok: true, state });

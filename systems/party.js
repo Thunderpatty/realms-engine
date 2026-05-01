@@ -42,6 +42,19 @@ function register(app, requireAuth, ctx) {
     return { ...party, members, invites };
   }
 
+  // Helper: build full canonical response for party state
+  async function buildFullPartyResponse(charId, partyId) {
+    const party = partyId ? await getPartyWithMembers(partyId) : null;
+    const partyState = party && party.state !== 'disbanded' ? buildPartyState(party) : null;
+    const raidState = party?.state === 'in_raid' ? party.raid_state : null;
+    const combat = party?.state === 'in_raid' ? party.combat_state : null;
+    const invites = await q(
+      "SELECT pi.id as invite_id, pi.party_id, c.name as from_name, c.class as from_class, c.level as from_level FROM fantasy_party_invites pi JOIN fantasy_characters c ON c.id = pi.from_char_id WHERE pi.to_char_id=$1 AND pi.status='pending' AND pi.created_at > NOW() - INTERVAL '5 minutes'",
+      [charId]
+    );
+    return { party: partyState, raidState, combat, pendingInvites: invites };
+  }
+
   // Helper: build party state for frontend
   function buildPartyState(party) {
     if (!party) return null;
@@ -62,6 +75,7 @@ function register(app, requireAuth, ctx) {
         maxMp: m.max_mp,
         location: m.location,
         ready: m.ready,
+        lobbyJoined: m.lobby_joined,
         status: m.status,
         isLeader: m.char_id === party.leader_id,
       })),
@@ -86,13 +100,25 @@ function register(app, requireAuth, ctx) {
   // Helper: disband party
   async function disbandParty(partyId, reason) {
     const members = await q('SELECT char_id FROM fantasy_party_members WHERE party_id = $1', [partyId]);
+    await withTransaction(async (tx) => {
+      for (const m of members) {
+        await tx.query('UPDATE fantasy_characters SET party_id = NULL, raid_state = NULL WHERE id = $1', [m.char_id]);
+      }
+      await tx.query('DELETE FROM fantasy_party_members WHERE party_id = $1', [partyId]);
+      await tx.query("UPDATE fantasy_party_invites SET status='expired' WHERE party_id=$1 AND status='pending'", [partyId]);
+      await tx.query("UPDATE fantasy_parties SET state='disbanded', combat_state=NULL, raid_state=NULL WHERE id=$1", [partyId]);
+    });
     for (const m of members) {
-      await db.query('UPDATE fantasy_characters SET party_id = NULL WHERE id = $1', [m.char_id]);
       await addLog(m.char_id, 'social', `👥 Party disbanded: ${reason}`);
     }
-    await db.query('DELETE FROM fantasy_party_members WHERE party_id = $1', [partyId]);
-    await db.query("UPDATE fantasy_party_invites SET status='expired' WHERE party_id=$1 AND status='pending'", [partyId]);
-    await db.query("UPDATE fantasy_parties SET state='disbanded' WHERE id=$1", [partyId]);
+    // Notify each former member directly — broadcastParty(partyId) would query
+    // fantasy_party_members which is now empty, so nobody would be reached.
+    const disbandPayload = { type: 'state', party: null, raidState: null, combat: null, pendingInvites: [] };
+    if (ctx.notifyChar) {
+      for (const m of members) {
+        await ctx.notifyChar(m.char_id, disbandPayload);
+      }
+    }
   }
 
   // ─── CREATE PARTY ───
@@ -104,23 +130,19 @@ function register(app, requireAuth, ctx) {
       if (char.party_id) return res.status(400).json({ error: 'Already in a party.' });
       if (char.raid_state) return res.status(400).json({ error: 'Cannot create a party during a raid.' });
       if (char.arena_state) return res.status(400).json({ error: 'Cannot create a party during an arena run.' });
-      if (!isPartyLocation(char.location)) return res.status(400).json({ error: 'Parties can only be formed at a Raid Tower town (Sunspire, Frosthollow, Cinderport, or Nexus Bastion).' });
 
-      const result = await db.query(
-        "INSERT INTO fantasy_parties (leader_id, state) VALUES ($1, 'forming') RETURNING id",
-        [char.id]
-      );
-      const partyId = result.rows[0].id;
-
-      await db.query(
-        'INSERT INTO fantasy_party_members (party_id, char_id, ready) VALUES ($1, $2, FALSE)',
-        [partyId, char.id]
-      );
-      await db.query('UPDATE fantasy_characters SET party_id = $1 WHERE id = $2', [partyId, char.id]);
+      const partyId = await withTransaction(async (tx) => {
+        const result = await tx.query("INSERT INTO fantasy_parties (leader_id, state) VALUES ($1, 'forming') RETURNING id", [char.id]);
+        const pid = result.rows[0].id;
+        await tx.query('INSERT INTO fantasy_party_members (party_id, char_id, ready) VALUES ($1, $2, FALSE)', [pid, char.id]);
+        await tx.query('UPDATE fantasy_characters SET party_id = $1 WHERE id = $2', [pid, char.id]);
+        return pid;
+      });
       await addLog(char.id, 'social', '👥 Created a raid party.');
 
-      const party = await getPartyWithMembers(partyId);
-      res.json({ ok: true, party: buildPartyState(party) });
+      if (ctx.notifyParty) ctx.notifyParty(partyId);
+      const response = await buildFullPartyResponse(char.id, partyId);
+      res.json({ ok: true, ...response });
     } catch (e) { console.error(e); res.status(500).json({ error: 'Failed to create party.' }); }
   });
 
@@ -141,7 +163,6 @@ function register(app, requireAuth, ctx) {
       if (!target) return res.status(400).json({ error: 'Character not found.' });
       if (target.id === char.id) return res.status(400).json({ error: "Can't invite yourself." });
       if (target.party_id) return res.status(400).json({ error: `${target.name} is already in a party.` });
-      if (!isPartyLocation(target.location)) return res.status(400).json({ error: `${target.name} must be at a Raid Tower town to join.` });
       if (target.in_combat) return res.status(400).json({ error: `${target.name} is in combat.` });
       if (target.raid_state) return res.status(400).json({ error: `${target.name} is in a raid.` });
       if (target.arena_state) return res.status(400).json({ error: `${target.name} is in the arena.` });
@@ -168,7 +189,13 @@ function register(app, requireAuth, ctx) {
       );
       await addLog(char.id, 'social', `👥 Invited ${target.name} to the party.`);
 
+      // Push invite notification to target via SSE
+      if (ctx.notifyChar) {
+        ctx.notifyChar(target.id, { type: 'invite', invite: { invite_id: null, party_id: party.id, from_name: char.name, from_class: char.class, from_level: char.level } });
+      }
+
       const updated = await getPartyWithMembers(party.id);
+      if (ctx.notifyParty) ctx.notifyParty(party.id);
       res.json({ ok: true, party: buildPartyState(updated), message: `Invited ${target.name}.` });
     } catch (e) { console.error(e); res.status(500).json({ error: 'Failed to invite.' }); }
   });
@@ -181,7 +208,6 @@ function register(app, requireAuth, ctx) {
       if (char.party_id) return res.status(400).json({ error: 'Already in a party.' });
       if (char.in_combat) return res.status(400).json({ error: 'Cannot join during combat.' });
       if (char.raid_state) return res.status(400).json({ error: 'Cannot join during a raid.' });
-      if (!isPartyLocation(char.location)) return res.status(400).json({ error: 'Must be at a Raid Tower town to join a party.' });
 
       const { inviteId } = req.body;
       const invite = await q1(
@@ -201,26 +227,21 @@ function register(app, requireAuth, ctx) {
         return res.status(400).json({ error: 'Party is full.' });
       }
 
-      await db.query("UPDATE fantasy_party_invites SET status='accepted' WHERE id=$1", [inviteId]);
-      await db.query(
-        'INSERT INTO fantasy_party_members (party_id, char_id, ready) VALUES ($1, $2, FALSE)',
-        [party.id, char.id]
-      );
-      await db.query('UPDATE fantasy_characters SET party_id = $1 WHERE id = $2', [party.id, char.id]);
-
-      // Expire other pending invites to this character
-      await db.query(
-        "UPDATE fantasy_party_invites SET status='expired' WHERE to_char_id=$1 AND status='pending' AND id != $2",
-        [char.id, inviteId]
-      );
+      await withTransaction(async (tx) => {
+        await tx.query("UPDATE fantasy_party_invites SET status='accepted' WHERE id=$1", [inviteId]);
+        await tx.query('INSERT INTO fantasy_party_members (party_id, char_id, ready) VALUES ($1, $2, FALSE)', [party.id, char.id]);
+        await tx.query('UPDATE fantasy_characters SET party_id = $1 WHERE id = $2', [party.id, char.id]);
+        await tx.query("UPDATE fantasy_party_invites SET status='expired' WHERE to_char_id=$1 AND status='pending' AND id != $2", [char.id, inviteId]);
+      });
 
       await addLog(char.id, 'social', `👥 Joined the party!`);
       for (const m of party.members) {
         await addLog(m.char_id, 'social', `👥 ${char.name} joined the party.`);
       }
 
-      const updated = await getPartyWithMembers(party.id);
-      res.json({ ok: true, party: buildPartyState(updated) });
+      if (ctx.notifyParty) ctx.notifyParty(party.id);
+      const response = await buildFullPartyResponse(char.id, party.id);
+      res.json({ ok: true, ...response });
     } catch (e) { console.error(e); res.status(500).json({ error: 'Failed to join.' }); }
   });
 
@@ -262,12 +283,15 @@ function register(app, requireAuth, ctx) {
         await disbandParty(party.id, `${char.name} (leader) left.`);
       } else {
         // Member leaves
-        await db.query('DELETE FROM fantasy_party_members WHERE party_id=$1 AND char_id=$2', [party.id, char.id]);
-        await db.query('UPDATE fantasy_characters SET party_id = NULL WHERE id = $1', [char.id]);
+        await withTransaction(async (tx) => {
+          await tx.query('DELETE FROM fantasy_party_members WHERE party_id=$1 AND char_id=$2', [party.id, char.id]);
+          await tx.query('UPDATE fantasy_characters SET party_id = NULL WHERE id = $1', [char.id]);
+        });
         await addLog(char.id, 'social', '👥 Left the party.');
         for (const m of party.members) {
           if (m.char_id !== char.id) await addLog(m.char_id, 'social', `👥 ${char.name} left the party.`);
         }
+        if (ctx.notifyParty) ctx.notifyParty(party.id);
       }
 
       const state = await buildState(req.session.userId, req.session.activeCharId);
@@ -293,12 +317,15 @@ function register(app, requireAuth, ctx) {
       if (!member) return res.status(400).json({ error: 'Not in your party.' });
 
       const kicked = await q1('SELECT name FROM fantasy_characters WHERE id=$1', [charId]);
-      await db.query('DELETE FROM fantasy_party_members WHERE party_id=$1 AND char_id=$2', [party.id, charId]);
-      await db.query('UPDATE fantasy_characters SET party_id = NULL WHERE id = $1', [charId]);
+      await withTransaction(async (tx) => {
+        await tx.query('DELETE FROM fantasy_party_members WHERE party_id=$1 AND char_id=$2', [party.id, charId]);
+        await tx.query('UPDATE fantasy_characters SET party_id = NULL WHERE id = $1', [charId]);
+      });
       await addLog(charId, 'social', '👥 You were kicked from the party.');
 
-      const updated = await getPartyWithMembers(party.id);
-      res.json({ ok: true, party: buildPartyState(updated), message: `Kicked ${kicked?.name || 'member'}.` });
+      if (ctx.notifyParty) ctx.notifyParty(party.id);
+      const response = await buildFullPartyResponse(char.id, party.id);
+      res.json({ ok: true, ...response, message: `Kicked ${kicked?.name || 'member'}.` });
     } catch (e) { console.error(e); res.status(500).json({ error: 'Failed to kick.' }); }
   });
 
@@ -374,15 +401,111 @@ function register(app, requireAuth, ctx) {
       if (!char) return res.status(400).json({ error: 'No character.' });
       if (!char.party_id) return res.status(400).json({ error: 'Not in a party.' });
 
+      const party = await q1('SELECT state FROM fantasy_parties WHERE id=$1', [char.party_id]);
+      if (!party || party.state !== 'lobby') return res.status(400).json({ error: 'No active raid lobby — leader must select a raid first.' });
+
       const member = await q1('SELECT * FROM fantasy_party_members WHERE party_id=$1 AND char_id=$2', [char.party_id, char.id]);
       if (!member) return res.status(400).json({ error: 'Not in party.' });
+      if (!member.lobby_joined) return res.status(400).json({ error: 'Join the lobby first.' });
 
       const newReady = !member.ready;
       await db.query('UPDATE fantasy_party_members SET ready=$1 WHERE party_id=$2 AND char_id=$3', [newReady, char.party_id, char.id]);
 
-      const party = await getPartyWithMembers(char.party_id);
-      res.json({ ok: true, party: buildPartyState(party) });
+      if (ctx.notifyParty) ctx.notifyParty(char.party_id);
+      const response = await buildFullPartyResponse(char.id, char.party_id);
+      res.json({ ok: true, ...response });
     } catch (e) { console.error(e); res.status(500).json({ error: 'Failed to toggle ready.' }); }
+  });
+
+  // ─── SELECT RAID (leader opens lobby) ───
+  app.post('/api/fantasy/party/select-raid', requireAuth, validate(schemas.partyStart), async (req, res) => {
+    try {
+      const char = await getChar(req.session.userId, req.session.activeCharId);
+      if (!char) return res.status(400).json({ error: 'No character.' });
+      if (!char.party_id) return res.status(400).json({ error: 'Not in a party.' });
+
+      const party = await getPartyWithMembers(char.party_id);
+      if (!party) return res.status(400).json({ error: 'Party not found.' });
+      if (party.leader_id !== char.id) return res.status(400).json({ error: 'Only the leader can select a raid.' });
+      if (party.state !== 'forming' && party.state !== 'lobby') return res.status(400).json({ error: 'Cannot select a raid now.' });
+      if (party.members.length < 2) return res.status(400).json({ error: 'Need at least 2 party members for a raid.' });
+
+      const { raidSlug } = req.body;
+      const fs = require('fs');
+      const path = require('path');
+      let raid;
+      try {
+        raid = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'content', 'raids', raidSlug + '.json'), 'utf8'));
+      } catch (e) {
+        return res.status(400).json({ error: 'Unknown raid.' });
+      }
+
+      for (const m of party.members) {
+        if (m.level < (raid.levelReq || 1)) return res.status(400).json({ error: `${m.name} must be level ${raid.levelReq}+ for ${raid.name}.` });
+      }
+
+      await withTransaction(async (tx) => {
+        await tx.query('UPDATE fantasy_party_members SET lobby_joined=FALSE, ready=FALSE WHERE party_id=$1', [party.id]);
+        await tx.query('UPDATE fantasy_party_members SET lobby_joined=TRUE WHERE party_id=$1 AND char_id=$2', [party.id, char.id]);
+        await tx.query("UPDATE fantasy_parties SET state='lobby', raid_slug=$1 WHERE id=$2", [raidSlug, party.id]);
+      });
+
+      for (const m of party.members) {
+        await addLog(m.char_id, 'social', `🎯 ${char.name} opened a lobby for ${raid.name}.`);
+      }
+      if (ctx.notifyParty) ctx.notifyParty(party.id);
+      const response = await buildFullPartyResponse(char.id, party.id);
+      res.json({ ok: true, ...response });
+    } catch (e) { console.error(e); res.status(500).json({ error: 'Failed to select raid.' }); }
+  });
+
+  // ─── CANCEL LOBBY (leader only, back to forming) ───
+  app.post('/api/fantasy/party/cancel-lobby', requireAuth, async (req, res) => {
+    try {
+      const char = await getChar(req.session.userId, req.session.activeCharId);
+      if (!char) return res.status(400).json({ error: 'No character.' });
+      if (!char.party_id) return res.status(400).json({ error: 'Not in a party.' });
+
+      const party = await getPartyWithMembers(char.party_id);
+      if (!party) return res.status(400).json({ error: 'Party not found.' });
+      if (party.leader_id !== char.id) return res.status(400).json({ error: 'Only the leader can cancel the lobby.' });
+      if (party.state !== 'lobby') return res.status(400).json({ error: 'No active lobby.' });
+
+      await withTransaction(async (tx) => {
+        await tx.query('UPDATE fantasy_party_members SET lobby_joined=FALSE, ready=FALSE WHERE party_id=$1', [party.id]);
+        await tx.query("UPDATE fantasy_parties SET state='forming', raid_slug=NULL WHERE id=$1", [party.id]);
+      });
+
+      for (const m of party.members) {
+        await addLog(m.char_id, 'social', `❌ ${char.name} cancelled the raid lobby.`);
+      }
+      if (ctx.notifyParty) ctx.notifyParty(party.id);
+      const response = await buildFullPartyResponse(char.id, party.id);
+      res.json({ ok: true, ...response });
+    } catch (e) { console.error(e); res.status(500).json({ error: 'Failed to cancel lobby.' }); }
+  });
+
+  // ─── JOIN LOBBY (non-leader confirms they're in) ───
+  app.post('/api/fantasy/party/join-lobby', requireAuth, async (req, res) => {
+    try {
+      const char = await getChar(req.session.userId, req.session.activeCharId);
+      if (!char) return res.status(400).json({ error: 'No character.' });
+      if (!char.party_id) return res.status(400).json({ error: 'Not in a party.' });
+
+      const party = await q1('SELECT state FROM fantasy_parties WHERE id=$1', [char.party_id]);
+      if (!party || party.state !== 'lobby') return res.status(400).json({ error: 'No active lobby.' });
+
+      const member = await q1('SELECT * FROM fantasy_party_members WHERE party_id=$1 AND char_id=$2', [char.party_id, char.id]);
+      if (!member) return res.status(400).json({ error: 'Not in party.' });
+
+      if (!member.lobby_joined) {
+        await db.query('UPDATE fantasy_party_members SET lobby_joined=TRUE WHERE party_id=$1 AND char_id=$2', [char.party_id, char.id]);
+      }
+
+      if (ctx.notifyParty) ctx.notifyParty(char.party_id);
+      const response = await buildFullPartyResponse(char.id, char.party_id);
+      res.json({ ok: true, ...response });
+    } catch (e) { console.error(e); res.status(500).json({ error: 'Failed to join lobby.' }); }
   });
 
   // ─── POLL PARTY STATE ───
@@ -423,8 +546,8 @@ function register(app, requireAuth, ctx) {
     } catch (e) { console.error(e); res.status(500).json({ error: 'Poll failed.' }); }
   });
 
-  // ─── START RAID (leader only, all must be ready) ───
-  app.post('/api/fantasy/party/start', requireAuth, validate(schemas.partyStart), async (req, res) => {
+  // ─── START RAID (leader only, lobby must be fully joined + ready) ───
+  app.post('/api/fantasy/party/start', requireAuth, async (req, res) => {
     try {
       const char = await getChar(req.session.userId, req.session.activeCharId);
       if (!char) return res.status(400).json({ error: 'No character.' });
@@ -433,34 +556,29 @@ function register(app, requireAuth, ctx) {
       const party = await getPartyWithMembers(char.party_id);
       if (!party) return res.status(400).json({ error: 'Party not found.' });
       if (party.leader_id !== char.id) return res.status(400).json({ error: 'Only the leader can start the raid.' });
-      if (party.state !== 'forming') return res.status(400).json({ error: 'Party already in a raid.' });
+      if (party.state !== 'lobby') return res.status(400).json({ error: 'No active lobby — select a raid first.' });
+      if (!party.raid_slug) return res.status(400).json({ error: 'No raid selected.' });
       if (party.members.length < 2) return res.status(400).json({ error: 'Need at least 2 party members to start.' });
 
-      // Check all ready
-      const notReady = party.members.filter(m => !m.ready && m.char_id !== party.leader_id);
-      if (notReady.length > 0) {
-        return res.status(400).json({ error: `Not everyone is ready: ${notReady.map(m => m.name).join(', ')}` });
-      }
+      const notJoined = party.members.filter(m => !m.lobby_joined);
+      if (notJoined.length > 0) return res.status(400).json({ error: `Waiting for lobby join: ${notJoined.map(m => m.name).join(', ')}` });
+      const notReady = party.members.filter(m => !m.ready);
+      if (notReady.length > 0) return res.status(400).json({ error: `Not ready: ${notReady.map(m => m.name).join(', ')}` });
 
-      // Validate raid
-      const { raidSlug } = req.body;
       const fs = require('fs');
       const path = require('path');
-      const RAID_DIR = path.join(__dirname, '..', 'content', 'raids');
       let raid;
       try {
-        raid = JSON.parse(fs.readFileSync(path.join(RAID_DIR, raidSlug + '.json'), 'utf8'));
+        raid = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'content', 'raids', party.raid_slug + '.json'), 'utf8'));
       } catch (e) {
-        return res.status(400).json({ error: 'Unknown raid.' });
+        return res.status(400).json({ error: 'Raid content missing.' });
       }
 
-      // Check all members meet requirements
+      // Re-check level reqs at start in case someone deranked (shouldn't happen, but defensive)
       for (const m of party.members) {
-        if (!isPartyLocation(m.location)) return res.status(400).json({ error: `${m.name} is not at a Raid Tower town.` });
         if (m.level < (raid.levelReq || 1)) return res.status(400).json({ error: `${m.name} must be level ${raid.levelReq}+.` });
       }
 
-      // Transition party to in_raid
       const totalFloors = Array.isArray(raid.floors) ? raid.floors.length : (raid.floorCount || 3);
       const raidState = {
         raidSlug: raid.slug,
@@ -479,17 +597,16 @@ function register(app, requireAuth, ctx) {
       };
 
       await db.query(
-        "UPDATE fantasy_parties SET state='in_raid', raid_slug=$1, raid_state=$2 WHERE id=$3",
-        [raidSlug, JSON.stringify(raidState), party.id]
+        "UPDATE fantasy_parties SET state='in_raid', raid_state=$1 WHERE id=$2",
+        [JSON.stringify(raidState), party.id]
       );
 
-      // Set raid_state on each member too (so guards work)
       for (const m of party.members) {
-        await db.query('UPDATE fantasy_characters SET raid_state=$1 WHERE id=$2', [JSON.stringify({ partyRaid: true, partyId: party.id }), m.char_id]);
         await addLog(m.char_id, 'raid', `🕳 Party entered ${raid.name}!`);
       }
 
       const updated = await getPartyWithMembers(party.id);
+      if (ctx.notifyParty) ctx.notifyParty(party.id);
       res.json({ ok: true, party: buildPartyState(updated) });
     } catch (e) { console.error(e); res.status(500).json({ error: 'Failed to start raid.' }); }
   });
@@ -557,6 +674,7 @@ function register(app, requireAuth, ctx) {
                 await addLog(m.char_id, 'raid', `⚔ Party combat: Floor ${rs.currentFloor}`);
               }
               await db.query('UPDATE fantasy_parties SET raid_state=$1 WHERE id=$2', [JSON.stringify(rs), party.id]);
+              if (ctx.notifyParty) ctx.notifyParty(party.id);
               const updated = await q1('SELECT combat_state, raid_state FROM fantasy_parties WHERE id=$1', [party.id]);
               return res.json({ ok: true, combat: updated.combat_state, raidState: updated.raid_state });
             }
@@ -593,13 +711,21 @@ function register(app, requireAuth, ctx) {
           await addLog(m.char_id, 'raid', `🔥 Party boss fight: ${bossDef.name}`);
         }
         await db.query('UPDATE fantasy_parties SET raid_state=$1 WHERE id=$2', [JSON.stringify(rs), party.id]);
+        if (ctx.notifyParty) ctx.notifyParty(party.id);
         const updated = await q1('SELECT combat_state, raid_state FROM fantasy_parties WHERE id=$1', [party.id]);
         return res.json({ ok: true, combat: updated.combat_state, raidState: updated.raid_state });
+      } else if (rs.phase === 'complete') {
+        // Raid finished — clear combat state so completion screen shows
+        await db.query('UPDATE fantasy_parties SET combat_state=NULL WHERE id=$1', [party.id]);
+        if (ctx.notifyParty) ctx.notifyParty(party.id);
+        const partyState = buildPartyState(await getPartyWithMembers(party.id));
+        return res.json({ ok: true, raidState: rs, party: partyState });
       } else {
         return res.status(400).json({ error: 'Unknown phase: ' + rs.phase });
       }
 
       await db.query('UPDATE fantasy_parties SET raid_state=$1, combat_state=NULL WHERE id=$2', [JSON.stringify(rs), party.id]);
+      if (ctx.notifyParty) ctx.notifyParty(party.id);
       const partyState = buildPartyState(await getPartyWithMembers(party.id));
       res.json({ ok: true, raidState: rs, party: partyState });
     } catch (e) { console.error(e); res.status(500).json({ error: 'Advance failed.' }); }
@@ -610,17 +736,21 @@ function register(app, requireAuth, ctx) {
     try {
       const char = await getChar(req.session.userId, req.session.activeCharId);
       if (!char || !char.party_id) return res.status(400).json({ error: 'Not in a party.' });
-      const party = await q1('SELECT * FROM fantasy_parties WHERE id=$1', [char.party_id]);
-      if (!party || !party.raid_state || party.raid_state.phase !== 'choice') return res.status(400).json({ error: 'Not at a choice point.' });
-
-      const rs = party.raid_state;
       const { choiceIdx } = req.body;
-      rs.votes = rs.votes || {};
-      rs.votes[char.id] = choiceIdx;
 
-      // Check if all members voted
-      const members = await q('SELECT char_id FROM fantasy_party_members WHERE party_id=$1', [party.id]);
-      const allVoted = members.every(m => rs.votes[m.char_id] !== undefined);
+      // Lock party row for vote read-modify-write
+      const { party, rs, allVoted, members } = await withTransaction(async (tx) => {
+        const p = (await tx.query('SELECT * FROM fantasy_parties WHERE id=$1 FOR UPDATE', [char.party_id])).rows[0];
+        if (!p || !p.raid_state || p.raid_state.phase !== 'choice') throw new Error('Not at a choice point.');
+        const rState = p.raid_state;
+        rState.votes = rState.votes || {};
+        rState.votes[char.id] = choiceIdx;
+        const mems = (await tx.query('SELECT char_id FROM fantasy_party_members WHERE party_id=$1', [p.id])).rows;
+        const voted = mems.every(m => rState.votes[m.char_id] !== undefined);
+        // Write votes immediately (even if not all voted yet)
+        await tx.query('UPDATE fantasy_parties SET raid_state=$1 WHERE id=$2', [JSON.stringify(rState), p.id]);
+        return { party: p, rs: rState, allVoted: voted, members: mems };
+      });
 
       if (allVoted) {
         // Tally votes — majority wins, ties go to leader
@@ -676,15 +806,30 @@ function register(app, requireAuth, ctx) {
           if (effect.buffStat) { rs.floorBuffs = rs.floorBuffs || []; rs.floorBuffs.push({ stat: effect.buffStat, amount: effect.buffAmount || 3, name: encounter.title, turnsLeft: effect.buffTurns || 99 }); messages.push(`⬆ +${effect.buffAmount||3} ${effect.buffStat.toUpperCase()}`); }
           if (effect.debuff) { rs.floorDebuffs = rs.floorDebuffs || []; rs.floorDebuffs.push({ slug: effect.debuff.slug, turns: effect.debuff.turns || 3, name: effect.debuff.name }); messages.push(`☠ ${effect.debuff.name}`); }
 
-          rs.lastChoiceOutcome = { title: encounter.title, success, text: outcome.text, messages, rollInfo, voteCounts: counts, winningIdx };
+          // Preserve voter breakdown and choice labels so the client can render
+          // "Party chose:" on the result screen without re-fetching raid content.
+          const votersByChoice = {};
+          for (const [cid, cidx] of Object.entries(rs.votes)) {
+            if (!votersByChoice[cidx]) votersByChoice[cidx] = [];
+            votersByChoice[cidx].push(Number(cid));
+          }
+          const choiceLabels = (encounter.choices || []).map(ch => ch.label);
+          rs.lastChoiceOutcome = { title: encounter.title, success, text: outcome.text, messages, rollInfo, voteCounts: counts, winningIdx, choiceLabels, voters: votersByChoice };
           rs.phase = 'choiceResult';
           rs.votes = {};
         }
       }
 
-      await db.query('UPDATE fantasy_parties SET raid_state=$1 WHERE id=$2', [JSON.stringify(rs), party.id]);
+      if (allVoted) {
+        // Choice resolution already modified rs, save again
+        await db.query('UPDATE fantasy_parties SET raid_state=$1 WHERE id=$2', [JSON.stringify(rs), party.id]);
+      }
+      if (ctx.notifyParty) ctx.notifyParty(party.id);
       res.json({ ok: true, raidState: rs, voted: true, allVoted });
-    } catch (e) { console.error(e); res.status(500).json({ error: 'Vote failed.' }); }
+    } catch (e) {
+      if (e.message && !e.message.includes('ROLLBACK')) return res.status(400).json({ error: e.message });
+      console.error(e); res.status(500).json({ error: 'Vote failed.' });
+    }
   });
 
   // ─── PARTY PRE-BOSS RECOVERY (each player chooses independently) ───
@@ -713,20 +858,55 @@ function register(app, requireAuth, ctx) {
       await db.query('UPDATE fantasy_characters SET hp=$1, mp=$2 WHERE id=$3', [char.hp, char.mp, char.id]);
       await db.query('UPDATE fantasy_parties SET raid_state=$1 WHERE id=$2', [JSON.stringify(rs), party.id]);
 
+      if (ctx.notifyParty) ctx.notifyParty(party.id);
       res.json({ ok: true, raidState: rs });
     } catch (e) { console.error(e); res.status(500).json({ error: 'Choice failed.' }); }
   });
 
-  // ─── PARTY RAID DISMISS (clear after completion) ───
+  // ─── PARTY RAID DISMISS (per-player acknowledge) ───
+  // Each player closes the completion screen at their own pace. Their char leaves
+  // the party individually; remaining members stay on the screen until they dismiss.
+  // When the last player dismisses, the party row is marked disbanded.
   app.post('/api/fantasy/party/raid/dismiss', requireAuth, async (req, res) => {
     try {
       const char = await getChar(req.session.userId, req.session.activeCharId);
-      if (!char || !char.party_id) return res.status(400).json({ error: 'Not in a party.' });
-      const party = await q1('SELECT * FROM fantasy_parties WHERE id=$1', [char.party_id]);
-      if (!party || !party.raid_state || party.raid_state.phase !== 'complete') return res.status(400).json({ error: 'Raid not complete.' });
+      if (!char) return res.status(400).json({ error: 'No character.' });
 
-      // Disband party and clear all states
-      await disbandParty(party.id, 'Raid completed!');
+      if (!char.party_id) {
+        const state = await buildState(req.session.userId, req.session.activeCharId);
+        return res.json({ ok: true, state });
+      }
+
+      const party = await q1('SELECT * FROM fantasy_parties WHERE id=$1', [char.party_id]);
+      if (!party || !party.raid_state || party.raid_state.phase !== 'complete') {
+        return res.status(400).json({ error: 'Raid not complete.' });
+      }
+
+      let remaining = [];
+      const wasLeader = party.leader_id === char.id;
+      await withTransaction(async (tx) => {
+        await tx.query('DELETE FROM fantasy_party_members WHERE party_id=$1 AND char_id=$2', [party.id, char.id]);
+        await tx.query('UPDATE fantasy_characters SET party_id=NULL, raid_state=NULL WHERE id=$1', [char.id]);
+        const rem = (await tx.query('SELECT char_id FROM fantasy_party_members WHERE party_id=$1 ORDER BY char_id', [party.id])).rows;
+        remaining = rem;
+        if (wasLeader && rem.length > 0) {
+          await tx.query('UPDATE fantasy_parties SET leader_id=$1 WHERE id=$2', [rem[0].char_id, party.id]);
+        }
+        if (rem.length === 0) {
+          await tx.query("UPDATE fantasy_parties SET state='disbanded', combat_state=NULL, raid_state=NULL WHERE id=$1", [party.id]);
+        }
+      });
+
+      await addLog(char.id, 'raid', '🏁 You closed out the raid and returned to your adventure.');
+
+      // Push null party state to this char (they're out)
+      if (ctx.notifyChar) {
+        await ctx.notifyChar(char.id, { type: 'state', party: null, raidState: null, combat: null, pendingInvites: [] });
+      }
+      // Remaining members see the shrunken party via a standard party broadcast
+      if (remaining.length > 0 && ctx.notifyParty) {
+        await ctx.notifyParty(party.id);
+      }
 
       const state = await buildState(req.session.userId, req.session.activeCharId);
       res.json({ ok: true, state });

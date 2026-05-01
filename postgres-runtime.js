@@ -9,9 +9,9 @@ const { Pool } = require('pg');
 const DATABASE_URL = process.env.DATABASE_URL || null;
 const host = process.env.POSTGRES_HOST || '127.0.0.1';
 const port = Number(process.env.POSTGRES_PORT || 5432);
-const user = process.env.POSTGRES_USER || 'realms';
-const password = process.env.POSTGRES_PASSWORD || 'realms-password';
-const database = process.env.POSTGRES_DB || 'realms_game';
+const user = process.env.POSTGRES_USER || 'thunderpatty';
+const password = process.env.POSTGRES_PASSWORD || 'thunderpatty-dev-password';
+const database = process.env.POSTGRES_DB || 'thunderpattyrpg';
 
 let pool = null;
 let startupPromise = null;
@@ -171,4 +171,16 @@ async function shutdown() {
   console.log('[postgres] Shutdown complete.');
 }
 
-module.exports = { startDatabase, getPool, getConfig, withTransaction, shutdown };
+/**
+ * Get a dedicated client for LISTEN/NOTIFY (not from the pool).
+ * Caller is responsible for error handling and reconnection.
+ */
+async function getListenClient() {
+  const { Client } = require('pg');
+  const config = DATABASE_URL ? { connectionString: DATABASE_URL } : { host, port, user, password, database };
+  const client = new Client(config);
+  await client.connect();
+  return client;
+}
+
+module.exports = { startDatabase, getPool, getConfig, withTransaction, shutdown, getListenClient };

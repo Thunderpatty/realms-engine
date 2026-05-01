@@ -28,6 +28,10 @@ const { initDuelDb, registerDuelRoutes } = require('./fantasy-duel');
 const { validate, schemas } = require('./validation');
 
 const app = express();
+// Trust the reverse proxy (Apache on port 80 forwards X-Forwarded-For).
+// Without this, express-rate-limit sees every request as 127.0.0.1 and buckets
+// all users into one shared limit, plus logs a ValidationError on every request.
+app.set('trust proxy', 1);
 const PORT = Number(process.env.PORT || 8080);
 const HOST = process.env.HOST || '0.0.0.0';
 
@@ -111,8 +115,8 @@ app.use(helmet({
 }));
 
 // Rate limiters
-const RATE_LIMIT_AUTH = Number(process.env.RATE_LIMIT_AUTH || 10);
-const RATE_LIMIT_GAME = Number(process.env.RATE_LIMIT_GAME || 120);
+const RATE_LIMIT_AUTH = Number(process.env.RATE_LIMIT_AUTH || 50);
+const RATE_LIMIT_GAME = Number(process.env.RATE_LIMIT_GAME || 1000);
 
 const authLimiter = rateLimit({
   windowMs: 60 * 1000,
@@ -130,7 +134,13 @@ const gameLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-app.use(compression());
+app.use(compression({
+  filter: (req, res) => {
+    // Don't compress SSE streams — they need to flush immediately
+    if (req.headers.accept === 'text/event-stream') return false;
+    return compression.filter(req, res);
+  }
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -138,18 +148,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/register', authLimiter);
 app.use('/api/login', authLimiter);
 app.use('/api/reset-password', authLimiter);
-// Poll endpoints get a more generous rate limit (party/combat polling is frequent)
+// Poll endpoints get their own generous rate limit and skip the game limiter
 const pollLimiter = rateLimit({
   windowMs: 60 * 1000,
-  max: Number(process.env.RATE_LIMIT_POLL || 600),
+  max: Number(process.env.RATE_LIMIT_POLL || 2500),
   message: { error: 'Too many poll requests. Slow down.' },
   standardHeaders: true,
   legacyHeaders: false,
+  // SSE stream is long-lived — count the initial handshake only, not keep-alives.
+  skip: (req) => req.originalUrl === '/api/fantasy/party/stream' && req.headers['last-event-id'] != null,
 });
-app.use('/api/fantasy/party/poll', pollLimiter);
-app.use('/api/fantasy/party/combat/poll', pollLimiter);
-app.use('/api/fantasy/state', pollLimiter);
-app.use('/api/fantasy', gameLimiter);
+const pollPaths = ['/api/fantasy/party/poll', '/api/fantasy/party/combat/poll', '/api/fantasy/state', '/api/fantasy/party/stream'];
+for (const p of pollPaths) app.use(p, pollLimiter);
+// Game limiter applies to all other /api/fantasy routes, skipping poll/SSE paths
+app.use('/api/fantasy', (req, res, next) => {
+  if (pollPaths.some(p => req.originalUrl.startsWith(p))) return next();
+  gameLimiter(req, res, next);
+});
 
 // Session middleware is initialized in the startup flow (after DB is ready)
 async function initSessionMiddleware(pool) {
@@ -365,9 +380,16 @@ app.use((err, _req, res, _next) => {
   const server = app.listen(PORT, HOST, () => {
     console.log(`Realms of Ash & Iron listening on http://${HOST}:${PORT}`);
   });
+  // HTTP timeouts tuned for long-lived SSE streams. Node defaults kill idle
+  // connections at 5 min (requestTimeout) / 60s (headersTimeout). SSE needs
+  // these relaxed; keepAliveTimeout slightly longer than Apache's keepalive.
+  server.keepAliveTimeout = 65_000;   // 65s (Apache default 5s)
+  server.headersTimeout   = 70_000;   // must exceed keepAliveTimeout
+  server.requestTimeout   = 0;        // 0 = disable (SSE + long polls)
 
   async function gracefulShutdown(signal) {
     console.log(`\n[shutdown] Received ${signal}, shutting down gracefully...`);
+    if (registerFantasyRoutes._shutdown) registerFantasyRoutes._shutdown();
     server.close(() => { console.log('[shutdown] HTTP server closed.'); });
     await shutdownDb();
     process.exit(0);

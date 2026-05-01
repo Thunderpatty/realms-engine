@@ -105,6 +105,7 @@ function register(app, requireAuth, ctx) {
           // They sent us a request — auto-accept
           await db.query('UPDATE fantasy_friends SET status=$1 WHERE id=$2', ['accepted', existing.id]);
           await addLog(char.id, 'social', `👥 You and ${target.name} are now friends!`);
+          if (ctx.notifyChar) ctx.notifyChar(target.id, { type: 'friendUpdate', message: `${char.name} accepted your friend request!` });
           return res.json({ ok: true, message: `${target.name} had already sent you a request — you are now friends!` });
         }
         if (existing.status === 'blocked') return res.status(400).json({ error: 'Cannot send request.' });
@@ -115,6 +116,11 @@ function register(app, requireAuth, ctx) {
         [char.id, target.id, 'pending']
       );
       await addLog(char.id, 'social', `👥 Sent friend request to ${target.name}.`);
+
+      // Push notification to target
+      if (ctx.notifyChar) {
+        ctx.notifyChar(target.id, { type: 'friendUpdate', message: `${char.name} sent you a friend request!` });
+      }
 
       res.json({ ok: true, message: `Friend request sent to ${target.name}.` });
     } catch (e) {
@@ -139,6 +145,8 @@ function register(app, requireAuth, ctx) {
       await db.query('UPDATE fantasy_friends SET status=$1 WHERE id=$2', ['accepted', friendshipId]);
       const friend = await q1('SELECT name FROM fantasy_characters WHERE id=$1', [row.char_id]);
       await addLog(char.id, 'social', `👥 You and ${friend?.name || 'someone'} are now friends!`);
+
+      if (ctx.notifyChar) ctx.notifyChar(row.char_id, { type: 'friendUpdate', message: `${char.name} accepted your friend request!` });
 
       res.json({ ok: true, message: `You are now friends with ${friend?.name || 'them'}!` });
     } catch (e) { console.error(e); res.status(500).json({ error: 'Failed to accept.' }); }

@@ -172,5 +172,21 @@
     </main>
 
     <script src="/assets/auth.js" defer></script>
+    <script>
+      // Login screen ambient music
+      const loginMusic = new Audio('/assets/music/login.mp3');
+      loginMusic.loop = true;
+      loginMusic.volume = 0;
+      const savedVol = parseFloat(localStorage.getItem('musicVolume') ?? '0.3');
+      const muted = localStorage.getItem('musicMuted') === '1';
+      document.addEventListener('click', function unlock() {
+        if (muted) return;
+        loginMusic.play().then(() => {
+          let v = 0; const target = savedVol;
+          const fade = setInterval(() => { v = Math.min(target, v + target/20); loginMusic.volume = v; if (v >= target) clearInterval(fade); }, 75);
+        }).catch(() => {});
+        document.removeEventListener('click', unlock);
+      }, { once: false });
+    </script>
   </body>
 </html>

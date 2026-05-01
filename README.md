@@ -1,126 +1,101 @@
-# Realms Engine
+# Realms of Ash & Iron — Fantasy RPG
 
-A full-featured text-based fantasy RPG with a web interface. Content-driven
-architecture — swap out the JSON files to create your own world.
-
-## Features
-
-- **4 realms** with 36 locations (towns, wilderness, dungeons)
-- **5 classes** with 157 abilities, ability ranks, momentum, and 35 combos
-- **5 races** with unique racial passives and abilities
-- **179 enemies** with balanced stats and multi-enemy group encounters
-- **58 quests** with branching narratives and stat checks
-- **5 raids** (party-only, 2-5 players) with exclusive loot
-- **Crafting** with 110 recipes and a forge system (gems, enchants, crystals)
-- **Arena** wave survival mode with leaderboard
-- **Auction house**, guild system with bounties, PvP duels
-- **Achievement system** (48 achievements), daily login rewards, weekly quests
-- **Multiplayer** friends list, party system, party combat
-- **Image support** for enemy portraits and location backgrounds
-- **Guided tutorial** for new players
-- **Responsive** web UI — works on desktop and mobile
-
-## Requirements
-
-- **Node.js** 18+ (24 recommended)
-- **PostgreSQL** 16+
-- A modern web browser
+A persistent-world text fantasy RPG with turn-based combat, crafting, PvP duels, an auction house, guild bounties, multi-floor party raids, an arena horde mode, and a class spec engine. Designed to be re-skinned with your own lore.
 
 ## Quick Start
 
 ```bash
 git clone https://github.com/Thunderpatty/realms-engine.git
 cd realms-engine
-chmod +x setup.sh
-./setup.sh
+./setup.sh --defaults   # installs Node, Postgres, and seeds the DB
+node server.js          # starts the game on port 8080
 ```
 
-The setup script will:
-1. Install Node.js 20 and PostgreSQL if missing (Ubuntu/Debian)
-2. Prompt for database credentials (or use `--defaults` for unattended install)
-3. Create the database and user
-4. Generate your `.env` configuration
-5. Install dependencies
-6. Verify the database connection
+Then open `http://127.0.0.1:8080` in a browser.
 
-For fully unattended install (uses all defaults):
-```bash
-./setup.sh --defaults
+The installer prompts for DB credentials and writes them to `.env`. Run `./setup.sh` without `--defaults` to step through the prompts interactively.
+
+## Re-loring the World
+
+The engine is content-driven — almost everything the player sees comes from JSON in `content/` and `game-config.json`. To replace the default fantasy world with your own lore, locations, enemies, items, and quests, see **[CONTENT-GUIDE.md](CONTENT-GUIDE.md)** — it walks through every file you'll touch, with examples.
+
+## Architecture (the short version)
+
+- **Node.js + Express 5** server, single process
+- **PostgreSQL** for game state, sessions, characters, inventory, auctions, parties, raids
+- **Server-Sent Events** push real-time party/raid/combat updates; polling fallback for proxies that drop SSE
+- **Class spec engine** (`shared/class-specs.js`) is a single source of truth for specialization mechanics — solo combat and party combat call the same hooks
+- **Content loader** reads from `content/` (canonical) or falls back to legacy seed files
+
+### File layout
+
+```
+server.js                # Express app, auth, startup
+fantasy-rpg.js           # RPG router: content loading, admin routes, game data API
+fantasy-duel.js          # PvP duels: lobby, turn-based combat, wagers
+postgres-runtime.js      # Embedded Postgres bootstrap
+
+shared/
+  game-logic.js          # Pure combat/stat/perk/scaling functions (testable, no DB)
+  game-config.js         # Shared require() for game-config.json
+  class-specs.js         # Specialization hook points used by both combat engines
+
+systems/
+  combat.js              # Solo combat engine
+  party.js               # Party formation, lobby, invites, ready check
+  party-combat.js        # Group combat engine
+  raid.js                # Multi-floor raid runs, completion stats, best times
+  combat-timer.js        # setTimeout-based round deadline manager
+  sse.js                 # Server-Sent Events stream + PG LISTEN/NOTIFY bus
+  arena.js               # Arena horde mode
+  forge.js               # Gem socketing, enchanting, crystal application
+  guild.js               # Adventurer's Guild, bounties, vendor
+  class-trainer.js       # Learn/swap abilities, ability ranks, PvE/PvP/Raid loadouts
+  auction.js             # Player-to-player auction house
+  shop.js / quests.js / friends.js / characters.js / progression.js
+  exploration.js / home.js / academy.js (legacy)
+
+content/                 # Canonical game content (zones, items, quests, raids, recipes, codex)
+db/schema.js             # Schema + additive migrations + indexes (auto-applied on boot)
+public/                  # SPA shell, client JS, images, audio, leaderboard
+tests/                   # vitest suites
 ```
 
-Then start the server:
+## Server Operations
+
+Start the server:
 ```bash
 node server.js
+# or daemonized:
+nohup node server.js > server.log 2>&1 &
 ```
 
-Open `http://localhost:8080` in your browser.
-
-## Making It Your Own
-
-The game is designed to be re-lored. See **[CONTENT-GUIDE.md](CONTENT-GUIDE.md)**
-for a complete guide to replacing the world, characters, enemies, quests,
-and art with your own.
-
-**Quick version:**
-1. Edit `content/realms.json` — your world regions
-2. Edit `content/zones/*.json` — your locations, enemies, events
-3. Edit `content/quests/*.json` — your stories
-4. Edit `content/items/*.json` — your gear and loot
-5. Edit `game-config.json` — your classes, races, abilities
-6. Drop art in `public/enemies/` and `public/locations/`
-7. Restart the server
-
-## Project Structure
-
-```
-├── setup.sh              # One-step installer (deps + DB + config)
-├── .env.example          # Configuration template
-├── server.js             # Express server, auth, sessions
-├── fantasy-rpg.js        # Game engine core
-├── game-config.json      # Classes, abilities, races, system config
-├── content/              # ← YOUR WORLD GOES HERE
-│   ├── realms.json       # World regions
-│   ├── zones/            # Locations (1 file per zone)
-│   ├── quests/           # Quests (1 file per location)
-│   ├── items/            # Items by category
-│   ├── raids/            # Raid definitions
-│   ├── recipes.json      # Crafting recipes
-│   └── ...
-├── public/               # Frontend
-│   ├── enemies/          # Enemy portrait PNGs
-│   ├── locations/        # Location background PNGs
-│   ├── fantasy-rpg.html  # Main game page
-│   └── fantasy-rpg-app.js # Client-side JS
-├── systems/              # Server subsystems
-├── shared/               # Shared game logic
-├── db/                   # Database schema
-└── tests/                # Test suite (195 tests)
-```
-
-## Running Tests
-
+Stop:
 ```bash
-npm test
+pkill -f "node server.js"
 ```
 
-Unit tests (stats, combat, content validation) run without a database.
-Integration tests require a running server instance.
-
-## Production Deployment
-
+Backup the database:
 ```bash
-npm install -g pm2
-pm2 start server.js --name my-rpg
-pm2 save
-pm2 startup
+pg_dump -Fc thunderpattyrpg > backup-$(date +%Y%m%d).dump
 ```
 
-## AI Agent Support
+The server re-runs additive DB migrations on every boot — they're idempotent, so restarting after a `git pull` is safe.
 
-If using a Pi agent, copy `SKILL.md` to your skills directory for
-full engine documentation. The agent can help add content, debug
-issues, balance enemies, and extend game systems.
+## Configuration
+
+Configuration lives in `.env` (created by `setup.sh`). Key vars:
+
+| Var | Purpose |
+|-----|---------|
+| `PORT` | HTTP port (default 8080) |
+| `POSTGRES_HOST` / `POSTGRES_PORT` / `POSTGRES_DB` / `POSTGRES_USER` / `POSTGRES_PASSWORD` | DB connection |
+| `SESSION_SECRET` | Express session signing key |
+| `SESSION_NAME` | Session cookie name (set differently for dev/prod if running both) |
+| `RATE_LIMIT_AUTH` / `RATE_LIMIT_GAME` / `RATE_LIMIT_POLL` | Per-route rate limits (auth/game/polling endpoints have separate buckets) |
+
+See `.env.example` for the full list with defaults.
 
 ## License
 
-This is a personal project shared for educational and creative use.
+This repository contains the game engine and a default fantasy content set. The content is provided as a starting template — you're encouraged to replace it with your own world. See `CONTENT-GUIDE.md`.

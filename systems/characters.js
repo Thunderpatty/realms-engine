@@ -94,7 +94,10 @@ function register(app, requireAuth, ctx) {
       if (!char) return res.status(400).json({ error: 'No character.' });
       if (char.in_combat) return res.status(400).json({ error: 'Cannot travel during combat.' });
       if (char.raid_state) return res.status(400).json({ error: 'Cannot travel during a raid. Fight or forfeit.' });
-      if (char.party_id) return res.status(400).json({ error: 'Cannot travel while in a party. Leave the party first.' });
+      if (char.party_id) {
+        const p = await q1('SELECT state FROM fantasy_parties WHERE id=$1', [char.party_id]);
+        if (p && p.state === 'in_raid') return res.status(400).json({ error: 'Cannot travel during a raid. Fight or forfeit.' });
+      }
       const { destination } = req.body;
       const loc = getContent().locations.find(l => l.slug === char.location);
       const dest = getContent().locations.find(l => l.slug === destination);
@@ -144,7 +147,10 @@ function register(app, requireAuth, ctx) {
       if (!char) return res.status(400).json({ error: 'No character.' });
       if (char.in_combat) return res.status(400).json({ error: 'Cannot travel during combat.' });
       if (char.raid_state) return res.status(400).json({ error: 'Cannot travel during a raid. Fight or forfeit.' });
-      if (char.party_id) return res.status(400).json({ error: 'Cannot travel while in a party. Leave the party first.' });
+      if (char.party_id) {
+        const p = await q1('SELECT state FROM fantasy_parties WHERE id=$1', [char.party_id]);
+        if (p && p.state === 'in_raid') return res.status(400).json({ error: 'Cannot travel during a raid. Fight or forfeit.' });
+      }
       const { destination } = req.body;
       const locations = getContent().locations;
       const dest = locations.find(l => l.slug === destination);

@@ -52,11 +52,13 @@ function register(app, requireAuth, ctx) {
 
       if (choice.check) {
         const statMod = Math.floor(((stats[choice.check.stat] || 10) - 10) / 2);
-        const roll = rand(1, 20) + statMod;
+        const d20 = rand(1, 20);
+        const roll = d20 + statMod;
         const dc = choice.check.dc;
+        const modSign = statMod >= 0 ? '+' : '';
         if (roll < dc) {
           const failXp = Math.floor(dc * 0.5);
-          messages.push(`⚠ Stat check failed! (${choice.check.stat.toUpperCase()} roll: ${roll} vs DC ${dc}). You stumble forward regardless.`);
+          messages.push(`⚠ Stat check failed! (${choice.check.stat.toUpperCase()} d20:${d20}${modSign}${statMod}=${roll} vs DC ${dc}). You stumble forward regardless.`);
           const dmg = rand(3, 8);
           char.hp = Math.max(1, char.hp - dmg);
           await db.query('UPDATE fantasy_characters SET hp=$1 WHERE id=$2', [char.hp, char.id]);
@@ -64,7 +66,7 @@ function register(app, requireAuth, ctx) {
           await db.query('UPDATE fantasy_quests SET bonus_xp=bonus_xp+$1 WHERE id=$2', [failXp, questRow.id]);
         } else {
           const passXp = dc * 2;
-          messages.push(`✓ Stat check passed! (${choice.check.stat.toUpperCase()} roll: ${roll} vs DC ${dc}) +${passXp} XP`);
+          messages.push(`✓ Stat check passed! (${choice.check.stat.toUpperCase()} d20:${d20}${modSign}${statMod}=${roll} vs DC ${dc}) +${passXp} XP`);
           await db.query('UPDATE fantasy_quests SET bonus_xp=bonus_xp+$1 WHERE id=$2', [passXp, questRow.id]);
         }
       }

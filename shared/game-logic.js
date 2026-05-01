@@ -460,8 +460,8 @@ function buildScaledEnemy(enemy, charLevel, zoneThreat) {
 // ─── EXPORTS ─────────────────────────────────────────────────────
 
 // Ability rank cost scaling: higher ranks cost more MP
-const RANK_COST_MULTIPLIERS = [1.0, 1.15, 1.35, 1.6, 2.0];
-const RANK_COST_FLOOR_ADDS  = [0,   1,    2,    4,   5];
+const RANK_COST_MULTIPLIERS = [1.0, 1.1, 1.2, 1.4, 1.7];
+const RANK_COST_FLOOR_ADDS  = [0,   1,    1,    3,   4];
 
 function getAbilityRankCost(baseCost, rank) {
   const idx = Math.max(0, Math.min(4, rank - 1));

@@ -77,12 +77,16 @@ function register(app, requireAuth, ctx) {
       }));
 
       const completedRows = await q(
-        'SELECT raid_slug, COUNT(*) as clears, MAX(ended_at) as last_clear FROM fantasy_raid_runs WHERE char_id=$1 AND completed=TRUE GROUP BY raid_slug',
+        'SELECT raid_slug, COUNT(*) as clears, MAX(ended_at) as last_clear, MIN(duration_seconds) FILTER (WHERE duration_seconds IS NOT NULL) as best_time FROM fantasy_raid_runs WHERE char_id=$1 AND completed=TRUE GROUP BY raid_slug',
         [char.id]
       );
       const completions = {};
       for (const row of completedRows) {
-        completions[row.raid_slug] = { clears: Number(row.clears), lastClear: row.last_clear };
+        completions[row.raid_slug] = {
+          clears: Number(row.clears),
+          lastClear: row.last_clear,
+          bestTimeSeconds: row.best_time != null ? Number(row.best_time) : null,
+        };
       }
 
       res.json({ ok: true, raids: raidList, completions, raidState: char.raid_state || null });
@@ -605,9 +609,12 @@ function register(app, requireAuth, ctx) {
         log.push(`💰 Completion bonus: +${bonusXp} XP, +${bonusGold} gold, +${bonusTokens} ✦`);
         log.push(`\n📊 Raid totals: ${rs.totalXp} XP, ${rs.totalGold} gold earned`);
 
+        const durationSec = rs.startedAt
+          ? Math.max(0, Math.floor((Date.now() - new Date(rs.startedAt).getTime()) / 1000))
+          : null;
         await tx.query(
-          'INSERT INTO fantasy_raid_runs (char_id, raid_slug, floors_reached, completed, ended_at) VALUES ($1,$2,$3,TRUE,NOW())',
-          [char.id, rs.raidSlug, rs.floorsCleared]
+          'INSERT INTO fantasy_raid_runs (char_id, raid_slug, floors_reached, completed, ended_at, duration_seconds) VALUES ($1,$2,$3,TRUE,NOW(),$4)',
+          [char.id, rs.raidSlug, rs.floorsCleared, durationSec]
         );
 
         if (gameEvents) {

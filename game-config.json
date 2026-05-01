@@ -1067,7 +1067,7 @@
       "slug": "warrior",
       "name": "Warrior",
       "baseHp": 162,
-      "baseMp": 12,
+      "baseMp": 20,
       "primaryStat": "str",
       "abilities": [
         {
@@ -3059,6 +3059,7 @@
           "damage": 1,
           "type": "physical",
           "dot": {
+            "type": "poison",
             "damage": 4,
             "turns": 3
           },
@@ -3850,16 +3851,16 @@
           "damage": 0,
           "type": "buff",
           "buff": {
-            "stat": "str",
+            "stat": "dex",
             "amount": 6,
             "turns": 3
           },
           "secondaryBuff": {
-            "stat": "dex",
+            "stat": "cha",
             "amount": 4,
             "turns": 3
           },
-          "description": "Swear vengeance. +6 STR and +4 DEX for 3 turns.",
+          "description": "Swear vengeance. +6 DEX and +4 CHA for 3 turns (boosts crit).",
           "tokenCost": 14,
           "ranks": [
             {},
@@ -4919,6 +4920,24 @@
               "reviveHpPct": 60
             }
           ]
+        },
+        {
+          "slug": "life-tap",
+          "name": "Life Tap",
+          "cost": 0,
+          "type": "ally-restore",
+          "description": "Sacrifice your own vitality to restore an ally's mana. Costs 15% of your max HP to restore 25% of the target's max MP.",
+          "tokenCost": 10,
+          "hpCostPct": 15,
+          "allyRestorePct": 25,
+          "pveCooldown": 2,
+          "ranks": [
+            { "hpCostPct": 15, "restorePct": 25 },
+            { "hpCostPct": 14, "restorePct": 28 },
+            { "hpCostPct": 13, "restorePct": 31 },
+            { "hpCostPct": 12, "restorePct": 35 },
+            { "hpCostPct": 10, "restorePct": 40 }
+          ]
         }
       ],
       "description": "Divine channeler. Sustained healing, purification, buffs, and holy fire."
@@ -4960,27 +4979,30 @@
         {
           "slug": "trap",
           "name": "Bear Trap",
-          "cost": 4,
-          "damage": 0.8,
+          "cost": 3,
+          "damage": 1.0,
           "type": "physical",
           "stun": true,
-          "description": "Set a trap. Damages and stuns.",
+          "description": "Snap a cruel trap around the target. Damages and stuns.",
           "starter": true,
           "ranks": [
             {
-              "damage": 0.8
+              "damage": 1.0
             },
             {
-              "damage": 0.96
+              "damage": 1.2
             },
             {
-              "damage": 1.12
+              "damage": 1.4,
+              "durationBonus": 1
             },
             {
-              "damage": 1.32
+              "damage": 1.65,
+              "durationBonus": 1
             },
             {
-              "damage": 1.6
+              "damage": 2.0,
+              "durationBonus": 2
             }
           ]
         },
@@ -6623,7 +6645,7 @@
             "tauntHpRegen": 3,
             "unbreakable": true
           },
-          "desc": "-20% taken. Unbreakable: absorb 40% max HP as shield. Once per combat."
+          "desc": "-20% taken. Bulwark: single incoming hits capped at 20% of max HP — you cannot be oneshot."
         }
       ]
     },
@@ -6674,15 +6696,14 @@
         },
         {
           "passive": {
-            "damageMul": 1.15
+            "damageMul": 1.15,
+            "rallyBonusDamage": 15
           },
           "special": {
             "critBonus": 10,
-            "duration": 5,
-            "allyHealPct": 2,
-            "uses": 2
+            "duration": 5
           },
-          "desc": "+15% damage. Allies heal 2% HP/turn during Battle Cry. Usable twice."
+          "desc": "+15% damage. Rally: Battle Cry also grants all allies +15% damage for its duration."
         }
       ]
     },
@@ -6999,14 +7020,14 @@
         },
         {
           "passive": {
-            "allyDamageTakenMul": 0.85
+            "allyDamageTakenMul": 0.85,
+            "aegisSanctum": true
           },
           "special": {
             "shieldPct": 60,
-            "shieldReflect": 15,
-            "sanctuary": true
+            "shieldReflect": 15
           },
-          "desc": "Allies -15% damage. Sanctuary: party -40% damage for 3 turns. Once per combat."
+          "desc": "Allies -15% damage. Sanctum: at combat start, all allies gain a shield equal to 12% of their max HP."
         }
       ]
     },

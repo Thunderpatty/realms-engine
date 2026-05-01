@@ -188,7 +188,7 @@ const academyLearnSchema = z.object({
 
 const academyEquipSchema = z.object({
   activeAbilities: z.array(slug).min(1).max(6),
-  mode: z.enum(['pve', 'pvp']).optional().default('pve'),
+  mode: z.enum(['pve', 'pvp', 'raid']).optional().default('pve'),
 });
 
 const academyUpgradeSchema = z.object({
